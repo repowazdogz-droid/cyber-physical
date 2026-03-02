@@ -1,0 +1,20 @@
+# Omega Tutor V1 — local Postgres only (no Redis for V1)
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: omega_tutor
+    ports:
+      - "5433:5432"
+    volumes:
+      - omega_tutor_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 2s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  omega_tutor_pgdata:

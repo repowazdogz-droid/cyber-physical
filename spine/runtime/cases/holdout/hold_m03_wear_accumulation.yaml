@@ -1,0 +1,36 @@
+problem:
+  name: "Wear accumulation on sliding surface"
+  domain: "robotic_design"
+
+constraints:
+  - "sliding_distance: 100km"
+  - "wear_rate: 0.1μm/km"
+  - "total_wear: 10μm"
+  - "clearance_limit: 5μm"
+  - "must_maintain_clearance"
+
+uncertainties:
+  - "wear_acceleration: variable"
+  - "surface_hardness_variation: unknown"
+  - "lubrication_effectiveness: unknown"
+
+objectives:
+  - "wear_resistance"
+  - "clearance_maintenance"
+
+design:
+  sliding_distance_km: 100
+  wear_rate_um_per_km: 0.1
+  total_wear_um: 10
+  clearance_limit_um: 5
+  # For geometric constraints
+  min_clearance_mm: -0.005
+  clearance_limit_mm: 0.005
+  # For mechanical constraints
+  applied_stress_mpa: 200
+  yield_strength_mpa: 1000
+
+metadata:
+  injected_failure: "wear_accumulation"
+  failure_category: "mechanical"
+  expected_detection: "Geometric constraint may trigger if wear modeled"

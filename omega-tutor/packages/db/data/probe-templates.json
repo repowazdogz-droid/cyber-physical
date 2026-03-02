@@ -1,0 +1,15 @@
+{
+  "intro_mechanics": {
+    "force_implies_motion_direct": "A book lies at rest on a table. What is the net force on the book? Explain your reasoning in one or two sentences.",
+    "force_implies_motion_scenario": "A car moves at constant speed along a straight road. Is there a net force on the car? Why or why not?",
+    "velocity_implies_force_direct": "An object is moving to the right. Does there have to be a force acting on it to the right? Explain.",
+    "action_reaction_cancel_direct": "When you push on a wall, the wall pushes back. Why don't these two forces cancel so that nothing moves?",
+    "action_reaction_cancel_scenario": "A horse pulls a cart. The cart pulls back on the horse. Why can the cart still accelerate forward?",
+    "friction_direction_direct": "A block slides to the right on a rough floor. In what direction does friction act on the block? Justify briefly.",
+    "n2_mass_inverse_direct": "Two objects experience the same net force. Object A has greater mass than Object B. Which has the greater acceleration? Explain.",
+    "projectile_no_force_horizontal": "A ball is thrown horizontally. After it leaves the hand, is there a horizontal force on the ball? What about vertical? Explain.",
+    "circular_centripetal_direction": "A ball on a string is swung in a horizontal circle. When the string breaks, in what direction does the ball fly? Why?",
+    "energy_work_sign": "You slow down a moving block by pushing against its motion. Is the work you do on the block positive, negative, or zero? Explain.",
+    "momentum_conservation_isolated": "Two skaters push off each other on frictionless ice. How do their velocities after the push compare to before? Use momentum in your answer."
+  }
+}

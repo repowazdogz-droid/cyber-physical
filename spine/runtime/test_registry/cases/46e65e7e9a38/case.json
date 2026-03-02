@@ -1,0 +1,41 @@
+{
+  "case_id": "46e65e7e9a38",
+  "name": "Feedforward model mismatch 20%",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:12:27.817946",
+  "case_yaml": {
+    "problem": {
+      "name": "Feedforward model mismatch 20%",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "model_accuracy: 80%",
+      "required_accuracy: 95%",
+      "feedforward_gain: 1.0",
+      "actual_gain: 0.8",
+      "must_match_model"
+    ],
+    "uncertainties": [
+      "model_uncertainty: \u00b120%",
+      "tracking_error_impact: unknown",
+      "disturbance_rejection: degraded"
+    ],
+    "objectives": [
+      "control_accuracy",
+      "model_fidelity"
+    ]
+  },
+  "design_data": {
+    "model_accuracy_percent": 80,
+    "required_accuracy_percent": 95,
+    "feedforward_gain": 1.0,
+    "actual_gain": 0.8,
+    "mismatch_percent": 20
+  },
+  "tags": [
+    "adversarial",
+    "control",
+    "test"
+  ],
+  "notes": "Injected failure: feedforward_mismatch"
+}

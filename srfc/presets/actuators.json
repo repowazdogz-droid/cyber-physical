@@ -1,0 +1,26 @@
+{
+  "pneumatic_standard": {
+    "mode": "pneumatic",
+    "typical_pressure_range_kpa_min": 10.0,
+    "typical_pressure_range_kpa_max": 100.0,
+    "response_time_ms": 200.0,
+    "notes": "Standard pneumatic actuation. Fast response, moderate pressure range."
+  },
+  "tendon_standard": {
+    "mode": "tendon",
+    "typical_force_range_n_min": 0.5,
+    "typical_force_range_n_max": 50.0,
+    "response_time_ms": 100.0,
+    "notes": "Tendon-driven actuation. Very fast response, precise force control."
+  },
+  "hydraulic_micro": {
+    "mode": "hydraulic",
+    "typical_pressure_range_kpa_min": 50.0,
+    "typical_pressure_range_kpa_max": 500.0,
+    "response_time_ms": 150.0,
+    "notes": "Micro-hydraulic actuation. High force, slower response than pneumatic."
+  }
+}
+
+
+

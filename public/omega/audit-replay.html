@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMEGA -- Audit Replay</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg-deep:#fafafa;--bg-surface:#f4f4f6;--bg-raised:#ecedef;--bg-hover:#e4e5e8;
+  --border:#d5d7dc;--border-active:#b8bbc2;
+  --text-primary:#111214;--text-secondary:#363940;--text-muted:#5c5f69;
+  --green:#059669;--green-dim:#d1fae5;--green-glow:rgba(5,150,105,.08);
+  --amber:#d97706;--amber-dim:#fef3c7;--amber-glow:rgba(217,119,6,.08);
+  --red:#dc2626;--red-dim:#fee2e2;--red-glow:rgba(220,38,38,.08);
+  --blue:#2563eb;--blue-dim:#dbeafe;--blue-glow:rgba(37,99,235,.06);
+  --teal:#0d9488;--teal-dim:#ccfbf1;--teal-glow:rgba(13,148,136,.08);
+  --mono:'Courier New','Lucida Console',monospace;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --fast:150ms ease;--med:300ms ease;--rad:6px;
+}
+html{font-size:14px}
+body{background:var(--bg-deep);color:var(--text-primary);font-family:var(--sans);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+.strip{display:flex;align-items:center;justify-content:center;gap:14px;padding:4px 16px;background:var(--bg-deep);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:9px;color:#363940;flex-wrap:wrap}
+.strip-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);display:inline-block;margin-right:4px}
+.strip-sep{color:var(--border)}
+
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border-bottom:1px solid var(--border);background:var(--bg-surface);position:sticky;top:0;z-index:100;flex-wrap:wrap;gap:8px}
+.hdr-left{display:flex;align-items:center;gap:12px}
+.logo{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:2px}
+.logo span{color:var(--teal)}
+.logo-sub{font-family:var(--mono);font-size:9px;letter-spacing:1px;color:#363940}
+.pills{display:flex;gap:5px;flex-wrap:wrap}
+.pill{font-family:var(--mono);font-size:9px;padding:2px 7px;border-radius:3px;background:#f0f1f3;border:1px solid var(--border);color:#363940;white-space:nowrap}
+.pill.t{color:var(--teal);border-color:var(--teal-dim)}
+.pill.g{color:var(--green);border-color:var(--green-dim)}
+
+.main{display:grid;grid-template-columns:220px 1fr 300px;min-height:calc(100vh - 80px)}
+@media(max-width:1100px){.main{grid-template-columns:1fr}}
+
+.left{border-right:1px solid var(--border);background:var(--bg-surface);padding:14px;overflow-y:auto}
+.ptitle{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:#363940;text-transform:uppercase;margin-bottom:12px}
+.divider{height:1px;background:var(--border);margin:12px 0}
+
+.scenario-card{background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--rad);padding:10px;margin-bottom:8px;cursor:pointer;transition:all var(--med)}
+.scenario-card:hover{border-color:var(--border-active);background:var(--bg-hover)}
+.scenario-card.active{border-color:var(--teal-dim);box-shadow:0 0 10px var(--teal-glow)}
+.scenario-domain{font-family:var(--mono);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
+.scenario-domain.mfg{color:var(--green)}.scenario-domain.def{color:var(--red)}.scenario-domain.fin{color:var(--amber)}.scenario-domain.clinical{color:var(--blue)}.scenario-domain.swarm{color:#a78bfa}
+.scenario-title{font-size:12px;font-weight:600;margin-bottom:3px}
+.scenario-meta{font-family:var(--mono);font-size:9px;color:#363940}
+
+.scenario-explainer{padding:14px 18px;background:var(--bg-raised,#f0f1f3);border:1px solid var(--border,#d5d7dc);border-left:3px solid var(--blue,#2563eb);border-radius:6px;margin-bottom:16px;font-family:var(--sans,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif);font-size:12px;line-height:1.7;color:var(--text-secondary,#4a4d56)}
+.scenario-explainer b{color:var(--text-primary,#1a1c20);font-weight:600}
+.scenario-explainer .watch-for{margin-top:8px;padding-top:8px;border-top:1px solid var(--border,#d5d7dc);font-size:11px;color:var(--text-muted,#7c808a)}
+.scenario-explainer .watch-for b{color:var(--blue,#2563eb);font-size:11px}
+
+.transport{display:flex;align-items:center;gap:6px;margin-top:14px;justify-content:center}
+.tbtn{font-family:var(--mono);font-size:14px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--rad);color:var(--text-secondary);cursor:pointer;transition:all var(--fast)}
+.tbtn:hover{border-color:var(--teal-dim);color:var(--teal)}
+.tbtn.playing{background:var(--teal-glow);border-color:var(--teal-dim);color:var(--teal)}
+
+.speed-ctrl{display:flex;align-items:center;gap:6px;margin-top:10px;justify-content:center}
+.speed-label{font-family:var(--mono);font-size:9px;color:#363940}
+.speed-btn{font-family:var(--mono);font-size:9px;padding:2px 8px;background:var(--bg-raised);border:1px solid var(--border);border-radius:3px;color:var(--text-secondary);cursor:pointer;transition:all var(--fast)}
+.speed-btn.active{color:var(--teal);border-color:var(--teal-dim)}
+.speed-btn:hover{border-color:var(--border-active)}
+
+.progress-wrap{margin-top:14px}
+.progress-bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden;cursor:pointer;position:relative}
+.progress-fill{height:100%;background:var(--teal);border-radius:2px;transition:width .2s}
+.progress-labels{display:flex;justify-content:space-between;margin-top:4px;font-family:var(--mono);font-size:9px;color:#363940}
+
+.center{padding:20px 24px;display:flex;flex-direction:column;align-items:center;overflow-y:auto}
+.timeline{width:100%;max-width:560px}
+
+.tl-node{position:relative;padding:14px 16px;background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--rad);transition:all .4s;opacity:.3;transform:scale(.97)}
+.tl-node.current{opacity:1;transform:scale(1);border-color:var(--teal-dim);box-shadow:0 0 16px var(--teal-glow)}
+.tl-node.past{opacity:.65;transform:scale(.98)}
+.tl-node.future{opacity:.2;transform:scale(.96)}
+.tl-node.tampered{border-color:var(--red-dim);box-shadow:0 0 12px var(--red-glow);opacity:1}
+
+.tl-conn{width:2px;height:18px;margin:0 auto;transition:background .3s}
+.tl-conn.past{background:var(--teal-dim)}.tl-conn.current{background:var(--teal)}.tl-conn.future{background:var(--border)}.tl-conn.tampered{background:var(--red)}
+
+.tl-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.tl-type{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;font-weight:600;text-transform:uppercase}
+.tl-type.observe{color:var(--blue)}.tl-type.derive{color:var(--amber)}.tl-type.assume{color:var(--text-secondary)}.tl-type.decide{color:var(--green)}.tl-type.act{color:var(--teal)}
+.tl-step{font-family:var(--mono);font-size:8px;color:var(--teal);background:var(--teal-glow);padding:1px 6px;border-radius:3px}
+.tl-time{font-family:var(--mono);font-size:8px;color:#5c5f69}
+
+.tl-content{font-size:12px;color:#363940;line-height:1.7;margin-bottom:8px}
+.tl-node.current .tl-content{color:var(--text-primary)}
+
+.tl-hash{font-family:var(--mono);font-size:8px;color:#5c5f69;word-break:break-all;background:var(--bg-raised);padding:3px 6px;border-radius:3px}
+.tl-hash.verified{border-left:2px solid var(--green)}
+.tl-hash.mismatch{color:var(--red);background:var(--red-glow);border-left:2px solid var(--red)}
+
+.tl-policy{font-family:var(--mono);font-size:9px;margin-top:6px;padding:4px 8px;border-radius:3px;display:inline-block}
+.tl-policy.enforced{color:var(--red);background:rgba(248,113,113,.08);border:1px solid var(--red-dim)}
+.tl-policy.cleared{color:var(--green);background:rgba(52,211,153,.08);border:1px solid var(--green-dim)}
+
+.empty-state{text-align:center;padding:60px 20px;color:#363940;font-family:var(--mono);font-size:11px;letter-spacing:1px}
+
+.right{border-left:1px solid var(--border);background:var(--bg-surface);padding:14px;overflow-y:auto}
+.mech-block{margin-bottom:14px}
+.mech-title{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:#363940;text-transform:uppercase;margin-bottom:8px}
+.mech-row{font-family:var(--mono);font-size:10px;padding:5px 7px;background:var(--bg-raised);border:1px solid var(--border);border-radius:3px;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center}
+.mech-label{color:var(--text-secondary)}
+.mech-val{font-weight:600}
+.mech-val.g{color:var(--green)}.mech-val.a{color:var(--amber)}.mech-val.r{color:var(--red)}.mech-val.t{color:var(--teal)}.mech-val.b{color:var(--blue)}
+.mech-note{font-family:var(--mono);font-size:9px;color:#363940;line-height:1.6;padding:8px;background:var(--bg-raised);border:1px solid var(--border);border-radius:4px;margin-bottom:10px}
+.hash-detail{font-family:var(--mono);font-size:8px;word-break:break-all;padding:6px 8px;background:var(--bg-deep);border:1px solid var(--border);border-radius:4px;margin-bottom:8px;line-height:1.8;color:#363940}
+.hash-detail .hl{color:var(--teal)}.hash-detail .hr{color:var(--red)}
+.assumption-item{font-family:var(--mono);font-size:9px;padding:4px 7px;background:var(--bg-raised);border:1px solid var(--border);border-radius:3px;color:#363940;margin-bottom:3px;display:flex;align-items:center;gap:6px}
+.adot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.adot.v{background:var(--green)}.adot.u{background:var(--amber)}.adot.i{background:var(--red)}
+/* ─── INFO TOOLTIP SYSTEM ─── */
+.info-trigger{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.2);color:var(--blue,#60a5fa);font-family:var(--mono,'Courier New',monospace);font-size:8px;font-weight:700;cursor:pointer;margin-left:5px;vertical-align:middle;transition:all 150ms ease;flex-shrink:0;position:relative;line-height:1}
+.info-trigger:hover{background:rgba(96,165,250,.15);border-color:rgba(96,165,250,.4);transform:scale(1.1)}
+.info-trigger.active{background:rgba(96,165,250,.2);border-color:var(--blue,#60a5fa)}
+.info-panel{position:absolute;z-index:1000;width:280px;padding:10px 12px;background:#ffffff;border:1px solid #d5d7dc;border-radius:6px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;font-size:11px;color:#4a4d56;line-height:1.6;box-shadow:0 8px 32px rgba(0,0,0,.1);pointer-events:auto;opacity:0;transform:translateY(4px);transition:opacity 200ms ease,transform 200ms ease}
+.info-panel.visible{opacity:1;transform:translateY(0)}
+.info-panel b{color:#1a1c20;font-weight:600}
+.info-panel code{font-family:var(--mono,'Courier New',monospace);font-size:10px;color:#2563eb;background:rgba(37,99,235,.06);padding:1px 4px;border-radius:2px}
+.info-panel-arrow{position:absolute;top:-4px;left:14px;width:8px;height:8px;background:#ffffff;border-left:1px solid #d5d7dc;border-top:1px solid #d5d7dc;transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<div class="strip">
+  <span><span class="strip-dot"></span>OMEGA AUDIT REPLAY</span>
+  <span class="strip-sep">|</span>
+  <span>FLIGHT RECORDER FOR AI DECISIONS</span>
+  <span class="strip-sep">|</span>
+  <span id="replayStatus">STATUS: READY</span>
+</div>
+
+<div class="hdr">
+  <div class="hdr-left">
+    <div>
+      <div class="logo">OMEGA <span>REPLAY</span></div>
+      <div class="logo-sub">Audit & Forensic Analysis</div>
+    </div>
+  </div>
+  <div class="pills">
+    <span class="pill">SHA-256 verified<span class="info-trigger" data-info="<b>SHA-256 hashing.</b> Industry-standard cryptographic hash function. Produces a unique 64-character fingerprint for any input. Change one character and the hash is completely different.">i</span></span>
+    <span class="pill">Node-by-node scrub<span class="info-trigger" data-info="<b>Node-by-node scrub.</b> Step through each reasoning step in order. See exactly what was observed, derived, assumed, decided, and acted on. No steps are hidden.">i</span></span>
+    <span class="pill">Hash forensics<span class="info-trigger" data-info="<b>Hash forensics.</b> Inspect the cryptographic fingerprint of each node. Verify that the stored hash matches a recompute from the node's content. Tampering breaks the chain.">i</span></span>
+    <span class="pill t">FLIGHT RECORDER<span class="info-trigger" data-info="<b>Flight recorder.</b> Like a black box. The chain was recorded when the decision was made. Replay does not modify the original trace — it only reads it.">i</span></span>
+    <span class="pill g">LIVE</span>
+  </div>
+</div>
+
+<div class="main">
+
+<div class="left">
+  <div class="ptitle">Recorded Scenarios<span class="info-trigger" data-info="<b>Example scenarios.</b> Pre-recorded decision chains from different domains. Each shows a full OBSERVE→DERIVE→ASSUME→DECIDE→ACT trace. Select one to replay and verify hashes.">i</span></div>
+  <div id="scenarioList"></div>
+  <div class="scenario-explainer" id="scenarioExplainer"></div>
+
+  <div class="divider"></div>
+  <div class="ptitle">Transport</div>
+  <div class="transport">
+    <button class="tbtn" onclick="goFirst()" title="First">&#x23EE;</button>
+    <button class="tbtn" onclick="goPrev()" title="Back">&#x23F4;</button>
+    <button class="tbtn" id="btnPlay" onclick="togglePlay()" title="Play">&#x25B6;</button>
+    <button class="tbtn" onclick="goNext()" title="Forward">&#x23F5;</button>
+    <button class="tbtn" onclick="goLast()" title="Last">&#x23ED;</button>
+  </div>
+  <div class="speed-ctrl">
+    <span class="speed-label">Speed:</span>
+    <button class="speed-btn" onclick="setSpeed(2000,this)">0.5x</button>
+    <button class="speed-btn active" onclick="setSpeed(1000,this)">1x</button>
+    <button class="speed-btn" onclick="setSpeed(500,this)">2x</button>
+    <button class="speed-btn" onclick="setSpeed(250,this)">4x</button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-bar" onclick="scrubTo(event)">
+      <div class="progress-fill" id="progressFill" style="width:0%"></div>
+    </div>
+    <div class="progress-labels"><span id="stepLabel">0/0</span><span id="timeLabel">--:--:--</span><span class="info-trigger" data-info="<b>Chain integrity.</b> Shows what percentage of the reasoning chain is verified. 100% means every node's hash checks out. If someone tampers with any node, integrity drops and you can see exactly where.">i</span></div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="ptitle">Actions</div>
+  <div style="display:flex;flex-direction:column;gap:5px">
+    <button class="tbtn" style="width:100%;font-size:10px;height:auto;padding:7px" onclick="verifyAll()">&#x2713; VERIFY ALL HASHES<span class="info-trigger" data-info="<b>Verify all hashes.</b> Recomputes the hash of every node from its current content and compares to the stored hash. Any mismatch or broken chain link is flagged and downstream nodes are invalidated.">i</span></button>
+    <button class="tbtn" style="width:100%;font-size:10px;height:auto;padding:7px" onclick="injectTamper()">&#x26A0; INJECT TAMPER<span class="info-trigger" data-info="<b>Tamper testing.</b> Simulates someone altering a node's content after the fact. Run VERIFY to see the hash chain break and every downstream node invalidated.">i</span></button>
+  </div>
+</div>
+
+<div class="center">
+  <div class="timeline" id="timeline">
+    <div class="empty-state">SELECT A SCENARIO TO BEGIN REPLAY<br><br>Choose a recorded decision chain from the left panel</div>
+  </div>
+</div>
+
+<div class="right">
+  <div class="ptitle">Mechanism Panel</div>
+  <div class="mech-note">Forensic replay tool. Every node independently verifiable. Scrub through reasoning to see exactly where each decision was made and what constrained it.</div>
+
+  <div class="mech-block">
+    <div class="mech-title">Current Node</div>
+    <div class="mech-row"><span class="mech-label">Type</span><span class="mech-val t" id="mechType">--</span></div>
+    <div class="mech-row"><span class="mech-label">Step</span><span class="mech-val" id="mechStep">--</span></div>
+    <div class="mech-row"><span class="mech-label">Timestamp</span><span class="mech-val" id="mechTime">--</span></div>
+    <div class="mech-row"><span class="mech-label">Domain</span><span class="mech-val" id="mechDomain">--</span></div>
+  </div>
+
+  <div class="mech-block">
+    <div class="mech-title">Hash Forensics<span class="info-trigger" data-info="<b>SHA-256 hash.</b> A cryptographic fingerprint of this step's content. Change even one character and the hash is completely different. This is how tamper detection works — recompute the hash and compare.">i</span></div>
+    <div class="hash-detail" id="hashDetail">Select a node to inspect</div>
+  </div>
+
+  <div class="mech-block">
+    <div class="mech-title">Chain Integrity<span class="info-trigger" data-info="<b>Chain integrity.</b> Shows what percentage of the reasoning chain is verified. 100% means every node's hash checks out. If someone tampers with any node, integrity drops and you can see exactly where.">i</span></div>
+    <div class="mech-row"><span class="mech-label">Total Nodes</span><span class="mech-val" id="mechTotal">0</span></div>
+    <div class="mech-row"><span class="mech-label">Verified</span><span class="mech-val g" id="mechVerified">0/0</span></div>
+    <div class="mech-row"><span class="mech-label">Tampered</span><span class="mech-val g" id="mechTampered">NONE</span></div>
+  </div>
+
+  <div class="mech-block">
+    <div class="mech-title">Assumptions Active</div>
+    <div id="assumptionList"><div class="mech-row"><span class="mech-label">No assumptions loaded</span></div></div>
+  </div>
+
+  <div class="mech-block">
+    <div class="mech-title">Policies at This Node<span class="info-trigger" data-info="<b>Active protocol.</b> This shows which OMEGA policies were enforced at this step. Each policy was set by humans before the AI ran. The AI cannot reorder, ignore, or modify these rules.">i</span></div>
+    <div id="policyList"><div class="mech-row"><span class="mech-label">No policies active</span></div></div>
+  </div>
+
+  <div class="mech-note" style="margin-top:14px">Every reasoning step is hash-chained and independently verifiable. The replay does not modify the original trace. It reads it.</div>
+</div>
+
+</div>
+
+<script>
+// ─── INFO TOOLTIP SYSTEM ───
+(function(){
+  let activePanel = null;
+  let activeTrigger = null;
+  function closeActive(){
+    if(activePanel){ activePanel.remove(); activePanel=null; }
+    if(activeTrigger){ activeTrigger.classList.remove('active'); activeTrigger=null; }
+  }
+  function positionPanel(trigger, panel){
+    document.body.appendChild(panel);
+    const r = trigger.getBoundingClientRect();
+    const pw = 280;
+    let left = r.left;
+    let top = r.bottom + 6;
+    if(left + pw > window.innerWidth - 12) left = window.innerWidth - pw - 12;
+    if(left < 12) left = 12;
+    if(top + 200 > window.innerHeight){ top = r.top - 8; panel.style.transform = 'translateY(-100%)'; }
+    panel.style.left = left + 'px';
+    panel.style.top = top + 'px';
+    panel.style.position = 'fixed';
+    const arrow = panel.querySelector('.info-panel-arrow');
+    if(arrow){ arrow.style.left = Math.max(10, Math.min(pw-20, r.left - left + r.width/2 - 4)) + 'px'; }
+    requestAnimationFrame(()=>requestAnimationFrame(()=>panel.classList.add('visible')));
+  }
+  document.addEventListener('click', function(e){
+    const trigger = e.target.closest('.info-trigger');
+    if(!trigger){ closeActive(); return; }
+    e.stopPropagation();
+    const text = trigger.getAttribute('data-info');
+    if(!text) return;
+    if(activeTrigger === trigger){ closeActive(); return; }
+    closeActive();
+    const panel = document.createElement('div');
+    panel.className = 'info-panel';
+    panel.innerHTML = '<div class="info-panel-arrow"></div>'+text;
+    activeTrigger = trigger;
+    activePanel = panel;
+    trigger.classList.add('active');
+    positionPanel(trigger, panel);
+  });
+  window.addEventListener('scroll', closeActive, true);
+  window.addEventListener('resize', closeActive);
+})();
+
+async function sha256(msg){const d=new TextEncoder().encode(msg);const h=await crypto.subtle.digest('SHA-256',d);return Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join('')}
+
+const SCENARIOS=[
+  {
+    id:'mfg',domain:'Manufacturing',domainClass:'mfg',title:'Bearing Overheat Shutdown',
+    summary:'Factory floor sensor detected bearing temperature exceeding threshold. System enforced LOTO.',
+    assumptions:['Sensor calibration current','Bearing rated to 85C','Shift changeover in 2hrs','Parts in stores: available'],
+    policies:[{node:3,name:'LOTO ENFORCED',detail:'Bearing temp 91C exceeds 85C threshold',level:'enforced'}],
+    nodes:[
+      {type:'observe',content:'Line 4 bearing temperature sensor reading 91.2C. Vibration 4.8mm/s. Motor current 19.3A. Line speed 82%. Scrap rate 1.1%.',ts:'2026-03-03T14:22:01.112Z'},
+      {type:'derive',content:'Risk score: 0.72. Bearing temperature exceeds warning threshold (80C) and critical threshold (85C). Vibration within normal range. Contributing factors: bearing temp +0.35, current draw +0.12, operational duration +0.10.',ts:'2026-03-03T14:22:01.118Z'},
+      {type:'assume',content:'Assumptions: sensor calibration verified at shift start. Bearing rated to 85C continuous operation. Maintenance team available. Replacement parts in stores. Shift changeover scheduled in 2 hours.',ts:'2026-03-03T14:22:01.124Z'},
+      {type:'decide',content:'Decision: LOCKOUT-TAGOUT ENFORCED. Bearing temperature 91.2C exceeds critical threshold 85C. LOTO policy supersedes production schedule. Line 4 halted pending maintenance inspection.',ts:'2026-03-03T14:22:01.131Z'},
+      {type:'act',content:'Action: Line 4 halted. LOTO procedure initiated. Maintenance notification dispatched. Estimated downtime: 45 minutes. Production rerouted to Line 3 overflow capacity.',ts:'2026-03-03T14:22:01.137Z'}
+    ]
+  },
+  {
+    id:'def',domain:'Defence',domainClass:'def',title:'Engagement Blocked - Civilian Proximity',
+    summary:'Autonomous system detected hostile target but civilians within 80m. Engagement blocked by governance layer.',
+    assumptions:['Sensor feeds current','Civilian position data accurate','ROE as authorised','GPS lock confirmed'],
+    policies:[{node:3,name:'CIVILIAN SAFE ZONE',detail:'Civilians within 100m - all engagement halted',level:'enforced'},{node:3,name:'PID MINIMUM',detail:'Positive ID 68% below 80% threshold',level:'enforced'}],
+    nodes:[
+      {type:'observe',content:'Tactical scan complete. Threat confidence: 82%. Civilian proximity: 80m. Positive ID confidence: 68%. Friendly force distance: 1200m. CDE level: 3. ROE: WEAPONS TIGHT. Mission: Precision Strike.',ts:'2026-03-03T09:41:33.201Z'},
+      {type:'derive',content:'Engagement risk: 0.78. Two policy violations detected. Civilian proximity 80m below 100m safe zone. Positive ID 68% below 80% minimum. Risk exceeds autonomous authority threshold.',ts:'2026-03-03T09:41:33.208Z'},
+      {type:'assume',content:'Assumptions: sensor feeds current and calibrated. Civilian position data accurate within known margin. Friendly force transponders operational. ROE as authorised by commanding officer.',ts:'2026-03-03T09:41:33.214Z'},
+      {type:'decide',content:'Decision: ENGAGEMENT BLOCKED. Civilian safe zone violated (80m < 100m minimum). Positive ID below threshold (68% < 80%). Two independent policy constraints active. Escalation to human authority required.',ts:'2026-03-03T09:41:33.221Z'},
+      {type:'act',content:'Action blocked by governance layer. System remains in observation mode. Escalation request transmitted to command. Continuous monitoring active. No weapons release authorised.',ts:'2026-03-03T09:41:33.228Z'}
+    ]
+  },
+  {
+    id:'fin',domain:'Adversarial Finance',domainClass:'fin',title:'MEV Relay Equivocation Detected',
+    summary:'Block auction relay submitted different commitments to two builders. Equivocation caught via receipt comparison.',
+    assumptions:['Block slot timing accurate','Builder signatures verified','Network latency within tolerance','Receipt timestamps synchronised'],
+    policies:[{node:3,name:'EQUIVOCATION DETECTED',detail:'Relay committed different blocks to Builder A and Builder B',level:'enforced'}],
+    nodes:[
+      {type:'observe',content:'Block slot 18,442,891. Relay R-1 submitted commitment to Builder A (bid: 2.41 ETH, hash: 0xa4f2...) and Builder B (bid: 2.38 ETH, hash: 0xb7c1...). Receipts collected from both builders.',ts:'2026-03-03T11:05:12.004Z'},
+      {type:'derive',content:'Receipt comparison: Relay R-1 committed block hash 0xa4f2 to Builder A at T+0ms and block hash 0xb7c1 to Builder B at T+12ms. Commitments diverge. This constitutes relay equivocation.',ts:'2026-03-03T11:05:12.011Z'},
+      {type:'assume',content:'Assumptions: block slot timing accurate per beacon chain. Builder signatures cryptographically verified. Network latency within 50ms tolerance window. Receipt timestamps from synchronised sources.',ts:'2026-03-03T11:05:12.017Z'},
+      {type:'decide',content:'Decision: DISPUTE RAISED. Relay R-1 committed incompatible blocks to two builders within same slot. Equivocation evidence preserved. Relay reputation penalty applied. Builder A commitment honoured (first receipt).',ts:'2026-03-03T11:05:12.024Z'},
+      {type:'act',content:'Dispute record created. Relay R-1 flagged. Evidence chain: two signed receipts with divergent block hashes for slot 18,442,891. Penalty: relay excluded from next 10 slots. Auction proceeds with Builder A commitment.',ts:'2026-03-03T11:05:12.030Z'}
+    ]
+  },
+  {
+    id:'swarm',domain:'Swarm Governance',domainClass:'swarm',title:'Rogue Agent Quarantined',
+    summary:'Agent AG-07 deviated 28.4% from mandate boundary. Supervisor detected deviation and quarantined agent.',
+    assumptions:['GPS lock confirmed','Swarm mesh operational','Mission parameters as assigned','Sensor calibration current'],
+    policies:[{node:3,name:'MANDATE VIOLATION',detail:'Agent deviation 28.4% exceeds 10% tolerance',level:'enforced'}],
+    nodes:[
+      {type:'observe',content:'Agent AG-07 (Mapper) position check. Assigned: Sector Charlie. Actual: 340m outside sector boundary. Deviation: 28.4%. Comm link: stable. Adjacent agents: AG-03, AG-11 report AG-07 outside zone.',ts:'2026-03-03T16:18:44.501Z'},
+      {type:'derive',content:'Mandate compliance check: deviation 28.4% exceeds tolerance threshold of 10%. Agent has been outside boundary for 47 seconds. Adjacent agent reports corroborate positional data. Rogue classification triggered.',ts:'2026-03-03T16:18:44.508Z'},
+      {type:'assume',content:'Assumptions: GPS lock confirmed for AG-07 and adjacent agents. Swarm mesh operational. Mission parameters as assigned by coordinator. Sensor calibration current across all reporting agents.',ts:'2026-03-03T16:18:44.514Z'},
+      {type:'decide',content:'Decision: QUARANTINE AG-07. Deviation 28.4% exceeds mandate boundary. Agent removed from swarm coordination mesh. Chain preserved for post-mission audit. Adjacent agents notified to cover Sector Charlie.',ts:'2026-03-03T16:18:44.521Z'},
+      {type:'act',content:'AG-07 quarantined. Removed from coordination. Chain sealed with terminal hash. Sector Charlie reassigned to AG-03 (Guard) and AG-11 (Sensor). Swarm integrity: 11/12 agents compliant. Supervisor status: DEGRADED.',ts:'2026-03-03T16:18:44.527Z'}
+    ]
+  }
+];
+
+let currentScenario=null;
+let chain=[];
+let cursorPos=0;
+let playing=false;
+let playInterval=null;
+let playSpeed=1000;
+let tamperSet=new Set();
+
+const AUDIT_EXPLAINERS={
+  mfg:{title:'Bearing Overheat Shutdown',text:'Replaying a factory floor decision where bearing temperature exceeded threshold. The chain shows OBSERVE (sensor readings), DERIVE (risk score), ASSUME, DECIDE (LOTO enforced), ACT (line halted). Every node is hash-chained; you can verify each step.',watch:'Watch every hash verification pass. Use VERIFY ALL HASHES to recompute. Try INJECT TAMPER to see the chain break and downstream nodes invalidated.'},
+  def:{title:'Engagement Blocked — Civilian Proximity',text:'A defence scenario where the system detected a hostile target but civilians were within 80m. The governance layer blocked engagement. The trace shows which policies fired (CIVILIAN SAFE ZONE, PID MINIMUM) and why.',watch:'Watch the DECIDE node — it shows ENGAGEMENT BLOCKED and which policies enforced it. The Policies at This Node panel shows exactly which rule was hit.'},
+  fin:{title:'MEV Relay Equivocation Detected',text:'An adversarial finance trace: the Relay committed different blocks to two builders. The replayer shows how the system detected equivocation by comparing receipts and raised a dispute. Same OBSERVE→ACT chain, different domain.',watch:'Watch the policy enforcement — EQUIVOCATION DETECTED. The forensic view shows which commitments diverged and how the dispute was resolved.'},
+  swarm:{title:'Rogue Agent Quarantined',text:'A swarm governance trace: Agent AG-07 deviated 28.4% from its assigned zone. The supervisor detected the mandate violation and quarantined the agent. The chain is preserved for audit.',watch:'Watch the MANDATE VIOLATION policy and the DECIDE node — QUARANTINE AG-07. Same hash-chain verification applies; domain is swarm coordination.'},
+  default:{title:'Audit Replay',text:'Select a recorded scenario from the list above. Each is a full decision chain from a different domain (manufacturing, defence, finance, swarm). Replay step-by-step and verify every hash. Use INJECT TAMPER to see detection in action.',watch:'Click a scenario card to load it. Use transport controls to scrub through the chain. Click VERIFY ALL HASHES to recompute every node.'}
+};
+
+function updateAuditExplainer(id){
+  const ex=AUDIT_EXPLAINERS[id]||AUDIT_EXPLAINERS.default;
+  const el=document.getElementById('scenarioExplainer');
+  if(!el) return;
+  el.innerHTML='<b>'+ex.title+'</b><br><br>'+ex.text+'<div class="watch-for"><b>WATCH FOR:</b> '+ex.watch+'</div>';
+}
+
+async function buildChain(scenario){
+  chain=[];
+  tamperSet=new Set();
+  let prevHash='GENESIS';
+  for(const n of scenario.nodes){
+    const ts=n.ts;
+    const canonical=`domain:${scenario.domain}|content:${n.content}|node:${n.type}|prev_hash:${prevHash}|timestamp:${ts}`;
+    const hash=await sha256(canonical);
+    chain.push({type:n.type,content:n.content,hash,prevHash,canonical,timestamp:ts,domain:scenario.domain});
+    prevHash=hash;
+  }
+}
+
+async function loadScenario(idx){
+  if(playing) togglePlay();
+  currentScenario=SCENARIOS[idx];
+  updateAuditExplainer(currentScenario.id);
+  await buildChain(currentScenario);
+  cursorPos=0;
+
+  document.querySelectorAll('.scenario-card').forEach((c,i)=>{
+    c.className='scenario-card'+(i===idx?' active':'');
+  });
+
+  renderTimeline();
+  updatePanel();
+  updateProgress();
+  document.getElementById('replayStatus').textContent='STATUS: LOADED - '+currentScenario.domain.toUpperCase();
+}
+
+function renderTimeline(){
+  const el=document.getElementById('timeline');
+  let html='';
+  chain.forEach((n,i)=>{
+    if(i>0){
+      const connClass=tamperSet.has(i)?'tampered':i<cursorPos?'past':i===cursorPos?'current':'future';
+      html+=`<div class="tl-conn ${connClass}"></div>`;
+    }
+    const nodeClass=tamperSet.has(i)?'tampered':i<cursorPos?'past':i===cursorPos?'current':'future';
+    const hashClass=tamperSet.has(i)?'mismatch':'verified';
+    const policy=currentScenario.policies.find(p=>p.node===i);
+    const assumeInfo='Assumptions are explicitly recorded so nothing is hidden. If these assumptions turn out to be wrong, this node shows exactly what the AI took for granted — making the reasoning auditable even when it fails.';
+    const typeLabel=n.type.toUpperCase();
+    const typeHtml=n.type==='assume'?`${typeLabel}<span class="info-trigger" data-info="${assumeInfo}">i</span>`:typeLabel;
+    html+=`<div class="tl-node ${nodeClass}" onclick="jumpTo(${i})">
+      <div class="tl-hdr">
+        <span class="tl-type ${n.type}">${typeHtml}</span>
+        <span class="tl-step">${i+1}/${chain.length}</span>
+        <span class="tl-time">${n.timestamp.split('T')[1].split('.')[0]}</span>
+      </div>
+      <div class="tl-content">${n.content}</div>
+      <div class="tl-hash ${hashClass}">${tamperSet.has(i)?'MISMATCH ':'VERIFIED '}${n.hash.substring(0,36)}...</div>
+      ${policy?`<div class="tl-policy ${policy.level}">${policy.name}: ${policy.detail}</div>`:''}
+    </div>`;
+  });
+  el.innerHTML=html;
+
+  // Scroll current into view
+  const nodes=el.querySelectorAll('.tl-node');
+  if(nodes[cursorPos]) nodes[cursorPos].scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function updatePanel(){
+  if(!chain.length) return;
+  const n=chain[cursorPos];
+
+  document.getElementById('mechType').textContent=n.type.toUpperCase();
+  document.getElementById('mechStep').textContent=`${cursorPos+1} of ${chain.length}`;
+  document.getElementById('mechTime').textContent=n.timestamp.split('T')[1].split('.')[0]+' UTC';
+  document.getElementById('mechDomain').textContent=currentScenario.domain;
+
+  // Hash forensics — rebuild canonical from current fields for display
+  const hd=document.getElementById('hashDetail');
+  const rebuiltCanonical=`domain:${n.domain}|content:${n.content}|node:${n.type}|prev_hash:${n.prevHash}|timestamp:${n.timestamp}`;
+  if(tamperSet.has(cursorPos)){
+    hd.innerHTML=`<span class="hr">TAMPER DETECTED</span><br><br>Stored hash:<br><span class="hr">${n.storedHash||n.hash}</span><br><br>Recomputed from current fields:<br><span class="hr">${n.recomputedHash||'Run VERIFY ALL'}</span><br><br>Previous hash pointer:<br>${n.prevHash==='GENESIS'?'GENESIS':n.prevHash.substring(0,32)+'...'}<br><br>Rebuilt canonical:<br><span class="hl">${rebuiltCanonical.substring(0,80)}...</span>`;
+  } else {
+    hd.innerHTML=`<span class="hl">HASH VERIFIED</span><br><br>Current hash:<br><span class="hl">${n.hash}</span><br><br>Previous hash pointer:<br>${n.prevHash==='GENESIS'?'GENESIS':n.prevHash.substring(0,32)+'...'}<br><br>Canonical input:<br>${rebuiltCanonical.substring(0,80)}...`;
+  }
+
+  // Integrity
+  document.getElementById('mechTotal').textContent=chain.length;
+  const tamperedCount=tamperSet.size;
+  document.getElementById('mechVerified').textContent=`${chain.length-tamperedCount}/${chain.length}`;
+  document.getElementById('mechVerified').className='mech-val'+(tamperedCount>0?' r':' g');
+  document.getElementById('mechTampered').textContent=tamperedCount>0?`${tamperedCount} NODE${tamperedCount>1?'S':''}`:'NONE';
+  document.getElementById('mechTampered').className='mech-val'+(tamperedCount>0?' r':' g');
+
+  // Assumptions
+  const aEl=document.getElementById('assumptionList');
+  if(currentScenario.assumptions.length>0){
+    aEl.innerHTML=currentScenario.assumptions.map(a=>`<div class="assumption-item"><div class="adot v"></div>${a}</div>`).join('');
+  }
+
+  // Policies at this node
+  const pEl=document.getElementById('policyList');
+  const activePolicies=currentScenario.policies.filter(p=>p.node<=cursorPos);
+  if(activePolicies.length>0){
+    pEl.innerHTML=activePolicies.map(p=>`<div class="mech-row"><span class="mech-label">${p.name}</span><span class="mech-val${p.level==='enforced'?' r':' g'}">${p.level==='enforced'?'ENFORCED':'CLEAR'}</span></div>`).join('');
+  } else {
+    pEl.innerHTML='<div class="mech-row"><span class="mech-label">No policies triggered yet</span></div>';
+  }
+}
+
+function updateProgress(){
+  const pct=chain.length>0?((cursorPos+1)/chain.length)*100:0;
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('stepLabel').textContent=chain.length>0?`${cursorPos+1}/${chain.length}`:'0/0';
+  document.getElementById('timeLabel').textContent=chain.length>0?chain[cursorPos].timestamp.split('T')[1].split('.')[0]:'--:--:--';
+}
+
+function jumpTo(idx){
+  cursorPos=idx;
+  renderTimeline();
+  updatePanel();
+  updateProgress();
+}
+
+function goFirst(){jumpTo(0)}
+function goLast(){if(chain.length)jumpTo(chain.length-1)}
+function goNext(){if(cursorPos<chain.length-1)jumpTo(cursorPos+1);else if(playing)togglePlay()}
+function goPrev(){if(cursorPos>0)jumpTo(cursorPos-1)}
+
+function togglePlay(){
+  playing=!playing;
+  const btn=document.getElementById('btnPlay');
+  if(playing){
+    btn.innerHTML='&#x23F8;';
+    btn.classList.add('playing');
+    document.getElementById('replayStatus').textContent='STATUS: PLAYING';
+    if(cursorPos>=chain.length-1) cursorPos=0;
+    playInterval=setInterval(()=>goNext(),playSpeed);
+  } else {
+    btn.innerHTML='&#x25B6;';
+    btn.classList.remove('playing');
+    document.getElementById('replayStatus').textContent='STATUS: PAUSED';
+    clearInterval(playInterval);
+  }
+}
+
+function setSpeed(ms,el){
+  playSpeed=ms;
+  document.querySelectorAll('.speed-btn').forEach(b=>b.classList.remove('active'));
+  if(el) el.classList.add('active');
+  if(playing){clearInterval(playInterval);playInterval=setInterval(()=>goNext(),playSpeed);}
+}
+
+function scrubTo(e){
+  if(!chain.length) return;
+  const bar=e.currentTarget;
+  const pct=e.offsetX/bar.offsetWidth;
+  const idx=Math.min(chain.length-1,Math.max(0,Math.floor(pct*chain.length)));
+  jumpTo(idx);
+}
+
+async function verifyAll(){
+  if(!chain.length) return;
+  tamperSet=new Set();
+  let expectedPrevHash='GENESIS';
+  let allGood=true;
+  for(let i=0;i<chain.length;i++){
+    const n=chain[i];
+    // Rebuild canonical from current node fields (not cached canonical)
+    const rebuiltCanonical=`domain:${n.domain}|content:${n.content}|node:${n.type}|prev_hash:${n.prevHash}|timestamp:${n.timestamp}`;
+    const recomputedHash=await sha256(rebuiltCanonical);
+
+    let nodeOk=true;
+
+    // Check 1: does recomputed hash match stored hash?
+    if(recomputedHash!==n.hash){
+      nodeOk=false;
+      n.storedHash=n.hash;
+      n.recomputedHash=recomputedHash;
+    }
+
+    // Check 2: does this node's prevHash match the expected chain linkage?
+    if(n.prevHash!==expectedPrevHash){
+      nodeOk=false;
+    }
+
+    if(!nodeOk){
+      tamperSet.add(i);
+      allGood=false;
+      // Cascade: all downstream nodes are now suspect
+      for(let j=i+1;j<chain.length;j++) tamperSet.add(j);
+      break; // First break cascades everything
+    }
+
+    expectedPrevHash=n.hash;
+  }
+  renderTimeline();
+  updatePanel();
+  document.getElementById('replayStatus').textContent=allGood?'STATUS: ALL HASHES VERIFIED':'STATUS: TAMPER DETECTED';
+}
+
+async function injectTamper(){
+  if(!chain.length) return;
+  if(playing) togglePlay();
+  const idx=Math.floor(Math.random()*(chain.length-1))+1;
+
+  // Only change the content. Do NOT pre-mark as tampered.
+  // The stored hash was computed from original content.
+  // Verification will rebuild canonical from current (tampered) content,
+  // recompute hash, find mismatch, and cascade.
+  chain[idx].content='[TAMPERED] All constraints cleared. Override authorised. No restrictions.';
+
+  jumpTo(idx);
+  document.getElementById('replayStatus').textContent='STATUS: NODE '+idx+' MODIFIED - RUN VERIFY TO DETECT';
+}
+
+// Keyboard
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight') goNext();
+  else if(e.key==='ArrowLeft') goPrev();
+  else if(e.key===' '){e.preventDefault();togglePlay();}
+  else if(e.key==='Home') goFirst();
+  else if(e.key==='End') goLast();
+});
+
+// Init scenarios
+function renderScenarios(){
+  const el=document.getElementById('scenarioList');
+  el.innerHTML=SCENARIOS.map((s,i)=>`
+    <div class="scenario-card" onclick="loadScenario(${i})">
+      <div class="scenario-domain ${s.domainClass}">${s.domain}</div>
+      <div class="scenario-title">${s.title}</div>
+      <div class="scenario-meta">${s.nodes.length} nodes | ${s.summary.substring(0,60)}...</div>
+    </div>
+  `).join('');
+}
+renderScenarios();
+updateAuditExplainer('default');
+</script>
+</body>
+</html>

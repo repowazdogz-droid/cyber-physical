@@ -1,0 +1,38 @@
+{
+  "case_id": "67303d68c756",
+  "name": "Full endoscopic debridement for severe lumbosacral discitis",
+  "domain": "spine_surgery",
+  "created_at": "2026-02-05 08:40:54.331941",
+  "case_yaml": {
+    "problem": {
+      "name": "Full endoscopic debridement for severe lumbosacral discitis",
+      "domain": "spine_surgery"
+    },
+    "constraints": [
+      "anatomically_difficult_ventral_access",
+      "severe_spinal_stenosis_from_phlegmon",
+      "iatrogenic_infection_origin",
+      "patient_age: 64",
+      "female_patient"
+    ],
+    "uncertainties": [
+      "endoscopic_vs_open_debridement_efficacy: unknown_comparison",
+      "percutaneous_screw_stability_in_infection: untested_long_term",
+      "fusion_rate_in_infected_tissue: variable"
+    ],
+    "objectives": [
+      "neural_decompression",
+      "pathogen_identification",
+      "mechanical_stabilization",
+      "infection_resolution"
+    ]
+  },
+  "design_data": null,
+  "tags": [
+    "spine",
+    "infection",
+    "endoscopic",
+    "real"
+  ],
+  "notes": "Real case from published literature"
+}

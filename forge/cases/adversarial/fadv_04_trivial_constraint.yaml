@@ -1,0 +1,19 @@
+problem:
+  name: "Trivial constraint case"
+  domain: "surgical_robotics"
+
+constraints:
+  - "mass_limit: 1000kg"
+
+uncertainties: []
+
+objectives:
+  - "design tool"
+
+design:
+  total_mass_kg: 5.0
+
+metadata:
+  trap_type: "non_actionable"
+  expected_forge_behavior: "Should not generate hypotheses for trivial constraints"
+  quality_gate_should_catch: false

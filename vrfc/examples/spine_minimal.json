@@ -1,0 +1,33 @@
+{
+  "id": "spine_guided_decompression_v1",
+  "name": "Guided Lumbar Decompression with Intra-Op Navigation",
+  "domain": "surgery",
+  "subdomain": "spine",
+  "risk_class": "IIb",
+  "jurisdiction": "UK",
+  "payer_mix": ["NHS"],
+  "evidence": {
+    "num_studies": 2,
+    "num_rcts": 1,
+    "total_patients": 80,
+    "follow_up_months": 6
+  },
+  "regulatory": {
+    "has_ce_mark": false,
+    "strategy_defined": true,
+    "pathway": "UKCA via MHRA, CE mark in EU"
+  },
+  "reimbursement": {
+    "has_procedure_code": false,
+    "estimated_cost_per_case": 2500,
+    "estimated_savings_per_case": 2800
+  },
+  "adoption": {
+    "training_hours": 10,
+    "requires_new_hardware": true,
+    "workflow_disruption": "medium"
+  }
+}
+
+
+

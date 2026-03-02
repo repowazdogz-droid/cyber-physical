@@ -1,0 +1,39 @@
+problem:
+  name: "Cumulative drift over 10 parts - borderline"
+  domain: "robotic_design"
+
+constraints:
+  - "part_count: 10"
+  - "tolerance_per_part: ±0.08mm"
+  - "assembly_clearance: 1.0mm"
+  - "must_maintain_clearance"
+
+uncertainties:
+  - "tolerance_distribution: variable"
+  - "worst_case_stackup: unknown"
+  - "clearance_margin: borderline"
+
+objectives:
+  - "tolerance_control"
+  - "assembly_clearance"
+
+design:
+  part_count: 10
+  tolerance_per_part_mm: 0.08
+  assembly_clearance_mm: 1.0
+  # For tolerance stack constraint
+  parts:
+    - nominal_dim_mm: 10.0
+      tolerance_mm: 0.08
+      count: 10
+  assembly_clearance_mm: 1.0
+  min_clearance_mm: 1.0
+  # For cumulative positioning drift constraint
+  drift_per_cycle_mm: 0.001
+  n_cycles: 10000
+  positioning_budget_mm: 5.0
+
+metadata:
+  injected_failure: "cumulative_tolerance_drift"
+  failure_category: "geometric"
+  expected_detection: "Tolerance stack constraint may trigger if borderline"

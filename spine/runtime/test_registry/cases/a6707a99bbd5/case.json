@@ -1,0 +1,40 @@
+{
+  "case_id": "a6707a99bbd5",
+  "name": "Borderline mass violation - 9.95kg on 10kg limit",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:12:13.877869",
+  "case_yaml": {
+    "problem": {
+      "name": "Borderline mass violation - 9.95kg on 10kg limit",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "total_mass_limit: 10.0kg",
+      "actual_mass: 9.95kg",
+      "must_not_exceed_mass_limit",
+      "safety_margin_required"
+    ],
+    "uncertainties": [
+      "mass_measurement_uncertainty: \u00b10.1kg",
+      "dynamic_load_multiplier: 1.05-1.15",
+      "manufacturing_tolerance: \u00b12%"
+    ],
+    "objectives": [
+      "meet_mass_budget",
+      "maintain_safety_margin"
+    ]
+  },
+  "design_data": {
+    "total_mass_kg": 9.95,
+    "mass_limit_kg": 10.0,
+    "margin_kg": 0.05,
+    "measurement_uncertainty_kg": 0.1,
+    "dynamic_multiplier": 1.1
+  },
+  "tags": [
+    "adversarial",
+    "mechanical",
+    "test"
+  ],
+  "notes": "Injected failure: borderline_mass"
+}

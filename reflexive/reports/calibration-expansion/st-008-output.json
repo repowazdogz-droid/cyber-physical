@@ -1,0 +1,216 @@
+{
+  "stimulus_id": "st-008",
+  "analysis_id": "7069c8a8-39b2-4c4c-9b7a-c466acee1034",
+  "case_id": "b33f10bd-0743-4a30-baaf-2bc58851731e",
+  "duration_ms": 11976,
+  "success": true,
+  "confidence_score": 0.193,
+  "confidence_breakdown": {
+    "per_lens": [
+      {
+        "lens_id": "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "claim_count": 6,
+        "scoring_claim_count": 6,
+        "supported_claim_count": 4,
+        "mean_evidence_strength": 0.7166666666666667,
+        "contribution_to_agreement": 0.31666666666666665
+      },
+      {
+        "lens_id": "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+        "claim_count": 8,
+        "scoring_claim_count": 8,
+        "supported_claim_count": 6,
+        "mean_evidence_strength": 0.675,
+        "contribution_to_agreement": 0.8273809523809524
+      },
+      {
+        "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+        "claim_count": 7,
+        "scoring_claim_count": 7,
+        "supported_claim_count": 5,
+        "mean_evidence_strength": 0.6857142857142858,
+        "contribution_to_agreement": 0.3773809523809524
+      },
+      {
+        "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "claim_count": 7,
+        "scoring_claim_count": 7,
+        "supported_claim_count": 5,
+        "mean_evidence_strength": 0.6428571428571429,
+        "contribution_to_agreement": 0.3607142857142857
+      },
+      {
+        "lens_id": "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "claim_count": 6,
+        "scoring_claim_count": 6,
+        "supported_claim_count": 3,
+        "mean_evidence_strength": 0.65,
+        "contribution_to_agreement": 0.6607142857142857
+      }
+    ],
+    "per_theme": [
+      {
+        "strength": 0.6,
+        "theme_id": "14846a64-7420-5363-bcf2-32e2e2183493",
+        "agreement_type": "convergence",
+        "participating_lenses": 4
+      },
+      {
+        "strength": 0.5,
+        "theme_id": "3a742ef7-eac9-5f54-9af3-2120234b8bbc",
+        "agreement_type": "convergence",
+        "participating_lenses": 3
+      },
+      {
+        "strength": 0.6,
+        "theme_id": "6051d9c7-3e95-5c0f-a4ac-bc81edee1284",
+        "agreement_type": "convergence",
+        "participating_lenses": 2
+      },
+      {
+        "strength": 0.8428571428571429,
+        "theme_id": "bd7aa568-3193-5ad2-b62d-001c2959e57a",
+        "agreement_type": "convergence",
+        "participating_lenses": 4
+      },
+      {
+        "strength": 0.7750000000000001,
+        "theme_id": "0ed705c8-b93f-5798-8adf-cf7d0abdb16c",
+        "agreement_type": "divergence",
+        "participating_lenses": 3
+      }
+    ],
+    "raw_score": 0.19297100645439827,
+    "drift_flags": [],
+    "final_score": 0.193,
+    "agreement_factor": 0.33885714285714286,
+    "lens_count_factor": 1,
+    "divergence_penalty": 0.026666666666666665,
+    "unsupported_penalty": 0.16176470588235295,
+    "low_evidence_warning": false,
+    "evidence_density_factor": 0.27499999220414767,
+    "high_contradiction_warning": false
+  },
+  "convergence_count": 4,
+  "divergence_count": 1,
+  "orphan_count": 13,
+  "convergence_points": [
+    {
+      "strength": 0.6,
+      "theme_id": "14846a64-7420-5363-bcf2-32e2e2183493",
+      "theme_label": "Negotiating an enterprise discount with AWS could lower the effective price increase to 8% with a commitment of $20M/yea...",
+      "evidence_density": 0.21999999376331814,
+      "supporting_claims": [
+        "032316c5-98ac-4804-9c83-140164e6e300",
+        "19ef4081-6a53-4bb9-bbe8-389dc6b2c679",
+        "a1a0f895-cdce-46f5-9188-bf8b4c7eda1d",
+        "a2beacef-d57e-4acd-afe4-bc7a3411a232",
+        "d75b10ac-d365-4ea5-bba3-985fb8a4673a"
+      ],
+      "supporting_lenses": [
+        "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "6d1a58fb-4982-409a-b2bb-984d36a3feea"
+      ]
+    },
+    {
+      "strength": 0.5,
+      "theme_id": "3a742ef7-eac9-5f54-9af3-2120234b8bbc",
+      "theme_label": "The price increase and discount terms from AWS are accurate and will be honored.",
+      "evidence_density": 0,
+      "supporting_claims": [
+        "217579e2-0cc6-45f8-9acd-d23c72672c5a",
+        "9f34a82b-299e-4499-8cf8-2a0b0a730aea",
+        "de486abe-1bbf-499c-baef-08f78c78060f"
+      ],
+      "supporting_lenses": [
+        "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    },
+    {
+      "strength": 0.6,
+      "theme_id": "6051d9c7-3e95-5c0f-a4ac-bc81edee1284",
+      "theme_label": "The multi-cloud abstraction layer can be effectively implemented within the proposed timeframe.",
+      "evidence_density": 0.1649999953224886,
+      "supporting_claims": [
+        "3de18533-bc5b-4c7d-9bc8-1057d7077f9b",
+        "e0f94ae4-be34-4fbf-895d-b94223469bcc"
+      ],
+      "supporting_lenses": [
+        "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "6d1a58fb-4982-409a-b2bb-984d36a3feea"
+      ]
+    },
+    {
+      "strength": 0.8428571428571429,
+      "theme_id": "bd7aa568-3193-5ad2-b62d-001c2959e57a",
+      "theme_label": "Current AWS dependency includes 23 managed services.",
+      "evidence_density": 0.45571427279544474,
+      "supporting_claims": [
+        "25792743-8175-40e0-9a26-99fedfba5535",
+        "31615854-0ebe-4ea3-a5af-04a7ba66bab1",
+        "6a93d122-367c-4b34-990f-17943967431a",
+        "83d6f5f4-8b82-408d-9889-457d40180c0e",
+        "9a29490f-8c6f-4d48-88f2-1e58de05c332",
+        "c6f476bc-31ab-4fe6-ba51-d9f6df996641",
+        "e809a48b-8685-4b45-b79a-dacbb4564a54"
+      ],
+      "supporting_lenses": [
+        "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    }
+  ],
+  "divergence_points": [
+    {
+      "nature": "contradictory",
+      "severity": 0.7750000000000001,
+      "theme_id": "0ed705c8-b93f-5798-8adf-cf7d0abdb16c",
+      "positions": [
+        {
+          "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+          "claim_ids": [
+            "0bc888fb-ea2d-4dc7-879a-2e5aa0b27332"
+          ],
+          "position_summary": "The platform team has developed a multi-cloud abstraction layer prototype that enables migration to GCP or Azure within ..."
+        },
+        {
+          "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+          "claim_ids": [
+            "5baa2e39-c008-41bb-b0e4-cb96fc0546ba"
+          ],
+          "position_summary": "The platform team has developed a multi-cloud abstraction layer prototype that enables migration to GCP or Azure within ..."
+        },
+        {
+          "lens_id": "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+          "claim_ids": [
+            "cacb36a7-fb37-49f1-81a6-e9c036c937bd",
+            "edb485e2-4b5a-4a09-83f4-cc8ddf0d27ad"
+          ],
+          "position_summary": "The platform team has developed a multi-cloud abstraction layer prototype that enables migration to GCP or Azure within ..."
+        }
+      ],
+      "theme_label": "The platform team has developed a multi-cloud abstraction layer prototype that enables migration to GCP or Azure within ..."
+    }
+  ],
+  "orphan_claims": [
+    "f313ebad-2d19-4e1b-bd56-414d1b8aeeee",
+    "a3ca5b1a-498e-4460-8ef0-08b4ea1d20b2",
+    "857d9db6-8426-4376-9909-036ec0cd9bcd",
+    "6fcf95a4-3c09-4135-93ad-afd011f31ed3",
+    "1c4c2a61-5f93-475e-9e97-7e010b81f013",
+    "16eb2f94-e33a-447d-8a97-1d05c1b6b4c5",
+    "cdaf6956-6653-49c5-96e7-97ae640821eb",
+    "79069a38-8203-4cd3-8acf-b6823d1945d1",
+    "747092cf-1d49-45c1-991f-140c605e099b",
+    "810d579f-2d0d-454b-875d-1120e2445225",
+    "b8e01f46-7ecf-4533-8dfe-d942c519e210",
+    "38d9ef48-fecc-4d8f-b0ca-e2cce1b70890",
+    "7c9f3a1d-bce2-460c-986e-ee9ea3ef8a2b"
+  ]
+}

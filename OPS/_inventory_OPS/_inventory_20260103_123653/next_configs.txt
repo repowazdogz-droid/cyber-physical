@@ -1,0 +1,8 @@
+Archive/2025-12_consolidation/projects/micro-ops/next.config.mjs
+Archive/2025-12_consolidation/projects/omega-spatial-site/next.config.mjs
+constraint-universe-site/next.config.mjs
+next.config.js
+omega-workspace-v1/next.config.js
+personal-site/next.config.ts
+shared-reality-site/next.config.ts
+trauma-informed-education-system/next.config.js

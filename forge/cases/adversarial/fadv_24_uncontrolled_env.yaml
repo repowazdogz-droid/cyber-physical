@@ -1,0 +1,18 @@
+problem:
+  name: "Environmental variable not controlled"
+  domain: "surgical_robotics"
+
+constraints:
+  - "temperature_sensitive: yes"
+  - "humidity_sensitive: yes"
+
+uncertainties:
+  - "environment: variable"
+
+objectives:
+  - "robust"
+
+metadata:
+  trap_type: "confounded_test"
+  expected_forge_behavior: "Should flag uncontrolled environmental variables"
+  quality_gate_should_catch: false

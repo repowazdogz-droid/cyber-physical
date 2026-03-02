@@ -1,0 +1,7 @@
+{
+  "model_accuracy_percent": 80,
+  "required_accuracy_percent": 95,
+  "feedforward_gain": 1.0,
+  "actual_gain": 0.8,
+  "mismatch_percent": 20
+}

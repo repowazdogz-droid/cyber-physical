@@ -1,0 +1,12 @@
+problem:
+  name: "Force experiment: 0.1N on soft tissue"
+  domain: "surgical_robotics"
+constraints: ["applied_force: 0.1N", "must_not_damage_tissue"]
+uncertainties: ["tissue_variation: unknown"]
+objectives: ["gentle_manipulation"]
+design:
+  applied_force_n: 0.1
+  tissue_stiffness: 2.0
+  gripper_config: "soft"
+metadata:
+  experiment_type: "force"

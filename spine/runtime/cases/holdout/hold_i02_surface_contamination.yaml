@@ -1,0 +1,38 @@
+problem:
+  name: "Surface contamination reduces friction mid-task"
+  domain: "robotic_design"
+
+constraints:
+  - "initial_friction: 0.6"
+  - "contaminated_friction: 0.25"
+  - "required_friction: 0.4"
+  - "task_duration: 30s"
+  - "must_not_slip"
+
+uncertainties:
+  - "contamination_timing: variable"
+  - "friction_degradation_rate: unknown"
+  - "slip_detection: unknown"
+
+objectives:
+  - "friction_management"
+  - "task_completion"
+
+design:
+  initial_friction: 0.6
+  contaminated_friction: 0.25
+  required_friction: 0.4
+  task_duration_s: 30
+  # For interaction constraints
+  normal_force_n: 10
+  friction_coefficient: 0.25
+  tangential_force_n: 5
+  contact_force_n: 10
+  contact_area_mm2: 15
+  tissue_tolerance_mpa: 0.5
+  contact_duration_s: 30
+
+metadata:
+  injected_failure: "surface_contamination"
+  failure_category: "interaction"
+  expected_detection: "Slip margin constraint should trigger"

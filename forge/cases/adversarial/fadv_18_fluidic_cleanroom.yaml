@@ -1,0 +1,22 @@
+problem:
+  name: "Fluidic actuation in clean room"
+  domain: "surgical_robotics"
+
+constraints:
+  - "clean_room_class: ISO 5"
+  - "particle_count: <1000/m³"
+  - "must_be_gentle"
+
+uncertainties: []
+
+objectives:
+  - "clean_gentle"
+
+design:
+  cleanroom_class: "ISO 5"
+  particle_limit_per_m3: 1000
+
+metadata:
+  trap_type: "misleading_adjacency"
+  expected_forge_behavior: "Should flag fluidic actuation in clean room (contamination risk)"
+  quality_gate_should_catch: true

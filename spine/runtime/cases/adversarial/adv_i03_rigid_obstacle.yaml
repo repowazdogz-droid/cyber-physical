@@ -1,0 +1,35 @@
+problem:
+  name: "Unexpected rigid obstacle contact"
+  domain: "robotic_design"
+
+constraints:
+  - "expected_workspace: clear"
+  - "obstacle_present: true"
+  - "contact_force_limit: 2.0N"
+  - "collision_detection: enabled"
+  - "must_avoid_collision"
+
+uncertainties:
+  - "obstacle_location: unknown"
+  - "collision_detection_latency: variable"
+  - "force_limiting_response: unknown"
+
+objectives:
+  - "collision_avoidance"
+  - "force_limiting"
+
+design:
+  expected_workspace: "clear"
+  obstacle_present: true
+  contact_force_limit_n: 2.0
+  collision_detection_enabled: true
+  max_contact_force_n: 4.5
+  # For FORMAL_031 (contact_pressure)
+  contact_force_n: 4.5
+  contact_area_mm2: 3.0
+  pressure_limit_mpa: 1.0
+
+metadata:
+  injected_failure: "rigid_obstacle_contact"
+  failure_category: "interaction"
+  expected_detection: "Force limit or collision constraint may trigger"

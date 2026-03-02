@@ -1,0 +1,77 @@
+{
+  "id": "72530741-1070-4c72-9830-1716789d80f5",
+  "created_at": "2026-02-08T13:35:18.142Z",
+  "trigger": "calibration",
+  "track_a": {
+    "golden_cases_run": 6,
+    "golden_cases_passed": 6,
+    "golden_cases_failed": [],
+    "engine_metrics": {
+      "engine_determinism": 1,
+      "confidence_ceiling_observed": 0.6229,
+      "confidence_floor_observed": 0,
+      "confidence_range": 0.6229,
+      "score_band_discrimination": 3,
+      "similarity_threshold_precision": 1,
+      "evidence_density_range": 0.9795949597630683,
+      "drift_flag_accuracy": 1
+    },
+    "total_duration_ms": 15
+  },
+  "calibration": {
+    "recommendations": [
+      {
+        "parameter": "W_a",
+        "current_value": 0.45,
+        "recommended_value": 0.35,
+        "reason": "Weight calibration: train_spearman=0.6171, test_spearman=0.7825",
+        "confidence": 0.9
+      },
+      {
+        "parameter": "W_e",
+        "current_value": 0.25,
+        "recommended_value": 0.35,
+        "reason": "Weight calibration",
+        "confidence": 0.9
+      },
+      {
+        "parameter": "W_u",
+        "current_value": 0.15,
+        "recommended_value": 0.15,
+        "reason": "Weight calibration",
+        "confidence": 0.9
+      },
+      {
+        "parameter": "W_d",
+        "current_value": 0.15,
+        "recommended_value": 0.15,
+        "reason": "Weight calibration",
+        "confidence": 0.9
+      },
+      {
+        "parameter": "BAND_LOW_MAX",
+        "current_value": 0.4,
+        "recommended_value": 0.13,
+        "reason": "Band calibration: entropy improvement 1.3753",
+        "confidence": 0.8
+      },
+      {
+        "parameter": "BAND_MODERATE_MAX",
+        "current_value": 0.7,
+        "recommended_value": 0.17,
+        "reason": "Band calibration",
+        "confidence": 0.8
+      },
+      {
+        "parameter": "BAND_HIGH_MAX",
+        "current_value": 0.9,
+        "recommended_value": 0.21,
+        "reason": "Band calibration",
+        "confidence": 0.8
+      }
+    ],
+    "applied": true
+  },
+  "regression_verdict": "pass",
+  "regression_failures": []
+}

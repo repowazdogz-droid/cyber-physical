@@ -1,0 +1,5 @@
+{
+  "id": "st-003",
+  "text": "Our ML-powered fraud detection system has achieved 94% precision and 87% recall in testing. Engineering recommends launching to 10% of transactions as a shadow mode pilot. The compliance team has concerns about explainability requirements under the EU AI Act.",
+  "type": "scenario"
+}

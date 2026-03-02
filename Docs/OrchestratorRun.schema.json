@@ -1,0 +1,210 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OrchestratorRunContract",
+  "description": "Complete orchestrator run result. Bounded arrays documented.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "graphId",
+    "startedAtIso",
+    "nodes",
+    "summaryClaims",
+    "policyNotes",
+    "boundedTraceHighlights",
+    "terminalOutcome",
+    "terminalNodeId"
+  ],
+  "properties": {
+    "contractVersion": {
+      "type": "string",
+      "description": "Contract version (must match CONTRACT_VERSION)"
+    },
+    "graphId": {
+      "type": "string",
+      "description": "Graph ID"
+    },
+    "sessionId": {
+      "type": "string",
+      "description": "Optional session ID"
+    },
+    "learnerId": {
+      "type": "string",
+      "description": "Optional learner ID"
+    },
+    "startedAtIso": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Start timestamp (ISO string)"
+    },
+    "nodes": {
+      "type": "array",
+      "description": "Node results (bounded, max 25)",
+      "maxItems": 25,
+      "items": {
+        "$ref": "#/definitions/OrchestratorNodeResultContract"
+      }
+    },
+    "summaryClaims": {
+      "type": "array",
+      "description": "Summary claims (aggregated, bounded max 12, ordered by severity then ID)",
+      "maxItems": 12,
+      "items": {
+        "$ref": "#/definitions/SummaryClaim"
+      }
+    },
+    "policyNotes": {
+      "type": "array",
+      "description": "Policy notes (aggregated, bounded max 12)",
+      "maxItems": 12,
+      "items": {
+        "type": "string",
+        "maxLength": 150
+      }
+    },
+    "boundedTraceHighlights": {
+      "type": "array",
+      "description": "Bounded trace highlights (max 12)",
+      "maxItems": 12,
+      "items": {
+        "$ref": "#/definitions/TraceHighlight"
+      }
+    },
+    "terminalOutcome": {
+      "type": "string",
+      "description": "Terminal outcome (from terminal node or last node)"
+    },
+    "terminalNodeId": {
+      "type": "string",
+      "description": "Terminal node ID"
+    }
+  },
+  "definitions": {
+    "OrchestratorNodeResultContract": {
+      "type": "object",
+      "required": [
+        "contractVersion",
+        "nodeId",
+        "runId",
+        "outcome",
+        "policyNotes"
+      ],
+      "properties": {
+        "contractVersion": {
+          "type": "string"
+        },
+        "nodeId": {
+          "type": "string"
+        },
+        "runId": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "policyNotes": {
+          "type": "array",
+          "maxItems": 3,
+          "items": {
+            "type": "string",
+            "maxLength": 150
+          }
+        }
+      }
+    },
+    "SummaryClaim": {
+      "type": "object",
+      "required": [
+        "claimId",
+        "title",
+        "severity",
+        "count"
+      ],
+      "properties": {
+        "claimId": {
+          "type": "string",
+          "description": "Stable claim ID"
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 60,
+          "description": "Human-readable title"
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["info", "warn", "critical"]
+        },
+        "count": {
+          "type": "number",
+          "minimum": 1,
+          "description": "Number of times claim appeared"
+        }
+      }
+    },
+    "TraceHighlight": {
+      "type": "object",
+      "required": [
+        "nodeId",
+        "label",
+        "description",
+        "type"
+      ],
+      "properties": {
+        "nodeId": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "type": {
+          "type": "string",
+          "enum": ["override", "disallow", "decision", "claim"]
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

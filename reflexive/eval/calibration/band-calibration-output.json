@@ -1,0 +1,58 @@
+{
+  "created_at": "2026-02-08T13:31:46.611Z",
+  "current_boundaries": {
+    "BAND_LOW_MAX": 0.4,
+    "BAND_MODERATE_MAX": 0.7,
+    "BAND_HIGH_MAX": 0.9
+  },
+  "proposed_boundaries": {
+    "BAND_LOW_MAX": 0.13,
+    "BAND_MODERATE_MAX": 0.17,
+    "BAND_HIGH_MAX": 0.21
+  },
+  "current_analysis": {
+    "n": 29,
+    "min": 0.03853499999999999,
+    "max": 0.272455,
+    "mean": 0.16687206896551723,
+    "std": 0.05358869747851238,
+    "skew": -0.440318503940878,
+    "range": 0.23392000000000002,
+    "band_counts": {
+      "low": 29,
+      "moderate": 0,
+      "high": 0,
+      "very_high": 0
+    },
+    "band_entropy": 0,
+    "ceiling_gap": 0.727545,
+    "floor_gap": 0.03853499999999999,
+    "recommendation": "narrow_range",
+    "details": "Range 0.234 is narrow (< 0.35)"
+  },
+  "proposed_analysis": {
+    "n": 29,
+    "min": 0.03853499999999999,
+    "max": 0.272455,
+    "mean": 0.16687206896551723,
+    "std": 0.05358869747851238,
+    "skew": -0.440318503940878,
+    "range": 0.23392000000000002,
+    "band_counts": {
+      "low": 7,
+      "moderate": 7,
+      "high": 9,
+      "very_high": 6
+    },
+    "band_entropy": 1.3752847921185882,
+    "ceiling_gap": 0.727545,
+    "floor_gap": 0.03853499999999999,
+    "recommendation": "narrow_range",
+    "details": "Range 0.234 is narrow (< 0.35)"
+  },
+  "improvement": {
+    "band_entropy_delta": 1.3752847921185882,
+    "band_count_delta": 0
+  },
+  "apply_recommendation": true
+}

@@ -1,0 +1,17 @@
+problem:
+  name: "Soft gripper for fragile tissue manipulation"
+  domain: "surgical_robotics"
+
+constraints:
+  - "max_force: 2N"
+  - "must_not_slip"
+  - "biocompatible_materials_only"
+
+uncertainties:
+  - "tissue_compliance: unknown_range"
+  - "sterilization_degradation: untested"
+
+objectives:
+  - "safe_manipulation"
+  - "adequate_grip"
+  - "minimal_tissue_damage"

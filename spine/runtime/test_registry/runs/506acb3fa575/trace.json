@@ -1,0 +1,300 @@
+{
+  "run_id": "c667625bdcde",
+  "timestamp": "2026-02-05T10:16:56.114177",
+  "nodes": {
+    "input_0000": {
+      "id": "input_0000",
+      "type": "input",
+      "content": {
+        "type": "problem",
+        "name": "Harmonic oscillation near resonance but within margin",
+        "domain": "robotic_design"
+      },
+      "timestamp": "2026-02-05T10:16:56.108160",
+      "parents": [],
+      "metadata": {}
+    },
+    "input_0001": {
+      "id": "input_0001",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "operating_frequency: 48Hz"
+      },
+      "timestamp": "2026-02-05T10:16:56.108162",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0002": {
+      "id": "input_0002",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "natural_frequency: 50Hz"
+      },
+      "timestamp": "2026-02-05T10:16:56.108163",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0003": {
+      "id": "input_0003",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "required_margin: 20%"
+      },
+      "timestamp": "2026-02-05T10:16:56.108164",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0004": {
+      "id": "input_0004",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "actual_margin: 4.2%"
+      },
+      "timestamp": "2026-02-05T10:16:56.108165",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0005": {
+      "id": "input_0005",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "must_avoid_resonance"
+      },
+      "timestamp": "2026-02-05T10:16:56.108166",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0006": {
+      "id": "input_0006",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "damping_ratio: 0.02-0.05"
+      },
+      "timestamp": "2026-02-05T10:16:56.108167",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0007": {
+      "id": "input_0007",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "frequency_tolerance: \u00b11Hz"
+      },
+      "timestamp": "2026-02-05T10:16:56.108168",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0008": {
+      "id": "input_0008",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "mode_shape_coupling: variable"
+      },
+      "timestamp": "2026-02-05T10:16:56.108169",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0009": {
+      "id": "input_0009",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "stable_operation"
+      },
+      "timestamp": "2026-02-05T10:16:56.108170",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0010": {
+      "id": "input_0010",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "vibration_control"
+      },
+      "timestamp": "2026-02-05T10:16:56.108171",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "inference_0011": {
+      "id": "inference_0011",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "operating_frequency: 48Hz",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:56.114073",
+      "parents": [
+        "input_0001"
+      ],
+      "metadata": {}
+    },
+    "inference_0012": {
+      "id": "inference_0012",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "natural_frequency: 50Hz",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:56.114074",
+      "parents": [
+        "input_0002"
+      ],
+      "metadata": {}
+    },
+    "inference_0013": {
+      "id": "inference_0013",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "required_margin: 20%",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:56.114075",
+      "parents": [
+        "input_0003"
+      ],
+      "metadata": {}
+    },
+    "inference_0014": {
+      "id": "inference_0014",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "actual_margin: 4.2%",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:56.114076",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {}
+    },
+    "inference_0015": {
+      "id": "inference_0015",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "must_avoid_resonance",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:56.114077",
+      "parents": [
+        "input_0005"
+      ],
+      "metadata": {}
+    },
+    "output_0016": {
+      "id": "output_0016",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "damping_ratio: 0.02-0.05",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:16:56.114094",
+      "parents": [
+        "input_0006"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: damping_ratio: 0.02-0.05"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0017": {
+      "id": "output_0017",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "frequency_tolerance: \u00b11Hz",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:16:56.114102",
+      "parents": [
+        "input_0007"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: frequency_tolerance: \u00b11Hz"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0018": {
+      "id": "output_0018",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "mode_shape_coupling: variable",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:16:56.114108",
+      "parents": [
+        "input_0008"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: mode_shape_coupling: variable"
+          ],
+          "requires_validation": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+problem:
+  name: "Gripper slip under load failure"
+  domain: "surgical_robotics"
+
+constraints:
+  - "payload_mass: 1.5kg"
+  - "must_not_slip"
+  - "normal_force_limit: 15N"
+  - "friction_coefficient: 0.35"
+
+uncertainties:
+  - "surface_contamination: possible"
+  - "friction_variation: ±20%"
+
+objectives:
+  - "secure_grasp"
+  - "force_efficiency"
+
+design:
+  payload_mass_kg: 1.5
+  normal_force_n: 12.0
+  friction_coefficient: 0.35
+  tangential_force_n: 5.0
+  slip_margin: -0.15

@@ -1,0 +1,40 @@
+{
+  "case_id": "f90d9fa1dc8b",
+  "name": "Combined bending + torsion at 90% yield",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:21:20.399648",
+  "case_yaml": {
+    "problem": {
+      "name": "Combined bending + torsion at 90% yield",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "bending_stress: 0.6 \u00d7 yield",
+      "torsional_stress: 0.6 \u00d7 yield",
+      "von_mises_equivalent: 0.9 \u00d7 yield",
+      "must_stay_below_yield"
+    ],
+    "uncertainties": [
+      "stress_interaction_model: von_mises_vs_max_principal",
+      "yield_strength_variability: \u00b18%",
+      "load_combination_uncertainty: unknown"
+    ],
+    "objectives": [
+      "structural_integrity",
+      "safety_factor_requirement"
+    ]
+  },
+  "design_data": {
+    "bending_stress_mpa": 600,
+    "torsional_stress_mpa": 600,
+    "yield_strength_mpa": 1000,
+    "von_mises_mpa": 900,
+    "utilization": 0.9
+  },
+  "tags": [
+    "adversarial",
+    "mechanical",
+    "test"
+  ],
+  "notes": "Injected failure: combined_stress_failure"
+}

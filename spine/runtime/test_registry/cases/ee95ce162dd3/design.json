@@ -1,0 +1,8 @@
+{
+  "initial_backlash_mm": 0.05,
+  "wear_per_cycle_mm": 0.0001,
+  "cycles": 1000,
+  "accumulated_backlash_mm": 0.15,
+  "max_backlash_mm": 0.2,
+  "margin_mm": 0.05
+}

@@ -1,0 +1,37 @@
+problem:
+  name: "Hydrogen embrittlement under sustained load"
+  domain: "robotic_design"
+
+constraints:
+  - "sustained_stress: 0.5 × yield"
+  - "hydrogen_exposure: present"
+  - "embrittlement_threshold: 0.3 × yield"
+  - "must_resist_embrittlement"
+
+uncertainties:
+  - "hydrogen_concentration: variable"
+  - "embrittlement_rate: unknown"
+  - "crack_initiation: unknown"
+
+objectives:
+  - "material_integrity"
+  - "environmental_resistance"
+
+design:
+  sustained_stress_mpa: 500
+  yield_strength_mpa: 1000
+  embrittlement_threshold_mpa: 300
+  hydrogen_exposure: true
+  # For material constraints
+  applied_stress_mpa: 500
+  yield_strength_mpa: 1000
+  tensile_stress_mpa: 500
+  scc_threshold_mpa: 300
+  corrosive_environment: true
+  operating_temp_c: 25
+  max_service_temp_c: 100
+
+metadata:
+  injected_failure: "hydrogen_embrittlement"
+  failure_category: "material"
+  expected_detection: "Material constraint may trigger if embrittlement modeled"

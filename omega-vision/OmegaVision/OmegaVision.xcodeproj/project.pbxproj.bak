@@ -1,0 +1,1459 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		07A619D01DDECFC54BF2B3AF /* GalleryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E1D65598771C3CEB4D340 /* GalleryState.swift */; };
+		4956BE3CB467682DEF1392E6 /* ArtifactVault.swift in Sources */ = {isa = PBXBuildFile; fileRef = F654DCB448ED830F90960E70 /* ArtifactVault.swift */; };
+		76EA0E4BC5A6EC16F0D04758 /* GalleryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307D5B4D4BD295C30BC4ED6E /* GalleryRouter.swift */; };
+		9A74B8802EF70892009D7678 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A74B8732EF70892009D7678 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		307D5B4D4BD295C30BC4ED6E /* GalleryRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GalleryRouter.swift; path = OmegaGallery/App/GalleryRouter.swift; sourceTree = "<group>"; };
+		8C3E1D65598771C3CEB4D340 /* GalleryState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GalleryState.swift; path = OmegaGallery/App/GalleryState.swift; sourceTree = "<group>"; };
+		9A74B6532EF705C4009D7678 /* OmegaVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OmegaVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A74B6572EF705C4009D7678 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
+		9A74B6672EF705F6009D7678 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		9A74B6682EF705F6009D7678 /* AssumptionRoomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssumptionRoomApp.swift; sourceTree = "<group>"; };
+		9A74B6692EF705F6009D7678 /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
+		9A74B66A2EF705F6009D7678 /* TrustContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustContract.swift; sourceTree = "<group>"; };
+		9A74B6702EF705F6009D7678 /* DEMO_RUNBOOK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DEMO_RUNBOOK.md; sourceTree = "<group>"; };
+		9A74B6712EF705F6009D7678 /* ROOM_INTENT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ROOM_INTENT.md; sourceTree = "<group>"; };
+		9A74B6732EF705F6009D7678 /* InspectorCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorCopy.swift; sourceTree = "<group>"; };
+		9A74B6742EF705F6009D7678 /* InspectorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorModel.swift; sourceTree = "<group>"; };
+		9A74B6752EF705F6009D7678 /* InspectorPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorPanel.swift; sourceTree = "<group>"; };
+		9A74B6762EF705F6009D7678 /* InspectorRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorRules.swift; sourceTree = "<group>"; };
+		9A74B6782EF705F6009D7678 /* InteractionContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionContract.swift; sourceTree = "<group>"; };
+		9A74B6792EF705F6009D7678 /* LayerToggleOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerToggleOnly.swift; sourceTree = "<group>"; };
+		9A74B67A2EF705F6009D7678 /* ResetViewOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewOnly.swift; sourceTree = "<group>"; };
+		9A74B67B2EF705F6009D7678 /* SelectionOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionOnly.swift; sourceTree = "<group>"; };
+		9A74B67D2EF705F6009D7678 /* AssumptionLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssumptionLayer.swift; sourceTree = "<group>"; };
+		9A74B67E2EF705F6009D7678 /* AssumptionsLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssumptionsLayer.swift; sourceTree = "<group>"; };
+		9A74B67F2EF705F6009D7678 /* ConflictsLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConflictsLayer.swift; sourceTree = "<group>"; };
+		9A74B6802EF705F6009D7678 /* ConstraintLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintLayer.swift; sourceTree = "<group>"; };
+		9A74B6812EF705F6009D7678 /* DisallowedLinkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisallowedLinkLayer.swift; sourceTree = "<group>"; };
+		9A74B6822EF705F6009D7678 /* LayerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerProtocol.swift; sourceTree = "<group>"; };
+		9A74B6832EF705F6009D7678 /* LinkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkLayer.swift; sourceTree = "<group>"; };
+		9A74B6842EF705F6009D7678 /* StructureLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructureLayer.swift; sourceTree = "<group>"; };
+		9A74B6852EF705F6009D7678 /* UncertaintyLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UncertaintyLayer.swift; sourceTree = "<group>"; };
+		9A74B6862EF705F6009D7678 /* UnsupportedLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedLayer.swift; sourceTree = "<group>"; };
+		9A74B6882EF705F6009D7678 /* CORE_LOCK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CORE_LOCK.md; sourceTree = "<group>"; };
+		9A74B6892EF705F6009D7678 /* INTERACTION_LOCK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = INTERACTION_LOCK.md; sourceTree = "<group>"; };
+		9A74B68A2EF705F6009D7678 /* SAFETY_LOCK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SAFETY_LOCK.md; sourceTree = "<group>"; };
+		9A74B68B2EF705F6009D7678 /* V1_LOCK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = V1_LOCK.md; sourceTree = "<group>"; };
+		9A74B68D2EF705F6009D7678 /* PackContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackContext.swift; sourceTree = "<group>"; };
+		9A74B6902EF705F6009D7678 /* AssumptionPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssumptionPreset.swift; sourceTree = "<group>"; };
+		9A74B6912EF705F6009D7678 /* AssumptionPresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssumptionPresets.swift; sourceTree = "<group>"; };
+		9A74B6922EF705F6009D7678 /* AssumptionRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssumptionRoomScene.swift; sourceTree = "<group>"; };
+		9A74B6932EF705F6009D7678 /* CameraRig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRig.swift; sourceTree = "<group>"; };
+		9A74B6942EF705F6009D7678 /* PresetBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetBuilder.swift; sourceTree = "<group>"; };
+		9A74B6952EF705F6009D7678 /* PresetPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetPicker.swift; sourceTree = "<group>"; };
+		9A74B6962EF705F6009D7678 /* SceneConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConfig.swift; sourceTree = "<group>"; };
+		9A74B6972EF705F6009D7678 /* SceneLimits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneLimits.swift; sourceTree = "<group>"; };
+		9A74B6982EF705F6009D7678 /* ScenePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenePreset.swift; sourceTree = "<group>"; };
+		9A74B69A2EF705F6009D7678 /* AboutModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModal.swift; sourceTree = "<group>"; };
+		9A74B69B2EF705F6009D7678 /* AutonomyCeiling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutonomyCeiling.swift; sourceTree = "<group>"; };
+		9A74B69C2EF705F6009D7678 /* SafetyLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyLanguage.swift; sourceTree = "<group>"; };
+		9A74B69D2EF705F6009D7678 /* TrustFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustFooter.swift; sourceTree = "<group>"; };
+		9A74B69E2EF705F6009D7678 /* TrustOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustOverlay.swift; sourceTree = "<group>"; };
+		9A74B6A12EF705F6009D7678 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		9A74B6A22EF705F6009D7678 /* AssuranceRoomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssuranceRoomApp.swift; sourceTree = "<group>"; };
+		9A74B6A32EF705F6009D7678 /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
+		9A74B6A42EF705F6009D7678 /* TrustContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustContract.swift; sourceTree = "<group>"; };
+		9A74B6AA2EF705F6009D7678 /* DEMO_RUNBOOK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DEMO_RUNBOOK.md; sourceTree = "<group>"; };
+		9A74B6AB2EF705F6009D7678 /* ROOM_INTENT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ROOM_INTENT.md; sourceTree = "<group>"; };
+		9A74B6AD2EF705F6009D7678 /* InspectorCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorCopy.swift; sourceTree = "<group>"; };
+		9A74B6AE2EF705F6009D7678 /* InspectorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorModel.swift; sourceTree = "<group>"; };
+		9A74B6AF2EF705F6009D7678 /* InspectorPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorPanel.swift; sourceTree = "<group>"; };
+		9A74B6B02EF705F6009D7678 /* InspectorRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorRules.swift; sourceTree = "<group>"; };
+		9A74B6B22EF705F6009D7678 /* InteractionContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionContract.swift; sourceTree = "<group>"; };
+		9A74B6B32EF705F6009D7678 /* LayerToggleOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerToggleOnly.swift; sourceTree = "<group>"; };
+		9A74B6B42EF705F6009D7678 /* ResetViewOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewOnly.swift; sourceTree = "<group>"; };
+		9A74B6B52EF705F6009D7678 /* SelectionOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionOnly.swift; sourceTree = "<group>"; };
+		9A74B6B72EF705F6009D7678 /* AssuranceFrontLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssuranceFrontLayer.swift; sourceTree = "<group>"; };
+		9A74B6B82EF705F6009D7678 /* AssuranceLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssuranceLayer.swift; sourceTree = "<group>"; };
+		9A74B6B92EF705F6009D7678 /* AssurancesLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssurancesLayer.swift; sourceTree = "<group>"; };
+		9A74B6BA2EF705F6009D7678 /* AuthorityLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorityLayer.swift; sourceTree = "<group>"; };
+		9A74B6BB2EF705F6009D7678 /* ConflictsLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConflictsLayer.swift; sourceTree = "<group>"; };
+		9A74B6BC2EF705F6009D7678 /* ConstraintLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintLayer.swift; sourceTree = "<group>"; };
+		9A74B6BD2EF705F6009D7678 /* ConstraintsLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsLayer.swift; sourceTree = "<group>"; };
+		9A74B6BE2EF705F6009D7678 /* DisallowedLinkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisallowedLinkLayer.swift; sourceTree = "<group>"; };
+		9A74B6BF2EF705F6009D7678 /* FeasibleRegionLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeasibleRegionLayer.swift; sourceTree = "<group>"; };
+		9A74B6C02EF705F6009D7678 /* InputsLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputsLayer.swift; sourceTree = "<group>"; };
+		9A74B6C12EF705F6009D7678 /* LayerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerProtocol.swift; sourceTree = "<group>"; };
+		9A74B6C22EF705F6009D7678 /* LinkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkLayer.swift; sourceTree = "<group>"; };
+		9A74B6C32EF705F6009D7678 /* ObjectivesLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectivesLayer.swift; sourceTree = "<group>"; };
+		9A74B6C42EF705F6009D7678 /* OutcomesLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcomesLayer.swift; sourceTree = "<group>"; };
+		9A74B6C52EF705F6009D7678 /* OverridesLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverridesLayer.swift; sourceTree = "<group>"; };
+		9A74B6C62EF705F6009D7678 /* StructureLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructureLayer.swift; sourceTree = "<group>"; };
+		9A74B6C72EF705F6009D7678 /* TraceLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraceLayer.swift; sourceTree = "<group>"; };
+		9A74B6C82EF705F6009D7678 /* UncertaintyLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UncertaintyLayer.swift; sourceTree = "<group>"; };
+		9A74B6C92EF705F6009D7678 /* UnsupportedLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedLayer.swift; sourceTree = "<group>"; };
+		9A74B6CB2EF705F6009D7678 /* CORE_LOCK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CORE_LOCK.md; sourceTree = "<group>"; };
+		9A74B6CC2EF705F6009D7678 /* INTERACTION_LOCK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = INTERACTION_LOCK.md; sourceTree = "<group>"; };
+		9A74B6CD2EF705F6009D7678 /* SAFETY_LOCK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SAFETY_LOCK.md; sourceTree = "<group>"; };
+		9A74B6CE2EF705F6009D7678 /* V1_LOCK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = V1_LOCK.md; sourceTree = "<group>"; };
+		9A74B6D02EF705F6009D7678 /* PackContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackContext.swift; sourceTree = "<group>"; };
+		9A74B6D32EF705F6009D7678 /* AssurancePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssurancePreset.swift; sourceTree = "<group>"; };
+		9A74B6D42EF705F6009D7678 /* AssurancePresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssurancePresets.swift; sourceTree = "<group>"; };
+		9A74B6D52EF705F6009D7678 /* AssuranceRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssuranceRoomScene.swift; sourceTree = "<group>"; };
+		9A74B6D62EF705F6009D7678 /* CameraRig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRig.swift; sourceTree = "<group>"; };
+		9A74B6D72EF705F6009D7678 /* PresetBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetBuilder.swift; sourceTree = "<group>"; };
+		9A74B6D82EF705F6009D7678 /* PresetPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetPicker.swift; sourceTree = "<group>"; };
+		9A74B6D92EF705F6009D7678 /* SceneConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConfig.swift; sourceTree = "<group>"; };
+		9A74B6DA2EF705F6009D7678 /* SceneLimits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneLimits.swift; sourceTree = "<group>"; };
+		9A74B6DB2EF705F6009D7678 /* ScenePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenePreset.swift; sourceTree = "<group>"; };
+		9A74B6DD2EF705F6009D7678 /* AboutModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModal.swift; sourceTree = "<group>"; };
+		9A74B6DE2EF705F6009D7678 /* AutonomyCeiling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutonomyCeiling.swift; sourceTree = "<group>"; };
+		9A74B6DF2EF705F6009D7678 /* SafetyLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyLanguage.swift; sourceTree = "<group>"; };
+		9A74B6E02EF705F6009D7678 /* TrustFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustFooter.swift; sourceTree = "<group>"; };
+		9A74B6E12EF705F6009D7678 /* TrustOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustOverlay.swift; sourceTree = "<group>"; };
+		9A74B6E42EF705F6009D7678 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		9A74B6E52EF705F6009D7678 /* CausalRoomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CausalRoomApp.swift; sourceTree = "<group>"; };
+		9A74B6E62EF705F6009D7678 /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
+		9A74B6E72EF705F6009D7678 /* TrustContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustContract.swift; sourceTree = "<group>"; };
+		9A74B6ED2EF705F6009D7678 /* DEMO_RUNBOOK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DEMO_RUNBOOK.md; sourceTree = "<group>"; };
+		9A74B6EF2EF705F6009D7678 /* InspectorCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorCopy.swift; sourceTree = "<group>"; };
+		9A74B6F02EF705F6009D7678 /* InspectorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorModel.swift; sourceTree = "<group>"; };
+		9A74B6F12EF705F6009D7678 /* InspectorPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorPanel.swift; sourceTree = "<group>"; };
+		9A74B6F22EF705F6009D7678 /* InspectorRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorRules.swift; sourceTree = "<group>"; };
+		9A74B6F42EF705F6009D7678 /* InteractionContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionContract.swift; sourceTree = "<group>"; };
+		9A74B6F52EF705F6009D7678 /* LayerToggleOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerToggleOnly.swift; sourceTree = "<group>"; };
+		9A74B6F62EF705F6009D7678 /* ResetViewOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewOnly.swift; sourceTree = "<group>"; };
+		9A74B6F72EF705F6009D7678 /* SelectionOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionOnly.swift; sourceTree = "<group>"; };
+		9A74B6F92EF705F6009D7678 /* AssumptionLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssumptionLayer.swift; sourceTree = "<group>"; };
+		9A74B6FA2EF705F6009D7678 /* ConstraintLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintLayer.swift; sourceTree = "<group>"; };
+		9A74B6FB2EF705F6009D7678 /* DisallowedLinkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisallowedLinkLayer.swift; sourceTree = "<group>"; };
+		9A74B6FC2EF705F6009D7678 /* LayerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerProtocol.swift; sourceTree = "<group>"; };
+		9A74B6FD2EF705F6009D7678 /* LinkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkLayer.swift; sourceTree = "<group>"; };
+		9A74B6FE2EF705F6009D7678 /* StructureLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructureLayer.swift; sourceTree = "<group>"; };
+		9A74B6FF2EF705F6009D7678 /* UncertaintyLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UncertaintyLayer.swift; sourceTree = "<group>"; };
+		9A74B7012EF705F6009D7678 /* CORE_LOCK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CORE_LOCK.md; sourceTree = "<group>"; };
+		9A74B7022EF705F6009D7678 /* INTERACTION_LOCK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = INTERACTION_LOCK.md; sourceTree = "<group>"; };
+		9A74B7032EF705F6009D7678 /* SAFETY_LOCK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SAFETY_LOCK.md; sourceTree = "<group>"; };
+		9A74B7042EF705F6009D7678 /* V1_LOCK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = V1_LOCK.md; sourceTree = "<group>"; };
+		9A74B7062EF705F6009D7678 /* PackContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackContext.swift; sourceTree = "<group>"; };
+		9A74B7092EF705F6009D7678 /* CameraRig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRig.swift; sourceTree = "<group>"; };
+		9A74B70A2EF705F6009D7678 /* CausalPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CausalPreset.swift; sourceTree = "<group>"; };
+		9A74B70B2EF705F6009D7678 /* CausalPresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CausalPresets.swift; sourceTree = "<group>"; };
+		9A74B70C2EF705F6009D7678 /* CausalRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CausalRoomScene.swift; sourceTree = "<group>"; };
+		9A74B70D2EF705F6009D7678 /* PresetBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetBuilder.swift; sourceTree = "<group>"; };
+		9A74B70E2EF705F6009D7678 /* PresetPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetPicker.swift; sourceTree = "<group>"; };
+		9A74B70F2EF705F6009D7678 /* SceneConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConfig.swift; sourceTree = "<group>"; };
+		9A74B7102EF705F6009D7678 /* SceneLimits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneLimits.swift; sourceTree = "<group>"; };
+		9A74B7112EF705F6009D7678 /* ScenePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenePreset.swift; sourceTree = "<group>"; };
+		9A74B7132EF705F6009D7678 /* AboutModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModal.swift; sourceTree = "<group>"; };
+		9A74B7142EF705F6009D7678 /* AutonomyCeiling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutonomyCeiling.swift; sourceTree = "<group>"; };
+		9A74B7152EF705F6009D7678 /* SafetyLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyLanguage.swift; sourceTree = "<group>"; };
+		9A74B7162EF705F6009D7678 /* TrustFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustFooter.swift; sourceTree = "<group>"; };
+		9A74B7172EF705F6009D7678 /* TrustOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustOverlay.swift; sourceTree = "<group>"; };
+		9A74B71A2EF705F6009D7678 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		9A74B71B2EF705F6009D7678 /* ConstraintRoomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintRoomApp.swift; sourceTree = "<group>"; };
+		9A74B71C2EF705F6009D7678 /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
+		9A74B71D2EF705F6009D7678 /* TrustContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustContract.swift; sourceTree = "<group>"; };
+		9A74B7232EF705F6009D7678 /* RC_AUDIT_DEMO_RUNBOOK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RC_AUDIT_DEMO_RUNBOOK.md; sourceTree = "<group>"; };
+		9A74B7252EF705F6009D7678 /* InspectorCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorCopy.swift; sourceTree = "<group>"; };
+		9A74B7262EF705F6009D7678 /* InspectorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorModel.swift; sourceTree = "<group>"; };
+		9A74B7272EF705F6009D7678 /* InspectorPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorPanel.swift; sourceTree = "<group>"; };
+		9A74B7282EF705F6009D7678 /* InspectorRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorRules.swift; sourceTree = "<group>"; };
+		9A74B72A2EF705F6009D7678 /* InteractionContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionContract.swift; sourceTree = "<group>"; };
+		9A74B72B2EF705F6009D7678 /* LayerToggleOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerToggleOnly.swift; sourceTree = "<group>"; };
+		9A74B72C2EF705F6009D7678 /* ResetViewOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewOnly.swift; sourceTree = "<group>"; };
+		9A74B72D2EF705F6009D7678 /* SelectionOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionOnly.swift; sourceTree = "<group>"; };
+		9A74B72F2EF705F6009D7678 /* AssumptionLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssumptionLayer.swift; sourceTree = "<group>"; };
+		9A74B7302EF705F6009D7678 /* ConstraintLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintLayer.swift; sourceTree = "<group>"; };
+		9A74B7312EF705F6009D7678 /* LayerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerProtocol.swift; sourceTree = "<group>"; };
+		9A74B7322EF705F6009D7678 /* StructureLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructureLayer.swift; sourceTree = "<group>"; };
+		9A74B7332EF705F6009D7678 /* UncertaintyLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UncertaintyLayer.swift; sourceTree = "<group>"; };
+		9A74B7352EF705F6009D7678 /* CORE_LOCK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CORE_LOCK.md; sourceTree = "<group>"; };
+		9A74B7362EF705F6009D7678 /* INTERACTION_LOCK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = INTERACTION_LOCK.md; sourceTree = "<group>"; };
+		9A74B7372EF705F6009D7678 /* LOCKED_V2B_RC_AUDIT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LOCKED_V2B_RC_AUDIT.md; sourceTree = "<group>"; };
+		9A74B7382EF705F6009D7678 /* SAFETY_LOCK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SAFETY_LOCK.md; sourceTree = "<group>"; };
+		9A74B73A2EF705F6009D7678 /* RCAuditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCAuditCard.swift; sourceTree = "<group>"; };
+		9A74B73B2EF705F6009D7678 /* RCAuditCompare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCAuditCompare.swift; sourceTree = "<group>"; };
+		9A74B73C2EF705F6009D7678 /* RCAuditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCAuditModel.swift; sourceTree = "<group>"; };
+		9A74B73D2EF705F6009D7678 /* RCAuditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCAuditView.swift; sourceTree = "<group>"; };
+		9A74B73E2EF705F6009D7678 /* RCMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCMode.swift; sourceTree = "<group>"; };
+		9A74B73F2EF705F6009D7678 /* RCModePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCModePicker.swift; sourceTree = "<group>"; };
+		9A74B7412EF705F6009D7678 /* CameraRig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRig.swift; sourceTree = "<group>"; };
+		9A74B7422EF705F6009D7678 /* ConstraintRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintRoomScene.swift; sourceTree = "<group>"; };
+		9A74B7432EF705F6009D7678 /* PresetBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetBuilder.swift; sourceTree = "<group>"; };
+		9A74B7442EF705F6009D7678 /* PresetPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetPicker.swift; sourceTree = "<group>"; };
+		9A74B7452EF705F6009D7678 /* SceneConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConfig.swift; sourceTree = "<group>"; };
+		9A74B7462EF705F6009D7678 /* SceneLimits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneLimits.swift; sourceTree = "<group>"; };
+		9A74B7472EF705F6009D7678 /* ScenePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenePreset.swift; sourceTree = "<group>"; };
+		9A74B7492EF705F6009D7678 /* AboutModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModal.swift; sourceTree = "<group>"; };
+		9A74B74A2EF705F6009D7678 /* AutonomyCeiling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutonomyCeiling.swift; sourceTree = "<group>"; };
+		9A74B74B2EF705F6009D7678 /* SafetyLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyLanguage.swift; sourceTree = "<group>"; };
+		9A74B74C2EF705F6009D7678 /* TrustFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustFooter.swift; sourceTree = "<group>"; };
+		9A74B74D2EF705F6009D7678 /* TrustOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustOverlay.swift; sourceTree = "<group>"; };
+		9A74B7FE2EF70601009D7678 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		9A74B7FF2EF70601009D7678 /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
+		9A74B8002EF70601009D7678 /* TradeoffRoomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeoffRoomApp.swift; sourceTree = "<group>"; };
+		9A74B8012EF70601009D7678 /* TrustContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustContract.swift; sourceTree = "<group>"; };
+		9A74B8072EF70601009D7678 /* DEMO_RUNBOOK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DEMO_RUNBOOK.md; sourceTree = "<group>"; };
+		9A74B8082EF70601009D7678 /* ROOM_INTENT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ROOM_INTENT.md; sourceTree = "<group>"; };
+		9A74B80A2EF70601009D7678 /* InspectorCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorCopy.swift; sourceTree = "<group>"; };
+		9A74B80B2EF70601009D7678 /* InspectorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorModel.swift; sourceTree = "<group>"; };
+		9A74B80C2EF70601009D7678 /* InspectorPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorPanel.swift; sourceTree = "<group>"; };
+		9A74B80D2EF70601009D7678 /* InspectorRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorRules.swift; sourceTree = "<group>"; };
+		9A74B80F2EF70601009D7678 /* InteractionContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionContract.swift; sourceTree = "<group>"; };
+		9A74B8102EF70601009D7678 /* LayerToggleOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerToggleOnly.swift; sourceTree = "<group>"; };
+		9A74B8112EF70601009D7678 /* ResetViewOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewOnly.swift; sourceTree = "<group>"; };
+		9A74B8122EF70601009D7678 /* SelectionOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionOnly.swift; sourceTree = "<group>"; };
+		9A74B8142EF70601009D7678 /* ConflictsLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConflictsLayer.swift; sourceTree = "<group>"; };
+		9A74B8152EF70601009D7678 /* ConstraintLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintLayer.swift; sourceTree = "<group>"; };
+		9A74B8162EF70601009D7678 /* ConstraintsLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsLayer.swift; sourceTree = "<group>"; };
+		9A74B8172EF70601009D7678 /* DisallowedLinkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisallowedLinkLayer.swift; sourceTree = "<group>"; };
+		9A74B8182EF70601009D7678 /* FeasibleRegionLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeasibleRegionLayer.swift; sourceTree = "<group>"; };
+		9A74B8192EF70601009D7678 /* LayerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerProtocol.swift; sourceTree = "<group>"; };
+		9A74B81A2EF70601009D7678 /* LinkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkLayer.swift; sourceTree = "<group>"; };
+		9A74B81B2EF70601009D7678 /* ObjectivesLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectivesLayer.swift; sourceTree = "<group>"; };
+		9A74B81C2EF70601009D7678 /* StructureLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructureLayer.swift; sourceTree = "<group>"; };
+		9A74B81D2EF70601009D7678 /* TradeoffFrontLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeoffFrontLayer.swift; sourceTree = "<group>"; };
+		9A74B81E2EF70601009D7678 /* TradeoffLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeoffLayer.swift; sourceTree = "<group>"; };
+		9A74B81F2EF70601009D7678 /* TradeoffsLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeoffsLayer.swift; sourceTree = "<group>"; };
+		9A74B8202EF70601009D7678 /* UncertaintyLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UncertaintyLayer.swift; sourceTree = "<group>"; };
+		9A74B8212EF70601009D7678 /* UnsupportedLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedLayer.swift; sourceTree = "<group>"; };
+		9A74B8232EF70601009D7678 /* CORE_LOCK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CORE_LOCK.md; sourceTree = "<group>"; };
+		9A74B8242EF70601009D7678 /* INTERACTION_LOCK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = INTERACTION_LOCK.md; sourceTree = "<group>"; };
+		9A74B8252EF70601009D7678 /* SAFETY_LOCK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SAFETY_LOCK.md; sourceTree = "<group>"; };
+		9A74B8262EF70601009D7678 /* V1_LOCK.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = V1_LOCK.md; sourceTree = "<group>"; };
+		9A74B8282EF70601009D7678 /* PackContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackContext.swift; sourceTree = "<group>"; };
+		9A74B82B2EF70601009D7678 /* CameraRig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRig.swift; sourceTree = "<group>"; };
+		9A74B82C2EF70601009D7678 /* PresetBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetBuilder.swift; sourceTree = "<group>"; };
+		9A74B82D2EF70601009D7678 /* PresetPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetPicker.swift; sourceTree = "<group>"; };
+		9A74B82E2EF70601009D7678 /* SceneConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConfig.swift; sourceTree = "<group>"; };
+		9A74B82F2EF70601009D7678 /* SceneLimits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneLimits.swift; sourceTree = "<group>"; };
+		9A74B8302EF70601009D7678 /* ScenePreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenePreset.swift; sourceTree = "<group>"; };
+		9A74B8312EF70601009D7678 /* TradeoffPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeoffPreset.swift; sourceTree = "<group>"; };
+		9A74B8322EF70601009D7678 /* TradeoffPresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeoffPresets.swift; sourceTree = "<group>"; };
+		9A74B8332EF70601009D7678 /* TradeoffRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeoffRoomScene.swift; sourceTree = "<group>"; };
+		9A74B8352EF70601009D7678 /* AboutModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModal.swift; sourceTree = "<group>"; };
+		9A74B8362EF70601009D7678 /* AutonomyCeiling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutonomyCeiling.swift; sourceTree = "<group>"; };
+		9A74B8372EF70601009D7678 /* SafetyLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyLanguage.swift; sourceTree = "<group>"; };
+		9A74B8382EF70601009D7678 /* TrustFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustFooter.swift; sourceTree = "<group>"; };
+		9A74B8392EF70601009D7678 /* TrustOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustOverlay.swift; sourceTree = "<group>"; };
+		9A74B8732EF70892009D7678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9A74B8742EF70892009D7678 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9A74B8752EF70892009D7678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A74B8762EF70892009D7678 /* OmegaGalleryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmegaGalleryApp.swift; sourceTree = "<group>"; };
+		9A74B8782EF70892009D7678 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
+		9A74B87A2EF70892009D7678 /* OmegaGallery.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = OmegaGallery.xcodeproj; sourceTree = "<group>"; };
+		F654DCB448ED830F90960E70 /* ArtifactVault.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ArtifactVault.swift; path = OmegaGallery/Artifacts/ArtifactVault.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		9A74B6612EF705C5009D7678 /* Exceptions for "OmegaVision" folder in "OmegaVision" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 9A74B6522EF705C4009D7678 /* OmegaVision */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		9A74B6552EF705C4009D7678 /* OmegaVision */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				9A74B6612EF705C5009D7678 /* Exceptions for "OmegaVision" folder in "OmegaVision" target */,
+			);
+			path = OmegaVision;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXGroup section */
+		39A533E9A1669BF7CCEE22F0 /* OmegaGalleryMinimal */ = {
+			isa = PBXGroup;
+			children = (
+				8C3E1D65598771C3CEB4D340 /* GalleryState.swift */,
+				307D5B4D4BD295C30BC4ED6E /* GalleryRouter.swift */,
+				F654DCB448ED830F90960E70 /* ArtifactVault.swift */,
+			);
+			name = OmegaGalleryMinimal;
+			sourceTree = "<group>";
+		};
+		9A74B64A2EF705C4009D7678 = {
+			isa = PBXGroup;
+			children = (
+				9A74B87B2EF70892009D7678 /* OmegaGallery */,
+				9A74B83B2EF70601009D7678 /* TradeoffRoom */,
+				9A74B6A02EF705F6009D7678 /* AssumptionRoom */,
+				9A74B6E32EF705F6009D7678 /* AssuranceRoom */,
+				9A74B7192EF705F6009D7678 /* CausalRoom */,
+				9A74B74F2EF705F6009D7678 /* ConstraintRoom */,
+				9A74B6552EF705C4009D7678 /* OmegaVision */,
+				9A74B6562EF705C4009D7678 /* Packages */,
+				9A74B6542EF705C4009D7678 /* Products */,
+				39A533E9A1669BF7CCEE22F0 /* OmegaGalleryMinimal */,
+			);
+			sourceTree = "<group>";
+		};
+		9A74B6542EF705C4009D7678 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6532EF705C4009D7678 /* OmegaVision.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A74B6562EF705C4009D7678 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6572EF705C4009D7678 /* RealityKitContent */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		9A74B66B2EF705F6009D7678 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6672EF705F6009D7678 /* AppState.swift */,
+				9A74B6682EF705F6009D7678 /* AssumptionRoomApp.swift */,
+				9A74B6692EF705F6009D7678 /* Permissions.swift */,
+				9A74B66A2EF705F6009D7678 /* TrustContract.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9A74B66C2EF705F6009D7678 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+		9A74B66D2EF705F6009D7678 /* Materials */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Materials;
+			sourceTree = "<group>";
+		};
+		9A74B66E2EF705F6009D7678 /* Typography */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Typography;
+			sourceTree = "<group>";
+		};
+		9A74B66F2EF705F6009D7678 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B66C2EF705F6009D7678 /* Icons */,
+				9A74B66D2EF705F6009D7678 /* Materials */,
+				9A74B66E2EF705F6009D7678 /* Typography */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		9A74B6722EF705F6009D7678 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6702EF705F6009D7678 /* DEMO_RUNBOOK.md */,
+				9A74B6712EF705F6009D7678 /* ROOM_INTENT.md */,
+			);
+			path = Docs;
+			sourceTree = "<group>";
+		};
+		9A74B6772EF705F6009D7678 /* Inspector */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6732EF705F6009D7678 /* InspectorCopy.swift */,
+				9A74B6742EF705F6009D7678 /* InspectorModel.swift */,
+				9A74B6752EF705F6009D7678 /* InspectorPanel.swift */,
+				9A74B6762EF705F6009D7678 /* InspectorRules.swift */,
+			);
+			path = Inspector;
+			sourceTree = "<group>";
+		};
+		9A74B67C2EF705F6009D7678 /* Interaction */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6782EF705F6009D7678 /* InteractionContract.swift */,
+				9A74B6792EF705F6009D7678 /* LayerToggleOnly.swift */,
+				9A74B67A2EF705F6009D7678 /* ResetViewOnly.swift */,
+				9A74B67B2EF705F6009D7678 /* SelectionOnly.swift */,
+			);
+			path = Interaction;
+			sourceTree = "<group>";
+		};
+		9A74B6872EF705F6009D7678 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B67D2EF705F6009D7678 /* AssumptionLayer.swift */,
+				9A74B67E2EF705F6009D7678 /* AssumptionsLayer.swift */,
+				9A74B67F2EF705F6009D7678 /* ConflictsLayer.swift */,
+				9A74B6802EF705F6009D7678 /* ConstraintLayer.swift */,
+				9A74B6812EF705F6009D7678 /* DisallowedLinkLayer.swift */,
+				9A74B6822EF705F6009D7678 /* LayerProtocol.swift */,
+				9A74B6832EF705F6009D7678 /* LinkLayer.swift */,
+				9A74B6842EF705F6009D7678 /* StructureLayer.swift */,
+				9A74B6852EF705F6009D7678 /* UncertaintyLayer.swift */,
+				9A74B6862EF705F6009D7678 /* UnsupportedLayer.swift */,
+			);
+			path = Layers;
+			sourceTree = "<group>";
+		};
+		9A74B68C2EF705F6009D7678 /* LOCKED */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6882EF705F6009D7678 /* CORE_LOCK.md */,
+				9A74B6892EF705F6009D7678 /* INTERACTION_LOCK.md */,
+				9A74B68A2EF705F6009D7678 /* SAFETY_LOCK.md */,
+				9A74B68B2EF705F6009D7678 /* V1_LOCK.md */,
+			);
+			path = LOCKED;
+			sourceTree = "<group>";
+		};
+		9A74B68E2EF705F6009D7678 /* Pack */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B68D2EF705F6009D7678 /* PackContext.swift */,
+			);
+			path = Pack;
+			sourceTree = "<group>";
+		};
+		9A74B68F2EF705F6009D7678 /* RC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RC;
+			sourceTree = "<group>";
+		};
+		9A74B6992EF705F6009D7678 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6902EF705F6009D7678 /* AssumptionPreset.swift */,
+				9A74B6912EF705F6009D7678 /* AssumptionPresets.swift */,
+				9A74B6922EF705F6009D7678 /* AssumptionRoomScene.swift */,
+				9A74B6932EF705F6009D7678 /* CameraRig.swift */,
+				9A74B6942EF705F6009D7678 /* PresetBuilder.swift */,
+				9A74B6952EF705F6009D7678 /* PresetPicker.swift */,
+				9A74B6962EF705F6009D7678 /* SceneConfig.swift */,
+				9A74B6972EF705F6009D7678 /* SceneLimits.swift */,
+				9A74B6982EF705F6009D7678 /* ScenePreset.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		9A74B69F2EF705F6009D7678 /* Trust */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B69A2EF705F6009D7678 /* AboutModal.swift */,
+				9A74B69B2EF705F6009D7678 /* AutonomyCeiling.swift */,
+				9A74B69C2EF705F6009D7678 /* SafetyLanguage.swift */,
+				9A74B69D2EF705F6009D7678 /* TrustFooter.swift */,
+				9A74B69E2EF705F6009D7678 /* TrustOverlay.swift */,
+			);
+			path = Trust;
+			sourceTree = "<group>";
+		};
+		9A74B6A02EF705F6009D7678 /* AssumptionRoom */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B66B2EF705F6009D7678 /* App */,
+				9A74B66F2EF705F6009D7678 /* Assets */,
+				9A74B6722EF705F6009D7678 /* Docs */,
+				9A74B6772EF705F6009D7678 /* Inspector */,
+				9A74B67C2EF705F6009D7678 /* Interaction */,
+				9A74B6872EF705F6009D7678 /* Layers */,
+				9A74B68C2EF705F6009D7678 /* LOCKED */,
+				9A74B68E2EF705F6009D7678 /* Pack */,
+				9A74B68F2EF705F6009D7678 /* RC */,
+				9A74B6992EF705F6009D7678 /* Scene */,
+				9A74B69F2EF705F6009D7678 /* Trust */,
+			);
+			path = AssumptionRoom;
+			sourceTree = "<group>";
+		};
+		9A74B6A52EF705F6009D7678 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6A12EF705F6009D7678 /* AppState.swift */,
+				9A74B6A22EF705F6009D7678 /* AssuranceRoomApp.swift */,
+				9A74B6A32EF705F6009D7678 /* Permissions.swift */,
+				9A74B6A42EF705F6009D7678 /* TrustContract.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9A74B6A62EF705F6009D7678 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+		9A74B6A72EF705F6009D7678 /* Materials */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Materials;
+			sourceTree = "<group>";
+		};
+		9A74B6A82EF705F6009D7678 /* Typography */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Typography;
+			sourceTree = "<group>";
+		};
+		9A74B6A92EF705F6009D7678 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6A62EF705F6009D7678 /* Icons */,
+				9A74B6A72EF705F6009D7678 /* Materials */,
+				9A74B6A82EF705F6009D7678 /* Typography */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		9A74B6AC2EF705F6009D7678 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6AA2EF705F6009D7678 /* DEMO_RUNBOOK.md */,
+				9A74B6AB2EF705F6009D7678 /* ROOM_INTENT.md */,
+			);
+			path = Docs;
+			sourceTree = "<group>";
+		};
+		9A74B6B12EF705F6009D7678 /* Inspector */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6AD2EF705F6009D7678 /* InspectorCopy.swift */,
+				9A74B6AE2EF705F6009D7678 /* InspectorModel.swift */,
+				9A74B6AF2EF705F6009D7678 /* InspectorPanel.swift */,
+				9A74B6B02EF705F6009D7678 /* InspectorRules.swift */,
+			);
+			path = Inspector;
+			sourceTree = "<group>";
+		};
+		9A74B6B62EF705F6009D7678 /* Interaction */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6B22EF705F6009D7678 /* InteractionContract.swift */,
+				9A74B6B32EF705F6009D7678 /* LayerToggleOnly.swift */,
+				9A74B6B42EF705F6009D7678 /* ResetViewOnly.swift */,
+				9A74B6B52EF705F6009D7678 /* SelectionOnly.swift */,
+			);
+			path = Interaction;
+			sourceTree = "<group>";
+		};
+		9A74B6CA2EF705F6009D7678 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6B72EF705F6009D7678 /* AssuranceFrontLayer.swift */,
+				9A74B6B82EF705F6009D7678 /* AssuranceLayer.swift */,
+				9A74B6B92EF705F6009D7678 /* AssurancesLayer.swift */,
+				9A74B6BA2EF705F6009D7678 /* AuthorityLayer.swift */,
+				9A74B6BB2EF705F6009D7678 /* ConflictsLayer.swift */,
+				9A74B6BC2EF705F6009D7678 /* ConstraintLayer.swift */,
+				9A74B6BD2EF705F6009D7678 /* ConstraintsLayer.swift */,
+				9A74B6BE2EF705F6009D7678 /* DisallowedLinkLayer.swift */,
+				9A74B6BF2EF705F6009D7678 /* FeasibleRegionLayer.swift */,
+				9A74B6C02EF705F6009D7678 /* InputsLayer.swift */,
+				9A74B6C12EF705F6009D7678 /* LayerProtocol.swift */,
+				9A74B6C22EF705F6009D7678 /* LinkLayer.swift */,
+				9A74B6C32EF705F6009D7678 /* ObjectivesLayer.swift */,
+				9A74B6C42EF705F6009D7678 /* OutcomesLayer.swift */,
+				9A74B6C52EF705F6009D7678 /* OverridesLayer.swift */,
+				9A74B6C62EF705F6009D7678 /* StructureLayer.swift */,
+				9A74B6C72EF705F6009D7678 /* TraceLayer.swift */,
+				9A74B6C82EF705F6009D7678 /* UncertaintyLayer.swift */,
+				9A74B6C92EF705F6009D7678 /* UnsupportedLayer.swift */,
+			);
+			path = Layers;
+			sourceTree = "<group>";
+		};
+		9A74B6CF2EF705F6009D7678 /* LOCKED */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6CB2EF705F6009D7678 /* CORE_LOCK.md */,
+				9A74B6CC2EF705F6009D7678 /* INTERACTION_LOCK.md */,
+				9A74B6CD2EF705F6009D7678 /* SAFETY_LOCK.md */,
+				9A74B6CE2EF705F6009D7678 /* V1_LOCK.md */,
+			);
+			path = LOCKED;
+			sourceTree = "<group>";
+		};
+		9A74B6D12EF705F6009D7678 /* Pack */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6D02EF705F6009D7678 /* PackContext.swift */,
+			);
+			path = Pack;
+			sourceTree = "<group>";
+		};
+		9A74B6D22EF705F6009D7678 /* RC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RC;
+			sourceTree = "<group>";
+		};
+		9A74B6DC2EF705F6009D7678 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6D32EF705F6009D7678 /* AssurancePreset.swift */,
+				9A74B6D42EF705F6009D7678 /* AssurancePresets.swift */,
+				9A74B6D52EF705F6009D7678 /* AssuranceRoomScene.swift */,
+				9A74B6D62EF705F6009D7678 /* CameraRig.swift */,
+				9A74B6D72EF705F6009D7678 /* PresetBuilder.swift */,
+				9A74B6D82EF705F6009D7678 /* PresetPicker.swift */,
+				9A74B6D92EF705F6009D7678 /* SceneConfig.swift */,
+				9A74B6DA2EF705F6009D7678 /* SceneLimits.swift */,
+				9A74B6DB2EF705F6009D7678 /* ScenePreset.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		9A74B6E22EF705F6009D7678 /* Trust */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6DD2EF705F6009D7678 /* AboutModal.swift */,
+				9A74B6DE2EF705F6009D7678 /* AutonomyCeiling.swift */,
+				9A74B6DF2EF705F6009D7678 /* SafetyLanguage.swift */,
+				9A74B6E02EF705F6009D7678 /* TrustFooter.swift */,
+				9A74B6E12EF705F6009D7678 /* TrustOverlay.swift */,
+			);
+			path = Trust;
+			sourceTree = "<group>";
+		};
+		9A74B6E32EF705F6009D7678 /* AssuranceRoom */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6A52EF705F6009D7678 /* App */,
+				9A74B6A92EF705F6009D7678 /* Assets */,
+				9A74B6AC2EF705F6009D7678 /* Docs */,
+				9A74B6B12EF705F6009D7678 /* Inspector */,
+				9A74B6B62EF705F6009D7678 /* Interaction */,
+				9A74B6CA2EF705F6009D7678 /* Layers */,
+				9A74B6CF2EF705F6009D7678 /* LOCKED */,
+				9A74B6D12EF705F6009D7678 /* Pack */,
+				9A74B6D22EF705F6009D7678 /* RC */,
+				9A74B6DC2EF705F6009D7678 /* Scene */,
+				9A74B6E22EF705F6009D7678 /* Trust */,
+			);
+			path = AssuranceRoom;
+			sourceTree = "<group>";
+		};
+		9A74B6E82EF705F6009D7678 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6E42EF705F6009D7678 /* AppState.swift */,
+				9A74B6E52EF705F6009D7678 /* CausalRoomApp.swift */,
+				9A74B6E62EF705F6009D7678 /* Permissions.swift */,
+				9A74B6E72EF705F6009D7678 /* TrustContract.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9A74B6E92EF705F6009D7678 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+		9A74B6EA2EF705F6009D7678 /* Materials */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Materials;
+			sourceTree = "<group>";
+		};
+		9A74B6EB2EF705F6009D7678 /* Typography */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Typography;
+			sourceTree = "<group>";
+		};
+		9A74B6EC2EF705F6009D7678 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6E92EF705F6009D7678 /* Icons */,
+				9A74B6EA2EF705F6009D7678 /* Materials */,
+				9A74B6EB2EF705F6009D7678 /* Typography */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		9A74B6EE2EF705F6009D7678 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6ED2EF705F6009D7678 /* DEMO_RUNBOOK.md */,
+			);
+			path = Docs;
+			sourceTree = "<group>";
+		};
+		9A74B6F32EF705F6009D7678 /* Inspector */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6EF2EF705F6009D7678 /* InspectorCopy.swift */,
+				9A74B6F02EF705F6009D7678 /* InspectorModel.swift */,
+				9A74B6F12EF705F6009D7678 /* InspectorPanel.swift */,
+				9A74B6F22EF705F6009D7678 /* InspectorRules.swift */,
+			);
+			path = Inspector;
+			sourceTree = "<group>";
+		};
+		9A74B6F82EF705F6009D7678 /* Interaction */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6F42EF705F6009D7678 /* InteractionContract.swift */,
+				9A74B6F52EF705F6009D7678 /* LayerToggleOnly.swift */,
+				9A74B6F62EF705F6009D7678 /* ResetViewOnly.swift */,
+				9A74B6F72EF705F6009D7678 /* SelectionOnly.swift */,
+			);
+			path = Interaction;
+			sourceTree = "<group>";
+		};
+		9A74B7002EF705F6009D7678 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6F92EF705F6009D7678 /* AssumptionLayer.swift */,
+				9A74B6FA2EF705F6009D7678 /* ConstraintLayer.swift */,
+				9A74B6FB2EF705F6009D7678 /* DisallowedLinkLayer.swift */,
+				9A74B6FC2EF705F6009D7678 /* LayerProtocol.swift */,
+				9A74B6FD2EF705F6009D7678 /* LinkLayer.swift */,
+				9A74B6FE2EF705F6009D7678 /* StructureLayer.swift */,
+				9A74B6FF2EF705F6009D7678 /* UncertaintyLayer.swift */,
+			);
+			path = Layers;
+			sourceTree = "<group>";
+		};
+		9A74B7052EF705F6009D7678 /* LOCKED */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B7012EF705F6009D7678 /* CORE_LOCK.md */,
+				9A74B7022EF705F6009D7678 /* INTERACTION_LOCK.md */,
+				9A74B7032EF705F6009D7678 /* SAFETY_LOCK.md */,
+				9A74B7042EF705F6009D7678 /* V1_LOCK.md */,
+			);
+			path = LOCKED;
+			sourceTree = "<group>";
+		};
+		9A74B7072EF705F6009D7678 /* Pack */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B7062EF705F6009D7678 /* PackContext.swift */,
+			);
+			path = Pack;
+			sourceTree = "<group>";
+		};
+		9A74B7082EF705F6009D7678 /* RC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RC;
+			sourceTree = "<group>";
+		};
+		9A74B7122EF705F6009D7678 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B7092EF705F6009D7678 /* CameraRig.swift */,
+				9A74B70A2EF705F6009D7678 /* CausalPreset.swift */,
+				9A74B70B2EF705F6009D7678 /* CausalPresets.swift */,
+				9A74B70C2EF705F6009D7678 /* CausalRoomScene.swift */,
+				9A74B70D2EF705F6009D7678 /* PresetBuilder.swift */,
+				9A74B70E2EF705F6009D7678 /* PresetPicker.swift */,
+				9A74B70F2EF705F6009D7678 /* SceneConfig.swift */,
+				9A74B7102EF705F6009D7678 /* SceneLimits.swift */,
+				9A74B7112EF705F6009D7678 /* ScenePreset.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		9A74B7182EF705F6009D7678 /* Trust */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B7132EF705F6009D7678 /* AboutModal.swift */,
+				9A74B7142EF705F6009D7678 /* AutonomyCeiling.swift */,
+				9A74B7152EF705F6009D7678 /* SafetyLanguage.swift */,
+				9A74B7162EF705F6009D7678 /* TrustFooter.swift */,
+				9A74B7172EF705F6009D7678 /* TrustOverlay.swift */,
+			);
+			path = Trust;
+			sourceTree = "<group>";
+		};
+		9A74B7192EF705F6009D7678 /* CausalRoom */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B6E82EF705F6009D7678 /* App */,
+				9A74B6EC2EF705F6009D7678 /* Assets */,
+				9A74B6EE2EF705F6009D7678 /* Docs */,
+				9A74B6F32EF705F6009D7678 /* Inspector */,
+				9A74B6F82EF705F6009D7678 /* Interaction */,
+				9A74B7002EF705F6009D7678 /* Layers */,
+				9A74B7052EF705F6009D7678 /* LOCKED */,
+				9A74B7072EF705F6009D7678 /* Pack */,
+				9A74B7082EF705F6009D7678 /* RC */,
+				9A74B7122EF705F6009D7678 /* Scene */,
+				9A74B7182EF705F6009D7678 /* Trust */,
+			);
+			path = CausalRoom;
+			sourceTree = "<group>";
+		};
+		9A74B71E2EF705F6009D7678 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B71A2EF705F6009D7678 /* AppState.swift */,
+				9A74B71B2EF705F6009D7678 /* ConstraintRoomApp.swift */,
+				9A74B71C2EF705F6009D7678 /* Permissions.swift */,
+				9A74B71D2EF705F6009D7678 /* TrustContract.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9A74B71F2EF705F6009D7678 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+		9A74B7202EF705F6009D7678 /* Materials */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Materials;
+			sourceTree = "<group>";
+		};
+		9A74B7212EF705F6009D7678 /* Typography */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Typography;
+			sourceTree = "<group>";
+		};
+		9A74B7222EF705F6009D7678 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B71F2EF705F6009D7678 /* Icons */,
+				9A74B7202EF705F6009D7678 /* Materials */,
+				9A74B7212EF705F6009D7678 /* Typography */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		9A74B7242EF705F6009D7678 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B7232EF705F6009D7678 /* RC_AUDIT_DEMO_RUNBOOK.md */,
+			);
+			path = Docs;
+			sourceTree = "<group>";
+		};
+		9A74B7292EF705F6009D7678 /* Inspector */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B7252EF705F6009D7678 /* InspectorCopy.swift */,
+				9A74B7262EF705F6009D7678 /* InspectorModel.swift */,
+				9A74B7272EF705F6009D7678 /* InspectorPanel.swift */,
+				9A74B7282EF705F6009D7678 /* InspectorRules.swift */,
+			);
+			path = Inspector;
+			sourceTree = "<group>";
+		};
+		9A74B72E2EF705F6009D7678 /* Interaction */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B72A2EF705F6009D7678 /* InteractionContract.swift */,
+				9A74B72B2EF705F6009D7678 /* LayerToggleOnly.swift */,
+				9A74B72C2EF705F6009D7678 /* ResetViewOnly.swift */,
+				9A74B72D2EF705F6009D7678 /* SelectionOnly.swift */,
+			);
+			path = Interaction;
+			sourceTree = "<group>";
+		};
+		9A74B7342EF705F6009D7678 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B72F2EF705F6009D7678 /* AssumptionLayer.swift */,
+				9A74B7302EF705F6009D7678 /* ConstraintLayer.swift */,
+				9A74B7312EF705F6009D7678 /* LayerProtocol.swift */,
+				9A74B7322EF705F6009D7678 /* StructureLayer.swift */,
+				9A74B7332EF705F6009D7678 /* UncertaintyLayer.swift */,
+			);
+			path = Layers;
+			sourceTree = "<group>";
+		};
+		9A74B7392EF705F6009D7678 /* LOCKED */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B7352EF705F6009D7678 /* CORE_LOCK.md */,
+				9A74B7362EF705F6009D7678 /* INTERACTION_LOCK.md */,
+				9A74B7372EF705F6009D7678 /* LOCKED_V2B_RC_AUDIT.md */,
+				9A74B7382EF705F6009D7678 /* SAFETY_LOCK.md */,
+			);
+			path = LOCKED;
+			sourceTree = "<group>";
+		};
+		9A74B7402EF705F6009D7678 /* RC */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B73A2EF705F6009D7678 /* RCAuditCard.swift */,
+				9A74B73B2EF705F6009D7678 /* RCAuditCompare.swift */,
+				9A74B73C2EF705F6009D7678 /* RCAuditModel.swift */,
+				9A74B73D2EF705F6009D7678 /* RCAuditView.swift */,
+				9A74B73E2EF705F6009D7678 /* RCMode.swift */,
+				9A74B73F2EF705F6009D7678 /* RCModePicker.swift */,
+			);
+			path = RC;
+			sourceTree = "<group>";
+		};
+		9A74B7482EF705F6009D7678 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B7412EF705F6009D7678 /* CameraRig.swift */,
+				9A74B7422EF705F6009D7678 /* ConstraintRoomScene.swift */,
+				9A74B7432EF705F6009D7678 /* PresetBuilder.swift */,
+				9A74B7442EF705F6009D7678 /* PresetPicker.swift */,
+				9A74B7452EF705F6009D7678 /* SceneConfig.swift */,
+				9A74B7462EF705F6009D7678 /* SceneLimits.swift */,
+				9A74B7472EF705F6009D7678 /* ScenePreset.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		9A74B74E2EF705F6009D7678 /* Trust */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B7492EF705F6009D7678 /* AboutModal.swift */,
+				9A74B74A2EF705F6009D7678 /* AutonomyCeiling.swift */,
+				9A74B74B2EF705F6009D7678 /* SafetyLanguage.swift */,
+				9A74B74C2EF705F6009D7678 /* TrustFooter.swift */,
+				9A74B74D2EF705F6009D7678 /* TrustOverlay.swift */,
+			);
+			path = Trust;
+			sourceTree = "<group>";
+		};
+		9A74B74F2EF705F6009D7678 /* ConstraintRoom */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B71E2EF705F6009D7678 /* App */,
+				9A74B7222EF705F6009D7678 /* Assets */,
+				9A74B7242EF705F6009D7678 /* Docs */,
+				9A74B7292EF705F6009D7678 /* Inspector */,
+				9A74B72E2EF705F6009D7678 /* Interaction */,
+				9A74B7342EF705F6009D7678 /* Layers */,
+				9A74B7392EF705F6009D7678 /* LOCKED */,
+				9A74B7402EF705F6009D7678 /* RC */,
+				9A74B7482EF705F6009D7678 /* Scene */,
+				9A74B74E2EF705F6009D7678 /* Trust */,
+			);
+			path = ConstraintRoom;
+			sourceTree = "<group>";
+		};
+		9A74B8022EF70601009D7678 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B7FE2EF70601009D7678 /* AppState.swift */,
+				9A74B7FF2EF70601009D7678 /* Permissions.swift */,
+				9A74B8002EF70601009D7678 /* TradeoffRoomApp.swift */,
+				9A74B8012EF70601009D7678 /* TrustContract.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9A74B8032EF70601009D7678 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+		9A74B8042EF70601009D7678 /* Materials */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Materials;
+			sourceTree = "<group>";
+		};
+		9A74B8052EF70601009D7678 /* Typography */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Typography;
+			sourceTree = "<group>";
+		};
+		9A74B8062EF70601009D7678 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B8032EF70601009D7678 /* Icons */,
+				9A74B8042EF70601009D7678 /* Materials */,
+				9A74B8052EF70601009D7678 /* Typography */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		9A74B8092EF70601009D7678 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B8072EF70601009D7678 /* DEMO_RUNBOOK.md */,
+				9A74B8082EF70601009D7678 /* ROOM_INTENT.md */,
+			);
+			path = Docs;
+			sourceTree = "<group>";
+		};
+		9A74B80E2EF70601009D7678 /* Inspector */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B80A2EF70601009D7678 /* InspectorCopy.swift */,
+				9A74B80B2EF70601009D7678 /* InspectorModel.swift */,
+				9A74B80C2EF70601009D7678 /* InspectorPanel.swift */,
+				9A74B80D2EF70601009D7678 /* InspectorRules.swift */,
+			);
+			path = Inspector;
+			sourceTree = "<group>";
+		};
+		9A74B8132EF70601009D7678 /* Interaction */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B80F2EF70601009D7678 /* InteractionContract.swift */,
+				9A74B8102EF70601009D7678 /* LayerToggleOnly.swift */,
+				9A74B8112EF70601009D7678 /* ResetViewOnly.swift */,
+				9A74B8122EF70601009D7678 /* SelectionOnly.swift */,
+			);
+			path = Interaction;
+			sourceTree = "<group>";
+		};
+		9A74B8222EF70601009D7678 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B8142EF70601009D7678 /* ConflictsLayer.swift */,
+				9A74B8152EF70601009D7678 /* ConstraintLayer.swift */,
+				9A74B8162EF70601009D7678 /* ConstraintsLayer.swift */,
+				9A74B8172EF70601009D7678 /* DisallowedLinkLayer.swift */,
+				9A74B8182EF70601009D7678 /* FeasibleRegionLayer.swift */,
+				9A74B8192EF70601009D7678 /* LayerProtocol.swift */,
+				9A74B81A2EF70601009D7678 /* LinkLayer.swift */,
+				9A74B81B2EF70601009D7678 /* ObjectivesLayer.swift */,
+				9A74B81C2EF70601009D7678 /* StructureLayer.swift */,
+				9A74B81D2EF70601009D7678 /* TradeoffFrontLayer.swift */,
+				9A74B81E2EF70601009D7678 /* TradeoffLayer.swift */,
+				9A74B81F2EF70601009D7678 /* TradeoffsLayer.swift */,
+				9A74B8202EF70601009D7678 /* UncertaintyLayer.swift */,
+				9A74B8212EF70601009D7678 /* UnsupportedLayer.swift */,
+			);
+			path = Layers;
+			sourceTree = "<group>";
+		};
+		9A74B8272EF70601009D7678 /* LOCKED */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B8232EF70601009D7678 /* CORE_LOCK.md */,
+				9A74B8242EF70601009D7678 /* INTERACTION_LOCK.md */,
+				9A74B8252EF70601009D7678 /* SAFETY_LOCK.md */,
+				9A74B8262EF70601009D7678 /* V1_LOCK.md */,
+			);
+			path = LOCKED;
+			sourceTree = "<group>";
+		};
+		9A74B8292EF70601009D7678 /* Pack */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B8282EF70601009D7678 /* PackContext.swift */,
+			);
+			path = Pack;
+			sourceTree = "<group>";
+		};
+		9A74B82A2EF70601009D7678 /* RC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RC;
+			sourceTree = "<group>";
+		};
+		9A74B8342EF70601009D7678 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B82B2EF70601009D7678 /* CameraRig.swift */,
+				9A74B82C2EF70601009D7678 /* PresetBuilder.swift */,
+				9A74B82D2EF70601009D7678 /* PresetPicker.swift */,
+				9A74B82E2EF70601009D7678 /* SceneConfig.swift */,
+				9A74B82F2EF70601009D7678 /* SceneLimits.swift */,
+				9A74B8302EF70601009D7678 /* ScenePreset.swift */,
+				9A74B8312EF70601009D7678 /* TradeoffPreset.swift */,
+				9A74B8322EF70601009D7678 /* TradeoffPresets.swift */,
+				9A74B8332EF70601009D7678 /* TradeoffRoomScene.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		9A74B83A2EF70601009D7678 /* Trust */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B8352EF70601009D7678 /* AboutModal.swift */,
+				9A74B8362EF70601009D7678 /* AutonomyCeiling.swift */,
+				9A74B8372EF70601009D7678 /* SafetyLanguage.swift */,
+				9A74B8382EF70601009D7678 /* TrustFooter.swift */,
+				9A74B8392EF70601009D7678 /* TrustOverlay.swift */,
+			);
+			path = Trust;
+			sourceTree = "<group>";
+		};
+		9A74B83B2EF70601009D7678 /* TradeoffRoom */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B8022EF70601009D7678 /* App */,
+				9A74B8062EF70601009D7678 /* Assets */,
+				9A74B8092EF70601009D7678 /* Docs */,
+				9A74B80E2EF70601009D7678 /* Inspector */,
+				9A74B8132EF70601009D7678 /* Interaction */,
+				9A74B8222EF70601009D7678 /* Layers */,
+				9A74B8272EF70601009D7678 /* LOCKED */,
+				9A74B8292EF70601009D7678 /* Pack */,
+				9A74B82A2EF70601009D7678 /* RC */,
+				9A74B8342EF70601009D7678 /* Scene */,
+				9A74B83A2EF70601009D7678 /* Trust */,
+			);
+			path = TradeoffRoom;
+			sourceTree = "<group>";
+		};
+		9A74B8772EF70892009D7678 /* OmegaGallery */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B8732EF70892009D7678 /* Assets.xcassets */,
+				9A74B8742EF70892009D7678 /* ContentView.swift */,
+				9A74B8752EF70892009D7678 /* Info.plist */,
+				9A74B8762EF70892009D7678 /* OmegaGalleryApp.swift */,
+			);
+			path = OmegaGallery;
+			sourceTree = "<group>";
+		};
+		9A74B8792EF70892009D7678 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B8782EF70892009D7678 /* RealityKitContent */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		9A74B87B2EF70892009D7678 /* OmegaGallery */ = {
+			isa = PBXGroup;
+			children = (
+				9A74B8772EF70892009D7678 /* OmegaGallery */,
+				9A74B8792EF70892009D7678 /* Packages */,
+				9A74B87A2EF70892009D7678 /* OmegaGallery.xcodeproj */,
+			);
+			path = OmegaGallery;
+			sourceTree = "<group>";
+		};
+		9A74B87C2EF70892009D7678 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9A74B6522EF705C4009D7678 /* OmegaVision */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A74B6622EF705C5009D7678 /* Build configuration list for PBXNativeTarget "OmegaVision" */;
+			buildPhases = (
+				9A74B64F2EF705C4009D7678 /* Sources */,
+				9A74B6512EF705C4009D7678 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				9A74B6552EF705C4009D7678 /* OmegaVision */,
+			);
+			name = OmegaVision;
+			productName = OmegaVision;
+			productReference = 9A74B6532EF705C4009D7678 /* OmegaVision.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9A74B64B2EF705C4009D7678 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2620;
+				TargetAttributes = {
+					9A74B6522EF705C4009D7678 = {
+						CreatedOnToolsVersion = 26.2;
+					};
+				};
+			};
+			buildConfigurationList = 9A74B64E2EF705C4009D7678 /* Build configuration list for PBXProject "OmegaVision" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9A74B64A2EF705C4009D7678;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 9A74B6542EF705C4009D7678 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9A74B87C2EF70892009D7678 /* Products */;
+					ProjectRef = 9A74B87A2EF70892009D7678 /* OmegaGallery.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				9A74B6522EF705C4009D7678 /* OmegaVision */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9A74B6512EF705C4009D7678 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A74B8802EF70892009D7678 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9A74B64F2EF705C4009D7678 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07A619D01DDECFC54BF2B3AF /* GalleryState.swift in Sources */,
+				76EA0E4BC5A6EC16F0D04758 /* GalleryRouter.swift in Sources */,
+				4956BE3CB467682DEF1392E6 /* ArtifactVault.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		9A74B6632EF705C5009D7678 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					"AssumptionRoom/**",
+					"AssuranceRoom/**",
+					"CausalRoom/**",
+					"ConstraintRoom/**",
+					"TradeoffRoom/**",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.omega.OmegaVision;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 7;
+			};
+			name = Debug;
+		};
+		9A74B6642EF705C5009D7678 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					"AssumptionRoom/**",
+					"AssuranceRoom/**",
+					"CausalRoom/**",
+					"ConstraintRoom/**",
+					"TradeoffRoom/**",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.omega.OmegaVision;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 7;
+			};
+			name = Release;
+		};
+		9A74B6652EF705C5009D7678 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = xros;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				XROS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Debug;
+		};
+		9A74B6662EF705C5009D7678 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = xros;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+				XROS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9A74B64E2EF705C4009D7678 /* Build configuration list for PBXProject "OmegaVision" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A74B6652EF705C5009D7678 /* Debug */,
+				9A74B6662EF705C5009D7678 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A74B6622EF705C5009D7678 /* Build configuration list for PBXNativeTarget "OmegaVision" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A74B6632EF705C5009D7678 /* Debug */,
+				9A74B6642EF705C5009D7678 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9A74B64B2EF705C4009D7678 /* Project object */;
+}

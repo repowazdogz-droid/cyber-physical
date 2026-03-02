@@ -1,0 +1,1493 @@
+{
+  "records": {
+    "exp_01_slip_steel_dry_4b0acbca": {
+      "case_id": "exp_01_slip_steel_dry",
+      "run_id": "4b0acbca",
+      "timestamp": "2026-02-05T13:09:46.452310",
+      "spine_risks": [
+        {
+          "mode": "excessive_force_damage",
+          "severity": "medium",
+          "confidence": 0.4,
+          "rpn": 125
+        },
+        {
+          "mode": "slip_under_load",
+          "severity": "high",
+          "confidence": 0.4,
+          "rpn": 70
+        }
+      ],
+      "forge_hypotheses": [
+        {
+          "id": "h001",
+          "text": "Failure elimination: What mechanism would eliminate slip failures entirely? Gecko-inspired directional adhesion or shape-locking?",
+          "confidence": 0.7,
+          "category": "failure_elimination"
+        }
+      ],
+      "experiment": {
+        "name": "Slip test: steel, 2.0N",
+        "method": "sim",
+        "prediction": "Slip occurs if tangential force > 1.20N",
+        "predicted_confidence": 0.3
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 1.2,
+        "notes": "Simulation result: {'slipped': False, 'slip_force_n': 1.2, 'max_grip_force_n': 1.2, 'tangential_force_n': 0.84, 'effective_friction': 0.6}"
+      },
+      "calibration_error": 0.3,
+      "constraints_updated": [],
+      "experiment_label": null,
+      "info_gain_score": 0
+    },
+    "exp_02_slip_wet_tissue_8fa5ed44": {
+      "case_id": "exp_02_slip_wet_tissue",
+      "run_id": "8fa5ed44",
+      "timestamp": "2026-02-05T13:09:46.458631",
+      "spine_risks": [
+        {
+          "mode": "excessive_force_damage",
+          "severity": "medium",
+          "confidence": 0.4,
+          "rpn": 125
+        },
+        {
+          "mode": "slip_under_load",
+          "severity": "high",
+          "confidence": 0.4,
+          "rpn": 70
+        }
+      ],
+      "forge_hypotheses": [
+        {
+          "id": "h001",
+          "text": "Failure elimination: What mechanism would eliminate slip failures entirely? Gecko-inspired directional adhesion or shape-locking?",
+          "confidence": 0.7,
+          "category": "failure_elimination"
+        }
+      ],
+      "experiment": {
+        "name": "Slip test: tissue, 1.0N",
+        "method": "sim",
+        "prediction": "Slip occurs if tangential force > 0.24N",
+        "predicted_confidence": 0.3
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.24,
+        "notes": "Simulation result: {'slipped': False, 'slip_force_n': 0.24, 'max_grip_force_n': 0.24, 'tangential_force_n': 0.16799999999999998, 'effective_friction': 0.24}"
+      },
+      "calibration_error": 0.3,
+      "constraints_updated": [],
+      "experiment_label": null,
+      "info_gain_score": 0
+    },
+    "exp_03_slip_silicone_glass_7d14ef22": {
+      "case_id": "exp_03_slip_silicone_glass",
+      "run_id": "7d14ef22",
+      "timestamp": "2026-02-05T13:09:46.464218",
+      "spine_risks": [
+        {
+          "mode": "excessive_force_damage",
+          "severity": "medium",
+          "confidence": 0.4,
+          "rpn": 125
+        },
+        {
+          "mode": "slip_under_load",
+          "severity": "high",
+          "confidence": 0.4,
+          "rpn": 70
+        }
+      ],
+      "forge_hypotheses": [
+        {
+          "id": "h001",
+          "text": "Failure elimination: What mechanism would eliminate slip failures entirely? Gecko-inspired directional adhesion or shape-locking?",
+          "confidence": 0.7,
+          "category": "failure_elimination"
+        }
+      ],
+      "experiment": {
+        "name": "Slip test: glass, 2.0N",
+        "method": "sim",
+        "prediction": "Slip occurs if tangential force > 0.70N",
+        "predicted_confidence": 0.3
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.7,
+        "notes": "Simulation result: {'slipped': False, 'slip_force_n': 0.7, 'max_grip_force_n': 0.7, 'tangential_force_n': 0.48999999999999994, 'effective_friction': 0.35}"
+      },
+      "calibration_error": 0.3,
+      "constraints_updated": [],
+      "experiment_label": null,
+      "info_gain_score": 0
+    },
+    "exp_04_slip_textured_26b6386d": {
+      "case_id": "exp_04_slip_textured",
+      "run_id": "26b6386d",
+      "timestamp": "2026-02-05T13:09:46.470244",
+      "spine_risks": [
+        {
+          "mode": "excessive_force_damage",
+          "severity": "medium",
+          "confidence": 0.4,
+          "rpn": 125
+        },
+        {
+          "mode": "slip_under_load",
+          "severity": "high",
+          "confidence": 0.4,
+          "rpn": 70
+        }
+      ],
+      "forge_hypotheses": [
+        {
+          "id": "h001",
+          "text": "Failure elimination: What mechanism would eliminate slip failures entirely? Gecko-inspired directional adhesion or shape-locking?",
+          "confidence": 0.7,
+          "category": "failure_elimination"
+        }
+      ],
+      "experiment": {
+        "name": "Slip test: textured, 1.5N",
+        "method": "sim",
+        "prediction": "Slip occurs if tangential force > 0.90N",
+        "predicted_confidence": 0.3
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.8999999999999999,
+        "notes": "Simulation result: {'slipped': False, 'slip_force_n': 0.8999999999999999, 'max_grip_force_n': 0.8999999999999999, 'tangential_force_n': 0.6299999999999999, 'effective_friction': 0.6}"
+      },
+      "calibration_error": 0.3,
+      "constraints_updated": [],
+      "experiment_label": null,
+      "info_gain_score": 0
+    },
+    "exp_05_slip_high_speed_89cbfa63": {
+      "case_id": "exp_05_slip_high_speed",
+      "run_id": "89cbfa63",
+      "timestamp": "2026-02-05T13:09:46.476319",
+      "spine_risks": [
+        {
+          "mode": "excessive_force_damage",
+          "severity": "medium",
+          "confidence": 0.4,
+          "rpn": 125
+        },
+        {
+          "mode": "slip_under_load",
+          "severity": "high",
+          "confidence": 0.4,
+          "rpn": 70
+        }
+      ],
+      "forge_hypotheses": [
+        {
+          "id": "h001",
+          "text": "Failure elimination: What mechanism would eliminate slip failures entirely? Gecko-inspired directional adhesion or shape-locking?",
+          "confidence": 0.7,
+          "category": "failure_elimination"
+        },
+        {
+          "id": "h002",
+          "text": "Uncertainty collapse: What measurement would collapse friction uncertainty? Slip threshold test or coefficient measurement?",
+          "confidence": 0.85,
+          "category": "uncertainty_collapse"
+        }
+      ],
+      "experiment": {
+        "name": "Slip test: steel, 2.0N",
+        "method": "sim",
+        "prediction": "Slip occurs if tangential force > 1.20N",
+        "predicted_confidence": 0.3
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 1.2,
+        "notes": "Simulation result: {'slipped': False, 'slip_force_n': 1.2, 'max_grip_force_n': 1.2, 'tangential_force_n': 0.84, 'effective_friction': 0.6}"
+      },
+      "calibration_error": 0.3,
+      "constraints_updated": [],
+      "experiment_label": null,
+      "info_gain_score": 0
+    },
+    "exp_06_force_soft_tissue_eb8a33d9": {
+      "case_id": "exp_06_force_soft_tissue",
+      "run_id": "eb8a33d9",
+      "timestamp": "2026-02-05T13:09:46.482483",
+      "spine_risks": [
+        {
+          "mode": "excessive_force_damage",
+          "severity": "medium",
+          "confidence": 0.4,
+          "rpn": 125
+        }
+      ],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Force test: 0.5N on soft gripper",
+        "method": "sim",
+        "prediction": "Deformation: 0.50mm, damage: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.5,
+        "notes": "Simulation result: {'max_deformation_mm': 0.5, 'tissue_damage': False, 'force_profile': {'time_s': [0, 0.1, 0.2, 0.3], 'force_n': [0, 0.25, 0.4, 0.5]}, 'damage_threshold_mm': 1.5}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": null,
+      "info_gain_score": 0
+    },
+    "exp_07_force_cartilage_a65cc8de": {
+      "case_id": "exp_07_force_cartilage",
+      "run_id": "a65cc8de",
+      "timestamp": "2026-02-05T13:09:46.488857",
+      "spine_risks": [
+        {
+          "mode": "excessive_force_damage",
+          "severity": "medium",
+          "confidence": 0.4,
+          "rpn": 125
+        }
+      ],
+      "forge_hypotheses": [
+        {
+          "id": "h001",
+          "text": "Uncertainty collapse: What measurement would collapse tissue compliance uncertainty? Force-displacement curve or indentation modulus?",
+          "confidence": 0.9,
+          "category": "uncertainty_collapse"
+        }
+      ],
+      "experiment": {
+        "name": "Force test: 2.0N on medium gripper",
+        "method": "sim",
+        "prediction": "Deformation: 0.40mm, damage: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.4,
+        "notes": "Simulation result: {'max_deformation_mm': 0.4, 'tissue_damage': False, 'force_profile': {'time_s': [0, 0.1, 0.2, 0.3], 'force_n': [0, 1.0, 1.6, 2.0]}, 'damage_threshold_mm': 1.5}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": null,
+      "info_gain_score": 0
+    },
+    "exp_08_force_ramp_a0bb15c6": {
+      "case_id": "exp_08_force_ramp",
+      "run_id": "a0bb15c6",
+      "timestamp": "2026-02-05T13:09:46.494897",
+      "spine_risks": [
+        {
+          "mode": "excessive_force_damage",
+          "severity": "medium",
+          "confidence": 0.4,
+          "rpn": 125
+        }
+      ],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Force test: 3.0N on medium gripper",
+        "method": "sim",
+        "prediction": "Deformation: 1.50mm, damage: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 1.5,
+        "notes": "Simulation result: {'max_deformation_mm': 1.5, 'tissue_damage': False, 'force_profile': {'time_s': [0, 0.1, 0.2, 0.3], 'force_n': [0, 1.5, 2.4000000000000004, 3.0]}, 'damage_threshold_mm': 1.5}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": null,
+      "info_gain_score": 0
+    },
+    "exp_09_force_cyclic_6b9f9668": {
+      "case_id": "exp_09_force_cyclic",
+      "run_id": "6b9f9668",
+      "timestamp": "2026-02-05T13:09:46.500868",
+      "spine_risks": [
+        {
+          "mode": "excessive_force_damage",
+          "severity": "medium",
+          "confidence": 0.4,
+          "rpn": 125
+        }
+      ],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Force test: 1.0N on soft gripper",
+        "method": "sim",
+        "prediction": "Deformation: 0.75mm, damage: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.75,
+        "notes": "Simulation result: {'max_deformation_mm': 0.75, 'tissue_damage': False, 'force_profile': {'time_s': [0, 0.1, 0.2, 0.3], 'force_n': [0, 0.5, 0.8, 1.0]}, 'damage_threshold_mm': 1.5}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": null,
+      "info_gain_score": 0
+    },
+    "exp_10_force_impulse_0305546e": {
+      "case_id": "exp_10_force_impulse",
+      "run_id": "0305546e",
+      "timestamp": "2026-02-05T13:09:46.507201",
+      "spine_risks": [
+        {
+          "mode": "excessive_force_damage",
+          "severity": "medium",
+          "confidence": 0.4,
+          "rpn": 125
+        }
+      ],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Force test: 5.0N on rigid gripper",
+        "method": "sim",
+        "prediction": "Deformation: 1.25mm, damage: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 1.25,
+        "notes": "Simulation result: {'max_deformation_mm': 1.25, 'tissue_damage': False, 'force_profile': {'time_s': [0, 0.1, 0.2, 0.3], 'force_n': [0, 2.5, 4.0, 5.0]}, 'damage_threshold_mm': 1.5}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": null,
+      "info_gain_score": 0
+    },
+    "exp_11_thermal_continuous_fe001a2d": {
+      "case_id": "exp_11_thermal_continuous",
+      "run_id": "fe001a2d",
+      "timestamp": "2026-02-05T13:09:46.515163",
+      "spine_risks": [],
+      "forge_hypotheses": [
+        {
+          "id": "h001",
+          "text": "Uncertainty collapse: What measurement would collapse thermal uncertainty? Temperature time-series or thermal imaging?",
+          "confidence": 0.8,
+          "category": "uncertainty_collapse"
+        }
+      ],
+      "experiment": {
+        "name": "Thermal test: 12.0W, 100% duty, 1800.0s",
+        "method": "sim",
+        "prediction": "Peak temp: 49.0\u00b0C, overheated: False",
+        "predicted_confidence": 0.1
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 49.0,
+        "notes": "Simulation result: {'peak_temp_c': 49.0, 'steady_state_temp_c': 49.0, 'overheated': False, 'overheat_threshold_c': 65.0, 'effective_power_w': 12.0}"
+      },
+      "calibration_error": 0.1,
+      "constraints_updated": [],
+      "experiment_label": null,
+      "info_gain_score": 0
+    },
+    "exp_12_thermal_duty_cycle_e3d1eadb": {
+      "case_id": "exp_12_thermal_duty_cycle",
+      "run_id": "e3d1eadb",
+      "timestamp": "2026-02-05T13:09:46.522838",
+      "spine_risks": [],
+      "forge_hypotheses": [
+        {
+          "id": "h001",
+          "text": "Uncertainty collapse: What measurement would collapse thermal uncertainty? Temperature time-series or thermal imaging?",
+          "confidence": 0.8,
+          "category": "uncertainty_collapse"
+        }
+      ],
+      "experiment": {
+        "name": "Thermal test: 15.0W, 80% duty, 3600.0s",
+        "method": "sim",
+        "prediction": "Peak temp: 41.8\u00b0C, overheated: False",
+        "predicted_confidence": 0.1
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 41.8,
+        "notes": "Simulation result: {'peak_temp_c': 41.8, 'steady_state_temp_c': 41.8, 'overheated': False, 'overheat_threshold_c': 65.0, 'effective_power_w': 8.399999999999999}"
+      },
+      "calibration_error": 0.1,
+      "constraints_updated": [],
+      "experiment_label": null,
+      "info_gain_score": 0
+    },
+    "exp_13_thermal_burst_8719b223": {
+      "case_id": "exp_13_thermal_burst",
+      "run_id": "8719b223",
+      "timestamp": "2026-02-05T13:09:46.529259",
+      "spine_risks": [],
+      "forge_hypotheses": [
+        {
+          "id": "h001",
+          "text": "Uncertainty collapse: What measurement would collapse thermal uncertainty? Temperature time-series or thermal imaging?",
+          "confidence": 0.8,
+          "category": "uncertainty_collapse"
+        }
+      ],
+      "experiment": {
+        "name": "Thermal test: 20.0W, 50% duty, 1800.0s",
+        "method": "sim",
+        "prediction": "Peak temp: 39.0\u00b0C, overheated: False",
+        "predicted_confidence": 0.1
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 39.0,
+        "notes": "Simulation result: {'peak_temp_c': 39.0, 'steady_state_temp_c': 39.0, 'overheated': False, 'overheat_threshold_c': 65.0, 'effective_power_w': 7.0}"
+      },
+      "calibration_error": 0.1,
+      "constraints_updated": [],
+      "experiment_label": null,
+      "info_gain_score": 0
+    },
+    "exp_14_thermal_body_temp_f61d716c": {
+      "case_id": "exp_14_thermal_body_temp",
+      "run_id": "f61d716c",
+      "timestamp": "2026-02-05T13:09:46.535726",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Thermal test: 10.0W, 90% duty, 1800.0s",
+        "method": "sim",
+        "prediction": "Peak temp: 37.6\u00b0C, overheated: False",
+        "predicted_confidence": 0.1
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 37.6,
+        "notes": "Simulation result: {'peak_temp_c': 37.6, 'steady_state_temp_c': 37.6, 'overheated': False, 'overheat_threshold_c': 65.0, 'effective_power_w': 6.3}"
+      },
+      "calibration_error": 0.1,
+      "constraints_updated": [],
+      "experiment_label": null,
+      "info_gain_score": 0
+    },
+    "exp_15_thermal_cooling_failure_2e2864f5": {
+      "case_id": "exp_15_thermal_cooling_failure",
+      "run_id": "2e2864f5",
+      "timestamp": "2026-02-05T13:09:46.543875",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Thermal test: 15.0W, 100% duty, 1800.0s",
+        "method": "sim",
+        "prediction": "Peak temp: 34.0\u00b0C, overheated: False",
+        "predicted_confidence": 0.1
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 34.0,
+        "notes": "Simulation result: {'peak_temp_c': 34.0, 'steady_state_temp_c': 34.0, 'overheated': False, 'overheat_threshold_c': 65.0, 'effective_power_w': 4.500000000000001}"
+      },
+      "calibration_error": 0.1,
+      "constraints_updated": [],
+      "experiment_label": null,
+      "info_gain_score": 0
+    },
+    "exp_16_fatigue_1000_cycles_4405fcc5": {
+      "case_id": "exp_16_fatigue_1000_cycles",
+      "run_id": "4405fcc5",
+      "timestamp": "2026-02-05T13:09:46.550444",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Fatigue test: 1000.0 cycles, 5.0N load",
+        "method": "sim",
+        "prediction": "Degradation: 0.0%, failed: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.0,
+        "notes": "Simulation result: {'cycles_to_failure': 1000000000.0, 'degradation_pct': 0.0, 'failed': False}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": null,
+      "info_gain_score": 0
+    },
+    "exp_17_fatigue_5000_overload_0b7ef456": {
+      "case_id": "exp_17_fatigue_5000_overload",
+      "run_id": "0b7ef456",
+      "timestamp": "2026-02-05T13:09:46.556984",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Fatigue test: 5000.0 cycles, 8.0N load",
+        "method": "sim",
+        "prediction": "Degradation: 0.0%, failed: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.0,
+        "notes": "Simulation result: {'cycles_to_failure': 1000000000.0, 'degradation_pct': 0.0, 'failed': False}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": null,
+      "info_gain_score": 0
+    },
+    "exp_18_fatigue_overload_spikes_8189b3c6": {
+      "case_id": "exp_18_fatigue_overload_spikes",
+      "run_id": "8189b3c6",
+      "timestamp": "2026-02-05T13:09:46.564385",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Fatigue test: 100.0 cycles, 5.0N load",
+        "method": "sim",
+        "prediction": "Degradation: 0.0%, failed: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.0,
+        "notes": "Simulation result: {'cycles_to_failure': 1000000000.0, 'degradation_pct': 0.0, 'failed': False}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": null,
+      "info_gain_score": 0
+    },
+    "exp_19_fatigue_alternating_298a6c15": {
+      "case_id": "exp_19_fatigue_alternating",
+      "run_id": "298a6c15",
+      "timestamp": "2026-02-05T13:09:46.571985",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Fatigue test: 500.0 cycles, 6.0N load",
+        "method": "sim",
+        "prediction": "Degradation: 0.0%, failed: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.0,
+        "notes": "Simulation result: {'cycles_to_failure': 1000000000.0, 'degradation_pct': 0.0, 'failed': False}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": null,
+      "info_gain_score": 0
+    },
+    "exp_20_fatigue_creep_ce0f6ff7": {
+      "case_id": "exp_20_fatigue_creep",
+      "run_id": "ce0f6ff7",
+      "timestamp": "2026-02-05T13:09:46.579802",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Fatigue test: 1.0 cycles, 7.0N load",
+        "method": "sim",
+        "prediction": "Degradation: 0.0%, failed: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.0002743999999999999,
+        "notes": "Simulation result: {'cycles_to_failure': 364431.4868804666, 'degradation_pct': 0.0002743999999999999, 'failed': False}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": null,
+      "info_gain_score": 0
+    },
+    "exp_E021_slip_friction_01_ceb5e762": {
+      "case_id": "exp_E021_slip_friction_01",
+      "run_id": "ceb5e762",
+      "timestamp": "2026-02-05T13:10:10.080786",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Slip test: tissue, 1.0N",
+        "method": "sim",
+        "prediction": "Slip occurs if tangential force > 0.06N",
+        "predicted_confidence": 0.3
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.06,
+        "notes": "Simulation result: {'slipped': False, 'slip_force_n': 0.06, 'max_grip_force_n': 0.06, 'tangential_force_n': 0.041999999999999996, 'effective_friction': 0.06}"
+      },
+      "calibration_error": 0.3,
+      "constraints_updated": [],
+      "experiment_label": "E021",
+      "info_gain_score": 0
+    },
+    "exp_E022_slip_friction_02_846c39ba": {
+      "case_id": "exp_E022_slip_friction_02",
+      "run_id": "846c39ba",
+      "timestamp": "2026-02-05T13:10:10.083729",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Slip test: tissue, 1.0N",
+        "method": "sim",
+        "prediction": "Slip occurs if tangential force > 0.12N",
+        "predicted_confidence": 0.3
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.12,
+        "notes": "Simulation result: {'slipped': False, 'slip_force_n': 0.12, 'max_grip_force_n': 0.12, 'tangential_force_n': 0.08399999999999999, 'effective_friction': 0.12}"
+      },
+      "calibration_error": 0.3,
+      "constraints_updated": [],
+      "experiment_label": "E022",
+      "info_gain_score": 0
+    },
+    "exp_E023_slip_friction_03_0bcc7c16": {
+      "case_id": "exp_E023_slip_friction_03",
+      "run_id": "0bcc7c16",
+      "timestamp": "2026-02-05T13:10:10.086169",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Slip test: tissue, 1.0N",
+        "method": "sim",
+        "prediction": "Slip occurs if tangential force > 0.18N",
+        "predicted_confidence": 0.3
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.18,
+        "notes": "Simulation result: {'slipped': False, 'slip_force_n': 0.18, 'max_grip_force_n': 0.18, 'tangential_force_n': 0.126, 'effective_friction': 0.18}"
+      },
+      "calibration_error": 0.3,
+      "constraints_updated": [],
+      "experiment_label": "E023",
+      "info_gain_score": 0
+    },
+    "exp_E024_slip_friction_05_dd971537": {
+      "case_id": "exp_E024_slip_friction_05",
+      "run_id": "dd971537",
+      "timestamp": "2026-02-05T13:10:10.088998",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Slip test: tissue, 1.0N",
+        "method": "sim",
+        "prediction": "Slip occurs if tangential force > 0.30N",
+        "predicted_confidence": 0.3
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.3,
+        "notes": "Simulation result: {'slipped': False, 'slip_force_n': 0.3, 'max_grip_force_n': 0.3, 'tangential_force_n': 0.21, 'effective_friction': 0.3}"
+      },
+      "calibration_error": 0.3,
+      "constraints_updated": [],
+      "experiment_label": "E024",
+      "info_gain_score": 0
+    },
+    "exp_E025_slip_friction_08_9a09f6fa": {
+      "case_id": "exp_E025_slip_friction_08",
+      "run_id": "9a09f6fa",
+      "timestamp": "2026-02-05T13:10:10.091680",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Slip test: tissue, 1.0N",
+        "method": "sim",
+        "prediction": "Slip occurs if tangential force > 0.48N",
+        "predicted_confidence": 0.3
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.48,
+        "notes": "Simulation result: {'slipped': False, 'slip_force_n': 0.48, 'max_grip_force_n': 0.48, 'tangential_force_n': 0.33599999999999997, 'effective_friction': 0.48}"
+      },
+      "calibration_error": 0.3,
+      "constraints_updated": [],
+      "experiment_label": "E025",
+      "info_gain_score": 0
+    },
+    "exp_E026_slip_force_05_7dcfff52": {
+      "case_id": "exp_E026_slip_force_05",
+      "run_id": "7dcfff52",
+      "timestamp": "2026-02-05T13:10:10.094443",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Slip test: silicone, 0.5N",
+        "method": "sim",
+        "prediction": "Slip occurs if tangential force > 0.12N",
+        "predicted_confidence": 0.3
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.12,
+        "notes": "Simulation result: {'slipped': False, 'slip_force_n': 0.12, 'max_grip_force_n': 0.12, 'tangential_force_n': 0.08399999999999999, 'effective_friction': 0.24}"
+      },
+      "calibration_error": 0.3,
+      "constraints_updated": [],
+      "experiment_label": "E026",
+      "info_gain_score": 0
+    },
+    "exp_E027_slip_force_1_215ec797": {
+      "case_id": "exp_E027_slip_force_1",
+      "run_id": "215ec797",
+      "timestamp": "2026-02-05T13:10:10.096874",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Slip test: silicone, 1.0N",
+        "method": "sim",
+        "prediction": "Slip occurs if tangential force > 0.24N",
+        "predicted_confidence": 0.3
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.24,
+        "notes": "Simulation result: {'slipped': False, 'slip_force_n': 0.24, 'max_grip_force_n': 0.24, 'tangential_force_n': 0.16799999999999998, 'effective_friction': 0.24}"
+      },
+      "calibration_error": 0.3,
+      "constraints_updated": [],
+      "experiment_label": "E027",
+      "info_gain_score": 0
+    },
+    "exp_E028_slip_force_15_23e6d403": {
+      "case_id": "exp_E028_slip_force_15",
+      "run_id": "23e6d403",
+      "timestamp": "2026-02-05T13:10:10.099647",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Slip test: silicone, 1.5N",
+        "method": "sim",
+        "prediction": "Slip occurs if tangential force > 0.36N",
+        "predicted_confidence": 0.3
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.36,
+        "notes": "Simulation result: {'slipped': False, 'slip_force_n': 0.36, 'max_grip_force_n': 0.36, 'tangential_force_n': 0.252, 'effective_friction': 0.24}"
+      },
+      "calibration_error": 0.3,
+      "constraints_updated": [],
+      "experiment_label": "E028",
+      "info_gain_score": 0
+    },
+    "exp_E029_slip_force_2_15b76f19": {
+      "case_id": "exp_E029_slip_force_2",
+      "run_id": "15b76f19",
+      "timestamp": "2026-02-05T13:10:10.102762",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Slip test: silicone, 2.0N",
+        "method": "sim",
+        "prediction": "Slip occurs if tangential force > 0.48N",
+        "predicted_confidence": 0.3
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.48,
+        "notes": "Simulation result: {'slipped': False, 'slip_force_n': 0.48, 'max_grip_force_n': 0.48, 'tangential_force_n': 0.33599999999999997, 'effective_friction': 0.24}"
+      },
+      "calibration_error": 0.3,
+      "constraints_updated": [],
+      "experiment_label": "E029",
+      "info_gain_score": 0
+    },
+    "exp_E030_slip_force_3_2db8da23": {
+      "case_id": "exp_E030_slip_force_3",
+      "run_id": "2db8da23",
+      "timestamp": "2026-02-05T13:10:10.105613",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Slip test: silicone, 3.0N",
+        "method": "sim",
+        "prediction": "Slip occurs if tangential force > 0.72N",
+        "predicted_confidence": 0.3
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.72,
+        "notes": "Simulation result: {'slipped': False, 'slip_force_n': 0.72, 'max_grip_force_n': 0.72, 'tangential_force_n': 0.504, 'effective_friction': 0.24}"
+      },
+      "calibration_error": 0.3,
+      "constraints_updated": [],
+      "experiment_label": "E030",
+      "info_gain_score": 0
+    },
+    "exp_E031_force_stiffness_100_cfb8c6de": {
+      "case_id": "exp_E031_force_stiffness_100",
+      "run_id": "cfb8c6de",
+      "timestamp": "2026-02-05T13:10:10.108463",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Force test: 1.0N on medium gripper",
+        "method": "sim",
+        "prediction": "Deformation: 10.00mm, damage: True",
+        "predicted_confidence": 0.8
+      },
+      "outcome": {
+        "occurred": true,
+        "measured_value": 10.0,
+        "notes": "Simulation result: {'max_deformation_mm': 10.0, 'tissue_damage': True, 'force_profile': {'time_s': [0, 0.1, 0.2, 0.3], 'force_n': [0, 0.5, 0.8, 1.0]}, 'damage_threshold_mm': 1.5}"
+      },
+      "calibration_error": 0.19999999999999996,
+      "constraints_updated": [],
+      "experiment_label": "E031",
+      "info_gain_score": 0
+    },
+    "exp_E032_force_stiffness_500_1145b6bc": {
+      "case_id": "exp_E032_force_stiffness_500",
+      "run_id": "1145b6bc",
+      "timestamp": "2026-02-05T13:10:10.111371",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Force test: 1.0N on medium gripper",
+        "method": "sim",
+        "prediction": "Deformation: 2.00mm, damage: True",
+        "predicted_confidence": 0.8
+      },
+      "outcome": {
+        "occurred": true,
+        "measured_value": 2.0,
+        "notes": "Simulation result: {'max_deformation_mm': 2.0, 'tissue_damage': True, 'force_profile': {'time_s': [0, 0.1, 0.2, 0.3], 'force_n': [0, 0.5, 0.8, 1.0]}, 'damage_threshold_mm': 1.5}"
+      },
+      "calibration_error": 0.19999999999999996,
+      "constraints_updated": [],
+      "experiment_label": "E032",
+      "info_gain_score": 0
+    },
+    "exp_E033_force_stiffness_1000_6c510a94": {
+      "case_id": "exp_E033_force_stiffness_1000",
+      "run_id": "6c510a94",
+      "timestamp": "2026-02-05T13:10:10.114050",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Force test: 1.0N on medium gripper",
+        "method": "sim",
+        "prediction": "Deformation: 1.00mm, damage: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 1.0,
+        "notes": "Simulation result: {'max_deformation_mm': 1.0, 'tissue_damage': False, 'force_profile': {'time_s': [0, 0.1, 0.2, 0.3], 'force_n': [0, 0.5, 0.8, 1.0]}, 'damage_threshold_mm': 1.5}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": "E033",
+      "info_gain_score": 0
+    },
+    "exp_E034_force_stiffness_5000_135e44fc": {
+      "case_id": "exp_E034_force_stiffness_5000",
+      "run_id": "135e44fc",
+      "timestamp": "2026-02-05T13:10:10.116996",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Force test: 1.0N on medium gripper",
+        "method": "sim",
+        "prediction": "Deformation: 0.20mm, damage: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.2,
+        "notes": "Simulation result: {'max_deformation_mm': 0.2, 'tissue_damage': False, 'force_profile': {'time_s': [0, 0.1, 0.2, 0.3], 'force_n': [0, 0.5, 0.8, 1.0]}, 'damage_threshold_mm': 1.5}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": "E034",
+      "info_gain_score": 0
+    },
+    "exp_E035_force_stiffness_10000_f1b40c20": {
+      "case_id": "exp_E035_force_stiffness_10000",
+      "run_id": "f1b40c20",
+      "timestamp": "2026-02-05T13:10:10.119840",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Force test: 1.0N on medium gripper",
+        "method": "sim",
+        "prediction": "Deformation: 0.10mm, damage: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.1,
+        "notes": "Simulation result: {'max_deformation_mm': 0.1, 'tissue_damage': False, 'force_profile': {'time_s': [0, 0.1, 0.2, 0.3], 'force_n': [0, 0.5, 0.8, 1.0]}, 'damage_threshold_mm': 1.5}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": "E035",
+      "info_gain_score": 0
+    },
+    "exp_E036_force_mag_01_49c2e82e": {
+      "case_id": "exp_E036_force_mag_01",
+      "run_id": "49c2e82e",
+      "timestamp": "2026-02-05T13:10:10.122687",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Force test: 0.1N on soft gripper",
+        "method": "sim",
+        "prediction": "Deformation: 0.08mm, damage: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.07500000000000001,
+        "notes": "Simulation result: {'max_deformation_mm': 0.07500000000000001, 'tissue_damage': False, 'force_profile': {'time_s': [0, 0.1, 0.2, 0.3], 'force_n': [0, 0.05, 0.08000000000000002, 0.1]}, 'damage_threshold_mm': 1.5}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": "E036",
+      "info_gain_score": 0
+    },
+    "exp_E037_force_mag_05_b26e5fd0": {
+      "case_id": "exp_E037_force_mag_05",
+      "run_id": "b26e5fd0",
+      "timestamp": "2026-02-05T13:10:10.125921",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Force test: 0.5N on soft gripper",
+        "method": "sim",
+        "prediction": "Deformation: 0.38mm, damage: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.375,
+        "notes": "Simulation result: {'max_deformation_mm': 0.375, 'tissue_damage': False, 'force_profile': {'time_s': [0, 0.1, 0.2, 0.3], 'force_n': [0, 0.25, 0.4, 0.5]}, 'damage_threshold_mm': 1.5}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": "E037",
+      "info_gain_score": 0
+    },
+    "exp_E038_force_mag_1_409f9e33": {
+      "case_id": "exp_E038_force_mag_1",
+      "run_id": "409f9e33",
+      "timestamp": "2026-02-05T13:10:10.128978",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Force test: 1.0N on soft gripper",
+        "method": "sim",
+        "prediction": "Deformation: 0.75mm, damage: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.75,
+        "notes": "Simulation result: {'max_deformation_mm': 0.75, 'tissue_damage': False, 'force_profile': {'time_s': [0, 0.1, 0.2, 0.3], 'force_n': [0, 0.5, 0.8, 1.0]}, 'damage_threshold_mm': 1.5}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": "E038",
+      "info_gain_score": 0
+    },
+    "exp_E039_force_mag_2_b789082f": {
+      "case_id": "exp_E039_force_mag_2",
+      "run_id": "b789082f",
+      "timestamp": "2026-02-05T13:10:10.131956",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Force test: 2.0N on soft gripper",
+        "method": "sim",
+        "prediction": "Deformation: 1.50mm, damage: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 1.5,
+        "notes": "Simulation result: {'max_deformation_mm': 1.5, 'tissue_damage': False, 'force_profile': {'time_s': [0, 0.1, 0.2, 0.3], 'force_n': [0, 1.0, 1.6, 2.0]}, 'damage_threshold_mm': 1.5}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": "E039",
+      "info_gain_score": 0
+    },
+    "exp_E040_force_mag_5_db5f1090": {
+      "case_id": "exp_E040_force_mag_5",
+      "run_id": "db5f1090",
+      "timestamp": "2026-02-05T13:10:10.135428",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Force test: 5.0N on soft gripper",
+        "method": "sim",
+        "prediction": "Deformation: 3.75mm, damage: True",
+        "predicted_confidence": 0.8
+      },
+      "outcome": {
+        "occurred": true,
+        "measured_value": 3.75,
+        "notes": "Simulation result: {'max_deformation_mm': 3.75, 'tissue_damage': True, 'force_profile': {'time_s': [0, 0.1, 0.2, 0.3], 'force_n': [0, 2.5, 4.0, 5.0]}, 'damage_threshold_mm': 1.5}"
+      },
+      "calibration_error": 0.19999999999999996,
+      "constraints_updated": [],
+      "experiment_label": "E040",
+      "info_gain_score": 0
+    },
+    "exp_E041_thermal_duty_20_a62f9b24": {
+      "case_id": "exp_E041_thermal_duty_20",
+      "run_id": "a62f9b24",
+      "timestamp": "2026-02-05T13:10:10.138556",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Thermal test: 10.0W, 20% duty, 1800.0s",
+        "method": "sim",
+        "prediction": "Peak temp: 29.0\u00b0C, overheated: False",
+        "predicted_confidence": 0.1
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 29.0,
+        "notes": "Simulation result: {'peak_temp_c': 29.0, 'steady_state_temp_c': 29.0, 'overheated': False, 'overheat_threshold_c': 65.0, 'effective_power_w': 2.0}"
+      },
+      "calibration_error": 0.1,
+      "constraints_updated": [],
+      "experiment_label": "E041",
+      "info_gain_score": 0
+    },
+    "exp_E042_thermal_duty_40_45c343ae": {
+      "case_id": "exp_E042_thermal_duty_40",
+      "run_id": "45c343ae",
+      "timestamp": "2026-02-05T13:10:10.141774",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Thermal test: 10.0W, 40% duty, 1800.0s",
+        "method": "sim",
+        "prediction": "Peak temp: 33.0\u00b0C, overheated: False",
+        "predicted_confidence": 0.1
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 33.0,
+        "notes": "Simulation result: {'peak_temp_c': 33.0, 'steady_state_temp_c': 33.0, 'overheated': False, 'overheat_threshold_c': 65.0, 'effective_power_w': 4.0}"
+      },
+      "calibration_error": 0.1,
+      "constraints_updated": [],
+      "experiment_label": "E042",
+      "info_gain_score": 0
+    },
+    "exp_E043_thermal_duty_60_89ad69ad": {
+      "case_id": "exp_E043_thermal_duty_60",
+      "run_id": "89ad69ad",
+      "timestamp": "2026-02-05T13:10:10.145112",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Thermal test: 10.0W, 60% duty, 1800.0s",
+        "method": "sim",
+        "prediction": "Peak temp: 37.0\u00b0C, overheated: False",
+        "predicted_confidence": 0.1
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 37.0,
+        "notes": "Simulation result: {'peak_temp_c': 37.0, 'steady_state_temp_c': 37.0, 'overheated': False, 'overheat_threshold_c': 65.0, 'effective_power_w': 6.0}"
+      },
+      "calibration_error": 0.1,
+      "constraints_updated": [],
+      "experiment_label": "E043",
+      "info_gain_score": 0
+    },
+    "exp_E044_thermal_duty_80_7bd7e813": {
+      "case_id": "exp_E044_thermal_duty_80",
+      "run_id": "7bd7e813",
+      "timestamp": "2026-02-05T13:10:10.148204",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Thermal test: 10.0W, 80% duty, 1800.0s",
+        "method": "sim",
+        "prediction": "Peak temp: 41.0\u00b0C, overheated: False",
+        "predicted_confidence": 0.1
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 41.0,
+        "notes": "Simulation result: {'peak_temp_c': 41.0, 'steady_state_temp_c': 41.0, 'overheated': False, 'overheat_threshold_c': 65.0, 'effective_power_w': 8.0}"
+      },
+      "calibration_error": 0.1,
+      "constraints_updated": [],
+      "experiment_label": "E044",
+      "info_gain_score": 0
+    },
+    "exp_E045_thermal_duty_95_dc3a65f4": {
+      "case_id": "exp_E045_thermal_duty_95",
+      "run_id": "dc3a65f4",
+      "timestamp": "2026-02-05T13:10:10.151575",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Thermal test: 10.0W, 95% duty, 1800.0s",
+        "method": "sim",
+        "prediction": "Peak temp: 44.0\u00b0C, overheated: False",
+        "predicted_confidence": 0.1
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 44.0,
+        "notes": "Simulation result: {'peak_temp_c': 44.0, 'steady_state_temp_c': 44.0, 'overheated': False, 'overheat_threshold_c': 65.0, 'effective_power_w': 9.5}"
+      },
+      "calibration_error": 0.1,
+      "constraints_updated": [],
+      "experiment_label": "E045",
+      "info_gain_score": 0
+    },
+    "exp_E046_thermal_power_5_90dea136": {
+      "case_id": "exp_E046_thermal_power_5",
+      "run_id": "90dea136",
+      "timestamp": "2026-02-05T13:10:10.154743",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Thermal test: 5.0W, 80% duty, 900.0s",
+        "method": "sim",
+        "prediction": "Peak temp: 33.0\u00b0C, overheated: False",
+        "predicted_confidence": 0.1
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 33.0,
+        "notes": "Simulation result: {'peak_temp_c': 33.0, 'steady_state_temp_c': 33.0, 'overheated': False, 'overheat_threshold_c': 65.0, 'effective_power_w': 4.0}"
+      },
+      "calibration_error": 0.1,
+      "constraints_updated": [],
+      "experiment_label": "E046",
+      "info_gain_score": 0
+    },
+    "exp_E047_thermal_power_10_3dfb41a5": {
+      "case_id": "exp_E047_thermal_power_10",
+      "run_id": "3dfb41a5",
+      "timestamp": "2026-02-05T13:10:10.158044",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Thermal test: 10.0W, 80% duty, 900.0s",
+        "method": "sim",
+        "prediction": "Peak temp: 41.0\u00b0C, overheated: False",
+        "predicted_confidence": 0.1
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 41.0,
+        "notes": "Simulation result: {'peak_temp_c': 41.0, 'steady_state_temp_c': 41.0, 'overheated': False, 'overheat_threshold_c': 65.0, 'effective_power_w': 8.0}"
+      },
+      "calibration_error": 0.1,
+      "constraints_updated": [],
+      "experiment_label": "E047",
+      "info_gain_score": 0
+    },
+    "exp_E048_thermal_power_20_fcf6bb23": {
+      "case_id": "exp_E048_thermal_power_20",
+      "run_id": "fcf6bb23",
+      "timestamp": "2026-02-05T13:10:10.161314",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Thermal test: 20.0W, 80% duty, 900.0s",
+        "method": "sim",
+        "prediction": "Peak temp: 57.0\u00b0C, overheated: False",
+        "predicted_confidence": 0.1
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 57.0,
+        "notes": "Simulation result: {'peak_temp_c': 57.0, 'steady_state_temp_c': 57.0, 'overheated': False, 'overheat_threshold_c': 65.0, 'effective_power_w': 16.0}"
+      },
+      "calibration_error": 0.1,
+      "constraints_updated": [],
+      "experiment_label": "E048",
+      "info_gain_score": 0
+    },
+    "exp_E049_thermal_power_50_d17227a1": {
+      "case_id": "exp_E049_thermal_power_50",
+      "run_id": "d17227a1",
+      "timestamp": "2026-02-05T13:10:10.164567",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Thermal test: 50.0W, 80% duty, 900.0s",
+        "method": "sim",
+        "prediction": "Peak temp: 105.0\u00b0C, overheated: True",
+        "predicted_confidence": 0.9
+      },
+      "outcome": {
+        "occurred": true,
+        "measured_value": 105.0,
+        "notes": "Simulation result: {'peak_temp_c': 105.0, 'steady_state_temp_c': 105.0, 'overheated': True, 'overheat_threshold_c': 65.0, 'effective_power_w': 40.0}"
+      },
+      "calibration_error": 0.09999999999999998,
+      "constraints_updated": [],
+      "experiment_label": "E049",
+      "info_gain_score": 0
+    },
+    "exp_E050_thermal_power_100_7d5fd98b": {
+      "case_id": "exp_E050_thermal_power_100",
+      "run_id": "7d5fd98b",
+      "timestamp": "2026-02-05T13:10:10.168350",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Thermal test: 100.0W, 80% duty, 900.0s",
+        "method": "sim",
+        "prediction": "Peak temp: 185.0\u00b0C, overheated: True",
+        "predicted_confidence": 0.9
+      },
+      "outcome": {
+        "occurred": true,
+        "measured_value": 185.0,
+        "notes": "Simulation result: {'peak_temp_c': 185.0, 'steady_state_temp_c': 185.0, 'overheated': True, 'overheat_threshold_c': 65.0, 'effective_power_w': 80.0}"
+      },
+      "calibration_error": 0.09999999999999998,
+      "constraints_updated": [],
+      "experiment_label": "E050",
+      "info_gain_score": 0
+    },
+    "exp_E051_fatigue_100_70pct_ca170832": {
+      "case_id": "exp_E051_fatigue_100_70pct",
+      "run_id": "ca170832",
+      "timestamp": "2026-02-05T13:10:10.172066",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Fatigue test: 100.0 cycles, 3.5N load",
+        "method": "sim",
+        "prediction": "Degradation: 0.0%, failed: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.0,
+        "notes": "Simulation result: {'cycles_to_failure': 1000000000.0, 'degradation_pct': 0.0, 'failed': False}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": "E051",
+      "info_gain_score": 0
+    },
+    "exp_E052_fatigue_500_70pct_31ac3b48": {
+      "case_id": "exp_E052_fatigue_500_70pct",
+      "run_id": "31ac3b48",
+      "timestamp": "2026-02-05T13:10:10.175560",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Fatigue test: 500.0 cycles, 3.5N load",
+        "method": "sim",
+        "prediction": "Degradation: 0.0%, failed: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.0,
+        "notes": "Simulation result: {'cycles_to_failure': 1000000000.0, 'degradation_pct': 0.0, 'failed': False}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": "E052",
+      "info_gain_score": 0
+    },
+    "exp_E053_fatigue_1000_70pct_cb222620": {
+      "case_id": "exp_E053_fatigue_1000_70pct",
+      "run_id": "cb222620",
+      "timestamp": "2026-02-05T13:10:10.179013",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Fatigue test: 1000.0 cycles, 3.5N load",
+        "method": "sim",
+        "prediction": "Degradation: 0.0%, failed: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.0,
+        "notes": "Simulation result: {'cycles_to_failure': 1000000000.0, 'degradation_pct': 0.0, 'failed': False}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": "E053",
+      "info_gain_score": 0
+    },
+    "exp_E054_fatigue_5000_70pct_bf869b97": {
+      "case_id": "exp_E054_fatigue_5000_70pct",
+      "run_id": "bf869b97",
+      "timestamp": "2026-02-05T13:10:10.182595",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Fatigue test: 5000.0 cycles, 3.5N load",
+        "method": "sim",
+        "prediction": "Degradation: 0.0%, failed: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.0,
+        "notes": "Simulation result: {'cycles_to_failure': 1000000000.0, 'degradation_pct': 0.0, 'failed': False}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": "E054",
+      "info_gain_score": 0
+    },
+    "exp_E055_fatigue_10000_70pct_d52d45bd": {
+      "case_id": "exp_E055_fatigue_10000_70pct",
+      "run_id": "d52d45bd",
+      "timestamp": "2026-02-05T13:10:10.186366",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Fatigue test: 10000.0 cycles, 3.5N load",
+        "method": "sim",
+        "prediction": "Degradation: 0.0%, failed: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.0,
+        "notes": "Simulation result: {'cycles_to_failure': 1000000000.0, 'degradation_pct': 0.0, 'failed': False}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": "E055",
+      "info_gain_score": 0
+    },
+    "exp_E056_fatigue_load_50pct_436ca993": {
+      "case_id": "exp_E056_fatigue_load_50pct",
+      "run_id": "436ca993",
+      "timestamp": "2026-02-05T13:10:10.189822",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Fatigue test: 1000.0 cycles, 2.5N load",
+        "method": "sim",
+        "prediction": "Degradation: 0.0%, failed: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.0,
+        "notes": "Simulation result: {'cycles_to_failure': 1000000000.0, 'degradation_pct': 0.0, 'failed': False}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": "E056",
+      "info_gain_score": 0
+    },
+    "exp_E057_fatigue_load_70pct_82cbdd16": {
+      "case_id": "exp_E057_fatigue_load_70pct",
+      "run_id": "82cbdd16",
+      "timestamp": "2026-02-05T13:10:10.193470",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Fatigue test: 1000.0 cycles, 3.5N load",
+        "method": "sim",
+        "prediction": "Degradation: 0.0%, failed: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.0,
+        "notes": "Simulation result: {'cycles_to_failure': 1000000000.0, 'degradation_pct': 0.0, 'failed': False}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": "E057",
+      "info_gain_score": 0
+    },
+    "exp_E058_fatigue_load_80pct_4b75f292": {
+      "case_id": "exp_E058_fatigue_load_80pct",
+      "run_id": "4b75f292",
+      "timestamp": "2026-02-05T13:10:10.197067",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Fatigue test: 1000.0 cycles, 4.0N load",
+        "method": "sim",
+        "prediction": "Degradation: 0.0%, failed: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.0,
+        "notes": "Simulation result: {'cycles_to_failure': 1000000000.0, 'degradation_pct': 0.0, 'failed': False}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": "E058",
+      "info_gain_score": 0
+    },
+    "exp_E059_fatigue_load_90pct_fe468ba4": {
+      "case_id": "exp_E059_fatigue_load_90pct",
+      "run_id": "fe468ba4",
+      "timestamp": "2026-02-05T13:10:10.200823",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Fatigue test: 1000.0 cycles, 4.5N load",
+        "method": "sim",
+        "prediction": "Degradation: 0.0%, failed: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": {
+        "occurred": false,
+        "measured_value": 0.0,
+        "notes": "Simulation result: {'cycles_to_failure': 1000000000.0, 'degradation_pct': 0.0, 'failed': False}"
+      },
+      "calibration_error": 0.2,
+      "constraints_updated": [],
+      "experiment_label": "E059",
+      "info_gain_score": 0
+    },
+    "exp_E060_fatigue_load_100pct_74262b2f": {
+      "case_id": "exp_E060_fatigue_load_100pct",
+      "run_id": "74262b2f",
+      "timestamp": "2026-02-05T13:10:10.204582",
+      "spine_risks": [],
+      "forge_hypotheses": [],
+      "experiment": {
+        "name": "Fatigue test: 1000.0 cycles, 5.0N load",
+        "method": "sim",
+        "prediction": "Degradation: 0.0%, failed: False",
+        "predicted_confidence": 0.2
+      },
+      "outcome": null,
+      "calibration_error": null,
+      "constraints_updated": [],
+      "experiment_label": "E060",
+      "info_gain_score": 0
+    }
+  },
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2026-02-05T13:10:10.204703"
+  }
+}

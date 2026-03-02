@@ -1,0 +1,30 @@
+problem:
+  name: "Operating frequency near structural resonance"
+  domain: "robotic_design"
+
+constraints:
+  - "operating_frequency: 48Hz"
+  - "structural_resonance: 50Hz"
+  - "frequency_separation_required: 10Hz"
+  - "must_avoid_resonance"
+  - "vibration_control"
+
+uncertainties:
+  - "damping_ratio: unknown_range"
+  - "mode_shape_variation: variable"
+
+objectives:
+  - "stable_operation"
+  - "low_vibration"
+
+design:
+  operating_freq_hz: 48
+  resonance_freq_hz: 50
+  separation_hz: 2.0
+  required_separation_hz: 10.0
+  violation_hz: -8.0
+
+metadata:
+  injected_failure: "resonance_excitation"
+  expected_detection: "Resonance risk OR vibration failure mode"
+  decision_delta_target: 2

@@ -1,0 +1,35 @@
+problem:
+  name: "Narrow passage collision - clearance shrinks mid-trajectory"
+  domain: "robotic_design"
+
+constraints:
+  - "trajectory_length: 20_poses"
+  - "initial_clearance: 2.0mm"
+  - "narrowest_point: pose_12"
+  - "must_avoid_collision"
+
+uncertainties:
+  - "trajectory_accuracy: variable"
+  - "clearance_variation: unknown"
+  - "collision_detection: marginal"
+
+objectives:
+  - "collision_avoidance"
+  - "trajectory_execution"
+
+design:
+  trajectory_length: 20
+  initial_clearance_mm: 2.0
+  narrowest_pose: 12
+  # For trajectory clearance constraint
+  trajectory_clearances: [2.0, 2.0, 1.8, 1.6, 1.4, 1.2, 1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 2.0]
+  min_clearance_threshold_mm: 1.0
+  # For narrow passage constraint
+  min_passage_width_mm: 1.2
+  required_width_mm: 2.0
+  passage_margin_mm: 0.5
+
+metadata:
+  injected_failure: "narrow_passage_collision"
+  failure_category: "geometric"
+  expected_detection: "Trajectory clearance constraint should trigger"

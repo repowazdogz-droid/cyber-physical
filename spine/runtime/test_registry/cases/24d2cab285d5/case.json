@@ -1,0 +1,42 @@
+{
+  "case_id": "24d2cab285d5",
+  "name": "Surface friction drops 50% - wet conditions",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:12:27.906052",
+  "case_yaml": {
+    "problem": {
+      "name": "Surface friction drops 50% - wet conditions",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "dry_friction_coefficient: 0.6",
+      "wet_friction_coefficient: 0.3",
+      "required_friction: 0.4",
+      "grip_force: 5.0N",
+      "must_not_slip"
+    ],
+    "uncertainties": [
+      "surface_wetness_variation: high",
+      "friction_degradation_rate: unknown",
+      "slip_detection: variable"
+    ],
+    "objectives": [
+      "secure_grasping",
+      "friction_management"
+    ]
+  },
+  "design_data": {
+    "dry_friction_coeff": 0.6,
+    "wet_friction_coeff": 0.3,
+    "required_friction_coeff": 0.4,
+    "grip_force_n": 5.0,
+    "max_friction_force_n": 1.5,
+    "slip_margin_n": -3.5
+  },
+  "tags": [
+    "adversarial",
+    "interaction",
+    "test"
+  ],
+  "notes": "Injected failure: surface_friction_drop"
+}

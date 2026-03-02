@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMEGA -- Break It</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fafafa;
+  --bg2: #f4f4f6;
+  --bg3: #ecedef;
+  --border: #d5d7dc;
+  --border2: #b8bbc2;
+  --t1: #111214;
+  --t2: #363940;
+  --t3: #5c5f69;
+  --t4: #787c88;
+  --green: #059669;
+  --green-d: rgba(5,150,105,.12);
+  --amber: #d97706;
+  --amber-d: rgba(217,119,6,.12);
+  --blue: #2563eb;
+  --blue-d: rgba(37,99,235,.12);
+  --red: #dc2626;
+  --red-d: rgba(220,38,38,.12);
+  --crimson: #be123c;
+  --crimson-d: rgba(190,18,60,.12);
+  --violet: #7c3aed;
+  --violet-d: rgba(124,58,237,.12);
+  --teal: #0d9488;
+  --teal-d: rgba(13,148,136,.12);
+  --mono: 'JetBrains Mono', monospace;
+  --serif: 'Instrument Serif', Georgia, serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--t1);
+  font-family: var(--mono);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.landing {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 2rem 4rem;
+}
+
+.header-tag {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--t4);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.6s ease 0.2s forwards;
+}
+
+.title {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: fadeUp 0.6s ease 0.4s forwards;
+}
+
+.title em { font-style: italic; color: var(--green); }
+
+.subtitle {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--t3);
+  text-align: center;
+  max-width: 520px;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: fadeUp 0.6s ease 0.6s forwards;
+}
+
+.tier {
+  width: 100%;
+  max-width: 960px;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.6s ease 0.8s forwards;
+}
+.tier:nth-child(5) { animation-delay: 0.9s; }
+.tier:nth-child(6) { animation-delay: 1.0s; }
+
+.tier-label {
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--t4);
+  margin-bottom: 12px;
+  padding-left: 4px;
+}
+
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  align-items: stretch;
+}
+
+.tier-grid.two { grid-template-columns: repeat(2, 1fr); }
+
+a.card-link { display: block; height: 100%; text-decoration: none; color: inherit; }
+
+.domain {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px;
+  height: 100%;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.75rem 1.5rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.domain:hover {
+  border-color: var(--border2);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 16px rgba(0,0,0,.08);
+}
+
+.domain-glow {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  opacity: 0.06;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+
+.domain:hover .domain-glow { opacity: 0.12; }
+
+.domain-glow.g { background: var(--green); }
+.domain-glow.a { background: var(--amber); }
+.domain-glow.b { background: var(--blue); }
+.domain-glow.r { background: var(--crimson); }
+.domain-glow.v { background: var(--violet); }
+.domain-glow.t { background: var(--teal); }
+
+.domain-tag {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--t4);
+  margin-bottom: 0.75rem;
+}
+
+.domain h3 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.domain-desc {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--t3);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.domain-challenge {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: auto;
+}
+
+.domain-challenge.g { color: var(--green); background: var(--green-d); }
+.domain-challenge.a { color: var(--amber); background: var(--amber-d); }
+.domain-challenge.b { color: var(--blue); background: var(--blue-d); }
+.domain-challenge.r { color: var(--crimson); background: var(--crimson-d); }
+.domain-challenge.v { color: var(--violet); background: var(--violet-d); }
+.domain-challenge.t { color: var(--teal); background: var(--teal-d); }
+
+.stats {
+  display: flex;
+  gap: 3rem;
+  margin-top: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.6s ease 1.1s forwards;
+}
+
+.stat-val {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--t1);
+}
+
+.stat-label {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--t4);
+  margin-top: 4px;
+}
+
+.footer-note {
+  font-size: 10px;
+  color: var(--t4);
+  letter-spacing: 1px;
+  margin-top: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.6s ease 1.3s forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 800px) {
+  .tier-grid, .tier-grid.two { grid-template-columns: 1fr; }
+  .stats { gap: 2rem; }
+  .title { font-size: 2.8rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="landing">
+  <div class="header-tag">OMEGA Protocol</div>
+  <h1 class="title">Break <em>it.</em></h1>
+  <p class="subtitle">
+    Nine live demos. Eight governed domains. Hash-chained reasoning.
+    Tamper detection at machine speed.
+    Pick a system. Try to break the trust layer.
+  </p>
+
+  <!-- TIER 1: Domain Demos -->
+  <div class="tier">
+    <div class="tier-label">Domain Demos &mdash; prove it works</div>
+    <div class="tier-grid">
+      <a href="treaty-runtime.html" target="_blank" class="card-link"><div class="domain">
+        <div class="domain-glow b"></div>
+        <div class="domain-tag">Flagship</div>
+        <h3>Treaty Runtime</h3>
+        <div class="domain-desc">Cyber-physical treaty runtime over a shared actuator. Multi-agent governance gate, reasoning spine, and hash-chained trace.</div>
+        <span class="domain-challenge b">Enter &rarr;</span>
+      </div></a>
+      <a href="factory-floor-intelligence.html" target="_blank" class="card-link"><div class="domain">
+        <div class="domain-glow g"></div>
+        <div class="domain-tag">Manufacturing</div>
+        <h3>Factory Floor</h3>
+        <div class="domain-desc">Live sensor fusion. Risk scoring. Policy enforcement. LOTO thresholds, quality halts, safety derates.</div>
+        <span class="domain-challenge g">Enter &rarr;</span>
+      </div></a>
+      <a href="defence-autonomous-governance.html" target="_blank" class="card-link"><div class="domain">
+        <div class="domain-glow r"></div>
+        <div class="domain-tag">Defence</div>
+        <h3>Autonomous Governance</h3>
+        <div class="domain-desc">ROE enforcement. Human-in-the-loop escalation. CDE thresholds. Lethal autonomy constrained at governance speed.</div>
+        <span class="domain-challenge r">Enter &rarr;</span>
+      </div></a>
+      <a href="mev-trust-auction-v2.html" target="_blank" class="card-link"><div class="domain">
+        <div class="domain-glow a"></div>
+        <div class="domain-tag">Adversarial Finance</div>
+        <h3>MEV Auction</h3>
+        <div class="domain-desc">Four agents. One block. Relay equivocation, double-signing, dispute resolution. Trust in adversarial environments.</div>
+        <span class="domain-challenge a">Enter &rarr;</span>
+      </div></a>
+      <a href="wallet-firewall.html" target="_blank" class="card-link"><div class="domain">
+        <div class="domain-glow t"></div>
+        <div class="domain-tag">Consumer Finance</div>
+        <h3>Wallet Firewall</h3>
+        <div class="domain-desc">Mobile wallet governance. Amount limits, contract blocks, slippage caps, MEV risk flags, and cooldowns — all enforced before your money moves.</div>
+        <span class="domain-challenge t">Enter &rarr;</span>
+      </div></a>
+    </div>
+  </div>
+
+  <!-- TIER 2: Architecture Demos -->
+  <div class="tier">
+    <div class="tier-label">Architecture Demos &mdash; prove it scales</div>
+    <div class="tier-grid two">
+      <a href="swarm-governance.html" target="_blank" class="card-link"><div class="domain">
+        <div class="domain-glow v"></div>
+        <div class="domain-tag">Multi-Agent</div>
+        <h3>Swarm Governance</h3>
+        <div class="domain-desc">Per-agent hash chains. Supervisor verification. Mandate enforcement. Rogue isolation. Swarm-level integrity.</div>
+        <span class="domain-challenge v">Enter &rarr;</span>
+      </div></a>
+      <a href="omega-trust-layer-demo.html" target="_blank" class="card-link"><div class="domain">
+        <div class="domain-glow b"></div>
+        <div class="domain-tag">Cross-Domain</div>
+        <h3>Trust Layer v4</h3>
+        <div class="domain-desc">Five governed domains. One architecture. Manufacturing, defence, AI governance, multi-agent, autonomous labs.</div>
+        <span class="domain-challenge b">Enter &rarr;</span>
+      </div></a>
+      <a href="research-governance.html" target="_blank" class="card-link"><div class="domain">
+        <div class="domain-glow a"></div>
+        <div class="domain-tag">Autonomous Research</div>
+        <h3>Research Governance</h3>
+        <div class="domain-desc">Scaling governor, replication gate, claim lifecycle, tamper detection. The Bigger Hidden Size Trap — catch it at every stage.</div>
+        <span class="domain-challenge a">Enter &rarr;</span>
+      </div></a>
+    </div>
+  </div>
+
+  <!-- TIER 3: Forensic Tools -->
+  <div class="tier">
+    <div class="tier-label">Forensic Tools &mdash; prove you can verify it</div>
+    <div class="tier-grid two">
+      <a href="audit-replay.html" target="_blank" class="card-link"><div class="domain">
+        <div class="domain-glow t"></div>
+        <div class="domain-tag">Flight Recorder</div>
+        <h3>Audit Replay</h3>
+        <div class="domain-desc">Scrub through recorded reasoning chains node by node. Hash forensics. Tamper localisation. The black box for AI decisions.</div>
+        <span class="domain-challenge t">Enter &rarr;</span>
+      </div></a>
+      <a href="red-team.html" target="_blank" class="card-link"><div class="domain">
+        <div class="domain-glow r"></div>
+        <div class="domain-tag">Adversarial Testing</div>
+        <h3>Red Team</h3>
+        <div class="domain-desc">Six attack vectors. Content tampering, hash forgery, chain manipulation, policy evasion, timestamp forgery, node injection.</div>
+        <span class="domain-challenge r">Enter &rarr;</span>
+      </div></a>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div><div class="stat-val">3</div><div class="stat-label">Primitives</div></div>
+    <div><div class="stat-val">8</div><div class="stat-label">Protocols</div></div>
+    <div><div class="stat-val">297</div><div class="stat-label">Tests</div></div>
+    <div><div class="stat-val">0</div><div class="stat-label">Dependencies</div></div>
+    <div><div class="stat-val">8</div><div class="stat-label">Domains</div></div>
+    <div><div class="stat-val">9</div><div class="stat-label">Live Demos</div></div>
+  </div>
+
+  <div class="footer-note">SHA-256 hash-chained &middot; Zero dependencies &middot; Offline-capable</div>
+</div>
+
+</body>
+</html>

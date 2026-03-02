@@ -1,0 +1,5 @@
+{
+  "case_id": "gc-010",
+  "expects_error": true,
+  "error_contains": "Need >= 3 completed perspectives"
+}

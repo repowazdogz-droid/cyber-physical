@@ -1,0 +1,22 @@
+problem:
+  name: "Fatigue experiment: 5000 cycles, 80% max load"
+  domain: "surgical_robotics"
+
+constraints:
+  - "cycles: 5000"
+  - "load: 8N"
+  - "must_not_fail"
+
+uncertainties:
+  - "high_cycle_fatigue: unknown"
+
+objectives:
+  - "high_cycle_endurance"
+
+design:
+  cycles: 5000
+  load_n: 8.0
+  material: "rubber"
+
+metadata:
+  experiment_type: "fatigue"

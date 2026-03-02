@@ -1,0 +1,271 @@
+{
+  "run_id": "e20a8b617e32",
+  "timestamp": "2026-02-05T10:16:56.163763",
+  "nodes": {
+    "input_0000": {
+      "id": "input_0000",
+      "type": "input",
+      "content": {
+        "type": "problem",
+        "name": "Stress corrosion in saline environment",
+        "domain": "robotic_design"
+      },
+      "timestamp": "2026-02-05T10:16:56.158692",
+      "parents": [],
+      "metadata": {}
+    },
+    "input_0001": {
+      "id": "input_0001",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "operating_stress: 0.6 \u00d7 yield"
+      },
+      "timestamp": "2026-02-05T10:16:56.158693",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0002": {
+      "id": "input_0002",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "environment: saline_solution"
+      },
+      "timestamp": "2026-02-05T10:16:56.158694",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0003": {
+      "id": "input_0003",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "material_susceptibility: high"
+      },
+      "timestamp": "2026-02-05T10:16:56.158695",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0004": {
+      "id": "input_0004",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "must_resist_corrosion"
+      },
+      "timestamp": "2026-02-05T10:16:56.158696",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0005": {
+      "id": "input_0005",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "corrosion_rate: unknown"
+      },
+      "timestamp": "2026-02-05T10:16:56.158697",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0006": {
+      "id": "input_0006",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "crack_initiation_time: variable"
+      },
+      "timestamp": "2026-02-05T10:16:56.158698",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0007": {
+      "id": "input_0007",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "environmental_variation: high"
+      },
+      "timestamp": "2026-02-05T10:16:56.158699",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0008": {
+      "id": "input_0008",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "environmental_resistance"
+      },
+      "timestamp": "2026-02-05T10:16:56.158700",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0009": {
+      "id": "input_0009",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "material_durability"
+      },
+      "timestamp": "2026-02-05T10:16:56.158701",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "inference_0010": {
+      "id": "inference_0010",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "operating_stress: 0.6 \u00d7 yield",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:56.163662",
+      "parents": [
+        "input_0001"
+      ],
+      "metadata": {}
+    },
+    "inference_0011": {
+      "id": "inference_0011",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "environment: saline_solution",
+        "checked": true,
+        "contract_matched": "66_simulation_authoring_contract",
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:56.163664",
+      "parents": [
+        "input_0002"
+      ],
+      "metadata": {}
+    },
+    "inference_0012": {
+      "id": "inference_0012",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "material_susceptibility: high",
+        "checked": true,
+        "contract_matched": "28_scope_boundary_contract",
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:56.163665",
+      "parents": [
+        "input_0003"
+      ],
+      "metadata": {}
+    },
+    "inference_0013": {
+      "id": "inference_0013",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "must_resist_corrosion",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:56.163665",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {}
+    },
+    "output_0014": {
+      "id": "output_0014",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "corrosion_rate: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:16:56.163682",
+      "parents": [
+        "input_0005"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: corrosion_rate: unknown"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0015": {
+      "id": "output_0015",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "crack_initiation_time: variable",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:16:56.163690",
+      "parents": [
+        "input_0006"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: crack_initiation_time: variable"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0016": {
+      "id": "output_0016",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "environmental_variation: high",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:16:56.163696",
+      "parents": [
+        "input_0007"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: environmental_variation: high"
+          ],
+          "requires_validation": true
+        }
+      }
+    }
+  }
+}

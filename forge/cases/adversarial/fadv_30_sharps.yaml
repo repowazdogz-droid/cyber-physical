@@ -1,0 +1,17 @@
+problem:
+  name: "Test produces sharps/projectiles"
+  domain: "surgical_robotics"
+
+constraints:
+  - "must_test_failure_mode"
+  - "failure_produces_sharps"
+
+uncertainties: []
+
+objectives:
+  - "failure_test"
+
+metadata:
+  trap_type: "unsafe_test"
+  expected_forge_behavior: "Should flag tests that could produce sharps/projectiles"
+  quality_gate_should_catch: true

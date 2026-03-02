@@ -1,0 +1,8 @@
+{
+  "motor_power_w": 45,
+  "duty_cycle_percent": 95,
+  "effective_power_w": 42.75,
+  "thermal_capacity_w": 50,
+  "margin_w": 7.25,
+  "estimated_temp_rise_c": 85
+}

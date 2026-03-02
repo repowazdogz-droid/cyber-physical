@@ -1,0 +1,1079 @@
+{
+  "run_id": "003843f7b001",
+  "case_id": "09baf33fbf7b",
+  "timestamp": "2026-02-05 10:16:53.043708",
+  "output": {
+    "decision_map": {
+      "constraints_checked": [
+        {
+          "constraint": "normal_power: 40W",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "cooling_factor: 0.3 (with fan)",
+          "checked": true,
+          "contract_matched": "28_scope_boundary_contract",
+          "violation": null
+        },
+        {
+          "constraint": "cooling_factor_degraded: 1.0 (fan failure)",
+          "checked": true,
+          "contract_matched": "45_human_override_and_emergency_stop_contract",
+          "violation": null
+        },
+        {
+          "constraint": "thermal_capacity: 50W",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "must_maintain_cooling",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        }
+      ],
+      "violations": []
+    },
+    "failure_modes": [],
+    "contradictions": [],
+    "unknowns": [
+      {
+        "item": "fan_reliability: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: fan_reliability: unknown"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.36000000000000004,
+          "max_confidence": 0.42400000000000004,
+          "sensitivity": 0.07999999999999999,
+          "dependent_on": [
+            "fan_reliability"
+          ]
+        }
+      },
+      {
+        "item": "degradation_timeline: variable",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: degradation_timeline: variable"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.4,
+          "max_confidence": 0.4,
+          "sensitivity": 0.0,
+          "dependent_on": [
+            "degradation_timeline"
+          ]
+        }
+      },
+      {
+        "item": "backup_cooling: none",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: backup_cooling: none"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.4,
+          "max_confidence": 0.4,
+          "sensitivity": 0.0,
+          "dependent_on": [
+            "backup_cooling"
+          ]
+        }
+      }
+    ],
+    "recommended_experiments": [],
+    "falsification_tests": [],
+    "formal_constraints": [
+      {
+        "constraint_id": "FORMAL_001",
+        "constraint_name": "mass_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": 10.0,
+        "margin": null,
+        "evidence": "Total mass not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_002",
+        "constraint_name": "max_force",
+        "result": "unknown",
+        "value": null,
+        "threshold": 2.0,
+        "margin": null,
+        "evidence": "Max force not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_003",
+        "constraint_name": "max_acceleration",
+        "result": "unknown",
+        "value": null,
+        "threshold": 50.0,
+        "margin": null,
+        "evidence": "Max acceleration not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_004",
+        "constraint_name": "min_clearance",
+        "result": "unknown",
+        "value": null,
+        "threshold": 1.0,
+        "margin": null,
+        "evidence": "Clearance not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_005",
+        "constraint_name": "no_self_collision",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Self-collision check not performed",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_006",
+        "constraint_name": "cog_stability",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "COG stability check not performed",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_007",
+        "constraint_name": "torque_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": 5.0,
+        "margin": null,
+        "evidence": "Max torque not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_008",
+        "constraint_name": "jerk_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": 500.0,
+        "margin": null,
+        "evidence": "Max jerk not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_009",
+        "constraint_name": "actuator_duty_cycle",
+        "result": "unknown",
+        "value": null,
+        "threshold": 0.8,
+        "margin": null,
+        "evidence": "Actuator duty cycle not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_010",
+        "constraint_name": "resonance_margin",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Operating frequency or natural frequency not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_011",
+        "constraint_name": "thermal_limit",
+        "result": "proven_satisfied",
+        "value": 68.0,
+        "threshold": 70.0,
+        "margin": 2.0,
+        "evidence": "Temperature rise 68.0\u00b0C <= limit 70.0\u00b0C",
+        "confidence": 1.0
+      },
+      {
+        "constraint_id": "FORMAL_012",
+        "constraint_name": "joint_range_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Joint range check not performed",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_013",
+        "constraint_name": "payload_ratio",
+        "result": "unknown",
+        "value": null,
+        "threshold": 0.7,
+        "margin": null,
+        "evidence": "Payload or max rated payload not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_014",
+        "constraint_name": "stiffness_minimum",
+        "result": "unknown",
+        "value": null,
+        "threshold": 1000.0,
+        "margin": null,
+        "evidence": "End-effector stiffness not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_015",
+        "constraint_name": "voltage_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": 24.0,
+        "margin": null,
+        "evidence": "Max voltage not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_016",
+        "constraint_name": "control_bandwidth_margin",
+        "result": "unknown",
+        "value": null,
+        "threshold": 5.0,
+        "margin": null,
+        "evidence": "Control bandwidth or task frequency not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_017",
+        "constraint_name": "latency_margin",
+        "result": "unknown",
+        "value": null,
+        "threshold": 0.1,
+        "margin": null,
+        "evidence": "Control latency or period not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_018",
+        "constraint_name": "phase_margin",
+        "result": "unknown",
+        "value": null,
+        "threshold": 30.0,
+        "margin": null,
+        "evidence": "Phase margin not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_019",
+        "constraint_name": "gain_margin",
+        "result": "unknown",
+        "value": null,
+        "threshold": 6.0,
+        "margin": null,
+        "evidence": "Gain margin not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_020",
+        "constraint_name": "sampling_nyquist",
+        "result": "unknown",
+        "value": null,
+        "threshold": 2.0,
+        "margin": null,
+        "evidence": "Sampling rate or max frequency not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_021",
+        "constraint_name": "encoder_resolution",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Encoder resolution or required accuracy not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_022",
+        "constraint_name": "control_energy_bound",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Control energy or actuator capacity not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_023",
+        "constraint_name": "fatigue_safety_factor",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Cyclic stress or endurance limit not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_024",
+        "constraint_name": "creep_risk",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Sustained stress or creep threshold not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_025",
+        "constraint_name": "stress_corrosion_risk",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Tensile stress or SCC threshold not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_026",
+        "constraint_name": "uv_degradation_risk",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "UV exposure hours or rated life not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_027",
+        "constraint_name": "safety_factor_static",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Applied stress or yield strength not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_028",
+        "constraint_name": "stiffness_mismatch",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Stiffness values not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_029",
+        "constraint_name": "creep_envelope",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Sustained stress or yield strength not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_030",
+        "constraint_name": "thermal_material_coupling",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Applied stress or yield strength not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_031",
+        "constraint_name": "contact_pressure",
+        "result": "unknown",
+        "value": null,
+        "threshold": 1.0,
+        "margin": null,
+        "evidence": "Contact force or area not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_032",
+        "constraint_name": "tissue_crush_risk",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Contact force or area not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_033",
+        "constraint_name": "bolt_shear",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Joint force, bolt diameter, or shear strength not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_034",
+        "constraint_name": "adhesive_load",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Joint force, bond area, or adhesive strength not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_035",
+        "constraint_name": "slip_margin",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Normal force, friction coefficient, or tangential force not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_036",
+        "constraint_name": "corrosion_rate",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Corrosion rate, service life, or wall thickness not provided",
+        "confidence": 0.0
+      }
+    ],
+    "trace_graph": {
+      "run_id": "dd46f373ea06",
+      "timestamp": "2026-02-05T10:16:53.043619",
+      "nodes": {
+        "input_0000": {
+          "id": "input_0000",
+          "type": "input",
+          "content": {
+            "type": "problem",
+            "name": "Cooling degradation - fan failure at 80% load",
+            "domain": "robotic_design"
+          },
+          "timestamp": "2026-02-05T10:16:53.037954",
+          "parents": [],
+          "metadata": {}
+        },
+        "input_0001": {
+          "id": "input_0001",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "normal_power: 40W"
+          },
+          "timestamp": "2026-02-05T10:16:53.037955",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0002": {
+          "id": "input_0002",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "cooling_factor: 0.3 (with fan)"
+          },
+          "timestamp": "2026-02-05T10:16:53.037956",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0003": {
+          "id": "input_0003",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "cooling_factor_degraded: 1.0 (fan failure)"
+          },
+          "timestamp": "2026-02-05T10:16:53.037957",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0004": {
+          "id": "input_0004",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "thermal_capacity: 50W"
+          },
+          "timestamp": "2026-02-05T10:16:53.037958",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0005": {
+          "id": "input_0005",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "must_maintain_cooling"
+          },
+          "timestamp": "2026-02-05T10:16:53.037959",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0006": {
+          "id": "input_0006",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "fan_reliability: unknown"
+          },
+          "timestamp": "2026-02-05T10:16:53.037960",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0007": {
+          "id": "input_0007",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "degradation_timeline: variable"
+          },
+          "timestamp": "2026-02-05T10:16:53.037961",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0008": {
+          "id": "input_0008",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "backup_cooling: none"
+          },
+          "timestamp": "2026-02-05T10:16:53.037962",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0009": {
+          "id": "input_0009",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "thermal_safety"
+          },
+          "timestamp": "2026-02-05T10:16:53.037963",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0010": {
+          "id": "input_0010",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "reliability"
+          },
+          "timestamp": "2026-02-05T10:16:53.037964",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "inference_0011": {
+          "id": "inference_0011",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "normal_power: 40W",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T10:16:53.043522",
+          "parents": [
+            "input_0001"
+          ],
+          "metadata": {}
+        },
+        "inference_0012": {
+          "id": "inference_0012",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "cooling_factor: 0.3 (with fan)",
+            "checked": true,
+            "contract_matched": "28_scope_boundary_contract",
+            "violation": null
+          },
+          "timestamp": "2026-02-05T10:16:53.043523",
+          "parents": [
+            "input_0002"
+          ],
+          "metadata": {}
+        },
+        "inference_0013": {
+          "id": "inference_0013",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "cooling_factor_degraded: 1.0 (fan failure)",
+            "checked": true,
+            "contract_matched": "45_human_override_and_emergency_stop_contract",
+            "violation": null
+          },
+          "timestamp": "2026-02-05T10:16:53.043524",
+          "parents": [
+            "input_0003"
+          ],
+          "metadata": {}
+        },
+        "inference_0014": {
+          "id": "inference_0014",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "thermal_capacity: 50W",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T10:16:53.043525",
+          "parents": [
+            "input_0004"
+          ],
+          "metadata": {}
+        },
+        "inference_0015": {
+          "id": "inference_0015",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "must_maintain_cooling",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T10:16:53.043526",
+          "parents": [
+            "input_0005"
+          ],
+          "metadata": {}
+        },
+        "output_0016": {
+          "id": "output_0016",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "fan_reliability: unknown",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T10:16:53.043540",
+          "parents": [
+            "input_0006"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: fan_reliability: unknown"
+              ],
+              "requires_validation": true
+            }
+          }
+        },
+        "output_0017": {
+          "id": "output_0017",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "degradation_timeline: variable",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T10:16:53.043548",
+          "parents": [
+            "input_0007"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: degradation_timeline: variable"
+              ],
+              "requires_validation": true
+            }
+          }
+        },
+        "output_0018": {
+          "id": "output_0018",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "backup_cooling: none",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T10:16:53.043554",
+          "parents": [
+            "input_0008"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: backup_cooling: none"
+              ],
+              "requires_validation": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "trace": {
+    "run_id": "dd46f373ea06",
+    "timestamp": "2026-02-05T10:16:53.043619",
+    "nodes": {
+      "input_0000": {
+        "id": "input_0000",
+        "type": "input",
+        "content": {
+          "type": "problem",
+          "name": "Cooling degradation - fan failure at 80% load",
+          "domain": "robotic_design"
+        },
+        "timestamp": "2026-02-05T10:16:53.037954",
+        "parents": [],
+        "metadata": {}
+      },
+      "input_0001": {
+        "id": "input_0001",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "normal_power: 40W"
+        },
+        "timestamp": "2026-02-05T10:16:53.037955",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0002": {
+        "id": "input_0002",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "cooling_factor: 0.3 (with fan)"
+        },
+        "timestamp": "2026-02-05T10:16:53.037956",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0003": {
+        "id": "input_0003",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "cooling_factor_degraded: 1.0 (fan failure)"
+        },
+        "timestamp": "2026-02-05T10:16:53.037957",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0004": {
+        "id": "input_0004",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "thermal_capacity: 50W"
+        },
+        "timestamp": "2026-02-05T10:16:53.037958",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0005": {
+        "id": "input_0005",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "must_maintain_cooling"
+        },
+        "timestamp": "2026-02-05T10:16:53.037959",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0006": {
+        "id": "input_0006",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "fan_reliability: unknown"
+        },
+        "timestamp": "2026-02-05T10:16:53.037960",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0007": {
+        "id": "input_0007",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "degradation_timeline: variable"
+        },
+        "timestamp": "2026-02-05T10:16:53.037961",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0008": {
+        "id": "input_0008",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "backup_cooling: none"
+        },
+        "timestamp": "2026-02-05T10:16:53.037962",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0009": {
+        "id": "input_0009",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "thermal_safety"
+        },
+        "timestamp": "2026-02-05T10:16:53.037963",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0010": {
+        "id": "input_0010",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "reliability"
+        },
+        "timestamp": "2026-02-05T10:16:53.037964",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "inference_0011": {
+        "id": "inference_0011",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "normal_power: 40W",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:16:53.043522",
+        "parents": [
+          "input_0001"
+        ],
+        "metadata": {}
+      },
+      "inference_0012": {
+        "id": "inference_0012",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "cooling_factor: 0.3 (with fan)",
+          "checked": true,
+          "contract_matched": "28_scope_boundary_contract",
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:16:53.043523",
+        "parents": [
+          "input_0002"
+        ],
+        "metadata": {}
+      },
+      "inference_0013": {
+        "id": "inference_0013",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "cooling_factor_degraded: 1.0 (fan failure)",
+          "checked": true,
+          "contract_matched": "45_human_override_and_emergency_stop_contract",
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:16:53.043524",
+        "parents": [
+          "input_0003"
+        ],
+        "metadata": {}
+      },
+      "inference_0014": {
+        "id": "inference_0014",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "thermal_capacity: 50W",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:16:53.043525",
+        "parents": [
+          "input_0004"
+        ],
+        "metadata": {}
+      },
+      "inference_0015": {
+        "id": "inference_0015",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "must_maintain_cooling",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:16:53.043526",
+        "parents": [
+          "input_0005"
+        ],
+        "metadata": {}
+      },
+      "output_0016": {
+        "id": "output_0016",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "fan_reliability: unknown",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:16:53.043540",
+        "parents": [
+          "input_0006"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: fan_reliability: unknown"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0017": {
+        "id": "output_0017",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "degradation_timeline: variable",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:16:53.043548",
+        "parents": [
+          "input_0007"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: degradation_timeline: variable"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0018": {
+        "id": "output_0018",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "backup_cooling: none",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:16:53.043554",
+        "parents": [
+          "input_0008"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: backup_cooling: none"
+            ],
+            "requires_validation": true
+          }
+        }
+      }
+    }
+  },
+  "predictions": [],
+  "reviewer": null,
+  "review_notes": ""
+}

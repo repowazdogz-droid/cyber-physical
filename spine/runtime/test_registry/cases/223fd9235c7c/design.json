@@ -1,0 +1,6 @@
+{
+  "part1_stiffness_n_per_m": 1000,
+  "part2_stiffness_n_per_m": 100,
+  "stiffness_ratio": 10.0,
+  "max_ratio": 5.0
+}

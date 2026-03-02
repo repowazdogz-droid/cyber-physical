@@ -1,0 +1,271 @@
+{
+  "run_id": "0360719a6803",
+  "timestamp": "2026-02-05T10:21:20.406596",
+  "nodes": {
+    "input_0000": {
+      "id": "input_0000",
+      "type": "input",
+      "content": {
+        "type": "problem",
+        "name": "Combined bending + torsion at 90% yield",
+        "domain": "robotic_design"
+      },
+      "timestamp": "2026-02-05T10:21:20.401353",
+      "parents": [],
+      "metadata": {}
+    },
+    "input_0001": {
+      "id": "input_0001",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "bending_stress: 0.6 \u00d7 yield"
+      },
+      "timestamp": "2026-02-05T10:21:20.401354",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0002": {
+      "id": "input_0002",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "torsional_stress: 0.6 \u00d7 yield"
+      },
+      "timestamp": "2026-02-05T10:21:20.401355",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0003": {
+      "id": "input_0003",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "von_mises_equivalent: 0.9 \u00d7 yield"
+      },
+      "timestamp": "2026-02-05T10:21:20.401355",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0004": {
+      "id": "input_0004",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "must_stay_below_yield"
+      },
+      "timestamp": "2026-02-05T10:21:20.401356",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0005": {
+      "id": "input_0005",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "stress_interaction_model: von_mises_vs_max_principal"
+      },
+      "timestamp": "2026-02-05T10:21:20.401357",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0006": {
+      "id": "input_0006",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "yield_strength_variability: \u00b18%"
+      },
+      "timestamp": "2026-02-05T10:21:20.401358",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0007": {
+      "id": "input_0007",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "load_combination_uncertainty: unknown"
+      },
+      "timestamp": "2026-02-05T10:21:20.401359",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0008": {
+      "id": "input_0008",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "structural_integrity"
+      },
+      "timestamp": "2026-02-05T10:21:20.401360",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0009": {
+      "id": "input_0009",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "safety_factor_requirement"
+      },
+      "timestamp": "2026-02-05T10:21:20.401361",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "inference_0010": {
+      "id": "inference_0010",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "bending_stress: 0.6 \u00d7 yield",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:21:20.406497",
+      "parents": [
+        "input_0001"
+      ],
+      "metadata": {}
+    },
+    "inference_0011": {
+      "id": "inference_0011",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "torsional_stress: 0.6 \u00d7 yield",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:21:20.406498",
+      "parents": [
+        "input_0002"
+      ],
+      "metadata": {}
+    },
+    "inference_0012": {
+      "id": "inference_0012",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "von_mises_equivalent: 0.9 \u00d7 yield",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:21:20.406499",
+      "parents": [
+        "input_0003"
+      ],
+      "metadata": {}
+    },
+    "inference_0013": {
+      "id": "inference_0013",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "must_stay_below_yield",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:21:20.406500",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {}
+    },
+    "output_0014": {
+      "id": "output_0014",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "stress_interaction_model: von_mises_vs_max_principal",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:21:20.406515",
+      "parents": [
+        "input_0005"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: stress_interaction_model: von_mises_vs_max_principal"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0015": {
+      "id": "output_0015",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "yield_strength_variability: \u00b18%",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:21:20.406523",
+      "parents": [
+        "input_0006"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: yield_strength_variability: \u00b18%"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0016": {
+      "id": "output_0016",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "load_combination_uncertainty: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:21:20.406529",
+      "parents": [
+        "input_0007"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: load_combination_uncertainty: unknown"
+          ],
+          "requires_validation": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "stimulus_id": "st-007",
+  "analysis_id": "78e5fc5a-f45a-4511-be1d-65f607471278",
+  "case_id": "3e7a8003-14ae-4df4-93ee-35d7d07a72eb",
+  "duration_ms": 8629,
+  "success": true,
+  "confidence_score": 0.2621,
+  "confidence_breakdown": {
+    "per_lens": [
+      {
+        "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "claim_count": 6,
+        "scoring_claim_count": 6,
+        "supported_claim_count": 4,
+        "mean_evidence_strength": 0.65,
+        "contribution_to_agreement": 1.0138888888888888
+      },
+      {
+        "lens_id": "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "claim_count": 6,
+        "scoring_claim_count": 6,
+        "supported_claim_count": 4,
+        "mean_evidence_strength": 0.7166666666666667,
+        "contribution_to_agreement": 1.5138888888888888
+      },
+      {
+        "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+        "claim_count": 7,
+        "scoring_claim_count": 7,
+        "supported_claim_count": 5,
+        "mean_evidence_strength": 0.6857142857142857,
+        "contribution_to_agreement": 0.7888888888888889
+      }
+    ],
+    "per_theme": [
+      {
+        "strength": 0.6499999999999999,
+        "theme_id": "092edda0-b78b-5678-bb71-642e18fd2da0",
+        "agreement_type": "convergence",
+        "participating_lenses": 2
+      },
+      {
+        "strength": 0.8666666666666667,
+        "theme_id": "1db8afbc-ee99-54cb-b9af-ac0b590c6718",
+        "agreement_type": "convergence",
+        "participating_lenses": 3
+      },
+      {
+        "strength": 0.5,
+        "theme_id": "9fe4f888-548f-5ff5-9e41-2f2198afe765",
+        "agreement_type": "convergence",
+        "participating_lenses": 2
+      },
+      {
+        "strength": 0.5,
+        "theme_id": "bbbedb2c-e68a-5f63-bc23-59555f6c75b4",
+        "agreement_type": "convergence",
+        "participating_lenses": 2
+      },
+      {
+        "strength": 0.8,
+        "theme_id": "c54ae3ad-ab99-5cba-9e46-9d0656d56ba9",
+        "agreement_type": "convergence",
+        "participating_lenses": 2
+      }
+    ],
+    "raw_score": 0.26210526202445317,
+    "drift_flags": [],
+    "final_score": 0.2621,
+    "agreement_factor": 0.4999999999999999,
+    "lens_count_factor": 1,
+    "divergence_penalty": 0,
+    "unsupported_penalty": 0.15789473684210525,
+    "low_evidence_warning": false,
+    "evidence_density_factor": 0.24315789020307618,
+    "high_contradiction_warning": false
+  },
+  "convergence_count": 5,
+  "divergence_count": 0,
+  "orphan_count": 8,
+  "convergence_points": [
+    {
+      "strength": 0.6499999999999999,
+      "theme_id": "092edda0-b78b-5678-bb71-642e18fd2da0",
+      "theme_label": "Deploying the model without addressing bias could lead to regulatory penalties and reputational damage.",
+      "evidence_density": 0.32999999384703194,
+      "supporting_claims": [
+        "2c61cf46-3064-4cb4-af6b-90f3d7b0ee31",
+        "d73b4807-621e-4803-8623-82a589eff48d"
+      ],
+      "supporting_lenses": [
+        "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc"
+      ]
+    },
+    {
+      "strength": 0.8666666666666667,
+      "theme_id": "1db8afbc-ee99-54cb-b9af-ac0b590c6718",
+      "theme_label": "The ML model assigns 12% higher premiums to businesses in majority-minority ZIP codes.",
+      "evidence_density": 0.32999999384703194,
+      "supporting_claims": [
+        "45e136de-c28d-4225-bed4-799dfb9f6424",
+        "95028a4b-8613-4020-9117-603aa131c394",
+        "e8243e72-589a-4567-ad96-ce372ad3f51f"
+      ],
+      "supporting_lenses": [
+        "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    },
+    {
+      "strength": 0.5,
+      "theme_id": "9fe4f888-548f-5ff5-9e41-2f2198afe765",
+      "theme_label": "The fairness audit accurately reflects the model's bias.",
+      "evidence_density": 0,
+      "supporting_claims": [
+        "167a03a9-2d75-450a-baf4-097c7e7a3afc",
+        "802b735a-e937-423e-82ac-aa3b465468d4"
+      ],
+      "supporting_lenses": [
+        "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    },
+    {
+      "strength": 0.5,
+      "theme_id": "bbbedb2c-e68a-5f63-bc23-59555f6c75b4",
+      "theme_label": "State regulators will act based on current signals of increased scrutiny.",
+      "evidence_density": 0,
+      "supporting_claims": [
+        "4b7671eb-a45f-4380-a9db-a7f3c9d53f80",
+        "ccedfd70-22b5-48a3-b83e-93839c83506c"
+      ],
+      "supporting_lenses": [
+        "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    },
+    {
+      "strength": 0.8,
+      "theme_id": "c54ae3ad-ab99-5cba-9e46-9d0656d56ba9",
+      "theme_label": "California and New York regulators have signaled increased scrutiny of algorithmic underwriting.",
+      "evidence_density": 0.3849999928215373,
+      "supporting_claims": [
+        "d4540a83-f595-4f6c-afff-5021ba670170",
+        "f17f53cb-dbf7-4375-bf32-f4754e248807"
+      ],
+      "supporting_lenses": [
+        "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc"
+      ]
+    }
+  ],
+  "divergence_points": [],
+  "orphan_claims": [
+    "8618cc54-a4e7-490a-aed8-38a71a43de4a",
+    "273966ae-27c1-4eaa-93b7-fe78eae770c5",
+    "7a8e0da5-f1b5-4157-84c7-e3e0dae9eb22",
+    "fb3f9f3b-9c58-4663-a440-1240c0c94258",
+    "4e8b3188-8b50-40d9-973b-394b9feb303b",
+    "09f51147-6de0-40ff-9e37-5f6bf5f7ef95",
+    "64217b09-e97c-4c43-b93e-a051b0b2acd2",
+    "a5d621d0-7a99-4e2d-91f3-b9d693325de2"
+  ]
+}

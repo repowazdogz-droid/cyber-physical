@@ -1,0 +1,179 @@
+{
+  "stimulus_id": "st-004",
+  "analysis_id": "51493c90-080a-451d-a549-52f64766bd70",
+  "case_id": "a337dda9-7176-4507-9895-bd14086067ee",
+  "duration_ms": 10249,
+  "success": true,
+  "confidence_score": 0.1754,
+  "confidence_breakdown": {
+    "per_lens": [
+      {
+        "lens_id": "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "claim_count": 5,
+        "scoring_claim_count": 5,
+        "supported_claim_count": 3,
+        "mean_evidence_strength": 0.6799999999999999,
+        "contribution_to_agreement": 0.3
+      },
+      {
+        "lens_id": "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "claim_count": 7,
+        "scoring_claim_count": 7,
+        "supported_claim_count": 5,
+        "mean_evidence_strength": 0.6857142857142858,
+        "contribution_to_agreement": 0.9
+      },
+      {
+        "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+        "claim_count": 6,
+        "scoring_claim_count": 6,
+        "supported_claim_count": 4,
+        "mean_evidence_strength": 0.7166666666666668,
+        "contribution_to_agreement": 0
+      },
+      {
+        "lens_id": "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+        "claim_count": 8,
+        "scoring_claim_count": 8,
+        "supported_claim_count": 6,
+        "mean_evidence_strength": 0.725,
+        "contribution_to_agreement": 1
+      },
+      {
+        "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "claim_count": 8,
+        "scoring_claim_count": 8,
+        "supported_claim_count": 5,
+        "mean_evidence_strength": 0.625,
+        "contribution_to_agreement": 0.5666666666666667
+      }
+    ],
+    "per_theme": [
+      {
+        "strength": 0.6,
+        "theme_id": "0f9ffb1c-d985-5d86-b116-c4b96813f5ff",
+        "agreement_type": "convergence",
+        "participating_lenses": 2
+      },
+      {
+        "strength": 0.8,
+        "theme_id": "28348b64-e3e9-54fd-a7dd-1fb9ce8273c7",
+        "agreement_type": "convergence",
+        "participating_lenses": 2
+      },
+      {
+        "strength": 0.5,
+        "theme_id": "dc26bc19-34d8-5740-ab27-7f312a85b3ec",
+        "agreement_type": "convergence",
+        "participating_lenses": 3
+      },
+      {
+        "strength": 0.8666666666666667,
+        "theme_id": "ef1badd9-0770-5323-8712-b5bbc68997e8",
+        "agreement_type": "convergence",
+        "participating_lenses": 2
+      }
+    ],
+    "raw_score": 0.17538235110952563,
+    "drift_flags": [],
+    "final_score": 0.1754,
+    "agreement_factor": 0.3016666666666667,
+    "lens_count_factor": 1,
+    "divergence_penalty": 0,
+    "unsupported_penalty": 0.16176470588235295,
+    "low_evidence_warning": false,
+    "evidence_density_factor": 0.2555882279675143,
+    "high_contradiction_warning": false
+  },
+  "convergence_count": 4,
+  "divergence_count": 0,
+  "orphan_count": 24,
+  "convergence_points": [
+    {
+      "strength": 0.6,
+      "theme_id": "0f9ffb1c-d985-5d86-b116-c4b96813f5ff",
+      "theme_label": "EU regulatory changes will not be postponed or altered significantly.",
+      "evidence_density": 0.16499999527016745,
+      "supporting_claims": [
+        "504b0f62-7df7-4629-be87-88095ebbfcc5",
+        "ba5b9a3d-ea68-4458-9110-19518ad5874a"
+      ],
+      "supporting_lenses": [
+        "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "5d323a15-6d2a-48d7-ad02-3f65a3c259f8"
+      ]
+    },
+    {
+      "strength": 0.8,
+      "theme_id": "28348b64-e3e9-54fd-a7dd-1fb9ce8273c7",
+      "theme_label": "Non-compliance penalties could reach 2% of global annual turnover.",
+      "evidence_density": 0.3299999905403349,
+      "supporting_claims": [
+        "d8453883-4d07-4f8b-8b7c-1b5dd69fc808",
+        "ec74ddb9-977e-4fa0-b12d-659333365bdd"
+      ],
+      "supporting_lenses": [
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "6d1a58fb-4982-409a-b2bb-984d36a3feea"
+      ]
+    },
+    {
+      "strength": 0.5,
+      "theme_id": "dc26bc19-34d8-5740-ab27-7f312a85b3ec",
+      "theme_label": "The engineering estimate accurately reflects the complexity of the migration process.",
+      "evidence_density": 0,
+      "supporting_claims": [
+        "80e38af0-fabb-4806-a2cb-7ce444d88cfc",
+        "81f7e60c-1372-4a14-84d5-63ba50dbd75a",
+        "a52416ca-d77d-4a37-879f-4413ca1a1f60"
+      ],
+      "supporting_lenses": [
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "6d1a58fb-4982-409a-b2bb-984d36a3feea"
+      ]
+    },
+    {
+      "strength": 0.8666666666666667,
+      "theme_id": "ef1badd9-0770-5323-8712-b5bbc68997e8",
+      "theme_label": "The European Commission's DORA Phase 2 requirements will be effective January 2027.",
+      "evidence_density": 0.47666665300270594,
+      "supporting_claims": [
+        "2677f2f9-0a15-4e3c-a6be-08fba6bc6fa9",
+        "4275770e-baf7-4e06-b18d-5aac52f2a1d6",
+        "abedbd96-fe87-4422-9338-00bb2d296021"
+      ],
+      "supporting_lenses": [
+        "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "6d1a58fb-4982-409a-b2bb-984d36a3feea"
+      ]
+    }
+  ],
+  "divergence_points": [],
+  "orphan_claims": [
+    "321d8141-cc2a-47bf-8f44-8e277b6a0a26",
+    "ee7d3f69-af39-4e2e-83ca-0a701c1c2600",
+    "11b9c0c5-d233-43da-b68b-1538f365ea78",
+    "77e5ed31-109b-4b7a-b8e1-03a05fc6fb6f",
+    "a0ffb056-78c0-493d-bf90-e41799bb89a7",
+    "d23d1d9b-c3a6-4b42-826f-1a0f8676f34f",
+    "eb223b85-24af-4e97-a38a-72b2b5942297",
+    "a3f749d9-2996-4b22-a9a4-456e78f64f48",
+    "931ed5b0-10b4-44fb-acb4-6a7db853cbce",
+    "496b4a91-62a9-441a-93cb-8f9cf962e817",
+    "733abad8-65d2-4184-a6eb-5b74087c2ad8",
+    "d6bcfc79-9328-4275-afc2-7d19e01d13b5",
+    "885c9d51-09f2-45fb-a931-c3ede8a104c5",
+    "bc187013-2a39-4eac-81bb-2df83ab67320",
+    "6e1369cf-0a65-4842-a3ba-152b27ae0c04",
+    "b94afbdd-977b-4a68-8343-98cb6ae9a6f0",
+    "41629e5c-fc54-4f51-9874-17ced54d18ce",
+    "4b4a175a-d421-4b3e-baad-75d6ebf0ef7e",
+    "3f3c180b-4aa7-4be5-9206-55120b87c4e2",
+    "9672c7f4-9f73-4197-abbe-df96a7a28f31",
+    "c6d18779-eea9-4569-91ac-e2654c21d591",
+    "259bc49c-6a7b-410d-a70b-406951456f32",
+    "11efb4ca-0550-4453-a3c7-989de5ab458d",
+    "5087b342-aa95-49a4-834e-ea8474f477c8"
+  ]
+}

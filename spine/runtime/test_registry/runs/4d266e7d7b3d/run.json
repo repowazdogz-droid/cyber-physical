@@ -1,0 +1,718 @@
+{
+  "run_id": "4d266e7d7b3d",
+  "case_id": "fb667e3afc36",
+  "timestamp": "2026-02-05 10:21:20.289840",
+  "output": {
+    "decision_map": {
+      "constraints_checked": [
+        {
+          "constraint": "part_count: 5",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "tolerance_per_part: \u00b10.1mm",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "worst_case_stackup: +0.5mm",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "max_acceptable_stackup: 0.3mm",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "must_meet_assembly_tolerance",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        }
+      ],
+      "violations": []
+    },
+    "failure_modes": [],
+    "contradictions": [],
+    "unknowns": [
+      {
+        "item": "statistical_stackup: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: statistical_stackup: unknown"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.36000000000000004,
+          "max_confidence": 0.42400000000000004,
+          "sensitivity": 0.07999999999999999,
+          "dependent_on": [
+            "statistical_stackup"
+          ]
+        }
+      },
+      {
+        "item": "correlation_between_parts: variable",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: correlation_between_parts: variable"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.4,
+          "max_confidence": 0.4,
+          "sensitivity": 0.0,
+          "dependent_on": [
+            "correlation_between_parts"
+          ]
+        }
+      },
+      {
+        "item": "assembly_method_impact: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: assembly_method_impact: unknown"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.36000000000000004,
+          "max_confidence": 0.42400000000000004,
+          "sensitivity": 0.07999999999999999,
+          "dependent_on": [
+            "assembly_method_impact"
+          ]
+        }
+      }
+    ],
+    "recommended_experiments": [],
+    "falsification_tests": [],
+    "formal_constraints": [],
+    "trace_graph": {
+      "run_id": "031390619450",
+      "timestamp": "2026-02-05T10:21:20.289770",
+      "nodes": {
+        "input_0000": {
+          "id": "input_0000",
+          "type": "input",
+          "content": {
+            "type": "problem",
+            "name": "Tolerance stack-up - 5 parts, each at +3\u03c3",
+            "domain": "robotic_design"
+          },
+          "timestamp": "2026-02-05T10:21:20.284304",
+          "parents": [],
+          "metadata": {}
+        },
+        "input_0001": {
+          "id": "input_0001",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "part_count: 5"
+          },
+          "timestamp": "2026-02-05T10:21:20.284305",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0002": {
+          "id": "input_0002",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "tolerance_per_part: \u00b10.1mm"
+          },
+          "timestamp": "2026-02-05T10:21:20.284307",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0003": {
+          "id": "input_0003",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "worst_case_stackup: +0.5mm"
+          },
+          "timestamp": "2026-02-05T10:21:20.284308",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0004": {
+          "id": "input_0004",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "max_acceptable_stackup: 0.3mm"
+          },
+          "timestamp": "2026-02-05T10:21:20.284309",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0005": {
+          "id": "input_0005",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "must_meet_assembly_tolerance"
+          },
+          "timestamp": "2026-02-05T10:21:20.284310",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0006": {
+          "id": "input_0006",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "statistical_stackup: unknown"
+          },
+          "timestamp": "2026-02-05T10:21:20.284311",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0007": {
+          "id": "input_0007",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "correlation_between_parts: variable"
+          },
+          "timestamp": "2026-02-05T10:21:20.284312",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0008": {
+          "id": "input_0008",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "assembly_method_impact: unknown"
+          },
+          "timestamp": "2026-02-05T10:21:20.284313",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0009": {
+          "id": "input_0009",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "assembly_precision"
+          },
+          "timestamp": "2026-02-05T10:21:20.284314",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0010": {
+          "id": "input_0010",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "tolerance_control"
+          },
+          "timestamp": "2026-02-05T10:21:20.284316",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "inference_0011": {
+          "id": "inference_0011",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "part_count: 5",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T10:21:20.289729",
+          "parents": [
+            "input_0001"
+          ],
+          "metadata": {}
+        },
+        "inference_0012": {
+          "id": "inference_0012",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "tolerance_per_part: \u00b10.1mm",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T10:21:20.289730",
+          "parents": [
+            "input_0002"
+          ],
+          "metadata": {}
+        },
+        "inference_0013": {
+          "id": "inference_0013",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "worst_case_stackup: +0.5mm",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T10:21:20.289731",
+          "parents": [
+            "input_0003"
+          ],
+          "metadata": {}
+        },
+        "inference_0014": {
+          "id": "inference_0014",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "max_acceptable_stackup: 0.3mm",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T10:21:20.289732",
+          "parents": [
+            "input_0004"
+          ],
+          "metadata": {}
+        },
+        "inference_0015": {
+          "id": "inference_0015",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "must_meet_assembly_tolerance",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T10:21:20.289733",
+          "parents": [
+            "input_0005"
+          ],
+          "metadata": {}
+        },
+        "output_0016": {
+          "id": "output_0016",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "statistical_stackup: unknown",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T10:21:20.289752",
+          "parents": [
+            "input_0006"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: statistical_stackup: unknown"
+              ],
+              "requires_validation": true
+            }
+          }
+        },
+        "output_0017": {
+          "id": "output_0017",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "correlation_between_parts: variable",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T10:21:20.289759",
+          "parents": [
+            "input_0007"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: correlation_between_parts: variable"
+              ],
+              "requires_validation": true
+            }
+          }
+        },
+        "output_0018": {
+          "id": "output_0018",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "assembly_method_impact: unknown",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T10:21:20.289765",
+          "parents": [
+            "input_0008"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: assembly_method_impact: unknown"
+              ],
+              "requires_validation": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "trace": {
+    "run_id": "031390619450",
+    "timestamp": "2026-02-05T10:21:20.289770",
+    "nodes": {
+      "input_0000": {
+        "id": "input_0000",
+        "type": "input",
+        "content": {
+          "type": "problem",
+          "name": "Tolerance stack-up - 5 parts, each at +3\u03c3",
+          "domain": "robotic_design"
+        },
+        "timestamp": "2026-02-05T10:21:20.284304",
+        "parents": [],
+        "metadata": {}
+      },
+      "input_0001": {
+        "id": "input_0001",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "part_count: 5"
+        },
+        "timestamp": "2026-02-05T10:21:20.284305",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0002": {
+        "id": "input_0002",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "tolerance_per_part: \u00b10.1mm"
+        },
+        "timestamp": "2026-02-05T10:21:20.284307",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0003": {
+        "id": "input_0003",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "worst_case_stackup: +0.5mm"
+        },
+        "timestamp": "2026-02-05T10:21:20.284308",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0004": {
+        "id": "input_0004",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "max_acceptable_stackup: 0.3mm"
+        },
+        "timestamp": "2026-02-05T10:21:20.284309",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0005": {
+        "id": "input_0005",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "must_meet_assembly_tolerance"
+        },
+        "timestamp": "2026-02-05T10:21:20.284310",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0006": {
+        "id": "input_0006",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "statistical_stackup: unknown"
+        },
+        "timestamp": "2026-02-05T10:21:20.284311",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0007": {
+        "id": "input_0007",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "correlation_between_parts: variable"
+        },
+        "timestamp": "2026-02-05T10:21:20.284312",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0008": {
+        "id": "input_0008",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "assembly_method_impact: unknown"
+        },
+        "timestamp": "2026-02-05T10:21:20.284313",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0009": {
+        "id": "input_0009",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "assembly_precision"
+        },
+        "timestamp": "2026-02-05T10:21:20.284314",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0010": {
+        "id": "input_0010",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "tolerance_control"
+        },
+        "timestamp": "2026-02-05T10:21:20.284316",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "inference_0011": {
+        "id": "inference_0011",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "part_count: 5",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:21:20.289729",
+        "parents": [
+          "input_0001"
+        ],
+        "metadata": {}
+      },
+      "inference_0012": {
+        "id": "inference_0012",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "tolerance_per_part: \u00b10.1mm",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:21:20.289730",
+        "parents": [
+          "input_0002"
+        ],
+        "metadata": {}
+      },
+      "inference_0013": {
+        "id": "inference_0013",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "worst_case_stackup: +0.5mm",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:21:20.289731",
+        "parents": [
+          "input_0003"
+        ],
+        "metadata": {}
+      },
+      "inference_0014": {
+        "id": "inference_0014",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "max_acceptable_stackup: 0.3mm",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:21:20.289732",
+        "parents": [
+          "input_0004"
+        ],
+        "metadata": {}
+      },
+      "inference_0015": {
+        "id": "inference_0015",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "must_meet_assembly_tolerance",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:21:20.289733",
+        "parents": [
+          "input_0005"
+        ],
+        "metadata": {}
+      },
+      "output_0016": {
+        "id": "output_0016",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "statistical_stackup: unknown",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:21:20.289752",
+        "parents": [
+          "input_0006"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: statistical_stackup: unknown"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0017": {
+        "id": "output_0017",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "correlation_between_parts: variable",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:21:20.289759",
+        "parents": [
+          "input_0007"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: correlation_between_parts: variable"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0018": {
+        "id": "output_0018",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "assembly_method_impact: unknown",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:21:20.289765",
+        "parents": [
+          "input_0008"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: assembly_method_impact: unknown"
+            ],
+            "requires_validation": true
+          }
+        }
+      }
+    }
+  },
+  "predictions": [],
+  "reviewer": null,
+  "review_notes": ""
+}

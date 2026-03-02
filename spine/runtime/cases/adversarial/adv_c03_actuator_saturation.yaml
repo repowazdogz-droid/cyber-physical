@@ -1,0 +1,29 @@
+problem:
+  name: "Actuator saturation during trajectory change"
+  domain: "robotic_design"
+
+constraints:
+  - "required_torque: 7.5Nm"
+  - "actuator_limit: 6.0Nm"
+  - "trajectory_change_rate: high"
+  - "must_not_saturate"
+
+uncertainties:
+  - "dynamic_load_variation: unknown"
+  - "saturation_duration: variable"
+  - "control_degradation: unknown"
+
+objectives:
+  - "smooth_trajectory"
+  - "actuator_limits"
+
+design:
+  required_torque_nm: 7.5
+  actuator_limit_nm: 6.0
+  saturation_margin_nm: -1.5
+  max_torque_nm: 7.5
+
+metadata:
+  injected_failure: "actuator_saturation"
+  failure_category: "control"
+  expected_detection: "Torque limit constraint should trigger"

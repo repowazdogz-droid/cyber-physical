@@ -1,0 +1,1052 @@
+{
+  "records": [
+    {
+      "timestamp": "2026-02-05T10:06:15.097235",
+      "case_id": "870a1a83ff01",
+      "constraint_id": "FORMAL_002",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:06:15.097307",
+      "case_id": "870a1a83ff01",
+      "constraint_id": "FORMAL_007",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:06:15.160971",
+      "case_id": "4e5cba021b20",
+      "constraint_id": "FORMAL_004",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:06:15.230314",
+      "case_id": "6131ac7eccbe",
+      "constraint_id": "FORMAL_010",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:06:15.285981",
+      "case_id": "44f10ac3fce4",
+      "constraint_id": "FORMAL_011",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:06:15.302324",
+      "case_id": "d8fd1b3dbdeb",
+      "constraint_id": "FORMAL_009",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:06:15.302402",
+      "case_id": "d8fd1b3dbdeb",
+      "constraint_id": "FORMAL_011",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:13.742639",
+      "case_id": "928fc6629d45",
+      "constraint_id": "FORMAL_018",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:13.742764",
+      "case_id": "928fc6629d45",
+      "constraint_id": "FORMAL_019",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:13.750874",
+      "case_id": "614028b3c59f",
+      "constraint_id": "FORMAL_017",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:13.758430",
+      "case_id": "c470282e35f0",
+      "constraint_id": "FORMAL_002",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:13.758532",
+      "case_id": "c470282e35f0",
+      "constraint_id": "FORMAL_007",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:13.766276",
+      "case_id": "3d0414bd54b6",
+      "constraint_id": "FORMAL_021",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:13.827799",
+      "case_id": "99c86e3dbc80",
+      "constraint_id": "FORMAL_004",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:13.892849",
+      "case_id": "22f382b64176",
+      "constraint_id": "FORMAL_023",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:13.901723",
+      "case_id": "9d0290db295b",
+      "constraint_id": "FORMAL_010",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:13.909741",
+      "case_id": "2f2a32698630",
+      "constraint_id": "FORMAL_027",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:13.936421",
+      "case_id": "2ac7626cb724",
+      "constraint_id": "FORMAL_028",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:13.962627",
+      "case_id": "f19a3b1c85c7",
+      "constraint_id": "FORMAL_011",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:13.980038",
+      "case_id": "597eac53ff37",
+      "constraint_id": "FORMAL_009",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:13.980189",
+      "case_id": "597eac53ff37",
+      "constraint_id": "FORMAL_011",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:27.793775",
+      "case_id": "a279709e7420",
+      "constraint_id": "FORMAL_018",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:27.793916",
+      "case_id": "a279709e7420",
+      "constraint_id": "FORMAL_019",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:27.802012",
+      "case_id": "78de2f72d2dc",
+      "constraint_id": "FORMAL_017",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:27.809524",
+      "case_id": "4db97f1473c3",
+      "constraint_id": "FORMAL_002",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:27.809678",
+      "case_id": "4db97f1473c3",
+      "constraint_id": "FORMAL_007",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:27.817705",
+      "case_id": "0165b35d6b4c",
+      "constraint_id": "FORMAL_021",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:27.880575",
+      "case_id": "cf82f8166a93",
+      "constraint_id": "FORMAL_004",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:27.946609",
+      "case_id": "77b04440f6f5",
+      "constraint_id": "FORMAL_023",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:27.955647",
+      "case_id": "02252d7fbeb9",
+      "constraint_id": "FORMAL_010",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:27.963765",
+      "case_id": "c50117981f88",
+      "constraint_id": "FORMAL_027",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:27.991086",
+      "case_id": "347736405102",
+      "constraint_id": "FORMAL_028",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:28.017410",
+      "case_id": "b024b9c9a314",
+      "constraint_id": "FORMAL_011",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:28.034992",
+      "case_id": "093ec0fbd276",
+      "constraint_id": "FORMAL_009",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:12:28.035197",
+      "case_id": "093ec0fbd276",
+      "constraint_id": "FORMAL_011",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:45.790042",
+      "case_id": "21f8af369bd4",
+      "constraint_id": "FORMAL_018",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:45.790232",
+      "case_id": "21f8af369bd4",
+      "constraint_id": "FORMAL_019",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:45.798912",
+      "case_id": "6bb47e94e074",
+      "constraint_id": "FORMAL_017",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:45.806983",
+      "case_id": "57bf0531d260",
+      "constraint_id": "FORMAL_002",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:45.807206",
+      "case_id": "57bf0531d260",
+      "constraint_id": "FORMAL_007",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:45.815812",
+      "case_id": "22752a570a4c",
+      "constraint_id": "FORMAL_021",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:45.885062",
+      "case_id": "19072ff998e4",
+      "constraint_id": "FORMAL_004",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:45.955320",
+      "case_id": "44c2178847ad",
+      "constraint_id": "FORMAL_023",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:45.964828",
+      "case_id": "b834fa51331d",
+      "constraint_id": "FORMAL_010",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:45.973520",
+      "case_id": "235ba6791308",
+      "constraint_id": "FORMAL_027",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:46.001315",
+      "case_id": "b8d805d50d94",
+      "constraint_id": "FORMAL_028",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:46.029930",
+      "case_id": "56b3827e9189",
+      "constraint_id": "FORMAL_011",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:46.048897",
+      "case_id": "856c6c0e42e2",
+      "constraint_id": "FORMAL_009",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:46.049144",
+      "case_id": "856c6c0e42e2",
+      "constraint_id": "FORMAL_011",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:52.791225",
+      "case_id": "1c5c1a0d0788",
+      "constraint_id": "FORMAL_018",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:52.791528",
+      "case_id": "1c5c1a0d0788",
+      "constraint_id": "FORMAL_019",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:52.801860",
+      "case_id": "cd5c0b0ca0ca",
+      "constraint_id": "FORMAL_017",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:52.810342",
+      "case_id": "25b896c4a469",
+      "constraint_id": "FORMAL_002",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:52.810580",
+      "case_id": "25b896c4a469",
+      "constraint_id": "FORMAL_007",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:52.819463",
+      "case_id": "959906edc902",
+      "constraint_id": "FORMAL_021",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:52.886813",
+      "case_id": "d531951f7e09",
+      "constraint_id": "FORMAL_004",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:52.959540",
+      "case_id": "8eefb7c43c5b",
+      "constraint_id": "FORMAL_023",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:52.969441",
+      "case_id": "ba2ec6f4b9d1",
+      "constraint_id": "FORMAL_010",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:52.978536",
+      "case_id": "1eaead553221",
+      "constraint_id": "FORMAL_027",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:53.007167",
+      "case_id": "9b9d13124153",
+      "constraint_id": "FORMAL_028",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:53.036362",
+      "case_id": "65ef432fb2fd",
+      "constraint_id": "FORMAL_011",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:53.055576",
+      "case_id": "e5e1a6b11d1e",
+      "constraint_id": "FORMAL_009",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:53.055846",
+      "case_id": "e5e1a6b11d1e",
+      "constraint_id": "FORMAL_011",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:55.930651",
+      "case_id": "94bc1404b439",
+      "constraint_id": "FORMAL_018",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:55.930957",
+      "case_id": "94bc1404b439",
+      "constraint_id": "FORMAL_019",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:55.940624",
+      "case_id": "157d99de4644",
+      "constraint_id": "FORMAL_017",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:55.949458",
+      "case_id": "f0245c0b1458",
+      "constraint_id": "FORMAL_002",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:55.949779",
+      "case_id": "f0245c0b1458",
+      "constraint_id": "FORMAL_007",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:55.959717",
+      "case_id": "1e1d35f66213",
+      "constraint_id": "FORMAL_021",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:56.030419",
+      "case_id": "aed6775ea6ba",
+      "constraint_id": "FORMAL_004",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:56.106291",
+      "case_id": "a413b4b33e01",
+      "constraint_id": "FORMAL_023",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:56.116824",
+      "case_id": "dc272c83dba7",
+      "constraint_id": "FORMAL_010",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:56.126473",
+      "case_id": "e523ef1edc65",
+      "constraint_id": "FORMAL_027",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:56.156814",
+      "case_id": "8e78767ef436",
+      "constraint_id": "FORMAL_028",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:56.186995",
+      "case_id": "a0a7b78a9c94",
+      "constraint_id": "FORMAL_011",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:56.207008",
+      "case_id": "ab31a1814383",
+      "constraint_id": "FORMAL_009",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:16:56.207365",
+      "case_id": "ab31a1814383",
+      "constraint_id": "FORMAL_011",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.574271",
+      "case_id": "17b48ea992d5",
+      "constraint_id": "FORMAL_018",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.574641",
+      "case_id": "17b48ea992d5",
+      "constraint_id": "FORMAL_019",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.584669",
+      "case_id": "acebbc3e255f",
+      "constraint_id": "FORMAL_017",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.594110",
+      "case_id": "fbf38949a47c",
+      "constraint_id": "FORMAL_002",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.594464",
+      "case_id": "fbf38949a47c",
+      "constraint_id": "FORMAL_007",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.604062",
+      "case_id": "731fceaee21a",
+      "constraint_id": "FORMAL_021",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.624411",
+      "case_id": "d4bec8471ce9",
+      "constraint_id": "FORMAL_035",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.645933",
+      "case_id": "a7e8ba4e52cd",
+      "constraint_id": "FORMAL_024",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.657169",
+      "case_id": "1d2bb5ab52bc",
+      "constraint_id": "FORMAL_036",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.677408",
+      "case_id": "1d5aca5b2754",
+      "constraint_id": "FORMAL_004",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.707728",
+      "case_id": "bf346c3ddc2d",
+      "constraint_id": "FORMAL_031",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.708070",
+      "case_id": "bf346c3ddc2d",
+      "constraint_id": "FORMAL_032",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.718606",
+      "case_id": "1d72faac001f",
+      "constraint_id": "FORMAL_035",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.729642",
+      "case_id": "7fecbc877a33",
+      "constraint_id": "FORMAL_031",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.739918",
+      "case_id": "40b7c99baff8",
+      "constraint_id": "FORMAL_031",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.740294",
+      "case_id": "40b7c99baff8",
+      "constraint_id": "FORMAL_032",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.758877",
+      "case_id": "dc6e5e5c9feb",
+      "constraint_id": "FORMAL_023",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.770054",
+      "case_id": "bfa35eff2654",
+      "constraint_id": "FORMAL_010",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.779917",
+      "case_id": "2893bcbbc2bf",
+      "constraint_id": "FORMAL_027",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.800937",
+      "case_id": "50d906d58d57",
+      "constraint_id": "FORMAL_024",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.811634",
+      "case_id": "688b5395a807",
+      "constraint_id": "FORMAL_028",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.821459",
+      "case_id": "1c9fa5d3438e",
+      "constraint_id": "FORMAL_025",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.832640",
+      "case_id": "48d9533198f6",
+      "constraint_id": "FORMAL_026",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.833012",
+      "case_id": "48d9533198f6",
+      "constraint_id": "FORMAL_027",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.843731",
+      "case_id": "df02ae188ebf",
+      "constraint_id": "FORMAL_011",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.864620",
+      "case_id": "7f59822f90e4",
+      "constraint_id": "FORMAL_009",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:19:57.864996",
+      "case_id": "7f59822f90e4",
+      "constraint_id": "FORMAL_011",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.195471",
+      "case_id": "8266284a059b",
+      "constraint_id": "FORMAL_018",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.195867",
+      "case_id": "8266284a059b",
+      "constraint_id": "FORMAL_019",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.206122",
+      "case_id": "28e48fe74385",
+      "constraint_id": "FORMAL_017",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.215635",
+      "case_id": "c0bdf3146e24",
+      "constraint_id": "FORMAL_002",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.216030",
+      "case_id": "c0bdf3146e24",
+      "constraint_id": "FORMAL_007",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.226192",
+      "case_id": "7614e5b82280",
+      "constraint_id": "FORMAL_021",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.247435",
+      "case_id": "ac66e3411db4",
+      "constraint_id": "FORMAL_035",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.270008",
+      "case_id": "d4fe924383a2",
+      "constraint_id": "FORMAL_024",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.282107",
+      "case_id": "c9becce35ebe",
+      "constraint_id": "FORMAL_036",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.303331",
+      "case_id": "3f43c58928cf",
+      "constraint_id": "FORMAL_004",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.334072",
+      "case_id": "1dd5f112c786",
+      "constraint_id": "FORMAL_031",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.334502",
+      "case_id": "1dd5f112c786",
+      "constraint_id": "FORMAL_032",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.345739",
+      "case_id": "ff70260eb59f",
+      "constraint_id": "FORMAL_035",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.357390",
+      "case_id": "a12f691bcc81",
+      "constraint_id": "FORMAL_031",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.368170",
+      "case_id": "861e79135a9a",
+      "constraint_id": "FORMAL_031",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.368605",
+      "case_id": "861e79135a9a",
+      "constraint_id": "FORMAL_032",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.387970",
+      "case_id": "e9ff4d8546cc",
+      "constraint_id": "FORMAL_023",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.399134",
+      "case_id": "4e4d9aa01043",
+      "constraint_id": "FORMAL_010",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.409408",
+      "case_id": "f90d9fa1dc8b",
+      "constraint_id": "FORMAL_027",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.431291",
+      "case_id": "e5dbb4f3a7fa",
+      "constraint_id": "FORMAL_024",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.442475",
+      "case_id": "223fd9235c7c",
+      "constraint_id": "FORMAL_028",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.452790",
+      "case_id": "c1ab7f5c0b4c",
+      "constraint_id": "FORMAL_025",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.464908",
+      "case_id": "53d710dec7c5",
+      "constraint_id": "FORMAL_026",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.465376",
+      "case_id": "53d710dec7c5",
+      "constraint_id": "FORMAL_027",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.476849",
+      "case_id": "43334782e9d5",
+      "constraint_id": "FORMAL_011",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.499133",
+      "case_id": "8725f6099ccf",
+      "constraint_id": "FORMAL_009",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    },
+    {
+      "timestamp": "2026-02-05T10:21:20.499605",
+      "case_id": "8725f6099ccf",
+      "constraint_id": "FORMAL_011",
+      "triggered": true,
+      "actually_failed": true,
+      "result_type": "tp"
+    }
+  ]
+}

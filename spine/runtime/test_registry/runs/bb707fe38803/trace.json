@@ -1,0 +1,271 @@
+{
+  "run_id": "52a76354394a",
+  "timestamp": "2026-02-05T10:16:55.938152",
+  "nodes": {
+    "input_0000": {
+      "id": "input_0000",
+      "type": "input",
+      "content": {
+        "type": "problem",
+        "name": "Sensor latency 50ms on 100ms control loop",
+        "domain": "robotic_design"
+      },
+      "timestamp": "2026-02-05T10:16:55.932856",
+      "parents": [],
+      "metadata": {}
+    },
+    "input_0001": {
+      "id": "input_0001",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "control_loop_period: 100ms"
+      },
+      "timestamp": "2026-02-05T10:16:55.932858",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0002": {
+      "id": "input_0002",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "sensor_latency: 50ms"
+      },
+      "timestamp": "2026-02-05T10:16:55.932859",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0003": {
+      "id": "input_0003",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "max_acceptable_latency: 20ms"
+      },
+      "timestamp": "2026-02-05T10:16:55.932860",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0004": {
+      "id": "input_0004",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "must_maintain_control_bandwidth"
+      },
+      "timestamp": "2026-02-05T10:16:55.932861",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0005": {
+      "id": "input_0005",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "latency_variability: \u00b110ms"
+      },
+      "timestamp": "2026-02-05T10:16:55.932862",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0006": {
+      "id": "input_0006",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "control_performance_degradation: unknown"
+      },
+      "timestamp": "2026-02-05T10:16:55.932863",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0007": {
+      "id": "input_0007",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "stability_impact: variable"
+      },
+      "timestamp": "2026-02-05T10:16:55.932863",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0008": {
+      "id": "input_0008",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "control_performance"
+      },
+      "timestamp": "2026-02-05T10:16:55.932864",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0009": {
+      "id": "input_0009",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "sensor_response"
+      },
+      "timestamp": "2026-02-05T10:16:55.932865",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "inference_0010": {
+      "id": "inference_0010",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "control_loop_period: 100ms",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:55.938021",
+      "parents": [
+        "input_0001"
+      ],
+      "metadata": {}
+    },
+    "inference_0011": {
+      "id": "inference_0011",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "sensor_latency: 50ms",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:55.938022",
+      "parents": [
+        "input_0002"
+      ],
+      "metadata": {}
+    },
+    "inference_0012": {
+      "id": "inference_0012",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "max_acceptable_latency: 20ms",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:55.938023",
+      "parents": [
+        "input_0003"
+      ],
+      "metadata": {}
+    },
+    "inference_0013": {
+      "id": "inference_0013",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "must_maintain_control_bandwidth",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:55.938024",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {}
+    },
+    "output_0014": {
+      "id": "output_0014",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "latency_variability: \u00b110ms",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:16:55.938050",
+      "parents": [
+        "input_0005"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: latency_variability: \u00b110ms"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0015": {
+      "id": "output_0015",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "control_performance_degradation: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:16:55.938060",
+      "parents": [
+        "input_0006"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: control_performance_degradation: unknown"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0016": {
+      "id": "output_0016",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "stability_impact: variable",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:16:55.938068",
+      "parents": [
+        "input_0007"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: stability_impact: variable"
+          ],
+          "requires_validation": true
+        }
+      }
+    }
+  }
+}

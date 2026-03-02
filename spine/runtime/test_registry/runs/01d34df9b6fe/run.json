@@ -1,0 +1,718 @@
+{
+  "run_id": "01d34df9b6fe",
+  "case_id": "d18378c9f1e9",
+  "timestamp": "2026-02-05 10:12:27.861674",
+  "output": {
+    "decision_map": {
+      "constraints_checked": [
+        {
+          "constraint": "sensor_drift: 2%/year",
+          "checked": true,
+          "contract_matched": "32_model_routing_and_orchestration_contract",
+          "violation": null
+        },
+        {
+          "constraint": "actuator_wear: 5% efficiency loss",
+          "checked": true,
+          "contract_matched": "59_synthetic_data_authoring_contract",
+          "violation": null
+        },
+        {
+          "constraint": "load_increase: +15%",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "combined_performance_degradation: unknown",
+          "checked": true,
+          "contract_matched": "58_simulation_authoring_contract",
+          "violation": null
+        },
+        {
+          "constraint": "must_maintain_system_performance",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        }
+      ],
+      "violations": []
+    },
+    "failure_modes": [],
+    "contradictions": [],
+    "unknowns": [
+      {
+        "item": "degradation_interaction: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: degradation_interaction: unknown"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.36000000000000004,
+          "max_confidence": 0.42400000000000004,
+          "sensitivity": 0.07999999999999999,
+          "dependent_on": [
+            "degradation_interaction"
+          ]
+        }
+      },
+      {
+        "item": "compensation_capability: variable",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: compensation_capability: variable"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.4,
+          "max_confidence": 0.4,
+          "sensitivity": 0.0,
+          "dependent_on": [
+            "compensation_capability"
+          ]
+        }
+      },
+      {
+        "item": "failure_timeline: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: failure_timeline: unknown"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.36000000000000004,
+          "max_confidence": 0.42400000000000004,
+          "sensitivity": 0.07999999999999999,
+          "dependent_on": [
+            "failure_timeline"
+          ]
+        }
+      }
+    ],
+    "recommended_experiments": [],
+    "falsification_tests": [],
+    "formal_constraints": [],
+    "trace_graph": {
+      "run_id": "61e49ed07a70",
+      "timestamp": "2026-02-05T10:12:27.861602",
+      "nodes": {
+        "input_0000": {
+          "id": "input_0000",
+          "type": "input",
+          "content": {
+            "type": "problem",
+            "name": "Sensor drift + actuator wear + load increase = cascading degradation",
+            "domain": "robotic_design"
+          },
+          "timestamp": "2026-02-05T10:12:27.855330",
+          "parents": [],
+          "metadata": {}
+        },
+        "input_0001": {
+          "id": "input_0001",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "sensor_drift: 2%/year"
+          },
+          "timestamp": "2026-02-05T10:12:27.855332",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0002": {
+          "id": "input_0002",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "actuator_wear: 5% efficiency loss"
+          },
+          "timestamp": "2026-02-05T10:12:27.855333",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0003": {
+          "id": "input_0003",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "load_increase: +15%"
+          },
+          "timestamp": "2026-02-05T10:12:27.855334",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0004": {
+          "id": "input_0004",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "combined_performance_degradation: unknown"
+          },
+          "timestamp": "2026-02-05T10:12:27.855335",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0005": {
+          "id": "input_0005",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "must_maintain_system_performance"
+          },
+          "timestamp": "2026-02-05T10:12:27.855335",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0006": {
+          "id": "input_0006",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "degradation_interaction: unknown"
+          },
+          "timestamp": "2026-02-05T10:12:27.855337",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0007": {
+          "id": "input_0007",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "compensation_capability: variable"
+          },
+          "timestamp": "2026-02-05T10:12:27.855338",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0008": {
+          "id": "input_0008",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "failure_timeline: unknown"
+          },
+          "timestamp": "2026-02-05T10:12:27.855338",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0009": {
+          "id": "input_0009",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "system_reliability"
+          },
+          "timestamp": "2026-02-05T10:12:27.855339",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0010": {
+          "id": "input_0010",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "degradation_management"
+          },
+          "timestamp": "2026-02-05T10:12:27.855340",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "inference_0011": {
+          "id": "inference_0011",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "sensor_drift: 2%/year",
+            "checked": true,
+            "contract_matched": "32_model_routing_and_orchestration_contract",
+            "violation": null
+          },
+          "timestamp": "2026-02-05T10:12:27.861563",
+          "parents": [
+            "input_0001"
+          ],
+          "metadata": {}
+        },
+        "inference_0012": {
+          "id": "inference_0012",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "actuator_wear: 5% efficiency loss",
+            "checked": true,
+            "contract_matched": "59_synthetic_data_authoring_contract",
+            "violation": null
+          },
+          "timestamp": "2026-02-05T10:12:27.861564",
+          "parents": [
+            "input_0002"
+          ],
+          "metadata": {}
+        },
+        "inference_0013": {
+          "id": "inference_0013",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "load_increase: +15%",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T10:12:27.861565",
+          "parents": [
+            "input_0003"
+          ],
+          "metadata": {}
+        },
+        "inference_0014": {
+          "id": "inference_0014",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "combined_performance_degradation: unknown",
+            "checked": true,
+            "contract_matched": "58_simulation_authoring_contract",
+            "violation": null
+          },
+          "timestamp": "2026-02-05T10:12:27.861566",
+          "parents": [
+            "input_0004"
+          ],
+          "metadata": {}
+        },
+        "inference_0015": {
+          "id": "inference_0015",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "must_maintain_system_performance",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T10:12:27.861567",
+          "parents": [
+            "input_0005"
+          ],
+          "metadata": {}
+        },
+        "output_0016": {
+          "id": "output_0016",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "degradation_interaction: unknown",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T10:12:27.861583",
+          "parents": [
+            "input_0006"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: degradation_interaction: unknown"
+              ],
+              "requires_validation": true
+            }
+          }
+        },
+        "output_0017": {
+          "id": "output_0017",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "compensation_capability: variable",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T10:12:27.861590",
+          "parents": [
+            "input_0007"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: compensation_capability: variable"
+              ],
+              "requires_validation": true
+            }
+          }
+        },
+        "output_0018": {
+          "id": "output_0018",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "failure_timeline: unknown",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T10:12:27.861597",
+          "parents": [
+            "input_0008"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: failure_timeline: unknown"
+              ],
+              "requires_validation": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "trace": {
+    "run_id": "61e49ed07a70",
+    "timestamp": "2026-02-05T10:12:27.861602",
+    "nodes": {
+      "input_0000": {
+        "id": "input_0000",
+        "type": "input",
+        "content": {
+          "type": "problem",
+          "name": "Sensor drift + actuator wear + load increase = cascading degradation",
+          "domain": "robotic_design"
+        },
+        "timestamp": "2026-02-05T10:12:27.855330",
+        "parents": [],
+        "metadata": {}
+      },
+      "input_0001": {
+        "id": "input_0001",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "sensor_drift: 2%/year"
+        },
+        "timestamp": "2026-02-05T10:12:27.855332",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0002": {
+        "id": "input_0002",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "actuator_wear: 5% efficiency loss"
+        },
+        "timestamp": "2026-02-05T10:12:27.855333",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0003": {
+        "id": "input_0003",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "load_increase: +15%"
+        },
+        "timestamp": "2026-02-05T10:12:27.855334",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0004": {
+        "id": "input_0004",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "combined_performance_degradation: unknown"
+        },
+        "timestamp": "2026-02-05T10:12:27.855335",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0005": {
+        "id": "input_0005",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "must_maintain_system_performance"
+        },
+        "timestamp": "2026-02-05T10:12:27.855335",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0006": {
+        "id": "input_0006",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "degradation_interaction: unknown"
+        },
+        "timestamp": "2026-02-05T10:12:27.855337",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0007": {
+        "id": "input_0007",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "compensation_capability: variable"
+        },
+        "timestamp": "2026-02-05T10:12:27.855338",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0008": {
+        "id": "input_0008",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "failure_timeline: unknown"
+        },
+        "timestamp": "2026-02-05T10:12:27.855338",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0009": {
+        "id": "input_0009",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "system_reliability"
+        },
+        "timestamp": "2026-02-05T10:12:27.855339",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0010": {
+        "id": "input_0010",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "degradation_management"
+        },
+        "timestamp": "2026-02-05T10:12:27.855340",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "inference_0011": {
+        "id": "inference_0011",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "sensor_drift: 2%/year",
+          "checked": true,
+          "contract_matched": "32_model_routing_and_orchestration_contract",
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:12:27.861563",
+        "parents": [
+          "input_0001"
+        ],
+        "metadata": {}
+      },
+      "inference_0012": {
+        "id": "inference_0012",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "actuator_wear: 5% efficiency loss",
+          "checked": true,
+          "contract_matched": "59_synthetic_data_authoring_contract",
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:12:27.861564",
+        "parents": [
+          "input_0002"
+        ],
+        "metadata": {}
+      },
+      "inference_0013": {
+        "id": "inference_0013",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "load_increase: +15%",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:12:27.861565",
+        "parents": [
+          "input_0003"
+        ],
+        "metadata": {}
+      },
+      "inference_0014": {
+        "id": "inference_0014",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "combined_performance_degradation: unknown",
+          "checked": true,
+          "contract_matched": "58_simulation_authoring_contract",
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:12:27.861566",
+        "parents": [
+          "input_0004"
+        ],
+        "metadata": {}
+      },
+      "inference_0015": {
+        "id": "inference_0015",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "must_maintain_system_performance",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:12:27.861567",
+        "parents": [
+          "input_0005"
+        ],
+        "metadata": {}
+      },
+      "output_0016": {
+        "id": "output_0016",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "degradation_interaction: unknown",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:12:27.861583",
+        "parents": [
+          "input_0006"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: degradation_interaction: unknown"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0017": {
+        "id": "output_0017",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "compensation_capability: variable",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:12:27.861590",
+        "parents": [
+          "input_0007"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: compensation_capability: variable"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0018": {
+        "id": "output_0018",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "failure_timeline: unknown",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:12:27.861597",
+        "parents": [
+          "input_0008"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: failure_timeline: unknown"
+            ],
+            "requires_validation": true
+          }
+        }
+      }
+    }
+  },
+  "predictions": [],
+  "reviewer": null,
+  "review_notes": ""
+}

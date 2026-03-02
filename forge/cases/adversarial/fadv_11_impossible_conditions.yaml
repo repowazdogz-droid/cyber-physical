@@ -1,0 +1,18 @@
+problem:
+  name: "Requires impossible lab conditions"
+  domain: "surgical_robotics"
+
+constraints:
+  - "test_in_zero_gravity"
+  - "test_in_perfect_vacuum"
+  - "test_at_absolute_zero"
+
+uncertainties: []
+
+objectives:
+  - "extreme_conditions"
+
+metadata:
+  trap_type: "overreach"
+  expected_forge_behavior: "Should flag impossible lab conditions"
+  quality_gate_should_catch: true

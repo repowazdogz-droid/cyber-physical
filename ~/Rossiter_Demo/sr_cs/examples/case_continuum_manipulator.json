@@ -1,0 +1,14 @@
+{
+  "case_name": "Continuum Manipulator",
+  "material": "fabric_composite",
+  "actuator": "tendon",
+  "diameter_mm": 10.0,
+  "length_mm": 300.0,
+  "target_env": "dry_lab",
+  "latency_budget_ms": 30,
+  "force_requirement": "high",
+  "sensing": ["position"],
+  "control_strategy": "model_based"
+}
+
+

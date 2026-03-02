@@ -1,0 +1,29 @@
+problem:
+  name: "Low friction coefficient on wet tissue"
+  domain: "robotic_design"
+
+constraints:
+  - "grip_force: 5.0N"
+  - "normal_force: 8.0N"
+  - "friction_coefficient: 0.1"
+  - "must_not_slip"
+  - "tissue_surface: wet"
+
+uncertainties:
+  - "tissue_compliance: unknown_range"
+  - "surface_wetness_variation: high"
+
+objectives:
+  - "secure_grasping"
+  - "no_tissue_damage"
+
+design:
+  friction_coefficient: 0.1
+  max_friction_force_n: 0.8
+  required_grip_n: 5.0
+  slip_margin: -4.2
+
+metadata:
+  injected_failure: "insufficient_grip_friction"
+  expected_detection: "Slip under load failure mode"
+  decision_delta_target: 3

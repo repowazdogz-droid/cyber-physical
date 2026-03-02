@@ -1,0 +1,263 @@
+{
+  "run_id": "670ff25a8646",
+  "timestamp": "2026-02-05T09:42:36.065193",
+  "nodes": {
+    "input_0000": {
+      "id": "input_0000",
+      "type": "input",
+      "content": {
+        "type": "problem",
+        "name": "Operating frequency near structural resonance",
+        "domain": "robotic_design"
+      },
+      "timestamp": "2026-02-05T09:42:36.058542",
+      "parents": [],
+      "metadata": {}
+    },
+    "input_0001": {
+      "id": "input_0001",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "operating_frequency: 48Hz"
+      },
+      "timestamp": "2026-02-05T09:42:36.058543",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0002": {
+      "id": "input_0002",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "structural_resonance: 50Hz"
+      },
+      "timestamp": "2026-02-05T09:42:36.058544",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0003": {
+      "id": "input_0003",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "frequency_separation_required: 10Hz"
+      },
+      "timestamp": "2026-02-05T09:42:36.058545",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0004": {
+      "id": "input_0004",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "must_avoid_resonance"
+      },
+      "timestamp": "2026-02-05T09:42:36.058546",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0005": {
+      "id": "input_0005",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "vibration_control"
+      },
+      "timestamp": "2026-02-05T09:42:36.058547",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0006": {
+      "id": "input_0006",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "damping_ratio: unknown_range"
+      },
+      "timestamp": "2026-02-05T09:42:36.058548",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0007": {
+      "id": "input_0007",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "mode_shape_variation: variable"
+      },
+      "timestamp": "2026-02-05T09:42:36.058548",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0008": {
+      "id": "input_0008",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "stable_operation"
+      },
+      "timestamp": "2026-02-05T09:42:36.058549",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0009": {
+      "id": "input_0009",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "low_vibration"
+      },
+      "timestamp": "2026-02-05T09:42:36.058550",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "inference_0010": {
+      "id": "inference_0010",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "operating_frequency: 48Hz",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:42:36.065151",
+      "parents": [
+        "input_0001"
+      ],
+      "metadata": {}
+    },
+    "inference_0011": {
+      "id": "inference_0011",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "structural_resonance: 50Hz",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:42:36.065152",
+      "parents": [
+        "input_0002"
+      ],
+      "metadata": {}
+    },
+    "inference_0012": {
+      "id": "inference_0012",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "frequency_separation_required: 10Hz",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:42:36.065153",
+      "parents": [
+        "input_0003"
+      ],
+      "metadata": {}
+    },
+    "inference_0013": {
+      "id": "inference_0013",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "must_avoid_resonance",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:42:36.065154",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {}
+    },
+    "inference_0014": {
+      "id": "inference_0014",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "vibration_control",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:42:36.065155",
+      "parents": [
+        "input_0005"
+      ],
+      "metadata": {}
+    },
+    "output_0015": {
+      "id": "output_0015",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "damping_ratio: unknown_range",
+        "impact": "high",
+        "resolution": "characterization_study_required"
+      },
+      "timestamp": "2026-02-05T09:42:36.065173",
+      "parents": [
+        "input_0006"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: damping_ratio: unknown_range"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0016": {
+      "id": "output_0016",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "mode_shape_variation: variable",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T09:42:36.065181",
+      "parents": [
+        "input_0007"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: mode_shape_variation: variable"
+          ],
+          "requires_validation": true
+        }
+      }
+    }
+  }
+}

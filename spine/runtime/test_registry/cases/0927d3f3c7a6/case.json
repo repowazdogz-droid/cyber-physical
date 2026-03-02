@@ -1,0 +1,42 @@
+{
+  "case_id": "0927d3f3c7a6",
+  "name": "Backlash accumulation over 1000 cycles",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:19:57.780365",
+  "case_yaml": {
+    "problem": {
+      "name": "Backlash accumulation over 1000 cycles",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "initial_backlash: 0.05mm",
+      "backlash_per_cycle: 0.0001mm",
+      "total_cycles: 1000",
+      "max_acceptable_backlash: 0.2mm",
+      "must_maintain_precision"
+    ],
+    "uncertainties": [
+      "wear_rate_variability: \u00b150%",
+      "lubrication_effectiveness: variable",
+      "load_dependent_wear: unknown"
+    ],
+    "objectives": [
+      "positioning_accuracy",
+      "long_term_precision"
+    ]
+  },
+  "design_data": {
+    "initial_backlash_mm": 0.05,
+    "wear_per_cycle_mm": 0.0001,
+    "cycles": 1000,
+    "accumulated_backlash_mm": 0.15,
+    "max_backlash_mm": 0.2,
+    "margin_mm": 0.05
+  },
+  "tags": [
+    "adversarial",
+    "mechanical",
+    "test"
+  ],
+  "notes": "Injected failure: backlash_accumulation"
+}

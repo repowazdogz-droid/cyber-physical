@@ -1,0 +1,42 @@
+635M	personal-site
+563M	omega-workspace-v1
+509M	shared-reality-site
+477M	node_modules
+439M	trauma-informed-education-system
+435M	Archive
+428M	constraint-universe-site
+ 94M	constraint-universe
+2.9M	omega-vision
+2.4M	spine
+1.6M	app
+944K	oplas
+420K	public
+376K	package-lock.json
+168K	tsconfig.tsbuildinfo
+ 80K	Docs
+ 76K	scripts
+ 68K	Omega:notes
+ 60K	shared-reality-programme
+ 52K	tmp
+ 48K	OPS
+ 24K	SPINE_COMPLETE_MAP.md
+ 12K	BUILD_LOG.md
+4.0K	vitest.config.ts
+4.0K	tsconfig.json
+4.0K	package.json
+4.0K	next.config.js
+4.0K	next-env.d.ts
+4.0K	mac_tools_install.sh
+4.0K	mac
+4.0K	decisions
+4.0K	README_MAC_SETUP.md
+4.0K	NEXTJS_LOCALHOST_TROUBLESHOOTING.md
+4.0K	BUILD_PLAN.md
+  0B	data
+  0B	artifacts
+  0B	Omega:research
+  0B	Omega:logs
+  0B	Omega:learning
+  0B	Omega:decisions
+  0B	Omega:control
+  0B	Omega:assets

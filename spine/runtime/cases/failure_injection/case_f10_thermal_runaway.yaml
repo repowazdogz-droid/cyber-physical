@@ -1,0 +1,32 @@
+problem:
+  name: "Motor duty cycle causes thermal overload"
+  domain: "robotic_design"
+
+constraints:
+  - "motor_power: 45W"
+  - "duty_cycle: 95%"
+  - "thermal_capacity: 50W_continuous"
+  - "ambient_temp: 35C"
+  - "must_not_overheat"
+  - "thermal_safety_critical"
+
+uncertainties:
+  - "heat_sink_efficiency: unknown"
+  - "ambient_variation: high"
+
+objectives:
+  - "continuous_operation"
+  - "thermal_stability"
+
+design:
+  motor_power_w: 45
+  duty_cycle_percent: 95
+  effective_power_w: 42.75
+  thermal_capacity_w: 50
+  margin_w: 7.25
+  estimated_temp_rise_c: 85
+
+metadata:
+  injected_failure: "thermal_runaway"
+  expected_detection: "Thermal overload risk OR material degradation"
+  decision_delta_target: 2

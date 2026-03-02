@@ -1,0 +1,24 @@
+(program (seq (paste_at base patch (abs 10 20))))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

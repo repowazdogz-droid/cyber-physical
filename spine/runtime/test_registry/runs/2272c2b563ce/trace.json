@@ -1,0 +1,300 @@
+{
+  "run_id": "f6d594669636",
+  "timestamp": "2026-02-05T10:16:56.027798",
+  "nodes": {
+    "input_0000": {
+      "id": "input_0000",
+      "type": "input",
+      "content": {
+        "type": "problem",
+        "name": "Thermal expansion mismatch - aluminum + steel",
+        "domain": "robotic_design"
+      },
+      "timestamp": "2026-02-05T10:16:56.021357",
+      "parents": [],
+      "metadata": {}
+    },
+    "input_0001": {
+      "id": "input_0001",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "material1: aluminum (\u03b1=23\u00d710\u207b\u2076/\u00b0C)"
+      },
+      "timestamp": "2026-02-05T10:16:56.021358",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0002": {
+      "id": "input_0002",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "material2: steel (\u03b1=12\u00d710\u207b\u2076/\u00b0C)"
+      },
+      "timestamp": "2026-02-05T10:16:56.021359",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0003": {
+      "id": "input_0003",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "temperature_range: -20\u00b0C to +60\u00b0C"
+      },
+      "timestamp": "2026-02-05T10:16:56.021360",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0004": {
+      "id": "input_0004",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "length: 100mm"
+      },
+      "timestamp": "2026-02-05T10:16:56.021361",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0005": {
+      "id": "input_0005",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "must_accommodate_expansion"
+      },
+      "timestamp": "2026-02-05T10:16:56.021361",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0006": {
+      "id": "input_0006",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "thermal_cycling_frequency: variable"
+      },
+      "timestamp": "2026-02-05T10:16:56.021362",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0007": {
+      "id": "input_0007",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "stress_accumulation: unknown"
+      },
+      "timestamp": "2026-02-05T10:16:56.021363",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0008": {
+      "id": "input_0008",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "joint_integrity: variable"
+      },
+      "timestamp": "2026-02-05T10:16:56.021364",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0009": {
+      "id": "input_0009",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "thermal_compatibility"
+      },
+      "timestamp": "2026-02-05T10:16:56.021365",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0010": {
+      "id": "input_0010",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "structural_integrity"
+      },
+      "timestamp": "2026-02-05T10:16:56.021366",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "inference_0011": {
+      "id": "inference_0011",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "material1: aluminum (\u03b1=23\u00d710\u207b\u2076/\u00b0C)",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:56.027666",
+      "parents": [
+        "input_0001"
+      ],
+      "metadata": {}
+    },
+    "inference_0012": {
+      "id": "inference_0012",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "material2: steel (\u03b1=12\u00d710\u207b\u2076/\u00b0C)",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:56.027669",
+      "parents": [
+        "input_0002"
+      ],
+      "metadata": {}
+    },
+    "inference_0013": {
+      "id": "inference_0013",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "temperature_range: -20\u00b0C to +60\u00b0C",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:56.027670",
+      "parents": [
+        "input_0003"
+      ],
+      "metadata": {}
+    },
+    "inference_0014": {
+      "id": "inference_0014",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "length: 100mm",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:56.027671",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {}
+    },
+    "inference_0015": {
+      "id": "inference_0015",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "must_accommodate_expansion",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:56.027672",
+      "parents": [
+        "input_0005"
+      ],
+      "metadata": {}
+    },
+    "output_0016": {
+      "id": "output_0016",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "thermal_cycling_frequency: variable",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:16:56.027701",
+      "parents": [
+        "input_0006"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: thermal_cycling_frequency: variable"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0017": {
+      "id": "output_0017",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "stress_accumulation: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:16:56.027712",
+      "parents": [
+        "input_0007"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: stress_accumulation: unknown"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0018": {
+      "id": "output_0018",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "joint_integrity: variable",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:16:56.027719",
+      "parents": [
+        "input_0008"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: joint_integrity: variable"
+          ],
+          "requires_validation": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+problem:
+  name: "Thermal experiment: burst mode 100% for 5min, rest 5min, repeat"
+  domain: "surgical_robotics"
+
+constraints:
+  - "power: 20W"
+  - "duty_cycle: 0.5"
+  - "must_not_overheat"
+
+uncertainties:
+  - "burst_thermal: unknown"
+
+objectives:
+  - "burst_operation"
+
+design:
+  power_w: 20.0
+  duty_cycle: 0.5
+  duration_s: 1800
+  cooling: "passive"
+
+metadata:
+  experiment_type: "thermal"

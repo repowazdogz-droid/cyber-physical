@@ -1,0 +1,13 @@
+problem:
+  name: "Thermal experiment: 5W, 80% duty, 15min"
+  domain: "surgical_robotics"
+constraints: ["duration: 900s", "must_not_overheat"]
+uncertainties: ["thermal_buildup: unknown"]
+objectives: ["extended_operation"]
+design:
+  power_w: 5.0
+  duty_cycle: 0.8
+  duration_s: 900
+  cooling: "none"
+metadata:
+  experiment_type: "thermal"

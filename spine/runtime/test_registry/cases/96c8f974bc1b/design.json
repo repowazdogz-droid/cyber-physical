@@ -1,0 +1,6 @@
+{
+  "mass_kg": 3.5,
+  "cog_height_m": 0.45,
+  "support_width_m": 0.08,
+  "tip_over_margin": -0.12
+}

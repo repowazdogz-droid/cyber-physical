@@ -1,0 +1,115 @@
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm.
+=== REFLEXIVE First Live Stochastic Evaluation ===
+Stimulus: st-001 — Should we acquire HelioTech for $500M? They have $200M annual revenue growing 15...
+Runs: 5
+Started: 2026-02-08T11:30:18.026Z
+
+--- Run 1/5 ---
+  Invoking 5 lenses...
+  Lenses completed: 5/5
+  Analysis state: completed
+  Duration: 11688ms
+  Confidence: 0.0879
+  Convergence points: 2
+  Divergence points: 1
+  Orphan claims: 14
+  Lenses: adversarial:OK(6), stakeholder_impact:OK(7), analytical:OK(7), premortem:OK(5), historical_analogy:OK(5)
+
+  Waiting 15s for rate limit reset...
+--- Run 2/5 ---
+  Invoking 5 lenses...
+  Lenses completed: 5/5
+  Analysis state: completed
+  Duration: 11798ms
+  Confidence: 0.0592
+  Convergence points: 1
+  Divergence points: 1
+  Orphan claims: 21
+  Lenses: analytical:OK(7), stakeholder_impact:OK(8), adversarial:OK(8), historical_analogy:OK(6), premortem:OK(5)
+
+  Waiting 15s for rate limit reset...
+--- Run 3/5 ---
+  Invoking 5 lenses...
+  Lenses completed: 5/5
+  Analysis state: completed
+  Duration: 8261ms
+  Confidence: 0.1014
+  Convergence points: 2
+  Divergence points: 1
+  Orphan claims: 13
+  Lenses: stakeholder_impact:OK(6), adversarial:OK(7), analytical:OK(6), premortem:OK(5), historical_analogy:OK(5)
+
+  Waiting 15s for rate limit reset...
+--- Run 4/5 ---
+  Invoking 5 lenses...
+  Lenses completed: 5/5
+  Analysis state: completed
+  Duration: 11531ms
+  Confidence: 0.1551
+  Convergence points: 3
+  Divergence points: 0
+  Orphan claims: 16
+  Lenses: stakeholder_impact:OK(7), adversarial:OK(7), analytical:OK(6), historical_analogy:OK(6), premortem:OK(5)
+
+  Waiting 15s for rate limit reset...
+--- Run 5/5 ---
+  Invoking 5 lenses...
+  Lenses completed: 5/5
+  Analysis state: completed
+  Duration: 11264ms
+  Confidence: 0.1551
+  Convergence points: 4
+  Divergence points: 0
+  Orphan claims: 14
+  Lenses: stakeholder_impact:OK(7), premortem:OK(5), historical_analogy:OK(5), analytical:OK(7), adversarial:OK(7)
+
+=== AGGREGATE RESULTS ===
+
+Success rate: 5/5 (100%)
+Failed: 0
+
+CONFIDENCE SCORES:
+  Run 1: 0.0879
+  Run 2: 0.0592
+  Run 3: 0.1014
+  Run 4: 0.1551
+  Run 5: 0.1551
+  Mean: 0.1117
+  Std Dev: 0.0379
+  Variance: 0.001439
+  Range: [0.0592, 0.1551]
+
+CONVERGENCE/DIVERGENCE:
+  Convergence per run: 2, 1, 2, 3, 4
+  Divergence per run: 1, 1, 1, 0, 0
+  Orphans per run: 14, 21, 13, 16, 14
+
+LENS SUCCESS RATES:
+  adversarial: 5/5 success, mean claims: 7.0
+  stakeholder_impact: 5/5 success, mean claims: 7.0
+  analytical: 5/5 success, mean claims: 6.6
+  premortem: 5/5 success, mean claims: 5.0
+  historical_analogy: 5/5 success, mean claims: 5.4
+
+LATENCY:
+  Run 1: 8261ms
+  Run 2: 11264ms
+  Run 3: 11531ms
+  Run 4: 11688ms
+  Run 5: 11798ms
+  P50: 11531ms
+  P95: 11798ms
+
+EVIDENCE DENSITY:
+  Run 1: 0.0000
+  Run 2: 0.0000
+  Run 3: 0.0000
+  Run 4: 0.0000
+  Run 5: 0.0000
+
+Complete report saved: /Users/warre/Omega/reflexive/reports/live-run-st001/complete-report.json
+
+=== EVALUATION COMPLETE ===
+All outputs saved to: /Users/warre/Omega/reflexive/reports/live-run-st001
+
+DO NOT save baseline. DO NOT calibrate. This is an observational run.

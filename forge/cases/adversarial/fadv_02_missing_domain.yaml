@@ -1,0 +1,18 @@
+problem:
+  name: ""
+  domain: ""
+
+constraints:
+  - "mass_limit: 10kg"
+  - "force_limit: 5N"
+
+uncertainties:
+  - "unknown_parameter: variable"
+
+objectives:
+  - "objective"
+
+metadata:
+  trap_type: "non_actionable"
+  expected_forge_behavior: "Should have limited adjacency mapping without domain context"
+  quality_gate_should_catch: false

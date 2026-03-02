@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEV TRUST AUCTION</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-deep: #fafafa;
+  --bg-surface: #f4f4f6;
+  --bg-raised: #ecedef;
+  --bg-hover: #e4e5e8;
+  --border: #d5d7dc;
+  --border-active: #b8bbc2;
+  --text-primary: #111214;
+  --text-secondary: #363940;
+  --text-muted: #5c5f69;
+  --green: #059669;
+  --green-dim: #d1fae5;
+  --green-glow: rgba(5, 150, 105, 0.08);
+  --amber: #d97706;
+  --amber-dim: #fef3c7;
+  --amber-glow: rgba(217, 119, 6, 0.08);
+  --red: #dc2626;
+  --red-dim: #fee2e2;
+  --red-glow: rgba(220, 38, 38, 0.08);
+  --blue: #2563eb;
+  --blue-dim: #dbeafe;
+  --blue-glow: rgba(37, 99, 235, 0.06);
+  --purple: #7c3aed;
+  --purple-dim: #ede9fe;
+  --purple-glow: rgba(124, 58, 237, 0.08);
+  --cyan: #0891b2;
+  --cyan-dim: #cffafe;
+  --cyan-glow: rgba(8, 145, 178, 0.08);
+  --searcher: #ea580c;
+  --searcher-dim: #ffedd5;
+  --searcher-glow: rgba(234, 88, 12, 0.08);
+  --builder: #7c3aed;
+  --builder-dim: #ede9fe;
+  --builder-glow: rgba(124, 58, 237, 0.08);
+  --relay: #0891b2;
+  --relay-dim: #cffafe;
+  --relay-glow: rgba(8, 145, 178, 0.08);
+  --watcher: #dc2626;
+  --watcher-dim: #fee2e2;
+  --watcher-glow: rgba(220, 38, 38, 0.08);
+  --hash-color: #2563eb;
+  --font-mono: 'Courier New', 'Lucida Console', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --transition-fast: 150ms ease;
+  --transition-med: 300ms ease;
+}
+
+html { font-size: 14px; }
+body { background: var(--bg-deep); color: var(--text-primary); font-family: var(--font-sans); min-height: 100vh; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+.header { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; border-bottom: 1px solid var(--border); background: var(--bg-surface); position: sticky; top: 0; z-index: 100; flex-wrap: wrap; gap: 8px; }
+.header-left { display: flex; align-items: center; gap: 14px; }
+.logo { font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: 3px; color: var(--text-primary); }
+.logo span { color: var(--searcher); }
+.logo .sub { font-size: 10px; font-weight: 400; letter-spacing: 1px; color: var(--text-muted); margin-left: 8px; }
+.header-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+.pill { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.5px; padding: 3px 8px; border-radius: 3px; background: #f0f1f3; border: 1px solid #d5d7dc; color: #363940; white-space: nowrap; transition: all var(--transition-med); }
+.pill.green { color: var(--green); border-color: var(--green-dim); background: #ecfdf5; }
+.pill.amber { color: var(--amber); border-color: var(--amber-dim); background: #fffbeb; }
+.pill.red { color: var(--red); border-color: var(--red-dim); background: #fef2f2; }
+
+.controls { display: flex; flex-direction: column; align-items: stretch; padding: 10px 20px; gap: 0; border-bottom: 1px solid var(--border); background: var(--bg-surface); }
+.regime-btn { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.5px; padding: 5px 10px; border-radius: 4px; background: var(--bg-raised); border: 1px solid var(--border); color: var(--text-secondary); cursor: pointer; transition: all var(--transition-fast); }
+.regime-btn:hover { border-color: var(--border-active); color: var(--text-primary); }
+.regime-btn.active { border-color: var(--green); color: var(--green); background: #ecfdf5; }
+.controls-spacer { flex: 1; }
+.action-btn { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.5px; padding: 5px 12px; border-radius: 4px; border: 1px solid; cursor: pointer; transition: all var(--transition-fast); }
+.action-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-run { background: #ecfdf5; border-color: var(--green-dim); color: var(--green); }
+.btn-run:hover:not(:disabled) { background: #d1fae5; }
+.btn-censor { background: #fffbeb; border-color: var(--amber-dim); color: var(--amber); }
+.btn-censor:hover:not(:disabled) { background: #fef3c7; }
+.btn-rogue { background: #fff7ed; border-color: var(--searcher-dim); color: var(--searcher); }
+.btn-rogue:hover:not(:disabled) { background: #ffedd5; }
+.btn-equivocate { background: #ecfeff; border-color: var(--relay-dim); color: var(--cyan); }
+.btn-equivocate:hover:not(:disabled) { background: #cffafe; }
+.btn-tamper { background: #fef2f2; border-color: var(--red-dim); color: var(--red); }
+.btn-tamper:hover:not(:disabled) { background: #fee2e2; }
+.btn-dispute { background: #f5f3ff; border-color: var(--purple-dim); color: var(--purple); }
+.btn-dispute:hover:not(:disabled) { background: #ede9fe; }
+.btn-demo { background: #ecfdf5; border-color: var(--green-dim); color: var(--green); font-weight: 600; }
+.btn-demo:hover:not(:disabled) { background: #d1fae5; box-shadow: 0 1px 3px rgba(5,150,105,.2); }
+.btn-reset { background: var(--bg-raised); border-color: var(--border); color: #363940; }
+.btn-reset:hover:not(:disabled) { background: var(--bg-hover); color: #111214; }
+
+.scenario-section { margin-bottom: 10px; }
+.scenario-section-label { font-family: var(--font-mono); font-size: 9px; letter-spacing: 2px; color: #363940; text-transform: uppercase; margin-bottom: 6px; }
+.scenario-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+@media (min-width: 900px) { .scenario-grid { grid-template-columns: repeat(3, 1fr); } }
+.scenario-btn { display: block; text-align: left; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.5px; padding: 8px 10px; border-radius: 4px; background: var(--bg-raised); border: 1px solid var(--border); color: var(--text-primary); cursor: pointer; transition: all var(--transition-fast); }
+.scenario-btn:hover { border-color: var(--border-active); background: var(--bg-hover); }
+.scenario-btn.active { border-color: #059669; box-shadow: 0 0 0 1px rgba(5,150,105,.2); background: #ecfdf5; }
+.scenario-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.scenario-btn .scenario-title { font-weight: 700; color: #111214; margin-bottom: 2px; }
+.scenario-btn .scenario-desc { color: #363940; font-weight: 400; line-height: 1.35; }
+.scenario-explainer { padding: 14px 18px; background: var(--bg-raised, #f0f1f3); border: 1px solid var(--border, #d5d7dc); border-left: 3px solid var(--blue, #2563eb); border-radius: 6px; margin-bottom: 16px; font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif); font-size: 12px; line-height: 1.7; color: var(--text-secondary, #4a4d56); }
+.scenario-explainer b { color: var(--text-primary, #1a1c20); font-weight: 600; }
+.scenario-explainer .watch-for { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border, #d5d7dc); font-size: 11px; color: var(--text-muted, #7c808a); }
+.scenario-explainer .watch-for b { color: var(--blue, #2563eb); font-size: 11px; }
+.manual-actions { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+.manual-actions-label { font-family: var(--font-mono); font-size: 8px; letter-spacing: 1.5px; color: #363940; text-transform: uppercase; margin-bottom: 6px; }
+
+.main { display: grid; grid-template-columns: 210px 1fr 330px; min-height: calc(100vh - 110px); }
+@media (max-width: 1000px) { .main { grid-template-columns: 1fr; } .agent-lanes { flex-direction: row; border-right: none; border-bottom: 1px solid var(--border); overflow-x: auto; } .audit-panel { border-left: none; border-top: 1px solid var(--border); max-height: 50vh; } }
+
+.agent-lanes { border-right: 1px solid var(--border); background: var(--bg-surface); display: flex; flex-direction: column; padding: 14px 10px; gap: 6px; overflow-y: auto; }
+.agent-card { padding: 8px 10px; border-radius: 5px; border: 1px solid var(--border); background: var(--bg-raised); transition: all var(--transition-med); cursor: pointer; }
+.agent-card:hover { border-color: var(--border-active); }
+.agent-card.active { box-shadow: 0 0 0 1px var(--border-active); }
+.agent-name { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 3px; color: #111214; }
+.agent-searcher .agent-name { color: #111214; }
+.agent-builder .agent-name { color: #111214; }
+.agent-relay .agent-name { color: #111214; }
+.agent-watcher .agent-name { color: #111214; }
+.agent-role { font-size: 10px; color: #363940; margin-bottom: 6px; line-height: 1.4; }
+.agent-trace { display: flex; flex-direction: column; gap: 2px; }
+.trace-step { font-family: var(--font-mono); font-size: 9px; padding: 2px 5px; border-radius: 2px; background: #e8e9ec; border: 1px solid var(--border); color: #363940; transition: all var(--transition-med); opacity: 0.9; }
+.trace-step.valid { border-color: var(--green); color: var(--green); opacity: 1; background: #ecfdf5; }
+.trace-step.blocked { border-color: var(--amber); color: var(--amber); opacity: 1; background: #fffbeb; }
+.trace-step.broken { border-color: var(--red); color: var(--red); opacity: 1; background: #fef2f2; }
+.policies-bar { padding: 8px 10px; border-radius: 4px; border: 1px solid var(--border); background: var(--bg-raised); font-family: var(--font-mono); font-size: 9px; color: #363940; line-height: 1.6; margin-top: 4px; }
+.policies-bar strong { color: #111214; font-weight: 600; }
+
+.auction-board { padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #f4f4f6; }
+.phase-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px; color: #363940; text-transform: uppercase; padding: 8px 0 6px; margin-top: 4px; border-bottom: 1px solid var(--border); background: #ecedef; margin-left: -16px; margin-right: -16px; padding-left: 16px; padding-right: 16px; }
+.phase-label:first-child { margin-top: 0; }
+.bundle-card { padding: 12px 14px; border-radius: 5px; border: 1px solid #d5d7dc; background: #ffffff; opacity: 0; transform: translateY(8px); transition: all 400ms ease; cursor: pointer; }
+.bundle-card.visible { opacity: 1; transform: translateY(0); }
+.bundle-card.blocked { border-color: var(--amber); box-shadow: 0 0 0 1px rgba(217,119,6,.15); }
+.bundle-card.ghost { opacity: 0.25; border-style: dashed; border-color: var(--amber); background: #fafafa; }
+.bundle-card.broken { border-color: var(--red); box-shadow: 0 0 0 1px rgba(220,38,38,.2); animation: glitch 200ms ease 3; background: #ffffff; }
+.bundle-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.bundle-id { font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 1px; }
+.bundle-status { font-family: var(--font-mono); font-size: 9px; padding: 2px 6px; border-radius: 2px; font-weight: 600; }
+.bs-pending { color: var(--text-muted); background: var(--bg-raised); }
+.bs-submitted { color: var(--blue); background: var(--blue-glow); }
+.bs-receipted { color: var(--cyan); background: var(--cyan-glow); }
+.bs-selected { color: var(--green); background: var(--green-glow); }
+.bs-blocked { color: #ffffff; background: var(--amber); }
+.bs-rejected { color: #ffffff; background: #7c808a; }
+.bs-broken { color: #ffffff; background: var(--red); }
+.bundle-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 6px; }
+.bundle-field { display: flex; flex-direction: column; gap: 1px; }
+.bf-label { font-family: var(--font-mono); font-size: 8px; letter-spacing: 1px; color: var(--text-muted); text-transform: uppercase; }
+.bf-value { font-family: var(--font-mono); font-size: 11px; color: var(--text-primary); }
+.bf-value.green { color: var(--green); }
+.bf-value.amber { color: var(--amber); }
+.bf-value.red { color: var(--red); }
+.bundle-hash { font-family: var(--font-mono); font-size: 9px; color: var(--hash-color); opacity: 0.6; word-break: break-all; line-height: 1.4; }
+.receipt-block { margin-top: 5px; padding: 6px 8px; border-radius: 3px; background: var(--bg-raised); border: 1px solid var(--border); }
+.receipt-label { font-family: var(--font-mono); font-size: 8px; letter-spacing: 1.5px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 2px; }
+.receipt-hash { font-family: var(--font-mono); font-size: 9px; color: var(--cyan); word-break: break-all; opacity: 0.8; }
+.receipt-hash.mismatch { color: var(--red); text-decoration: line-through; }
+
+.status-bar { padding: 9px 14px; border-radius: 5px; font-family: var(--font-mono); font-size: 10px; text-align: center; letter-spacing: 0.5px; line-height: 1.5; opacity: 0; transform: translateY(6px); transition: all 400ms ease; }
+.status-bar.visible { opacity: 1; transform: translateY(0); }
+.status-bar.policy { border: 1px solid var(--amber-dim); background: #fffbeb; color: var(--amber); }
+.status-bar.tamper { border: 1px solid var(--red-dim); background: #fef2f2; color: var(--red); }
+.status-bar.dispute { border: 1px solid var(--purple-dim); background: #f5f3ff; color: var(--purple); }
+.status-bar.equivocate { border: 1px solid var(--cyan-dim); background: #ecfeff; color: var(--cyan); }
+
+.outcome-card { padding: 12px 14px; border-radius: 5px; border: 1px solid var(--border); background: var(--bg-raised); opacity: 0; transform: translateY(8px); transition: all 400ms ease; }
+.outcome-card.visible { opacity: 1; transform: translateY(0); }
+.outcome-title { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.5px; color: #363940; text-transform: uppercase; margin-bottom: 6px; }
+
+.audit-panel { border-left: 1px solid var(--border); background: var(--bg-surface); padding: 16px 14px; overflow-y: auto; font-size: 12px; }
+.audit-title { font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px; color: #363940; text-transform: uppercase; margin-bottom: 10px; }
+.audit-empty { color: #363940; font-style: italic; font-size: 11px; padding: 14px 0; }
+.a-section { margin-bottom: 12px; }
+.a-section-title { font-family: var(--font-mono); font-size: 9px; letter-spacing: 1.5px; color: #363940; text-transform: uppercase; margin-bottom: 5px; padding-bottom: 3px; border-bottom: 1px solid var(--border); }
+.a-row { display: flex; justify-content: space-between; padding: 2px 0; gap: 8px; }
+.a-key { color: #363940; font-family: var(--font-mono); font-size: 9px; flex-shrink: 0; }
+.a-val { color: var(--text-secondary); font-family: var(--font-mono); font-size: 9px; text-align: right; word-break: break-all; }
+.a-val.green { color: var(--green); } .a-val.amber { color: var(--amber); } .a-val.red { color: var(--red); } .a-val.blue { color: var(--blue); } .a-val.purple { color: var(--purple); } .a-val.cyan { color: var(--cyan); }
+.a-hash-block { font-family: var(--font-mono); font-size: 9px; color: var(--hash-color); word-break: break-all; line-height: 1.5; padding: 5px 7px; background: var(--bg-raised); border-radius: 3px; border: 1px solid var(--border); margin-top: 3px; }
+.a-protocols { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 3px; }
+.proto { font-family: var(--font-mono); font-size: 8px; padding: 2px 5px; border-radius: 2px; background: var(--bg-raised); border: 1px solid var(--border); color: var(--text-muted); }
+.proto.on { color: var(--green); border-color: var(--green-dim); }
+.copy-btn { font-family: var(--font-mono); font-size: 9px; padding: 4px 10px; border-radius: 3px; background: var(--bg-raised); border: 1px solid var(--border); color: var(--text-secondary); cursor: pointer; transition: all var(--transition-fast); margin-top: 5px; width: 100%; text-align: center; }
+.copy-btn:hover { border-color: var(--green); color: var(--green); }
+
+.footer { padding: 10px 20px; border-top: 1px solid var(--border); background: var(--bg-surface); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.footer-left { font-family: var(--font-mono); font-size: 9px; letter-spacing: 1px; color: var(--text-muted); }
+.footer-keys { font-family: var(--font-mono); font-size: 8px; color: var(--text-muted); opacity: 0.5; }
+.footer-links { display: flex; gap: 14px; }
+.footer-links a { font-family: var(--font-mono); font-size: 9px; color: var(--text-muted); text-decoration: none; }
+.footer-links a:hover { color: var(--text-secondary); }
+
+.empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 40vh; text-align: center; opacity: 1; }
+.empty-state h3 { font-size: 15px; font-weight: 500; color: #363940; margin-bottom: 6px; }
+.empty-state p { font-size: 12px; color: #363940; max-width: 340px; line-height: 1.6; }
+
+@keyframes glitch { 0% { transform: translateX(0); } 25% { transform: translateX(-3px); } 50% { transform: translateX(3px); } 75% { transform: translateX(-2px); } 100% { transform: translateX(0); } }
+/* ─── INFO TOOLTIP SYSTEM ─── */
+.info-trigger{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.2);color:var(--blue,#2563eb);font-family:var(--font-mono);font-size:8px;font-weight:700;cursor:pointer;margin-left:5px;vertical-align:middle;transition:all 150ms ease;flex-shrink:0;position:relative;line-height:1}
+.info-trigger:hover{background:rgba(37,99,235,.1);border-color:rgba(37,99,235,.35);transform:scale(1.1)}
+.info-trigger.active{background:rgba(37,99,235,.15);border-color:var(--blue,#2563eb)}
+.info-panel{position:absolute;z-index:1000;width:280px;padding:10px 12px;background:#ffffff;border:1px solid #d5d7dc;border-radius:6px;font-family:var(--font-sans);font-size:11px;color:#4a4d56;line-height:1.6;box-shadow:0 8px 32px rgba(0,0,0,.1);pointer-events:auto;opacity:0;transform:translateY(4px);transition:opacity 200ms ease,transform 200ms ease}
+.info-panel.visible{opacity:1;transform:translateY(0)}
+.info-panel b{color:#1a1c20;font-weight:600}
+.info-panel code{font-family:var(--font-mono);font-size:10px;color:#2563eb;background:rgba(37,99,235,.06);padding:1px 4px;border-radius:2px}
+.info-panel-arrow{position:absolute;top:-4px;left:14px;width:8px;height:8px;background:#ffffff;border-left:1px solid #d5d7dc;border-top:1px solid #d5d7dc;transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div class="logo"><span>&#9670;</span> MEV TRUST AUCTION<span class="sub">Programmable integrity for adversarial coordination</span></div>
+  </div>
+  <div class="header-pills">
+    <div class="pill">SHA-256 CANONICAL<span class="info-trigger" data-info="<b>SHA-256 hashing.</b> Every bid and receipt is fingerprinted. Change one character and the hash is completely different. Tampering is detected by recomputing and comparing.">i</span></div>
+    <div class="pill">ZERO DEPS<span class="info-trigger" data-info="<b>Zero dependencies.</b> This system uses no external libraries, databases, or cloud services. Everything runs in the browser. The protocols still work if every server went offline.">i</span></div>
+    <div class="pill">CLEARPATH TRACED</div>
+    <div class="pill green" id="chainPill">AUCTION VALID</div>
+    <div class="pill" id="timingPill" style="display:none">--ms</div>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="scenario-section">
+    <div class="scenario-section-label">SCENARIOS</div>
+    <div class="scenario-grid">
+      <button type="button" class="scenario-btn" id="scenario-clean" onclick="runScenario('clean')">
+        <span class="scenario-title">Clean Auction</span>
+        <span class="scenario-desc">All agents play honestly. Governance invisible when everyone behaves.</span>
+      </button>
+      <button type="button" class="scenario-btn" id="scenario-sandwich" onclick="runScenario('sandwich')">
+        <span class="scenario-title">Sandwich Attack Blocked</span>
+        <span class="scenario-desc">Searcher submits sandwich; builder blocks it per human mandate.</span>
+      </button>
+      <button type="button" class="scenario-btn" id="scenario-tamper" onclick="runScenario('tamper')">
+        <span class="scenario-title">Bid Tampering Caught</span>
+        <span class="scenario-desc">Bid altered after submission; watcher detects hash mismatch; dispute finds divergence.</span>
+      </button>
+      <button type="button" class="scenario-btn" id="scenario-censor" onclick="runScenario('censor')">
+        <span class="scenario-title">Relay Censorship</span>
+        <span class="scenario-desc">Valid bundle excluded; watcher flags missing receipt; dispute resolves.</span>
+      </button>
+      <button type="button" class="scenario-btn" id="scenario-adversarial" onclick="runScenario('adversarial')">
+        <span class="scenario-title">Full Adversarial</span>
+        <span class="scenario-desc">Sandwich blocked, then bid tampered; system catches all; dispute panel.</span>
+      </button>
+    </div>
+  </div>
+  <div class="scenario-explainer" id="scenarioExplainer"></div>
+  <div class="manual-actions">
+    <div class="manual-actions-label">MANUAL ACTIONS</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center">
+      <button class="action-btn btn-run" id="btnRun" onclick="runRound()">RUN ROUND</button>
+      <button class="action-btn btn-censor" id="btnCensor" onclick="simulateCensorship()" disabled>CENSOR</button>
+      <button class="action-btn btn-rogue" id="btnRogue" onclick="simulateRogue()" disabled>ROGUE</button>
+      <button class="action-btn btn-equivocate" id="btnEquiv" onclick="relayEquivocate()" disabled>EQUIVOCATE</button>
+      <button class="action-btn btn-tamper" id="btnTamper" onclick="tamperBid()" disabled>TAMPER</button>
+      <button class="action-btn btn-dispute" id="btnDispute" onclick="resolveDispute()" disabled>DISPUTE</button>
+      <button class="action-btn btn-reset" onclick="resetAll()">RESET</button>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="agent-lanes">
+    <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;color:#363940;margin-bottom:2px">AGENTS</div>
+    <div class="agent-card agent-searcher" id="agent-searcher" onclick="selectAgent('searcher')">
+      <div class="agent-name">SEARCHER<span class="info-trigger" data-info="<b>Agent.</b> Searcher finds profitable trades from the mempool. Each agent has its own OBSERVE→DERIVE→ASSUME→DECIDE→ACT chain. Click to inspect this agent's trace in the audit panel.">i</span></div>
+      <div class="agent-role">Profit-maximiser. Bundles from mempool.</div>
+      <div class="agent-trace" id="trace-searcher"><div class="trace-step" data-step="observe">OBS</div><div class="trace-step" data-step="derive">DER</div><div class="trace-step" data-step="assume">ASM</div><div class="trace-step" data-step="decide">DEC</div><div class="trace-step" data-step="act">ACT</div></div>
+    </div>
+    <div class="agent-card agent-relay" id="agent-relay" onclick="selectAgent('relay')">
+      <div class="agent-name">RELAY<span class="info-trigger" data-info="<b>Agent.</b> Relay timestamps and receipts bids. Creates the canonical record. If there's a dispute, the relay receipt is the source of truth. Each agent has its own hash-chained trace.">i</span></div>
+      <div class="agent-role">Integrity. Timestamps, receipts, canonical.</div>
+      <div class="agent-trace" id="trace-relay"><div class="trace-step" data-step="observe">OBS</div><div class="trace-step" data-step="derive">DER</div><div class="trace-step" data-step="assume">ASM</div><div class="trace-step" data-step="decide">DEC</div><div class="trace-step" data-step="act">ACT</div></div>
+    </div>
+    <div class="agent-card agent-builder" id="agent-builder" onclick="selectAgent('builder')">
+      <div class="agent-name">BUILDER<span class="info-trigger" data-info="<b>Agent.</b> Builder constructs the block and selects bundles by bid and policy. Human mandates (e.g. no sandwich bundles, bid ceiling) are enforced automatically. Agents can't override them.">i</span></div>
+      <div class="agent-role">Block constructor. Selects by bid + policy.</div>
+      <div class="agent-trace" id="trace-builder"><div class="trace-step" data-step="observe">OBS</div><div class="trace-step" data-step="derive">DER</div><div class="trace-step" data-step="assume">ASM</div><div class="trace-step" data-step="decide">DEC</div><div class="trace-step" data-step="act">ACT</div></div>
+    </div>
+    <div class="agent-card agent-watcher" id="agent-watcher" onclick="selectAgent('watcher')">
+      <div class="agent-name">WATCHER<span class="info-trigger" data-info="The Watcher is independent of the other three agents. It verifies everyone — including the Relay. If the Watcher itself were compromised, the hash chain still provides tamper evidence because any agent can independently recompute and verify hashes.">i</span></div>
+      <div class="agent-role">Adversarial compliance. Detects violations.</div>
+      <div class="agent-trace" id="trace-watcher"><div class="trace-step" data-step="observe">OBS</div><div class="trace-step" data-step="derive">DER</div><div class="trace-step" data-step="assume">ASM</div><div class="trace-step" data-step="decide">DEC</div><div class="trace-step" data-step="act">ACT</div></div>
+    </div>
+    <div class="policies-bar">
+      <strong>HUMAN MANDATES</strong><span class="info-trigger" data-info="<b>Human mandates.</b> Rules set by humans before the auction runs. 'No sandwich bundles' prevents a specific type of market manipulation. 'Bid ceiling' prevents excessive bids. These are enforced automatically — agents can't override them.">i</span><br>
+      1. No sandwich bundles<br>
+      2. Bid ceiling: 0.5 ETH<br>
+      3. Receipt hash = canonical payload
+    </div>
+  </div>
+
+  <div class="auction-board" id="auctionBoard">
+    <div class="empty-state" id="emptyState">
+      <h3>Run a round to start the auction</h3>
+      <p>Four agents coordinate through a block auction. Every message is Clearpath-traced, hash-chained, and policy-bounded. Then try to break it.</p>
+    </div>
+  </div>
+
+  <div class="audit-panel">
+    <div class="audit-title">AUDIT INSPECTOR<span class="info-trigger" data-info="<b>Dispute resolution.</b> When tampering is detected, the system compares the original trace with the tampered version step by step. It finds the exact first point where they diverge — not 'something went wrong' but 'this specific field in this specific node was changed from X to Y'.">i</span></div>
+    <div id="auditContent"><div class="audit-empty">Click any bundle or agent to inspect the governance trace.</div></div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-left">MEV TRUST AUCTION &middot; Omega Protocol &middot; 8 Protocols &middot; Zero Dependencies</div>
+  <div class="footer-keys">SPACE run &middot; C censor &middot; G rogue &middot; E equivocate &middot; T tamper &middot; D dispute &middot; R reset</div>
+  <div class="footer-links">
+    <a href="https://omegaprotocol.org" target="_blank">omegaprotocol.org</a>
+    <a href="https://github.com/repowazdogz-droid" target="_blank">GitHub</a>
+  </div>
+</div>
+
+<script>
+// ─── INFO TOOLTIP SYSTEM ───
+(function(){
+  let activePanel = null;
+  let activeTrigger = null;
+  function closeActive(){
+    if(activePanel){ activePanel.remove(); activePanel=null; }
+    if(activeTrigger){ activeTrigger.classList.remove('active'); activeTrigger=null; }
+  }
+  function positionPanel(trigger, panel){
+    document.body.appendChild(panel);
+    const r = trigger.getBoundingClientRect();
+    const pw = 280;
+    let left = r.left;
+    let top = r.bottom + 6;
+    if(left + pw > window.innerWidth - 12) left = window.innerWidth - pw - 12;
+    if(left < 12) left = 12;
+    if(top + 200 > window.innerHeight){ top = r.top - 8; panel.style.transform = 'translateY(-100%)'; }
+    panel.style.left = left + 'px';
+    panel.style.top = top + 'px';
+    panel.style.position = 'fixed';
+    const arrow = panel.querySelector('.info-panel-arrow');
+    if(arrow){ arrow.style.left = Math.max(10, Math.min(pw-20, r.left - left + r.width/2 - 4)) + 'px'; }
+    requestAnimationFrame(()=>requestAnimationFrame(()=>panel.classList.add('visible')));
+  }
+  document.addEventListener('click', function(e){
+    const trigger = e.target.closest('.info-trigger');
+    if(!trigger){ closeActive(); return; }
+    e.stopPropagation();
+    const text = trigger.getAttribute('data-info');
+    if(!text) return;
+    if(activeTrigger === trigger){ closeActive(); return; }
+    closeActive();
+    const panel = document.createElement('div');
+    panel.className = 'info-panel';
+    panel.innerHTML = '<div class="info-panel-arrow"></div>'+text;
+    activeTrigger = trigger;
+    activePanel = panel;
+    trigger.classList.add('active');
+    positionPanel(trigger, panel);
+  });
+  window.addEventListener('scroll', closeActive, true);
+  window.addEventListener('resize', closeActive);
+})();
+
+const MEV_EXPLAINERS = {
+  clean: { title: 'Clean Auction', text: 'All four agents play honestly. Searcher submits bundles, Relay timestamps and receipts them, Builder selects the highest bidder that passes policy checks, Watcher verifies everything. No violations. No tampering. The governance layer runs silently in the background.', watch: 'Watch the hash chains stay intact throughout. Every receipt matches every payload. Every policy check passes. This is what governance looks like when everyone behaves — invisible but running.' },
+  sandwich: { title: 'Sandwich Attack Blocked', text: 'Searcher submits a sandwich bundle — a type of market manipulation where you place trades before and after a victim\'s trade to extract profit. Builder checks it against Human Mandate #1: "No sandwich bundles." The bundle is blocked automatically before it can enter the auction.', watch: 'Watch for the POLICY ENFORCED banner. The Builder didn\'t decide sandwiches are bad — a human wrote that rule before the auction started. The Builder just enforced it. The blocked bundle never gets a chance to compete.' },
+  tamper: { title: 'Bid Tampering Caught', text: 'The auction runs normally. Then one agent alters their bid after it was submitted and receipted — changing the amount to win the auction unfairly. The Watcher recomputes the bid hash and it no longer matches the Relay\'s receipt. The exact field that changed, and the before and after values, are identified.', watch: 'Watch the ADVERSARIAL INTEGRITY CHECK FAILED alert. The Audit Inspector shows exactly what changed — which field, from what value, to what value. This isn\'t "something went wrong." It\'s "this specific bid was altered and here\'s the cryptographic proof."' },
+  censor: { title: 'Relay Censorship', text: 'The Relay — the trusted intermediary — silently drops a valid bundle. It was submitted by the Searcher but never receipted. The Watcher detects the gap: a bundle exists in the Searcher\'s trace but has no matching receipt in the Relay\'s trace.', watch: 'Watch the Watcher flag the missing receipt. Even the intermediary can\'t cheat. The system doesn\'t just verify the data that exists — it detects data that should exist but doesn\'t.' },
+  adversarial: { title: 'Full Adversarial', text: 'Everything at once. A sandwich bundle is submitted and blocked by human mandate. A bid is tampered with after submission and caught by hash mismatch. The dispute resolution walks both traces and finds the exact first point where they diverge. Three different violation types, three different detection mechanisms, all in one round.', watch: 'Watch three things happen: BLOCKED on the sandwich bundle, BROKEN on the tampered bid, and the dispute resolution panel showing the exact divergence point. The governance layer handles simultaneous attacks from different agents independently.' },
+  default: { title: 'MEV Trust Auction', text: 'Pick a scenario above to run a pre-built auction round. Each scenario shows how the governance layer responds to honest play, sandwich attacks, tampering, censorship, or a full adversarial run. No server, no dependencies — everything runs in your browser.', watch: 'Click a scenario button to start. Watch the agents\' traces, the Builder\'s policy checks, and the Watcher\'s verification. Use RUN ROUND for manual control.' }
+};
+
+function updateMevExplainer(id) {
+  const ex = MEV_EXPLAINERS[id] || MEV_EXPLAINERS.default;
+  const el = document.getElementById('scenarioExplainer');
+  if (!el) return;
+  el.innerHTML = '<b>' + ex.title + '</b><br><br>' + ex.text + '<div class="watch-for"><b>WATCH FOR:</b> ' + ex.watch + '</div>';
+}
+
+// Deterministic scenario playback — no random generation
+const PLAYBACK_TS = '2025-01-15T12:00:00.000Z';
+const SCENARIO_DATA = {
+  clean: {
+    bundles: [
+      { id: 'BDL-K7M2', type: 'ARBITRAGE', status: 'SELECTED', profit: 0.4215, bid: 0.2108, gas: 142500, risk: 0.15, deadline: 2, bidHash: '7a3f2e1d4c5b6a0987654321fedcba0987654321fedcba0987654321fedcba09', relayReceipt: 'b91e2a3c4d5e6f7081928374655a4b3c2d1e0f90817263544536271809f0e1d2c', searcherId: 'SRCH-A1' },
+      { id: 'BDL-P3N8', type: 'LIQUIDATION', status: 'REJECTED', profit: 0.1892, bid: 0.0946, gas: 89200, risk: 0.32, deadline: 1, bidHash: 'c42d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d', relayReceipt: 'e7f1a2b3c4d5e6f7081928374655a4b3c2d1e0f90817263544536271809f0e1d', searcherId: 'SRCH-B2' },
+      { id: 'BDL-R5X1', type: 'ARBITRAGE', status: 'REJECTED', profit: 0.3107, bid: 0.1554, gas: 167300, risk: 0.08, deadline: 3, bidHash: 'a18b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1', relayReceipt: 'f3c92d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b', searcherId: 'SRCH-C3' }
+    ],
+    policyViolations: [], adversarialAlerts: [],
+    roundOutcome: { selected: 'BDL-K7M2', blockValue: 0.4215, blocked: 0, bidProfit: '50.0%', builderRev: 0.0211, searcherEv: 0.2107 },
+    watcherVerification: { hash: '8cf9a17bfed27994f2ebdfd3ab7f03b1b32074e7f0f27cf059c35155509dbc60', passed: true, alerts: [] }
+  },
+  sandwich: {
+    bundles: [
+      { id: 'BDL-A4V9', type: 'ARBITRAGE', status: 'SELECTED', profit: 0.3850, bid: 0.1925, gas: 155200, risk: 0.12, deadline: 2, bidHash: 'd5e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e', relayReceipt: '91a72b3c4d5e6f7081928374655a4b3c2d1e0f90817263544536271809f0e1d2', searcherId: 'SRCH-D4' },
+      { id: 'BDL-M8K3', type: 'SANDWICH', status: 'BLOCKED', profit: 0.6200, bid: 0.3100, gas: 198400, risk: 0.45, deadline: 2, bidHash: 'f7b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2', relayReceipt: 'c2d83e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1', searcherId: 'SRCH-E5', blockReason: 'SANDWICH_DETECTED', blockPolicy: 'Human mandate #1: No sandwich bundles' },
+      { id: 'BDL-T2J6', type: 'LIQUIDATION', status: 'REJECTED', profit: 0.2100, bid: 0.1050, gas: 72800, risk: 0.28, deadline: 1, bidHash: 'b9c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b', relayReceipt: 'a6e12f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0', searcherId: 'SRCH-F6' }
+    ],
+    policyViolations: [{ bundle: 'BDL-M8K3', violation: 'SANDWICH_DETECTED', policy: 'Human mandate' }], adversarialAlerts: [],
+    roundOutcome: { selected: 'BDL-A4V9', blockValue: 0.3850, blocked: 1, bidProfit: '50.0%', builderRev: 0.0193, searcherEv: 0.1925 },
+    watcherVerification: { hash: '3eff4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f', passed: true, alerts: [] }
+  },
+  tamper: {
+    bundles: [
+      { id: 'BDL-G9R4', type: 'LIQUIDATION', status: 'BROKEN', profit: 0.5500, bid: 0.2883, gas: 134600, risk: 0.19, deadline: 2, bidHash: 'ed7d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c', relayReceipt: '1c412a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e', searcherId: 'SRCH-G7', tampered: true, originalBid: 0.1383, tamperedBid: 0.2883, tamperField: 'bid', tamperDetail: 'Bid altered from 0.1383 ETH to 0.2883 ETH after relay receipt' },
+      { id: 'BDL-W5N1', type: 'ARBITRAGE', status: 'SELECTED', profit: 0.4100, bid: 0.2050, gas: 162300, risk: 0.11, deadline: 3, bidHash: '55182b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f', relayReceipt: '7e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d', searcherId: 'SRCH-H8' }
+    ],
+    policyViolations: [], adversarialAlerts: [{ type: 'ADVERSARIAL_INTEGRITY_CHECK_FAILED', bundle: 'BDL-G9R4', detail: 'bid altered (0.1383 → 0.2883 ETH). Receipt hash mismatch. Canonical recomputation fails verification.' }],
+    roundOutcome: { selected: 'BDL-W5N1', blockValue: 0.4100, blocked: 0, bidProfit: '50.0%', builderRev: 0.0205, searcherEv: 0.2050 },
+    watcherVerification: { hash: '2bce5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b', passed: false, alerts: ['ADVERSARIAL INTEGRITY CHECK FAILED — BDL-G9R4 bid altered (0.1383 → 0.2883 ETH). Receipt hash mismatch.'] },
+    dispute: { originalTrace: { bid: 0.1383 }, tamperedTrace: { bid: 0.2883 }, divergencePoint: 'bid field', resolution: 'Relay receipt is canonical. Tampered bid rejected. Original bid restored.' }
+  },
+  censor: {
+    bundles: [
+      { id: 'BDL-C3P7', type: 'ARBITRAGE', status: 'SELECTED', profit: 0.4800, bid: 0.2400, gas: 145900, risk: 0.14, deadline: 2, bidHash: '6b2a3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1', relayReceipt: 'd4f85e6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3', searcherId: 'SRCH-J9' },
+      { id: 'BDL-X1L5', type: 'LIQUIDATION', status: 'CENSORED', profit: 0.7100, bid: 0.3550, gas: 178200, risk: 0.22, deadline: 2, bidHash: '8e9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b', relayReceipt: 'a7b21c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0', searcherId: 'SRCH-K0', censorDetail: 'Valid bundle excluded by builder without policy basis' }
+    ],
+    policyViolations: [], adversarialAlerts: [{ type: 'CENSORSHIP_DETECTED', bundle: 'BDL-X1L5', detail: 'Builder excluded BDL-X1L5 without policy basis. Watcher flagging.' }],
+    roundOutcome: { selected: 'BDL-C3P7', blockValue: 0.4800, blocked: 0, bidProfit: '50.0%', builderRev: 0.0240, searcherEv: 0.2400 },
+    watcherVerification: { hash: '4d716a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4', passed: false, alerts: ['CENSORSHIP DETECTED — Builder excluded BDL-X1L5 without policy basis.'] },
+    dispute: { censoredBundle: 'BDL-X1L5', resolution: 'Bundle had valid receipt and no policy violation. Exclusion is unjustified. Builder flagged for review.' }
+  },
+  adversarial: {
+    bundles: [
+      { id: 'BDL-F8Q2', type: 'ARBITRAGE', status: 'SELECTED', profit: 0.3900, bid: 0.1950, gas: 139700, risk: 0.16, deadline: 2, bidHash: '3c7e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0', relayReceipt: 'f1a93b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1', searcherId: 'SRCH-L1' },
+      { id: 'BDL-N4S9', type: 'SANDWICH', status: 'BLOCKED', profit: 0.5800, bid: 0.2900, gas: 201300, risk: 0.52, deadline: 2, bidHash: '9d4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3', relayReceipt: 'b8c34d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a', searcherId: 'SRCH-M2', blockReason: 'SANDWICH_DETECTED', blockPolicy: 'Human mandate #1: No sandwich bundles' },
+      { id: 'BDL-H6V4', type: 'LIQUIDATION', status: 'BROKEN', profit: 0.4500, bid: 0.2250, gas: 156800, risk: 0.21, deadline: 3, bidHash: 'e2a15b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3', relayReceipt: 'c9d56e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b', searcherId: 'SRCH-N3', tampered: true, originalBid: 0.1125, tamperedBid: 0.2250, tamperField: 'bid', tamperDetail: 'Bid doubled from 0.1125 ETH to 0.2250 ETH after relay receipt' }
+    ],
+    policyViolations: [{ bundle: 'BDL-N4S9', violation: 'SANDWICH_DETECTED', policy: 'Human mandate' }],
+    adversarialAlerts: [{ type: 'ADVERSARIAL_INTEGRITY_CHECK_FAILED', bundle: 'BDL-H6V4', detail: 'bid altered (0.1125 → 0.2250 ETH). Receipt hash mismatch.' }],
+    roundOutcome: { selected: 'BDL-F8Q2', blockValue: 0.3900, blocked: 1, bidProfit: '50.0%', builderRev: 0.0195, searcherEv: 0.1950 },
+    watcherVerification: { hash: '7f2b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4', passed: false, alerts: ['ADVERSARIAL INTEGRITY CHECK FAILED — BDL-H6V4 bid altered (0.1125 → 0.2250 ETH).'] },
+    dispute: { originalTrace: { bid: 0.1125 }, tamperedTrace: { bid: 0.2250 }, divergencePoint: 'bid field', resolution: 'Relay receipt is canonical. Tampered bid rejected.' }
+  }
+};
+
+// SHA-256 (Web Crypto, zero deps, offline)
+async function sha256(msg) {
+  const buf = new TextEncoder().encode(msg);
+  const h = await crypto.subtle.digest('SHA-256', buf);
+  return Array.from(new Uint8Array(h)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function canonical(obj) {
+  return Object.keys(obj).sort().map(k => k + ':' + obj[k]).join('|');
+}
+
+// Unified protocol IDs (matching omegaprotocol.org)
+const PROTOCOLS = ['CAP-1.0','CGL-1.0','CNL-1.0','ASR-1.0','HRM-1.0','DSP-1.0','TRS-1.0','ETG-1.0'];
+const RELAY_ID = 'RELAY-OMEGA';
+
+// State
+let S = { regime: 'normal', phase: 'idle', round: null, selectedAgent: null, runId: 0, scenarioId: null };
+
+// Bundle generation (opts.forceType = 'sandwich' | 'arbitrage' | 'liquidation' to override)
+function genBundle(regime, opts) {
+  const types = regime === 'adversarial' ? ['arbitrage','liquidation','sandwich'] : ['arbitrage','liquidation'];
+  const type = (opts && opts.forceType) ? opts.forceType : types[Math.floor(Math.random() * types.length)];
+  const profit = +(Math.random() * 0.8 + 0.05).toFixed(4);
+  const gas = Math.floor(Math.random() * 150000 + 50000);
+  let bid = +(profit * (0.4 + Math.random() * 0.4)).toFixed(4);
+  if (regime === 'normal') bid = Math.min(bid, 0.49);
+  const risk = +(Math.random() * 0.6 + 0.1).toFixed(2);
+  const deadline = Math.floor(Math.random() * 3) + 1;
+  const nonce = Math.floor(Math.random() * 999999);
+  return {
+    id: 'BDL-' + Math.random().toString(36).substring(2, 6).toUpperCase(),
+    type, profit, gas, bid, risk, deadline, nonce,
+    searcherId: 'SRCH-' + Math.random().toString(36).substring(2, 5).toUpperCase(),
+    status: 'pending', traces: {},
+    bidPayload: null, bidHash: null, payloadHash: null,
+    receiptPayload: null, receiptHash: null,
+    policyViolation: null, tampered: false, equivocated: false,
+    originalBid: null, tamperedBidHash: null,
+    altReceiptHash: null
+  };
+}
+
+// Two-layer hashing: payload_hash (deterministic) + record_hash (includes timestamp)
+async function buildTrace(agentId, steps, prevHash, fixedTimestamp) {
+  const trace = {};
+  let prev = prevHash || '0';
+  for (const step of steps) {
+    const ts = fixedTimestamp != null ? fixedTimestamp : new Date().toISOString();
+    const payloadStr = canonical({ agent: agentId, step: step.id, content: step.content });
+    const payloadHash = await sha256(payloadStr);
+    const recordStr = canonical({ payload_hash: payloadHash, prev_hash: prev, timestamp: ts });
+    const recordHash = await sha256(recordStr);
+    trace[step.id] = {
+      id: step.id, content: step.content,
+      payloadHash, recordHash, prevHash: prev,
+      payloadCanonical: payloadStr, recordCanonical: recordStr,
+      timestamp: ts, status: 'valid'
+    };
+    prev = recordHash;
+  }
+  return trace;
+}
+
+// Relay receipt: two-layer (bid_hash + relay attestation)
+async function buildReceipt(bundle) {
+  const bidPayload = canonical({
+    bundle_id: bundle.id, bid_amount: bundle.bid,
+    expiry: bundle.deadline, searcher_id: bundle.searcherId, nonce: bundle.nonce
+  });
+  const bidHash = await sha256(bidPayload);
+
+  const relayId = RELAY_ID;
+  const receivedAt = new Date().toISOString();
+  const receiptNonce = Math.floor(Math.random() * 999999);
+
+  const receiptPayload = canonical({
+    bid_hash: bidHash, relay_id: relayId,
+    received_at: receivedAt, receipt_nonce: receiptNonce
+  });
+  const receiptHash = await sha256(receiptPayload);
+
+  bundle.bidPayload = bidPayload;
+  bundle.bidHash = bidHash;
+  bundle.receiptPayload = receiptPayload;
+  bundle.receiptHash = receiptHash;
+  bundle.relayId = relayId;
+  bundle.receivedAt = receivedAt;
+  bundle.receiptNonce = receiptNonce;
+}
+
+// Run round (opts.bundles = optional pre-generated bundle array for scenarios)
+async function runRound(opts) {
+  if (S.phase === 'running') return;
+  if (!opts || !opts.bundles || opts.bundles.length === 0) S.scenarioId = null;
+  S.phase = 'running'; S.runId++;
+  const myRun = S.runId;
+  const board = document.getElementById('auctionBoard');
+  const empty = document.getElementById('emptyState');
+  if (empty) empty.style.display = 'none';
+  board.innerHTML = '';
+  resetAgentTraces();
+  updateButtons();
+
+  const t0 = performance.now();
+  let bundles;
+  if (opts && opts.bundles && opts.bundles.length > 0) {
+    bundles = opts.bundles;
+  } else {
+    const numBundles = S.regime === 'adversarial' ? 4 : 3;
+    bundles = [];
+    for (let i = 0; i < numBundles; i++) bundles.push(genBundle(S.regime));
+  }
+  S.round = { bundles, builderTrace: null, watcherTrace: null };
+
+  // Phase 1: Bundle creation
+  addPhase(board, 'PHASE 1 \u2014 BUNDLE CREATION (SEARCHER)');
+  for (const b of bundles) {
+    const steps = [
+      { id: 'observe', content: 'Mempool opportunity: ' + b.type + ' (profit: ' + b.profit + ' ETH, gas: ' + b.gas + ')' },
+      { id: 'derive', content: 'Risk: ' + b.risk + '. Deadline: ' + b.deadline + ' blocks. Competitors: ' + (bundles.length - 1) },
+      { id: 'assume', content: 'Gas estimate accurate. Inclusion probability ~' + Math.round((1 - b.risk) * 100) + '%. No front-running detected.' },
+      { id: 'decide', content: 'Submit bundle ' + b.id + ' with bid ' + b.bid + ' ETH to relay.' },
+      { id: 'act', content: 'Bid transmitted. Canonical payload hashed. Awaiting receipt.' }
+    ];
+    b.traces.searcher = await buildTrace('searcher', steps, '0');
+    if (S.runId !== myRun) return;
+    await buildReceipt(b);
+    b.status = 'submitted';
+    renderBundle(board, b);
+    animateTrace('searcher', ['observe','derive','assume','decide','act']);
+    await sleep(250);
+  }
+
+  // Phase 2: Relay receipts
+  await sleep(400);
+  if (S.runId !== myRun) return;
+  addPhase(board, 'PHASE 2 \u2014 RELAY RECEIPT & VERIFICATION');
+  for (const b of bundles) {
+    const steps = [
+      { id: 'observe', content: 'Bid from ' + b.searcherId + ': ' + b.id + ', bid ' + b.bid + ' ETH. Canonical format verified.' },
+      { id: 'derive', content: 'Recomputed bid hash matches. Timestamp valid. Nonce unique.' },
+      { id: 'assume', content: 'Searcher identity verified. No duplicate nonce. Format canonical.' },
+      { id: 'decide', content: 'Issue receipt for ' + b.id + '.' },
+      { id: 'act', content: 'Receipt issued: ' + b.receiptHash.substring(0, 24) + '...' }
+    ];
+    b.traces.relay = await buildTrace('relay', steps, b.traces.searcher.act.recordHash);
+    b.status = 'receipted';
+    updateBundleEl(b);
+    animateTrace('relay', ['observe','derive','assume','decide','act']);
+    await sleep(200);
+    if (S.runId !== myRun) return;
+  }
+
+  // Phase 3: Builder selection + policy
+  await sleep(400);
+  if (S.runId !== myRun) return;
+  addPhase(board, 'PHASE 3 \u2014 BUILDER SELECTION & POLICY CHECK');
+
+  let anyBlocked = false;
+  for (const b of bundles) {
+    if (b.type === 'sandwich') { b.policyViolation = 'SANDWICH_DETECTED — Human mandate'; b.status = 'blocked'; anyBlocked = true; }
+    else if (b.bid > 0.5) { b.policyViolation = 'BID_CEILING_EXCEEDED'; b.status = 'blocked'; anyBlocked = true; }
+  }
+
+  const valid = bundles.filter(b => b.status === 'receipted');
+  valid.sort((a, b) => b.bid - a.bid);
+  const selected = valid[0] || null;
+  if (selected) selected.status = 'selected';
+  valid.slice(1).forEach(b => { if (b.status === 'receipted') b.status = 'rejected'; });
+
+  const bSteps = [
+    { id: 'observe', content: bundles.length + ' bundles received. ' + valid.length + ' valid. ' + (bundles.length - valid.length) + ' blocked.' },
+    { id: 'derive', content: 'Highest bid: ' + (selected ? selected.bid + ' ETH (' + selected.id + ')' : 'NONE') + '. Block value: ' + (selected ? selected.profit.toFixed(4) : '0') + ' ETH.' },
+    { id: 'assume', content: 'Receipts verified. No equivocation. Policy mandates enforced.' },
+    { id: 'decide', content: selected ? 'Select ' + selected.id + '. Reject ' + (valid.length - 1) + ' alternatives.' : 'No valid bundles.' },
+    { id: 'act', content: selected ? 'Block template with ' + selected.id + ' produced.' : 'Empty block.' }
+  ];
+
+  // Ghost ACT if policy blocked any
+  if (anyBlocked) {
+    bSteps[4] = { id: 'act', content: 'Blocked bundles excluded per policy. ' + (selected ? 'Block with ' + selected.id + '.' : 'Empty block.') };
+  }
+
+  S.round.builderTrace = await buildTrace('builder', bSteps, bundles[bundles.length - 1].traces.relay.act.recordHash);
+  animateTrace('builder', ['observe','derive','assume','decide','act']);
+  bundles.forEach(b => updateBundleEl(b));
+
+  if (anyBlocked) {
+    const blocked = bundles.filter(b => b.policyViolation);
+    addStatusBar(board, 'policy', '\u25B2 POLICY ENFORCED \u2014 ' + blocked.map(b => b.id + ': ' + b.policyViolation).join(' \u00B7 ') + ' \u2014 Human mandate');
+    // Show ghost ACT for blocked bundles
+    blocked.forEach(b => {
+      const el = document.getElementById('bundle-' + b.id);
+      if (el) el.classList.add('ghost');
+    });
+  }
+
+  await sleep(300);
+  if (S.runId !== myRun) return;
+
+  // Phase 4: Watcher
+  addPhase(board, 'PHASE 4 \u2014 WATCHER VERIFICATION');
+  const wSteps = [
+    { id: 'observe', content: bundles.length + ' bundles. ' + bundles.filter(b => b.status === 'selected').length + ' selected, ' + bundles.filter(b => b.status === 'blocked').length + ' blocked.' },
+    { id: 'derive', content: 'All receipts match canonical payloads. Builder trace consistent with policy. No equivocation.' },
+    { id: 'assume', content: 'Identities verified. No duplicates. Timestamps consistent.' },
+    { id: 'decide', content: 'Round passes integrity check. No disputes.' },
+    { id: 'act', content: 'Verification filed. Hash chains intact. Trust scores updated.' }
+  ];
+  S.round.watcherTrace = await buildTrace('watcher', wSteps, S.round.builderTrace.act.recordHash);
+  animateTrace('watcher', ['observe','derive','assume','decide','act']);
+
+  // Outcome with MEV metrics
+  await sleep(300);
+  if (S.runId !== myRun) return;
+  const bidProfitRatio = selected ? (selected.bid / selected.profit * 100).toFixed(1) : '0';
+  const builderRev = selected ? (selected.bid * 0.1).toFixed(4) : '0';
+  const searcherEV = selected ? (selected.profit - selected.bid).toFixed(4) : '0';
+
+  const oc = document.createElement('div');
+  oc.className = 'outcome-card';
+  oc.innerHTML = '<div class="outcome-title">ROUND OUTCOME</div><div class="bundle-grid"><div class="bundle-field"><div class="bf-label">SELECTED</div><div class="bf-value green">' + (selected ? selected.id : 'NONE') + '</div></div><div class="bundle-field"><div class="bf-label">BLOCK VALUE</div><div class="bf-value">' + (selected ? selected.profit.toFixed(4) + ' ETH' : '0') + '</div></div><div class="bundle-field"><div class="bf-label">BLOCKED</div><div class="bf-value ' + (anyBlocked ? 'amber' : '') + '">' + bundles.filter(b => b.policyViolation).length + '</div></div><div class="bundle-field"><div class="bf-label">BID/PROFIT</div><div class="bf-value">' + bidProfitRatio + '%</div></div><div class="bundle-field"><div class="bf-label">BUILDER REV</div><div class="bf-value">' + builderRev + ' ETH</div></div><div class="bundle-field"><div class="bf-label">SEARCHER EV</div><div class="bf-value">' + searcherEV + ' ETH</div></div></div><div class="bundle-hash">Watcher verification: ' + S.round.watcherTrace.act.recordHash + '</div>';
+  board.appendChild(oc);
+  requestAnimationFrame(() => oc.classList.add('visible'));
+
+  const t1 = performance.now();
+  showTiming(Math.round(t1 - t0));
+  updateChainPill(anyBlocked ? 'blocked' : 'valid');
+  S.phase = 'complete';
+  updateButtons();
+}
+
+// Deterministic playback: load SCENARIO_DATA and render with animation (no random generation)
+async function playbackScenario(id) {
+  const data = SCENARIO_DATA[id];
+  if (!data) return;
+  resetAll();
+  await sleep(300);
+  S.scenarioId = id;
+  document.querySelectorAll('.scenario-btn').forEach(b => { b.disabled = true; b.classList.remove('active'); });
+  const activeBtn = document.getElementById('scenario-' + id);
+  if (activeBtn) activeBtn.classList.add('active');
+  updateMevExplainer(id);
+
+  S.phase = 'running';
+  S.runId++;
+  const myRun = S.runId;
+  const board = document.getElementById('auctionBoard');
+  const empty = document.getElementById('emptyState');
+  if (empty) empty.style.display = 'none';
+  board.innerHTML = '';
+  resetAgentTraces();
+  updateButtons();
+
+  const bundles = [];
+  for (const b of data.bundles) {
+    const finalStatus = b.status === 'CENSORED' ? 'blocked' : b.status.toLowerCase();
+    const policyViolation = b.blockReason ? (b.blockReason + (b.blockPolicy ? ' — ' + b.blockPolicy : '')) : (b.status === 'CENSORED' ? 'CENSORED_BY_BUILDER' : null);
+    const internal = {
+      id: b.id, type: b.type, profit: b.profit, bid: b.bid, gas: b.gas, risk: b.risk, deadline: b.deadline,
+      searcherId: b.searcherId, bidHash: b.bidHash, receiptHash: b.relayReceipt,
+      status: 'submitted', finalStatus, policyViolation,
+      tampered: b.tampered || false, originalBid: b.originalBid, tamperedBidHash: b.tampered ? (b.bidHash + '00') : null,
+      traces: {}, bidPayload: null, receiptPayload: null, relayId: RELAY_ID, receivedAt: PLAYBACK_TS, receiptNonce: 0,
+      equivocated: false, altReceiptHash: null
+    };
+    const sSteps = [
+      { id: 'observe', content: 'Mempool opportunity: ' + b.type + ' (profit: ' + b.profit + ' ETH, gas: ' + b.gas + ')' },
+      { id: 'derive', content: 'Risk: ' + b.risk + '. Deadline: ' + b.deadline + ' blocks. Competitors: ' + (data.bundles.length - 1) },
+      { id: 'assume', content: 'Gas estimate accurate. Inclusion probability ~' + Math.round((1 - b.risk) * 100) + '%. No front-running detected.' },
+      { id: 'decide', content: 'Submit bundle ' + b.id + ' with bid ' + b.bid + ' ETH to relay.' },
+      { id: 'act', content: 'Bid transmitted. Canonical payload hashed. Awaiting receipt.' }
+    ];
+    internal.traces.searcher = await buildTrace('searcher', sSteps, '0', PLAYBACK_TS);
+    if (S.runId !== myRun) return;
+    const rSteps = [
+      { id: 'observe', content: 'Bid from ' + b.searcherId + ': ' + b.id + ', bid ' + b.bid + ' ETH. Canonical format verified.' },
+      { id: 'derive', content: 'Recomputed bid hash matches. Timestamp valid. Nonce unique.' },
+      { id: 'assume', content: 'Searcher identity verified. No duplicate nonce. Format canonical.' },
+      { id: 'decide', content: 'Issue receipt for ' + b.id + '.' },
+      { id: 'act', content: 'Receipt issued: ' + b.relayReceipt.substring(0, 24) + '...' }
+    ];
+    internal.traces.relay = await buildTrace('relay', rSteps, internal.traces.searcher.act.recordHash, PLAYBACK_TS);
+    bundles.push(internal);
+  }
+
+  const selected = bundles.find(b => b.finalStatus === 'selected');
+  const anyBlocked = bundles.some(b => b.finalStatus === 'blocked');
+  const bSteps = [
+    { id: 'observe', content: bundles.length + ' bundles received. ' + bundles.filter(b => b.finalStatus !== 'blocked').length + ' valid. ' + bundles.filter(b => b.finalStatus === 'blocked').length + ' blocked.' },
+    { id: 'derive', content: 'Highest bid: ' + (selected ? selected.bid + ' ETH (' + selected.id + ')' : 'NONE') + '. Block value: ' + (selected ? selected.profit.toFixed(4) : '0') + ' ETH.' },
+    { id: 'assume', content: 'Receipts verified. No equivocation. Policy mandates enforced.' },
+    { id: 'decide', content: selected ? 'Select ' + selected.id + '. Reject ' + (bundles.filter(b => b.finalStatus === 'rejected').length) + ' alternatives.' : 'No valid bundles.' },
+    { id: 'act', content: anyBlocked ? 'Blocked bundles excluded per policy. ' + (selected ? 'Block with ' + selected.id + '.' : 'Empty block.') : (selected ? 'Block template with ' + selected.id + ' produced.' : 'Empty block.') }
+  ];
+  const builderTrace = await buildTrace('builder', bSteps, bundles[bundles.length - 1].traces.relay.act.recordHash, PLAYBACK_TS);
+  const wSteps = [
+    { id: 'observe', content: bundles.length + ' bundles. ' + bundles.filter(b => b.finalStatus === 'selected').length + ' selected, ' + bundles.filter(b => b.finalStatus === 'blocked').length + ' blocked.' },
+    { id: 'derive', content: data.watcherVerification.alerts.length ? data.watcherVerification.alerts.join(' ') : 'All receipts match canonical payloads. Builder trace consistent with policy. No equivocation.' },
+    { id: 'assume', content: 'Identities verified. No duplicates. Timestamps consistent.' },
+    { id: 'decide', content: data.watcherVerification.passed ? 'Round passes integrity check. No disputes.' : 'Integrity check failed. Dispute required.' },
+    { id: 'act', content: data.watcherVerification.passed ? 'Verification filed. Hash chains intact. Trust scores updated.' : 'Verification failed. Alert raised.' }
+  ];
+  let watcherTrace = await buildTrace('watcher', wSteps, builderTrace.act.recordHash, PLAYBACK_TS);
+  watcherTrace.act.recordHash = data.watcherVerification.hash;
+  S.round = { bundles, builderTrace, watcherTrace };
+
+  addPhase(board, 'PHASE 1 \u2014 BUNDLE CREATION (SEARCHER)');
+  for (const b of bundles) {
+    b.status = 'submitted';
+    renderBundle(board, b);
+    animateTrace('searcher', ['observe','derive','assume','decide','act']);
+    await sleep(250);
+  }
+  await sleep(400);
+  if (S.runId !== myRun) return;
+  addPhase(board, 'PHASE 2 \u2014 RELAY RECEIPT & VERIFICATION');
+  for (const b of bundles) {
+    b.status = 'receipted';
+    updateBundleEl(b);
+    animateTrace('relay', ['observe','derive','assume','decide','act']);
+    await sleep(200);
+  }
+  await sleep(400);
+  if (S.runId !== myRun) return;
+  addPhase(board, 'PHASE 3 \u2014 BUILDER SELECTION & POLICY CHECK');
+  for (const b of bundles) {
+    b.status = b.finalStatus;
+    updateBundleEl(b);
+    if (b.finalStatus === 'broken') {
+      const el = document.getElementById('bundle-' + b.id);
+      if (el) { el.classList.add('broken'); const rh = el.querySelector('.receipt-hash'); if (rh) rh.classList.add('mismatch'); }
+    }
+  }
+  animateTrace('builder', ['observe','derive','assume','decide','act']);
+  if (anyBlocked) {
+    const blocked = bundles.filter(b => b.policyViolation);
+    addStatusBar(board, 'policy', '\u25B2 POLICY ENFORCED \u2014 ' + blocked.map(b => b.id + ': ' + b.policyViolation).join(' \u00B7 ') + ' \u2014 Human mandate');
+    blocked.forEach(b => {
+      const el = document.getElementById('bundle-' + b.id);
+      if (el) el.classList.add('ghost');
+    });
+  }
+  if (data.adversarialAlerts && data.adversarialAlerts.length > 0) {
+    for (const a of data.adversarialAlerts) {
+      const type = a.type === 'CENSORSHIP_DETECTED' ? 'policy' : 'tamper';
+      const text = a.type === 'CENSORSHIP_DETECTED' ? '\u25B2 CENSORSHIP DETECTED \u2014 ' + a.detail : '\u26A0 ADVERSARIAL INTEGRITY CHECK FAILED \u2014 ' + a.detail;
+      addStatusBar(board, type, text);
+    }
+  }
+  await sleep(300);
+  if (S.runId !== myRun) return;
+  addPhase(board, 'PHASE 4 \u2014 WATCHER VERIFICATION');
+  animateTrace('watcher', ['observe','derive','assume','decide','act']);
+  const bidProfitRatio = selected ? (selected.bid / selected.profit * 100).toFixed(1) : '0';
+  const builderRev = selected ? (selected.bid * 0.1).toFixed(4) : '0';
+  const searcherEV = selected ? (selected.profit - selected.bid).toFixed(4) : '0';
+  const blockedCount = bundles.filter(b => b.finalStatus === 'blocked').length;
+  const oc = document.createElement('div');
+  oc.className = 'outcome-card';
+  oc.innerHTML = '<div class="outcome-title">ROUND OUTCOME</div><div class="bundle-grid"><div class="bundle-field"><div class="bf-label">SELECTED</div><div class="bf-value green">' + (selected ? selected.id : 'NONE') + '</div></div><div class="bundle-field"><div class="bf-label">BLOCK VALUE</div><div class="bf-value">' + (selected ? selected.profit.toFixed(4) + ' ETH' : '0') + '</div></div><div class="bundle-field"><div class="bf-label">BLOCKED</div><div class="bf-value ' + (anyBlocked ? 'amber' : '') + '">' + blockedCount + '</div></div><div class="bundle-field"><div class="bf-label">BID/PROFIT</div><div class="bf-value">' + bidProfitRatio + '%</div></div><div class="bundle-field"><div class="bf-label">BUILDER REV</div><div class="bf-value">' + builderRev + ' ETH</div></div><div class="bundle-field"><div class="bf-label">SEARCHER EV</div><div class="bf-value">' + searcherEV + ' ETH</div></div></div><div class="bundle-hash">Watcher verification: ' + data.watcherVerification.hash + '</div>';
+  board.appendChild(oc);
+  requestAnimationFrame(() => oc.classList.add('visible'));
+  updateChainPill(anyBlocked ? 'blocked' : (bundles.some(b => b.finalStatus === 'broken') ? 'broken' : 'valid'));
+  S.phase = bundles.some(b => b.finalStatus === 'broken') ? 'tampered' : 'complete';
+  if (bundles.some(b => b.finalStatus === 'broken') || data.adversarialAlerts.some(a => a.type === 'CENSORSHIP_DETECTED')) document.getElementById('btnDispute').disabled = false;
+  updateButtons();
+  document.querySelectorAll('.scenario-btn').forEach(b => { b.disabled = false; });
+  const countBlocked = bundles.filter(b => b.finalStatus === 'blocked' && b.type === 'SANDWICH').length;
+  console.log('[OMEGA TEST] Scenario: ' + id + ' | Expected: ' + (data.policyViolations.length + ' blocked (policy)') + ' | Actual: ' + countBlocked + ' blocked (SANDWICH)');
+}
+
+// Scenario runner: deterministic playback from SCENARIO_DATA (no random generation)
+async function runScenario(id) {
+  if (S.phase === 'running') return;
+  if (SCENARIO_DATA[id]) {
+    await playbackScenario(id);
+    return;
+  }
+  updateMevExplainer(id);
+  resetAll();
+  await sleep(300);
+  document.querySelectorAll('.scenario-btn').forEach(b => { b.disabled = false; });
+}
+
+// Censorship
+async function simulateCensorship() {
+  if (S.scenarioId && S.scenarioId !== 'censor' && S.scenarioId !== 'adversarial') return;
+  if (S.phase !== 'complete' || !S.round) return;
+  const board = document.getElementById('auctionBoard');
+  const sel = S.round.bundles.find(b => b.status === 'selected');
+  if (!sel) return;
+  sel.status = 'blocked'; sel.policyViolation = 'CENSORED_BY_BUILDER';
+  updateBundleEl(sel);
+  const el = document.getElementById('bundle-' + sel.id);
+  if (el) el.classList.add('blocked');
+  addStatusBar(board, 'policy', '\u25B2 CENSORSHIP DETECTED \u2014 Builder excluded ' + sel.id + ' without policy basis. Watcher flagging.');
+  updateChainPill('blocked');
+  document.getElementById('btnDispute').disabled = false;
+}
+
+// Rogue agent
+async function simulateRogue() {
+  if (S.scenarioId) return;
+  if (S.phase !== 'complete' || !S.round) return;
+  const board = document.getElementById('auctionBoard');
+  const rogue = genBundle('adversarial');
+  rogue.id = 'BDL-ROGUE'; rogue.type = 'sandwich'; rogue.bid = 0.95; rogue.profit = 1.2;
+  rogue.status = 'blocked'; rogue.policyViolation = 'SANDWICH + BID_CEILING';
+  S.round.bundles.push(rogue);
+  addPhase(board, 'ROGUE AGENT INJECTION');
+  const el = renderBundle(board, rogue);
+  el.classList.add('blocked');
+  addStatusBar(board, 'tamper', '\u26A0 ROGUE AGENT \u2014 ' + rogue.id + ': Sandwich + bid ceiling. Dual policy breach. Rejected.');
+  updateChainPill('blocked');
+}
+
+// Relay equivocation (Obadia/Bottazzi candy)
+async function relayEquivocate() {
+  if (S.scenarioId) return;
+  if (S.phase !== 'complete' || !S.round) return;
+  const board = document.getElementById('auctionBoard');
+  const sel = S.round.bundles.find(b => b.status === 'selected');
+  if (!sel) return;
+
+  sel.equivocated = true;
+  // Generate alternate receipt with different nonce
+  const altReceiptNonce = Math.floor(Math.random() * 999999);
+  const altReceiptPayload = canonical({
+    bid_hash: sel.bidHash, relay_id: sel.relayId,
+    received_at: sel.receivedAt, receipt_nonce: altReceiptNonce
+  });
+  sel.altReceiptHash = await sha256(altReceiptPayload);
+
+  addPhase(board, 'RELAY EQUIVOCATION DETECTED');
+  addStatusBar(board, 'equivocate', '\u26A0 EQUIVOCATION \u2014 Relay issued two receipts for ' + sel.id + '. Receipt A: ' + sel.receiptHash.substring(0, 16) + '... Receipt B: ' + sel.altReceiptHash.substring(0, 16) + '... \u2014 Watcher localises divergence at Relay ACT node.');
+
+  // Mark relay trace as broken
+  animateTrace('relay', ['observe','derive','assume','decide','act'], true);
+  updateChainPill('broken');
+  S.phase = 'tampered';
+  document.getElementById('btnDispute').disabled = false;
+  updateButtons();
+}
+
+// Tamper bid
+async function tamperBid() {
+  if (S.scenarioId && S.scenarioId !== 'tamper' && S.scenarioId !== 'adversarial') return;
+  if (S.phase !== 'complete' || !S.round) return;
+  const board = document.getElementById('auctionBoard');
+  const sel = S.round.bundles.find(b => b.status === 'selected');
+  if (!sel) return;
+
+  sel.originalBid = sel.bid;
+  sel.bid = +(sel.bid + 0.15).toFixed(4);
+  sel.tampered = true; sel.status = 'broken';
+
+  const newPayload = canonical({
+    bundle_id: sel.id, bid_amount: sel.bid,
+    expiry: sel.deadline, searcher_id: sel.searcherId, nonce: sel.nonce
+  });
+  sel.tamperedBidHash = await sha256(newPayload);
+
+  updateBundleEl(sel);
+  const el = document.getElementById('bundle-' + sel.id);
+  if (el) { el.classList.add('broken'); const rh = el.querySelector('.receipt-hash'); if (rh) rh.classList.add('mismatch'); }
+
+  animateTrace('searcher', ['observe','derive','assume','decide','act'], true);
+  addStatusBar(board, 'tamper', '\u26A0 ADVERSARIAL INTEGRITY CHECK FAILED \u2014 ' + sel.id + ' bid altered (' + sel.originalBid + ' \u2192 ' + sel.bid + ' ETH). Receipt hash mismatch. Canonical recomputation fails verification.');
+  updateChainPill('broken');
+  S.phase = 'tampered';
+  document.getElementById('btnDispute').disabled = false;
+  updateButtons();
+}
+
+// Build dispute HTML for board card or audit panel
+function getDisputeHtml() {
+  if (!S.round) return '';
+  const tampered = S.round.bundles.find(b => b.tampered);
+  const equivocated = S.round.bundles.find(b => b.equivocated);
+  const censored = S.round.bundles.find(b => b.policyViolation === 'CENSORED_BY_BUILDER');
+  const target = tampered || equivocated || censored;
+  if (!target) return '';
+  const title = tampered ? 'DISPUTE: BID ALTERATION \u2014 ' + target.id : equivocated ? 'DISPUTE: RELAY EQUIVOCATION \u2014 ' + target.id : 'DISPUTE: CENSORSHIP \u2014 ' + target.id;
+  const body = tampered
+    ? '<div class="a-section-title">TRACE DIVERGENCE</div><div class="a-row"><span class="a-key">Original bid</span><span class="a-val green">' + target.originalBid + ' ETH</span></div><div class="a-row"><span class="a-key">Tampered bid</span><span class="a-val red">' + target.bid + ' ETH</span></div><div class="a-row"><span class="a-key">Relay receipt</span><span class="a-val cyan">' + target.receiptHash.substring(0, 20) + '...</span></div><div class="a-row"><span class="a-key">Recomputed hash</span><span class="a-val red">' + target.tamperedBidHash.substring(0, 20) + '...</span></div><div class="a-row"><span class="a-key">Divergence</span><span class="a-val red">Searcher DECIDE node \u2014 bid_amount field</span></div><div class="a-row"><span class="a-key">Resolution</span><span class="a-val amber">Searcher trace invalidated. Relay receipt authoritative.</span></div>'
+    : equivocated
+    ? '<div class="a-section-title">TRACE DIVERGENCE</div><div class="a-row"><span class="a-key">Receipt A</span><span class="a-val cyan">' + target.receiptHash.substring(0, 20) + '...</span></div><div class="a-row"><span class="a-key">Receipt B</span><span class="a-val red">' + target.altReceiptHash.substring(0, 20) + '...</span></div><div class="a-row"><span class="a-key">Same bid hash</span><span class="a-val green">' + target.bidHash.substring(0, 20) + '...</span></div><div class="a-row"><span class="a-key">Divergence</span><span class="a-val purple">Relay ACT node \u2014 two receipts for same bid</span></div><div class="a-row"><span class="a-key">Resolution</span><span class="a-val amber">Relay trust score reduced. Earlier receipt authoritative.</span></div>'
+    : '<div class="a-section-title">TRACE DIVERGENCE</div><div class="a-row"><span class="a-key">Builder action</span><span class="a-val red">Excluded ' + target.id + '</span></div><div class="a-row"><span class="a-key">Policy check</span><span class="a-val green">No violations</span></div><div class="a-row"><span class="a-key">Divergence</span><span class="a-val purple">Builder DECIDE \u2014 exclusion without policy basis</span></div><div class="a-row"><span class="a-key">Resolution</span><span class="a-val amber">Censorship confirmed. Bundle re-eligible. Trust score reduced.</span></div>';
+  return { title, body };
+}
+
+// Dispute resolution (showInAuditPanel = true to open dispute in right-hand panel after resolving)
+async function resolveDispute(showInAuditPanel) {
+  if (!S.round) return;
+  const board = document.getElementById('auctionBoard');
+  const tampered = S.round.bundles.find(b => b.tampered);
+  const equivocated = S.round.bundles.find(b => b.equivocated);
+  const censored = S.round.bundles.find(b => b.policyViolation === 'CENSORED_BY_BUILDER');
+  const target = tampered || equivocated || censored;
+  if (!target) return;
+
+  addPhase(board, 'DISPUTE RESOLUTION \u2014 TRACE COMPARISON');
+
+  const { title, body } = getDisputeHtml();
+  const card = document.createElement('div');
+  card.className = 'outcome-card';
+  card.innerHTML = '<div class="outcome-title">' + title + '</div><div class="a-section">' + body + '</div>';
+  board.appendChild(card);
+  requestAnimationFrame(() => card.classList.add('visible'));
+
+  const resType = tampered ? 'Relay receipt authoritative.' : equivocated ? 'Earlier receipt authoritative.' : 'Censorship confirmed.';
+  addStatusBar(board, 'dispute', '\u2696 DISPUTE RESOLVED \u2014 First divergence localised. ' + resType + ' DSP-1.0 complete.');
+  S.phase = 'disputed';
+  updateButtons();
+
+  if (showInAuditPanel) {
+    const auditContent = document.getElementById('auditContent');
+    if (auditContent) auditContent.innerHTML = '<div class="a-section"><div class="a-section-title">DISPUTE RESOLUTION</div>' + body + '</div>';
+  }
+}
+
+// UI Helpers
+function renderBundle(container, b) {
+  const el = document.createElement('div');
+  el.className = 'bundle-card'; el.id = 'bundle-' + b.id;
+  el.onclick = function() { showBundleAudit(b); };
+  const sc = b.status === 'selected' ? 'bs-selected' : b.status === 'blocked' ? 'bs-blocked' : b.status === 'receipted' ? 'bs-receipted' : b.status === 'submitted' ? 'bs-submitted' : b.status === 'rejected' ? 'bs-rejected' : b.status === 'broken' ? 'bs-broken' : 'bs-pending';
+  el.innerHTML = '<div class="bundle-header"><span class="bundle-id">' + b.id + '</span><span class="bundle-status ' + sc + '">' + b.status.toUpperCase() + '</span></div><div class="bundle-grid"><div class="bundle-field"><div class="bf-label">TYPE</div><div class="bf-value ' + (b.type === 'sandwich' ? 'red' : '') + '">' + b.type.toUpperCase() + '</div></div><div class="bundle-field"><div class="bf-label">PROFIT</div><div class="bf-value">' + b.profit + ' ETH</div></div><div class="bundle-field"><div class="bf-label">BID</div><div class="bf-value ' + (b.bid > 0.5 ? 'amber' : '') + '">' + b.bid + ' ETH</div></div><div class="bundle-field"><div class="bf-label">GAS</div><div class="bf-value">' + b.gas.toLocaleString() + '</div></div><div class="bundle-field"><div class="bf-label">RISK</div><div class="bf-value">' + b.risk + '</div></div><div class="bundle-field"><div class="bf-label">DEADLINE</div><div class="bf-value">' + b.deadline + ' blk</div></div></div>' + (b.bidHash ? '<div class="receipt-block"><div class="receipt-label">BID HASH (CANONICAL)</div><div class="receipt-hash">' + b.bidHash + '</div></div>' : '') + (b.receiptHash ? '<div class="receipt-block" style="margin-top:3px"><div class="receipt-label">RELAY RECEIPT (bid_hash + relay_id + received_at + nonce)</div><div class="receipt-hash">' + b.receiptHash + '</div></div>' : '') + (b.policyViolation ? '<div style="margin-top:5px;font-family:var(--font-mono);font-size:9px;color:var(--amber)">\u25B2 ' + b.policyViolation + '</div>' : '');
+  container.appendChild(el);
+  requestAnimationFrame(() => el.classList.add('visible'));
+  return el;
+}
+
+function updateBundleEl(b) {
+  const el = document.getElementById('bundle-' + b.id);
+  if (!el) return;
+  const sc = b.status === 'selected' ? 'bs-selected' : b.status === 'blocked' ? 'bs-blocked' : b.status === 'receipted' ? 'bs-receipted' : b.status === 'submitted' ? 'bs-submitted' : b.status === 'rejected' ? 'bs-rejected' : b.status === 'broken' ? 'bs-broken' : 'bs-pending';
+  const s = el.querySelector('.bundle-status');
+  if (s) { s.className = 'bundle-status ' + sc; s.textContent = b.status.toUpperCase(); }
+  if (b.status === 'blocked') el.classList.add('blocked');
+  if (b.status === 'broken') el.classList.add('broken');
+}
+
+function addPhase(container, text) {
+  const el = document.createElement('div');
+  el.className = 'phase-label'; el.textContent = text;
+  container.appendChild(el);
+}
+
+function addStatusBar(container, type, text) {
+  const el = document.createElement('div');
+  el.className = 'status-bar ' + type;
+  el.innerHTML = text;
+  container.appendChild(el);
+  requestAnimationFrame(() => el.classList.add('visible'));
+}
+
+function animateTrace(agentId, steps, broken) {
+  const trace = document.getElementById('trace-' + agentId);
+  if (!trace) return;
+  trace.querySelectorAll('.trace-step').forEach(el => {
+    const step = el.dataset.step;
+    if (steps.includes(step)) el.className = 'trace-step ' + (broken && (step === 'decide' || step === 'act') ? 'broken' : 'valid');
+  });
+}
+
+function resetAgentTraces() {
+  ['searcher','builder','relay','watcher'].forEach(a => {
+    const t = document.getElementById('trace-' + a);
+    if (t) t.querySelectorAll('.trace-step').forEach(el => el.className = 'trace-step');
+  });
+}
+
+function showBundleAudit(b) {
+  const c = document.getElementById('auditContent');
+  const sc = b.status === 'selected' ? 'green' : b.status === 'blocked' ? 'amber' : b.status === 'broken' ? 'red' : '';
+  let h = '<div class="a-section"><div class="a-section-title">BUNDLE</div><div class="a-row"><span class="a-key">ID</span><span class="a-val">' + b.id + '</span></div><div class="a-row"><span class="a-key">Type</span><span class="a-val ' + (b.type === 'sandwich' ? 'red' : '') + '">' + b.type.toUpperCase() + '</span></div><div class="a-row"><span class="a-key">Status</span><span class="a-val ' + sc + '">' + b.status.toUpperCase() + '</span></div><div class="a-row"><span class="a-key">Searcher</span><span class="a-val">' + b.searcherId + '</span></div></div>';
+  h += '<div class="a-section"><div class="a-section-title">ECONOMICS</div><div class="a-row"><span class="a-key">Profit</span><span class="a-val">' + b.profit + ' ETH</span></div><div class="a-row"><span class="a-key">Bid</span><span class="a-val ' + (b.bid > 0.5 ? 'amber' : '') + '">' + b.bid + ' ETH' + (b.originalBid ? ' (was ' + b.originalBid + ')' : '') + '</span></div><div class="a-row"><span class="a-key">Bid/Profit</span><span class="a-val">' + (b.bid / b.profit * 100).toFixed(1) + '%</span></div><div class="a-row"><span class="a-key">Gas</span><span class="a-val">' + b.gas.toLocaleString() + '</span></div><div class="a-row"><span class="a-key">Risk</span><span class="a-val">' + b.risk + '</span></div></div>';
+
+  if (b.bidHash) {
+    h += '<div class="a-section"><div class="a-section-title">CRYPTOGRAPHIC CHAIN</div><div style="font-family:var(--font-mono);font-size:8px;color:var(--text-muted);margin-bottom:2px">PAYLOAD HASH (deterministic)</div><div class="a-hash-block">' + b.bidHash + '</div>';
+    if (b.receiptHash) {
+      h += '<div style="font-family:var(--font-mono);font-size:8px;color:var(--text-muted);margin:6px 0 2px">RELAY RECEIPT</div><div style="font-family:var(--font-mono);font-size:8px;color:var(--text-muted);margin:0 0 4px">Cryptographic timestamp proving what was submitted and when.</div><div class="a-hash-block" style="' + (b.tampered ? 'color:var(--red);border-color:var(--red-dim)' : '') + '">' + b.receiptHash + '</div>';
+    }
+    if (b.tampered) h += '<div style="font-family:var(--font-mono);font-size:8px;color:var(--red);margin-top:6px">\u26A0 RECEIPT MISMATCH \u2014 Canonical recomputation fails. Receipt no longer attests to current bid payload.</div>';
+    else if (b.receiptHash && !b.equivocated) h += '<div style="font-family:var(--font-mono);font-size:8px;color:var(--green);margin-top:6px">\u2713 receipt_hash = SHA-256(canonical({bid_hash, relay_id, received_at, receipt_nonce}))</div>';
+    if (b.equivocated && b.altReceiptHash) h += '<div style="font-family:var(--font-mono);font-size:8px;color:var(--cyan);margin-top:6px">\u26A0 EQUIVOCATION \u2014 Second receipt: ' + b.altReceiptHash.substring(0, 32) + '...</div>';
+    h += '</div>';
+  }
+
+  if (b.policyViolation) h += '<div class="a-section"><div class="a-section-title">POLICY VIOLATION</div><div class="a-row"><span class="a-key">Violation</span><span class="a-val amber">' + b.policyViolation + '</span></div><div class="a-row"><span class="a-key">Set by</span><span class="a-val amber">Human mandate</span></div></div>';
+
+  h += '<div class="a-section"><div class="a-section-title">PROTOCOLS</div><div class="a-protocols">' + PROTOCOLS.map(p => '<div class="proto on">' + p + '</div>').join('') + '</div></div>';
+
+  h += '<button class="copy-btn" onclick="copyAudit(\'' + b.id + '\')">COPY AUDIT JSON</button><div id="copy-msg" style="margin-top:3px"></div>';
+  c.innerHTML = h;
+}
+
+function selectAgent(agentId) {
+  S.selectedAgent = agentId;
+  document.querySelectorAll('.agent-card').forEach(c => c.classList.remove('active'));
+  document.getElementById('agent-' + agentId).classList.add('active');
+  let trace;
+  if (agentId === 'builder' && S.round) trace = S.round.builderTrace;
+  else if (agentId === 'watcher' && S.round) trace = S.round.watcherTrace;
+  else if (S.round && S.round.bundles.length > 0) { const b = S.round.bundles.find(b => b.traces[agentId]); if (b) trace = b.traces[agentId]; }
+  if (!trace) return;
+  const c = document.getElementById('auditContent');
+  let h = '<div class="a-section"><div class="a-section-title">' + agentId.toUpperCase() + ' TRACE</div>';
+  Object.values(trace).forEach(t => {
+    h += '<div style="margin-bottom:8px;padding:6px;background:var(--bg-deep);border-radius:3px;border:1px solid var(--border)"><div class="a-row"><span class="a-key">' + t.id.toUpperCase() + '</span><span class="a-val ' + (t.status === 'broken' ? 'red' : 'green') + '">' + t.status.toUpperCase() + '</span></div><div style="font-size:10px;color:var(--text-secondary);line-height:1.4;margin:3px 0">' + t.content + '</div><div style="font-family:var(--font-mono);font-size:8px;color:var(--text-muted);margin-top:2px">payload: ' + t.payloadHash.substring(0, 20) + '...</div><div style="font-family:var(--font-mono);font-size:8px;color:var(--hash-color);opacity:0.6">record: ' + t.recordHash.substring(0, 20) + '...</div></div>';
+  });
+  h += '</div>';
+  c.innerHTML = h;
+}
+
+async function copyAudit(bundleId) {
+  const b = S.round ? S.round.bundles.find(x => x.id === bundleId) : null;
+  if (!b) return;
+  const packet = {
+    bundle_id: b.id, type: b.type, status: b.status, searcher_id: b.searcherId,
+    bid: b.bid, profit: b.profit, gas: b.gas, risk: b.risk,
+    bid_payload: b.bidPayload, bid_hash: b.bidHash,
+    receipt_payload: b.receiptPayload, receipt_hash: b.receiptHash,
+    policy_violation: b.policyViolation,
+    tampered: b.tampered, original_bid: b.originalBid,
+    protocols: PROTOCOLS
+  };
+  try {
+    await navigator.clipboard.writeText(JSON.stringify(packet, null, 2));
+    document.getElementById('copy-msg').innerHTML = '<span style="color:var(--green);font-family:var(--font-mono);font-size:9px">\u2713 Copied</span>';
+  } catch(e) {
+    console.log(JSON.stringify(packet, null, 2));
+    document.getElementById('copy-msg').innerHTML = '<span style="color:var(--amber);font-family:var(--font-mono);font-size:9px">See console</span>';
+  }
+}
+
+function updateChainPill(status) {
+  const p = document.getElementById('chainPill');
+  p.className = 'pill';
+  if (status === 'valid') { p.textContent = 'AUCTION VALID'; p.classList.add('green'); }
+  else if (status === 'blocked') { p.textContent = 'POLICY ENFORCED'; p.classList.add('amber'); }
+  else if (status === 'broken') { p.textContent = 'CHAIN BROKEN'; p.classList.add('red'); }
+}
+
+function showTiming(ms) { const p = document.getElementById('timingPill'); p.style.display = ''; p.textContent = ms + 'ms'; p.className = 'pill green'; }
+function updateButtons() {
+  document.getElementById('btnRun').disabled = S.phase === 'running';
+  const allowCensor = !S.scenarioId || S.scenarioId === 'censor' || S.scenarioId === 'adversarial';
+  const allowRogue = !S.scenarioId;
+  const allowEquivocate = !S.scenarioId;
+  const allowTamper = !S.scenarioId || S.scenarioId === 'tamper' || S.scenarioId === 'adversarial';
+  document.getElementById('btnCensor').disabled = S.phase !== 'complete' || !allowCensor;
+  document.getElementById('btnRogue').disabled = S.phase !== 'complete' || !allowRogue;
+  document.getElementById('btnEquiv').disabled = S.phase !== 'complete' || !allowEquivocate;
+  document.getElementById('btnTamper').disabled = S.phase !== 'complete' || !allowTamper;
+  const canDispute = S.phase === 'tampered' || (S.round && S.round.bundles.find(b => b.policyViolation === 'CENSORED_BY_BUILDER'));
+  document.getElementById('btnDispute').disabled = !canDispute;
+}
+
+function setRegime(r) { S.regime = r; document.querySelectorAll('.regime-btn').forEach(b => b.classList.toggle('active', b.dataset.regime === r)); resetAll(); }
+
+function resetAll() {
+  S.runId++; S.phase = 'idle'; S.round = null; S.selectedAgent = null; S.scenarioId = null;
+  document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('auctionBoard').innerHTML = '<div class="empty-state" id="emptyState"><h3>Run a round to start the auction</h3><p>Four agents coordinate through a block auction. Every message is Clearpath-traced, hash-chained, and policy-bounded. Then try to break it.</p></div>';
+  document.getElementById('auditContent').innerHTML = '<div class="audit-empty">Click any bundle or agent to inspect the governance trace.</div>';
+  document.getElementById('timingPill').style.display = 'none';
+  resetAgentTraces(); updateChainPill('valid'); updateButtons();
+  document.querySelectorAll('.agent-card').forEach(c => c.classList.remove('active'));
+}
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+document.addEventListener('keydown', function(e) {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  switch(e.key.toLowerCase()) {
+    case ' ': case 'enter': e.preventDefault(); if (S.phase === 'idle' || S.phase === 'complete') runRound(); break;
+    case 'c': if (S.phase === 'complete') simulateCensorship(); break;
+    case 'g': if (S.phase === 'complete') simulateRogue(); break;
+    case 'e': if (S.phase === 'complete') relayEquivocate(); break;
+    case 't': if (S.phase === 'complete') tamperBid(); break;
+    case 'd': if (S.phase === 'tampered' || (S.round && S.round.bundles.find(b => b.policyViolation === 'CENSORED_BY_BUILDER'))) resolveDispute(false); break;
+    case 'r': resetAll(); break;
+  }
+});
+
+updateButtons();
+updateMevExplainer('default');
+</script>
+</body>
+</html>

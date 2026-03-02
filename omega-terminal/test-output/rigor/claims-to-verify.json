@@ -1,0 +1,36 @@
+{
+  "generated_at": "2026-02-27T11:29:44.351Z",
+  "warning": "Empirical claims extracted from adversarial outputs (numbers, units, study-like phrases). Not verified; reliability is lower than reasoning.",
+  "claims": [
+    {
+      "engine": "rd",
+      "source_field": "contradiction_evidence",
+      "claim": "Structural argument: Sacrificial bonding and energy dissipation require only reversible cross-links with characteristic bond energies in the 10-50 kJ/mol range and spatial density on nanometer scales—these are material properties, not protein-specific properties. Any macromolecule meeting these criteria provides equivalent toughening.",
+      "verification_status": "unverified"
+    },
+    {
+      "engine": "dec",
+      "source_field": "strongest_counterargument",
+      "claim": "The vertical-first recommendation solves for the wrong constraint. The 12-month political pressure window is not a fixed physical law—it is a governance failure that this recommendation institutionalizes rather than addresses. By designing around political impatience rather than technical necessity, you guarantee the failure mode you claim to avoid: fragmented standards, duplicated effort, and coo",
+      "verification_status": "unverified"
+    },
+    {
+      "engine": "dec",
+      "source_field": "falsification_test",
+      "claim": "Track whether programmes launched after Scaling Trust's month-18 open-source release actually adopt its components versus building new vertical solutions. If 75% or more of subsequent trust-relevant programmes build independent implementations rather than adopting Scaling Trust components within 24 months of release, the vertical-first strategy has failed its core premise. Additionally, measure wh",
+      "verification_status": "unverified"
+    },
+    {
+      "engine": "dec",
+      "source_field": "contradiction_evidence",
+      "claim": "The 'contractual commitment to open-source by month 18' assumption has no enforcement mechanism described. In institutional contexts, delayed open-sourcing commitments routinely fail due to: (a) classification or commercial sensitivity claims that emerge during development, (b) key personnel turnover between commitment and delivery date, (c) the absence of incentives to document or generalize prog",
+      "verification_status": "unverified"
+    },
+    {
+      "engine": "dec",
+      "source_field": "contradiction_evidence",
+      "claim": "The claim that horizontal infrastructure requires an 'empowered owner who can compel adoption' contradicts the recommendation's own logic. If such an owner cannot be established in the current governance environment (your premise), then the same governance environment cannot credibly enforce month-18 open-source commitments or prevent programmes from forking the released components into incompatib",
+      "verification_status": "unverified"
+    }
+  ]
+}

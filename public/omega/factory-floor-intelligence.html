@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMEGA — Factory Floor Intelligence</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg-deep:#fafafa;--bg-surface:#f4f4f6;--bg-raised:#ecedef;--bg-hover:#e4e5e8;
+  --border:#d5d7dc;--border-active:#b8bbc2;
+  --text-primary:#111214;--text-secondary:#363940;--text-muted:#5c5f69;
+  --green:#059669;--green-dim:#d1fae5;--green-glow:rgba(5,150,105,.08);
+  --amber:#d97706;--amber-dim:#fef3c7;--amber-glow:rgba(217,119,6,.08);
+  --red:#dc2626;--red-dim:#fee2e2;--red-glow:rgba(220,38,38,.08);
+  --blue:#2563eb;--blue-dim:#dbeafe;--blue-glow:rgba(37,99,235,.06);
+  --mono:'Courier New','Lucida Console',monospace;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --fast:150ms ease;--med:300ms ease;--rad:6px;
+}
+html{font-size:14px}
+body{background:var(--bg-deep);color:var(--text-primary);font-family:var(--sans);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ─── TRUST PROOF STRIP ─── */
+.strip{display:flex;align-items:center;justify-content:center;gap:14px;padding:4px 16px;background:var(--bg-deep);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:9px;color:#363940;flex-wrap:wrap}
+.strip-dot{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;margin-right:4px}
+.strip-dot.a{background:var(--amber)}.strip-dot.r{background:var(--red)}
+.strip-sep{color:var(--border)}
+
+/* ─── HEADER ─── */
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border-bottom:1px solid var(--border);background:var(--bg-surface);position:sticky;top:0;z-index:100;flex-wrap:wrap;gap:8px}
+.hdr-left{display:flex;align-items:center;gap:12px}
+.logo{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:2px}
+.logo span{color:var(--green)}
+.logo-sub{font-family:var(--mono);font-size:9px;letter-spacing:1px;color:#363940}
+.pills{display:flex;gap:5px;flex-wrap:wrap}
+.pill{font-family:var(--mono);font-size:9px;padding:2px 7px;border-radius:3px;background:#f0f1f3;border:1px solid var(--border);color:#363940;white-space:nowrap;transition:all var(--med)}
+.pill.g{color:var(--green);border-color:var(--green-dim);background:#ecfdf5}
+.pill.a{color:var(--amber);border-color:var(--amber-dim);background:#fffbeb}
+.pill.r{color:var(--red);border-color:var(--red-dim);background:#fef2f2}
+
+/* ─── LAYOUT ─── */
+.main{display:grid;grid-template-columns:250px 1fr 300px;min-height:calc(100vh - 80px)}
+@media(max-width:1100px){.main{grid-template-columns:1fr}}
+
+/* ─── LEFT: SENSORS ─── */
+.left{border-right:1px solid var(--border);background:var(--bg-surface);padding:14px;overflow-y:auto}
+.ptitle{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:#363940;text-transform:uppercase;margin-bottom:12px}
+.sgroup{margin-bottom:12px}
+.slbl{font-family:var(--mono);font-size:10px;color:#111214;margin-bottom:2px;display:flex;justify-content:space-between}
+.sunit{color:#5c5f69;font-size:9px}
+.srow{display:flex;align-items:center;gap:8px}
+.sval{font-family:var(--mono);font-size:18px;font-weight:700;min-width:55px;color:#111214}
+.sval.w{color:var(--amber)}.sval.c{color:var(--red)}
+input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:3px;background:#c0c2c8;border-radius:2px;outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:#363940;border:2px solid #ffffff;cursor:pointer}
+.tbar{height:2px;background:var(--border);border-radius:1px;margin-top:3px;position:relative}
+.tmark{position:absolute;top:-3px;width:1px;height:8px}
+.tmark.tw{background:var(--amber)}.tmark.tc{background:var(--red)}
+.divider{height:1px;background:var(--border);margin:12px 0}
+.pol{font-family:var(--mono);font-size:9px;color:#363940;padding:5px 7px;background:#f4f4f6;border:1px solid var(--border);border-radius:3px;margin-bottom:5px;line-height:1.5}
+.pol b{color:var(--amber);font-weight:600}
+.btns{display:flex;flex-direction:column;gap:5px;margin-top:12px}
+.btn{font-family:var(--mono);font-size:10px;padding:7px 12px;border-radius:4px;border:1px solid;cursor:pointer;transition:all var(--fast);text-align:center}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-go{background:#ecfdf5;border-color:var(--green-dim);color:var(--green)}
+.btn-go:hover:not(:disabled){background:#d1fae5}
+.btn-chaos{background:#fef2f2;border-color:var(--red-dim);color:var(--red)}
+.btn-chaos:hover:not(:disabled){background:#fee2e2}
+.btn-drift{background:#eff6ff;border-color:var(--blue-dim);color:var(--blue)}
+.btn-drift:hover:not(:disabled){background:#dbeafe}
+.btn-x{background:var(--bg-raised);border-color:var(--border);color:var(--text-secondary)}
+.btn-x:hover:not(:disabled){background:var(--bg-hover)}
+.ex-btns{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:8px}
+.btn-ex{font-size:9px;padding:5px 8px;background:var(--bg-raised);border-color:var(--border);color:#111214}
+.btn-ex:hover{background:var(--bg-hover);color:#111214;border-color:var(--border-active)}
+
+/* ─── SCENARIO EXPLAINER ─── */
+.scenario-explainer{padding:14px 18px;background:var(--bg-raised,#f0f1f3);border:1px solid var(--border,#d5d7dc);border-left:3px solid var(--blue,#2563eb);border-radius:6px;margin-bottom:16px;font-family:var(--sans,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif);font-size:12px;line-height:1.7;color:var(--text-secondary,#4a4d56)}
+.scenario-explainer b{color:var(--text-primary,#1a1c20);font-weight:600}
+.scenario-explainer .watch-for{margin-top:8px;padding-top:8px;border-top:1px solid var(--border,#d5d7dc);font-size:11px;color:var(--text-muted,#7c808a)}
+.scenario-explainer .watch-for b{color:var(--blue,#2563eb);font-size:11px}
+
+/* ─── CENTER: CHAIN ─── */
+.center{padding:20px 24px;display:flex;flex-direction:column;align-items:center;overflow-y:auto}
+.ch-title{text-align:center;margin-bottom:14px}
+.ch-title h2{font-size:15px;font-weight:600;margin-bottom:2px}
+.ch-title p{font-family:var(--mono);font-size:10px;color:#363940;letter-spacing:1px}
+.ibar-wrap{width:100%;max-width:460px;margin-bottom:14px}
+.ibar-lbl{font-family:var(--mono);font-size:9px;color:#363940;display:flex;justify-content:space-between;margin-bottom:3px}
+.ibar{height:3px;background:var(--bg-raised);border-radius:2px;overflow:hidden}
+.ifill{height:100%;width:100%;background:var(--green);border-radius:2px;transition:all .6s ease}
+.ifill.a{background:var(--amber)}.ifill.r{background:var(--red)}
+.chain{display:flex;flex-direction:column;align-items:center;width:100%;max-width:460px}
+.ng{width:100%;opacity:0;transform:translateY(10px);transition:all .4s ease}
+.ng.vis{opacity:1;transform:translateY(0)}
+.ng.ghost{opacity:.25!important}
+.ng.ghost .nb{border-style:dashed;border-color:var(--amber)!important}
+.ng.tampered .nb{border-color:var(--red)!important;box-shadow:0 0 0 1px rgba(220,38,38,.2)!important;animation:glitch .2s ease 3}
+.nb{width:100%;padding:10px 14px;background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--rad);cursor:pointer;transition:all var(--med)}
+.nb:hover{border-color:var(--border-active);background:var(--bg-raised)}
+.nb.sel{border-color:var(--green);box-shadow:0 0 0 1px rgba(5,150,105,.15)}
+.nb.blk{border-color:var(--amber);box-shadow:0 0 0 1px rgba(217,119,6,.15)}
+.nb.brk{border-color:var(--red);box-shadow:0 0 0 1px rgba(220,38,38,.15)}
+.nb.adp{border-color:var(--blue);box-shadow:0 0 0 1px rgba(37,99,235,.15)}
+.nb.tgt{cursor:crosshair}
+.nb.tgt:hover{border-color:var(--red)!important;box-shadow:0 0 0 1px rgba(220,38,38,.2)!important}
+.nh{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.nn{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1.5px;color:#111214}
+.ns{font-family:var(--mono);font-size:8px;padding:1px 5px;border-radius:2px}
+.sv{background:var(--green-glow);color:var(--green)}
+.sb{background:var(--amber-glow);color:var(--amber)}
+.sr{background:var(--red-glow);color:var(--red)}
+.sa{background:var(--blue-glow);color:var(--blue)}
+.nc{font-size:11px;color:#363940;line-height:1.5;margin-bottom:4px}
+.nhash{font-family:var(--mono);font-size:8px;color:var(--blue);opacity:.5;word-break:break-all}
+.conn{width:2px;height:18px;margin:0 auto;background:var(--border);transition:background .3s}
+.conn.v{background:var(--green)}.conn.b{background:var(--amber)}.conn.k{background:var(--red)}
+.bnr{width:100%;max-width:460px;padding:8px 14px;border-radius:var(--rad);margin-top:8px;font-family:var(--mono);font-size:10px;text-align:center;opacity:0;transform:translateY(6px);transition:all .4s ease;display:none}
+.bnr.vis{opacity:1;transform:translateY(0)}
+.bnr.blu{background:#eff6ff;border:1px solid var(--blue-dim);color:var(--blue)}
+.bnr.amb{background:#fffbeb;border:1px solid var(--amber-dim);color:var(--amber)}
+.bnr.red{background:#fef2f2;border:1px solid var(--red-dim);color:var(--red)}
+.bnr.grn{background:#ecfdf5;border:1px solid var(--green-dim);color:var(--green)}
+.thint{font-family:var(--mono);font-size:10px;color:var(--red);padding:5px 12px;border:1px solid var(--red-dim);border-radius:4px;background:#fef2f2;animation:ph 1.2s ease-in-out infinite;font-weight:600;margin-top:10px;display:none}
+@keyframes ph{0%,100%{opacity:.8;box-shadow:none}50%{opacity:1;box-shadow:0 0 0 1px rgba(220,38,38,.2)}}
+
+/* ─── RIGHT: MECHANISM ─── */
+.right{border-left:1px solid var(--border);background:var(--bg-surface);padding:14px;overflow-y:auto;font-size:12px}
+.mt{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:#363940;margin-bottom:10px}
+.ms{margin-bottom:12px}
+.mst{font-family:var(--mono);font-size:9px;letter-spacing:1px;color:#363940;margin-bottom:5px;padding-bottom:3px;border-bottom:1px solid var(--border)}
+.mf{display:flex;justify-content:space-between;padding:2px 0}
+.mk{font-family:var(--mono);font-size:10px;color:#363940}
+.mv{font-family:var(--mono);font-size:10px;color:var(--text-secondary);text-align:right;max-width:170px}
+.mv.g{color:var(--green)}.mv.a{color:var(--amber)}.mv.r{color:var(--red)}
+.mex{font-size:11px;color:var(--text-secondary);line-height:1.6;padding:8px 10px;background:var(--bg-raised);border:1px solid var(--border);border-radius:4px;margin-top:6px}
+.mex b{color:var(--text-primary);font-weight:600}
+.mhash{font-family:var(--mono);font-size:8px;color:var(--blue);opacity:.9;word-break:break-all;line-height:1.4;padding:6px 8px;background:#f0f1f3;border-radius:3px;margin-top:4px;border:1px solid var(--border)}
+.vbtn{font-family:var(--mono);font-size:9px;padding:4px 8px;border-radius:3px;background:#f0f1f3;border:1px solid var(--border);color:var(--text-secondary);cursor:pointer;transition:all var(--fast);margin-top:4px}
+.vbtn:hover{border-color:var(--green);color:var(--green)}
+.mpg{display:flex;flex-wrap:wrap;gap:3px;margin-top:4px}
+.mp{font-family:var(--mono);font-size:7px;padding:1px 4px;border-radius:2px;background:var(--bg-raised);border:1px solid var(--border);color:var(--text-muted)}
+.mp.on{color:var(--green);border-color:var(--green-dim)}
+.empty-mech{color:#363940;font-family:var(--mono);font-size:10px;padding:20px 0;text-align:center}
+
+.ftr{padding:8px 20px;border-top:1px solid var(--border);background:var(--bg-surface);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.ftr-l{font-family:var(--mono);font-size:9px;color:var(--text-muted);letter-spacing:1px}
+.ftr-k{font-family:var(--mono);font-size:8px;color:var(--text-muted);opacity:.5}
+.ftr-r{display:flex;gap:12px}
+.ftr-r a{font-family:var(--mono);font-size:9px;color:var(--text-muted);text-decoration:none}
+.ftr-r a:hover{color:var(--text-secondary)}
+@keyframes glitch{0%,100%{transform:translateX(0)}25%{transform:translateX(-2px)}75%{transform:translateX(2px)}}
+/* ─── INFO TOOLTIP SYSTEM ─── */
+.info-trigger{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;background:rgba(37,99,235,.06);border:1px solid #b8bbc2;color:var(--blue,#2563eb);font-family:var(--mono,'Courier New',monospace);font-size:8px;font-weight:700;cursor:pointer;margin-left:5px;vertical-align:middle;transition:all 150ms ease;flex-shrink:0;position:relative;line-height:1}
+.info-trigger:hover{background:rgba(37,99,235,.1);border-color:rgba(37,99,235,.35);transform:scale(1.1)}
+.info-trigger.active{background:rgba(37,99,235,.15);border-color:var(--blue,#2563eb)}
+.info-panel{position:absolute;z-index:1000;width:280px;padding:10px 12px;background:#ffffff;border:1px solid #d5d7dc;border-radius:6px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;font-size:11px;color:#4a4d56;line-height:1.6;box-shadow:0 8px 32px rgba(0,0,0,.1);pointer-events:auto;opacity:0;transform:translateY(4px);transition:opacity 200ms ease,transform 200ms ease}
+.info-panel.visible{opacity:1;transform:translateY(0)}
+.info-panel b{color:#1a1c20;font-weight:600}
+.info-panel code{font-family:var(--mono,'Courier New',monospace);font-size:10px;color:#2563eb;background:rgba(37,99,235,.06);padding:1px 4px;border-radius:2px}
+.info-panel-arrow{position:absolute;top:-4px;left:14px;width:8px;height:8px;background:#ffffff;border-left:1px solid #d5d7dc;border-top:1px solid #d5d7dc;transform:rotate(45deg)}
+</style>
+</head>
+<body>
+<div class="strip" id="strip">
+  <span><span class="strip-dot" id="sd"></span><span id="ss">CAP-1.0</span></span>
+  <span class="strip-sep">·</span>
+  <span id="sst">AWAITING INPUT</span>
+  <span class="strip-sep">·</span>
+  <span>CHAIN: <span id="sch" style="color:var(--blue)">—</span></span>
+  <span class="strip-sep">·</span>
+  <span>BOUNDARY: <span id="sbnd" style="color:var(--amber)">Human mandate</span></span>
+</div>
+
+<div class="hdr">
+  <div class="hdr-left">
+    <div><div class="logo"><span>Ω</span> OMEGA</div><div class="logo-sub">FACTORY FLOOR INTELLIGENCE</div></div>
+  </div>
+  <div class="pills">
+    <div class="pill">ZERO DEPS<span class="info-trigger" data-info="<b>Zero dependencies.</b> This system uses no external libraries, databases, or cloud services. Everything runs in the browser. If every server on Earth went offline, the protocols still work.">i</span></div>
+    <div class="pill">SHA-256<span class="info-trigger" data-info="<b>SHA-256 hashing.</b> Industry-standard cryptographic hash function. Produces a unique 64-character fingerprint for any input. Change one character and the hash is completely different.">i</span></div>
+    <div class="pill">CAP-1.0</div>
+    <div class="pill g" id="cpill">AWAITING INPUT</div>
+    <div class="pill" id="tpill" style="display:none"></div>
+  </div>
+</div>
+
+<div class="main">
+<!-- LEFT -->
+<div class="left">
+  <div class="ptitle">Sensor Readings</div>
+  <div class="sgroup"><div class="slbl">Bearing Temp<span class="info-trigger" data-info="<b>Bearing temperature.</b> Current temperature of the main bearing in degrees Celsius. Warning at 85°C, critical at 95°C. A hot bearing indicates friction, wear, or lubrication failure — left unchecked, it leads to seizure and unplanned downtime.">i</span> <span class="sunit">°C</span></div><div class="srow"><div class="sval" id="vt">72</div><input type="range" id="st" min="40" max="120" value="72" oninput="uS('t')"></div><div class="tbar"><div class="tmark tw" style="left:56.25%"></div><div class="tmark tc" style="left:68.75%"></div></div></div>
+  <div class="sgroup"><div class="slbl">Vibration RMS<span class="info-trigger" data-info="<b>Vibration RMS.</b> Root Mean Square vibration measurement in mm/s. Warning at 7 mm/s, critical at 11 mm/s. High vibration usually means imbalance, misalignment, or bearing wear. The system cross-references this with temperature to corroborate anomalies.">i</span> <span class="sunit">mm/s</span></div><div class="srow"><div class="sval" id="vv">3.2</div><input type="range" id="sv" min="0" max="20" value="32" step="1" oninput="uS('v')"></div><div class="tbar"><div class="tmark tw" style="left:35%"></div><div class="tmark tc" style="left:55%"></div></div></div>
+  <div class="sgroup"><div class="slbl">Motor Current<span class="info-trigger" data-info="<b>Motor current.</b> Electrical current draw in Amps. Warning at 18A, critical at 22A. Above 22A triggers LOTO (Lockout/Tagout) — the line is physically locked out and no commands are accepted until a human physically confirms the safety zone is clear.">i</span> <span class="sunit">A</span></div><div class="srow"><div class="sval" id="vc">12.4</div><input type="range" id="sc" min="0" max="300" value="124" step="1" oninput="uS('c')"></div><div class="tbar"><div class="tmark tw" style="left:60%"></div><div class="tmark tc" style="left:73.3%"></div></div></div>
+  <div class="sgroup"><div class="slbl">Line Speed<span class="info-trigger" data-info="<b>Line speed.</b> Current production line speed as a percentage of maximum. When the governance layer detects elevated risk, it can derate (reduce) this to 70%. Returning to full speed requires supervisor sign-off.">i</span> <span class="sunit">%</span></div><div class="srow"><div class="sval" id="vs">100</div><input type="range" id="ss2" min="0" max="100" value="100" oninput="uS('s')"></div></div>
+  <div class="sgroup"><div class="slbl">Scrap Rate<span class="info-trigger" data-info="<b>Scrap rate.</b> Percentage of output that fails quality checks. Warning at 2.5%, critical at 5%. Above 5% triggers an automatic line halt for quality investigation — the system won't let you keep producing bad parts.">i</span> <span class="sunit">%</span></div><div class="srow"><div class="sval" id="vr">0.8</div><input type="range" id="sr" min="0" max="100" value="8" step="1" oninput="uS('r')"></div><div class="tbar"><div class="tmark tw" style="left:25%"></div><div class="tmark tc" style="left:50%"></div></div></div>
+  <div class="divider"></div>
+  <div class="ptitle">Active Policies<span class="info-trigger" data-info="<b>Human mandates.</b> Rules set by humans before the system runs. MFG-SAFE-001 blocks full speed when risk &gt; 0.30. MFG-LOTO-001 requires lockout when current &gt; 22A. MFG-QUAL-001 halts the line when scrap &gt; 5%. The AI cannot override these.">i</span></div>
+  <div class="pol"><b>MFG-SAFE-001</b> Full speed blocked when risk &gt; 0.30</div>
+  <div class="pol"><b>MFG-LOTO-001</b> LOTO required when current &gt; 22A</div>
+  <div class="pol"><b>MFG-QUAL-001</b> Line halt when scrap &gt; 5%</div>
+  <div class="ptitle" style="margin-top:14px">Example scenarios<span class="info-trigger" data-info="<b>Example scenarios.</b> One-click presets that set sensor values and run the analysis. See how the governance layer responds to high temperature, LOTO breach, or quality halt.">i</span></div>
+  <div class="ex-btns">
+    <button class="btn btn-ex" onclick="loadExample('nominal')">Nominal</button>
+    <button class="btn btn-ex" onclick="loadExample('safety')">Safety derate</button>
+    <button class="btn btn-ex" onclick="loadExample('loto')">LOTO</button>
+    <button class="btn btn-ex" onclick="loadExample('quality')">Quality halt</button>
+  </div>
+  <div class="scenario-explainer" id="scenarioExplainer"></div>
+  <div class="btns">
+    <button class="btn btn-go" id="bgo" onclick="analyse()">▶ ANALYSE</button>
+    <button class="btn btn-drift" id="bdrift" onclick="drift()" disabled>◎ SENSOR DRIFT<span class="info-trigger" data-info="<b>Sensor drift simulation.</b> Simulates what happens when a sensor's calibration drifts. The system detects the offset by cross-referencing with adjacent sensors, corrects the reading, and re-hashes the chain to preserve integrity.">i</span></button>
+    <button class="btn btn-chaos" id="bchaos" onclick="chaos()" disabled>⚠ CHAOS INJECT<span class="info-trigger" data-info="<b>Chaos injection.</b> Simulates a sudden anomaly — a motor current spike to 24.5A. Watch how the governance layer responds: it detects the breach, triggers LOTO policy, and halts the line. The system handles the unexpected without human intervention.">i</span></button>
+    <button class="btn btn-x" id="breset" onclick="reset()">↺ RESET</button>
+  </div>
+</div>
+
+<!-- CENTER -->
+<div class="center">
+  <div class="ch-title"><h2>Governed Reasoning Chain</h2><p>OBSERVE → DERIVE → ASSUME → DECIDE → ACT</p></div>
+  <div class="ibar-wrap"><div class="ibar-lbl"><span>CHAIN INTEGRITY<span class="info-trigger" data-info="<b>Chain integrity.</b> Shows what percentage of the reasoning chain is verified. 100% means every node's hash checks out. If someone tampers with any node, integrity drops and you can see exactly where.">i</span></span><span id="ipct">100%</span></div><div class="ibar"><div class="ifill" id="ifill"></div></div></div>
+  <div class="chain" id="chain"></div>
+  <div class="bnr blu" id="bnr-drift"></div>
+  <div class="bnr amb" id="bnr-policy"></div>
+  <div class="bnr red" id="bnr-tamper"></div>
+  <div class="bnr grn" id="bnr-restore"></div>
+  <div class="thint" id="thint">CLICK ANY NODE TO TAMPER<span class="info-trigger" data-info="<b>Tamper testing.</b> Click any node in the chain to simulate someone altering the record after the fact. Watch the hash chain break — every node downstream is invalidated. This is how the system proves nobody changed the reasoning.">i</span></div>
+</div>
+
+<!-- RIGHT -->
+<div class="right">
+  <div class="mt">HOW DID THE AI DO THAT?<span class="info-trigger" data-info="<b>Mechanism panel.</b> For the selected reasoning step, this shows what happened, how the AI was constrained, the cryptographic proof (hash), and which OMEGA protocols were active. Click VERIFY to recompute the hash from the canonical encoding.">i</span></div>
+  <div id="mech"><div class="empty-mech">Run an analysis to see the governed reasoning mechanism.</div></div>
+</div>
+</div>
+
+<div class="ftr">
+  <div class="ftr-l">OMEGA TRUST LAYER · Factory Floor Intelligence · Zero Dependencies · MIT Licensed</div>
+  <div class="ftr-k">SPACE analyse · D drift · C chaos · T tamper · R reset</div>
+  <div class="ftr-r"><a href="https://omegaprotocol.org" target="_blank">omegaprotocol.org</a><a href="https://github.com/repowazdogz-droid" target="_blank">GitHub</a></div>
+</div>
+
+<script>
+// ─── INFO TOOLTIP SYSTEM ───
+(function(){
+  let activePanel = null;
+  let activeTrigger = null;
+  function closeActive(){
+    if(activePanel){ activePanel.remove(); activePanel=null; }
+    if(activeTrigger){ activeTrigger.classList.remove('active'); activeTrigger=null; }
+  }
+  function positionPanel(trigger, panel){
+    document.body.appendChild(panel);
+    const r = trigger.getBoundingClientRect();
+    const pw = 280;
+    let left = r.left;
+    let top = r.bottom + 6;
+    if(left + pw > window.innerWidth - 12) left = window.innerWidth - pw - 12;
+    if(left < 12) left = 12;
+    if(top + 200 > window.innerHeight){ top = r.top - 8; panel.style.transform = 'translateY(-100%)'; }
+    panel.style.left = left + 'px';
+    panel.style.top = top + 'px';
+    panel.style.position = 'fixed';
+    const arrow = panel.querySelector('.info-panel-arrow');
+    if(arrow){ arrow.style.left = Math.max(10, Math.min(pw-20, r.left - left + r.width/2 - 4)) + 'px'; }
+    requestAnimationFrame(()=>requestAnimationFrame(()=>panel.classList.add('visible')));
+  }
+  document.addEventListener('click', function(e){
+    const trigger = e.target.closest('.info-trigger');
+    if(!trigger){ closeActive(); return; }
+    e.stopPropagation();
+    const text = trigger.getAttribute('data-info');
+    if(!text) return;
+    if(activeTrigger === trigger){ closeActive(); return; }
+    closeActive();
+    const panel = document.createElement('div');
+    panel.className = 'info-panel';
+    panel.innerHTML = '<div class="info-panel-arrow"></div>'+text;
+    activeTrigger = trigger;
+    activePanel = panel;
+    trigger.classList.add('active');
+    positionPanel(trigger, panel);
+  });
+  window.addEventListener('scroll', closeActive, true);
+  window.addEventListener('resize', closeActive);
+})();
+
+// ═══════════════════════════════════════════════════════════
+// OMEGA FACTORY FLOOR INTELLIGENCE — ENGINE
+// ═══════════════════════════════════════════════════════════
+
+const NODES = ['observe','derive','assume','decide','act'];
+const LABELS = {observe:'OBSERVE',derive:'DERIVE',assume:'ASSUME',decide:'DECIDE',act:'ACT'};
+const PROTOS = [
+  {id:'CAP',name:'Clearpath',v:'1.0'},
+  {id:'CLP',name:'Cognitive Ledger',v:'1.0'},
+  {id:'CNL',name:'Consent Ledger',v:'1.0'},
+  {id:'ARP',name:'Assumption Registry',v:'1.0'},
+  {id:'HTP',name:'Harm Trace',v:'1.0'},
+  {id:'DSP',name:'Dispute Protocol',v:'1.0'},
+  {id:'TSP',name:'Trust Score',v:'1.0'},
+  {id:'EGP',name:'Ethics Gate',v:'1.0'}
+];
+const NODE_PROTOS = {
+  observe:['CAP','ARP'],derive:['CAP','CLP','HTP'],
+  assume:['CAP','ARP','EGP'],decide:['CAP','CLP','CNL','HTP','TSP','EGP'],
+  act:['CAP','CNL','DSP','TSP']
+};
+
+// ─── SENSOR CONFIG ───
+const SENSORS = {
+  t:{name:'Bearing Temp',unit:'°C',warn:85,crit:95,min:40,max:120,div:1},
+  v:{name:'Vibration RMS',unit:'mm/s',warn:7,crit:11,min:0,max:20,div:10},
+  c:{name:'Motor Current',unit:'A',warn:18,crit:22,min:0,max:30,div:10},
+  s:{name:'Line Speed',unit:'%',min:0,max:100,div:1},
+  r:{name:'Scrap Rate',unit:'%',warn:2.5,crit:5,min:0,max:10,div:10}
+};
+
+// ─── STATE ───
+let S = {
+  phase:'idle', // idle|running|complete|tampered
+  nodes:{},
+  selected:null,
+  drifted:false,
+  chaosed:false,
+  tampered:false,
+  tamperedNode:null,
+  traceId:0,
+  loadedScenario:null  // set by loadExample for outcome assertion
+};
+
+function getSensorVal(key) {
+  const id = key === 's' ? 'ss2' : 's' + key;
+  const el = document.getElementById(id);
+  if (!el) return 0;
+  return parseFloat(el.value) / (SENSORS[key].div || 1);
+}
+
+function readSensors() {
+  return { temp: getSensorVal('t'), vib: getSensorVal('v'), current: getSensorVal('c'), speed: getSensorVal('s'), scrap: getSensorVal('r') };
+}
+
+// ─── EXAMPLE SCENARIOS (deterministic: sliders + expected outcome) ───
+const FACTORY_SCENARIOS = {
+  nominal: { sliders: { temp: 72, vibration: 32, current: 124, speed: 100, scrap: 8 }, expectedOutcome: 'ALL_CLEAR', expectedPolicies: [] },
+  safety:  { sliders: { temp: 96, vibration: 90, current: 120, speed: 100, scrap: 8 }, expectedOutcome: 'SAFETY_DERATE', expectedPolicies: ['MFG-SAFE-001'] },
+  loto:    { sliders: { temp: 72, vibration: 32, current: 245, speed: 100, scrap: 8 }, expectedOutcome: 'LOTO_LOCKOUT', expectedPolicies: ['MFG-LOTO-001'] },
+  quality: { sliders: { temp: 72, vibration: 32, current: 124, speed: 100, scrap: 72 }, expectedOutcome: 'LINE_HALT', expectedPolicies: ['MFG-QUAL-001'] }
+};
+
+const FACTORY_EXPLAINERS = {
+  nominal: { title: 'Nominal Operation', text: 'Everything is fine. Bearing temperature normal, vibration low, motor current within range, scrap rate minimal. No policies are triggered. The governance layer is running but invisible — it\'s checking every reading and finding nothing to act on.', watch: 'Watch the DECIDE node — it evaluates all policies and finds no violations. Line speed stays at 100%. This is what governance looks like when everything works.' },
+  safety: { title: 'Bearing Failure / Safety Derate', text: 'A main bearing is overheating — 92°C, well above the 95°C critical threshold. Vibration is elevated too, confirming mechanical distress. The governance layer calculates a risk score above 0.30, which triggers MFG-SAFE-001: line speed is automatically derated to 70%.', watch: 'Watch the DECIDE node — it enforces the speed derate. The AI cannot override this. Returning to full speed requires a supervisor to sign off.' },
+  loto: { title: 'Motor Current LOTO Breach', text: 'Motor current has spiked to 24.5A — above the 22A critical threshold. This triggers MFG-LOTO-001: Lockout/Tagout. The entire line is physically locked out. No commands are accepted. Nothing moves until a human physically confirms the safety zone is clear.', watch: 'Watch for the LOTO ENFORCED status. Every other policy is secondary — LOTO takes priority because it\'s a life-safety protocol.' },
+  quality: { title: 'Quality Control Crisis', text: 'Scrap rate has hit 6% — well above the 5% critical threshold. The line is producing bad parts faster than good ones. MFG-QUAL-001 triggers an automatic line halt. The system won\'t let production continue when quality is failing.', watch: 'Watch the DECIDE node block continued production. The system notifies downstream stations and halts the line. A human quality investigation is required before anything resumes.' },
+  custom: { title: 'Custom Configuration', text: 'You\'re in manual mode. Drag the sliders to set any sensor combination you want and see how the governance layer responds. Try pushing one sensor past its critical threshold and watch what happens.', watch: 'Try bearing temp above 95°C, or motor current above 22A, or scrap rate above 5%. Each triggers a different policy with a different enforcement action.' }
+};
+
+function updateExplainer(key) {
+  const ex = FACTORY_EXPLAINERS[key] || FACTORY_EXPLAINERS.custom;
+  const el = document.getElementById('scenarioExplainer');
+  if (!el) return;
+  el.innerHTML = '<b>' + ex.title + '</b><br><br>' + ex.text + '<div class="watch-for"><b>WATCH FOR:</b> ' + ex.watch + '</div>';
+}
+
+function loadExample(name) {
+  const scenario = FACTORY_SCENARIOS[name];
+  if (!scenario) return;
+  S.loadedScenario = name;
+  const s = scenario.sliders;
+  document.getElementById('st').value = s.temp;
+  document.getElementById('sv').value = s.vibration;
+  document.getElementById('sc').value = s.current;
+  document.getElementById('ss2').value = s.speed;
+  document.getElementById('sr').value = s.scrap;
+  ['t','v','c','s','r'].forEach(k => uS(k));
+  updateExplainer(name);
+  analyse();
+}
+
+function uS(key) {
+  const v = getSensorVal(key);
+  const el = document.getElementById('v'+key);
+  if (!el) return;
+  const cfg = SENSORS[key];
+  if (key === 'v' || key === 'c' || key === 'r') {
+    el.textContent = v.toFixed(1);
+  } else {
+    el.textContent = Math.round(v);
+  }
+  el.className = 'sval';
+  if (cfg.crit && v >= cfg.crit) el.classList.add('c');
+  else if (cfg.warn && v >= cfg.warn) el.classList.add('w');
+
+  updateExplainer('custom');
+
+  // Live what-if: re-run chain if complete (instant, no animation)
+  if (S.phase === 'complete' && !S.tampered && !S.chaosed) {
+    reanalyse();
+  }
+}
+
+// ─── INSTANT RE-ANALYSIS (for what-if slider changes) ───
+async function reanalyse() {
+  const sensors = readSensors();
+  const reasoning = generateReasoning(sensors);
+  S.nodes = await buildChain(reasoning);
+  S.drifted = false; // reset drift state on new input
+  renderChain();
+  showNodes();
+
+  hideBanners();
+  if (reasoning.policyTriggered) {
+    const bnr = document.getElementById('bnr-policy');
+    bnr.textContent = `▲ ${reasoning.policyId}: ${reasoning.policyTriggered === 'LOTO' ? 'LOCKOUT/TAGOUT REQUIRED' : reasoning.policyTriggered === 'QUALITY' ? 'QUALITY HALT' : 'SAFETY DERATE'} — Human mandate enforced`;
+    showBanner(bnr);
+    updStrip('blocked', reasoning.policyId);
+    updInteg(80, 'a');
+    updPill('a', 'POLICY BLOCKED');
+  } else {
+    updStrip('valid', null);
+    updInteg(100, '');
+    updPill('g', 'CHAIN VALID');
+  }
+
+  document.getElementById('tpill').style.display = '';
+  document.getElementById('tpill').textContent = `TRACED IN ${S.nodes._ms}ms`;
+  document.getElementById('tpill').className = 'pill g';
+  document.getElementById('thint').style.display = '';
+  updBtns();
+
+  if (S.selected) renderMechanism(S.selected);
+}
+
+// ─── SHA-256 ───
+async function sha256(msg) {
+  const d = new TextEncoder().encode(msg);
+  const h = await crypto.subtle.digest('SHA-256',d);
+  return Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+function canonical(nodeId, content, prevHash, ts) {
+  return `content:${content}|node:${nodeId}|prev_hash:${prevHash}|timestamp:${ts}`;
+}
+
+// ─── REASONING ENGINE ───
+function generateReasoning(sensors) {
+  const {temp, vib, current, speed, scrap} = sensors;
+
+  // Risk scoring
+  let risk = 0;
+  let riskFactors = [];
+  if (temp > 85) { risk += 0.15; riskFactors.push(`temp ${temp}°C > 85°C warning`); }
+  if (temp > 95) { risk += 0.20; riskFactors.push(`temp ${temp}°C > 95°C critical`); }
+  if (vib > 7) { risk += 0.12; riskFactors.push(`vibration ${vib.toFixed(1)} mm/s > 7 mm/s warning`); }
+  if (vib > 11) { risk += 0.18; riskFactors.push(`vibration ${vib.toFixed(1)} mm/s > 11 mm/s critical`); }
+  if (current > 18) { risk += 0.10; riskFactors.push(`current ${current.toFixed(1)}A > 18A warning`); }
+  if (current > 22) { risk += 0.25; riskFactors.push(`current ${current.toFixed(1)}A > 22A LOTO threshold`); }
+  if (scrap > 2.5) { risk += 0.08; riskFactors.push(`scrap ${scrap.toFixed(1)}% > 2.5% warning`); }
+  if (scrap > 5) { risk += 0.15; riskFactors.push(`scrap ${scrap.toFixed(1)}% > 5% critical`); }
+  risk = Math.min(risk, 1.0);
+
+  // Determine which policy triggers
+  let policyTriggered = null;
+  let policyAction = '';
+  let policyId = '';
+
+  if (current > 22) {
+    policyTriggered = 'LOTO';
+    policyId = 'MFG-LOTO-001';
+    policyAction = `Motor current ${current.toFixed(1)}A exceeds LOTO threshold 22A — Lockout/Tagout required before any actuator commands. Line HALTED. Maintenance crew notified. Human sign-off required to resume.`;
+  } else if (scrap > 5) {
+    policyTriggered = 'QUALITY';
+    policyId = 'MFG-QUAL-001';
+    policyAction = `Scrap rate ${scrap.toFixed(1)}% exceeds quality ceiling 5% — Line HALTED pending quality investigation. Downstream stations notified. Root cause audit initiated.`;
+  } else if (risk > 0.30) {
+    policyTriggered = 'SAFETY';
+    policyId = 'MFG-SAFE-001';
+    policyAction = `Risk score ${risk.toFixed(2)} exceeds operational threshold 0.30 — Full-speed operation BLOCKED. Derate to 70% capacity. Schedule preventive maintenance at next shift changeover.`;
+  }
+
+  // Sensor fusion note
+  let fusionNote = '';
+  const elevatedCount = [temp > 85, vib > 7, current > 18, scrap > 2.5].filter(Boolean).length;
+  if (elevatedCount >= 2) {
+    fusionNote = ` Cross-referenced ${elevatedCount} elevated sensors — corroborated anomaly pattern.`;
+  }
+
+  // Build content for each node
+  const observe = `Bearing temperature: ${temp}°C. Vibration RMS: ${vib.toFixed(1)} mm/s. Motor current: ${current.toFixed(1)}A. Line speed: ${speed}%. Scrap rate: ${scrap.toFixed(1)}%. Operating hours since last service: 2,847h.${fusionNote}`;
+
+  let derive;
+  if (riskFactors.length === 0) {
+    derive = `All sensors within normal operating range. Composite risk score: ${risk.toFixed(2)} (threshold: 0.30). No anomaly pattern detected. No action required.`;
+  } else {
+    derive = `${riskFactors.join('. ')}. Composite risk score: ${risk.toFixed(2)} (threshold: 0.30). ${risk > 0.30 ? 'Risk exceeds operational safety threshold.' : 'Risk elevated but within operational limits.'}`;
+  }
+
+  const assume = `Production SLA: 99.2% uptime. Replacement parts available in stores. Maintenance crew available on next shift. Ambient conditions stable. No upstream supply disruption. Adjacent sensor readings corroborate primary readings.`;
+
+  let decide;
+  if (policyTriggered === 'LOTO') {
+    decide = `Motor current exceeds LOTO threshold. HALT all actuator commands. Lockout/Tagout procedure required. No speed adjustment or maintenance action permitted until human operator confirms LOTO tag applied and safety zone cleared.`;
+  } else if (policyTriggered === 'QUALITY') {
+    decide = `Scrap rate exceeds quality ceiling. HALT line for quality investigation. Downstream stations notified. Initiate root cause analysis via Cognitive Ledger pattern matching.`;
+  } else if (policyTriggered === 'SAFETY') {
+    decide = `Risk score ${risk.toFixed(2)} exceeds threshold. Derate line speed to 70%. Schedule preventive bearing replacement at shift changeover (06:00). Request technician inspection. Flag for Cognitive Ledger pattern tracking.`;
+  } else {
+    decide = `All readings nominal. Continue operation at current parameters. Next scheduled check in 15 minutes. Log sensor snapshot to Cognitive Ledger for trend analysis.`;
+  }
+
+  let actContent;
+  if (policyTriggered) {
+    actContent = policyAction;
+  } else {
+    actContent = `Nominal operation continues. Sensor snapshot logged. Work order: none. Speed: ${speed}% maintained. Next automated check: T+15min.`;
+  }
+
+  return {
+    contents: { observe, derive, assume, decide, act: policyTriggered ? policyAction : actContent },
+    originalAct: actContent,
+    risk,
+    policyTriggered,
+    policyId,
+    policyAction,
+    sensors,
+    riskFactors,
+    fusionNote
+  };
+}
+
+// ─── BUILD CHAIN ───
+async function buildChain(reasoning) {
+  const t0 = performance.now();
+  const nodes = {};
+  let prevHash = '0'.repeat(64);
+
+  for (const nid of NODES) {
+    const ts = new Date().toISOString();
+    const content = reasoning.contents[nid];
+    const can = canonical(nid, content, prevHash, ts);
+    const hash = await sha256(can);
+    nodes[nid] = {
+      id: nid, label: LABELS[nid], content, hash, prevHash, canonical: can,
+      timestamp: ts, status: 'valid', protocols: NODE_PROTOS[nid]
+    };
+    prevHash = hash;
+  }
+
+  // Apply policy
+  if (reasoning.policyTriggered) {
+    nodes.decide.status = 'blocked';
+    nodes.act.status = 'blocked';
+    nodes.act.originalContent = reasoning.originalAct;
+  }
+
+  nodes._ms = Math.round(performance.now() - t0);
+  nodes._reasoning = reasoning;
+  return nodes;
+}
+
+// ─── RENDER ───
+function renderChain() {
+  const el = document.getElementById('chain');
+  el.innerHTML = '';
+  NODES.forEach((nid, i) => {
+    const n = S.nodes[nid];
+    if (!n) return;
+    const sc = n.status === 'valid' || n.status === 'adapted' ? 'sv' : n.status === 'blocked' ? 'sb' : n.status === 'broken' ? 'sr' : 'sv';
+    const sl = n.status === 'valid' ? 'VALID' : n.status === 'adapted' ? 'ADAPTED' : n.status === 'blocked' ? 'BLOCKED' : n.status === 'broken' ? 'TAMPERED' : 'PENDING';
+    const bc = n.status === 'blocked' ? 'blk' : n.status === 'broken' ? 'brk' : n.status === 'adapted' ? 'adp' : '';
+    const canTamper = S.phase === 'complete' && !S.tampered;
+    const tgtCls = canTamper ? 'tgt' : '';
+    const click = canTamper ? `tamper('${nid}')` : `select('${nid}')`;
+
+    const g = document.createElement('div');
+    g.className = 'ng';
+    g.id = 'ng-'+nid;
+    const assumeInfo = 'Assumptions are explicitly recorded so nothing is hidden. If these assumptions turn out to be wrong, this node shows exactly what the AI took for granted — making the reasoning auditable even when it fails.';
+    const labelHtml = nid === 'assume'
+      ? `${n.label}<span class="info-trigger" data-info="${assumeInfo}">i</span>`
+      : n.label;
+    g.innerHTML = `<div class="nb ${bc} ${S.selected===nid?'sel':''} ${tgtCls}" onclick="${click}">
+      <div class="nh"><span class="nn">${labelHtml}</span><span class="ns ${sc}">${sl}</span></div>
+      <div class="nc">${esc(n.content)}</div>
+      <div class="nhash">${n.hash}</div>
+    </div>`;
+    el.appendChild(g);
+
+    if (i < NODES.length - 1) {
+      const c = document.createElement('div');
+      c.className = 'conn';
+      c.id = 'cn-'+nid;
+      el.appendChild(c);
+    }
+  });
+}
+
+function showNodes() {
+  NODES.forEach(nid => {
+    const g = document.getElementById('ng-'+nid);
+    if (g) g.classList.add('vis');
+    if (S.nodes[nid] && S.nodes._reasoning && S.nodes._reasoning.policyTriggered && nid === 'act') {
+      if (g) { g.classList.add('ghost'); }
+    }
+  });
+  NODES.forEach((nid, i) => {
+    if (i < NODES.length - 1) {
+      const c = document.getElementById('cn-'+nid);
+      if (!c) return;
+      const next = NODES[i+1];
+      if (S.nodes[next] && S.nodes[next].status === 'broken') c.className = 'conn k';
+      else if (S.nodes._reasoning && S.nodes._reasoning.policyTriggered && nid === 'decide') c.className = 'conn b';
+      else c.className = 'conn v';
+    }
+  });
+  NODES.forEach(nid => {
+    const g = document.getElementById('ng-'+nid);
+    if (g && S.nodes[nid] && S.nodes[nid].status === 'broken') g.classList.add('tampered');
+  });
+}
+
+// ─── ANALYSE ───
+async function analyse() {
+  if (S.phase === 'running') return;
+  S.phase = 'running';
+  S.drifted = false; S.chaosed = false; S.tampered = false; S.tamperedNode = null; S.selected = null;
+  S.traceId++;
+  const myId = S.traceId;
+  hideBanners();
+  document.getElementById('thint').style.display = 'none';
+  updBtns();
+
+  const sensors = readSensors();
+  const reasoning = generateReasoning(sensors);
+  S.nodes = await buildChain(reasoning);
+  if (S.traceId !== myId) return;
+
+  renderChain();
+
+  // Animate nodes appearing
+  for (let i = 0; i < NODES.length; i++) {
+    await sleep(300);
+    if (S.traceId !== myId) return;
+    const g = document.getElementById('ng-'+NODES[i]);
+    if (g) g.classList.add('vis');
+    if (i < NODES.length - 1) {
+      await sleep(150);
+      const c = document.getElementById('cn-'+NODES[i]);
+      if (c) {
+        if (reasoning.policyTriggered && NODES[i] === 'decide') c.className = 'conn b';
+        else c.className = 'conn v';
+      }
+    }
+    // Ghost the ACT node if policy blocked
+    if (NODES[i] === 'act' && reasoning.policyTriggered) {
+      if (g) g.classList.add('ghost');
+    }
+  }
+
+  // Show policy banner if triggered
+  if (reasoning.policyTriggered) {
+    await sleep(400);
+    const bnr = document.getElementById('bnr-policy');
+    bnr.textContent = `▲ ${reasoning.policyId}: ${reasoning.policyTriggered === 'LOTO' ? 'LOCKOUT/TAGOUT REQUIRED' : reasoning.policyTriggered === 'QUALITY' ? 'QUALITY HALT' : 'SAFETY DERATE'} — Human mandate enforced`;
+    showBanner(bnr);
+    updStrip('blocked', reasoning.policyId);
+    updInteg(80, 'a');
+    updPill('a', 'POLICY BLOCKED');
+  } else {
+    updStrip('valid', null);
+    updInteg(100, '');
+    updPill('g', 'CHAIN VALID');
+  }
+
+  S.phase = 'complete';
+  updBtns();
+  document.getElementById('thint').style.display = '';
+  document.getElementById('tpill').style.display = '';
+  document.getElementById('tpill').textContent = `TRACED IN ${S.nodes._ms}ms`;
+  document.getElementById('tpill').className = 'pill g';
+
+  if (S.loadedScenario) {
+    const expected = FACTORY_SCENARIOS[S.loadedScenario];
+    const actual = reasoning.policyTriggered === 'SAFETY' ? 'SAFETY_DERATE' : reasoning.policyTriggered === 'LOTO' ? 'LOTO_LOCKOUT' : reasoning.policyTriggered === 'QUALITY' ? 'LINE_HALT' : 'ALL_CLEAR';
+    if (actual !== expected.expectedOutcome) console.error('[OMEGA TEST] Factory scenario:', S.loadedScenario, '| Expected:', expected.expectedOutcome, '| Actual:', actual);
+    S.loadedScenario = null;
+  }
+
+  // Auto-show mechanism for first interesting node
+  if (reasoning.policyTriggered) select('decide');
+  else select('observe');
+}
+
+// ─── SENSOR DRIFT ───
+async function drift() {
+  if (S.phase !== 'complete' || S.drifted) return;
+  S.drifted = true;
+  updBtns();
+
+  const bnr = document.getElementById('bnr-drift');
+  bnr.textContent = '◎ SENSOR DRIFT DETECTED — Bearing temp offset +3.2°C from calibration baseline';
+  showBanner(bnr);
+  await sleep(2200);
+
+  // Update OBSERVE with corrected reading
+  const r = S.nodes._reasoning;
+  const correctedTemp = r.sensors.temp - 3.2;
+  S.nodes.observe.content = `[CORRECTED] Bearing temperature drift detected: +3.2°C offset. Corrected reading: ${correctedTemp.toFixed(1)}°C (was ${r.sensors.temp}°C). Cross-referenced with motor current and adjacent probe — drift confirmed. Vibration: ${r.sensors.vib.toFixed(1)} mm/s. Current: ${r.sensors.current.toFixed(1)}A. Scrap: ${r.sensors.scrap.toFixed(1)}%.`;
+  S.nodes.observe.status = 'adapted';
+  S.nodes.derive.content = `Corrected temperature ${correctedTemp.toFixed(1)}°C changes risk profile. Recalculating composite risk score with corrected inputs. ${correctedTemp > 85 ? 'Temperature still elevated above warning threshold.' : 'Temperature now within normal range.'} Other sensor readings unchanged and corroborate corrected assessment.`;
+  S.nodes.derive.status = 'adapted';
+
+  // Rehash
+  let prev = '0'.repeat(64);
+  for (const nid of NODES) {
+    const n = S.nodes[nid];
+    n.canonical = canonical(nid, n.content, prev, n.timestamp);
+    n.hash = await sha256(n.canonical);
+    n.prevHash = prev;
+    prev = n.hash;
+  }
+
+  renderChain();
+  showNodes();
+
+  bnr.textContent = '◎ CORRECTED — Cross-referenced adjacent probe + motor current — Chain re-hashed — Integrity preserved';
+  await sleep(2800);
+  hideBanner(bnr);
+  updStrip(r.policyTriggered ? 'blocked' : 'valid', r.policyTriggered ? r.policyId : null);
+}
+
+// ─── CHAOS INJECTION ───
+async function chaos() {
+  if (S.phase !== 'complete' || S.chaosed) return;
+  S.chaosed = true;
+  updBtns();
+
+  // First: reset other sensors to nominal so the contrast is stark
+  document.getElementById('st').value = 72; uS('t');
+  document.getElementById('sv').value = 32; uS('v');
+  document.getElementById('sr').value = 8; uS('r');
+  document.getElementById('ss2').value = 100; uS('s');
+
+  // Now spike motor current to LOTO threshold
+  document.getElementById('sc').value = 245;
+  uS('c');
+  document.getElementById('vc').textContent = '24.5';
+  document.getElementById('vc').className = 'sval c';
+
+  const bnr = document.getElementById('bnr-drift');
+  bnr.className = 'bnr red';
+  bnr.textContent = '⚠ ANOMALY — Motor current spike to 24.5A — LOTO threshold breached — Re-analysing';
+  showBanner(bnr);
+  await sleep(3500);
+  hideBanner(bnr);
+
+  // Re-run the full analysis with spiked values
+  await analyse();
+}
+
+// ─── TAMPER ───
+async function tamper(nid) {
+  if (S.phase !== 'complete' || S.tampered) return;
+  S.tampered = true;
+  S.phase = 'tampered';
+  S.tamperedNode = nid;
+  document.getElementById('thint').style.display = 'none';
+  updBtns();
+
+  const idx = NODES.indexOf(nid);
+  S.nodes[nid].content = '[ALTERED] ' + S.nodes[nid].content.substring(0, 50) + '...';
+  S.nodes[nid].status = 'broken';
+
+  renderChain(); showNodes();
+
+  for (let i = idx + 1; i < NODES.length; i++) {
+    await sleep(300);
+    S.nodes[NODES[i]].status = 'broken';
+    renderChain(); showNodes();
+  }
+
+  const broken = NODES.filter(n => S.nodes[n].status === 'broken').length;
+  const pct = Math.round(((NODES.length - broken) / NODES.length) * 100);
+  updInteg(pct, 'r');
+  updPill('r', 'CHAIN BROKEN');
+  updStrip('broken', null);
+
+  const bnr = document.getElementById('bnr-tamper');
+  bnr.textContent = `⚠ CHAIN INTEGRITY VIOLATION — Tamper detected at ${LABELS[nid]} — ${broken} nodes invalidated`;
+  showBanner(bnr);
+  select(nid);
+}
+
+// ─── SELECT NODE (show mechanism) ───
+function select(nid) {
+  S.selected = nid;
+  renderChain(); showNodes();
+  renderMechanism(nid);
+}
+
+function renderMechanism(nid) {
+  const n = S.nodes[nid];
+  if (!n) return;
+  const r = S.nodes._reasoning;
+  const el = document.getElementById('mech');
+
+  const sc = n.status === 'valid' || n.status === 'adapted' ? 'g' : n.status === 'blocked' ? 'a' : 'r';
+  const sl = n.status === 'valid' ? 'VALID' : n.status === 'adapted' ? 'ADAPTED' : n.status === 'blocked' ? 'POLICY BLOCKED' : n.status === 'broken' ? 'TAMPERED' : 'PENDING';
+
+  const protos = PROTOS.map(p => `<span class="mp ${n.protocols.includes(p.id)?'on':''}">${p.id}-${p.v}</span>`).join('');
+
+  let html = `
+    <div class="ms"><div class="mst">WHAT HAPPENED AT THIS STEP</div>
+      <div class="mf"><span class="mk">Node</span><span class="mv">${n.label}</span></div>
+      <div class="mf"><span class="mk">Status</span><span class="mv ${sc}">${sl}</span></div>
+      <div class="mf"><span class="mk">Timestamp</span><span class="mv">${n.timestamp.split('T')[1].split('.')[0]}</span></div>
+      <div class="mf"><span class="mk">Audit overhead</span><span class="mv">${S.nodes._ms || 0}ms total chain</span></div>
+    </div>
+    <div class="ms"><div class="mst">HOW THE AI WAS CONSTRAINED</div>
+      <div class="mex">`;
+
+  if (nid === 'observe') {
+    html += `<b>Input only.</b> The AI received these sensor readings and nothing else. It cannot access data outside this input set. ${r.fusionNote ? '<br><br><b>Sensor fusion:</b> ' + r.fusionNote : ''}`;
+  } else if (nid === 'derive') {
+    html += `<b>Rule-based derivation.</b> Risk score computed from sensor thresholds, not learned weights. Each factor is independently verifiable: ${r.riskFactors.length > 0 ? r.riskFactors.join('; ') : 'all nominal'}. Composite score: <b>${r.risk.toFixed(2)}</b><span class="info-trigger" data-info="Composite risk is calculated from temperature, vibration, and current readings weighted by severity. The formula is fixed and auditable — the AI cannot change how risk is calculated.">i</span>.`;
+  } else if (nid === 'assume') {
+    html += `<b>Explicit assumptions.</b> Every assumption is logged and auditable. If any assumption is later found to be false (e.g., parts not in stores), the chain can be replayed with corrected assumptions and the decision re-evaluated.`;
+  } else if (nid === 'decide') {
+    if (r.policyTriggered) {
+      html += `<b>Policy boundary enforced.</b> The AI's decision was constrained by <b>${r.policyId}</b>, set by a human operator. The AI could not bypass this boundary. ${r.policyTriggered === 'LOTO' ? 'LOTO (Lockout/Tagout) requires physical human confirmation before any actuator commands.' : r.policyTriggered === 'QUALITY' ? 'Quality halt requires human investigation before resuming.' : 'Safety derate is automatic but full-speed resumption requires supervisor sign-off.'}`;
+    } else {
+      html += `<b>No policy triggered.</b> All sensor readings within operational limits. Risk score ${r.risk.toFixed(2)} is below threshold 0.30. Decision: continue current operation.`;
+    }
+  } else if (nid === 'act') {
+    if (r.policyTriggered) {
+      html += `<b>Action HALTED by human mandate.</b> The original intended action was blocked because policy ${r.policyId} was triggered. The system holds the line. The human drew it.`;
+      if (n.originalContent) {
+        html += `<br><br><b>Original intended action:</b> <span style="opacity:0.6">${esc(n.originalContent)}</span>`;
+      }
+    } else {
+      html += `<b>Action executed within bounds.</b> No policy was triggered, so the action proceeded normally. All steps are logged and hash-chained for post-hoc audit.`;
+    }
+  }
+
+  html += `</div></div>`;
+
+  // Hash verification
+  html += `<div class="ms"><div class="mst">CRYPTOGRAPHIC PROOF</div>
+    <div class="mf"><span class="mk">Hash</span></div>
+    <div class="mhash">${n.hash}</div>
+    <button class="vbtn" onclick="verify('${nid}')">▶ VERIFY — RECOMPUTE FROM CANONICAL</button>
+    <div id="vresult"></div>
+    <div style="height:4px"></div>
+    <div class="mf"><span class="mk">Previous</span></div>
+    <div class="mhash">${n.prevHash}</div>
+  </div>`;
+
+  // Protocols
+  html += `<div class="ms"><div class="mst">ACTIVE PROTOCOLS</div><div class="mpg">${protos}</div></div>`;
+
+  // Tamper info
+  if (n.status === 'broken') {
+    html += `<div class="ms"><div class="mst">INTEGRITY VIOLATION</div>
+      <div class="mf"><span class="mk">Type</span><span class="mv r">${nid === S.tamperedNode ? 'DIRECT TAMPER' : 'CASCADE'}</span></div>
+      <div class="mf"><span class="mk">Origin</span><span class="mv r">${S.tamperedNode ? LABELS[S.tamperedNode] : '?'}</span></div>
+    </div>`;
+  }
+
+  el.innerHTML = html;
+}
+
+async function verify(nid) {
+  const n = S.nodes[nid];
+  const el = document.getElementById('vresult');
+  if (!el || !n) return;
+  el.innerHTML = '<span style="color:var(--text-muted)">Recomputing...</span>';
+  await sleep(200);
+  const h = await sha256(n.canonical);
+  if (h === n.hash) {
+    el.innerHTML = `<div style="margin-top:4px;font-family:var(--mono);font-size:9px;color:var(--green)">✓ MATCH — Hash verified from canonical encoding</div>`;
+  } else {
+    el.innerHTML = `<div style="margin-top:4px;font-family:var(--mono);font-size:9px;color:var(--red)">✗ MISMATCH — Stored hash does not match recomputed</div>`;
+  }
+}
+
+// ─── UI HELPERS ───
+function updBtns() {
+  const go = document.getElementById('bgo');
+  const dr = document.getElementById('bdrift');
+  const ch = document.getElementById('bchaos');
+  go.disabled = S.phase === 'running';
+  dr.disabled = S.phase !== 'complete' || S.drifted;
+  ch.disabled = S.phase !== 'complete' || S.chaosed;
+}
+
+function updPill(cls, txt) {
+  const p = document.getElementById('cpill');
+  p.className = 'pill ' + cls;
+  p.textContent = txt;
+}
+
+function updInteg(pct, cls) {
+  document.getElementById('ipct').textContent = pct + '%';
+  const f = document.getElementById('ifill');
+  f.style.width = pct + '%';
+  f.className = 'ifill' + (cls ? ' ' + cls : '');
+}
+
+function updStrip(status, policyId) {
+  const dot = document.getElementById('sd');
+  const st = document.getElementById('sst');
+  const hash = document.getElementById('sch');
+  dot.className = 'strip-dot';
+  if (status === 'valid') { st.textContent = 'CHAIN VALID'; hash.textContent = S.nodes.act ? S.nodes.act.hash.substring(0,16)+'…' : '—'; }
+  else if (status === 'blocked') { dot.classList.add('a'); st.textContent = 'POLICY ENFORCED: ' + (policyId||''); hash.textContent = S.nodes.decide ? S.nodes.decide.hash.substring(0,16)+'…' : '—'; }
+  else if (status === 'broken') { dot.classList.add('r'); st.textContent = 'INTEGRITY VIOLATION'; hash.textContent = '✗ BROKEN'; }
+}
+
+function showBanner(el) { el.style.display = 'block'; requestAnimationFrame(()=>{ requestAnimationFrame(()=>el.classList.add('vis')); }); }
+function hideBanner(el) { el.classList.remove('vis'); setTimeout(()=>el.style.display='none', 400); }
+function hideBanners() { ['bnr-drift','bnr-policy','bnr-tamper','bnr-restore'].forEach(id => { const e = document.getElementById(id); e.classList.remove('vis'); e.style.display = 'none'; e.className = e.className.replace(/ (blu|amb|red|grn)/g,''); }); document.getElementById('bnr-drift').classList.add('blu'); }
+
+function reset() {
+  S.traceId++;
+  S.phase = 'idle'; S.nodes = {}; S.selected = null;
+  S.drifted = false; S.chaosed = false; S.tampered = false; S.tamperedNode = null;
+  document.getElementById('chain').innerHTML = '';
+  document.getElementById('mech').innerHTML = '<div class="empty-mech">Run an analysis to see the governed reasoning mechanism.</div>';
+  document.getElementById('thint').style.display = 'none';
+  document.getElementById('tpill').style.display = 'none';
+  hideBanners();
+  updPill('g', 'AWAITING INPUT');
+  updInteg(100, '');
+  updStrip('valid', null);
+  document.getElementById('sst').textContent = 'AWAITING INPUT';
+  updBtns();
+  // Reset sliders to anomaly-present defaults
+  document.getElementById('st').value = 92; uS('t');
+  document.getElementById('sv').value = 90; uS('v');
+  document.getElementById('sc').value = 155; uS('c');
+  document.getElementById('ss2').value = 100; uS('s');
+  document.getElementById('sr').value = 30; uS('r');
+}
+
+function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function sleep(ms) { return new Promise(r=>setTimeout(r,ms)); }
+
+// ─── KEYBOARD SHORTCUTS ───
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT') return;
+  switch(e.key.toLowerCase()) {
+    case ' ': case 'enter': e.preventDefault(); if (S.phase !== 'running') analyse(); break;
+    case 'd': if (S.phase === 'complete' && !S.drifted) drift(); break;
+    case 'c': if (S.phase === 'complete' && !S.chaosed) chaos(); break;
+    case 't':
+      if (S.phase === 'complete' && !S.tampered) {
+        const valid = NODES.filter(n => S.nodes[n] && S.nodes[n].status !== 'broken');
+        if (valid.length) tamper(valid[Math.floor(Math.random()*valid.length)]);
+      }
+      break;
+    case 'r': reset(); break;
+  }
+});
+
+// ─── INIT: Start with anomaly-present defaults ───
+// Set sliders to show an interesting state (bearing elevated, safety derate scenario)
+document.getElementById('st').value = 96;
+document.getElementById('sv').value = 90;
+document.getElementById('sc').value = 120;
+document.getElementById('ss2').value = 100;
+document.getElementById('sr').value = 8;
+uS('t'); uS('v'); uS('c'); uS('s'); uS('r');
+updateExplainer('safety');
+</script>
+</body>
+</html>

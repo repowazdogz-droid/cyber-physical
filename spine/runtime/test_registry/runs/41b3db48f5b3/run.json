@@ -1,0 +1,727 @@
+{
+  "run_id": "41b3db48f5b3",
+  "case_id": "961edc9e3650",
+  "timestamp": "2026-02-05 09:57:55.873197",
+  "output": {
+    "decision_map": {
+      "constraints_checked": [
+        {
+          "constraint": "max_joint_torque: 8.5Nm",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "actuator_limit: 6.0Nm",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "must_not_exceed_actuator_limits",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "smooth_motion_required",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        }
+      ],
+      "violations": []
+    },
+    "failure_modes": [],
+    "contradictions": [],
+    "unknowns": [
+      {
+        "item": "dynamic_load_variation: unknown_range",
+        "impact": "high",
+        "resolution": "characterization_study_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: dynamic_load_variation: unknown_range"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.25,
+          "max_confidence": 0.49,
+          "sensitivity": 0.3,
+          "dependent_on": [
+            "dynamic_load_variation"
+          ]
+        }
+      },
+      {
+        "item": "friction_model_accuracy: low",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: friction_model_accuracy: low"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.4,
+          "max_confidence": 0.4,
+          "sensitivity": 0.0,
+          "dependent_on": [
+            "friction_model_accuracy"
+          ]
+        }
+      }
+    ],
+    "recommended_experiments": [],
+    "falsification_tests": [
+      {
+        "id": "FALS_0001",
+        "target_claim": "Unknown: dynamic_load_variation: unknown_range",
+        "target_output_id": "unknown_0",
+        "test_description": "characterization_study_required",
+        "test_type": "measurement",
+        "falsification_criterion": "Value of dynamic_load_variation determined with acceptable precision",
+        "confirmation_criterion": "Unable to determine dynamic_load_variation - remains unknown",
+        "estimated_cost": "low",
+        "estimated_time": "hours",
+        "decision_impact": "Resolving dynamic_load_variation: unknown_range will narrow confidence bands on dependent outputs",
+        "priority": 2,
+        "required_equipment": [],
+        "required_expertise": [
+          "domain expert"
+        ]
+      }
+    ],
+    "formal_constraints": [
+      {
+        "constraint_id": "FORMAL_001",
+        "constraint_name": "mass_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": 10.0,
+        "margin": null,
+        "evidence": "Total mass not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_002",
+        "constraint_name": "max_force",
+        "result": "proven_violated",
+        "value": 8.5,
+        "threshold": 2.0,
+        "margin": -6.5,
+        "evidence": "Force 8.50 N EXCEEDS limit 2.0 N",
+        "confidence": 1.0
+      },
+      {
+        "constraint_id": "FORMAL_003",
+        "constraint_name": "max_acceleration",
+        "result": "unknown",
+        "value": null,
+        "threshold": 50.0,
+        "margin": null,
+        "evidence": "Max acceleration not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_004",
+        "constraint_name": "min_clearance",
+        "result": "unknown",
+        "value": null,
+        "threshold": 1.0,
+        "margin": null,
+        "evidence": "Clearance not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_005",
+        "constraint_name": "no_self_collision",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Self-collision check not performed",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_006",
+        "constraint_name": "cog_stability",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "COG stability check not performed",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_007",
+        "constraint_name": "torque_limit",
+        "result": "proven_violated",
+        "value": 8.5,
+        "threshold": 5.0,
+        "margin": -3.5,
+        "evidence": "Torque 8.50 N\u22c5m EXCEEDS limit 5.0 N\u22c5m",
+        "confidence": 1.0
+      },
+      {
+        "constraint_id": "FORMAL_008",
+        "constraint_name": "jerk_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": 500.0,
+        "margin": null,
+        "evidence": "Max jerk not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_009",
+        "constraint_name": "actuator_duty_cycle",
+        "result": "unknown",
+        "value": null,
+        "threshold": 0.8,
+        "margin": null,
+        "evidence": "Actuator duty cycle not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_010",
+        "constraint_name": "resonance_margin",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Operating frequency or natural frequency not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_011",
+        "constraint_name": "thermal_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": 50.0,
+        "margin": null,
+        "evidence": "Power dissipation not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_012",
+        "constraint_name": "joint_range_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Joint range check not performed",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_013",
+        "constraint_name": "payload_ratio",
+        "result": "unknown",
+        "value": null,
+        "threshold": 0.7,
+        "margin": null,
+        "evidence": "Payload or max rated payload not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_014",
+        "constraint_name": "stiffness_minimum",
+        "result": "unknown",
+        "value": null,
+        "threshold": 1000.0,
+        "margin": null,
+        "evidence": "End-effector stiffness not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_015",
+        "constraint_name": "voltage_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": 24.0,
+        "margin": null,
+        "evidence": "Max voltage not provided in design data",
+        "confidence": 0.0
+      }
+    ],
+    "trace_graph": {
+      "run_id": "a4d8087404b5",
+      "timestamp": "2026-02-05T09:57:55.871756",
+      "nodes": {
+        "input_0000": {
+          "id": "input_0000",
+          "type": "input",
+          "content": {
+            "type": "problem",
+            "name": "Joint torque exceeds actuator limit",
+            "domain": "robotic_design"
+          },
+          "timestamp": "2026-02-05T09:57:55.867073",
+          "parents": [],
+          "metadata": {}
+        },
+        "input_0001": {
+          "id": "input_0001",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "max_joint_torque: 8.5Nm"
+          },
+          "timestamp": "2026-02-05T09:57:55.867074",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0002": {
+          "id": "input_0002",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "actuator_limit: 6.0Nm"
+          },
+          "timestamp": "2026-02-05T09:57:55.867075",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0003": {
+          "id": "input_0003",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "must_not_exceed_actuator_limits"
+          },
+          "timestamp": "2026-02-05T09:57:55.867076",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0004": {
+          "id": "input_0004",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "smooth_motion_required"
+          },
+          "timestamp": "2026-02-05T09:57:55.867077",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0005": {
+          "id": "input_0005",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "dynamic_load_variation: unknown_range"
+          },
+          "timestamp": "2026-02-05T09:57:55.867078",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0006": {
+          "id": "input_0006",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "friction_model_accuracy: low"
+          },
+          "timestamp": "2026-02-05T09:57:55.867079",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0007": {
+          "id": "input_0007",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "adequate_grip_force"
+          },
+          "timestamp": "2026-02-05T09:57:55.867079",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0008": {
+          "id": "input_0008",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "precise_positioning"
+          },
+          "timestamp": "2026-02-05T09:57:55.867080",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "inference_0009": {
+          "id": "inference_0009",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "max_joint_torque: 8.5Nm",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T09:57:55.871669",
+          "parents": [
+            "input_0001"
+          ],
+          "metadata": {}
+        },
+        "inference_0010": {
+          "id": "inference_0010",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "actuator_limit: 6.0Nm",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T09:57:55.871670",
+          "parents": [
+            "input_0002"
+          ],
+          "metadata": {}
+        },
+        "inference_0011": {
+          "id": "inference_0011",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "must_not_exceed_actuator_limits",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T09:57:55.871671",
+          "parents": [
+            "input_0003"
+          ],
+          "metadata": {}
+        },
+        "inference_0012": {
+          "id": "inference_0012",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "smooth_motion_required",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T09:57:55.871672",
+          "parents": [
+            "input_0004"
+          ],
+          "metadata": {}
+        },
+        "output_0013": {
+          "id": "output_0013",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "dynamic_load_variation: unknown_range",
+            "impact": "high",
+            "resolution": "characterization_study_required"
+          },
+          "timestamp": "2026-02-05T09:57:55.871695",
+          "parents": [
+            "input_0005"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: dynamic_load_variation: unknown_range"
+              ],
+              "requires_validation": true
+            }
+          }
+        },
+        "output_0014": {
+          "id": "output_0014",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "friction_model_accuracy: low",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T09:57:55.871703",
+          "parents": [
+            "input_0006"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: friction_model_accuracy: low"
+              ],
+              "requires_validation": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "trace": {
+    "run_id": "a4d8087404b5",
+    "timestamp": "2026-02-05T09:57:55.871756",
+    "nodes": {
+      "input_0000": {
+        "id": "input_0000",
+        "type": "input",
+        "content": {
+          "type": "problem",
+          "name": "Joint torque exceeds actuator limit",
+          "domain": "robotic_design"
+        },
+        "timestamp": "2026-02-05T09:57:55.867073",
+        "parents": [],
+        "metadata": {}
+      },
+      "input_0001": {
+        "id": "input_0001",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "max_joint_torque: 8.5Nm"
+        },
+        "timestamp": "2026-02-05T09:57:55.867074",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0002": {
+        "id": "input_0002",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "actuator_limit: 6.0Nm"
+        },
+        "timestamp": "2026-02-05T09:57:55.867075",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0003": {
+        "id": "input_0003",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "must_not_exceed_actuator_limits"
+        },
+        "timestamp": "2026-02-05T09:57:55.867076",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0004": {
+        "id": "input_0004",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "smooth_motion_required"
+        },
+        "timestamp": "2026-02-05T09:57:55.867077",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0005": {
+        "id": "input_0005",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "dynamic_load_variation: unknown_range"
+        },
+        "timestamp": "2026-02-05T09:57:55.867078",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0006": {
+        "id": "input_0006",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "friction_model_accuracy: low"
+        },
+        "timestamp": "2026-02-05T09:57:55.867079",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0007": {
+        "id": "input_0007",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "adequate_grip_force"
+        },
+        "timestamp": "2026-02-05T09:57:55.867079",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0008": {
+        "id": "input_0008",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "precise_positioning"
+        },
+        "timestamp": "2026-02-05T09:57:55.867080",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "inference_0009": {
+        "id": "inference_0009",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "max_joint_torque: 8.5Nm",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:57:55.871669",
+        "parents": [
+          "input_0001"
+        ],
+        "metadata": {}
+      },
+      "inference_0010": {
+        "id": "inference_0010",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "actuator_limit: 6.0Nm",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:57:55.871670",
+        "parents": [
+          "input_0002"
+        ],
+        "metadata": {}
+      },
+      "inference_0011": {
+        "id": "inference_0011",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "must_not_exceed_actuator_limits",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:57:55.871671",
+        "parents": [
+          "input_0003"
+        ],
+        "metadata": {}
+      },
+      "inference_0012": {
+        "id": "inference_0012",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "smooth_motion_required",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:57:55.871672",
+        "parents": [
+          "input_0004"
+        ],
+        "metadata": {}
+      },
+      "output_0013": {
+        "id": "output_0013",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "dynamic_load_variation: unknown_range",
+          "impact": "high",
+          "resolution": "characterization_study_required"
+        },
+        "timestamp": "2026-02-05T09:57:55.871695",
+        "parents": [
+          "input_0005"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: dynamic_load_variation: unknown_range"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0014": {
+        "id": "output_0014",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "friction_model_accuracy: low",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T09:57:55.871703",
+        "parents": [
+          "input_0006"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: friction_model_accuracy: low"
+            ],
+            "requires_validation": true
+          }
+        }
+      }
+    }
+  },
+  "predictions": [],
+  "reviewer": null,
+  "review_notes": ""
+}

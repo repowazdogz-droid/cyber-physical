@@ -1,0 +1,18 @@
+problem:
+  name: "Vague constraint case"
+  domain: "surgical_robotics"
+
+constraints:
+  - "must be safe"
+  - "should work well"
+
+uncertainties:
+  - "performance: unknown"
+
+objectives:
+  - "good design"
+
+metadata:
+  trap_type: "non_actionable"
+  expected_forge_behavior: "Should generate few/no hypotheses due to lack of specific constraints"
+  quality_gate_should_catch: true

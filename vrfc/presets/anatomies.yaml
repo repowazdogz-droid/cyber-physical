@@ -1,0 +1,13 @@
+{
+  "spine_lumbar": {
+    "category": "surgery",
+    "notes": "Lumbar decompression, fusion, disc procedures"
+  },
+  "colon": {
+    "category": "endoscopy",
+    "notes": "Colonoscopy, EMR, ESD, screening"
+  }
+}
+
+
+

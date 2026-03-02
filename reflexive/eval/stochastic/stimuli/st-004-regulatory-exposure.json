@@ -1,0 +1,5 @@
+{
+  "id": "st-004",
+  "text": "Our fintech subsidiary processes payments for 12M users across the EU. The European Commission has proposed new digital operational resilience requirements (DORA Phase 2) effective January 2027. Compliance will require migrating our core ledger from a proprietary system to one meeting ICT risk management standards. Engineering estimates 14 months and €8M for migration. Our current system has had zero outages in 3 years. The alternative is restricting EU operations to existing customers only, forgoing the projected 40% growth in European transaction volume. Legal advises that non-compliance penalties could reach 2% of global annual turnover.",
+  "type": "decision"
+}

@@ -1,0 +1,22 @@
+problem:
+  name: "Force experiment: 2N on cartilage analog"
+  domain: "surgical_robotics"
+
+constraints:
+  - "applied_force: 2N"
+  - "must_not_damage"
+  - "tissue_stiffness: 5.0N/mm"
+
+uncertainties:
+  - "cartilage_compliance: variable"
+
+objectives:
+  - "secure_grip"
+
+design:
+  applied_force_n: 2.0
+  tissue_stiffness: 5.0
+  gripper_config: "medium"
+
+metadata:
+  experiment_type: "force"

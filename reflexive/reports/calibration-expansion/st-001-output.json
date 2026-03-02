@@ -1,0 +1,162 @@
+{
+  "stimulus_id": "st-001",
+  "analysis_id": "7aa8676e-0e90-4752-86ed-f90a6b776fc0",
+  "case_id": "1373e132-6a17-4667-b35d-7fb0a2b02b62",
+  "duration_ms": 11086,
+  "success": true,
+  "confidence_score": 0.2147,
+  "confidence_breakdown": {
+    "per_lens": [
+      {
+        "lens_id": "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "claim_count": 6,
+        "scoring_claim_count": 6,
+        "supported_claim_count": 4,
+        "mean_evidence_strength": 0.6666666666666666,
+        "contribution_to_agreement": 0.4177777777777778
+      },
+      {
+        "lens_id": "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "claim_count": 5,
+        "scoring_claim_count": 5,
+        "supported_claim_count": 2,
+        "mean_evidence_strength": 0.6,
+        "contribution_to_agreement": 0.45666666666666667
+      },
+      {
+        "lens_id": "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+        "claim_count": 7,
+        "scoring_claim_count": 7,
+        "supported_claim_count": 5,
+        "mean_evidence_strength": 0.7000000000000001,
+        "contribution_to_agreement": 0.21111111111111114
+      },
+      {
+        "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+        "claim_count": 8,
+        "scoring_claim_count": 8,
+        "supported_claim_count": 5,
+        "mean_evidence_strength": 0.6625,
+        "contribution_to_agreement": 0.46111111111111114
+      },
+      {
+        "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "claim_count": 7,
+        "scoring_claim_count": 7,
+        "supported_claim_count": 4,
+        "mean_evidence_strength": 0.6714285714285715,
+        "contribution_to_agreement": 0.4177777777777778
+      }
+    ],
+    "per_theme": [
+      {
+        "strength": 0.5,
+        "theme_id": "1f215a56-6fd3-5bf9-a8d1-fe76f87bdb8e",
+        "agreement_type": "convergence",
+        "participating_lenses": 2
+      },
+      {
+        "strength": 0.8444444444444446,
+        "theme_id": "46a42b2f-b06c-584f-ac30-d9569d78a88b",
+        "agreement_type": "convergence",
+        "participating_lenses": 4
+      },
+      {
+        "strength": 0.6200000000000001,
+        "theme_id": "8f23643e-da48-51d8-8878-274157442802",
+        "agreement_type": "convergence",
+        "participating_lenses": 3
+      }
+    ],
+    "raw_score": 0.2147090884311821,
+    "drift_flags": [],
+    "final_score": 0.2147,
+    "agreement_factor": 0.4158518518518519,
+    "lens_count_factor": 1,
+    "divergence_penalty": 0,
+    "unsupported_penalty": 0.19393939393939394,
+    "low_evidence_warning": false,
+    "evidence_density_factor": 0.2266666567550313,
+    "high_contradiction_warning": false
+  },
+  "convergence_count": 3,
+  "divergence_count": 0,
+  "orphan_count": 17,
+  "convergence_points": [
+    {
+      "strength": 0.5,
+      "theme_id": "1f215a56-6fd3-5bf9-a8d1-fe76f87bdb8e",
+      "theme_label": "Market conditions remained favorable for HelioTech's growth.",
+      "evidence_density": 0,
+      "supporting_claims": [
+        "0b852d5e-a3cd-4496-83c8-302d2750804f",
+        "ff316c00-6b3a-4f20-a5a3-caef06c4551a"
+      ],
+      "supporting_lenses": [
+        "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    },
+    {
+      "strength": 0.8444444444444446,
+      "theme_id": "46a42b2f-b06c-584f-ac30-d9569d78a88b",
+      "theme_label": "HelioTech has a strong engineering team of 150 members.",
+      "evidence_density": 0.34222220725759633,
+      "supporting_claims": [
+        "169161dd-6ff5-4715-8787-addf1500b4a5",
+        "1a55e395-6029-4bef-b8b0-c23d3d3401ca",
+        "4a7a2bd1-4d6b-477b-b8ec-27dd175232ee",
+        "6453c788-57f2-42f7-b80a-9dc21c2def80",
+        "82fea4c4-bfb4-4452-a29a-619aa22b753e",
+        "84b98f69-278a-4b7b-9120-e313f11a6017",
+        "a08be1d5-19a6-4896-b560-d3bdc33c26c7",
+        "c0315545-cb38-416a-8046-a2bdf6f5c98e",
+        "f3508c32-9a7b-4670-a606-16caaddaf65c"
+      ],
+      "supporting_lenses": [
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    },
+    {
+      "strength": 0.6200000000000001,
+      "theme_id": "8f23643e-da48-51d8-8878-274157442802",
+      "theme_label": "HelioTech's revenue growth rate will continue as projected.",
+      "evidence_density": 0.24199998941787165,
+      "supporting_claims": [
+        "097e55d3-86ad-4194-a4c6-44e528ac1635",
+        "11b4e51b-8781-4b92-b0ee-80254c19c5c8",
+        "745d698e-04bc-4580-914e-12803b4d5df1",
+        "977a643f-18ce-46d4-9fb9-89dfa3d82f75",
+        "d19fb937-f466-4647-a168-c0023a74e405"
+      ],
+      "supporting_lenses": [
+        "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "5d323a15-6d2a-48d7-ad02-3f65a3c259f8"
+      ]
+    }
+  ],
+  "divergence_points": [],
+  "orphan_claims": [
+    "61bb08ef-30fd-4270-90ad-5052cf47361b",
+    "3b10778a-b448-4cef-a803-30a85fe9eba6",
+    "f3ba59b6-a361-4fa8-95a8-5e27f2c19b15",
+    "5222f4ab-c007-4b59-950d-22a169fda141",
+    "2fe3a5e9-3b6f-4c80-8909-003bf167a7d0",
+    "d52148ec-64aa-437e-934a-0ef1c0daf94c",
+    "c3c374f8-80cc-4799-8387-27376bebaa93",
+    "5cebeac9-bf14-4b9b-a1fe-45782d601149",
+    "d10cda7e-bc23-4e8c-9907-ca61617cc8b2",
+    "28dd317f-63ce-4999-a949-c1f3a490d635",
+    "b4d3e396-ff0f-4500-beba-1b71917fb5d5",
+    "526afa97-acf1-4c92-b57b-5daaccb771a0",
+    "29fd042f-3f19-44ca-b72d-94bec17c9e59",
+    "e94f5d34-776b-484b-be3a-d060d8fc6af4",
+    "452760de-dcc4-49b3-ba76-75640bcd6c0b",
+    "a6df2f2c-d84f-4a5b-9d99-91738d2e82f1",
+    "dd8975cc-a681-47cc-83b5-3e9e4e0a92ef"
+  ]
+}

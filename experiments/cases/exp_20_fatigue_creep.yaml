@@ -1,0 +1,24 @@
+problem:
+  name: "Fatigue experiment: sustained grip for 30 minutes (creep)"
+  domain: "surgical_robotics"
+
+constraints:
+  - "duration: 1800s"
+  - "load: 7N"
+  - "sustained: yes"
+  - "must_not_fail"
+
+uncertainties:
+  - "creep_deformation: unknown"
+
+objectives:
+  - "sustained_grip"
+
+design:
+  cycles: 1
+  load_n: 7.0
+  material: "silicone"
+  duration_s: 1800
+
+metadata:
+  experiment_type: "fatigue"

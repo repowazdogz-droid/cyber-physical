@@ -1,0 +1,37 @@
+problem:
+  name: "Quantization error in low-resolution DAC"
+  domain: "robotic_design"
+
+constraints:
+  - "dac_resolution: 8-bit"
+  - "voltage_range: 0-10V"
+  - "quantization_step: 39mV"
+  - "required_accuracy: 10mV"
+  - "must_meet_control_accuracy"
+
+uncertainties:
+  - "quantization_noise: variable"
+  - "control_performance_impact: unknown"
+  - "limit_cycling: unknown"
+
+objectives:
+  - "control_precision"
+  - "signal_quality"
+
+design:
+  dac_resolution_bits: 8
+  voltage_range_v: 10
+  quantization_step_v: 0.039
+  required_accuracy_v: 0.01
+  # For control constraints
+  encoder_resolution_m: 0.001
+  required_accuracy_m: 0.0001
+  control_bandwidth_hz: 50
+  task_frequency_hz: 10
+  sampling_rate_hz: 100
+  max_signal_frequency_hz: 50
+
+metadata:
+  injected_failure: "quantization_error"
+  failure_category: "control"
+  expected_detection: "Control constraint may trigger if quantization modeled"

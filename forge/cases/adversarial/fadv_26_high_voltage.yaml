@@ -1,0 +1,20 @@
+problem:
+  name: "High voltage test without safety"
+  domain: "surgical_robotics"
+
+constraints:
+  - "test_voltage: 5000V"
+  - "must_measure_current"
+
+uncertainties: []
+
+objectives:
+  - "electrical_test"
+
+design:
+  test_voltage_v: 5000.0
+
+metadata:
+  trap_type: "unsafe_test"
+  expected_forge_behavior: "Should flag high voltage test without safety protocol"
+  quality_gate_should_catch: true

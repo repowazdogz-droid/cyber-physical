@@ -1,0 +1,771 @@
+{
+  "decision_map": {
+    "constraints_checked": [
+      {
+        "constraint": "continuous_load: 5.7Nm",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "actuator_rating: 6.0Nm",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "duty_cycle: 95%",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "duration: 4_hours",
+        "checked": true,
+        "contract_matched": "52_data_retention_and_deletion_contract",
+        "violation": null
+      },
+      {
+        "constraint": "must_not_exceed_continuous_rating",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      }
+    ],
+    "violations": []
+  },
+  "failure_modes": [],
+  "contradictions": [],
+  "unknowns": [
+    {
+      "item": "thermal_rise_rate: unknown",
+      "impact": "medium",
+      "resolution": "investigation_required",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "uncertainty: thermal_rise_rate: unknown"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": {
+        "base_confidence": 0.4,
+        "min_confidence": 0.36000000000000004,
+        "max_confidence": 0.42400000000000004,
+        "sensitivity": 0.07999999999999999,
+        "dependent_on": [
+          "thermal_rise_rate"
+        ]
+      }
+    },
+    {
+      "item": "cooling_efficiency_over_time: variable",
+      "impact": "medium",
+      "resolution": "investigation_required",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "uncertainty: cooling_efficiency_over_time: variable"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": {
+        "base_confidence": 0.4,
+        "min_confidence": 0.4,
+        "max_confidence": 0.4,
+        "sensitivity": 0.0,
+        "dependent_on": [
+          "cooling_efficiency_over_time"
+        ]
+      }
+    },
+    {
+      "item": "cumulative_thermal_damage: unknown",
+      "impact": "medium",
+      "resolution": "investigation_required",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "uncertainty: cumulative_thermal_damage: unknown"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": {
+        "base_confidence": 0.4,
+        "min_confidence": 0.36000000000000004,
+        "max_confidence": 0.42400000000000004,
+        "sensitivity": 0.07999999999999999,
+        "dependent_on": [
+          "cumulative_thermal_damage"
+        ]
+      }
+    }
+  ],
+  "recommended_experiments": [],
+  "falsification_tests": [],
+  "formal_constraints": [
+    {
+      "constraint_id": "FORMAL_001",
+      "constraint_name": "mass_limit",
+      "result": "unknown",
+      "value": null,
+      "threshold": 10.0,
+      "margin": null,
+      "evidence": "Total mass not provided in design data",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_002",
+      "constraint_name": "max_force",
+      "result": "unknown",
+      "value": null,
+      "threshold": 2.0,
+      "margin": null,
+      "evidence": "Max force not provided in design data",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_003",
+      "constraint_name": "max_acceleration",
+      "result": "unknown",
+      "value": null,
+      "threshold": 50.0,
+      "margin": null,
+      "evidence": "Max acceleration not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_004",
+      "constraint_name": "min_clearance",
+      "result": "unknown",
+      "value": null,
+      "threshold": 1.0,
+      "margin": null,
+      "evidence": "Clearance not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_005",
+      "constraint_name": "no_self_collision",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Self-collision check not performed",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_006",
+      "constraint_name": "cog_stability",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "COG stability check not performed",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_007",
+      "constraint_name": "torque_limit",
+      "result": "unknown",
+      "value": null,
+      "threshold": 5.0,
+      "margin": null,
+      "evidence": "Max torque not provided in design data",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_008",
+      "constraint_name": "jerk_limit",
+      "result": "unknown",
+      "value": null,
+      "threshold": 500.0,
+      "margin": null,
+      "evidence": "Max jerk not provided in design data",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_009",
+      "constraint_name": "actuator_duty_cycle",
+      "result": "proven_violated",
+      "value": 0.95,
+      "threshold": 0.8,
+      "margin": -0.1499999999999999,
+      "evidence": "Duty cycle 95.00% EXCEEDS limit 80.00%",
+      "confidence": 1.0
+    },
+    {
+      "constraint_id": "FORMAL_010",
+      "constraint_name": "resonance_margin",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Operating frequency or natural frequency not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_011",
+      "constraint_name": "thermal_limit",
+      "result": "proven_violated",
+      "value": 78.0,
+      "threshold": 70.0,
+      "margin": -8.0,
+      "evidence": "Temperature rise 78.0\u00b0C EXCEEDS limit 70.0\u00b0C",
+      "confidence": 1.0
+    },
+    {
+      "constraint_id": "FORMAL_012",
+      "constraint_name": "joint_range_limit",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Joint range check not performed",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_013",
+      "constraint_name": "payload_ratio",
+      "result": "unknown",
+      "value": null,
+      "threshold": 0.7,
+      "margin": null,
+      "evidence": "Payload or max rated payload not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_014",
+      "constraint_name": "stiffness_minimum",
+      "result": "unknown",
+      "value": null,
+      "threshold": 1000.0,
+      "margin": null,
+      "evidence": "End-effector stiffness not provided in design data",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_015",
+      "constraint_name": "voltage_limit",
+      "result": "unknown",
+      "value": null,
+      "threshold": 24.0,
+      "margin": null,
+      "evidence": "Max voltage not provided in design data",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_016",
+      "constraint_name": "control_bandwidth_margin",
+      "result": "unknown",
+      "value": null,
+      "threshold": 5.0,
+      "margin": null,
+      "evidence": "Control bandwidth or task frequency not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_017",
+      "constraint_name": "latency_margin",
+      "result": "unknown",
+      "value": null,
+      "threshold": 0.1,
+      "margin": null,
+      "evidence": "Control latency or period not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_018",
+      "constraint_name": "phase_margin",
+      "result": "unknown",
+      "value": null,
+      "threshold": 30.0,
+      "margin": null,
+      "evidence": "Phase margin not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_019",
+      "constraint_name": "gain_margin",
+      "result": "unknown",
+      "value": null,
+      "threshold": 6.0,
+      "margin": null,
+      "evidence": "Gain margin not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_020",
+      "constraint_name": "sampling_nyquist",
+      "result": "unknown",
+      "value": null,
+      "threshold": 2.0,
+      "margin": null,
+      "evidence": "Sampling rate or max frequency not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_021",
+      "constraint_name": "encoder_resolution",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Encoder resolution or required accuracy not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_022",
+      "constraint_name": "control_energy_bound",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Control energy or actuator capacity not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_023",
+      "constraint_name": "fatigue_safety_factor",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Cyclic stress or endurance limit not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_024",
+      "constraint_name": "creep_risk",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Sustained stress or creep threshold not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_025",
+      "constraint_name": "stress_corrosion_risk",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Tensile stress or SCC threshold not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_026",
+      "constraint_name": "uv_degradation_risk",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "UV exposure hours or rated life not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_027",
+      "constraint_name": "safety_factor_static",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Applied stress or yield strength not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_028",
+      "constraint_name": "stiffness_mismatch",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Stiffness values not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_029",
+      "constraint_name": "creep_envelope",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Sustained stress or yield strength not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_030",
+      "constraint_name": "thermal_material_coupling",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Applied stress or yield strength not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_031",
+      "constraint_name": "contact_pressure",
+      "result": "unknown",
+      "value": null,
+      "threshold": 1.0,
+      "margin": null,
+      "evidence": "Contact force or area not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_032",
+      "constraint_name": "tissue_crush_risk",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Contact force or area not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_033",
+      "constraint_name": "bolt_shear",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Joint force, bolt diameter, or shear strength not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_034",
+      "constraint_name": "adhesive_load",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Joint force, bond area, or adhesive strength not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_035",
+      "constraint_name": "slip_margin",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Normal force, friction coefficient, or tangential force not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_036",
+      "constraint_name": "corrosion_rate",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Corrosion rate, service life, or wall thickness not provided",
+      "confidence": 0.0
+    }
+  ],
+  "trace_graph": {
+    "run_id": "75f02ae5aa1b",
+    "timestamp": "2026-02-05T10:16:53.053202",
+    "nodes": {
+      "input_0000": {
+        "id": "input_0000",
+        "type": "input",
+        "content": {
+          "type": "problem",
+          "name": "Duty cycle abuse - 95% sustained for 4 hours",
+          "domain": "robotic_design"
+        },
+        "timestamp": "2026-02-05T10:16:53.047402",
+        "parents": [],
+        "metadata": {}
+      },
+      "input_0001": {
+        "id": "input_0001",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "continuous_load: 5.7Nm"
+        },
+        "timestamp": "2026-02-05T10:16:53.047403",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0002": {
+        "id": "input_0002",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "actuator_rating: 6.0Nm"
+        },
+        "timestamp": "2026-02-05T10:16:53.047404",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0003": {
+        "id": "input_0003",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "duty_cycle: 95%"
+        },
+        "timestamp": "2026-02-05T10:16:53.047405",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0004": {
+        "id": "input_0004",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "duration: 4_hours"
+        },
+        "timestamp": "2026-02-05T10:16:53.047406",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0005": {
+        "id": "input_0005",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "must_not_exceed_continuous_rating"
+        },
+        "timestamp": "2026-02-05T10:16:53.047407",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0006": {
+        "id": "input_0006",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "thermal_rise_rate: unknown"
+        },
+        "timestamp": "2026-02-05T10:16:53.047408",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0007": {
+        "id": "input_0007",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "cooling_efficiency_over_time: variable"
+        },
+        "timestamp": "2026-02-05T10:16:53.047409",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0008": {
+        "id": "input_0008",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "cumulative_thermal_damage: unknown"
+        },
+        "timestamp": "2026-02-05T10:16:53.047409",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0009": {
+        "id": "input_0009",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "sustained_operation"
+        },
+        "timestamp": "2026-02-05T10:16:53.047410",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0010": {
+        "id": "input_0010",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "thermal_management"
+        },
+        "timestamp": "2026-02-05T10:16:53.047411",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "inference_0011": {
+        "id": "inference_0011",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "continuous_load: 5.7Nm",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:16:53.053100",
+        "parents": [
+          "input_0001"
+        ],
+        "metadata": {}
+      },
+      "inference_0012": {
+        "id": "inference_0012",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "actuator_rating: 6.0Nm",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:16:53.053101",
+        "parents": [
+          "input_0002"
+        ],
+        "metadata": {}
+      },
+      "inference_0013": {
+        "id": "inference_0013",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "duty_cycle: 95%",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:16:53.053102",
+        "parents": [
+          "input_0003"
+        ],
+        "metadata": {}
+      },
+      "inference_0014": {
+        "id": "inference_0014",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "duration: 4_hours",
+          "checked": true,
+          "contract_matched": "52_data_retention_and_deletion_contract",
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:16:53.053103",
+        "parents": [
+          "input_0004"
+        ],
+        "metadata": {}
+      },
+      "inference_0015": {
+        "id": "inference_0015",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "must_not_exceed_continuous_rating",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:16:53.053104",
+        "parents": [
+          "input_0005"
+        ],
+        "metadata": {}
+      },
+      "output_0016": {
+        "id": "output_0016",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "thermal_rise_rate: unknown",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:16:53.053121",
+        "parents": [
+          "input_0006"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: thermal_rise_rate: unknown"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0017": {
+        "id": "output_0017",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "cooling_efficiency_over_time: variable",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:16:53.053128",
+        "parents": [
+          "input_0007"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: cooling_efficiency_over_time: variable"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0018": {
+        "id": "output_0018",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "cumulative_thermal_damage: unknown",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:16:53.053135",
+        "parents": [
+          "input_0008"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: cumulative_thermal_damage: unknown"
+            ],
+            "requires_validation": true
+          }
+        }
+      }
+    }
+  }
+}

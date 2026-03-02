@@ -1,0 +1,248 @@
+{
+  "suite_version": "v6b",
+  "suite_hash": "2da35d396532b4a5484155f3c1c1207e",
+  "total_cases": 30,
+  "timestamp": "2026-02-05T10:27:10.628136",
+  "cases": [
+    {
+      "case_id": "adv_c01_marginal_phase_margin",
+      "filename": "adv_c01_marginal_phase_margin.yaml",
+      "category": "control",
+      "injected_failure": "marginal_phase_margin",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.628301"
+    },
+    {
+      "case_id": "adv_c02_sensor_latency",
+      "filename": "adv_c02_sensor_latency.yaml",
+      "category": "control",
+      "injected_failure": "sensor_latency",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.628439"
+    },
+    {
+      "case_id": "adv_c03_actuator_saturation",
+      "filename": "adv_c03_actuator_saturation.yaml",
+      "category": "control",
+      "injected_failure": "actuator_saturation",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.628569"
+    },
+    {
+      "case_id": "adv_c04_encoder_resolution",
+      "filename": "adv_c04_encoder_resolution.yaml",
+      "category": "control",
+      "injected_failure": "encoder_resolution",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.628699"
+    },
+    {
+      "case_id": "adv_c05_feedforward_mismatch",
+      "filename": "adv_c05_feedforward_mismatch.yaml",
+      "category": "control",
+      "injected_failure": "feedforward_mismatch",
+      "expected_detection": false,
+      "timestamp": "2026-02-05T10:27:10.628823"
+    },
+    {
+      "case_id": "adv_e01_three_minor_issues",
+      "filename": "adv_e01_three_minor_issues.yaml",
+      "category": "unknown",
+      "injected_failure": "combined_minor_issues",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.628948"
+    },
+    {
+      "case_id": "adv_e02_thermal_control_interaction",
+      "filename": "adv_e02_thermal_control_interaction.yaml",
+      "category": "unknown",
+      "injected_failure": "thermal_control_interaction",
+      "expected_detection": false,
+      "timestamp": "2026-02-05T10:27:10.629077"
+    },
+    {
+      "case_id": "adv_e03_fatigue_tolerance",
+      "filename": "adv_e03_fatigue_tolerance.yaml",
+      "category": "unknown",
+      "injected_failure": "fatigue_tolerance_interaction",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.629203"
+    },
+    {
+      "case_id": "adv_e04_cascading_degradation",
+      "filename": "adv_e04_cascading_degradation.yaml",
+      "category": "unknown",
+      "injected_failure": "cascading_degradation",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.629325"
+    },
+    {
+      "case_id": "adv_g01_tolerance_stackup",
+      "filename": "adv_g01_tolerance_stackup.yaml",
+      "category": "geometric",
+      "injected_failure": "tolerance_stackup",
+      "expected_detection": false,
+      "timestamp": "2026-02-05T10:27:10.629448"
+    },
+    {
+      "case_id": "adv_g02_thermal_expansion_mismatch",
+      "filename": "adv_g02_thermal_expansion_mismatch.yaml",
+      "category": "geometric",
+      "injected_failure": "thermal_expansion_mismatch",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.629573"
+    },
+    {
+      "case_id": "adv_g03_clearance_reduction",
+      "filename": "adv_g03_clearance_reduction.yaml",
+      "category": "geometric",
+      "injected_failure": "clearance_reduction",
+      "expected_detection": false,
+      "timestamp": "2026-02-05T10:27:10.629693"
+    },
+    {
+      "case_id": "adv_g04_assembly_error",
+      "filename": "adv_g04_assembly_error.yaml",
+      "category": "geometric",
+      "injected_failure": "assembly_error",
+      "expected_detection": false,
+      "timestamp": "2026-02-05T10:27:10.629813"
+    },
+    {
+      "case_id": "adv_i01_tissue_compliance_variation",
+      "filename": "adv_i01_tissue_compliance_variation.yaml",
+      "category": "interaction",
+      "injected_failure": "tissue_compliance_variation",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.629936"
+    },
+    {
+      "case_id": "adv_i02_surface_friction_drop",
+      "filename": "adv_i02_surface_friction_drop.yaml",
+      "category": "interaction",
+      "injected_failure": "surface_friction_drop",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.630056"
+    },
+    {
+      "case_id": "adv_i03_rigid_obstacle",
+      "filename": "adv_i03_rigid_obstacle.yaml",
+      "category": "interaction",
+      "injected_failure": "rigid_obstacle_contact",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.630177"
+    },
+    {
+      "case_id": "adv_i04_object_mass_variation",
+      "filename": "adv_i04_object_mass_variation.yaml",
+      "category": "interaction",
+      "injected_failure": "object_mass_variation",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.630299"
+    },
+    {
+      "case_id": "adv_m01_borderline_mass",
+      "filename": "adv_m01_borderline_mass.yaml",
+      "category": "mechanical",
+      "injected_failure": "borderline_mass",
+      "expected_detection": false,
+      "timestamp": "2026-02-05T10:27:10.630443"
+    },
+    {
+      "case_id": "adv_m02_fatigue_cycling",
+      "filename": "adv_m02_fatigue_cycling.yaml",
+      "category": "mechanical",
+      "injected_failure": "fatigue_failure",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.630576"
+    },
+    {
+      "case_id": "adv_m03_harmonic_oscillation",
+      "filename": "adv_m03_harmonic_oscillation.yaml",
+      "category": "mechanical",
+      "injected_failure": "resonance_risk",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.630700"
+    },
+    {
+      "case_id": "adv_m04_combined_stress",
+      "filename": "adv_m04_combined_stress.yaml",
+      "category": "mechanical",
+      "injected_failure": "combined_stress_failure",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.630819"
+    },
+    {
+      "case_id": "adv_m05_backlash_accumulation",
+      "filename": "adv_m05_backlash_accumulation.yaml",
+      "category": "mechanical",
+      "injected_failure": "backlash_accumulation",
+      "expected_detection": false,
+      "timestamp": "2026-02-05T10:27:10.630944"
+    },
+    {
+      "case_id": "adv_mat01_creep",
+      "filename": "adv_mat01_creep.yaml",
+      "category": "material",
+      "injected_failure": "creep_deformation",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.631065"
+    },
+    {
+      "case_id": "adv_mat02_stiffness_mismatch",
+      "filename": "adv_mat02_stiffness_mismatch.yaml",
+      "category": "material",
+      "injected_failure": "stiffness_mismatch",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.631187"
+    },
+    {
+      "case_id": "adv_mat03_stress_corrosion",
+      "filename": "adv_mat03_stress_corrosion.yaml",
+      "category": "material",
+      "injected_failure": "stress_corrosion",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.631309"
+    },
+    {
+      "case_id": "adv_mat04_uv_degradation",
+      "filename": "adv_mat04_uv_degradation.yaml",
+      "category": "material",
+      "injected_failure": "uv_degradation",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.631442"
+    },
+    {
+      "case_id": "adv_t01_transient_thermal_spike",
+      "filename": "adv_t01_transient_thermal_spike.yaml",
+      "category": "thermal",
+      "injected_failure": "transient_thermal_spike",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.631562"
+    },
+    {
+      "case_id": "adv_t02_cooling_degradation",
+      "filename": "adv_t02_cooling_degradation.yaml",
+      "category": "thermal",
+      "injected_failure": "cooling_degradation",
+      "expected_detection": false,
+      "timestamp": "2026-02-05T10:27:10.631681"
+    },
+    {
+      "case_id": "adv_t03_duty_cycle_abuse",
+      "filename": "adv_t03_duty_cycle_abuse.yaml",
+      "category": "thermal",
+      "injected_failure": "duty_cycle_abuse",
+      "expected_detection": true,
+      "timestamp": "2026-02-05T10:27:10.631799"
+    },
+    {
+      "case_id": "adv_t04_ambient_temperature_shift",
+      "filename": "adv_t04_ambient_temperature_shift.yaml",
+      "category": "thermal",
+      "injected_failure": "ambient_temperature_shift",
+      "expected_detection": false,
+      "timestamp": "2026-02-05T10:27:10.631920"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+problem:
+  name: "Hyperbaric oxygen therapy for post-operative foot drop"
+  domain: "spine_surgery"
+
+constraints:
+  - "failed_conservative_management"
+  - "acute_traumatic_nerve_ischemia"
+  - "multiple_motor_levels_L2_S1"
+  - "patient_age: 50"
+  - "post_revision_surgery"
+
+uncertainties:
+  - "hbot_duration_and_dosage: no_standard_protocol"
+  - "recovery_timeline_predictability: low"
+  - "nerve_recovery_ceiling: unknown"
+
+objectives:
+  - "improve_neurologic_recovery"
+  - "restore_lower_limb_power"
+  - "restore_ambulation"
+
+metadata:
+  source: "https://pubmed.ncbi.nlm.nih.gov/37435319/"
+  authors: "Brenna et al., 2023"
+  outcome_known: true
+  outcome: "Marked improvement in power and ROM after 12 sessions"

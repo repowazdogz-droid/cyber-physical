@@ -1,0 +1,173 @@
+{
+  "stimulus_id": "st-003",
+  "analysis_id": "92605794-dd64-4b8e-a49b-709d65b7d27e",
+  "case_id": "79c25718-5e50-4b14-98a9-9b474ea554ca",
+  "duration_ms": 8663,
+  "success": true,
+  "confidence_score": 0.1952,
+  "confidence_breakdown": {
+    "per_lens": [
+      {
+        "lens_id": "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "claim_count": 3,
+        "scoring_claim_count": 3,
+        "supported_claim_count": 2,
+        "mean_evidence_strength": 0.6333333333333333,
+        "contribution_to_agreement": 0
+      },
+      {
+        "lens_id": "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+        "claim_count": 7,
+        "scoring_claim_count": 7,
+        "supported_claim_count": 5,
+        "mean_evidence_strength": 0.7000000000000001,
+        "contribution_to_agreement": 0.8305555555555555
+      },
+      {
+        "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "claim_count": 5,
+        "scoring_claim_count": 5,
+        "supported_claim_count": 4,
+        "mean_evidence_strength": 0.76,
+        "contribution_to_agreement": 0.8805555555555555
+      },
+      {
+        "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+        "claim_count": 7,
+        "scoring_claim_count": 7,
+        "supported_claim_count": 3,
+        "mean_evidence_strength": 0.6571428571428571,
+        "contribution_to_agreement": 1.1555555555555554
+      },
+      {
+        "lens_id": "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "claim_count": 5,
+        "scoring_claim_count": 5,
+        "supported_claim_count": 3,
+        "mean_evidence_strength": 0.6599999999999999,
+        "contribution_to_agreement": 0
+      }
+    ],
+    "per_theme": [
+      {
+        "strength": 0.9,
+        "theme_id": "1d02dc98-c588-5404-ad5b-37da39cb579b",
+        "agreement_type": "convergence",
+        "participating_lenses": 3
+      },
+      {
+        "strength": 0.6499999999999999,
+        "theme_id": "1d5a210d-6dfb-5d9f-8f78-98a1d28d8094",
+        "agreement_type": "convergence",
+        "participating_lenses": 2
+      },
+      {
+        "strength": 0.55,
+        "theme_id": "4758fbf4-979c-5915-bfb1-8414d5774141",
+        "agreement_type": "convergence",
+        "participating_lenses": 2
+      },
+      {
+        "strength": 0.7666666666666666,
+        "theme_id": "8e4d4f4d-994f-5fe2-a94a-d885dc19d0bb",
+        "agreement_type": "convergence",
+        "participating_lenses": 3
+      }
+    ],
+    "raw_score": 0.1952037023363775,
+    "drift_flags": [],
+    "final_score": 0.1952,
+    "agreement_factor": 0.37,
+    "lens_count_factor": 1,
+    "divergence_penalty": 0,
+    "unsupported_penalty": 0.18888888888888888,
+    "low_evidence_warning": false,
+    "evidence_density_factor": 0.2281481426788432,
+    "high_contradiction_warning": false
+  },
+  "convergence_count": 4,
+  "divergence_count": 0,
+  "orphan_count": 15,
+  "convergence_points": [
+    {
+      "strength": 0.9,
+      "theme_id": "1d02dc98-c588-5404-ad5b-37da39cb579b",
+      "theme_label": "The ML-powered fraud detection system achieved 94% precision in testing.",
+      "evidence_density": 0.32999999208904107,
+      "supporting_claims": [
+        "029ff65d-1616-41c8-88f0-b1033e22e7d1",
+        "05c69f5f-88ce-4d1f-9822-66592601b22e",
+        "ab082cc1-a137-4d90-a4f2-32c394006990",
+        "c9864b82-9678-4271-aea5-8dfa05cdf844",
+        "d1c5dd2d-737f-45cc-89db-dd7a1b315cc6"
+      ],
+      "supporting_lenses": [
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    },
+    {
+      "strength": 0.6499999999999999,
+      "theme_id": "1d5a210d-6dfb-5d9f-8f78-98a1d28d8094",
+      "theme_label": "Failure to address explainability could lead to regulatory challenges under the EU AI Act.",
+      "evidence_density": 0.21999999472602738,
+      "supporting_claims": [
+        "9478ae13-d39c-4416-b978-5de0b97fc1eb",
+        "ca6b14f0-102e-4dae-ac45-701c8b60ad6c"
+      ],
+      "supporting_lenses": [
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    },
+    {
+      "strength": 0.55,
+      "theme_id": "4758fbf4-979c-5915-bfb1-8414d5774141",
+      "theme_label": "The success of the shadow mode pilot may depend on addressing compliance concerns.",
+      "evidence_density": 0.16499999604452054,
+      "supporting_claims": [
+        "677d977c-3ae7-4834-8b02-b7e9237ddda4",
+        "b5c6a19b-4988-4351-8a8e-5e2266992b35"
+      ],
+      "supporting_lenses": [
+        "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    },
+    {
+      "strength": 0.7666666666666666,
+      "theme_id": "8e4d4f4d-994f-5fe2-a94a-d885dc19d0bb",
+      "theme_label": "The compliance team has concerns about explainability requirements under the EU AI Act.",
+      "evidence_density": 0.32999999208904107,
+      "supporting_claims": [
+        "85b7d547-e6de-4adf-8536-68868e0db607",
+        "99d52c75-89cd-446e-8269-343e9807109a",
+        "b9d53621-4161-4a4c-94f3-47db74321c98"
+      ],
+      "supporting_lenses": [
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    }
+  ],
+  "divergence_points": [],
+  "orphan_claims": [
+    "9d81eba6-425e-4c08-8d5e-ee76c0e79d75",
+    "e0973393-caa2-4a75-8e61-3614e3bd9610",
+    "ce2b2cf1-a55b-4596-8208-9c04fd969ed9",
+    "9c1e11ef-48b2-485e-9361-60941bb7019a",
+    "0b43fb2b-16de-480e-9349-2bf4fd52af0f",
+    "fdee4356-b010-4fd6-a9cd-e14ca39a48d9",
+    "5fab7649-cf0f-4276-b77d-de6dc243107e",
+    "7325b348-39fd-4e9a-ab4a-1a84734e35c5",
+    "5c917458-3f32-49df-b96f-3f24a134e7e6",
+    "e08a9ef3-9bc9-45fc-bb11-b611a5d4ca69",
+    "98ee91ed-5991-4091-8ac5-1e7460499cab",
+    "d40026f7-9702-43e7-906e-731452551779",
+    "660126c4-a840-4436-970b-fce49ccb284f",
+    "3bc33a95-880f-487d-926f-e97dbc9c0c5f",
+    "4027a798-b5c8-4ce4-b8a3-520b557f0184"
+  ]
+}

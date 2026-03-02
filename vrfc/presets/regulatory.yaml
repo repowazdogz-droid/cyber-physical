@@ -1,0 +1,25 @@
+{
+  "risk_classes": {
+    "I":   { "min_studies": 1, "min_patients": 20 },
+    "IIa": { "min_studies": 2, "min_patients": 50 },
+    "IIb": { "min_studies": 3, "min_patients": 100 },
+    "III": { "min_studies": 4, "min_patients": 200 }
+  },
+  "jurisdictions": {
+    "UK": {
+      "agency": "MHRA",
+      "notes": "Post-Brexit UKCA / CE combination space"
+    },
+    "EU": {
+      "agency": "Notified Body",
+      "notes": "MDR environment"
+    },
+    "US": {
+      "agency": "FDA",
+      "notes": "510(k) / De Novo / PMA"
+    }
+  }
+}
+
+
+

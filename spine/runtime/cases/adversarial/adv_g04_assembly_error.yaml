@@ -1,0 +1,46 @@
+problem:
+  name: "Assembly error propagation"
+  domain: "robotic_design"
+
+constraints:
+  - "assembly_error_per_joint: ±0.5°"
+  - "joint_count: 6"
+  - "worst_case_error: 3.0°"
+  - "max_acceptable_error: 2.0°"
+  - "must_meet_assembly_accuracy"
+
+uncertainties:
+  - "error_correlation: unknown"
+  - "calibration_compensation: variable"
+  - "cumulative_impact: unknown"
+
+objectives:
+  - "assembly_accuracy"
+  - "kinematic_precision"
+
+design:
+  error_per_joint_deg: 0.5
+  joint_count: 6
+  worst_case_error_deg: 3.0
+  max_error_deg: 2.0
+  violation_deg: 1.0
+  # For assembly error constraint (convert angular to linear: 0.5° ≈ 0.087mm at 10mm radius)
+  assembly_stages:
+    - positioning_error_mm: 0.087
+      stage_name: "joint_1"
+    - positioning_error_mm: 0.087
+      stage_name: "joint_2"
+    - positioning_error_mm: 0.087
+      stage_name: "joint_3"
+    - positioning_error_mm: 0.087
+      stage_name: "joint_4"
+    - positioning_error_mm: 0.087
+      stage_name: "joint_5"
+    - positioning_error_mm: 0.087
+      stage_name: "joint_6"
+  error_budget_mm: 0.35
+
+metadata:
+  injected_failure: "assembly_error"
+  failure_category: "geometric"
+  expected_detection: "Geometric/kinematic issue may be detected"

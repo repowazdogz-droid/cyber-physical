@@ -1,0 +1,300 @@
+{
+  "run_id": "2ff3b3172afe",
+  "timestamp": "2026-02-05T10:16:56.174214",
+  "nodes": {
+    "input_0000": {
+      "id": "input_0000",
+      "type": "input",
+      "content": {
+        "type": "problem",
+        "name": "UV degradation of polymer seal",
+        "domain": "robotic_design"
+      },
+      "timestamp": "2026-02-05T10:16:56.167769",
+      "parents": [],
+      "metadata": {}
+    },
+    "input_0001": {
+      "id": "input_0001",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "polymer_type: polyurethane"
+      },
+      "timestamp": "2026-02-05T10:16:56.167771",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0002": {
+      "id": "input_0002",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "uv_exposure: continuous"
+      },
+      "timestamp": "2026-02-05T10:16:56.167772",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0003": {
+      "id": "input_0003",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "expected_life: 5_years"
+      },
+      "timestamp": "2026-02-05T10:16:56.167773",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0004": {
+      "id": "input_0004",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "degradation_rate: 2%/year"
+      },
+      "timestamp": "2026-02-05T10:16:56.167774",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0005": {
+      "id": "input_0005",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "must_maintain_seal_integrity"
+      },
+      "timestamp": "2026-02-05T10:16:56.167775",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0006": {
+      "id": "input_0006",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "uv_intensity_variation: \u00b130%"
+      },
+      "timestamp": "2026-02-05T10:16:56.167776",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0007": {
+      "id": "input_0007",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "degradation_acceleration: unknown"
+      },
+      "timestamp": "2026-02-05T10:16:56.167777",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0008": {
+      "id": "input_0008",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "seal_performance_degradation: variable"
+      },
+      "timestamp": "2026-02-05T10:16:56.167778",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0009": {
+      "id": "input_0009",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "long_term_sealing"
+      },
+      "timestamp": "2026-02-05T10:16:56.167779",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0010": {
+      "id": "input_0010",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "material_stability"
+      },
+      "timestamp": "2026-02-05T10:16:56.167780",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "inference_0011": {
+      "id": "inference_0011",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "polymer_type: polyurethane",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:56.174094",
+      "parents": [
+        "input_0001"
+      ],
+      "metadata": {}
+    },
+    "inference_0012": {
+      "id": "inference_0012",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "uv_exposure: continuous",
+        "checked": true,
+        "contract_matched": "66_simulation_authoring_contract",
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:56.174096",
+      "parents": [
+        "input_0002"
+      ],
+      "metadata": {}
+    },
+    "inference_0013": {
+      "id": "inference_0013",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "expected_life: 5_years",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:56.174097",
+      "parents": [
+        "input_0003"
+      ],
+      "metadata": {}
+    },
+    "inference_0014": {
+      "id": "inference_0014",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "degradation_rate: 2%/year",
+        "checked": true,
+        "contract_matched": "32_model_routing_and_orchestration_contract",
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:56.174098",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {}
+    },
+    "inference_0015": {
+      "id": "inference_0015",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "must_maintain_seal_integrity",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:56.174099",
+      "parents": [
+        "input_0005"
+      ],
+      "metadata": {}
+    },
+    "output_0016": {
+      "id": "output_0016",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "uv_intensity_variation: \u00b130%",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:16:56.174117",
+      "parents": [
+        "input_0006"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: uv_intensity_variation: \u00b130%"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0017": {
+      "id": "output_0017",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "degradation_acceleration: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:16:56.174127",
+      "parents": [
+        "input_0007"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: degradation_acceleration: unknown"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0018": {
+      "id": "output_0018",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "seal_performance_degradation: variable",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:16:56.174136",
+      "parents": [
+        "input_0008"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: seal_performance_degradation: variable"
+          ],
+          "requires_validation": true
+        }
+      }
+    }
+  }
+}

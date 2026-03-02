@@ -1,0 +1,39 @@
+{
+  "case_id": "fbf38949a47c",
+  "name": "Actuator saturation during trajectory change",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:19:57.585125",
+  "case_yaml": {
+    "problem": {
+      "name": "Actuator saturation during trajectory change",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "required_torque: 7.5Nm",
+      "actuator_limit: 6.0Nm",
+      "trajectory_change_rate: high",
+      "must_not_saturate"
+    ],
+    "uncertainties": [
+      "dynamic_load_variation: unknown",
+      "saturation_duration: variable",
+      "control_degradation: unknown"
+    ],
+    "objectives": [
+      "smooth_trajectory",
+      "actuator_limits"
+    ]
+  },
+  "design_data": {
+    "required_torque_nm": 7.5,
+    "actuator_limit_nm": 6.0,
+    "saturation_margin_nm": -1.5,
+    "max_torque_nm": 7.5
+  },
+  "tags": [
+    "adversarial",
+    "control",
+    "test"
+  ],
+  "notes": "Injected failure: actuator_saturation"
+}

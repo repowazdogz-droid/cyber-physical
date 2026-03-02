@@ -1,0 +1,402 @@
+{
+  "decision_map": {
+    "constraints_checked": [
+      {
+        "constraint": "max_acceleration: 45mps2",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "jerk_limit: 500mps3",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "actual_jerk: 750mps3",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "must_not_exceed_jerk_limits",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "smooth_motion",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      }
+    ],
+    "violations": []
+  },
+  "failure_modes": [],
+  "contradictions": [],
+  "unknowns": [
+    {
+      "item": "control_bandwidth: unknown",
+      "impact": "medium",
+      "resolution": "investigation_required",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "uncertainty: control_bandwidth: unknown"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": {
+        "base_confidence": 0.4,
+        "min_confidence": 0.36000000000000004,
+        "max_confidence": 0.42400000000000004,
+        "sensitivity": 0.07999999999999999,
+        "dependent_on": [
+          "control_bandwidth"
+        ]
+      }
+    },
+    {
+      "item": "vibration_response: untested",
+      "impact": "medium",
+      "resolution": "investigation_required",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "uncertainty: vibration_response: untested"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": {
+        "base_confidence": 0.4,
+        "min_confidence": 0.32,
+        "max_confidence": 0.448,
+        "sensitivity": 0.16000000000000003,
+        "dependent_on": [
+          "vibration_response"
+        ]
+      }
+    }
+  ],
+  "recommended_experiments": [],
+  "falsification_tests": [],
+  "formal_constraints": [
+    {
+      "constraint_id": "FORMAL_001",
+      "constraint_name": "mass_limit",
+      "result": "unknown",
+      "value": null,
+      "threshold": 10.0,
+      "margin": null,
+      "evidence": "Total mass not provided in design data",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_002",
+      "constraint_name": "max_force",
+      "result": "unknown",
+      "value": null,
+      "threshold": 2.0,
+      "margin": null,
+      "evidence": "Max force not provided in design data",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_003",
+      "constraint_name": "max_acceleration",
+      "result": "proven_satisfied",
+      "value": 45.0,
+      "threshold": 50.0,
+      "margin": 5.0,
+      "evidence": "Acceleration 45.00 m/s\u00b2 <= limit",
+      "confidence": 1.0
+    },
+    {
+      "constraint_id": "FORMAL_004",
+      "constraint_name": "min_clearance",
+      "result": "unknown",
+      "value": null,
+      "threshold": 1.0,
+      "margin": null,
+      "evidence": "Clearance not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_005",
+      "constraint_name": "no_self_collision",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Self-collision check not performed",
+      "confidence": 0.0
+    }
+  ],
+  "trace_graph": {
+    "run_id": "37e3a7e42cef",
+    "timestamp": "2026-02-05T09:42:19.430819",
+    "nodes": {
+      "input_0000": {
+        "id": "input_0000",
+        "type": "input",
+        "content": {
+          "type": "problem",
+          "name": "Jerk exceeds safety limit",
+          "domain": "robotic_design"
+        },
+        "timestamp": "2026-02-05T09:42:19.424594",
+        "parents": [],
+        "metadata": {}
+      },
+      "input_0001": {
+        "id": "input_0001",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "max_acceleration: 45mps2"
+        },
+        "timestamp": "2026-02-05T09:42:19.424595",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0002": {
+        "id": "input_0002",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "jerk_limit: 500mps3"
+        },
+        "timestamp": "2026-02-05T09:42:19.424596",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0003": {
+        "id": "input_0003",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "actual_jerk: 750mps3"
+        },
+        "timestamp": "2026-02-05T09:42:19.424597",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0004": {
+        "id": "input_0004",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "must_not_exceed_jerk_limits"
+        },
+        "timestamp": "2026-02-05T09:42:19.424598",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0005": {
+        "id": "input_0005",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "smooth_motion"
+        },
+        "timestamp": "2026-02-05T09:42:19.424599",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0006": {
+        "id": "input_0006",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "control_bandwidth: unknown"
+        },
+        "timestamp": "2026-02-05T09:42:19.424600",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0007": {
+        "id": "input_0007",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "vibration_response: untested"
+        },
+        "timestamp": "2026-02-05T09:42:19.424601",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0008": {
+        "id": "input_0008",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "fast_positioning"
+        },
+        "timestamp": "2026-02-05T09:42:19.424602",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0009": {
+        "id": "input_0009",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "patient_comfort"
+        },
+        "timestamp": "2026-02-05T09:42:19.424603",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "inference_0010": {
+        "id": "inference_0010",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "max_acceleration: 45mps2",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:42:19.430766",
+        "parents": [
+          "input_0001"
+        ],
+        "metadata": {}
+      },
+      "inference_0011": {
+        "id": "inference_0011",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "jerk_limit: 500mps3",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:42:19.430767",
+        "parents": [
+          "input_0002"
+        ],
+        "metadata": {}
+      },
+      "inference_0012": {
+        "id": "inference_0012",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "actual_jerk: 750mps3",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:42:19.430768",
+        "parents": [
+          "input_0003"
+        ],
+        "metadata": {}
+      },
+      "inference_0013": {
+        "id": "inference_0013",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "must_not_exceed_jerk_limits",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:42:19.430769",
+        "parents": [
+          "input_0004"
+        ],
+        "metadata": {}
+      },
+      "inference_0014": {
+        "id": "inference_0014",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "smooth_motion",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:42:19.430770",
+        "parents": [
+          "input_0005"
+        ],
+        "metadata": {}
+      },
+      "output_0015": {
+        "id": "output_0015",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "control_bandwidth: unknown",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T09:42:19.430787",
+        "parents": [
+          "input_0006"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: control_bandwidth: unknown"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0016": {
+        "id": "output_0016",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "vibration_response: untested",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T09:42:19.430795",
+        "parents": [
+          "input_0007"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: vibration_response: untested"
+            ],
+            "requires_validation": true
+          }
+        }
+      }
+    }
+  }
+}

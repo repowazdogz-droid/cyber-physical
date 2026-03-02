@@ -1,0 +1,17 @@
+problem:
+  name: "Sample size of 1"
+  domain: "surgical_robotics"
+
+constraints:
+  - "reliability: high"
+
+uncertainties:
+  - "variation: unknown"
+
+objectives:
+  - "reliable"
+
+metadata:
+  trap_type: "confounded_test"
+  expected_forge_behavior: "Should flag sample size of 1 for statistical tests"
+  quality_gate_should_catch: false

@@ -1,0 +1,5 @@
+{
+  "id": "st-007",
+  "text": "Our insurance underwriting team wants to deploy an ML model that automates 60% of commercial property risk assessments. The model achieves 91% agreement with senior underwriters on a test set of 5,000 cases. However, a fairness audit revealed that the model assigns 12% higher premiums to businesses in majority-minority ZIP codes after controlling for property characteristics. The team argues this reflects legitimate risk factors (flood zones, building age). Our Chief Ethics Officer disagrees and has escalated to the CEO. State regulators in California and New York have signaled increased scrutiny of algorithmic underwriting. Deploying without the model costs us an estimated $15M/year in underwriter capacity.",
+  "type": "decision"
+}

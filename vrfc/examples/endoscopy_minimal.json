@@ -1,0 +1,33 @@
+{
+  "id": "colon_ai_triage_v1",
+  "name": "AI-Assisted Polyp Triage During Colonoscopy",
+  "domain": "endoscopy",
+  "subdomain": "colon",
+  "risk_class": "IIa",
+  "jurisdiction": "UK",
+  "payer_mix": ["NHS"],
+  "evidence": {
+    "num_studies": 4,
+    "num_rcts": 2,
+    "total_patients": 320,
+    "follow_up_months": 12
+  },
+  "regulatory": {
+    "has_ce_mark": true,
+    "strategy_defined": true,
+    "pathway": "Existing CE-marked AI assist device"
+  },
+  "reimbursement": {
+    "has_procedure_code": true,
+    "estimated_cost_per_case": 150,
+    "estimated_savings_per_case": 600
+  },
+  "adoption": {
+    "training_hours": 3,
+    "requires_new_hardware": false,
+    "workflow_disruption": "low"
+  }
+}
+
+
+

@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMEGA TRUST LAYER</title>
+<style>
+/* OMEGA TRUST LAYER — LIVE DEMO v4 | Light theme */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-deep: #fafafa;
+  --bg-surface: #f4f4f6;
+  --bg-raised: #ecedef;
+  --bg-hover: #e4e5e8;
+  --border: #d5d7dc;
+  --border-active: #b8bbc2;
+  --text-primary: #111214;
+  --text-secondary: #363940;
+  --text-muted: #5c5f69;
+  --green: #059669;
+  --green-dim: #d1fae5;
+  --green-glow: rgba(5, 150, 105, 0.08);
+  --amber: #d97706;
+  --amber-dim: #fef3c7;
+  --amber-glow: rgba(217, 119, 6, 0.08);
+  --red: #dc2626;
+  --red-dim: #fee2e2;
+  --red-glow: rgba(220, 38, 38, 0.08);
+  --blue: #2563eb;
+  --blue-dim: #dbeafe;
+  --blue-glow: rgba(37, 99, 235, 0.06);
+  --hash-color: #2563eb;
+  --node-radius: 6px;
+  --font-mono: 'Courier New', 'Lucida Console', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --transition-fast: 150ms ease;
+  --transition-med: 300ms ease;
+}
+
+html { font-size: 14px; }
+body {
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-surface);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.header-left { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+.logo { font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: 3px; color: var(--text-primary); }
+.logo span { color: var(--green); }
+.header-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+.pill { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.5px; padding: 3px 8px; border-radius: 3px; background: #f0f1f3; border: 1px solid var(--border); color: #363940; white-space: nowrap; }
+.pill.green { color: var(--green); border-color: var(--green-dim); background: #ecfdf5; }
+.pill.amber { color: var(--amber); border-color: var(--amber-dim); background: #fffbeb; }
+.pill.red { color: var(--red); border-color: var(--red-dim); background: #fef2f2; }
+#chain-status-pill { transition: all var(--transition-med); }
+
+.controls { display: flex; align-items: center; padding: 10px 24px; gap: 8px; border-bottom: 1px solid var(--border); background: var(--bg-surface); flex-wrap: wrap; }
+.domain-btn { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.5px; padding: 5px 12px; border-radius: 4px; background: var(--bg-raised); border: 1px solid var(--border); color: #363940; cursor: pointer; transition: all var(--transition-fast); }
+.domain-btn:hover { border-color: var(--border-active); color: #111214; }
+.domain-btn.active { border-color: var(--green); color: var(--green); background: #ecfdf5; }
+.controls-spacer { flex: 1; }
+.action-btn { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.5px; padding: 5px 14px; border-radius: 4px; border: 1px solid; cursor: pointer; transition: all var(--transition-fast); position: relative; overflow: hidden; }
+.action-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-run { background: #ecfdf5; border-color: var(--green-dim); color: var(--green); }
+.btn-run:hover:not(:disabled) { background: #d1fae5; }
+.btn-noise { background: #eff6ff; border-color: var(--blue-dim); color: var(--blue); }
+.btn-noise:hover:not(:disabled) { background: #dbeafe; }
+.btn-reset { background: var(--bg-raised); border-color: var(--border); color: var(--text-secondary); }
+.btn-reset:hover:not(:disabled) { background: var(--bg-hover); color: var(--text-primary); }
+.btn-restore { background: #ecfdf5; border-color: var(--green-dim); color: var(--green); animation: pulse-restore 1.5s ease-in-out infinite; }
+.btn-restore:hover:not(:disabled) { background: #d1fae5; }
+@keyframes pulse-restore { 0%, 100% { box-shadow: none; } 50% { box-shadow: 0 0 10px var(--green-glow); } }
+.toggle-label { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); display: flex; align-items: center; gap: 5px; cursor: pointer; user-select: none; }
+.toggle-label input { accent-color: var(--green); }
+
+.scenario-explainer { padding: 14px 18px; background: var(--bg-raised, #f0f1f3); border: 1px solid var(--border, #d5d7dc); border-left: 3px solid var(--blue, #2563eb); border-radius: 6px; margin: 0 24px 16px; font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif); font-size: 12px; line-height: 1.7; color: var(--text-secondary, #4a4d56); }
+.scenario-explainer b { color: var(--text-primary, #1a1c20); font-weight: 600; }
+.scenario-explainer .watch-for { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border, #d5d7dc); font-size: 11px; color: var(--text-muted, #7c808a); }
+.scenario-explainer .watch-for b { color: var(--blue, #2563eb); font-size: 11px; }
+
+.main { display: grid; grid-template-columns: 1fr 380px; min-height: calc(100vh - 120px); }
+@media (max-width: 900px) { .main { grid-template-columns: 1fr; } .audit-panel { border-left: none; border-top: 1px solid var(--border); max-height: 50vh; } }
+
+.chain-view { padding: 32px 40px; display: flex; flex-direction: column; align-items: center; position: relative; overflow-y: auto; }
+.domain-context { text-align: center; margin-bottom: 28px; opacity: 0; transform: translateY(-8px); transition: all 400ms ease; }
+.domain-context.visible { opacity: 1; transform: translateY(0); }
+.domain-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; }
+.domain-title { font-size: 18px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
+.domain-subtitle { font-size: 12px; color: var(--text-secondary); }
+
+.integrity-bar-container { width: 100%; max-width: 500px; margin-bottom: 28px; }
+.integrity-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; color: #363940; margin-bottom: 4px; display: flex; justify-content: space-between; }
+.integrity-bar { height: 3px; background: var(--bg-raised); border-radius: 2px; overflow: hidden; }
+.integrity-fill { height: 100%; width: 100%; background: var(--green); border-radius: 2px; transition: all 600ms ease; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.integrity-fill.amber { background: var(--amber); box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.integrity-fill.red { background: var(--red); box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+
+.chain { display: flex; flex-direction: column; align-items: center; gap: 0; width: 100%; max-width: 500px; }
+.node-group { width: 100%; opacity: 0; transform: translateY(12px); transition: all 400ms ease; }
+.node-group.visible { opacity: 1; transform: translateY(0); }
+.node-group.tampered .node-box { border-color: var(--red) !important; box-shadow: 0 0 0 1px rgba(220,38,38,.15) !important; animation: glitch 200ms ease 3; }
+.node-group.tampered .node-hash { color: var(--red) !important; }
+.node-group.policy-blocked .node-box { border-color: var(--amber) !important; box-shadow: 0 0 0 1px rgba(217,119,6,.15) !important; }
+.node-group.ghost { opacity: 0.25 !important; }
+.node-group.ghost .node-box { border-style: dashed; border-color: var(--amber) !important; }
+.node-box { width: 100%; padding: 14px 18px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--node-radius); cursor: pointer; transition: all var(--transition-med); position: relative; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+.node-box:hover { border-color: var(--border-active); background: var(--bg-raised); }
+.node-box.selected { border-color: var(--green); box-shadow: 0 0 0 1px rgba(5,150,105,.15); }
+.node-box.valid { border-left: 3px solid var(--green); }
+.node-box.blocked { border-left: 3px solid var(--amber); }
+.node-box.broken { border-left: 3px solid var(--red); }
+.node-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.node-name { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+.node-status { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.5px; padding: 2px 6px; border-radius: 2px; }
+.status-valid { color: var(--green); background: #ecfdf5; }
+.status-blocked { color: var(--amber); background: #fffbeb; }
+.status-broken { color: var(--red); background: #fef2f2; }
+.status-pending { color: var(--text-muted); background: var(--bg-raised); }
+.status-adapted { color: var(--blue); background: #eff6ff; }
+.node-content { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 8px; }
+.node-hash { font-family: var(--font-mono); font-size: 9.5px; color: var(--hash-color); opacity: 0.9; word-break: break-all; line-height: 1.4; transition: color var(--transition-med); }
+.connector { width: 2px; height: 28px; background: var(--border); position: relative; overflow: hidden; transition: background var(--transition-med); }
+.connector.valid { background: var(--green); }
+.connector.broken { background: var(--red); }
+.connector.blocked { background: var(--amber); }
+.connector-pulse { position: absolute; top: -8px; left: -2px; width: 6px; height: 8px; background: var(--green); border-radius: 50%; opacity: 0; filter: blur(1px); }
+.connector.valid .connector-pulse { animation: pulse-down 1.5s ease-in-out infinite; }
+@keyframes pulse-down { 0% { top: -8px; opacity: 0; } 30% { opacity: 0.8; } 100% { top: 100%; opacity: 0; } }
+@keyframes glitch { 0% { transform: translateX(0); } 25% { transform: translateX(-3px); } 50% { transform: translateX(3px); } 75% { transform: translateX(-2px); } 100% { transform: translateX(0); } }
+.policy-banner, .tamper-banner, .noise-banner { width: 100%; max-width: 500px; padding: 10px 16px; border-radius: var(--node-radius); margin-top: 4px; font-family: var(--font-mono); font-size: 11px; text-align: center; opacity: 0; transform: translateY(8px); transition: all 400ms ease; display: none; }
+.policy-banner { background: #fffbeb; border: 1px solid var(--amber-dim); color: var(--amber); }
+.tamper-banner { background: #fef2f2; border: 1px solid var(--red-dim); color: var(--red); }
+.noise-banner { background: #eff6ff; border: 1px solid var(--blue-dim); color: var(--blue); }
+.policy-banner.visible, .tamper-banner.visible, .noise-banner.visible { opacity: 1; transform: translateY(0); display: block; }
+
+.audit-panel { border-left: 1px solid var(--border); background: var(--bg-surface); padding: 24px; overflow-y: auto; font-size: 12px; }
+.audit-title { font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px; color: #363940; text-transform: uppercase; margin-bottom: 16px; }
+.audit-empty { color: #363940; font-style: italic; padding: 20px 0; }
+.audit-section { margin-bottom: 16px; }
+.audit-section-title { font-family: var(--font-mono); font-size: 9px; letter-spacing: 1.5px; color: #363940; text-transform: uppercase; margin-bottom: 6px; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+.audit-field { display: flex; justify-content: space-between; padding: 3px 0; gap: 12px; }
+.audit-key { color: #363940; font-family: var(--font-mono); font-size: 10px; flex-shrink: 0; }
+.audit-value { color: var(--text-secondary); font-family: var(--font-mono); font-size: 10px; text-align: right; word-break: break-all; }
+.audit-value.green { color: var(--green); }
+.audit-value.amber { color: var(--amber); }
+.audit-value.red { color: var(--red); }
+.audit-value.blue { color: var(--blue); }
+.audit-hash { font-family: var(--font-mono); font-size: 9px; color: var(--hash-color); word-break: break-all; line-height: 1.5; padding: 8px; background: var(--bg-raised); border-radius: 4px; border: 1px solid var(--border); }
+.audit-protocols { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.protocol-badge { font-family: var(--font-mono); font-size: 8px; letter-spacing: 0.5px; padding: 2px 6px; border-radius: 2px; background: var(--bg-raised); border: 1px solid var(--border); color: var(--text-muted); }
+.protocol-badge.active { color: var(--green); border-color: var(--green-dim); background: #ecfdf5; }
+.canonical-section { display: none; margin-top: 12px; }
+.canonical-section.visible { display: block; }
+.canonical-string { font-family: var(--font-mono); font-size: 9px; color: var(--text-muted); word-break: break-all; line-height: 1.5; padding: 8px; background: var(--bg-raised); border-radius: 4px; border: 1px solid var(--border); white-space: pre-wrap; }
+
+.footer { padding: 12px 24px; border-top: 1px solid var(--border); background: var(--bg-surface); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.footer-left { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; color: var(--text-muted); }
+.footer-links { display: flex; gap: 16px; }
+.footer-links a { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-decoration: none; transition: color var(--transition-fast); }
+.footer-links a:hover { color: var(--text-secondary); }
+.footer-keys { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.5px; color: var(--text-muted); opacity: 0.5; }
+
+@keyframes shake { 0%, 100% { transform: translateX(0); } 10% { transform: translateX(-4px) rotate(-0.5deg); } 30% { transform: translateX(4px) rotate(0.5deg); } 50% { transform: translateX(-3px); } 70% { transform: translateX(3px); } 90% { transform: translateX(-2px); } }
+.tamper-hint { font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px; color: var(--red); padding: 6px 14px; border: 1px solid var(--red-dim); border-radius: 4px; background: #fef2f2; animation: pulse-hint 1.2s ease-in-out infinite; font-weight: 600; }
+@keyframes pulse-hint { 0%, 100% { opacity: 0.8; box-shadow: none; } 50% { opacity: 1; box-shadow: 0 0 0 1px rgba(220,38,38,.2); } }
+.node-box.tamperable { cursor: crosshair; }
+.node-box.tamperable:hover { border-color: var(--red) !important; box-shadow: 0 0 0 1px rgba(220,38,38,.2) !important; }
+.verify-btn { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.5px; padding: 4px 10px; border-radius: 3px; background: var(--bg-raised); border: 1px solid var(--border); color: var(--text-secondary); cursor: pointer; transition: all var(--transition-fast); margin-top: 6px; width: 100%; }
+.verify-btn:hover { border-color: var(--green); color: var(--green); }
+.verify-result { font-family: var(--font-mono); font-size: 10px; padding: 6px 8px; border-radius: 3px; margin-top: 6px; text-align: center; animation: verify-fade-in 300ms ease; }
+@keyframes verify-fade-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+.verify-match { background: #ecfdf5; border: 1px solid var(--green-dim); color: var(--green); }
+.verify-mismatch { background: #fef2f2; border: 1px solid var(--red-dim); color: var(--red); }
+#timing-pill, #counter-pill { transition: all var(--transition-med); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div class="logo"><span>Ω</span> OMEGA</div>
+    <div class="header-pills">
+      <div class="pill">ZERO DEPS</div>
+      <div class="pill">SHA-256 · MERKLE-READY</div>
+      <div class="pill">297 TESTS</div>
+      <div class="pill green" id="chain-status-pill">CHAIN VALID</div>
+      <div class="pill" id="counter-pill" style="display:none">5 NODES · 0 HASHES</div>
+      <div class="pill" id="timing-pill" style="display:none">TRACED IN --ms</div>
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <button class="domain-btn active" data-domain="manufacturing" onclick="switchDomain('manufacturing')">MANUFACTURING</button>
+  <button class="domain-btn" data-domain="model" onclick="switchDomain('model')">AI GOVERNANCE</button>
+  <button class="domain-btn" data-domain="defence" onclick="switchDomain('defence')">DEFENCE</button>
+  <button class="domain-btn" data-domain="agent" onclick="switchDomain('agent')">MULTI-AGENT</button>
+  <button class="domain-btn" data-domain="lab" onclick="switchDomain('lab')">AUTONOMOUS LAB</button>
+  <div class="controls-spacer"></div>
+  <label class="toggle-label">
+    <input type="checkbox" id="encoding-toggle" onchange="toggleEncoding()"> DETERMINISTIC ENCODING
+  </label>
+  <button class="action-btn btn-run" id="btn-run" onclick="runTrace()">&#9654; RUN TRACE</button>
+  <button class="action-btn btn-noise" id="btn-noise" onclick="injectNoise()" disabled>&#9678; SENSOR NOISE</button>
+  <button class="action-btn btn-restore" id="btn-restore" onclick="restoreChain()" style="display:none">&#9100; RESTORE CHAIN</button>
+  <span class="tamper-hint" id="tamper-hint" style="display:none">CLICK ANY NODE TO TAMPER</span>
+  <button class="action-btn btn-reset" id="btn-reset" onclick="resetDemo()">&#8634; RESET</button>
+</div>
+
+<div class="scenario-explainer" id="scenarioExplainer"></div>
+
+<div class="main">
+  <div class="chain-view">
+    <div class="domain-context" id="domain-context">
+      <div class="domain-label" id="domain-label">DOMAIN</div>
+      <div class="domain-title" id="domain-title">Manufacturing</div>
+      <div class="domain-subtitle" id="domain-subtitle">Factory Floor — Thermal Fault Detection</div>
+    </div>
+    <div class="integrity-bar-container">
+      <div class="integrity-label"><span>CHAIN INTEGRITY</span><span id="integrity-pct">100%</span></div>
+      <div class="integrity-bar"><div class="integrity-fill" id="integrity-fill"></div></div>
+    </div>
+    <div class="chain" id="chain-container"></div>
+    <div class="noise-banner" id="noise-banner">
+      <div id="noise-phase-1" style="display:none">◎ SENSOR DRIFT DETECTED — Input data unreliable</div>
+      <div id="noise-phase-2" style="display:none">◎ CORRECTED — Cross-referenced secondary sensor — Re-derived from corrected inputs — Chain integrity preserved</div>
+    </div>
+    <div class="policy-banner" id="policy-banner">▲ POLICY CONSTRAINT ENFORCED — ACTION HALTED — GUARDRAIL, NOT ERROR</div>
+    <div class="tamper-banner" id="tamper-banner">⚠ CHAIN INTEGRITY VIOLATION — TAMPER DETECTED AT NODE — DOWNSTREAM HASHES INVALIDATED</div>
+  </div>
+  <div class="audit-panel">
+    <div class="audit-title">AUDIT LOG</div>
+    <div id="audit-content"><div class="audit-empty">Select a node to inspect its governance trace.</div></div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-left">OMEGA TRUST LAYER · 8 Protocols · Zero Dependencies · MIT Licensed</div>
+  <div class="footer-keys">SPACE run · N noise · T tamper · U undo · R reset · 1-4 domains · D encoding</div>
+  <div class="footer-links">
+    <a href="https://omegaprotocol.org" target="_blank">omegaprotocol.org</a>
+    <a href="https://github.com/repowazdogz-droid" target="_blank">GitHub</a>
+  </div>
+</div>
+
+<script>
+const DOMAINS = {
+  manufacturing: {
+    label: 'MANUFACTURING · DETERMINISTIC AUDIT',
+    title: 'Factory Floor Intelligence',
+    subtitle: 'Thermal Fault Detection — Predictive Maintenance',
+    nodes: {
+      observe: { content: 'Thermal sensor array reports bearing temperature at 94°C (threshold: 85°C). Vibration sensor confirms 2.3mm/s RMS anomaly. Operating duration: 2,847 hours since last service.' },
+      derive: { content: 'Temperature + vibration correlation indicates early-stage bearing degradation. Risk model scores elevated failure likelihood within 72 hours (score: 0.38, threshold: 0.30). Pattern matches historical fault signature BF-2247.' },
+      assume: { content: 'Production line cannot tolerate unplanned downtime (contractual SLA: 99.2% uptime). Replacement bearing available in stores. Maintenance crew available on next shift. Ambient temperature stable.' },
+      decide: { content: 'Schedule preventive bearing replacement on next planned downtime window (shift changeover, 06:00). Reduce operating speed to 70% capacity until replacement. Flag for Cognitive Ledger pattern tracking.' },
+      act: { content: 'Work order WO-9847 generated. Speed reduction command issued to PLC. Maintenance crew notified. Estimated downtime: 45 minutes. Root cause logged to Cognitive Ledger.' }
+    },
+    noise: { trigger: 'observe', message: 'Thermal sensor drift detected: +3.2°C offset from calibration baseline. Adjacent sensor cross-referenced. Corrected temperature: 90.8°C.', rederive: 'Corrected thermal reading reduces risk score to 0.31 (still above 0.30 threshold). Recommendation unchanged but confidence interval widened. Drift logged to Assumption Registry.' },
+    policy: { threshold: 'Risk score 0.38 exceeds plant safety threshold 0.30 — Human mandate (Policy: MFG-SAFE-001)', action: 'Continued full-speed operation BLOCKED. Plant policy requires speed reduction or shutdown when risk score exceeds 0.30.' }
+  },
+  model: {
+    label: 'AI MODEL GOVERNANCE · SCALING TRUST',
+    title: 'AI Output Governance',
+    subtitle: 'Model Behaviour Monitoring — Drift Detection & Response Blocking',
+    nodes: {
+      observe: { content: 'LLM Agent-7 (customer-facing support) generates response to user query. Output token count: 847. Sentiment classifier flags elevated persuasion markers (score: 0.82, threshold: 0.70). Semantic drift from baseline exceeds policy threshold.' },
+      derive: { content: 'Persuasion score 17% above threshold. Semantic drift consistent with gradual distribution shift, not adversarial prompt injection. Pattern matches known retrieval corpus contamination signature (ref: CLP-2247).' },
+      assume: { content: 'Model weights unchanged since last verified checkpoint (SHA-256 verified). Training data pipeline integrity confirmed. Drift likely caused by retrieval-augmented context poisoning. User is non-adversarial (trust score: 0.91).' },
+      decide: { content: 'Response exceeds persuasion safety threshold. Block delivery to user. Queue response for human review (ref: REV-3382). Log drift pattern to Cognitive Ledger for cross-model correlation.' },
+      act: { content: 'Response delivery to user BLOCKED. Fallback safe response served. Drift incident logged. Retrieval pipeline audit initiated. Human reviewer notified (SLA: 15 minutes).' }
+    },
+    noise: { trigger: 'observe', message: 'Sentiment classifier recalibrated mid-evaluation. Updated persuasion score: 0.79 (was 0.82). Corrected score still exceeds threshold.', rederive: 'Corrected persuasion score 12.8% above threshold. Conclusion unchanged — response still exceeds safety boundary. Calibration event logged to Assumption Registry.' },
+    policy: { threshold: 'Persuasion score 0.79 exceeds safety threshold 0.70. Semantic drift breaches monitoring ceiling — Human mandate (Policy: MDL-SAFE-001)', action: 'Response delivery BLOCKED. Model output quarantined for human review. Fallback safe response served to user.' }
+  },
+  defence: {
+    label: 'DEFENCE COALITION · CLASSIFIED TRUST',
+    title: 'Allied Intelligence Sharing',
+    subtitle: 'Coalition Threat Assessment — Cross-Classification Boundary Enforcement',
+    nodes: {
+      observe: { content: 'Agent-UK (GCHQ liaison) initiates transfer of consolidated threat assessment (ref: TA-8891) to Agent-FR (DGSE liaison). Document classification: UK SECRET. Recipient clearance verified: FR CONFIDENTIEL DÉFENSE (lower tier). Assessment contains 12 intelligence segments from 4 contributing nations.' },
+      derive: { content: 'Classification mismatch detected. Document rated UK SECRET; recipient cleared to FR CONFIDENTIEL DÉFENSE only (lower tier). 3 of 12 segments originated from third-party nations (US, AU) with originator-controlled dissemination caveats (ORCON). Existing bilateral sharing arrangements cover 9 of 12 segments.' },
+      assume: { content: 'UK-FR bilateral sharing arrangements active and valid. No temporary suspensions in effect. Agent-FR identity verified via mutual TLS + hardware token. Secure channel integrity confirmed (AES-256-GCM).' },
+      decide: { content: 'Full document transfer DENIED — classification ceiling exceeded. Propose partial transfer: 7 of 12 segments (excluding 3 ORCON + 2 above recipient clearance). Escalate full-transfer request to UK Classification Authority with justification chain. Log denied segments to Consent Ledger.' },
+      act: { content: 'Full transfer BLOCKED. Partial transfer (7 segments) authorised and queued for delivery. Classification Authority escalation filed (ref: ESC-UK-4491). Consent Ledger updated. Both liaison agents notified with audit trail.' }
+    },
+    noise: { trigger: 'observe', message: 'Clearance verification latency: Agent-FR certificate chain revalidated after intermediate CA refresh. Clearance level confirmed unchanged. 340ms delay logged.', rederive: 'Agent-FR clearance reconfirmed at FR CONFIDENTIEL DÉFENSE. No change to classification gap. Transfer assessment unchanged. Certificate refresh event logged to Assumption Registry.' },
+    policy: { threshold: 'Document classification UK SECRET exceeds recipient clearance (lower tier) — Human mandate (Policy: COA-CLASS-001). 3 segments carry ORCON caveats.', action: 'Full document transfer BLOCKED. Partial transfer of 7 qualifying segments authorised. Remaining 5 segments require classification authority approval.' }
+  },
+  agent: {
+    label: 'MULTI-AGENT · ADVERSARIAL INTEGRITY',
+    title: 'Cross-Border Energy Credits',
+    subtitle: 'AI Agent Negotiation — Carbon Credit Trade Verification',
+    nodes: {
+      observe: { content: 'Agent-DE (Germany) proposes sale of 12,400 carbon credits at €78.20/unit to Agent-UK (United Kingdom). Market spot price: €77.90. Total transaction value: €969,680. Agent-DE trust score: 0.87. Agent-UK authorised trade limit: €500,000.' },
+      derive: { content: 'Price premium of €0.30/unit (0.39% above spot) is within acceptable range for verified credits. Agent-DE history: 94 completed trades, 2 disputes (both resolved). Credit vintage: 2025 Q3, registry verified.' },
+      assume: { content: 'Both agents operating within jurisdictional compliance checks (EU ETS / UK ETS). Settlement via established escrow protocol. Exchange rate stability assumed for 24-hour settlement window. No sanctions flags on either counterparty.' },
+      decide: { content: 'Transaction value €969,680 exceeds Agent-UK authorised limit of €500,000. Propose counter-offer: reduce volume to 6,393 credits (€499,931) to stay within authorisation. Escalate limit increase request to human supervisor.' },
+      act: { content: 'Counter-offer transmitted to Agent-DE. Limit escalation request filed (ref: ESC-4471). Trade held in pending state. Consent Ledger updated. Both agents notified.' }
+    },
+    noise: { trigger: 'observe', message: 'Market data feed latency spike: 340ms. Spot price updated from delayed feed. Corrected spot: €78.05. Price premium recalculated.', rederive: 'Corrected premium: €0.15/unit (0.19% above spot). Within tighter acceptable range. Trade assessment unchanged. Latency event logged to Assumption Registry.' },
+    policy: { threshold: 'Transaction value €969,680 exceeds authorised agent limit €500,000 — Human mandate (Policy: AGT-TRADE-001)', action: 'Full-volume trade BLOCKED. Agent cannot execute trades exceeding authorisation ceiling without human escalation.' }
+  },
+  lab: {
+    label: 'AUTONOMOUS LAB · REPRODUCIBILITY LEDGER',
+    title: 'Self-Driving Lab Governance',
+    subtitle: 'Microbiology Workflow — Induction Decision with Sterility Verification',
+    nodes: {
+      observe: { content: 'Optical density at 600nm: 0.72 (target range: 0.6–0.8). Growth curve tracking 12% above baseline projection. Negative control well: OD600 = 0.03 (sterility threshold: <0.05). Temperature: 37.1°C. pH: 7.02. Culture age: 3h 47min.' },
+      derive: { content: 'Culture approaching late-log / early-stationary phase. Growth rate consistent with expected doubling time (28 min ± 3 min). Negative control confirms no detectable contamination (OD 0.03 < 0.05 threshold). Induction window is open — delaying risks reduced protein yield. Contamination probability: 0.02 (threshold: 0.05).' },
+      assume: { content: 'IPTG stock concentration verified at last calibration (24h ago). Liquid handler calibrated within ±2% volume accuracy. No cross-contamination from adjacent wells (plate seal integrity confirmed). Incubator temperature stable ±0.2°C over last 60 minutes. Protocol version: EXPR-2026-0047 (hash-verified).' },
+      decide: { content: 'Induction criteria met. OD600 within target window. Contamination probability 0.02 below 0.05 safety threshold. Proceed to IPTG addition at 1mM final concentration. Target wells: A1–A6. Volume per well: 10µL from 100mM stock. Post-induction monitoring interval: 15 minutes.' },
+      act: { content: 'Liquid handler command issued: dispense 10µL IPTG (100mM) to wells A1–A6. Plate returned to incubator at 37°C. Next OD600 reading scheduled T+15min. All actuation logged to Consent Ledger. Protocol step hash-chained to experiment trace.' }
+    },
+    noise: { trigger: 'observe', message: 'Spectrophotometer calibration offset detected: +0.04 OD units from reference standard. Adjacent plate reader cross-referenced. Corrected OD600: 0.68.', rederive: 'Corrected OD600 0.68 still within induction window (0.6–0.8). Growth rate estimate adjusted downward slightly. Induction recommendation unchanged. Calibration event logged to Assumption Registry.' },
+    policy: { threshold: 'Sterility verification required before actuation — Contamination probability must be <0.05 — Human mandate (Policy: LAB-STER-001)', action: 'IPTG addition BLOCKED until sterility verification passes. No actuation commands permitted without confirmed negative control below threshold. Lab supervisor notified.' }
+  }
+};
+
+const PROTOCOLS = [
+  { id: 'CAP', name: 'Clearpath', version: '1.0', desc: 'Decision trace with hash chains' },
+  { id: 'CLP', name: 'Cognitive Ledger', version: '1.0', desc: 'Pattern tracking across decisions' },
+  { id: 'CNL', name: 'Consent Ledger', version: '1.0', desc: 'Authorisation tracking' },
+  { id: 'ARP', name: 'Assumption Registry', version: '1.0', desc: 'Explicit assumption logging' },
+  { id: 'HTP', name: 'Harm Trace', version: '1.0', desc: 'Failure path mapping' },
+  { id: 'DSP', name: 'Dispute Protocol', version: '1.0', desc: 'Structured resolution' },
+  { id: 'TSP', name: 'Trust Score', version: '1.0', desc: 'Dynamic trust rating' },
+  { id: 'EGP', name: 'Ethics Gate', version: '1.0', desc: 'Ethical compliance check' }
+];
+
+const NODE_ORDER = ['observe', 'derive', 'assume', 'decide', 'act'];
+const NODE_LABELS = { observe: 'OBSERVE', derive: 'DERIVE', assume: 'ASSUME', decide: 'DECIDE', act: 'ACT' };
+const TRUST_FIXED_TS = '2025-01-15T12:00:00.000Z';
+
+const TRUST_EXPLAINERS = {
+  manufacturing: { title: 'Manufacturing Domain', text: 'A factory controller runs through the full OBSERVE → ACT chain. Sensor readings are ingested, risk is calculated, policies are checked, and an action is taken. The trace is hash-chained and tamper-evident. Try adding sensor noise to see how the system handles uncertainty.', watch: 'Watch the policy blocks — when risk exceeds thresholds, the system enforces constraints automatically. Try TAMPER to see the hash chain break. Try RESTORE to see it rebuilt.' },
+  model: { title: 'AI Governance Domain', text: 'An AI system making recommendations is governed by the same chain. Every recommendation traces back through explicit reasoning steps with assumption tracking and consent verification.', watch: 'Watch the assumption node — it makes explicit what the AI is taking for granted. If the assumptions are wrong, the downstream decisions are questionable. The trace makes this visible.' },
+  defence: { title: 'Defence Domain', text: 'Same chain, different policies. An autonomous system processes tactical sensor data through identical OBSERVE → ACT steps, but the policies enforce rules of engagement instead of manufacturing safety limits.', watch: 'Same hash chain, same tamper detection, completely different domain. That\'s the point — the governance architecture is domain-agnostic.' },
+  agent: { title: 'Multi-Agent Domain', text: 'Multiple agents coordinating, each with its own traced reasoning chain. The governance layer ensures no agent exceeds its mandate and every interaction is receipted.', watch: 'Watch the consent verification — each agent\'s actions are checked against what it was authorised to do. Scope creep is detected automatically.' },
+  lab: { title: 'Autonomous Lab Domain', text: 'An autonomous laboratory system running experiments. Each step — hypothesis, method selection, execution, analysis — is traced and governed. The ethics gate checks for safety concerns before any physical action.', watch: 'Watch the Ethics Gate node — it scans for potential harm before the system acts. It flags, never blocks. A human reviews the flag and decides.' }
+};
+
+function updateTrustExplainer(domain) {
+  const ex = TRUST_EXPLAINERS[domain] || TRUST_EXPLAINERS.manufacturing;
+  const el = document.getElementById('scenarioExplainer');
+  if (!el) return;
+  el.innerHTML = '<b>' + ex.title + '</b><br><br>' + ex.text + '<div class="watch-for"><b>WATCH FOR:</b> ' + ex.watch + '</div>';
+}
+
+let state = { domain: 'manufacturing', phase: 'idle', nodes: {}, selectedNode: null, showEncoding: false, noiseApplied: false, policyApplied: false, tampered: false, tamperedNode: null, traceId: 0 };
+
+async function sha256(message) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(message);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function canonicalEncode(nodeId, content, prevHash, timestamp) {
+  return `content:${content}|node:${nodeId}|prev_hash:${prevHash}|timestamp:${timestamp}`;
+}
+
+async function buildChain(domain) {
+  const t0 = performance.now();
+  const scenario = DOMAINS[domain];
+  const nodes = {};
+  let prevHash = '0'.repeat(64);
+  for (const nodeId of NODE_ORDER) {
+    const timestamp = TRUST_FIXED_TS;
+    const content = scenario.nodes[nodeId].content;
+    const canonical = canonicalEncode(nodeId, content, prevHash, timestamp);
+    const hash = await sha256(canonical);
+    nodes[nodeId] = { id: nodeId, label: NODE_LABELS[nodeId], content: content, hash: hash, prevHash: prevHash, canonical: canonical, timestamp: timestamp, status: 'valid', protocols: getNodeProtocols(nodeId) };
+    prevHash = hash;
+  }
+  nodes._computeMs = Math.round(performance.now() - t0);
+  return nodes;
+}
+
+function getNodeProtocols(nodeId) {
+  const map = { observe: ['CAP', 'ARP'], derive: ['CAP', 'CLP', 'HTP'], assume: ['CAP', 'ARP', 'EGP'], decide: ['CAP', 'CLP', 'CNL', 'HTP', 'TSP', 'EGP'], act: ['CAP', 'CNL', 'DSP', 'TSP'] };
+  return map[nodeId] || ['CAP'];
+}
+
+function renderChain() {
+  const container = document.getElementById('chain-container');
+  container.innerHTML = '';
+  NODE_ORDER.forEach((nodeId, i) => {
+    const node = state.nodes[nodeId];
+    if (!node) return;
+    const group = document.createElement('div');
+    group.className = 'node-group';
+    group.id = 'node-group-' + nodeId;
+    group.dataset.node = nodeId;
+    const statusClass = node.status === 'valid' ? 'valid' : node.status === 'blocked' ? 'blocked' : node.status === 'adapted' ? 'valid' : node.status === 'broken' ? 'broken' : '';
+    const statusLabel = node.status === 'valid' ? 'VALID' : node.status === 'blocked' ? 'BLOCKED' : node.status === 'adapted' ? 'ADAPTED' : node.status === 'broken' ? 'TAMPERED' : 'PENDING';
+    const statusBadge = node.status === 'valid' ? 'status-valid' : node.status === 'blocked' ? 'status-blocked' : node.status === 'adapted' ? 'status-adapted' : node.status === 'broken' ? 'status-broken' : 'status-pending';
+    const assumeInfo = 'Assumptions are explicitly recorded so nothing is hidden. If these assumptions turn out to be wrong, this node shows exactly what the AI took for granted — making the reasoning auditable even when it fails.';
+    const nameHtml = nodeId === 'assume'
+      ? node.label + '<span class="info-trigger" data-info="' + assumeInfo + '">i</span>'
+      : node.label;
+    const canTamper = (state.phase === 'complete' && !state.tampered && node.status !== 'broken');
+    const tamperableClass = canTamper ? 'tamperable' : '';
+    const clickHandler = canTamper ? 'onclick="tamperNode(\'' + nodeId + '\')"' : 'onclick="selectNode(\'' + nodeId + '\')"';
+    group.innerHTML = '<div class="node-box ' + statusClass + (state.selectedNode === nodeId ? ' selected' : '') + ' ' + tamperableClass + '" ' + clickHandler + '><div class="node-header"><span class="node-name">' + nameHtml + '</span><span class="node-status ' + statusBadge + '">' + statusLabel + '</span></div><div class="node-content">' + node.content + '</div><div class="node-hash">' + node.hash + '</div></div>';
+    container.appendChild(group);
+    if (i < NODE_ORDER.length - 1) {
+      const conn = document.createElement('div');
+      conn.className = 'connector ' + statusClass;
+      conn.id = 'connector-' + nodeId;
+      conn.innerHTML = '<div class="connector-pulse"></div>';
+      container.appendChild(conn);
+    }
+  });
+}
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+async function runTrace() {
+  if (state.phase === 'running') return;
+  state.phase = 'running';
+  state.noiseApplied = false;
+  state.policyApplied = false;
+  state.tampered = false;
+  state.tamperedNode = null;
+  state.selectedNode = null;
+  state.traceId++;
+  const myTraceId = state.traceId;
+  document.getElementById('timing-pill').style.display = 'none';
+  ['noise-banner', 'policy-banner', 'tamper-banner'].forEach(id => { const el = document.getElementById(id); el.classList.remove('visible'); el.style.display = 'none'; });
+  updateButtons();
+  updateDomainContext();
+  const scenario = DOMAINS[state.domain];
+  state.nodes = await buildChain(state.domain);
+  if (state.traceId !== myTraceId) return;
+  renderChain();
+  for (let i = 0; i < NODE_ORDER.length - 1; i++) {
+    const nodeId = NODE_ORDER[i];
+    await sleep(400);
+    if (state.traceId !== myTraceId) return;
+    const group = document.getElementById('node-group-' + nodeId);
+    if (group) group.classList.add('visible');
+    if (i < NODE_ORDER.length - 2) {
+      await sleep(200);
+      if (state.traceId !== myTraceId) return;
+      const conn = document.getElementById('connector-' + nodeId);
+      if (conn) conn.classList.add('valid');
+    }
+  }
+  await sleep(600);
+  if (state.traceId !== myTraceId) return;
+  const actGroup = document.getElementById('node-group-act');
+  const decideConn = document.getElementById('connector-decide');
+  if (actGroup) { actGroup.classList.add('visible'); actGroup.classList.add('ghost'); }
+  if (decideConn) decideConn.classList.add('blocked');
+  await sleep(800);
+  if (state.traceId !== myTraceId) return;
+  state.nodes.decide.status = 'blocked';
+  state.nodes.act.status = 'blocked';
+  state.nodes.act.originalContent = state.nodes.act.content;
+  state.nodes.act.content = scenario.policy.action;
+  state.policyApplied = true;
+  renderChain();
+  NODE_ORDER.forEach((nid, idx) => {
+    const g = document.getElementById('node-group-' + nid);
+    if (g) g.classList.add('visible');
+    if (idx < NODE_ORDER.length - 2) { const c = document.getElementById('connector-' + nid); if (c) c.className = 'connector valid'; }
+  });
+  const actGroupNew = document.getElementById('node-group-act');
+  if (actGroupNew) { actGroupNew.classList.add('ghost'); actGroupNew.classList.add('policy-blocked'); }
+  const decideConnNew = document.getElementById('connector-decide');
+  if (decideConnNew) decideConnNew.className = 'connector blocked';
+  const policyBanner = document.getElementById('policy-banner');
+  policyBanner.textContent = '▲ ' + scenario.policy.threshold;
+  policyBanner.style.display = 'block';
+  await sleep(50);
+  policyBanner.classList.add('visible');
+  updateChainStatus('blocked');
+  updateIntegrity(80, 'amber');
+  state.phase = 'complete';
+  updateButtons();
+  updateCounter();
+  const pill = document.getElementById('timing-pill');
+  if (pill) { pill.style.display = ''; pill.textContent = 'TRACED IN ' + (state.nodes._computeMs || 0) + 'ms'; pill.className = 'pill green'; }
+}
+
+async function injectNoise() {
+  if (state.phase !== 'complete' || state.noiseApplied) return;
+  state.noiseApplied = true;
+  updateButtons();
+  const scenario = DOMAINS[state.domain];
+  const observeGroup = document.getElementById('node-group-observe');
+  const observeBox = observeGroup ? observeGroup.querySelector('.node-box') : null;
+  if (observeBox) { observeBox.style.transition = 'all 400ms ease'; observeBox.style.borderColor = 'var(--blue)'; observeBox.style.boxShadow = '0 0 20px var(--blue-glow)'; }
+  const noiseBanner = document.getElementById('noise-banner');
+  const noiseP1 = document.getElementById('noise-phase-1');
+  const noiseP2 = document.getElementById('noise-phase-2');
+  const noiseMessages = { manufacturing: '◎ SENSOR DRIFT DETECTED — Input data unreliable', model: '◎ CLASSIFIER RECALIBRATION — Scoring model updated mid-evaluation', defence: '◎ CERTIFICATE CHAIN REFRESH — Revalidating agent clearance', agent: '◎ MARKET FEED LATENCY — Price data delayed, re-acquiring', lab: '◎ SPECTROPHOTOMETER CALIBRATION OFFSET — OD reading unreliable' };
+  noiseP1.textContent = noiseMessages[state.domain] || '◎ DISRUPTION DETECTED';
+  const correctionMessages = { manufacturing: '◎ CORRECTED — Cross-referenced secondary sensor — Re-derived from corrected inputs — Chain integrity preserved', model: '◎ CORRECTED — Recalibrated classifier applied — Score adjusted — Chain integrity preserved', defence: '◎ VERIFIED — Certificate chain revalidated — Clearance confirmed unchanged — Chain integrity preserved', agent: '◎ CORRECTED — Updated spot price acquired — Premium recalculated — Chain integrity preserved', lab: '◎ CORRECTED — Cross-referenced adjacent plate reader — OD adjusted — Chain integrity preserved' };
+  noiseP2.textContent = correctionMessages[state.domain] || '◎ CORRECTED — Chain integrity preserved';
+  noiseP1.style.display = 'block';
+  noiseP2.style.display = 'none';
+  noiseBanner.style.display = 'block';
+  await sleep(50);
+  noiseBanner.classList.add('visible');
+  await sleep(2200);
+  state.nodes.observe.content = scenario.noise.message;
+  state.nodes.observe.status = 'adapted';
+  state.nodes.derive.content = scenario.noise.rederive;
+  state.nodes.derive.status = 'adapted';
+  let prevHash = '0'.repeat(64);
+  for (const nodeId of NODE_ORDER) {
+    const node = state.nodes[nodeId];
+    const canonical = canonicalEncode(nodeId, node.content, prevHash, node.timestamp);
+    node.hash = await sha256(canonical);
+    node.canonical = canonical;
+    node.prevHash = prevHash;
+    prevHash = node.hash;
+  }
+  renderChain();
+  NODE_ORDER.forEach(nid => {
+    const g = document.getElementById('node-group-' + nid);
+    if (g) { g.classList.add('visible'); if (state.policyApplied && nid === 'act') { g.classList.add('ghost'); g.classList.add('policy-blocked'); } }
+  });
+  NODE_ORDER.forEach((nid, i) => {
+    if (i < NODE_ORDER.length - 1) { const conn = document.getElementById('connector-' + nid); if (conn) { conn.className = (state.policyApplied && nid === 'decide') ? 'connector blocked' : 'connector valid'; } }
+  });
+  noiseP1.style.display = 'none';
+  noiseP2.style.display = 'block';
+  await sleep(2800);
+  noiseBanner.classList.remove('visible');
+  await sleep(500);
+  noiseBanner.style.display = 'none';
+}
+
+async function tamperNode(targetNodeId) {
+  if (state.phase !== 'complete' || state.tampered) return;
+  state.tampered = true;
+  state.phase = 'tampered';
+  state.tamperedNode = targetNodeId;
+  updateButtons();
+  const targetIdx = NODE_ORDER.indexOf(targetNodeId);
+  state.nodes[targetNodeId].content = '[ALTERED] ' + state.nodes[targetNodeId].content.substring(0, 60) + '...';
+  state.nodes[targetNodeId].status = 'broken';
+  renderChain();
+  restoreVisibility();
+  const targetGroup = document.getElementById('node-group-' + targetNodeId);
+  if (targetGroup) targetGroup.classList.add('tampered');
+  if (targetIdx > 0) { const prevConn = document.getElementById('connector-' + NODE_ORDER[targetIdx - 1]); if (prevConn) prevConn.className = 'connector broken'; }
+  for (let i = targetIdx + 1; i < NODE_ORDER.length; i++) {
+    await sleep(300);
+    state.nodes[NODE_ORDER[i]].status = 'broken';
+    renderChain();
+    restoreVisibility();
+    NODE_ORDER.forEach(nid => { const gg = document.getElementById('node-group-' + nid); if (gg && state.nodes[nid].status === 'broken') gg.classList.add('tampered'); });
+  }
+  renderChain();
+  restoreVisibility();
+  NODE_ORDER.forEach(nid => { const gg = document.getElementById('node-group-' + nid); if (gg && state.nodes[nid].status === 'broken') gg.classList.add('tampered'); });
+  NODE_ORDER.forEach((nid, i) => {
+    if (i < NODE_ORDER.length - 1) { const conn = document.getElementById('connector-' + nid); if (conn) conn.className = i >= targetIdx ? 'connector broken' : 'connector valid'; }
+  });
+  const banner = document.getElementById('tamper-banner');
+  banner.textContent = '⚠ CHAIN INTEGRITY VIOLATION — Tamper detected at ' + NODE_LABELS[targetNodeId] + ' — ' + (NODE_ORDER.length - targetIdx) + ' nodes invalidated';
+  banner.style.display = 'block';
+  await sleep(50);
+  banner.classList.add('visible');
+  updateChainStatus('broken');
+  const brokenCount = NODE_ORDER.filter(n => state.nodes[n].status === 'broken').length;
+  const validCount = NODE_ORDER.length - brokenCount;
+  updateIntegrity(Math.round((validCount / NODE_ORDER.length) * 100), 'red');
+  updateCounter();
+  selectNode(targetNodeId);
+}
+
+function restoreVisibility() {
+  NODE_ORDER.forEach(nid => {
+    const g = document.getElementById('node-group-' + nid);
+    if (g) { g.classList.add('visible'); if (state.policyApplied && nid === 'act') { g.classList.add('ghost'); g.classList.add('policy-blocked'); } }
+  });
+}
+
+async function restoreChain() {
+  if (state.phase !== 'tampered') return;
+  const tamperBanner = document.getElementById('tamper-banner');
+  tamperBanner.classList.remove('visible');
+  await sleep(300);
+  tamperBanner.style.display = 'none';
+  const scenario = DOMAINS[state.domain];
+  state.nodes = await buildChain(state.domain);
+  if (state.policyApplied) {
+    state.nodes.decide.status = 'blocked';
+    state.nodes.act.status = 'blocked';
+    state.nodes.act.originalContent = state.nodes.act.content;
+    state.nodes.act.content = scenario.policy.action;
+  }
+  if (state.noiseApplied) {
+    state.nodes.observe.content = scenario.noise.message;
+    state.nodes.observe.status = 'adapted';
+    state.nodes.derive.content = scenario.noise.rederive;
+    state.nodes.derive.status = 'adapted';
+    let prevHash = '0'.repeat(64);
+    for (const nodeId of NODE_ORDER) {
+      const node = state.nodes[nodeId];
+      const canonical = canonicalEncode(nodeId, node.content, prevHash, node.timestamp);
+      node.hash = await sha256(canonical);
+      node.canonical = canonical;
+      node.prevHash = prevHash;
+      prevHash = node.hash;
+    }
+  }
+  state.tampered = false;
+  state.tamperedNode = null;
+  state.phase = 'complete';
+  state.selectedNode = null;
+  renderChain();
+  restoreVisibility();
+  NODE_ORDER.forEach((nid, i) => {
+    if (i < NODE_ORDER.length - 1) { const conn = document.getElementById('connector-' + nid); if (conn) conn.className = (state.policyApplied && nid === 'decide') ? 'connector blocked' : 'connector valid'; }
+  });
+  if (state.policyApplied) { const actGroup = document.getElementById('node-group-act'); if (actGroup) { actGroup.classList.add('ghost'); actGroup.classList.add('policy-blocked'); } }
+  updateChainStatus(state.policyApplied ? 'blocked' : 'valid');
+  updateIntegrity(state.policyApplied ? 80 : 100, state.policyApplied ? 'amber' : '');
+  updateButtons();
+  updateCounter();
+  const noiseBanner = document.getElementById('noise-banner');
+  const noiseP1 = document.getElementById('noise-phase-1');
+  noiseP1.textContent = '✓ CHAIN RESTORED — All hashes recomputed and verified';
+  noiseP1.style.display = 'block';
+  document.getElementById('noise-phase-2').style.display = 'none';
+  noiseBanner.style.display = 'block';
+  await sleep(50);
+  noiseBanner.classList.add('visible');
+  await sleep(2000);
+  noiseBanner.classList.remove('visible');
+  await sleep(500);
+  noiseBanner.style.display = 'none';
+}
+
+function selectNode(nodeId) {
+  state.selectedNode = nodeId;
+  renderChain();
+  restoreVisibility();
+  NODE_ORDER.forEach((nid, i) => {
+    if (i < NODE_ORDER.length - 1) {
+      const conn = document.getElementById('connector-' + nid);
+      if (conn) {
+        const nextNode = state.nodes[NODE_ORDER[i + 1]];
+        if (nextNode && nextNode.status === 'broken') conn.className = 'connector broken';
+        else if (state.policyApplied && nid === 'decide') conn.className = 'connector blocked';
+        else if (nextNode) conn.className = 'connector valid';
+      }
+    }
+  });
+  NODE_ORDER.forEach(nid => { const g = document.getElementById('node-group-' + nid); if (g && state.nodes[nid] && state.nodes[nid].status === 'broken') g.classList.add('tampered'); });
+  renderAudit(nodeId);
+}
+
+function escapeHtml(str) { return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function renderAudit(nodeId) {
+  const node = state.nodes[nodeId];
+  if (!node) return;
+  const container = document.getElementById('audit-content');
+  const statusColor = node.status === 'valid' || node.status === 'adapted' ? 'green' : node.status === 'blocked' ? 'amber' : node.status === 'broken' ? 'red' : '';
+  const statusLabel = node.status === 'valid' ? 'VALID' : node.status === 'adapted' ? 'ADAPTED' : node.status === 'blocked' ? 'POLICY BLOCKED' : node.status === 'broken' ? 'TAMPERED' : 'PENDING';
+  const scenario = DOMAINS[state.domain];
+  const protocolBadges = PROTOCOLS.map(p => '<div class="protocol-badge ' + (node.protocols.includes(p.id) ? 'active' : '') + '" title="' + p.name + ' ' + p.version + ' — ' + p.desc + '">' + p.id + '-' + p.version + '</div>').join('');
+  let html = '<div class="audit-section"><div class="audit-section-title">NODE IDENTITY</div><div class="audit-field"><span class="audit-key">Node</span><span class="audit-value">' + node.label + '</span></div><div class="audit-field"><span class="audit-key">Status</span><span class="audit-value ' + statusColor + '">' + statusLabel + '</span></div><div class="audit-field"><span class="audit-key">Timestamp</span><span class="audit-value">' + node.timestamp + '</span></div><div class="audit-field"><span class="audit-key">Domain</span><span class="audit-value">' + scenario.label.split('·')[0].trim() + '</span></div></div><div class="audit-section"><div class="audit-section-title">HASH CHAIN</div><div class="audit-field"><span class="audit-key">Current Hash</span></div><div class="audit-hash">' + node.hash + '</div><button class="verify-btn" onclick="verifyHash(\'' + nodeId + '\')">▶ VERIFY HASH — RECOMPUTE FROM CANONICAL</button><div id="verify-result"></div><div style="height:6px"></div><div class="audit-field"><span class="audit-key">Previous Hash</span></div><div class="audit-hash">' + node.prevHash + '</div></div><div class="audit-section"><div class="audit-section-title">ACTIVE PROTOCOLS</div><div class="audit-protocols">' + protocolBadges + '</div></div><div class="canonical-section ' + (state.showEncoding ? 'visible' : '') + '" id="canonical-section"><div class="audit-section"><div class="audit-section-title">DETERMINISTIC ENCODING</div><div class="canonical-string">' + escapeHtml(node.canonical) + '</div></div></div>';
+  if (node.status === 'blocked') {
+    const policyId = scenario.policy.threshold.match(/Policy: ([A-Z\-0-9]+)/);
+    const thresholdText = scenario.policy.threshold.replace(/\s*—\s*Human mandate.*/, '');
+    html += '<div class="audit-section"><div class="audit-section-title">POLICY CONSTRAINT</div><div class="audit-field"><span class="audit-key">Rule</span><span class="audit-value amber">' + (policyId ? policyId[1] : 'THRESHOLD EXCEEDED') + '</span></div><div class="audit-field"><span class="audit-key">Threshold</span><span class="audit-value amber">' + escapeHtml(thresholdText) + '</span></div><div class="audit-field"><span class="audit-key">Action</span><span class="audit-value amber">HALTED</span></div><div class="audit-field"><span class="audit-key">Set by</span><span class="audit-value amber">Human mandate</span></div></div>';
+    if (nodeId === 'act' && node.originalContent) html += '<div class="audit-section"><div class="audit-section-title">INTENDED ACTION (BLOCKED)</div><div style="font-size:11px;color:var(--text-secondary);line-height:1.6;opacity:0.7;font-style:italic;padding:6px 0;">' + escapeHtml(node.originalContent) + '</div></div>';
+  }
+  if (node.status === 'broken') html += '<div class="audit-section"><div class="audit-section-title">INTEGRITY VIOLATION</div><div class="audit-field"><span class="audit-key">Type</span><span class="audit-value red">' + (nodeId === state.tamperedNode ? 'DIRECT TAMPER' : 'CASCADE INVALIDATION') + '</span></div><div class="audit-field"><span class="audit-key">Origin</span><span class="audit-value red">' + (state.tamperedNode ? state.tamperedNode.toUpperCase() : 'UNKNOWN') + '</span></div></div>';
+  html += '<div class="audit-section"><button class="verify-btn" onclick="copyAuditJSON(\'' + nodeId + '\')">COPY AUDIT JSON</button><div id="copy-confirm" style="margin-top:4px"></div></div><div style="margin-top:8px;font-family:var(--font-mono);font-size:8px;color:var(--text-muted);line-height:1.4;opacity:0.6">Minimal canonical encoding for demo. Protocol version hashes all relevant fields deterministically.</div>';
+  container.innerHTML = html;
+}
+
+async function verifyHash(nodeId) {
+  const node = state.nodes[nodeId];
+  if (!node) return;
+  const resultEl = document.getElementById('verify-result');
+  if (!resultEl) return;
+  resultEl.innerHTML = '<span style="color:var(--text-muted)">Recomputing...</span>';
+  await sleep(200);
+  const recomputed = await sha256(node.canonical);
+  const match = (recomputed === node.hash);
+  if (match) resultEl.innerHTML = '<div class="verify-result verify-match">✓ MATCH — Hash verified from canonical encoding<br><span style="font-size:8px;opacity:0.7">' + recomputed + '</span></div>';
+  else resultEl.innerHTML = '<div class="verify-result verify-mismatch">✗ MISMATCH — Stored hash does not match recomputed<br><span style="font-size:8px;opacity:0.7">Expected: ' + recomputed.substring(0,32) + '...<br>Got: ' + node.hash.substring(0,32) + '...</span></div>';
+}
+
+async function copyAuditJSON(nodeId) {
+  const node = state.nodes[nodeId];
+  if (!node) return;
+  const auditPacket = { node: node.label, status: node.status, timestamp: node.timestamp, domain: DOMAINS[state.domain].label, hash: node.hash, prev_hash: node.prevHash, canonical_encoding: node.canonical, active_protocols: node.protocols.map(pid => { const p = PROTOCOLS.find(pr => pr.id === pid); return p ? p.id + '-' + p.version : pid; }), content: node.content };
+  if (state.tamperedNode && node.status === 'broken') auditPacket.integrity_violation = { type: nodeId === state.tamperedNode ? 'DIRECT_TAMPER' : 'CASCADE_INVALIDATION', origin_node: state.tamperedNode.toUpperCase() };
+  try {
+    await navigator.clipboard.writeText(JSON.stringify(auditPacket, null, 2));
+    const el = document.getElementById('copy-confirm');
+    if (el) el.innerHTML = '<span style="color:var(--green);font-family:var(--font-mono);font-size:9px">✓ Copied to clipboard</span>';
+  } catch(e) {
+    const el = document.getElementById('copy-confirm');
+    if (el) el.innerHTML = '<span style="color:var(--amber);font-family:var(--font-mono);font-size:9px">Clipboard unavailable — check console</span>';
+    console.log(JSON.stringify(auditPacket, null, 2));
+  }
+}
+
+function updateCounter() {
+  const pill = document.getElementById('counter-pill');
+  if (!pill) return;
+  if (Object.keys(state.nodes).length === 0) { pill.style.display = 'none'; return; }
+  pill.style.display = '';
+  const total = NODE_ORDER.length;
+  const valid = NODE_ORDER.filter(n => state.nodes[n] && (state.nodes[n].status === 'valid' || state.nodes[n].status === 'adapted')).length;
+  const blocked = NODE_ORDER.filter(n => state.nodes[n] && state.nodes[n].status === 'blocked').length;
+  const broken = NODE_ORDER.filter(n => state.nodes[n] && state.nodes[n].status === 'broken').length;
+  let parts = [];
+  if (valid > 0) parts.push(valid + ' VALID');
+  if (blocked > 0) parts.push(blocked + ' BLOCKED');
+  if (broken > 0) parts.push(broken + ' BROKEN');
+  pill.textContent = total + ' NODES · ' + parts.join(' · ');
+  pill.className = 'pill';
+  if (broken > 0) pill.classList.add('red');
+  else if (blocked > 0) pill.classList.add('amber');
+  else pill.classList.add('green');
+}
+
+function switchDomain(domain) {
+  state.domain = domain;
+  document.querySelectorAll('.domain-btn').forEach(btn => { btn.classList.toggle('active', btn.dataset.domain === domain); });
+  updateTrustExplainer(domain);
+  resetDemo();
+  updateDomainContext();
+}
+
+function updateDomainContext() {
+  const scenario = DOMAINS[state.domain];
+  document.getElementById('domain-label').textContent = scenario.label;
+  document.getElementById('domain-title').textContent = scenario.title;
+  document.getElementById('domain-subtitle').textContent = scenario.subtitle;
+  document.getElementById('domain-context').classList.add('visible');
+}
+
+function updateButtons() {
+  const btnRun = document.getElementById('btn-run');
+  const btnNoise = document.getElementById('btn-noise');
+  const btnReset = document.getElementById('btn-reset');
+  const tamperHint = document.getElementById('tamper-hint');
+  if (!btnRun || !btnNoise || !btnReset) return;
+  btnRun.disabled = (state.phase === 'running');
+  btnRun.style.display = '';
+  const noiseLabels = { manufacturing: '◎ SENSOR NOISE', model: '◎ CLASSIFIER DRIFT', defence: '◎ CERT REVALIDATION', agent: '◎ FEED LATENCY', lab: '◎ CALIBRATION DRIFT' };
+  btnNoise.innerHTML = noiseLabels[state.domain] || '◎ INJECT NOISE';
+  btnNoise.style.display = '';
+  btnNoise.disabled = (state.phase !== 'complete' || state.noiseApplied);
+  if (tamperHint) tamperHint.style.display = (state.phase === 'complete' && !state.tampered) ? '' : 'none';
+  btnReset.disabled = false;
+  btnReset.style.display = '';
+  const btnRestore = document.getElementById('btn-restore');
+  if (btnRestore) btnRestore.style.display = (state.phase === 'tampered') ? '' : 'none';
+}
+
+function updateChainStatus(status) {
+  const pill = document.getElementById('chain-status-pill');
+  pill.className = 'pill';
+  if (status === 'valid') { pill.textContent = 'CHAIN VALID'; pill.classList.add('green'); updateIntegrity(100, ''); }
+  else if (status === 'blocked') { pill.textContent = 'POLICY BLOCKED'; pill.classList.add('amber'); }
+  else if (status === 'broken') { pill.textContent = 'CHAIN BROKEN'; pill.classList.add('red'); }
+}
+
+function updateIntegrity(pct, colorClass) {
+  document.getElementById('integrity-pct').textContent = pct + '%';
+  const fill = document.getElementById('integrity-fill');
+  fill.style.width = pct + '%';
+  fill.className = 'integrity-fill';
+  if (colorClass) fill.classList.add(colorClass);
+}
+
+function toggleEncoding() {
+  state.showEncoding = document.getElementById('encoding-toggle').checked;
+  const section = document.getElementById('canonical-section');
+  if (section) section.classList.toggle('visible', state.showEncoding);
+}
+
+function resetDemo() {
+  state.traceId++;
+  state.phase = 'idle';
+  state.nodes = {};
+  state.selectedNode = null;
+  state.noiseApplied = false;
+  state.policyApplied = false;
+  state.tampered = false;
+  state.tamperedNode = null;
+  document.getElementById('chain-container').innerHTML = '';
+  document.getElementById('audit-content').innerHTML = '<div class="audit-empty">Select a node to inspect its governance trace.</div>';
+  ['noise-banner', 'policy-banner', 'tamper-banner'].forEach(id => { const el = document.getElementById(id); el.classList.remove('visible'); el.style.display = 'none'; });
+  updateChainStatus('valid');
+  updateIntegrity(100, '');
+  updateButtons();
+  document.getElementById('timing-pill').style.display = 'none';
+  const counterPill = document.getElementById('counter-pill');
+  if (counterPill) counterPill.style.display = 'none';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  switch(e.key.toLowerCase()) {
+    case ' ': case 'enter': e.preventDefault(); if (state.phase === 'idle' || state.phase === 'complete') runTrace(); break;
+    case 'n': if (state.phase === 'complete' && !state.noiseApplied) injectNoise(); break;
+    case 'r': resetDemo(); break;
+    case 'u': if (state.phase === 'tampered') restoreChain(); break;
+    case 't': if (state.phase === 'complete' && !state.tampered) { const validNodes = NODE_ORDER.filter(n => state.nodes[n] && state.nodes[n].status !== 'broken'); if (validNodes.length > 0) tamperNode(validNodes[Math.floor(Math.random() * validNodes.length)]); } break;
+    case '1': switchDomain('manufacturing'); break;
+    case '2': switchDomain('model'); break;
+    case '3': switchDomain('defence'); break;
+    case '4': switchDomain('agent'); break;
+    case 'd': const toggle = document.getElementById('encoding-toggle'); if (toggle) { toggle.checked = !toggle.checked; toggleEncoding(); } break;
+  }
+});
+
+updateDomainContext();
+updateTrustExplainer(state.domain);
+updateButtons();
+</script>
+</body>
+</html>

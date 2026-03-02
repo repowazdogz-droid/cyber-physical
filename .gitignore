@@ -1,0 +1,32 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+
+# Editor
+.cursor/
+.vscode/
+
+# Logs
+*.log
+
+# Environment variables
+.env.local
+.env*.local
+
+# --- Omega repo hygiene ---
+node_modules/
+.next/
+out/
+dist/
+tmp/
+.DS_Store
+*.log
+*.tsbuildinfo
+Archive/
+
+.vercel
+.playwright-browsers/

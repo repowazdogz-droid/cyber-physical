@@ -1,0 +1,24 @@
+problem:
+  name: "Thermal experiment: cooling fan failure at minute 20"
+  domain: "surgical_robotics"
+
+constraints:
+  - "duration: 1800s"
+  - "power: 15W"
+  - "cooling_failure: minute_20"
+  - "must_not_overheat"
+
+uncertainties:
+  - "failure_recovery: unknown"
+
+objectives:
+  - "fault_tolerance"
+
+design:
+  power_w: 15.0
+  duty_cycle: 1.0
+  duration_s: 1800
+  cooling: "active_fan"
+
+metadata:
+  experiment_type: "thermal"

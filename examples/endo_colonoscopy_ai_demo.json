@@ -1,0 +1,27 @@
+{
+  "procedure": {
+    "procedure_id": "colonoscopy_screening",
+    "domain": "endoscopy",
+    "indication": "average-risk colorectal cancer screening",
+    "approach": "standard_high-definition_colonoscopy",
+    "setting": "endoscopy_unit",
+    "notes": "Demo spec: colonoscopy screening with AI-assisted polyp detection overlay."
+  },
+  "tech_concept": {
+    "name": "AI Polyp Detection Overlay",
+    "type": "real_time_visual_overlay",
+    "role": "navigation_assist",
+    "capital_cost_band": "medium",
+    "disposables_cost_band": "low",
+    "learning_curve_cases": 10,
+    "requires_advanced_nav": false,
+    "robotic_integration": "none",
+    "description": "Real-time AI overlay that highlights suspected polyps during colonoscopy without altering scope hardware."
+  }
+}
+
+
+
+
+
+

@@ -1,0 +1,46 @@
+{
+  "case_id": "1dd5f112c786",
+  "name": "Tissue compliance varies 3x from nominal",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:21:20.323772",
+  "case_yaml": {
+    "problem": {
+      "name": "Tissue compliance varies 3x from nominal",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "nominal_compliance: 0.5 mm/N",
+      "actual_compliance_range: 0.17-1.5 mm/N",
+      "variation_factor: 3x",
+      "force_control_accuracy: \u00b110%",
+      "must_handle_variation"
+    ],
+    "uncertainties": [
+      "tissue_type_variation: high",
+      "patient_specific_properties: unknown",
+      "control_adaptation: variable"
+    ],
+    "objectives": [
+      "force_control_precision",
+      "tissue_safety"
+    ]
+  },
+  "design_data": {
+    "nominal_compliance_mm_per_n": 0.5,
+    "min_compliance_mm_per_n": 0.17,
+    "max_compliance_mm_per_n": 1.5,
+    "variation_factor": 3.0,
+    "force_control_accuracy_percent": 10,
+    "contact_force_n": 3.5,
+    "contact_area_mm2": 5.0,
+    "tissue_tolerance_mpa": 0.5,
+    "contact_duration_s": 2.5,
+    "pressure_limit_mpa": 1.0
+  },
+  "tags": [
+    "adversarial",
+    "interaction",
+    "test"
+  ],
+  "notes": "Injected failure: tissue_compliance_variation"
+}

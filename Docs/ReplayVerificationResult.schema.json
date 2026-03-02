@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ReplayVerificationResult",
+  "description": "Result of bundle integrity and determinism verification",
+  "type": "object",
+  "required": [
+    "ok",
+    "sessionId",
+    "bundleHash",
+    "recomputedHash",
+    "checks",
+    "notes",
+    "verifiedAtIso"
+  ],
+  "properties": {
+    "ok": {
+      "type": "boolean",
+      "description": "Whether overall verification passed (all critical checks must pass)"
+    },
+    "sessionId": {
+      "type": "string",
+      "description": "Session ID being verified",
+      "maxLength": 100
+    },
+    "bundleHash": {
+      "type": "string",
+      "description": "Original bundle content hash (SHA-256 hex)",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "recomputedHash": {
+      "type": "string",
+      "description": "Recomputed bundle content hash (should match bundleHash)",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "checks": {
+      "type": "array",
+      "description": "Individual check results (bounded, max 20)",
+      "maxItems": 20,
+      "items": {
+        "$ref": "#/definitions/CheckResult"
+      }
+    },
+    "notes": {
+      "type": "array",
+      "description": "Optional notes (bounded, max 10)",
+      "maxItems": 10,
+      "items": {
+        "type": "string",
+        "maxLength": 200
+      }
+    },
+    "verifiedAtIso": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Verification timestamp (ISO string)"
+    }
+  },
+  "definitions": {
+    "CheckResult": {
+      "type": "object",
+      "required": ["id", "ok"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Check ID",
+          "maxLength": 100
+        },
+        "ok": {
+          "type": "boolean",
+          "description": "Whether check passed"
+        },
+        "detail": {
+          "type": "string",
+          "description": "Optional detail message (max 200 chars)",
+          "maxLength": 200
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

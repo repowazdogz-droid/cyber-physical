@@ -1,0 +1,300 @@
+{
+  "run_id": "138d2b6a8463",
+  "timestamp": "2026-02-05T10:16:53.062921",
+  "nodes": {
+    "input_0000": {
+      "id": "input_0000",
+      "type": "input",
+      "content": {
+        "type": "problem",
+        "name": "Ambient temperature shift - +30\u00b0C above spec",
+        "domain": "robotic_design"
+      },
+      "timestamp": "2026-02-05T10:16:53.057485",
+      "parents": [],
+      "metadata": {}
+    },
+    "input_0001": {
+      "id": "input_0001",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "spec_ambient_temp: 25\u00b0C"
+      },
+      "timestamp": "2026-02-05T10:16:53.057486",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0002": {
+      "id": "input_0002",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "actual_ambient_temp: 55\u00b0C"
+      },
+      "timestamp": "2026-02-05T10:16:53.057487",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0003": {
+      "id": "input_0003",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "max_operating_temp: 85\u00b0C"
+      },
+      "timestamp": "2026-02-05T10:16:53.057488",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0004": {
+      "id": "input_0004",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "thermal_margin: 10\u00b0C"
+      },
+      "timestamp": "2026-02-05T10:16:53.057489",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0005": {
+      "id": "input_0005",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "must_operate_in_spec"
+      },
+      "timestamp": "2026-02-05T10:16:53.057490",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0006": {
+      "id": "input_0006",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "ambient_variation_range: unknown"
+      },
+      "timestamp": "2026-02-05T10:16:53.057491",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0007": {
+      "id": "input_0007",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "thermal_margin_adequacy: variable"
+      },
+      "timestamp": "2026-02-05T10:16:53.057492",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0008": {
+      "id": "input_0008",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "cooling_efficiency_at_temp: degraded"
+      },
+      "timestamp": "2026-02-05T10:16:53.057493",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0009": {
+      "id": "input_0009",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "environmental_robustness"
+      },
+      "timestamp": "2026-02-05T10:16:53.057494",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0010": {
+      "id": "input_0010",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "thermal_safety"
+      },
+      "timestamp": "2026-02-05T10:16:53.057495",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "inference_0011": {
+      "id": "inference_0011",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "spec_ambient_temp: 25\u00b0C",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:53.062824",
+      "parents": [
+        "input_0001"
+      ],
+      "metadata": {}
+    },
+    "inference_0012": {
+      "id": "inference_0012",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "actual_ambient_temp: 55\u00b0C",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:53.062825",
+      "parents": [
+        "input_0002"
+      ],
+      "metadata": {}
+    },
+    "inference_0013": {
+      "id": "inference_0013",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "max_operating_temp: 85\u00b0C",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:53.062826",
+      "parents": [
+        "input_0003"
+      ],
+      "metadata": {}
+    },
+    "inference_0014": {
+      "id": "inference_0014",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "thermal_margin: 10\u00b0C",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:53.062826",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {}
+    },
+    "inference_0015": {
+      "id": "inference_0015",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "must_operate_in_spec",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:16:53.062827",
+      "parents": [
+        "input_0005"
+      ],
+      "metadata": {}
+    },
+    "output_0016": {
+      "id": "output_0016",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "ambient_variation_range: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:16:53.062843",
+      "parents": [
+        "input_0006"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: ambient_variation_range: unknown"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0017": {
+      "id": "output_0017",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "thermal_margin_adequacy: variable",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:16:53.062850",
+      "parents": [
+        "input_0007"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: thermal_margin_adequacy: variable"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0018": {
+      "id": "output_0018",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "cooling_efficiency_at_temp: degraded",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:16:53.062856",
+      "parents": [
+        "input_0008"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: cooling_efficiency_at_temp: degraded"
+          ],
+          "requires_validation": true
+        }
+      }
+    }
+  }
+}

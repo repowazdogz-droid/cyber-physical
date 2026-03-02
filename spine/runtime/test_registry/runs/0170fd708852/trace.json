@@ -1,0 +1,313 @@
+{
+  "run_id": "d6ae851f318c",
+  "timestamp": "2026-02-05T08:40:56.351481",
+  "nodes": {
+    "input_0000": {
+      "id": "input_0000",
+      "type": "input",
+      "content": {
+        "type": "problem",
+        "name": "Hemivertebra resection complicated by remote cerebellar hemorrhage",
+        "domain": "spine_surgery"
+      },
+      "timestamp": "2026-02-05T08:40:56.345583",
+      "parents": [],
+      "metadata": {}
+    },
+    "input_0001": {
+      "id": "input_0001",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "patient_age: 5.5_years"
+      },
+      "timestamp": "2026-02-05T08:40:56.345584",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0002": {
+      "id": "input_0002",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "small_anatomical_structures"
+      },
+      "timestamp": "2026-02-05T08:40:56.345585",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0003": {
+      "id": "input_0003",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "high_kyphotic_angle: 70_degrees"
+      },
+      "timestamp": "2026-02-05T08:40:56.345586",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0004": {
+      "id": "input_0004",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "congenital_deformity"
+      },
+      "timestamp": "2026-02-05T08:40:56.345587",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0005": {
+      "id": "input_0005",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "pediatric_dural_management"
+      },
+      "timestamp": "2026-02-05T08:40:56.345588",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0006": {
+      "id": "input_0006",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "rch_pathophysiology: poorly_understood"
+      },
+      "timestamp": "2026-02-05T08:40:56.345589",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0007": {
+      "id": "input_0007",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "pediatric_icp_change_prediction: unreliable"
+      },
+      "timestamp": "2026-02-05T08:40:56.345589",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0008": {
+      "id": "input_0008",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "growth_preservation_vs_fusion: tradeoff"
+      },
+      "timestamp": "2026-02-05T08:40:56.345590",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0009": {
+      "id": "input_0009",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "correct_kyphotic_deformity"
+      },
+      "timestamp": "2026-02-05T08:40:56.345591",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0010": {
+      "id": "input_0010",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "maintain_spinal_growth_potential"
+      },
+      "timestamp": "2026-02-05T08:40:56.345592",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0011": {
+      "id": "input_0011",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "safe_hemivertebra_resection"
+      },
+      "timestamp": "2026-02-05T08:40:56.345593",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "inference_0012": {
+      "id": "inference_0012",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "patient_age: 5.5_years",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T08:40:56.351446",
+      "parents": [
+        "input_0001"
+      ],
+      "metadata": {}
+    },
+    "inference_0013": {
+      "id": "inference_0013",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "small_anatomical_structures",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T08:40:56.351447",
+      "parents": [
+        "input_0002"
+      ],
+      "metadata": {}
+    },
+    "inference_0014": {
+      "id": "inference_0014",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "high_kyphotic_angle: 70_degrees",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T08:40:56.351448",
+      "parents": [
+        "input_0003"
+      ],
+      "metadata": {}
+    },
+    "inference_0015": {
+      "id": "inference_0015",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "congenital_deformity",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T08:40:56.351449",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {}
+    },
+    "inference_0016": {
+      "id": "inference_0016",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "pediatric_dural_management",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T08:40:56.351449",
+      "parents": [
+        "input_0005"
+      ],
+      "metadata": {}
+    },
+    "output_0017": {
+      "id": "output_0017",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "rch_pathophysiology: poorly_understood",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T08:40:56.351464",
+      "parents": [
+        "input_0006"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: rch_pathophysiology: poorly_understood"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0018": {
+      "id": "output_0018",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "pediatric_icp_change_prediction: unreliable",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T08:40:56.351471",
+      "parents": [
+        "input_0007"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: pediatric_icp_change_prediction: unreliable"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0019": {
+      "id": "output_0019",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "growth_preservation_vs_fusion: tradeoff",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T08:40:56.351478",
+      "parents": [
+        "input_0008"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: growth_preservation_vs_fusion: tradeoff"
+          ],
+          "requires_validation": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+problem:
+  name: "Vibration + thermal cycling + wear = progressive joint failure"
+  domain: "robotic_design"
+
+constraints:
+  - "vibration_frequency: 150Hz"
+  - "thermal_cycles: 500"
+  - "wear_rate: 0.05μm/km"
+  - "combined_degradation: progressive"
+  - "must_maintain_joint_integrity"
+
+uncertainties:
+  - "degradation_interaction: unknown"
+  - "failure_timeline: variable"
+  - "compensation_capability: unknown"
+
+objectives:
+  - "joint_reliability"
+  - "progressive_failure_prevention"
+
+design:
+  vibration_frequency_hz: 150
+  thermal_cycles: 500
+  wear_rate_um_per_km: 0.05
+  # For multiple constraint types
+  applied_stress_mpa: 480
+  yield_strength_mpa: 1000
+  operating_temp_c: 70
+  max_service_temp_c: 100
+  sustained_stress_mpa: 480
+  exposure_hours: 4380
+  creep_threshold_mpa: 400
+  corrosion_rate_mm_yr: 0.1
+  service_life_years: 3
+  wall_thickness_mm: 1.5
+  min_clearance_mm: 0.2
+  clearance_limit_mm: 0.5
+
+metadata:
+  injected_failure: "progressive_joint_failure"
+  failure_category: "unknown"
+  expected_detection: "Multiple constraints may trigger if interactions modeled"

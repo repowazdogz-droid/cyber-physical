@@ -1,0 +1,132 @@
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm.
+=== REFLEXIVE First Live Stochastic Evaluation ===
+Stimulus: st-001 — Should we acquire HelioTech for $500M? They have $200M annual revenue growing 15...
+Runs: 5
+Started: 2026-02-08T11:42:13.424Z
+
+--- Run 1/5 ---
+  Invoking 5 lenses...
+  Lenses completed: 5/5
+  Analysis state: completed
+  Duration: 10357ms
+  Confidence: 0.3061
+  Convergence points: 2
+  Divergence points: 0
+  Orphan claims: 16
+  Lenses: adversarial:OK(6), premortem:OK(5), analytical:OK(7), stakeholder_impact:OK(6), historical_analogy:OK(6)
+
+  Waiting 15s for rate limit reset...
+--- Run 2/5 ---
+  Invoking 5 lenses...
+  Lenses completed: 5/5
+  Analysis state: completed
+  Duration: 9876ms
+  Confidence: 0.1645
+  Convergence points: 4
+  Divergence points: 1
+  Orphan claims: 10
+  Lenses: analytical:OK(6), adversarial:OK(7), historical_analogy:OK(6), stakeholder_impact:OK(7), premortem:OK(5)
+
+  Waiting 15s for rate limit reset...
+--- Run 3/5 ---
+  Invoking 5 lenses...
+  Lenses completed: 5/5
+  Analysis state: completed
+  Duration: 11579ms
+  Confidence: 0.1262
+  Convergence points: 3
+  Divergence points: 1
+  Orphan claims: 15
+  Lenses: historical_analogy:OK(7), analytical:OK(8), premortem:OK(5), adversarial:OK(6), stakeholder_impact:OK(7)
+
+  Waiting 15s for rate limit reset...
+--- Run 4/5 ---
+  Invoking 5 lenses...
+  Lenses completed: 4/5
+  Failed lens errors:
+    c1829216-f59c-4f89-8ce1-c2313b5195f2: LLM API error: 429 {
+    "error": {
+        "message": "Rate limit reached for gpt-4o in organization org-74iKUYrxJtuHYkOte8KLoHlD on tokens per min (TPM): Limit 30000, Used 30000, Requested 3046. Please try again in 6.092s. Visit https://platform.openai.com/account/rate-limits to learn more.",
+        "type": "tokens",
+        "param": null,
+        "code": "rate_limit_exceeded"
+    }
+}
+
+  Analysis state: completed
+  Duration: 10132ms
+  Confidence: 0.1921
+  Convergence points: 3
+  Divergence points: 0
+  Orphan claims: 12
+  Lenses: adversarial:OK(7), premortem:OK(5), stakeholder_impact:FAIL(0), analytical:OK(7), historical_analogy:OK(6)
+
+  Waiting 15s for rate limit reset...
+--- Run 5/5 ---
+  Invoking 5 lenses...
+  Lenses completed: 5/5
+  Analysis state: completed
+  Duration: 9582ms
+  Confidence: 0.22
+  Convergence points: 3
+  Divergence points: 0
+  Orphan claims: 15
+  Lenses: premortem:OK(5), adversarial:OK(6), analytical:OK(7), historical_analogy:OK(5), stakeholder_impact:OK(7)
+
+=== AGGREGATE RESULTS ===
+
+Success rate: 5/5 (100%)
+Failed: 0
+
+CONFIDENCE SCORES:
+  Run 1: 0.3061
+  Run 2: 0.1645
+  Run 3: 0.1262
+  Run 4: 0.1921
+  Run 5: 0.2200
+  Mean: 0.2018
+  Std Dev: 0.0607
+  Variance: 0.003682
+  Range: [0.1262, 0.3061]
+
+CONVERGENCE/DIVERGENCE:
+  Convergence per run: 2, 4, 3, 3, 3
+  Divergence per run: 0, 1, 1, 0, 0
+  Orphans per run: 16, 10, 15, 12, 15
+
+LENS SUCCESS RATES:
+  adversarial: 5/5 success, mean claims: 6.4
+  premortem: 5/5 success, mean claims: 5.0
+  analytical: 5/5 success, mean claims: 7.0
+  stakeholder_impact: 4/5 success, mean claims: 5.4
+  historical_analogy: 5/5 success, mean claims: 6.0
+
+LATENCY:
+  Run 1: 9582ms
+  Run 2: 9876ms
+  Run 3: 10132ms
+  Run 4: 10357ms
+  Run 5: 11579ms
+  P50: 10132ms
+  P95: 11579ms
+
+EVIDENCE DENSITY:
+  Run 1: 0.2603
+  Run 2: 0.2732
+  Run 3: 0.2433
+  Run 4: 0.2200
+  Run 5: 0.2273
+
+UNSUPPORTED PENALTY:
+  Run 1: 0.1833
+  Run 2: 0.1806
+  Run 3: 0.1818
+  Run 4: 0.1960
+  Run 5: 0.1833
+
+Complete report saved: /Users/warre/Omega/reflexive/reports/live-run-st001/complete-report.json
+
+=== EVALUATION COMPLETE ===
+All outputs saved to: /Users/warre/Omega/reflexive/reports/live-run-st001
+
+DO NOT save baseline. DO NOT calibrate. This is an observational run.

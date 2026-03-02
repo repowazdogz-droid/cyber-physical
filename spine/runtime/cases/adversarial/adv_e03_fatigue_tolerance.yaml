@@ -1,0 +1,38 @@
+problem:
+  name: "Material fatigue + geometric tolerance = progressive failure"
+  domain: "robotic_design"
+
+constraints:
+  - "fatigue_stress: 0.48 × yield"
+  - "tolerance_stackup: 0.28mm (limit: 0.3mm)"
+  - "cycles: 5M"
+  - "progressive_clearance_reduction: unknown"
+  - "must_withstand_combined_effects"
+
+uncertainties:
+  - "fatigue_crack_growth: variable"
+  - "tolerance_interaction: unknown"
+  - "failure_progression: unknown"
+
+objectives:
+  - "long_term_reliability"
+  - "progressive_failure_prevention"
+
+design:
+  fatigue_stress_mpa: 480
+  yield_strength_mpa: 1000
+  stress_ratio: 0.48
+  tolerance_stackup_mm: 0.28
+  tolerance_limit_mm: 0.3
+  cycles: 5000000
+  # For FORMAL_029 (creep_envelope) - sustained stress at elevated temp
+  sustained_stress_mpa: 480
+  exposure_hours: 43800
+  operating_temp_c: 120
+  max_service_temp_c: 200
+  creep_threshold_mpa: 400
+
+metadata:
+  injected_failure: "fatigue_tolerance_interaction"
+  failure_category: "unknown"
+  expected_detection: "Material and geometric constraints may both trigger"

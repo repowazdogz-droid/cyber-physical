@@ -1,0 +1,24 @@
+(program (seq (let mask1 (mask_from_objects repr objset1)) (let mask2 (mask_from_objects repr objset2)) (let grid1 (recolor grid mask1 0 1)) (recolor grid1 mask2 1 2)))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

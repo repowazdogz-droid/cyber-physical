@@ -1,0 +1,38 @@
+problem:
+  name: "Stress corrosion in saline environment"
+  domain: "robotic_design"
+
+constraints:
+  - "operating_stress: 0.6 × yield"
+  - "environment: saline_solution"
+  - "material_susceptibility: high"
+  - "must_resist_corrosion"
+
+uncertainties:
+  - "corrosion_rate: unknown"
+  - "crack_initiation_time: variable"
+  - "environmental_variation: high"
+
+objectives:
+  - "environmental_resistance"
+  - "material_durability"
+
+design:
+  operating_stress_mpa: 600
+  yield_strength_mpa: 1000
+  stress_ratio: 0.6
+  environment: "saline"
+  material_susceptibility: "high"
+  # For FORMAL_025 (stress_corrosion_risk)
+  tensile_stress_mpa: 600
+  scc_threshold_mpa: 500
+  corrosive_environment: true
+  # For FORMAL_036 (corrosion_rate)
+  corrosion_rate_mm_yr: 0.15
+  service_life_years: 5
+  wall_thickness_mm: 2.0
+
+metadata:
+  injected_failure: "stress_corrosion"
+  failure_category: "material"
+  expected_detection: "Material degradation risk may be detected"

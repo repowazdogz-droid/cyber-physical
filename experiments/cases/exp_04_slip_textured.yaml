@@ -1,0 +1,22 @@
+problem:
+  name: "Slip experiment: textured gripper on smooth tissue"
+  domain: "surgical_robotics"
+
+constraints:
+  - "normal_force: 1.5N"
+  - "must_not_slip"
+  - "friction_coefficient: 0.5"
+
+uncertainties:
+  - "texture_effectiveness: unknown"
+
+objectives:
+  - "enhanced_grip"
+
+design:
+  normal_force_n: 1.5
+  friction_coefficient: 0.5
+  surface_type: "textured"
+
+metadata:
+  experiment_type: "slip"

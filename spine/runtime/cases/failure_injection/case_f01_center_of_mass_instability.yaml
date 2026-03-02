@@ -1,0 +1,31 @@
+problem:
+  name: "Top-heavy gripper with COG outside support polygon"
+  domain: "robotic_design"
+
+constraints:
+  - "gripper_mass: 2.5kg"
+  - "payload_mass: 1.0kg"
+  - "total_mass: 3.5kg"
+  - "center_of_mass_height: 0.45m"
+  - "support_polygon_width: 0.08m"
+  - "must_not_tip_over"
+  - "must_not_slip"
+
+uncertainties:
+  - "surface_friction_coefficient: 0.6"
+  - "payload_distribution: unknown"
+
+objectives:
+  - "stable_grasping"
+  - "precise_manipulation"
+
+design:
+  mass_kg: 3.5
+  cog_height_m: 0.45
+  support_width_m: 0.08
+  tip_over_margin: -0.12  # Negative = unstable
+
+metadata:
+  injected_failure: "center_of_mass_instability"
+  expected_detection: "Mass limit violation OR tip-over failure mode"
+  decision_delta_target: 3

@@ -1,0 +1,271 @@
+{
+  "run_id": "f3479ed0c9e2",
+  "timestamp": "2026-02-05T10:06:15.095752",
+  "nodes": {
+    "input_0000": {
+      "id": "input_0000",
+      "type": "input",
+      "content": {
+        "type": "problem",
+        "name": "Actuator saturation during trajectory change",
+        "domain": "robotic_design"
+      },
+      "timestamp": "2026-02-05T10:06:15.091206",
+      "parents": [],
+      "metadata": {}
+    },
+    "input_0001": {
+      "id": "input_0001",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "required_torque: 7.5Nm"
+      },
+      "timestamp": "2026-02-05T10:06:15.091207",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0002": {
+      "id": "input_0002",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "actuator_limit: 6.0Nm"
+      },
+      "timestamp": "2026-02-05T10:06:15.091208",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0003": {
+      "id": "input_0003",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "trajectory_change_rate: high"
+      },
+      "timestamp": "2026-02-05T10:06:15.091209",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0004": {
+      "id": "input_0004",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "must_not_saturate"
+      },
+      "timestamp": "2026-02-05T10:06:15.091210",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0005": {
+      "id": "input_0005",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "dynamic_load_variation: unknown"
+      },
+      "timestamp": "2026-02-05T10:06:15.091211",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0006": {
+      "id": "input_0006",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "saturation_duration: variable"
+      },
+      "timestamp": "2026-02-05T10:06:15.091211",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0007": {
+      "id": "input_0007",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "control_degradation: unknown"
+      },
+      "timestamp": "2026-02-05T10:06:15.091212",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0008": {
+      "id": "input_0008",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "smooth_trajectory"
+      },
+      "timestamp": "2026-02-05T10:06:15.091213",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0009": {
+      "id": "input_0009",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "actuator_limits"
+      },
+      "timestamp": "2026-02-05T10:06:15.091214",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "inference_0010": {
+      "id": "inference_0010",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "required_torque: 7.5Nm",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:06:15.095672",
+      "parents": [
+        "input_0001"
+      ],
+      "metadata": {}
+    },
+    "inference_0011": {
+      "id": "inference_0011",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "actuator_limit: 6.0Nm",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:06:15.095674",
+      "parents": [
+        "input_0002"
+      ],
+      "metadata": {}
+    },
+    "inference_0012": {
+      "id": "inference_0012",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "trajectory_change_rate: high",
+        "checked": true,
+        "contract_matched": "28_scope_boundary_contract",
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:06:15.095675",
+      "parents": [
+        "input_0003"
+      ],
+      "metadata": {}
+    },
+    "inference_0013": {
+      "id": "inference_0013",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "must_not_saturate",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:06:15.095675",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {}
+    },
+    "output_0014": {
+      "id": "output_0014",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "dynamic_load_variation: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:06:15.095690",
+      "parents": [
+        "input_0005"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: dynamic_load_variation: unknown"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0015": {
+      "id": "output_0015",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "saturation_duration: variable",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:06:15.095698",
+      "parents": [
+        "input_0006"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: saturation_duration: variable"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0016": {
+      "id": "output_0016",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "control_degradation: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:06:15.095704",
+      "parents": [
+        "input_0007"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: control_degradation: unknown"
+          ],
+          "requires_validation": true
+        }
+      }
+    }
+  }
+}

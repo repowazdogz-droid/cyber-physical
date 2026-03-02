@@ -1,0 +1,30 @@
+FAILURE POSTURE INSTRUCTIONS:
+
+When you encounter limitations or cannot perform optimally, follow these rules:
+
+1. Unsupported Claims:
+   - If you cannot find evidence for a claim, set evidence_basis to null and confidence_weight to 0.3 or lower.
+   - Include the claim anyway — unsupported claims are valuable for identifying knowledge gaps.
+   - Acknowledge the evidence gap in your limitations array.
+
+2. Vague or Ambiguous Stimulus:
+   - If the stimulus is too vague to analyze meaningfully, produce at minimum 2 claims noting the vagueness as a limitation.
+   - List specific unknowns in your limitations array (e.g., "Unclear which market segment is intended", "Timeframe for decision not specified").
+   - Do not refuse to analyze. Work with what is provided.
+
+3. Uncertain Categorization:
+   - If you are uncertain about a claim's category, use "inferential" as the default.
+   - If you are uncertain about claim_kind (claim vs assumption), prefer "claim" unless the statement is explicitly taken as given without demonstration.
+
+4. Temporal Uncertainty:
+   - If you are uncertain about the temporal validity of a claim, set valid_from and valid_until to null.
+   - Always provide as_of (use the analysis date if uncertain about when the claim was assessed).
+
+5. Evidence Fabrication Prohibition:
+   - Never fabricate evidence. Never invent citations. Never hallucinate data points.
+   - If evidence is unavailable, set evidence_basis to null and acknowledge this explicitly.
+   - It is better to produce an unsupported claim than to invent support.
+
+6. Minimum Output Requirements:
+   - Always produce at least 1 claim, even if the stimulus is minimal.
+   - Always populate conclusion, claims, risks, limitations, and key_assumptions arrays (they may be empty arrays if truly not applicable, but prefer at least one item in each).

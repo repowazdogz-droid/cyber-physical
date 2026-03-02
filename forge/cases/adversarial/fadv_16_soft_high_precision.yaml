@@ -1,0 +1,22 @@
+problem:
+  name: "Soft actuator for high precision"
+  domain: "surgical_robotics"
+
+constraints:
+  - "positioning_accuracy: 0.01mm"
+  - "repeatability: 0.005mm"
+  - "must_be_gentle"
+
+uncertainties: []
+
+objectives:
+  - "precise_gentle"
+
+design:
+  positioning_accuracy_mm: 0.01
+  repeatability_mm: 0.005
+
+metadata:
+  trap_type: "misleading_adjacency"
+  expected_forge_behavior: "Should flag soft actuator for high precision (compliance = imprecision)"
+  quality_gate_should_catch: true

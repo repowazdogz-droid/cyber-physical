@@ -1,0 +1,636 @@
+{
+  "decision_map": {
+    "constraints_checked": [
+      {
+        "constraint": "gripper_mass: 2.5kg",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "payload_mass: 1.0kg",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "total_mass: 3.5kg",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "center_of_mass_height: 0.45m",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "support_polygon_width: 0.08m",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "must_not_tip_over",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "must_not_slip",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      }
+    ],
+    "violations": []
+  },
+  "failure_modes": [
+    {
+      "mode": "slip_under_load",
+      "severity": "high",
+      "category": "mechanical",
+      "detectability_score": 2,
+      "severity_detectability_product": 6,
+      "mitigation": "increase_friction_coefficient",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "constraint: must_not_slip"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": null
+    }
+  ],
+  "contradictions": [],
+  "unknowns": [
+    {
+      "item": "surface_friction_coefficient: 0.6",
+      "impact": "medium",
+      "resolution": "investigation_required",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "uncertainty: surface_friction_coefficient: 0.6"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": {
+        "base_confidence": 0.4,
+        "min_confidence": 0.4,
+        "max_confidence": 0.4,
+        "sensitivity": 0.0,
+        "dependent_on": [
+          "surface_friction_coefficient"
+        ]
+      }
+    },
+    {
+      "item": "payload_distribution: unknown",
+      "impact": "medium",
+      "resolution": "investigation_required",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "uncertainty: payload_distribution: unknown"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": {
+        "base_confidence": 0.4,
+        "min_confidence": 0.36000000000000004,
+        "max_confidence": 0.42400000000000004,
+        "sensitivity": 0.07999999999999999,
+        "dependent_on": [
+          "payload_distribution"
+        ]
+      }
+    }
+  ],
+  "recommended_experiments": [],
+  "falsification_tests": [
+    {
+      "id": "FALS_0001",
+      "target_claim": "Gripper will slip under load (slip_under_load)",
+      "target_output_id": "failure_mode_0",
+      "test_description": "Apply increasing normal force until slip occurs. Measure slip threshold.",
+      "test_type": "bench",
+      "falsification_criterion": "No slip observed up to 150% of expected operating force",
+      "confirmation_criterion": "Slip occurs below expected operating force",
+      "estimated_cost": "low",
+      "estimated_time": "hours",
+      "decision_impact": "If falsified: remove slip_under_load from risks. If confirmed: redesign friction surfaces.",
+      "priority": 1,
+      "required_equipment": [
+        "force gauge",
+        "test fixture",
+        "representative surface"
+      ],
+      "required_expertise": [
+        "mechanical testing"
+      ]
+    }
+  ],
+  "formal_constraints": [
+    {
+      "constraint_id": "FORMAL_001",
+      "constraint_name": "mass_limit",
+      "result": "proven_satisfied",
+      "value": 3.5,
+      "threshold": 10.0,
+      "margin": 6.5,
+      "evidence": "Mass 3.50 kg <= limit 10.0 kg (margin: 6.50 kg)",
+      "confidence": 1.0
+    },
+    {
+      "constraint_id": "FORMAL_002",
+      "constraint_name": "max_force",
+      "result": "unknown",
+      "value": null,
+      "threshold": 2.0,
+      "margin": null,
+      "evidence": "Max force not provided in design data",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_003",
+      "constraint_name": "max_acceleration",
+      "result": "unknown",
+      "value": null,
+      "threshold": 50.0,
+      "margin": null,
+      "evidence": "Max acceleration not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_004",
+      "constraint_name": "min_clearance",
+      "result": "unknown",
+      "value": null,
+      "threshold": 1.0,
+      "margin": null,
+      "evidence": "Clearance not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_005",
+      "constraint_name": "no_self_collision",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Self-collision check not performed",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_006",
+      "constraint_name": "cog_stability",
+      "result": "proven_violated",
+      "value": 0.0,
+      "threshold": 1.0,
+      "margin": -1.0,
+      "evidence": "COG is outside support polygon (offset: 120.00 mm)",
+      "confidence": 1.0
+    },
+    {
+      "constraint_id": "FORMAL_007",
+      "constraint_name": "torque_limit",
+      "result": "unknown",
+      "value": null,
+      "threshold": 5.0,
+      "margin": null,
+      "evidence": "Max torque not provided in design data",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_008",
+      "constraint_name": "jerk_limit",
+      "result": "unknown",
+      "value": null,
+      "threshold": 500.0,
+      "margin": null,
+      "evidence": "Max jerk not provided in design data",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_009",
+      "constraint_name": "actuator_duty_cycle",
+      "result": "unknown",
+      "value": null,
+      "threshold": 0.8,
+      "margin": null,
+      "evidence": "Actuator duty cycle not provided in design data",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_010",
+      "constraint_name": "resonance_margin",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Operating frequency or natural frequency not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_011",
+      "constraint_name": "thermal_limit",
+      "result": "unknown",
+      "value": null,
+      "threshold": 50.0,
+      "margin": null,
+      "evidence": "Power dissipation not provided in design data",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_012",
+      "constraint_name": "joint_range_limit",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Joint range check not performed",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_013",
+      "constraint_name": "payload_ratio",
+      "result": "unknown",
+      "value": null,
+      "threshold": 0.7,
+      "margin": null,
+      "evidence": "Payload or max rated payload not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_014",
+      "constraint_name": "stiffness_minimum",
+      "result": "unknown",
+      "value": null,
+      "threshold": 1000.0,
+      "margin": null,
+      "evidence": "End-effector stiffness not provided in design data",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_015",
+      "constraint_name": "voltage_limit",
+      "result": "unknown",
+      "value": null,
+      "threshold": 24.0,
+      "margin": null,
+      "evidence": "Max voltage not provided in design data",
+      "confidence": 0.0
+    }
+  ],
+  "trace_graph": {
+    "run_id": "c551d05c3b08",
+    "timestamp": "2026-02-05T09:58:04.103482",
+    "nodes": {
+      "input_0000": {
+        "id": "input_0000",
+        "type": "input",
+        "content": {
+          "type": "problem",
+          "name": "Top-heavy gripper with COG outside support polygon",
+          "domain": "robotic_design"
+        },
+        "timestamp": "2026-02-05T09:58:04.094766",
+        "parents": [],
+        "metadata": {}
+      },
+      "input_0001": {
+        "id": "input_0001",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "gripper_mass: 2.5kg"
+        },
+        "timestamp": "2026-02-05T09:58:04.094769",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0002": {
+        "id": "input_0002",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "payload_mass: 1.0kg"
+        },
+        "timestamp": "2026-02-05T09:58:04.094771",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0003": {
+        "id": "input_0003",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "total_mass: 3.5kg"
+        },
+        "timestamp": "2026-02-05T09:58:04.094772",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0004": {
+        "id": "input_0004",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "center_of_mass_height: 0.45m"
+        },
+        "timestamp": "2026-02-05T09:58:04.094773",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0005": {
+        "id": "input_0005",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "support_polygon_width: 0.08m"
+        },
+        "timestamp": "2026-02-05T09:58:04.094774",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0006": {
+        "id": "input_0006",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "must_not_tip_over"
+        },
+        "timestamp": "2026-02-05T09:58:04.094776",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0007": {
+        "id": "input_0007",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "must_not_slip"
+        },
+        "timestamp": "2026-02-05T09:58:04.094777",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0008": {
+        "id": "input_0008",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "surface_friction_coefficient: 0.6"
+        },
+        "timestamp": "2026-02-05T09:58:04.094778",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0009": {
+        "id": "input_0009",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "payload_distribution: unknown"
+        },
+        "timestamp": "2026-02-05T09:58:04.094778",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0010": {
+        "id": "input_0010",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "stable_grasping"
+        },
+        "timestamp": "2026-02-05T09:58:04.094779",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0011": {
+        "id": "input_0011",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "precise_manipulation"
+        },
+        "timestamp": "2026-02-05T09:58:04.094780",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "inference_0012": {
+        "id": "inference_0012",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "gripper_mass: 2.5kg",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:58:04.103325",
+        "parents": [
+          "input_0001"
+        ],
+        "metadata": {}
+      },
+      "inference_0013": {
+        "id": "inference_0013",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "payload_mass: 1.0kg",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:58:04.103327",
+        "parents": [
+          "input_0002"
+        ],
+        "metadata": {}
+      },
+      "inference_0014": {
+        "id": "inference_0014",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "total_mass: 3.5kg",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:58:04.103329",
+        "parents": [
+          "input_0003"
+        ],
+        "metadata": {}
+      },
+      "inference_0015": {
+        "id": "inference_0015",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "center_of_mass_height: 0.45m",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:58:04.103330",
+        "parents": [
+          "input_0004"
+        ],
+        "metadata": {}
+      },
+      "inference_0016": {
+        "id": "inference_0016",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "support_polygon_width: 0.08m",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:58:04.103331",
+        "parents": [
+          "input_0005"
+        ],
+        "metadata": {}
+      },
+      "inference_0017": {
+        "id": "inference_0017",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "must_not_tip_over",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:58:04.103331",
+        "parents": [
+          "input_0006"
+        ],
+        "metadata": {}
+      },
+      "inference_0018": {
+        "id": "inference_0018",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "must_not_slip",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:58:04.103332",
+        "parents": [
+          "input_0007"
+        ],
+        "metadata": {}
+      },
+      "output_0019": {
+        "id": "output_0019",
+        "type": "output",
+        "content": {
+          "type": "failure_mode",
+          "mode": "slip_under_load",
+          "severity": "high",
+          "mitigation": "increase_friction_coefficient"
+        },
+        "timestamp": "2026-02-05T09:58:04.103382",
+        "parents": [
+          "input_0007"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "constraint: must_not_slip"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0020": {
+        "id": "output_0020",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "surface_friction_coefficient: 0.6",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T09:58:04.103406",
+        "parents": [
+          "input_0008"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: surface_friction_coefficient: 0.6"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0021": {
+        "id": "output_0021",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "payload_distribution: unknown",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T09:58:04.103418",
+        "parents": [
+          "input_0009"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: payload_distribution: unknown"
+            ],
+            "requires_validation": true
+          }
+        }
+      }
+    }
+  }
+}

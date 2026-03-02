@@ -1,0 +1,9 @@
+{
+  "power_w": 40,
+  "cooling_factor_normal": 0.3,
+  "cooling_factor_degraded": 1.0,
+  "thermal_risk_normal": 12.0,
+  "thermal_risk_degraded": 40.0,
+  "thermal_capacity_w": 50,
+  "estimated_temp_rise_c": 68
+}

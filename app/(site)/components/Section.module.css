@@ -1,0 +1,25 @@
+.section {
+  padding: 64px 0;
+}
+
+.section.narrow {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section.wide {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 96px 0;
+  }
+}
+
+
+
+
+
+

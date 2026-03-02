@@ -1,0 +1,5 @@
+{
+  "id": "st-010",
+  "text": "We are a mid-cap pharmaceutical company with clinical trial data spanning 15 years and 200,000 patient records across 43 studies. A partnership opportunity with a leading AI drug discovery firm would grant them access to our anonymized dataset in exchange for co-development rights on any compounds identified. Our Chief Medical Officer estimates this could accelerate our pipeline by 2-3 years. However, our Data Protection Officer has raised concerns: re-identification risk exists despite anonymization, consent forms from pre-2018 studies did not contemplate AI use, and three ongoing FDA submissions reference data integrity commitments that could be complicated by third-party access. The AI firm is also in discussions with two of our competitors. Partnership exclusivity would cost an additional $30M upfront.",
+  "type": "decision"
+}

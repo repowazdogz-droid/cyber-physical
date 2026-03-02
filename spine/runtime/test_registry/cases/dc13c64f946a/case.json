@@ -1,0 +1,40 @@
+{
+  "case_id": "dc13c64f946a",
+  "name": "Stress corrosion in saline environment",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:16:46.001625",
+  "case_yaml": {
+    "problem": {
+      "name": "Stress corrosion in saline environment",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "operating_stress: 0.6 \u00d7 yield",
+      "environment: saline_solution",
+      "material_susceptibility: high",
+      "must_resist_corrosion"
+    ],
+    "uncertainties": [
+      "corrosion_rate: unknown",
+      "crack_initiation_time: variable",
+      "environmental_variation: high"
+    ],
+    "objectives": [
+      "environmental_resistance",
+      "material_durability"
+    ]
+  },
+  "design_data": {
+    "operating_stress_mpa": 600,
+    "yield_strength_mpa": 1000,
+    "stress_ratio": 0.6,
+    "environment": "saline",
+    "material_susceptibility": "high"
+  },
+  "tags": [
+    "adversarial",
+    "material",
+    "test"
+  ],
+  "notes": "Injected failure: stress_corrosion"
+}

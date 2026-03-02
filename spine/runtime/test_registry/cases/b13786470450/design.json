@@ -1,0 +1,6 @@
+{
+  "friction_coefficient": 0.1,
+  "max_friction_force_n": 0.8,
+  "required_grip_n": 5.0,
+  "slip_margin": -4.2
+}

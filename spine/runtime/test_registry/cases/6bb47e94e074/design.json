@@ -1,0 +1,6 @@
+{
+  "control_loop_period_ms": 100,
+  "sensor_latency_ms": 50,
+  "max_latency_ms": 20,
+  "latency_ratio": 0.5
+}

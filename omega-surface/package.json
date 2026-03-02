@@ -1,0 +1,25 @@
+{
+  "name": "omega-surface",
+  "version": "1.0.0",
+  "description": "OMEGA Surface Standard — shared ontology, artifact envelope, Room/Terminal surfaces, post-hoc verification",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": ["dist", "docs"],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "~5.6.2",
+    "vitest": "^2.0.0"
+  }
+}

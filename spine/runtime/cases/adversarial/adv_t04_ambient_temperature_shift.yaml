@@ -1,0 +1,33 @@
+problem:
+  name: "Ambient temperature shift - +30°C above spec"
+  domain: "robotic_design"
+
+constraints:
+  - "spec_ambient_temp: 25°C"
+  - "actual_ambient_temp: 55°C"
+  - "max_operating_temp: 85°C"
+  - "thermal_margin: 10°C"
+  - "must_operate_in_spec"
+
+uncertainties:
+  - "ambient_variation_range: unknown"
+  - "thermal_margin_adequacy: variable"
+  - "cooling_efficiency_at_temp: degraded"
+
+objectives:
+  - "environmental_robustness"
+  - "thermal_safety"
+
+design:
+  spec_ambient_c: 25
+  actual_ambient_c: 55
+  max_operating_c: 85
+  thermal_margin_c: 10
+  power_dissipation_w: 35
+  estimated_temp_rise_c: 30
+  total_temp_c: 85
+
+metadata:
+  injected_failure: "ambient_temperature_shift"
+  failure_category: "thermal"
+  expected_detection: "Thermal constraint should trigger if ambient considered"

@@ -1,0 +1,410 @@
+{
+  "decision_map": {
+    "constraints_checked": [
+      {
+        "constraint": "initial_backlash: 0.05mm",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "backlash_per_cycle: 0.0001mm",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "total_cycles: 1000",
+        "checked": true,
+        "contract_matched": "37_capability_sourcing_contract",
+        "violation": null
+      },
+      {
+        "constraint": "max_acceptable_backlash: 0.2mm",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "must_maintain_precision",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      }
+    ],
+    "violations": []
+  },
+  "failure_modes": [],
+  "contradictions": [],
+  "unknowns": [
+    {
+      "item": "wear_rate_variability: \u00b150%",
+      "impact": "medium",
+      "resolution": "investigation_required",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "uncertainty: wear_rate_variability: \u00b150%"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": {
+        "base_confidence": 0.4,
+        "min_confidence": 0.4,
+        "max_confidence": 0.4,
+        "sensitivity": 0.0,
+        "dependent_on": [
+          "wear_rate_variability"
+        ]
+      }
+    },
+    {
+      "item": "lubrication_effectiveness: variable",
+      "impact": "medium",
+      "resolution": "investigation_required",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "uncertainty: lubrication_effectiveness: variable"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": {
+        "base_confidence": 0.4,
+        "min_confidence": 0.4,
+        "max_confidence": 0.4,
+        "sensitivity": 0.0,
+        "dependent_on": [
+          "lubrication_effectiveness"
+        ]
+      }
+    },
+    {
+      "item": "load_dependent_wear: unknown",
+      "impact": "medium",
+      "resolution": "investigation_required",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "uncertainty: load_dependent_wear: unknown"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": {
+        "base_confidence": 0.4,
+        "min_confidence": 0.36000000000000004,
+        "max_confidence": 0.42400000000000004,
+        "sensitivity": 0.07999999999999999,
+        "dependent_on": [
+          "load_dependent_wear"
+        ]
+      }
+    }
+  ],
+  "recommended_experiments": [],
+  "falsification_tests": [],
+  "formal_constraints": [],
+  "trace_graph": {
+    "run_id": "9f45064e04de",
+    "timestamp": "2026-02-05T10:19:57.788068",
+    "nodes": {
+      "input_0000": {
+        "id": "input_0000",
+        "type": "input",
+        "content": {
+          "type": "problem",
+          "name": "Backlash accumulation over 1000 cycles",
+          "domain": "robotic_design"
+        },
+        "timestamp": "2026-02-05T10:19:57.781986",
+        "parents": [],
+        "metadata": {}
+      },
+      "input_0001": {
+        "id": "input_0001",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "initial_backlash: 0.05mm"
+        },
+        "timestamp": "2026-02-05T10:19:57.781987",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0002": {
+        "id": "input_0002",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "backlash_per_cycle: 0.0001mm"
+        },
+        "timestamp": "2026-02-05T10:19:57.781988",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0003": {
+        "id": "input_0003",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "total_cycles: 1000"
+        },
+        "timestamp": "2026-02-05T10:19:57.781989",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0004": {
+        "id": "input_0004",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "max_acceptable_backlash: 0.2mm"
+        },
+        "timestamp": "2026-02-05T10:19:57.781989",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0005": {
+        "id": "input_0005",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "must_maintain_precision"
+        },
+        "timestamp": "2026-02-05T10:19:57.781990",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0006": {
+        "id": "input_0006",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "wear_rate_variability: \u00b150%"
+        },
+        "timestamp": "2026-02-05T10:19:57.781991",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0007": {
+        "id": "input_0007",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "lubrication_effectiveness: variable"
+        },
+        "timestamp": "2026-02-05T10:19:57.781992",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0008": {
+        "id": "input_0008",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "load_dependent_wear: unknown"
+        },
+        "timestamp": "2026-02-05T10:19:57.781993",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0009": {
+        "id": "input_0009",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "positioning_accuracy"
+        },
+        "timestamp": "2026-02-05T10:19:57.781994",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0010": {
+        "id": "input_0010",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "long_term_precision"
+        },
+        "timestamp": "2026-02-05T10:19:57.781995",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "inference_0011": {
+        "id": "inference_0011",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "initial_backlash: 0.05mm",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:19:57.788027",
+        "parents": [
+          "input_0001"
+        ],
+        "metadata": {}
+      },
+      "inference_0012": {
+        "id": "inference_0012",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "backlash_per_cycle: 0.0001mm",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:19:57.788028",
+        "parents": [
+          "input_0002"
+        ],
+        "metadata": {}
+      },
+      "inference_0013": {
+        "id": "inference_0013",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "total_cycles: 1000",
+          "checked": true,
+          "contract_matched": "37_capability_sourcing_contract",
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:19:57.788029",
+        "parents": [
+          "input_0003"
+        ],
+        "metadata": {}
+      },
+      "inference_0014": {
+        "id": "inference_0014",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "max_acceptable_backlash: 0.2mm",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:19:57.788030",
+        "parents": [
+          "input_0004"
+        ],
+        "metadata": {}
+      },
+      "inference_0015": {
+        "id": "inference_0015",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "must_maintain_precision",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:19:57.788031",
+        "parents": [
+          "input_0005"
+        ],
+        "metadata": {}
+      },
+      "output_0016": {
+        "id": "output_0016",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "wear_rate_variability: \u00b150%",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:19:57.788049",
+        "parents": [
+          "input_0006"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: wear_rate_variability: \u00b150%"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0017": {
+        "id": "output_0017",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "lubrication_effectiveness: variable",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:19:57.788057",
+        "parents": [
+          "input_0007"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: lubrication_effectiveness: variable"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0018": {
+        "id": "output_0018",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "load_dependent_wear: unknown",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:19:57.788063",
+        "parents": [
+          "input_0008"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: load_dependent_wear: unknown"
+            ],
+            "requires_validation": true
+          }
+        }
+      }
+    }
+  }
+}

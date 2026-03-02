@@ -1,0 +1,77 @@
+{
+  "id": "5d30de85-9414-49c1-b963-b9442aa64d67",
+  "created_at": "2026-02-08T13:35:20.213Z",
+  "trigger": "calibration",
+  "track_a": {
+    "golden_cases_run": 6,
+    "golden_cases_passed": 6,
+    "golden_cases_failed": [],
+    "engine_metrics": {
+      "engine_determinism": 1,
+      "confidence_ceiling_observed": 0.6229,
+      "confidence_floor_observed": 0,
+      "confidence_range": 0.6229,
+      "score_band_discrimination": 3,
+      "similarity_threshold_precision": 1,
+      "evidence_density_range": 0.979594942541921,
+      "drift_flag_accuracy": 1
+    },
+    "total_duration_ms": 15
+  },
+  "calibration": {
+    "recommendations": [
+      {
+        "parameter": "W_a",
+        "current_value": 0.45,
+        "recommended_value": 0.35,
+        "reason": "Weight calibration: train_spearman=0.6171, test_spearman=0.7825",
+        "confidence": 0.9
+      },
+      {
+        "parameter": "W_e",
+        "current_value": 0.25,
+        "recommended_value": 0.35,
+        "reason": "Weight calibration",
+        "confidence": 0.9
+      },
+      {
+        "parameter": "W_u",
+        "current_value": 0.15,
+        "recommended_value": 0.15,
+        "reason": "Weight calibration",
+        "confidence": 0.9
+      },
+      {
+        "parameter": "W_d",
+        "current_value": 0.15,
+        "recommended_value": 0.15,
+        "reason": "Weight calibration",
+        "confidence": 0.9
+      },
+      {
+        "parameter": "BAND_LOW_MAX",
+        "current_value": 0.4,
+        "recommended_value": 0.25,
+        "reason": "Band calibration: percentile bands (0.13, 0.17, 0.21) were too tight for narrow score range [0.039, 0.272]. Overridden to stable defaults (0.25, 0.50, 0.75) for institutional UX.",
+        "confidence": 0.9
+      },
+      {
+        "parameter": "BAND_MODERATE_MAX",
+        "current_value": 0.7,
+        "recommended_value": 0.5,
+        "reason": "Band calibration: overridden to stable defaults",
+        "confidence": 0.9
+      },
+      {
+        "parameter": "BAND_HIGH_MAX",
+        "current_value": 0.9,
+        "recommended_value": 0.75,
+        "reason": "Band calibration: overridden to stable defaults",
+        "confidence": 0.9
+      }
+    ],
+    "applied": true
+  },
+  "regression_verdict": "pass",
+  "regression_failures": []
+}

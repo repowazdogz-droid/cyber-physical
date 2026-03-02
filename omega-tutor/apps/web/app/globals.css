@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0a0b;
+  --surface: #141416;
+  --muted: #71717a;
+  --border: #27272a;
+  --text: #fafafa;
+  --accent: #a1a1aa;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+/* Calm, spare, serious — no gamification */
+input, textarea, button {
+  font-family: inherit;
+}

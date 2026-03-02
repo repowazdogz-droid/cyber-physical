@@ -1,0 +1,24 @@
+(program frame:ABSOLUTE (seq (paste_at base patch1 (abs 0 0)) (paste_at base patch2 (rel center 5 5))))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

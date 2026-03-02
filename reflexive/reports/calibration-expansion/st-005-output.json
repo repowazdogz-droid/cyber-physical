@@ -1,0 +1,125 @@
+{
+  "stimulus_id": "st-005",
+  "analysis_id": "b30c26d7-24d3-4866-9623-31664fb57839",
+  "case_id": "821c121b-675a-4a14-a981-6be9b7529edf",
+  "duration_ms": 10480,
+  "success": true,
+  "confidence_score": 0.2668,
+  "confidence_breakdown": {
+    "per_lens": [
+      {
+        "lens_id": "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "claim_count": 6,
+        "scoring_claim_count": 6,
+        "supported_claim_count": 4,
+        "mean_evidence_strength": 0.6833333333333332,
+        "contribution_to_agreement": 0
+      },
+      {
+        "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+        "claim_count": 7,
+        "scoring_claim_count": 7,
+        "supported_claim_count": 5,
+        "mean_evidence_strength": 0.6857142857142857,
+        "contribution_to_agreement": 0.2777777777777778
+      },
+      {
+        "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "claim_count": 6,
+        "scoring_claim_count": 6,
+        "supported_claim_count": 4,
+        "mean_evidence_strength": 0.65,
+        "contribution_to_agreement": 0.2777777777777778
+      },
+      {
+        "lens_id": "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+        "claim_count": 9,
+        "scoring_claim_count": 9,
+        "supported_claim_count": 7,
+        "mean_evidence_strength": 0.7444444444444444,
+        "contribution_to_agreement": 0.2777777777777778
+      },
+      {
+        "lens_id": "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "claim_count": 6,
+        "scoring_claim_count": 6,
+        "supported_claim_count": 4,
+        "mean_evidence_strength": 0.6333333333333333,
+        "contribution_to_agreement": 0
+      }
+    ],
+    "per_theme": [
+      {
+        "strength": 0.8333333333333334,
+        "theme_id": "9ef5c6bf-9b8b-57b1-aad6-547721315a7f",
+        "agreement_type": "convergence",
+        "participating_lenses": 3
+      }
+    ],
+    "raw_score": 0.266838232666185,
+    "drift_flags": [],
+    "final_score": 0.2668,
+    "agreement_factor": 0.5,
+    "lens_count_factor": 1,
+    "divergence_penalty": 0,
+    "unsupported_penalty": 0.14705882352941177,
+    "low_evidence_warning": false,
+    "evidence_density_factor": 0.2555882247823869,
+    "high_contradiction_warning": false
+  },
+  "convergence_count": 1,
+  "divergence_count": 0,
+  "orphan_count": 31,
+  "convergence_points": [
+    {
+      "strength": 0.8333333333333334,
+      "theme_id": "9ef5c6bf-9b8b-57b1-aad6-547721315a7f",
+      "theme_label": "Horizontal platform growth has decelerated from 45% to 28% YoY.",
+      "evidence_density": 0.4033333167452013,
+      "supporting_claims": [
+        "19fc2c38-eb15-4f3f-8cc9-1be57dae27e4",
+        "ce920012-e9ae-4b19-b641-ffa3c51812d2",
+        "dbd90b10-0186-4e6e-956b-267982c14a27"
+      ],
+      "supporting_lenses": [
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    }
+  ],
+  "divergence_points": [],
+  "orphan_claims": [
+    "15784908-6fa7-43e6-af96-1043fb4ab5d2",
+    "5838f322-83fa-4c5e-94a9-358985f227fb",
+    "f50dfb8a-3d73-49d0-bdc6-3bc54f4f559f",
+    "b56b2ce5-0ca1-4fae-80d1-66c0f45ca928",
+    "6c5b8fc6-4a2a-4adb-8eae-f7fe7a0caa97",
+    "89d50738-7b17-4fea-8f2a-23b3cb211bfa",
+    "d82ee325-09c0-416c-8f9d-507bb4632ffa",
+    "bd18c52c-b630-4a3c-8588-296aa0b180bd",
+    "74b9f1b0-969f-4ca1-a123-2e92dd955d5e",
+    "29ffdcc0-0d2f-4616-a7af-cda836493354",
+    "b3c24440-6929-488f-bc4a-b605d519c9f6",
+    "ba4e27d0-5a09-443e-ba7c-d9796bef2ab5",
+    "bf1cc2ec-2fbe-41b2-9547-c6afdaef3457",
+    "2037315d-e649-466f-96f1-1bd59708a2ae",
+    "59fb2296-6afe-4723-a945-dc9c3be406d3",
+    "f5eed194-508e-44e8-8945-0300e5351cda",
+    "228975dd-a517-4d65-87cb-25d6f7c4033f",
+    "a3023b83-633e-4c33-8cf4-25e187605ea7",
+    "082a03e6-bbe6-46e9-affe-0ee855a53502",
+    "c4e8e267-57e4-48af-b073-0bed12901c8a",
+    "f1e2f169-e193-4ae6-9fe5-15701c8e1ee0",
+    "4e15acdd-0146-45c0-8d35-775966943bdd",
+    "cd6a76e0-52d1-41bc-84a9-7e14d33482e0",
+    "e7e39906-db1c-42b0-9cc6-44bb2125fb10",
+    "c818b7e9-c8da-48d7-bb60-b83791b660f0",
+    "e71e90f8-a02d-43f2-87ab-464d24c18254",
+    "df406da3-2d43-404c-aac0-0d182c752aed",
+    "90082538-8695-4a5a-a8da-9c5bfb4420b5",
+    "56a6f760-6fc1-42c2-b6e3-8067effa296a",
+    "0dec8083-ea47-40f3-be80-083c94ae4e7f",
+    "a094f786-1c08-4de7-93f8-488d7720e4e5"
+  ]
+}

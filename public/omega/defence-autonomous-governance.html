@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMEGA — Defence Autonomous Governance</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg-deep:#fafafa;--bg-surface:#f4f4f6;--bg-raised:#ecedef;--bg-hover:#e4e5e8;
+  --border:#d5d7dc;--border-active:#b8bbc2;
+  --text-primary:#111214;--text-secondary:#363940;--text-muted:#5c5f69;
+  --green:#059669;--green-dim:#d1fae5;--green-glow:rgba(5,150,105,.08);
+  --amber:#d97706;--amber-dim:#fef3c7;--amber-glow:rgba(217,119,6,.08);
+  --red:#dc2626;--red-dim:#fee2e2;--red-glow:rgba(220,38,38,.08);
+  --blue:#2563eb;--blue-dim:#dbeafe;--blue-glow:rgba(37,99,235,.06);
+  --crimson:#be123c;--crimson-dim:#ffe4e6;--crimson-glow:rgba(190,18,60,.08);
+  --mono:'Courier New','Lucida Console',monospace;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --fast:150ms ease;--med:300ms ease;--rad:6px;
+}
+html{font-size:14px}
+body{background:var(--bg-deep);color:var(--text-primary);font-family:var(--sans);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* TRUST STRIP */
+.strip{display:flex;align-items:center;justify-content:center;gap:14px;padding:4px 16px;background:var(--bg-deep);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:9px;color:#363940;flex-wrap:wrap}
+.strip-dot{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;margin-right:4px}
+.strip-dot.a{background:var(--amber)}.strip-dot.r{background:var(--red)}
+.strip-sep{color:var(--border)}
+
+/* HEADER */
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border-bottom:1px solid var(--border);background:var(--bg-surface);position:sticky;top:0;z-index:100;flex-wrap:wrap;gap:8px}
+.hdr-left{display:flex;align-items:center;gap:12px}
+.logo{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:2px}
+.logo span{color:var(--crimson)}
+.logo-sub{font-family:var(--mono);font-size:9px;letter-spacing:1px;color:#363940}
+.pills{display:flex;gap:5px;flex-wrap:wrap}
+.pill{font-family:var(--mono);font-size:9px;padding:2px 7px;border-radius:3px;background:#f0f1f3;border:1px solid var(--border);color:#363940;white-space:nowrap}
+.pill.g{color:var(--green);border-color:var(--green-dim);background:#ecfdf5}
+.pill.a{color:var(--amber);border-color:var(--amber-dim);background:#fffbeb}
+.pill.r{color:var(--crimson);border-color:var(--crimson-dim);background:#fef2f2}
+
+/* LAYOUT */
+.main{display:grid;grid-template-columns:260px 1fr 300px;min-height:calc(100vh - 80px)}
+@media(max-width:1100px){.main{grid-template-columns:1fr}}
+
+/* LEFT: TACTICAL INPUTS */
+.left{border-right:1px solid var(--border);background:var(--bg-surface);padding:14px;overflow-y:auto}
+.ptitle{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:#363940;text-transform:uppercase;margin-bottom:12px}
+.sgroup{margin-bottom:12px}
+.slbl{font-family:var(--mono);font-size:10px;color:#111214;margin-bottom:2px;display:flex;justify-content:space-between}
+.sunit{color:#5c5f69;font-size:9px}
+.srow{display:flex;align-items:center;gap:8px}
+.sval{font-family:var(--mono);font-size:18px;font-weight:700;min-width:55px;color:#111214}
+.sval.w{color:var(--amber)}.sval.c{color:var(--crimson)}
+input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:3px;background:#c0c2c8;border-radius:2px;outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:#363940;border:2px solid #ffffff;cursor:pointer}
+.tbar{height:2px;background:var(--border);border-radius:1px;margin-top:3px;position:relative}
+.tmark{position:absolute;top:-3px;width:1px;height:8px}
+.tmark.tw{background:var(--amber)}.tmark.tc{background:var(--crimson)}
+.divider{height:1px;background:var(--border);margin:12px 0}
+.pol{font-family:var(--mono);font-size:9px;color:#363940;padding:5px 7px;background:#f4f4f6;border:1px solid var(--border);border-radius:3px;margin-bottom:5px;line-height:1.5}
+.pol b{color:var(--crimson);font-weight:600}
+.pol b.a{color:var(--amber)}
+.btns{display:flex;flex-direction:column;gap:5px;margin-top:12px}
+.btn{font-family:var(--mono);font-size:10px;padding:7px 12px;border-radius:4px;border:1px solid;cursor:pointer;transition:all var(--fast);text-align:center;background:transparent}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-go{background:#ecfdf5;border-color:var(--green-dim);color:var(--green)}
+.btn-go:hover:not(:disabled){background:#d1fae5}
+.btn-escalate{background:#fef2f2;border-color:var(--crimson-dim);color:var(--crimson)}
+.btn-escalate:hover:not(:disabled){background:#ffe4e6}
+.btn-chaos{background:#fef2f2;border-color:var(--red-dim);color:var(--red)}
+.btn-chaos:hover:not(:disabled){background:#fee2e2}
+.btn-x{background:var(--bg-raised);border-color:var(--border);color:var(--text-secondary)}
+.btn-x:hover:not(:disabled){background:var(--bg-hover)}
+
+/* SCENARIO EXPLAINER */
+.scenario-explainer{padding:14px 18px;background:var(--bg-raised,#f0f1f3);border:1px solid var(--border,#d5d7dc);border-left:3px solid var(--blue,#2563eb);border-radius:6px;margin-bottom:16px;font-family:var(--sans,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif);font-size:12px;line-height:1.7;color:var(--text-secondary,#4a4d56)}
+.scenario-explainer b{color:var(--text-primary,#1a1c20);font-weight:600}
+.scenario-explainer .watch-for{margin-top:8px;padding-top:8px;border-top:1px solid var(--border,#d5d7dc);font-size:11px;color:var(--text-muted,#7c808a)}
+.scenario-explainer .watch-for b{color:var(--blue,#2563eb);font-size:11px}
+
+/* SELECT */
+.sel-group{margin-bottom:12px}
+.sel-label{font-family:var(--mono);font-size:10px;color:var(--text-secondary);margin-bottom:4px}
+select{width:100%;font-family:var(--mono);font-size:11px;padding:6px 8px;background:var(--bg-raised);color:var(--text-primary);border:1px solid var(--border);border-radius:4px;outline:none;cursor:pointer}
+select:focus{border-color:var(--border-active)}
+
+/* CENTER: CHAIN */
+.center{padding:20px 24px;display:flex;flex-direction:column;align-items:center;overflow-y:auto}
+.ch-title{text-align:center;margin-bottom:14px}
+.ch-title h2{font-size:15px;font-weight:600;margin-bottom:2px}
+.ch-title p{font-family:var(--mono);font-size:10px;color:#363940;letter-spacing:1px}
+.ibar-wrap{width:100%;max-width:460px;margin-bottom:14px}
+.ibar{height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+.ibar-fill{height:100%;border-radius:2px;transition:width .3s,background .3s}
+.ibar-labels{display:flex;justify-content:space-between;margin-top:4px;font-family:var(--mono);font-size:9px;color:#363940}
+.chain{display:flex;flex-direction:column;gap:0;width:100%;max-width:460px}
+.node{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--rad);padding:10px 12px;position:relative;transition:border-color var(--med),box-shadow var(--med)}
+.node+.node{margin-top:0}
+.connector{width:1px;height:16px;background:var(--border);margin:0 auto}
+.connector.tampered{background:var(--crimson)}
+.node.tampered{border-color:var(--crimson);box-shadow:0 0 0 1px rgba(190,18,60,.2)}
+.node.active{border-color:var(--green);box-shadow:0 0 0 1px rgba(5,150,105,.15)}
+.node-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.node-type{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;font-weight:600;text-transform:uppercase}
+.node-type.observe{color:var(--blue)}.node-type.derive{color:var(--amber)}.node-type.assume{color:var(--text-secondary)}.node-type.decide{color:var(--green)}.node-type.act{color:var(--crimson)}
+.node-time{font-family:var(--mono);font-size:8px;color:#5c5f69}
+.node-content{font-size:12px;color:#363940;line-height:1.6;margin-bottom:6px}
+.node-hash{font-family:var(--mono);font-size:8px;color:var(--hash-color);word-break:break-all;background:var(--bg-raised);padding:3px 6px;border-radius:3px;cursor:pointer;transition:color var(--fast)}
+.node-hash:hover{color:var(--text-secondary)}
+.node-hash.mismatch{color:var(--crimson);background:var(--crimson-glow)}
+.node-policy{font-family:var(--mono);font-size:9px;margin-top:4px;padding:3px 7px;border-radius:3px;display:inline-block}
+.node-policy.enforced{color:var(--crimson);background:#fef2f2;border:1px solid var(--crimson-dim)}
+.node-policy.cleared{color:var(--green);background:#ecfdf5;border:1px solid var(--green-dim)}
+.node-policy.escalated{color:var(--amber);background:#fffbeb;border:1px solid var(--amber-dim)}
+.empty-state{text-align:center;padding:60px 20px;color:#363940;font-family:var(--mono);font-size:11px;letter-spacing:1px}
+
+/* RIGHT: MECHANISM */
+.right{border-left:1px solid var(--border);background:var(--bg-surface);padding:14px;overflow-y:auto}
+.mech-block{margin-bottom:14px}
+.mech-title{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:#363940;text-transform:uppercase;margin-bottom:8px}
+.mech-row{font-family:var(--mono);font-size:10px;padding:5px 7px;background:var(--bg-raised);border:1px solid var(--border);border-radius:3px;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center}
+.mech-label{color:var(--text-secondary)}
+.mech-val{font-weight:600}
+.mech-val.g{color:var(--green)}.mech-val.a{color:var(--amber)}.mech-val.r{color:var(--crimson)}.mech-val.b{color:var(--blue)}
+.mech-note{font-family:var(--mono);font-size:9px;color:#363940;line-height:1.6;padding:8px;background:var(--bg-raised);border:1px solid var(--border);border-radius:4px;margin-bottom:10px}
+.tamper-log{font-family:var(--mono);font-size:9px;color:var(--crimson);padding:5px 7px;background:#fef2f2;border:1px solid var(--crimson-dim);border-radius:3px;margin-bottom:4px;line-height:1.5}
+.roe-status{font-family:var(--mono);font-size:10px;padding:8px;border-radius:4px;text-align:center;margin-bottom:10px;font-weight:600;letter-spacing:1px}
+.roe-status.weapons-free{color:var(--crimson);background:#fef2f2;border:1px solid var(--crimson-dim)}
+.roe-status.weapons-hold{color:var(--amber);background:#fffbeb;border:1px solid var(--amber-dim)}
+.roe-status.weapons-tight{color:var(--green);background:#ecfdf5;border:1px solid var(--green-dim)}
+.roe-status.hold-fire{color:var(--blue);background:#eff6ff;border:1px solid var(--blue-dim)}
+/* ─── INFO TOOLTIP SYSTEM ─── */
+.info-trigger{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;background:rgba(37,99,235,.06);border:1px solid #b8bbc2;color:var(--blue,#2563eb);font-family:var(--mono,'Courier New',monospace);font-size:8px;font-weight:700;cursor:pointer;margin-left:5px;vertical-align:middle;transition:all 150ms ease;flex-shrink:0;position:relative;line-height:1}
+.info-trigger:hover{background:rgba(37,99,235,.1);border-color:rgba(37,99,235,.35);transform:scale(1.1)}
+.info-trigger.active{background:rgba(37,99,235,.15);border-color:var(--blue,#2563eb)}
+.info-panel{position:absolute;z-index:1000;width:280px;padding:10px 12px;background:#ffffff;border:1px solid #d5d7dc;border-radius:6px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;font-size:11px;color:#4a4d56;line-height:1.6;box-shadow:0 8px 32px rgba(0,0,0,.1);pointer-events:auto;opacity:0;transform:translateY(4px);transition:opacity 200ms ease,transform 200ms ease}
+.info-panel.visible{opacity:1;transform:translateY(0)}
+.info-panel b{color:#1a1c20;font-weight:600}
+.info-panel code{font-family:var(--mono,'Courier New',monospace);font-size:10px;color:#2563eb;background:rgba(37,99,235,.06);padding:1px 4px;border-radius:2px}
+.info-panel-arrow{position:absolute;top:-4px;left:14px;width:8px;height:8px;background:#ffffff;border-left:1px solid #d5d7dc;border-top:1px solid #d5d7dc;transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<!-- TRUST STRIP -->
+<div class="strip">
+  <span><span class="strip-dot"></span>OMEGA GOVERNANCE ACTIVE</span>
+  <span class="strip-sep">|</span>
+  <span>PROTOCOL: CAP + CGL + ASR + ETG</span>
+  <span class="strip-sep">|</span>
+  <span>DOMAIN: DEFENCE AUTONOMOUS SYSTEMS</span>
+  <span class="strip-sep">|</span>
+  <span id="hashCount">CHAIN: 0 NODES</span>
+</div>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-left">
+    <div>
+      <div class="logo">OMEGA <span>DEFENCE</span></div>
+      <div class="logo-sub">Autonomous Systems Governance</div>
+    </div>
+  </div>
+  <div class="pills">
+    <span class="pill">SHA-256<span class="info-trigger" data-info="<b>SHA-256 hashing.</b> Industry-standard cryptographic hash function. Used by Bitcoin, SSL certificates, and digital signatures worldwide. Produces a unique 64-character fingerprint for any input.">i</span></span>
+    <span class="pill">Hash-chained</span>
+    <span class="pill">Zero dependencies<span class="info-trigger" data-info="<b>Zero dependencies.</b> This system uses no external libraries, databases, or cloud services. Everything runs in the browser. If every server on Earth went offline, the protocols still work.">i</span></span>
+    <span class="pill r">HUMAN-IN-THE-LOOP</span>
+    <span class="pill g">LIVE</span>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- LEFT: TACTICAL INPUTS -->
+<div class="left">
+  <div class="ptitle">Tactical Environment</div>
+
+  <div class="sel-group">
+    <div class="sel-label">Rules of Engagement<span class="info-trigger" data-info="<b>Rules of Engagement.</b> Set by the commanding officer before the mission. The AI cannot change these. HOLD FIRE means nothing happens. WEAPONS TIGHT means the AI needs positive target ID before any engagement can even be considered.">i</span></div>
+    <select id="roe" onchange="updateReadout()">
+      <option value="hold-fire">HOLD FIRE - No engagement authorised</option>
+      <option value="weapons-tight" selected>WEAPONS TIGHT - Fire only if target identified hostile</option>
+      <option value="weapons-hold">WEAPONS HOLD - Fire only in self-defence</option>
+      <option value="weapons-free">WEAPONS FREE - Fire at any non-friendly target</option>
+    </select>
+  </div>
+
+  <div class="sel-group">
+    <div class="sel-label">Mission Type</div>
+    <select id="missionType" onchange="applyMissionPreset(this.value)">
+      <option value="isr">ISR (Intelligence, Surveillance, Reconnaissance)</option>
+      <option value="escort">Convoy Escort</option>
+      <option value="strike" selected>Precision Strike</option>
+      <option value="casevac">CASEVAC Support</option>
+    </select>
+  </div>
+
+  <div class="scenario-explainer" id="scenarioExplainer"></div>
+
+  <div class="divider"></div>
+  <div class="ptitle">Sensor Inputs</div>
+
+  <div class="sgroup">
+    <div class="slbl"><span>Threat Confidence<span class="info-trigger" data-info="<b>Threat confidence.</b> How certain the sensor system is that the detected entity is hostile. This is an input — the AI receives this number, it doesn't generate it. Higher values mean more certainty.">i</span></span><span class="sunit">%</span></div>
+    <div class="srow"><span class="sval" id="threatVal">65</span><input type="range" id="threatConf" min="0" max="100" value="65" step="1" oninput="updateReadout()"></div>
+    <div class="tbar"><div class="tmark tw" style="left:50%"></div><div class="tmark tc" style="left:85%"></div></div>
+  </div>
+
+  <div class="sgroup">
+    <div class="slbl"><span>Civilian Proximity<span class="info-trigger" data-info="<b>Civilian proximity.</b> Distance to nearest known civilian position in metres. Below 100m triggers an automatic engagement halt — no exceptions, no override. This is a hard block set by human policy.">i</span></span><span class="sunit">m</span></div>
+    <div class="srow"><span class="sval" id="civVal">400</span><input type="range" id="civProx" min="0" max="1000" value="400" step="10" oninput="updateReadout()"></div>
+    <div class="tbar"><div class="tmark tc" style="left:10%"></div><div class="tmark tw" style="left:30%"></div></div>
+  </div>
+
+  <div class="sgroup">
+    <div class="slbl"><span>Positive ID Confidence<span class="info-trigger" data-info="<b>Positive ID confidence.</b> How certain the system is about the target's identity. Below 80% and weapons release is blocked automatically. The AI cannot override this threshold.">i</span></span><span class="sunit">%</span></div>
+    <div class="srow"><span class="sval" id="pidVal">72</span><input type="range" id="pidConf" min="0" max="100" value="72" step="1" oninput="updateReadout()"></div>
+    <div class="tbar"><div class="tmark tw" style="left:60%"></div><div class="tmark tc" style="left:40%"></div></div>
+  </div>
+
+  <div class="sgroup">
+    <div class="slbl"><span>Friendly Force Distance<span class="info-trigger" data-info="<b>Friendly force distance.</b> Distance to nearest friendly unit. Below 250m is classified as DANGER CLOSE and requires explicit commander override. The system won't fire near friendlies without human authorisation.">i</span></span><span class="sunit">m</span></div>
+    <div class="srow"><span class="sval" id="friendlyVal">800</span><input type="range" id="friendlyDist" min="0" max="2000" value="800" step="10" oninput="updateReadout()"></div>
+    <div class="tbar"><div class="tmark tc" style="left:12.5%"></div><div class="tmark tw" style="left:25%"></div></div>
+  </div>
+
+  <div class="sgroup">
+    <div class="slbl"><span>Collateral Damage Estimate<span class="info-trigger" data-info="<b>Collateral Damage Estimate.</b> A scale from 0-5 estimating potential unintended damage. Above 3 blocks engagement without commander override. This ensures proportionality — even if the target is confirmed, excessive collateral damage stops the action.">i</span></span><span class="sunit">CDE</span></div>
+    <div class="srow"><span class="sval" id="cdeVal">2</span><input type="range" id="cdeLevel" min="0" max="5" value="2" step="1" oninput="updateReadout()"></div>
+    <div class="tbar"><div class="tmark tw" style="left:40%"></div><div class="tmark tc" style="left:60%"></div></div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="ptitle">Policy Hierarchy<span class="info-trigger" data-info="<b>Policy hierarchy.</b> These rules are set by humans before the AI runs. They are checked in order of priority. A higher-priority policy always overrides a lower one. The AI cannot reorder, ignore, or modify these rules.">i</span></div>
+  <div class="pol"><b>ROE OVERRIDE</b> &mdash; Rules of engagement supersede all autonomous action</div>
+  <div class="pol"><b class="a">HUMAN AUTHORISATION</b> &mdash; Lethal action requires human-in-the-loop confirmation</div>
+  <div class="pol"><b>CDE THRESHOLD</b> &mdash; CDE > 3 blocks engagement without commander override</div>
+  <div class="pol"><b>PID MINIMUM</b> &mdash; Positive ID < 80% blocks weapons release</div>
+  <div class="pol"><b class="a">CIVILIAN SAFE ZONE</b> &mdash; Civilian proximity < 100m halts all engagement</div>
+
+  <div class="divider"></div>
+  <div class="btns">
+    <button class="btn btn-go" id="btnAnalyse" onclick="runAnalysis()">ANALYSE SCENARIO</button>
+    <button class="btn btn-escalate" onclick="escalateToHuman()">ESCALATE TO HUMAN<span class="info-trigger" data-info="<b>Human escalation.</b> Forces the system to request human authorisation. Once authorised, the system can proceed with actions that would otherwise require escalation. This simulates the human-in-the-loop requirement.">i</span></button>
+    <button class="btn btn-chaos" onclick="injectChaos()">INJECT CHAOS</button>
+    <button class="btn btn-x" onclick="tamperNode()">TAMPER WITH NODE</button>
+    <button class="btn btn-x" onclick="resetAll()">RESET</button>
+  </div>
+</div>
+
+<!-- CENTER: REASONING CHAIN -->
+<div class="center">
+  <div class="ch-title">
+    <h2>Reasoning Chain</h2>
+    <p>OBSERVE &rarr; DERIVE &rarr; ASSUME &rarr; DECIDE &rarr; ACT</p>
+  </div>
+  <div class="ibar-wrap">
+    <div class="ibar"><div class="ibar-fill" id="threatBar" style="width:40%;background:var(--amber)"></div></div>
+    <div class="ibar-labels"><span>ENGAGEMENT RISK<span class="info-trigger" data-info="<b>Engagement risk.</b> Composite score calculated from all sensor inputs and ROE. Green (below 0.35) means autonomous action is within parameters. Amber means elevated monitoring. Red (above 0.6) means a human must decide — the AI cannot act alone.">i</span></span><span id="riskLabel">0.40</span></div>
+  </div>
+  <div class="chain" id="chain">
+    <div class="empty-state">AWAITING SCENARIO ANALYSIS<br><br>Adjust tactical inputs and press ANALYSE SCENARIO</div>
+  </div>
+</div>
+
+<!-- RIGHT: MECHANISM PANEL -->
+<div class="right">
+  <div class="ptitle">Mechanism Panel</div>
+
+  <div class="mech-note">
+    Input only. The AI received these tactical readings and nothing else. Every constraint shown was enforced at the governance layer, not the perception model.
+  </div>
+
+  <div id="roeDisplay" class="roe-status weapons-tight">ROE: WEAPONS TIGHT</div>
+
+  <div class="mech-block">
+    <div class="mech-title">Current Inputs</div>
+    <div class="mech-row"><span class="mech-label">Mission Type</span><span class="mech-val b" id="mechMission">Precision Strike</span></div>
+    <div class="mech-row"><span class="mech-label">Threat Confidence</span><span class="mech-val" id="mechThreat">65%</span></div>
+    <div class="mech-row"><span class="mech-label">Civilian Proximity</span><span class="mech-val" id="mechCiv">400m</span></div>
+    <div class="mech-row"><span class="mech-label">Positive ID</span><span class="mech-val" id="mechPid">72%</span></div>
+    <div class="mech-row"><span class="mech-label">Friendly Distance</span><span class="mech-val" id="mechFriendly">800m</span></div>
+    <div class="mech-row"><span class="mech-label">CDE Level</span><span class="mech-val" id="mechCde">2</span></div>
+  </div>
+
+  <div class="mech-block">
+    <div class="mech-title">Risk Assessment</div>
+    <div class="mech-row"><span class="mech-label">Engagement Risk</span><span class="mech-val" id="mechRisk">0.40</span></div>
+    <div class="mech-row"><span class="mech-label">Escalation Required</span><span class="mech-val" id="mechEsc">NO</span></div>
+    <div class="mech-row"><span class="mech-label">Policies Triggered</span><span class="mech-val" id="mechPolicies">0</span></div>
+  </div>
+
+  <div class="mech-block">
+    <div class="mech-title">Policy Enforcement</div>
+    <div id="policyLog"><div class="mech-row"><span class="mech-label">No policies triggered</span></div></div>
+  </div>
+
+  <div class="mech-block">
+    <div class="mech-title">Chain Integrity</div>
+    <div class="mech-row"><span class="mech-label">Total Nodes</span><span class="mech-val g" id="mechNodes">0</span></div>
+    <div class="mech-row"><span class="mech-label">Hash Verified</span><span class="mech-val g" id="mechVerified">0/0</span></div>
+    <div class="mech-row"><span class="mech-label">Tamper Detected</span><span class="mech-val g" id="mechTamper">NONE</span></div>
+  </div>
+
+  <div class="mech-block">
+    <div class="mech-title">Tamper Log</div>
+    <div id="tamperLog"><div class="mech-row"><span class="mech-label">No tampering detected</span></div></div>
+  </div>
+
+  <div class="mech-block">
+    <div class="mech-title">Consent Verification<span class="info-trigger" data-info="<b>Consent verification.</b> Tracks whether a human authorised the action, whether the AI actually executed it, and whether what happened matches what was authorised. If these don't match, there's an accountability gap.">i</span></div>
+    <div class="mech-row"><span class="mech-label">Human Authorised</span><span class="mech-val" id="mechConsent">PENDING</span></div>
+    <div class="mech-row"><span class="mech-label">Agent Executed</span><span class="mech-val" id="mechExecuted">PENDING</span></div>
+    <div class="mech-row"><span class="mech-label">Mandate Match</span><span class="mech-val" id="mechMandate">--</span></div>
+  </div>
+
+  <div class="mech-note" style="margin-top:14px">
+    OMEGA does not make engagement decisions. It constrains them. The governance layer enforces human-defined ROE at the point of action. Every reasoning step is hash-chained and independently verifiable.
+  </div>
+</div>
+
+</div>
+
+<script>
+// ─── INFO TOOLTIP SYSTEM ───
+(function(){
+  let activePanel = null;
+  let activeTrigger = null;
+  function closeActive(){
+    if(activePanel){ activePanel.remove(); activePanel=null; }
+    if(activeTrigger){ activeTrigger.classList.remove('active'); activeTrigger=null; }
+  }
+  function positionPanel(trigger, panel){
+    document.body.appendChild(panel);
+    const r = trigger.getBoundingClientRect();
+    const pw = 280;
+    let left = r.left;
+    let top = r.bottom + 6;
+    if(left + pw > window.innerWidth - 12) left = window.innerWidth - pw - 12;
+    if(left < 12) left = 12;
+    if(top + 200 > window.innerHeight){ top = r.top - 8; panel.style.transform = 'translateY(-100%)'; }
+    panel.style.left = left + 'px';
+    panel.style.top = top + 'px';
+    panel.style.position = 'fixed';
+    const arrow = panel.querySelector('.info-panel-arrow');
+    if(arrow){ arrow.style.left = Math.max(10, Math.min(pw-20, r.left - left + r.width/2 - 4)) + 'px'; }
+    requestAnimationFrame(()=>requestAnimationFrame(()=>panel.classList.add('visible')));
+  }
+  document.addEventListener('click', function(e){
+    const trigger = e.target.closest('.info-trigger');
+    if(!trigger){ closeActive(); return; }
+    e.stopPropagation();
+    const text = trigger.getAttribute('data-info');
+    if(!text) return;
+    if(activeTrigger === trigger){ closeActive(); return; }
+    closeActive();
+    const panel = document.createElement('div');
+    panel.className = 'info-panel';
+    panel.innerHTML = '<div class="info-panel-arrow"></div>'+text;
+    activeTrigger = trigger;
+    activePanel = panel;
+    trigger.classList.add('active');
+    positionPanel(trigger, panel);
+  });
+  window.addEventListener('scroll', closeActive, true);
+  window.addEventListener('resize', closeActive);
+})();
+
+// SHA-256
+async function sha256(msg){const d=new TextEncoder().encode(msg);const h=await crypto.subtle.digest('SHA-256',d);return Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join('')}
+
+let chain=[];
+let tampered=new Set();
+let humanAuthorised=false;
+let analysisCount=0;
+
+// Each mission type is a distinct scenario: deterministic sliders + expected outcome
+const DEFENCE_SCENARIOS = {
+  isr:    { sliders: { threatConf: 25, civProx: 500, pidConf: 40, friendlyDist: 800, cde: 1 }, roe: 'weapons-hold', expectedOutcome: 'MONITORING', expectedBlocks: [] },
+  escort: { sliders: { threatConf: 55, civProx: 150, pidConf: 65, friendlyDist: 400, cde: 2 }, roe: 'weapons-tight', expectedOutcome: 'ENGAGEMENT_BLOCKED', expectedBlocks: ['PID_BELOW_THRESHOLD'] },
+  strike: { sliders: { threatConf: 92, civProx: 80, pidConf: 88, friendlyDist: 600, cde: 4 }, roe: 'weapons-tight', expectedOutcome: 'ENGAGEMENT_BLOCKED', expectedBlocks: ['CIVILIAN_SAFE_ZONE'] },
+  casevac:{ sliders: { threatConf: 70, civProx: 300, pidConf: 82, friendlyDist: 200, cde: 2 }, roe: 'weapons-tight', expectedOutcome: 'HUMAN_AUTH_REQUIRED', expectedBlocks: ['DANGER_CLOSE'] }
+};
+
+const MISSION_PRESETS = DEFENCE_SCENARIOS; // alias for code that reads threatConf/civProx etc. directly
+
+const DEFENCE_EXPLAINERS = {
+  isr: { title: 'Intelligence, Surveillance & Reconnaissance', text: 'A surveillance mission. The system is observing, not engaging. Threat confidence is low, civilian proximity is safe, and the ROE is set to WEAPONS HOLD — no engagement authorised regardless of what the sensors detect. The governance layer has nothing to block because no action is requested.', watch: 'Watch the DECIDE node — even though the system processes all sensor data through the full chain, no engagement is possible under WEAPONS HOLD. The chain completes but the action is \'continue monitoring.\'' },
+  escort: { title: 'Convoy Escort', text: 'Escorting a convoy through contested territory. Threat confidence is moderate. Civilian proximity is close — 150m. Positive ID is only 65%, well below the 80% threshold. Friendly forces are nearby. Even under WEAPONS TIGHT, engagement is blocked because PID is insufficient.', watch: 'Watch the PID check in the DECIDE node. 65% is below the 80% minimum. This is a hard block — the AI cannot override it, negotiate around it, or find an exception. A human set 80% before the mission. That number is law.' },
+  strike: { title: 'Precision Strike', text: 'A high-confidence engagement scenario. Threat confidence is 92%. Positive ID is 88% — above the 80% threshold. But civilian proximity is only 80m, inside the 100m safe zone. CDE is elevated at 4. Despite high confidence in the target, the governance layer blocks engagement because of collateral damage risk.', watch: 'Watch the civilian proximity policy trigger. The target is almost certainly hostile. The AI is almost certainly right. But \'almost certainly\' plus \'civilians nearby\' equals BLOCKED. The governance layer doesn\'t care how confident the AI is — it cares about the human\'s rules.' },
+  casevac: { title: 'Casualty Evacuation', text: 'Friendly forces are injured and being extracted. The priority is protection, not engagement. Friendly force distance is close — 200m, inside the DANGER CLOSE threshold. Any engagement requires explicit commander override because of the risk to friendlies.', watch: 'Watch the friendly force distance trigger DANGER CLOSE. Even if a confirmed hostile target appears, the system won\'t engage near wounded friendlies without a human commander explicitly authorising it. The chain shows this as a HUMAN AUTHORISATION REQUIRED block.' },
+  custom: { title: 'Custom Tactical Environment', text: 'You\'re in manual mode. Set any combination of threat confidence, civilian proximity, positive ID, friendly distance, and collateral damage estimate. Change the ROE. See which policies trigger and which don\'t.', watch: 'Try PID below 80% — engagement blocked. Try civilians below 100m — engagement blocked. Try both above threshold — see what the system allows and what still requires human authorisation.' }
+};
+
+function updateDefenceExplainer(key) {
+  const ex = DEFENCE_EXPLAINERS[key] || DEFENCE_EXPLAINERS.custom;
+  const el = document.getElementById('scenarioExplainer');
+  if (!el) return;
+  el.innerHTML = '<b>' + ex.title + '</b><br><br>' + ex.text + '<div class="watch-for"><b>WATCH FOR:</b> ' + ex.watch + '</div>';
+}
+
+function applyMissionPreset(mission){
+  const preset = DEFENCE_SCENARIOS[mission] || MISSION_PRESETS[mission];
+  if(!preset) return;
+  const s = preset.sliders || preset;
+  document.getElementById('threatConf').value = s.threatConf;
+  document.getElementById('civProx').value = s.civProx;
+  document.getElementById('pidConf').value = s.pidConf;
+  document.getElementById('friendlyDist').value = s.friendlyDist;
+  document.getElementById('cdeLevel').value = s.cde;
+  if (preset.roe) document.getElementById('roe').value = preset.roe;
+  updateReadout();
+  updateDefenceExplainer(mission);
+}
+
+function getInputs(){
+  return{
+    roe:document.getElementById('roe').value,
+    mission:document.getElementById('missionType').value,
+    threatConf:+document.getElementById('threatConf').value,
+    civProx:+document.getElementById('civProx').value,
+    pidConf:+document.getElementById('pidConf').value,
+    friendlyDist:+document.getElementById('friendlyDist').value,
+    cde:+document.getElementById('cdeLevel').value,
+  }
+}
+
+function computeRisk(inp){
+  let risk=0;
+  // High threat increases engagement risk
+  if(inp.threatConf>50) risk+=0.15;
+  if(inp.threatConf>75) risk+=0.15;
+  if(inp.threatConf>90) risk+=0.10;
+  // Close civilians increase risk
+  if(inp.civProx<300) risk+=0.20;
+  if(inp.civProx<100) risk+=0.25;
+  // Low PID increases risk
+  if(inp.pidConf<80) risk+=0.10;
+  if(inp.pidConf<50) risk+=0.20;
+  // Close friendlies increase risk
+  if(inp.friendlyDist<500) risk+=0.15;
+  if(inp.friendlyDist<250) risk+=0.20;
+  // CDE
+  if(inp.cde>=3) risk+=0.15;
+  if(inp.cde>=4) risk+=0.20;
+  // ROE modifier
+  if(inp.roe==='hold-fire') risk+=0.30;
+  if(inp.roe==='weapons-hold') risk+=0.10;
+  if(inp.roe==='weapons-free') risk-=0.10;
+  return Math.min(1,Math.max(0,risk));
+}
+
+function getPolicies(inp,risk){
+  let policies=[];
+  if(inp.roe==='hold-fire'){
+    policies.push({name:'ROE OVERRIDE',action:'ALL ENGAGEMENT BLOCKED',level:'enforced'});
+  }
+  if(inp.civProx<100){
+    policies.push({name:'CIVILIAN SAFE ZONE',action:'ENGAGEMENT HALTED - civilians within 100m',level:'enforced'});
+  }
+  if(inp.pidConf<80){
+    policies.push({name:'PID MINIMUM',action:'WEAPONS RELEASE BLOCKED - PID below 80%',level:'enforced'});
+  }
+  if(inp.cde>3){
+    policies.push({name:'CDE THRESHOLD',action:'ENGAGEMENT BLOCKED - CDE exceeds level 3',level:'enforced'});
+  }
+  if(inp.friendlyDist<250){
+    policies.push({name:'FRIENDLY FORCE PROXIMITY',action:'DANGER CLOSE - requires commander override',level:'escalated'});
+  }
+  if(risk>0.6&&!humanAuthorised){
+    policies.push({name:'HUMAN-IN-THE-LOOP',action:'ESCALATION REQUIRED - risk exceeds autonomous threshold',level:'escalated'});
+  }
+  return policies;
+}
+
+function getDecision(inp,risk,policies){
+  const enforced=policies.filter(p=>p.level==='enforced');
+  const escalated=policies.filter(p=>p.level==='escalated');
+
+  if(inp.roe==='hold-fire') return{action:'HOLD FIRE',detail:'ROE prohibits all engagement. System standing by.',level:'enforced'};
+  if(enforced.length>0) return{action:'ENGAGEMENT BLOCKED',detail:enforced[0].action,level:'enforced'};
+  if(escalated.length>0&&!humanAuthorised) return{action:'ESCALATED TO HUMAN',detail:'Autonomous threshold exceeded. Awaiting human authorisation.',level:'escalated'};
+  if(inp.roe==='weapons-hold') return{action:'MONITORING',detail:'WEAPONS HOLD — no proactive engagement authorised. Continuous monitoring.',level:'cleared'};
+  if(risk<0.3) return{action:'CLEARED TO ENGAGE',detail:'All thresholds met. ROE satisfied. PID confirmed. Engagement authorised.',level:'cleared'};
+  if(risk<0.5&&humanAuthorised) return{action:'CLEARED WITH AUTHORITY',detail:'Human authorisation received. Engagement cleared under elevated risk.',level:'cleared'};
+  if(risk<0.5) return{action:'MONITORING',detail:'Risk elevated but within autonomous parameters. Continuous assessment active.',level:'cleared'};
+  return{action:'ESCALATED TO HUMAN',detail:'Risk profile requires human decision authority.',level:'escalated'};
+}
+
+function getMissionLabel(m){
+  const map={isr:'ISR - Surveillance',escort:'Convoy Escort',strike:'Precision Strike',casevac:'CASEVAC Support'};
+  return map[m]||m;
+}
+
+function getRoeLabel(r){
+  const map={'hold-fire':'HOLD FIRE','weapons-tight':'WEAPONS TIGHT','weapons-hold':'WEAPONS HOLD','weapons-free':'WEAPONS FREE'};
+  return map[r]||r;
+}
+
+function updateReadout(){
+  const inp=getInputs();
+  document.getElementById('threatVal').textContent=inp.threatConf;
+  document.getElementById('civVal').textContent=inp.civProx;
+  document.getElementById('pidVal').textContent=inp.pidConf;
+  document.getElementById('friendlyVal').textContent=inp.friendlyDist;
+  document.getElementById('cdeVal').textContent=inp.cde;
+
+  // Color coding
+  const tv=document.getElementById('threatVal');
+  tv.className='sval'+(inp.threatConf>75?' c':inp.threatConf>50?' w':'');
+  const cv=document.getElementById('civVal');
+  cv.className='sval'+(inp.civProx<100?' c':inp.civProx<300?' w':'');
+  const pv=document.getElementById('pidVal');
+  pv.className='sval'+(inp.pidConf<50?' c':inp.pidConf<80?' w':'');
+  const fv=document.getElementById('friendlyVal');
+  fv.className='sval'+(inp.friendlyDist<250?' c':inp.friendlyDist<500?' w':'');
+  const cdv=document.getElementById('cdeVal');
+  cdv.className='sval'+(inp.cde>3?' c':inp.cde>=3?' w':'');
+
+  // Mechanism panel live update
+  document.getElementById('mechMission').textContent=getMissionLabel(inp.mission);
+  document.getElementById('mechThreat').textContent=inp.threatConf+'%';
+  document.getElementById('mechCiv').textContent=inp.civProx+'m';
+  document.getElementById('mechPid').textContent=inp.pidConf+'%';
+  document.getElementById('mechFriendly').textContent=inp.friendlyDist+'m';
+  document.getElementById('mechCde').textContent=inp.cde;
+
+  // ROE display
+  const roeEl=document.getElementById('roeDisplay');
+  roeEl.className='roe-status '+inp.roe;
+  roeEl.textContent='ROE: '+getRoeLabel(inp.roe);
+
+  // Risk bar
+  const risk=computeRisk(inp);
+  const bar=document.getElementById('threatBar');
+  bar.style.width=(risk*100)+'%';
+  bar.style.background=risk>0.6?'var(--crimson)':risk>0.35?'var(--amber)':'var(--green)';
+  document.getElementById('riskLabel').textContent=risk.toFixed(2);
+  document.getElementById('mechRisk').textContent=risk.toFixed(2);
+  document.getElementById('mechRisk').className='mech-val'+(risk>0.6?' r':risk>0.35?' a':' g');
+
+  const policies=getPolicies(inp,risk);
+  document.getElementById('mechPolicies').textContent=policies.length;
+  document.getElementById('mechEsc').textContent=risk>0.6?'YES':'NO';
+  document.getElementById('mechEsc').className='mech-val'+(risk>0.6?' r':' g');
+
+  const preset=MISSION_PRESETS[inp.mission];
+  const sliders=preset&&(preset.sliders||preset);
+  const matchesPreset=sliders&&sliders.threatConf===inp.threatConf&&sliders.civProx===inp.civProx&&sliders.pidConf===inp.pidConf&&sliders.friendlyDist===inp.friendlyDist&&sliders.cde===inp.cde;
+  updateDefenceExplainer(matchesPreset?inp.mission:'custom');
+}
+
+async function runAnalysis(){
+  analysisCount++;
+  const inp=getInputs();
+  const risk=computeRisk(inp);
+  const policies=getPolicies(inp,risk);
+  const decision=getDecision(inp,risk,policies);
+
+  chain=[];
+  tampered=new Set();
+
+  // Build nodes
+  const nodes=[
+    {type:'observe',content:`Tactical environment scanned. Mission: ${getMissionLabel(inp.mission)}. ROE: ${getRoeLabel(inp.roe)}. Threat confidence: ${inp.threatConf}%. Civilian proximity: ${inp.civProx}m. PID confidence: ${inp.pidConf}%. Friendly distance: ${inp.friendlyDist}m. CDE: ${inp.cde}.`},
+    {type:'derive',content:`Engagement risk computed: ${risk.toFixed(2)}. ${risk>0.6?'Risk exceeds autonomous authority threshold.':risk>0.35?'Elevated risk — continuous monitoring required.':'Risk within acceptable parameters.'} All 5 governance policies evaluated. ${policies.length} triggered.`},
+    {type:'assume',content:`Assumptions: sensor feeds current and calibrated. Civilian position data accurate within known margin. Friendly force transponders operational. Environmental conditions within operational envelope. ROE as authorised by commanding officer.`},
+    {type:'decide',content:`Decision: ${decision.action}. ${decision.detail}${policies.length>0?' Policies enforced: '+policies.map(p=>p.name).join(', ')+'.'  :''}`},
+    {type:'act',content:decision.action==='HOLD FIRE'?'No action taken. All systems standing by. Continuous monitoring active.'
+      :decision.action==='ENGAGEMENT BLOCKED'?`Action blocked by governance layer. ${policies.filter(p=>p.level==='enforced')[0]?.action||'Policy constraint active.'} System remains in observation mode.`
+      :decision.action==='ESCALATED TO HUMAN'?'Engagement authority escalated to human operator. Autonomous system holding position. Awaiting human decision.'
+      :decision.action==='CLEARED TO ENGAGE'||decision.action==='CLEARED WITH AUTHORITY'?`Engagement parameters satisfied. Weapons release authorised under ${inp.roe.replace('-',' ').toUpperCase()} ROE.${humanAuthorised?' Human authorisation confirmed.':''} Executing.`
+      :'Monitoring active. No action required at this time.'}
+  ];
+
+  // Hash chain - per-node timestamps
+  let prevHash='GENESIS';
+  for(const n of nodes){
+    const nodeTs=new Date().toISOString();
+    const canonical=`content:${n.content}|node:${n.type}|prev_hash:${prevHash}|timestamp:${nodeTs}`;
+    const hash=await sha256(canonical);
+    chain.push({...n,hash,prevHash,canonical,timestamp:nodeTs});
+    prevHash=hash;
+    await new Promise(r=>setTimeout(r,1));
+  }
+
+  renderChain();
+  updatePolicyLog(policies);
+  updateConsentPanel(decision);
+  updateIntegrity();
+  document.getElementById('hashCount').textContent=`CHAIN: ${chain.length} NODES`;
+}
+
+function renderChain(){
+  const el=document.getElementById('chain');
+  el.innerHTML='';
+  chain.forEach((n,i)=>{
+    if(i>0){
+      const conn=document.createElement('div');
+      conn.className='connector'+(tampered.has(i)?'  tampered':'');
+      el.appendChild(conn);
+    }
+    const div=document.createElement('div');
+    div.className='node'+(tampered.has(i)?' tampered':' active');
+    const policyTag=n.type==='act'?getActPolicyTag(n):'';
+    const assumeInfo='Assumptions are explicitly recorded so nothing is hidden. If these assumptions turn out to be wrong, this node shows exactly what the AI took for granted — making the reasoning auditable even when it fails.';
+    const typeText=n.type;
+    const typeHtml=n.type==='assume'?`${typeText}<span class="info-trigger" data-info="${assumeInfo}">i</span>`:typeText;
+    div.innerHTML=`
+      <div class="node-hdr">
+        <span class="node-type ${n.type}">${typeHtml}</span>
+        <span class="node-time">${n.timestamp.split('T')[1].split('.')[0]} UTC</span>
+      </div>
+      <div class="node-content">${n.content}</div>
+      <div class="node-hash${tampered.has(i)?' mismatch':''}" title="${n.canonical}">
+        ${tampered.has(i)?'HASH MISMATCH &#x26A0; ':''}${n.hash.substring(0,32)}...
+      </div>
+      ${policyTag}
+    `;
+    el.appendChild(div);
+  });
+}
+
+function getActPolicyTag(n){
+  if(n.content.includes('blocked')||n.content.includes('HOLD FIRE')||n.content.includes('No action'))
+    return '<div class="node-policy enforced">GOVERNANCE: ENGAGEMENT BLOCKED</div>';
+  if(n.content.includes('escalated')||n.content.includes('Escalated')||n.content.includes('Awaiting'))
+    return '<div class="node-policy escalated">GOVERNANCE: ESCALATED TO HUMAN</div>';
+  return '<div class="node-policy cleared">GOVERNANCE: ENGAGEMENT AUTHORISED</div>';
+}
+
+function updatePolicyLog(policies){
+  const el=document.getElementById('policyLog');
+  if(policies.length===0){
+    el.innerHTML='<div class="mech-row"><span class="mech-label">All policies clear</span><span class="mech-val g">PASS</span></div>';
+    return;
+  }
+  el.innerHTML=policies.map(p=>`
+    <div class="mech-row">
+      <span class="mech-label">${p.name}</span>
+      <span class="mech-val${p.level==='enforced'?' r':' a'}">${p.level==='enforced'?'BLOCKED':'ESCALATED'}</span>
+    </div>
+  `).join('');
+}
+
+function updateConsentPanel(decision){
+  const consent=document.getElementById('mechConsent');
+  const executed=document.getElementById('mechExecuted');
+  const mandate=document.getElementById('mechMandate');
+
+  if(decision.action==='CLEARED TO ENGAGE'||decision.action==='CLEARED WITH AUTHORITY'){
+    consent.textContent=humanAuthorised?'YES':'AUTONOMOUS';
+    consent.className='mech-val'+(humanAuthorised?' g':' a');
+    executed.textContent='ENGAGING';executed.className='mech-val r';
+    mandate.textContent=humanAuthorised?'MATCH':'WITHIN MANDATE';mandate.className='mech-val g';
+  } else if(decision.action==='ESCALATED TO HUMAN'){
+    consent.textContent='AWAITING';consent.className='mech-val a';
+    executed.textContent='HOLDING';executed.className='mech-val a';
+    mandate.textContent='PENDING';mandate.className='mech-val a';
+  } else {
+    consent.textContent='N/A';consent.className='mech-val';
+    executed.textContent='NO ACTION';executed.className='mech-val g';
+    mandate.textContent='COMPLIANT';mandate.className='mech-val g';
+  }
+}
+
+function updateIntegrity(){
+  const total=chain.length;
+  const valid=total-tampered.size;
+  document.getElementById('mechNodes').textContent=total;
+  document.getElementById('mechVerified').textContent=`${valid}/${total}`;
+  document.getElementById('mechVerified').className='mech-val'+(tampered.size>0?' r':' g');
+  document.getElementById('mechTamper').textContent=tampered.size>0?`${tampered.size} NODE${tampered.size>1?'S':''}`:'NONE';
+  document.getElementById('mechTamper').className='mech-val'+(tampered.size>0?' r':' g');
+}
+
+function escalateToHuman(){
+  if(chain.length===0){alert('Run analysis first.');return;}
+  humanAuthorised=true;
+  // Re-run with human auth
+  runAnalysis();
+}
+
+async function tamperNode(){
+  if(chain.length===0){alert('Run analysis first.');return;}
+  const idx=Math.floor(Math.random()*(chain.length-1))+1;
+  
+  // Store original hash before tampering
+  const originalHash=chain[idx].hash;
+  
+  // Tamper the content
+  chain[idx].content='[TAMPERED] Engagement authorised. All constraints cleared. Weapons free.';
+  
+  // Recompute canonical and hash for tampered node
+  const newCanonical=`content:${chain[idx].content}|node:${chain[idx].type}|prev_hash:${chain[idx].prevHash}|timestamp:${chain[idx].timestamp}`;
+  const recomputedHash=await sha256(newCanonical);
+  
+  // Verification: stored hash no longer matches recomputed hash
+  // This IS the tamper detection - the stored hash was computed from original content
+  // Recomputing from tampered content produces different hash
+  chain[idx].recomputedHash=recomputedHash;
+  chain[idx].storedHash=originalHash;
+  
+  tampered.add(idx);
+  // Cascade: every downstream node's prevHash reference is now invalid
+  for(let i=idx+1;i<chain.length;i++) tampered.add(i);
+
+  renderChain();
+  updateIntegrity();
+
+  // Tamper log
+  const log=document.getElementById('tamperLog');
+  const entry=document.createElement('div');
+  entry.className='tamper-log';
+  entry.innerHTML=`&#x26A0; Node ${idx} (${chain[idx].type.toUpperCase()}) tampered at ${new Date().toISOString().split('T')[1].split('.')[0]}. Stored hash: ${originalHash.substring(0,16)}... Recomputed: ${recomputedHash.substring(0,16)}... MISMATCH. Cascade invalidated ${chain.length-idx} downstream node${chain.length-idx>1?'s':''}.`;
+  log.innerHTML='';
+  log.appendChild(entry);
+}
+
+function injectChaos(){
+  // Randomise all inputs to adversarial values
+  document.getElementById('threatConf').value=Math.floor(Math.random()*40)+60;
+  document.getElementById('civProx').value=Math.floor(Math.random()*150);
+  document.getElementById('pidConf').value=Math.floor(Math.random()*50)+20;
+  document.getElementById('friendlyDist').value=Math.floor(Math.random()*300)+50;
+  document.getElementById('cdeLevel').value=Math.floor(Math.random()*3)+3;
+
+  const roes=['hold-fire','weapons-tight','weapons-hold','weapons-free'];
+  document.getElementById('roe').value=roes[Math.floor(Math.random()*roes.length)];
+
+  updateReadout();
+  runAnalysis();
+}
+
+function resetAll(){
+  chain=[];
+  tampered=new Set();
+  humanAuthorised=false;
+  analysisCount=0;
+
+  document.getElementById('threatConf').value=65;
+  document.getElementById('civProx').value=400;
+  document.getElementById('pidConf').value=72;
+  document.getElementById('friendlyDist').value=800;
+  document.getElementById('cdeLevel').value=2;
+  document.getElementById('roe').value='weapons-tight';
+  document.getElementById('missionType').value='strike';
+
+  updateReadout();
+
+  document.getElementById('chain').innerHTML='<div class="empty-state">AWAITING SCENARIO ANALYSIS<br><br>Adjust tactical inputs and press ANALYSE SCENARIO</div>';
+  document.getElementById('hashCount').textContent='CHAIN: 0 NODES';
+  document.getElementById('policyLog').innerHTML='<div class="mech-row"><span class="mech-label">No policies triggered</span></div>';
+  document.getElementById('tamperLog').innerHTML='<div class="mech-row"><span class="mech-label">No tampering detected</span></div>';
+  document.getElementById('mechNodes').textContent='0';
+  document.getElementById('mechVerified').textContent='0/0';
+  document.getElementById('mechTamper').textContent='NONE';
+  document.getElementById('mechTamper').className='mech-val g';
+  document.getElementById('mechVerified').className='mech-val g';
+  document.getElementById('mechConsent').textContent='PENDING';document.getElementById('mechConsent').className='mech-val';
+  document.getElementById('mechExecuted').textContent='PENDING';document.getElementById('mechExecuted').className='mech-val';
+  document.getElementById('mechMandate').textContent='--';document.getElementById('mechMandate').className='mech-val';
+}
+
+// Init
+applyMissionPreset(document.getElementById('missionType').value);
+updateReadout();
+</script>
+</body>
+</html>

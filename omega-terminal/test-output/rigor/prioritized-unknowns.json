@@ -1,0 +1,164 @@
+{
+  "generated_at": "2026-02-27T11:29:44.349Z",
+  "_read_me": "Ranking and computed_voi_score in this file are computed in code (impact × uncertainty × decision_sensitivity) / 30; they are authoritative. Ignore any VoI numbers in the model's priority_rationale text.",
+  "unknowns": {
+    "rd": {
+      "top_unknowns": [
+        {
+          "unknown": "Mechanical property scaling laws for synthetic template systems (block copolymers, polyelectrolytes) vs protein-templated systems at 1-10 cm scales",
+          "why_decision_sensitive": "Directly determines whether to pivot entire R&D strategy from protein engineering to synthetic template development. If synthetic templates show linear/sub-linear variance scaling while achieving >100 MPa strength, this invalidates the core protein-necessity assumption and opens a completely different, potentially faster development pathway that sidesteps rate-coupling constraints.",
+          "impact_1_to_10": 10,
+          "uncertainty_1_to_10": 8,
+          "decision_sensitivity_1_to_10": 10,
+          "next_action": "Comparative mechanical testing campaign: fabricate 1mm, 5mm, 10mm, 50mm samples using polyelectrolyte templates with identical interfacial chemistry to proteins (carboxylate/phosphate groups, same surface density). Measure tensile strength, variance, and defect density distributions. Critical data: variance scaling exponent and whether defect percolation follows same super-linear law.",
+          "computed_voi_score": 26.7
+        },
+        {
+          "unknown": "Whether temporal decoupling of template organization and mineralization (pre-organized templates + infiltration) can achieve target properties",
+          "why_decision_sensitive": "Tests whether the identified rate-coupling bottleneck is fundamental or process-artifact. If pre-organized templates (frozen, cross-linked, or printed) enable rapid mineralization without property degradation, then the entire bottleneck framing collapses and manufacturing becomes a solved infiltration/freeze-casting problem rather than a kinetic control challenge.",
+          "impact_1_to_10": 9,
+          "uncertainty_1_to_10": 9,
+          "decision_sensitivity_1_to_10": 9,
+          "next_action": "Proof-of-concept experiment: (1) Pre-organize block copolymer templates via solvent annealing or photo-crosslinking to create hierarchical structure without minerals, (2) Infiltrate with mineral precursors at 10x-100x normal rates after template is kinetically arrested, (3) Compare mechanical properties and processing time to conventional co-assembly. Decision point: if properties match or exceed baseline, abandon rate-coupling hypothesis.",
+          "computed_voi_score": 24.3
+        },
+        {
+          "unknown": "Interfacial bonding mechanism specificity: stereochemical protein recognition vs generic electrostatic/geometric effects",
+          "why_decision_sensitive": "Determines whether protein molecular design effort is necessary or whether mimicking surface chemistry alone is sufficient. If mineral orientation and toughening mechanisms arise from generic electrostatic fields or geometric constraints (reproducible with synthetic molecules), this eliminates need for expensive computational protein design and enables material-agnostic scaling.",
+          "impact_1_to_10": 8,
+          "uncertainty_1_to_10": 9,
+          "decision_sensitivity_1_to_10": 8,
+          "next_action": "Interfacial characterization study: Systematically vary template chemistry (proteins, peptoids, synthetic polyelectrolytes, dendritic molecules) while maintaining identical surface charge density and geometric constraints. Use in-situ TEM, cryo-electron tomography, and synchrotron X-ray to measure mineral crystal orientation distributions and interfacial bonding strength. Critical metric: whether different molecular templates produce statistically distinguishable mineral textures.",
+          "computed_voi_score": 19.2
+        },
+        {
+          "unknown": "Whether measured electric field gradients and convective flows at >5mm scales are the actual causative agents of defect nucleation",
+          "why_decision_sensitive": "If these hidden variables (never measured in protocols) are primary defect sources, then process control targeting these variables (electric field manipulation, flow control) could solve scaling problem within current protein-based framework. This would justify continuing protein optimization rather than material substitution.",
+          "impact_1_to_10": 7,
+          "uncertainty_1_to_10": 10,
+          "decision_sensitivity_1_to_10": 6,
+          "next_action": "In-situ monitoring campaign: Instrument mineralization vessels with microelectrode arrays (100μm spacing) to map electric potential gradients and micro-PIV to measure convective flows during protein-templated mineralization at 1, 5, 10, 25mm scales. Correlate field/flow patterns with post-process defect locations via micro-CT. Test causation with active field/flow suppression and measure mechanical property improvement.",
+          "computed_voi_score": 14
+        },
+        {
+          "unknown": "Whether protein conformational distribution variance (batch-to-batch) is primary source of mechanical property variance or secondary to nucleation stochasticity",
+          "why_decision_sensitive": "If protein conformational variance is primary, then better protein production QC (tighter conformational control) could achieve <20% variance targets without changing materials or process. If nucleation stochasticity dominates, then protein quality improvements are irrelevant and mineral nucleation control becomes the critical development path.",
+          "impact_1_to_10": 6,
+          "uncertainty_1_to_10": 9,
+          "decision_sensitivity_1_to_10": 7,
+          "next_action": "Controlled variance study: Produce protein batches with artificially broadened conformational distributions (controlled partial denaturation) and artificially narrowed distributions (size-exclusion chromatography, conformational selection). Mineralize each batch under identical conditions and measure mechanical property variance. Compare to variance from single protein batch with varying nucleation conditions (seed crystals, supersaturation levels).",
+          "computed_voi_score": 12.6
+        },
+        {
+          "unknown": "Economic viability of synthetic template synthesis at manufacturing scale vs protein production costs",
+          "why_decision_sensitive": "Even if synthetic templates solve technical problems, cost constraints may force protein-based approach. However, if scalable synthetic template synthesis costs <$20/kg (vs proteins potentially >$200/kg including purification), this creates overwhelming economic incentive to pursue synthetic route regardless of minor technical trade-offs.",
+          "impact_1_to_10": 7,
+          "uncertainty_1_to_10": 6,
+          "decision_sensitivity_1_to_10": 8,
+          "next_action": "Techno-economic analysis with chemical suppliers: Get quotes for polyelectrolyte/block copolymer synthesis at 100 kg/batch and 10 ton/year scales. Compare to protein fermentation/expression costs including purification. Model sensitivity to feedstock prices and yield optimization. Decision threshold: >3x cost advantage shifts strategy.",
+          "computed_voi_score": 11.2
+        },
+        {
+          "unknown": "Existence and value of characteristic dimensionless scaling number predicting biomineralization success",
+          "why_decision_sensitive": "If a dimensionless number exists (combining diffusion, mineralization rate, mechanical stress propagation, sample dimension), it would provide universal process design rules enabling predictive scaling to any size. This would transform empirical trial-and-error into engineering design and potentially rescue protein-based approach through parameter optimization.",
+          "impact_1_to_10": 8,
+          "uncertainty_1_to_10": 8,
+          "decision_sensitivity_1_to_10": 5,
+          "next_action": "Dimensional analysis and experimental validation: Combine literature data across all protein-templated biomineralization studies to extract dimensionless groups. Propose candidate numbers (e.g., π₁ = L²·k_mineral/(D_protein·τ_stability), where L=dimension, k=mineralization rate, D=diffusion, τ=protein lifetime). Design experiments systematically varying parameters while holding π₁ constant across scales. If mechanical properties collapse onto single curve when plotted vs π₁, validate predictive power.",
+          "computed_voi_score": 10.7
+        },
+        {
+          "unknown": "Whether layer-by-layer or spray deposition manufacturing methods have already solved rate-coupling without recognizing it",
+          "why_decision_sensitive": "If manufacturing scale is achievable through existing continuous processing methods that naturally decouple timescales (each layer completes before next deposited), then the problem is already solved and requires only technology transfer/optimization rather than fundamental research. This would mean the bottleneck identification was wrong.",
+          "impact_1_to_10": 9,
+          "uncertainty_1_to_10": 7,
+          "decision_sensitivity_1_to_10": 4,
+          "next_action": "Literature review and pilot testing: Systematic search for spray deposition, layer-by-layer, and continuous flow biomineralization studies (may be in coatings/thin films literature rather than bulk materials). Test whether these methods produce >10cm bulk materials with target properties. If successful demonstrations exist but weren't recognized as solving the scaling problem, this reframes from research to engineering problem.",
+          "computed_voi_score": 8.4
+        }
+      ],
+      "priority_rationale": "Rankings prioritize unknowns that most sharply distinguish between continuing protein-based optimization versus pivoting to synthetic templates—this is the highest-stakes strategic decision. The top unknown (synthetic template scaling laws) has maximum impact because it directly tests the core necessity assumption with immediate material substitution implications. Second (temporal decoupling) has slightly lower impact but higher uncertainty since it's never been systematically tested and could validate or completely invalidate the rate-coupling bottleneck hypothesis. Third (bonding mechanism specificity) determines whether expensive protein engineering is required or can be bypassed with simpler chemistry mimicry. Economic viability ranks fourth despite lower uncertainty because cost differences must be substantial (>3x) to overcome technical switching costs. The hidden variables (electric fields, convection) rank lower because even if causative, they represent incremental optimization within current framework rather than strategic pivots. The dimensionless scaling number, while intellectually important, ranks lower on decision sensitivity because its discovery wouldn't immediately change material/process choices—it would optimize rather than redirect. Protein conformational variance and existing manufacturing solutions rank lowest because they either address secondary effects or represent incremental improvements rather than strategic inflection points. VoI computation will weight these by (impact × uncertainty × decision_sensitivity)/30, naturally elevating the 9-10 rated strategic pivot questions while appropriately down-weighting optimization questions.",
+      "_voi_note": "VoI scores computed in code (impact × uncertainty × decision_sensitivity) / 30; model did not supply VoI.",
+      "model_order_disagrees_with_computed_voi": true
+    },
+    "dec": {
+      "top_unknowns": [
+        {
+          "unknown": "Actual enforcement mechanism and incentive structure for month-18 open-source commitment",
+          "why_decision_sensitive": "If deferred open-sourcing commitments fail structurally (due to classification creep, personnel turnover, lack of documentation incentives), the vertical-first strategy delivers fragmentation without the promised federation benefit. This converts the strategy from 'tactical sequencing' to 'permanent silos with paperwork.' Decision hinges on whether the commitment is credible or theatrical.",
+          "impact_1_to_10": 9,
+          "uncertainty_1_to_10": 8,
+          "decision_sensitivity_1_to_10": 10,
+          "next_action": "Examine ARIA's actual contract enforcement history for similar deferred-delivery commitments; interview programme directors on whether they face meaningful consequences for non-compliance with architectural sharing obligations; assess whether any governance body has veto power over programme go-live if reusability requirements aren't met",
+          "computed_voi_score": 24
+        },
+        {
+          "unknown": "Whether ARIA's 12-month political pressure window is truly governance-invariant or reflects fixable institutional design",
+          "why_decision_sensitive": "If the pressure window is a remediable governance failure rather than a physical constraint, the correct decision is to fix governance rather than design around it. The baseline recommendation institutionalizes political impatience as technical architecture. If achievable governance reforms could extend effective planning horizons to 24-36 months, horizontal investment becomes feasible and higher-value.",
+          "impact_1_to_10": 10,
+          "uncertainty_1_to_10": 7,
+          "decision_sensitivity_1_to_10": 9,
+          "next_action": "Map ARIA's accountability structure: who has authority to extend programme timelines, what would trigger board/funder intervention, whether technical leadership has any insulation from political cycles. Compare to sister organizations (DARPA, IARPA, Innovate UK) to identify governance levers that extend planning horizons without sacrificing accountability",
+          "computed_voi_score": 21
+        },
+        {
+          "unknown": "Historical reuse rates for open-sourced programme components in similar institutional contexts",
+          "why_decision_sensitive": "The adversarial identifies a testable claim: vertical components released at month-18 may deliver code without usable context, resulting in nominal sharing with zero adoption. If base rates show <25% actual reuse of deferred open-source releases, the federation promise is illusory and vertical-first guarantees fragmentation. If reuse rates are >75%, the strategy's core bet is validated.",
+          "impact_1_to_10": 8,
+          "uncertainty_1_to_10": 9,
+          "decision_sensitivity_1_to_10": 8,
+          "next_action": "Survey UK research infrastructure releases from the past 5 years (UKRI digital tools, NHSX open components, govt digital service shared platforms): measure how many subsequent programmes actually adopted released components vs built alternatives. Interview programme managers on why adoption succeeded or failed",
+          "computed_voi_score": 19.2
+        },
+        {
+          "unknown": "Whether month-12 vertical win increases or decreases subsequent horizontal coordination budget",
+          "why_decision_sensitive": "The adversarial proposes a falsification test: if Scaling Trust's visible success reduces political urgency for horizontal infrastructure ('problem already solved'), the strategy permanently forecloses coordination. If instead it creates credibility and budget for generalization, the strategy succeeds. This determines whether vertical-first is a bridge to horizontal or a dead-end.",
+          "impact_1_to_10": 8,
+          "uncertainty_1_to_10": 9,
+          "decision_sensitivity_1_to_10": 8,
+          "next_action": "Model budget decision-making: interview ARIA finance and board members on how they would respond to a scenario where Scaling Trust delivers visible month-12 success. Would they interpret this as 'invest more in generalizing this' or 'mission accomplished, redirect funds to next programme'? Historical pattern analysis from similar visible wins in ARIA or predecessor organizations",
+          "computed_voi_score": 19.2
+        },
+        {
+          "unknown": "Whether an empowered horizontal owner is actually unachievable or merely unpursued",
+          "why_decision_sensitive": "The baseline assumes no empowered horizontal owner can be established, making the recommendation logically necessary. But if ARIA could appoint a Chief Trust Architect with veto authority over programme trust implementations and budget control over shared infrastructure, horizontal investment becomes feasible. The adversarial notes this is a contradiction: if governance is too weak for horizontal coordination, it's too weak for vertical coordination with deferred harmonization.",
+          "impact_1_to_10": 9,
+          "uncertainty_1_to_10": 6,
+          "decision_sensitivity_1_to_10": 9,
+          "next_action": "Test with ARIA leadership: present the horizontal owner requirement explicitly and ask whether they would grant such authority. If yes, the constraint is self-imposed and removable. If no, identify the specific governance barrier (board structure, funding model, legal authority) and assess whether it's truly immovable or politically inconvenient",
+          "computed_voi_score": 16.2
+        },
+        {
+          "unknown": "First-mover lock-in risk: whether Scaling Trust's architectural choices will constrain or enable subsequent programmes",
+          "why_decision_sensitive": "If Scaling Trust's design creates path dependency that forces wholesale adoption or total rejection (no mix-and-match), vertical-first eliminates architectural flexibility for programmes with different threat models or operational contexts. This matters decisively if ARIA's portfolio includes trust needs spanning multiple security paradigms (e.g., classified vs open research, high-assurance vs rapid experimentation).",
+          "impact_1_to_10": 7,
+          "uncertainty_1_to_10": 8,
+          "decision_sensitivity_1_to_10": 7,
+          "next_action": "Map trust architecture requirements across ARIA's full programme portfolio (current + planned): identify how much variance exists in threat models, assurance levels, operational constraints. Assess whether a single vertical design can accommodate this variance or whether forced adoption would require programmes to accept suboptimal security postures",
+          "computed_voi_score": 13.1
+        },
+        {
+          "unknown": "Adversary coordination timelines relative to ARIA's planning horizon",
+          "why_decision_sensitive": "If ARIA faces strategic competitors operating on 3-5 year timelines who can exploit fragmented trust infrastructure across the portfolio, then optimizing for 12-month political wins creates asymmetric vulnerability. The adversarial correctly notes the recommendation optimizes for political survival but may sacrifice strategic security. This changes the decision if threat models include patient adversaries.",
+          "impact_1_to_10": 8,
+          "uncertainty_1_to_10": 7,
+          "decision_sensitivity_1_to_10": 6,
+          "next_action": "Consult ARIA's security advisors or NCSC: what is the threat landscape for ARIA research programmes? Are adversaries primarily opportunistic (short-term exploitation) or strategic (multi-year campaigns)? If strategic threats dominate, fragmented trust infrastructure becomes a critical vulnerability regardless of political convenience",
+          "computed_voi_score": 11.2
+        },
+        {
+          "unknown": "Actual time-to-value delta between vertical-first and horizontal-first in comparable contexts",
+          "why_decision_sensitive": "The baseline cites '6-9 months faster' for vertical-first but flags this as unverified general knowledge. If the true delta is 3-4 months rather than 6-9, and if governance reforms could extend the accountability window by even 6 months, horizontal investment becomes time-feasible. The entire recommendation hinges on this timing arithmetic being correct.",
+          "impact_1_to_10": 7,
+          "uncertainty_1_to_10": 8,
+          "decision_sensitivity_1_to_10": 5,
+          "next_action": "Identify 3-5 case studies from research infrastructure with documented timelines for both approaches (e.g., EBI data infrastructure, CERN computing grid evolution, pandemic data sharing platforms). Extract actual time-to-first-value measurements, controlling for organizational scale and technical complexity comparable to ARIA",
+          "computed_voi_score": 9.3
+        }
+      ],
+      "priority_rationale": "The unknowns are ranked by their ability to flip the core decision between vertical-first and horizontal-first strategies. The enforcement mechanism for open-source commitments (#1) scores highest because it directly tests whether the strategy's foundational promise—federation after vertical wins—is credible or illusory; if commitments routinely fail, the entire approach collapses into its own failure mode. The governance invariance question (#2) ranks second because it challenges whether we're solving the right problem: if the 12-month window is fixable, we're institutionalizing a bug rather than working around a constraint. Historical reuse rates (#3) provide empirical grounding for the federation bet. The remaining unknowns address key assumptions about lock-in risk, governance achievability, threat models, and timing arithmetic. Together, these unknowns span the full decision surface: credibility of promises, fixability of constraints, empirical track records, strategic risk calculus, and budget dynamics. VoI will be computed as (impact × uncertainty × decision_sensitivity) / 30, but the ranking already reflects that #1-#2 are decision-critical with high uncertainty, while #7-#8 are important but either lower-impact or more resolvable through direct inquiry.",
+      "_voi_note": "VoI scores computed in code (impact × uncertainty × decision_sensitivity) / 30; model did not supply VoI.",
+      "model_order_disagrees_with_computed_voi": true
+    }
+  }
+}

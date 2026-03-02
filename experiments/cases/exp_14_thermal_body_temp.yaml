@@ -1,0 +1,24 @@
+problem:
+  name: "Thermal experiment: ambient 37°C (body temp) + motor heat"
+  domain: "surgical_robotics"
+
+constraints:
+  - "ambient_temp: 37°C"
+  - "power: 10W"
+  - "must_not_overheat"
+
+uncertainties:
+  - "body_temp_effect: unknown"
+
+objectives:
+  - "in_vivo_operation"
+
+design:
+  power_w: 10.0
+  duty_cycle: 0.9
+  duration_s: 1800
+  cooling: "passive"
+  ambient_temp_c: 37.0
+
+metadata:
+  experiment_type: "thermal"

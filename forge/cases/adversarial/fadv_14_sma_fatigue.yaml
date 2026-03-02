@@ -1,0 +1,22 @@
+problem:
+  name: "SMA for high-cycle fatigue"
+  domain: "surgical_robotics"
+
+constraints:
+  - "fatigue_life: 1e8 cycles"
+  - "must_withstand_repeated_loading"
+
+uncertainties:
+  - "fatigue_degradation: unknown"
+
+objectives:
+  - "long_life"
+
+design:
+  cycles_required: 100000000
+  loading_frequency_hz: 10
+
+metadata:
+  trap_type: "misleading_adjacency"
+  expected_forge_behavior: "Should not suggest SMA for high-cycle fatigue (SMA fatigues fast)"
+  quality_gate_should_catch: true

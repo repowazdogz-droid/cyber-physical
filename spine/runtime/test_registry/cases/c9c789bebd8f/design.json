@@ -1,0 +1,6 @@
+{
+  "phase_margin_deg": 5,
+  "min_phase_margin_deg": 30,
+  "gain_margin_db": 3,
+  "stability_margin": 0.17
+}

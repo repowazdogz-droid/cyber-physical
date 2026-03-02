@@ -1,0 +1,26 @@
+problem:
+  name: "Revision surgery for thoracic pedicle screw aortic penetration"
+  domain: "spine_surgery"
+
+constraints:
+  - "aorta_proximity_to_T6_T7: millimeters"
+  - "freehand_screw_placement_inaccuracy"
+  - "urgent_stabilization_required"
+  - "patient_age: 53"
+  - "trauma_with_paraplegia"
+
+uncertainties:
+  - "pseudoaneurysm_risk: unknown_timeline"
+  - "delayed_aortic_rupture_probability: unclear"
+  - "asymptomatic_impingement_management: no_consensus"
+
+objectives:
+  - "stabilize_T7_fracture"
+  - "mitigate_vascular_injury"
+  - "prevent_aortic_rupture"
+
+metadata:
+  source: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12410477/"
+  authors: "Akinosun & Hu et al., 2024"
+  outcome_known: true
+  outcome: "Screw impingement confirmed; revision performed successfully"

@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OPLAS Request Schema",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["task_id", "domain", "inputs", "outputs", "budgets", "run_config"],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "description": "Unique task identifier"
+    },
+    "domain": {
+      "type": "string",
+      "enum": ["grid_2d", "text", "table", "generic_state"],
+      "description": "Domain (must be explicitly declared)"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ArtifactRef"
+      },
+      "description": "Input artifacts"
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ArtifactRef"
+      },
+      "description": "Expected output artifacts (shapes/types if known)"
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Constraint"
+      },
+      "description": "Optional typed constraints"
+    },
+    "budgets": {
+      "$ref": "#/definitions/BudgetSpec",
+      "description": "Resource budgets"
+    },
+    "run_config": {
+      "$ref": "#/definitions/RunConfig",
+      "description": "Run configuration"
+    }
+  },
+  "definitions": {
+    "ArtifactRef": {
+      "type": "object",
+      "required": ["kind", "uri", "media_type"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["raw_input", "repr", "program", "trace", "concept_card", "claim", "derived"]
+        },
+        "content_hash": {
+          "type": "string",
+          "description": "Content hash (required for derived artifacts)"
+        },
+        "uri": {
+          "type": "string",
+          "description": "URI (local path or content-addressable store key)"
+        },
+        "media_type": {
+          "type": "string",
+          "description": "Media type (e.g., application/json)"
+        }
+      }
+    },
+    "Constraint": {
+      "type": "object",
+      "required": ["type", "params"],
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "params": {
+          "type": "object"
+        }
+      }
+    },
+    "BudgetSpec": {
+      "type": "object",
+      "required": [
+        "max_proposals",
+        "max_repairs",
+        "max_refinement_iters",
+        "max_wall_ms",
+        "max_runtime_steps",
+        "max_tokens_per_call"
+      ],
+      "properties": {
+        "max_proposals": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_repairs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_refinement_iters": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_wall_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_runtime_steps": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_tokens_per_call": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "RunConfig": {
+      "type": "object",
+      "properties": {
+        "seed": {
+          "type": "integer"
+        },
+        "strict_mode": {
+          "type": "boolean"
+        },
+        "degradation_mode": {
+          "type": "string",
+          "enum": ["diversify", "retrieval_swap", "enumerate", "return_failure"]
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

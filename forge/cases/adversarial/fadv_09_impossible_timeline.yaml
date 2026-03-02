@@ -1,0 +1,17 @@
+problem:
+  name: "Impossible timeline"
+  domain: "surgical_robotics"
+
+constraints:
+  - "fatigue_test: 1e9 cycles"
+  - "must_complete_in_hours"
+
+uncertainties: []
+
+objectives:
+  - "endurance"
+
+metadata:
+  trap_type: "overreach"
+  expected_forge_behavior: "Should flag timeline inconsistencies"
+  quality_gate_should_catch: true

@@ -1,0 +1,8 @@
+{
+  "expected_mass_kg": 1.0,
+  "min_mass_kg": 0.6,
+  "max_mass_kg": 1.4,
+  "variation_percent": 40,
+  "payload_capacity_kg": 1.5,
+  "utilization_at_max": 0.93
+}

@@ -1,0 +1,27 @@
+{
+  "procedure": {
+    "procedure_id": "mis_lumbar_decompression",
+    "domain": "spine",
+    "indication": "lumbar spinal stenosis L4/5",
+    "approach": "unilateral_laminotomy_bilateral_decompression",
+    "setting": "tertiary_centre",
+    "notes": "Demo spec for MIS lumbar decompression (L4/5)."
+  },
+  "tech_concept": {
+    "name": "Guided Decompression Sleeve",
+    "type": "navigation_assisted_tool",
+    "role": "resection_assist",
+    "capital_cost_band": "medium",
+    "disposables_cost_band": "medium",
+    "learning_curve_cases": 25,
+    "requires_advanced_nav": true,
+    "robotic_integration": "optional",
+    "description": "Sleeve-like tool providing navigation-assisted guardrails during decompression."
+  }
+}
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+problem:
+  name: "Press-fit interference loss at temperature"
+  domain: "robotic_design"
+
+constraints:
+  - "interference_at_room_temp: 0.05mm"
+  - "operating_temp: 80°C"
+  - "hub_expansion_coeff: 12×10⁻⁶/°C"
+  - "shaft_expansion_coeff: 23×10⁻⁶/°C"
+  - "must_maintain_interference"
+
+uncertainties:
+  - "temperature_distribution: variable"
+  - "creep_relaxation: unknown"
+  - "interference_loss_rate: unknown"
+
+objectives:
+  - "joint_integrity"
+  - "thermal_stability"
+
+design:
+  interference_at_room_temp_mm: 0.05
+  operating_temp_c: 80
+  room_temp_c: 20
+  hub_expansion_coeff_per_c: 12e-6
+  shaft_expansion_coeff_per_c: 23e-6
+  hub_diameter_mm: 20.0
+  # For geometric constraints
+  min_clearance_mm: -0.05
+  clearance_limit_mm: 0.0
+  interference_loss_mm: 0.018
+  max_service_temp_c: 100
+
+metadata:
+  injected_failure: "press_fit_interference_loss"
+  failure_category: "geometric"
+  expected_detection: "Geometric constraint may trigger if interference loss modeled"

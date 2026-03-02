@@ -1,0 +1,29 @@
+problem:
+  name: "Sensor latency 50ms on 100ms control loop"
+  domain: "robotic_design"
+
+constraints:
+  - "control_loop_period: 100ms"
+  - "sensor_latency: 50ms"
+  - "max_acceptable_latency: 20ms"
+  - "must_maintain_control_bandwidth"
+
+uncertainties:
+  - "latency_variability: ±10ms"
+  - "control_performance_degradation: unknown"
+  - "stability_impact: variable"
+
+objectives:
+  - "control_performance"
+  - "sensor_response"
+
+design:
+  control_loop_period_ms: 100
+  sensor_latency_ms: 50
+  max_latency_ms: 20
+  latency_ratio: 0.5
+
+metadata:
+  injected_failure: "sensor_latency"
+  failure_category: "control"
+  expected_detection: "Control performance issue may be detected"

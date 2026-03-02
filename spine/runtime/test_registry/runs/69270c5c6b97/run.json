@@ -1,0 +1,744 @@
+{
+  "run_id": "69270c5c6b97",
+  "case_id": "51872d462c7e",
+  "timestamp": "2026-02-05 08:40:56.331066",
+  "output": {
+    "decision_map": {
+      "constraints_checked": [
+        {
+          "constraint": "extreme_mechanical_instability",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "spinal_shock_at_admission",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "complete_cord_transection",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "patient_age: 22",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "trauma_case_mva",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        }
+      ],
+      "violations": []
+    },
+    "failure_modes": [],
+    "contradictions": [],
+    "unknowns": [
+      {
+        "item": "optimal_surgical_timing_in_complete_transection: debated",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: optimal_surgical_timing_in_complete_transection: debated"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.4,
+          "max_confidence": 0.4,
+          "sensitivity": 0.0,
+          "dependent_on": [
+            "optimal_surgical_timing_in_complete_transection"
+          ]
+        }
+      },
+      {
+        "item": "functional_recovery_potential: extremely_low",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: functional_recovery_potential: extremely_low"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.4,
+          "max_confidence": 0.4,
+          "sensitivity": 0.0,
+          "dependent_on": [
+            "functional_recovery_potential"
+          ]
+        }
+      },
+      {
+        "item": "one_stage_vs_two_stage_approach: unclear_benefit",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: one_stage_vs_two_stage_approach: unclear_benefit"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.4,
+          "max_confidence": 0.4,
+          "sensitivity": 0.0,
+          "dependent_on": [
+            "one_stage_vs_two_stage_approach"
+          ]
+        }
+      }
+    ],
+    "recommended_experiments": [],
+    "falsification_tests": [],
+    "formal_constraints": [],
+    "trace_graph": {
+      "run_id": "5c23e5217462",
+      "timestamp": "2026-02-05T08:40:56.330944",
+      "nodes": {
+        "input_0000": {
+          "id": "input_0000",
+          "type": "input",
+          "content": {
+            "type": "problem",
+            "name": "Posterior stabilization for extreme C6/C7 dislocation with cord transection",
+            "domain": "spine_surgery"
+          },
+          "timestamp": "2026-02-05T08:40:56.325390",
+          "parents": [],
+          "metadata": {}
+        },
+        "input_0001": {
+          "id": "input_0001",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "extreme_mechanical_instability"
+          },
+          "timestamp": "2026-02-05T08:40:56.325392",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0002": {
+          "id": "input_0002",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "spinal_shock_at_admission"
+          },
+          "timestamp": "2026-02-05T08:40:56.325393",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0003": {
+          "id": "input_0003",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "complete_cord_transection"
+          },
+          "timestamp": "2026-02-05T08:40:56.325394",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0004": {
+          "id": "input_0004",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "patient_age: 22"
+          },
+          "timestamp": "2026-02-05T08:40:56.325394",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0005": {
+          "id": "input_0005",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "trauma_case_mva"
+          },
+          "timestamp": "2026-02-05T08:40:56.325395",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0006": {
+          "id": "input_0006",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "optimal_surgical_timing_in_complete_transection: debated"
+          },
+          "timestamp": "2026-02-05T08:40:56.325396",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0007": {
+          "id": "input_0007",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "functional_recovery_potential: extremely_low"
+          },
+          "timestamp": "2026-02-05T08:40:56.325397",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0008": {
+          "id": "input_0008",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "one_stage_vs_two_stage_approach: unclear_benefit"
+          },
+          "timestamp": "2026-02-05T08:40:56.325398",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0009": {
+          "id": "input_0009",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "restore_spinal_alignment"
+          },
+          "timestamp": "2026-02-05T08:40:56.325398",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0010": {
+          "id": "input_0010",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "immediate_mechanical_stabilization"
+          },
+          "timestamp": "2026-02-05T08:40:56.325399",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0011": {
+          "id": "input_0011",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "prevent_secondary_injury"
+          },
+          "timestamp": "2026-02-05T08:40:56.325400",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "inference_0012": {
+          "id": "inference_0012",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "extreme_mechanical_instability",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T08:40:56.330879",
+          "parents": [
+            "input_0001"
+          ],
+          "metadata": {}
+        },
+        "inference_0013": {
+          "id": "inference_0013",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "spinal_shock_at_admission",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T08:40:56.330882",
+          "parents": [
+            "input_0002"
+          ],
+          "metadata": {}
+        },
+        "inference_0014": {
+          "id": "inference_0014",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "complete_cord_transection",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T08:40:56.330883",
+          "parents": [
+            "input_0003"
+          ],
+          "metadata": {}
+        },
+        "inference_0015": {
+          "id": "inference_0015",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "patient_age: 22",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T08:40:56.330884",
+          "parents": [
+            "input_0004"
+          ],
+          "metadata": {}
+        },
+        "inference_0016": {
+          "id": "inference_0016",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "trauma_case_mva",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T08:40:56.330885",
+          "parents": [
+            "input_0005"
+          ],
+          "metadata": {}
+        },
+        "output_0017": {
+          "id": "output_0017",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "optimal_surgical_timing_in_complete_transection: debated",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T08:40:56.330917",
+          "parents": [
+            "input_0006"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: optimal_surgical_timing_in_complete_transection: debated"
+              ],
+              "requires_validation": true
+            }
+          }
+        },
+        "output_0018": {
+          "id": "output_0018",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "functional_recovery_potential: extremely_low",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T08:40:56.330929",
+          "parents": [
+            "input_0007"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: functional_recovery_potential: extremely_low"
+              ],
+              "requires_validation": true
+            }
+          }
+        },
+        "output_0019": {
+          "id": "output_0019",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "one_stage_vs_two_stage_approach: unclear_benefit",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T08:40:56.330938",
+          "parents": [
+            "input_0008"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: one_stage_vs_two_stage_approach: unclear_benefit"
+              ],
+              "requires_validation": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "trace": {
+    "run_id": "5c23e5217462",
+    "timestamp": "2026-02-05T08:40:56.330944",
+    "nodes": {
+      "input_0000": {
+        "id": "input_0000",
+        "type": "input",
+        "content": {
+          "type": "problem",
+          "name": "Posterior stabilization for extreme C6/C7 dislocation with cord transection",
+          "domain": "spine_surgery"
+        },
+        "timestamp": "2026-02-05T08:40:56.325390",
+        "parents": [],
+        "metadata": {}
+      },
+      "input_0001": {
+        "id": "input_0001",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "extreme_mechanical_instability"
+        },
+        "timestamp": "2026-02-05T08:40:56.325392",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0002": {
+        "id": "input_0002",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "spinal_shock_at_admission"
+        },
+        "timestamp": "2026-02-05T08:40:56.325393",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0003": {
+        "id": "input_0003",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "complete_cord_transection"
+        },
+        "timestamp": "2026-02-05T08:40:56.325394",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0004": {
+        "id": "input_0004",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "patient_age: 22"
+        },
+        "timestamp": "2026-02-05T08:40:56.325394",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0005": {
+        "id": "input_0005",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "trauma_case_mva"
+        },
+        "timestamp": "2026-02-05T08:40:56.325395",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0006": {
+        "id": "input_0006",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "optimal_surgical_timing_in_complete_transection: debated"
+        },
+        "timestamp": "2026-02-05T08:40:56.325396",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0007": {
+        "id": "input_0007",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "functional_recovery_potential: extremely_low"
+        },
+        "timestamp": "2026-02-05T08:40:56.325397",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0008": {
+        "id": "input_0008",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "one_stage_vs_two_stage_approach: unclear_benefit"
+        },
+        "timestamp": "2026-02-05T08:40:56.325398",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0009": {
+        "id": "input_0009",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "restore_spinal_alignment"
+        },
+        "timestamp": "2026-02-05T08:40:56.325398",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0010": {
+        "id": "input_0010",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "immediate_mechanical_stabilization"
+        },
+        "timestamp": "2026-02-05T08:40:56.325399",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0011": {
+        "id": "input_0011",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "prevent_secondary_injury"
+        },
+        "timestamp": "2026-02-05T08:40:56.325400",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "inference_0012": {
+        "id": "inference_0012",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "extreme_mechanical_instability",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T08:40:56.330879",
+        "parents": [
+          "input_0001"
+        ],
+        "metadata": {}
+      },
+      "inference_0013": {
+        "id": "inference_0013",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "spinal_shock_at_admission",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T08:40:56.330882",
+        "parents": [
+          "input_0002"
+        ],
+        "metadata": {}
+      },
+      "inference_0014": {
+        "id": "inference_0014",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "complete_cord_transection",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T08:40:56.330883",
+        "parents": [
+          "input_0003"
+        ],
+        "metadata": {}
+      },
+      "inference_0015": {
+        "id": "inference_0015",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "patient_age: 22",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T08:40:56.330884",
+        "parents": [
+          "input_0004"
+        ],
+        "metadata": {}
+      },
+      "inference_0016": {
+        "id": "inference_0016",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "trauma_case_mva",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T08:40:56.330885",
+        "parents": [
+          "input_0005"
+        ],
+        "metadata": {}
+      },
+      "output_0017": {
+        "id": "output_0017",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "optimal_surgical_timing_in_complete_transection: debated",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T08:40:56.330917",
+        "parents": [
+          "input_0006"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: optimal_surgical_timing_in_complete_transection: debated"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0018": {
+        "id": "output_0018",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "functional_recovery_potential: extremely_low",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T08:40:56.330929",
+        "parents": [
+          "input_0007"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: functional_recovery_potential: extremely_low"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0019": {
+        "id": "output_0019",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "one_stage_vs_two_stage_approach: unclear_benefit",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T08:40:56.330938",
+        "parents": [
+          "input_0008"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: one_stage_vs_two_stage_approach: unclear_benefit"
+            ],
+            "requires_validation": true
+          }
+        }
+      }
+    }
+  },
+  "predictions": [],
+  "reviewer": null,
+  "review_notes": ""
+}

@@ -1,0 +1,140 @@
+{
+  "engineOutput": {
+    "synthesis": {
+      "confidence_score": 0.65,
+      "confidence_breakdown": {
+        "agreement_factor": 0.68,
+        "evidence_density_factor": 0.75,
+        "unsupported_penalty": 0.12,
+        "divergence_penalty": 0.18,
+        "lens_count_factor": 1.0,
+        "raw_score": 0.65,
+        "final_score": 0.65,
+        "drift_flags": [],
+        "low_evidence_warning": false,
+        "high_contradiction_warning": true,
+        "per_lens": [],
+        "per_theme": []
+      },
+      "convergence_points": [
+        {
+          "theme_id": "t1",
+          "theme_label": "Engineering density is authentic",
+          "supporting_lenses": ["lens-1", "lens-2", "lens-3"],
+          "supporting_claims": ["claim-1", "claim-2", "claim-3"],
+          "strength": 0.85,
+          "evidence_density": 0.80
+        },
+        {
+          "theme_id": "t2",
+          "theme_label": "Integration drag is near-certain",
+          "supporting_lenses": ["lens-1", "lens-2"],
+          "supporting_claims": ["claim-4", "claim-5"],
+          "strength": 0.75,
+          "evidence_density": 0.70
+        }
+      ],
+      "divergence_points": [
+        {
+          "theme_id": "t3",
+          "theme_label": "Growth Durability vs Integration Gravity",
+          "positions": [
+            {
+              "lens_id": "lens-1",
+              "claim_ids": ["claim-6"],
+              "position_summary": "Momentum may mask near-term productivity trough"
+            },
+            {
+              "lens_id": "lens-2",
+              "claim_ids": ["claim-7"],
+              "position_summary": "Integration complexity will compress growth"
+            }
+          ],
+          "nature": "contradictory",
+          "severity": 0.60
+        }
+      ],
+      "orphan_claims": [],
+      "confidence_rationale": "Moderate confidence based on convergence patterns",
+      "computed_at": "2025-02-07T12:00:00Z"
+    },
+    "claim_annotations": []
+  },
+  "claims": [
+    {
+      "id": "claim-1",
+      "perspective_id": "p1",
+      "analysis_id": "analysis-123",
+      "statement": "HelioTech has strong engineering team",
+      "category": "factual",
+      "claim_kind": "claim",
+      "confidence_weight": 0.8,
+      "evidence_basis": "Company documentation",
+      "evidence_status": "supported",
+      "about_entity_candidate": "HelioTech",
+      "about_entity_canonical": "HelioTech",
+      "validity": "strict",
+      "polarity": "positive",
+      "scoring_eligible": true,
+      "as_of": "2025-02-07",
+      "valid_from": null,
+      "valid_until": null,
+      "expires_at": null,
+      "stale_unsupported": false,
+      "repairs": []
+    },
+    {
+      "id": "claim-2",
+      "perspective_id": "p1",
+      "analysis_id": "analysis-123",
+      "statement": "Integration will require refactoring",
+      "category": "predictive",
+      "claim_kind": "claim",
+      "confidence_weight": 0.6,
+      "evidence_basis": null,
+      "evidence_status": "unsupported",
+      "about_entity_candidate": "Integration",
+      "about_entity_canonical": null,
+      "validity": "strict",
+      "polarity": "neutral",
+      "scoring_eligible": true,
+      "as_of": "2025-02-07",
+      "valid_from": null,
+      "valid_until": null,
+      "expires_at": null,
+      "stale_unsupported": false,
+      "repairs": []
+    }
+  ],
+  "evidenceItems": [
+    {
+      "id": "ev-1",
+      "claim_id": "claim-1",
+      "content_text": "Engineering team of 50+ engineers",
+      "source_type": "stimulus_quote",
+      "as_of": "2025-02-07",
+      "possibly_stale": false
+    }
+  ],
+  "evidenceLinks": [
+    {
+      "claim_id": "claim-1",
+      "evidence_item_id": "ev-1",
+      "support_type": "supports"
+    }
+  ],
+  "analysisId": "550e8400-e29b-41d4-a716-446655440000",
+  "createdAt": "2025-02-07T12:00:00Z",
+  "modelSnapshot": {
+    "llm_model": "gpt-4o",
+    "embedding_model": "nomic-embed-text",
+    "run_id": null,
+    "created_at": "2025-02-07T12:00:00Z"
+  },
+  "execSummary": "HelioTech acquisition analysis.\n\nInterpretation:\nHelioTech is economically coherent. Outcome dispersion is integration-governed. This is not a conviction problem. It is a measurement problem.",
+  "confidenceScore": 0.65,
+  "band": "Moderate",
+  "convergenceCount": 2,
+  "divergenceCount": 1,
+  "orphanCount": 0
+}

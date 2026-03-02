@@ -1,0 +1,37 @@
+{
+  "colon": {
+    "name": "colon",
+    "lumen_min_mm": 20.0,
+    "lumen_max_mm": 60.0,
+    "max_curvature_deg_per_cm": 15.0,
+    "max_contact_pressure_kpa": 5.0,
+    "notes": "Colon lumen varies significantly. Haustral folds create local constrictions."
+  },
+  "trachea": {
+    "name": "trachea",
+    "lumen_min_mm": 12.0,
+    "lumen_max_mm": 22.0,
+    "max_curvature_deg_per_cm": 8.0,
+    "max_contact_pressure_kpa": 3.0,
+    "notes": "Trachea is relatively straight but sensitive to pressure. Cartilaginous rings provide structure."
+  },
+  "esophagus": {
+    "name": "esophagus",
+    "lumen_min_mm": 15.0,
+    "lumen_max_mm": 25.0,
+    "max_curvature_deg_per_cm": 12.0,
+    "max_contact_pressure_kpa": 4.0,
+    "notes": "Esophagus has peristaltic motion. Upper third is striated muscle, lower two-thirds smooth muscle."
+  },
+  "nasal_passage": {
+    "name": "nasal_passage",
+    "lumen_min_mm": 3.0,
+    "lumen_max_mm": 8.0,
+    "max_curvature_deg_per_cm": 25.0,
+    "max_contact_pressure_kpa": 2.0,
+    "notes": "Nasal passages are narrow and highly curved. Very sensitive mucosa."
+  }
+}
+
+
+

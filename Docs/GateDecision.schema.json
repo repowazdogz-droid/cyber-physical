@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GateDecisionContract",
+  "description": "Contract for gate decision result",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "allowed",
+    "reason"
+  ],
+  "properties": {
+    "contractVersion": {
+      "type": "string",
+      "description": "Contract version (must match CONTRACT_VERSION)",
+      "pattern": "^1\\.0\\.0$"
+    },
+    "allowed": {
+      "type": "boolean",
+      "description": "Whether action is allowed"
+    },
+    "constraints": {
+      "$ref": "#/definitions/GateConstraintsContract"
+    },
+    "reason": {
+      "type": "string",
+      "description": "Human-readable reason (max 200 chars)",
+      "maxLength": 200
+    }
+  },
+  "definitions": {
+    "GateConstraintsContract": {
+      "type": "object",
+      "properties": {
+        "contractVersion": {
+          "type": "string",
+          "pattern": "^1\\.0\\.0$"
+        },
+        "maxTraceNodes": {
+          "type": "number",
+          "description": "Maximum trace nodes (bounded)",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "redactFields": {
+          "type": "array",
+          "description": "Fields to redact (bounded, max 10)",
+          "maxItems": 10,
+          "items": {
+            "type": "string",
+            "maxLength": 50
+          }
+        },
+        "requireReduceMotion": {
+          "type": "boolean",
+          "description": "Require reduce motion"
+        },
+        "requireDismissible": {
+          "type": "boolean",
+          "description": "Require dismissible (for spotlight)"
+        },
+        "maxItems": {
+          "type": "number",
+          "description": "Maximum items (bounded)",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "denyIfAdultNoOptIn": {
+          "type": "boolean",
+          "description": "Deny if adult has not opted in"
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

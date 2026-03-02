@@ -1,0 +1,38 @@
+problem:
+  name: "Galvanic corrosion at dissimilar metal joint"
+  domain: "robotic_design"
+
+constraints:
+  - "metal_pair: aluminum_steel"
+  - "electrolyte_present: true"
+  - "galvanic_potential: 0.5V"
+  - "corrosion_rate: 0.2mm/year"
+  - "must_resist_corrosion"
+
+uncertainties:
+  - "electrolyte_composition: variable"
+  - "corrosion_acceleration: unknown"
+  - "joint_integrity_loss: unknown"
+
+objectives:
+  - "corrosion_resistance"
+  - "joint_durability"
+
+design:
+  metal_pair: "aluminum_steel"
+  electrolyte_present: true
+  galvanic_potential_v: 0.5
+  corrosion_rate_mm_yr: 0.2
+  # For corrosion constraint
+  corrosion_rate_mm_yr: 0.2
+  service_life_years: 5
+  wall_thickness_mm: 2.0
+  # For material constraints
+  tensile_stress_mpa: 200
+  scc_threshold_mpa: 150
+  corrosive_environment: true
+
+metadata:
+  injected_failure: "galvanic_corrosion"
+  failure_category: "material"
+  expected_detection: "Corrosion constraint should trigger"

@@ -1,0 +1,48 @@
+{
+  "procedure": {
+    "procedure_id": "airway_suction_assist_v1",
+    "domain": "ENT",
+    "anatomy": "trachea",
+    "description": "Soft robotic suction assist for airway procedures",
+    "notes": "Must be gentle on tracheal mucosa"
+  },
+  "robot": {
+    "geometry": {
+      "outer_diameter_mm": 10.0,
+      "length_mm": 200.0,
+      "min_bend_radius_mm": 15.0,
+      "wall_thickness_mm": 1.5
+    },
+    "materials": {
+      "name": "silicone_00_30",
+      "youngs_modulus_kpa": 45.0,
+      "shore_hardness": 30.0,
+      "friction_coeff": 0.45,
+      "max_strain": 2.5,
+      "notes": "Very soft for delicate tissue"
+    },
+    "actuation": {
+      "mode": "tendon",
+      "max_tendon_force_n": 2.5,
+      "response_time_ms": 90.0
+    },
+    "safety": {
+      "max_tip_force_n": 2.5,
+      "max_contact_pressure_kpa": 2.5,
+      "max_dwell_time_min": 12.0
+    },
+    "control": {
+      "control_mode": "semi_autonomous",
+      "closed_loop": true,
+      "sensing_modalities": ["force", "position"]
+    },
+    "tether": {
+      "has_tether": true,
+      "num_lines": 4,
+      "total_bundle_diameter_mm": 2.5
+    }
+  }
+}
+
+
+

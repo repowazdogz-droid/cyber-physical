@@ -1,0 +1,42 @@
+{
+  "case_id": "d531951f7e09",
+  "name": "Thermal expansion mismatch - aluminum + steel",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:16:52.877031",
+  "case_yaml": {
+    "problem": {
+      "name": "Thermal expansion mismatch - aluminum + steel",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "material1: aluminum (\u03b1=23\u00d710\u207b\u2076/\u00b0C)",
+      "material2: steel (\u03b1=12\u00d710\u207b\u2076/\u00b0C)",
+      "temperature_range: -20\u00b0C to +60\u00b0C",
+      "length: 100mm",
+      "must_accommodate_expansion"
+    ],
+    "uncertainties": [
+      "thermal_cycling_frequency: variable",
+      "stress_accumulation: unknown",
+      "joint_integrity: variable"
+    ],
+    "objectives": [
+      "thermal_compatibility",
+      "structural_integrity"
+    ]
+  },
+  "design_data": {
+    "material1_alpha_per_c": "23e-6",
+    "material2_alpha_per_c": "12e-6",
+    "length_mm": 100,
+    "temp_range_c": 80,
+    "expansion_diff_mm": 0.088,
+    "min_clearance_mm": 0.1
+  },
+  "tags": [
+    "adversarial",
+    "geometric",
+    "test"
+  ],
+  "notes": "Injected failure: thermal_expansion_mismatch"
+}

@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OPLAS Program Schema",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["program_id", "dsl_grammar_version", "dsl_source", "ast", "declared_frame"],
+  "properties": {
+    "program_id": {
+      "type": "string",
+      "description": "Content hash of program"
+    },
+    "dsl_grammar_version": {
+      "type": "string",
+      "description": "Hash of grammar spec"
+    },
+    "dsl_source": {
+      "type": "string",
+      "description": "DSL source code"
+    },
+    "ast": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["type", "name", "args"],
+          "properties": {
+            "type": { "const": "Op" },
+            "name": { "type": "string" },
+            "args": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/ASTNode" }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": ["type", "value"],
+          "properties": {
+            "type": { "const": "Literal" },
+            "value": {}
+          }
+        },
+        {
+          "type": "object",
+          "required": ["type", "name"],
+          "properties": {
+            "type": { "const": "Var" },
+            "name": { "type": "string" }
+          }
+        },
+        {
+          "type": "object",
+          "required": ["type", "name", "expr"],
+          "properties": {
+            "type": { "const": "Let" },
+            "name": { "type": "string" },
+            "expr": { "$ref": "#/definitions/ASTNode" }
+          }
+        },
+        {
+          "type": "object",
+          "required": ["type", "exprs"],
+          "properties": {
+            "type": { "const": "Seq" },
+            "exprs": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/ASTNode" }
+            }
+          }
+        }
+      ]
+    },
+    "declared_frame": {
+      "type": "string",
+      "enum": ["RELATIVE", "ABSOLUTE"],
+      "description": "Coordinate frame mode"
+    },
+    "expected_invariants": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "translation_invariant",
+          "rotation_invariant",
+          "reflection_invariant",
+          "palette_invariant",
+          "scale_invariant",
+          "shape_preserved",
+          "count_preserved",
+          "connectivity_preserved",
+          "color_blind_safe"
+        ]
+      },
+      "description": "Expected invariants (optional)"
+    }
+  },
+  "definitions": {
+    "ASTNode": {
+      "$ref": "#/properties/ast"
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,134 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OPLAS Canonical Representation Schema",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["repr_id", "schema_version", "domain", "nodes", "edges", "globals", "provenance"],
+  "properties": {
+    "repr_id": {
+      "type": "string",
+      "description": "Content hash of canonical representation"
+    },
+    "schema_version": {
+      "type": "string",
+      "description": "Hash of JSON schema"
+    },
+    "domain": {
+      "type": "string",
+      "enum": ["grid_2d", "text", "table", "generic_state"],
+      "description": "Domain"
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Node"
+      },
+      "description": "Nodes (ordered deterministically)"
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Edge"
+      },
+      "description": "Edges (ordered deterministically)"
+    },
+    "globals": {
+      "type": "object",
+      "description": "Global attributes"
+    },
+    "provenance": {
+      "$ref": "#/definitions/Provenance"
+    }
+  },
+  "definitions": {
+    "Node": {
+      "type": "object",
+      "required": ["id", "type", "attrs"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Deterministic node ID"
+        },
+        "type": {
+          "type": "string",
+          "description": "Node type (enum)"
+        },
+        "attrs": {
+          "type": "object",
+          "description": "Attributes (deterministically encoded)"
+        },
+        "llm_optional_labels": {
+          "type": "object",
+          "description": "LLM optional labels (allowed)"
+        }
+      }
+    },
+    "Edge": {
+      "type": "object",
+      "required": ["src", "dst", "type", "attrs"],
+      "properties": {
+        "src": {
+          "type": "string",
+          "description": "Source node ID"
+        },
+        "dst": {
+          "type": "string",
+          "description": "Destination node ID"
+        },
+        "type": {
+          "type": "string",
+          "description": "Edge type (enum)"
+        },
+        "attrs": {
+          "type": "object",
+          "description": "Attributes (deterministically encoded)"
+        }
+      }
+    },
+    "Provenance": {
+      "type": "object",
+      "required": ["parser_version", "created_at_iso"],
+      "properties": {
+        "parser_version": {
+          "type": "string"
+        },
+        "created_at_iso": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "task_id": {
+          "type": "string"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

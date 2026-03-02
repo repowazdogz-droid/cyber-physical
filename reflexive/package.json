@@ -1,0 +1,44 @@
+{
+  "name": "reflexive",
+  "version": "0.1.0",
+  "description": "REFLEXIVE reasoning engine",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "migrate": "tsx src/db/migrate.ts",
+    "seed": "tsx scripts/seed-lenses.ts",
+    "health": "tsx scripts/health-check.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "eval:golden": "tsx eval/golden/runner.ts",
+    "eval:stochastic": "tsx eval/stochastic/runner.ts",
+    "eval:baseline": "tsx eval/stochastic/runner.ts --save-baseline",
+    "eval:report": "tsx eval/report-generator.ts",
+    "eval:all": "tsx eval/golden/runner.ts && tsx eval/stochastic/runner.ts",
+    "eval:weights": "tsx eval/calibration/run-weight-calibration.ts",
+    "eval:bootstrap-ratings": "tsx eval/calibration/bootstrap-ratings.ts",
+    "eval:bands": "tsx eval/calibration/run-band-calibration.ts",
+    "eval:calibration-report": "tsx eval/run-calibration-report.ts",
+    "api:dev": "node --import tsx src/api/server.ts",
+    "api:dev:compiled": "tsc -p tsconfig.json --outDir dist --pretty && node dist/api/server.js",
+    "api:watch:compiled": "tsc -p tsconfig.json --outDir dist --watch --pretty",
+    "api:test": "vitest run tests/api",
+    "demo:export": "tsx eval/demo/export-demo-pack.ts"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.2.0",
+    "dotenv": "^16.4.0",
+    "fastify": "^5.7.4",
+    "pg": "^8.13.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/pg": "^8.11.0",
+    "@types/uuid": "^9.0.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
+  }
+}

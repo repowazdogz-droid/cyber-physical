@@ -1,0 +1,28 @@
+{
+  "version": "v8",
+  "date": "2026-02-05",
+  "total_cases": 65,
+  "suites": {
+    "main_adversarial": {
+      "hash": "2da35d396532b4a5484155f3c1c1207e",
+      "cases": 30,
+      "detection_rate": 70.0
+    },
+    "geometry_adversarial": {
+      "hash": "pending",
+      "cases": 10,
+      "detection_rate": 100.0
+    },
+    "holdout": {
+      "hash": "pending",
+      "cases": 15,
+      "detection_rate": 100.0
+    },
+    "failure_injection": {
+      "hash": "pending",
+      "cases": 10,
+      "detection_rate": 100.0
+    }
+  },
+  "note": "See individual campaign reports for detailed case-by-case detection results"
+}

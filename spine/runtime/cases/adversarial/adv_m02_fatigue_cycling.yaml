@@ -1,0 +1,31 @@
+problem:
+  name: "Fatigue cycling - 10M cycles at marginal stress"
+  domain: "robotic_design"
+
+constraints:
+  - "fatigue_cycles: 10M"
+  - "stress_amplitude: 0.45 × yield_strength"
+  - "endurance_limit: 0.5 × yield_strength"
+  - "must_withstand_10M_cycles"
+
+uncertainties:
+  - "stress_concentration_factor: 1.2-1.5"
+  - "material_variability: ±10%"
+  - "loading_sequence_effect: unknown"
+
+objectives:
+  - "long_term_reliability"
+  - "fatigue_life_requirement"
+
+design:
+  cycles: 10000000
+  stress_amplitude_mpa: 450
+  yield_strength_mpa: 1000
+  endurance_limit_mpa: 500
+  stress_ratio: 0.45
+  stress_concentration: 1.3
+
+metadata:
+  injected_failure: "fatigue_failure"
+  failure_category: "mechanical"
+  expected_detection: "Fatigue risk may be detected if stress concentration considered"

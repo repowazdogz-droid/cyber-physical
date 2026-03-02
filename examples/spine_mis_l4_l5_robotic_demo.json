@@ -1,0 +1,27 @@
+{
+  "procedure": {
+    "procedure_id": "mis_lumbar_decompression",
+    "domain": "spine",
+    "indication": "lumbar spinal stenosis L4/5 with severe canal compromise",
+    "approach": "unilateral_laminotomy_bilateral_decompression",
+    "setting": "tertiary_centre",
+    "notes": "Demo spec for MIS lumbar decompression (L4/5) with a higher-cost, robot-integrated concept."
+  },
+  "tech_concept": {
+    "name": "Robotic Navigated Decompression Platform",
+    "type": "robotic_navigation_platform",
+    "role": "resection_assist",
+    "capital_cost_band": "high",
+    "disposables_cost_band": "medium",
+    "learning_curve_cases": 40,
+    "requires_advanced_nav": true,
+    "robotic_integration": "required",
+    "description": "Robotic arm + navigation platform providing constrained decompression envelopes and guided resection trajectories."
+  }
+}
+
+
+
+
+
+

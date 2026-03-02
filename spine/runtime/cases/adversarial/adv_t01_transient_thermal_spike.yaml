@@ -1,0 +1,32 @@
+problem:
+  name: "Transient thermal spike - 200ms pulse at 3x steady-state"
+  domain: "robotic_design"
+
+constraints:
+  - "steady_state_power: 15W"
+  - "peak_power: 45W"
+  - "pulse_duration: 200ms"
+  - "thermal_capacity: 50W_continuous"
+  - "must_not_overheat"
+
+uncertainties:
+  - "thermal_time_constant: 500-1000ms"
+  - "cooling_response_time: unknown"
+  - "peak_temperature_prediction: variable"
+
+objectives:
+  - "handle_transient_loads"
+  - "thermal_stability"
+
+design:
+  steady_state_power_w: 15
+  peak_power_w: 45
+  pulse_duration_ms: 200
+  thermal_capacity_w: 50
+  thermal_time_constant_ms: 750
+  estimated_temp_rise_c: 72
+
+metadata:
+  injected_failure: "transient_thermal_spike"
+  failure_category: "thermal"
+  expected_detection: "Thermal constraint may trigger if transient considered"

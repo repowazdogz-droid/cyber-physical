@@ -1,0 +1,540 @@
+{
+  "decision_map": {
+    "constraints_checked": [
+      {
+        "constraint": "grip_force: 5.0N",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "normal_force: 8.0N",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "friction_coefficient: 0.1",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "must_not_slip",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "tissue_surface: wet",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      }
+    ],
+    "violations": []
+  },
+  "failure_modes": [
+    {
+      "mode": "slip_under_load",
+      "severity": "high",
+      "mitigation": "increase_friction_coefficient",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "constraint: must_not_slip"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": null
+    },
+    {
+      "mode": "excessive_force_damage",
+      "severity": "medium",
+      "mitigation": "implement_force_limiting_control",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "constraint: grip_force: 5.0N",
+          "constraint: normal_force: 8.0N"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": null
+    }
+  ],
+  "contradictions": [],
+  "unknowns": [
+    {
+      "item": "tissue_compliance: unknown_range",
+      "impact": "critical",
+      "resolution": "bench_test_required",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "uncertainty: tissue_compliance: unknown_range"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": {
+        "base_confidence": 0.4,
+        "min_confidence": 0.25,
+        "max_confidence": 0.49,
+        "sensitivity": 0.3,
+        "dependent_on": [
+          "tissue_compliance"
+        ]
+      }
+    },
+    {
+      "item": "surface_wetness_variation: high",
+      "impact": "medium",
+      "resolution": "investigation_required",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "uncertainty: surface_wetness_variation: high"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": {
+        "base_confidence": 0.4,
+        "min_confidence": 0.4,
+        "max_confidence": 0.4,
+        "sensitivity": 0.0,
+        "dependent_on": [
+          "surface_wetness_variation"
+        ]
+      }
+    }
+  ],
+  "recommended_experiments": [
+    {
+      "name": "force_limit_characterization",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "rule_derived",
+        "provenance": [
+          "constraint: grip_force: 5.0N",
+          "constraint: normal_force: 8.0N"
+        ],
+        "requires_validation": true
+      }
+    },
+    {
+      "name": "tissue_compliance_bench_test",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "rule_derived",
+        "provenance": [
+          "uncertainty: tissue_compliance: unknown_range"
+        ],
+        "requires_validation": true
+      }
+    }
+  ],
+  "falsification_tests": [
+    {
+      "id": "FALS_0001",
+      "target_claim": "Gripper will slip under load (slip_under_load)",
+      "target_output_id": "failure_mode_0",
+      "test_description": "Apply increasing normal force until slip occurs. Measure slip threshold.",
+      "test_type": "bench",
+      "falsification_criterion": "No slip observed up to 150% of expected operating force",
+      "confirmation_criterion": "Slip occurs below expected operating force",
+      "estimated_cost": "low",
+      "estimated_time": "hours",
+      "decision_impact": "If falsified: remove slip_under_load from risks. If confirmed: redesign friction surfaces.",
+      "priority": 1,
+      "required_equipment": [
+        "force gauge",
+        "test fixture",
+        "representative surface"
+      ],
+      "required_expertise": [
+        "mechanical testing"
+      ]
+    },
+    {
+      "id": "FALS_0002",
+      "target_claim": "Unknown: tissue_compliance: unknown_range",
+      "target_output_id": "unknown_1",
+      "test_description": "bench_test_required",
+      "test_type": "measurement",
+      "falsification_criterion": "Value of tissue_compliance determined with acceptable precision",
+      "confirmation_criterion": "Unable to determine tissue_compliance - remains unknown",
+      "estimated_cost": "medium",
+      "estimated_time": "days",
+      "decision_impact": "Resolving tissue_compliance: unknown_range will narrow confidence bands on dependent outputs",
+      "priority": 1,
+      "required_equipment": [],
+      "required_expertise": [
+        "domain expert"
+      ]
+    }
+  ],
+  "formal_constraints": [],
+  "trace_graph": {
+    "run_id": "c5bc59502ec1",
+    "timestamp": "2026-02-05T09:42:19.417387",
+    "nodes": {
+      "input_0000": {
+        "id": "input_0000",
+        "type": "input",
+        "content": {
+          "type": "problem",
+          "name": "Low friction coefficient on wet tissue",
+          "domain": "robotic_design"
+        },
+        "timestamp": "2026-02-05T09:42:19.411600",
+        "parents": [],
+        "metadata": {}
+      },
+      "input_0001": {
+        "id": "input_0001",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "grip_force: 5.0N"
+        },
+        "timestamp": "2026-02-05T09:42:19.411601",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0002": {
+        "id": "input_0002",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "normal_force: 8.0N"
+        },
+        "timestamp": "2026-02-05T09:42:19.411602",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0003": {
+        "id": "input_0003",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "friction_coefficient: 0.1"
+        },
+        "timestamp": "2026-02-05T09:42:19.411603",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0004": {
+        "id": "input_0004",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "must_not_slip"
+        },
+        "timestamp": "2026-02-05T09:42:19.411604",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0005": {
+        "id": "input_0005",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "tissue_surface: wet"
+        },
+        "timestamp": "2026-02-05T09:42:19.411605",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0006": {
+        "id": "input_0006",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "tissue_compliance: unknown_range"
+        },
+        "timestamp": "2026-02-05T09:42:19.411606",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0007": {
+        "id": "input_0007",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "surface_wetness_variation: high"
+        },
+        "timestamp": "2026-02-05T09:42:19.411607",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0008": {
+        "id": "input_0008",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "secure_grasping"
+        },
+        "timestamp": "2026-02-05T09:42:19.411608",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0009": {
+        "id": "input_0009",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "no_tissue_damage"
+        },
+        "timestamp": "2026-02-05T09:42:19.411608",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "inference_0010": {
+        "id": "inference_0010",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "grip_force: 5.0N",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:42:19.417303",
+        "parents": [
+          "input_0001"
+        ],
+        "metadata": {}
+      },
+      "inference_0011": {
+        "id": "inference_0011",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "normal_force: 8.0N",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:42:19.417305",
+        "parents": [
+          "input_0002"
+        ],
+        "metadata": {}
+      },
+      "inference_0012": {
+        "id": "inference_0012",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "friction_coefficient: 0.1",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:42:19.417306",
+        "parents": [
+          "input_0003"
+        ],
+        "metadata": {}
+      },
+      "inference_0013": {
+        "id": "inference_0013",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "must_not_slip",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:42:19.417307",
+        "parents": [
+          "input_0004"
+        ],
+        "metadata": {}
+      },
+      "inference_0014": {
+        "id": "inference_0014",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "tissue_surface: wet",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:42:19.417307",
+        "parents": [
+          "input_0005"
+        ],
+        "metadata": {}
+      },
+      "output_0015": {
+        "id": "output_0015",
+        "type": "output",
+        "content": {
+          "type": "failure_mode",
+          "mode": "slip_under_load",
+          "severity": "high",
+          "mitigation": "increase_friction_coefficient"
+        },
+        "timestamp": "2026-02-05T09:42:19.417323",
+        "parents": [
+          "input_0004"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "constraint: must_not_slip"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0016": {
+        "id": "output_0016",
+        "type": "output",
+        "content": {
+          "type": "failure_mode",
+          "mode": "excessive_force_damage",
+          "severity": "medium",
+          "mitigation": "implement_force_limiting_control"
+        },
+        "timestamp": "2026-02-05T09:42:19.417334",
+        "parents": [
+          "input_0001",
+          "input_0002"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "constraint: grip_force: 5.0N",
+              "constraint: normal_force: 8.0N"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0017": {
+        "id": "output_0017",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "tissue_compliance: unknown_range",
+          "impact": "critical",
+          "resolution": "bench_test_required"
+        },
+        "timestamp": "2026-02-05T09:42:19.417347",
+        "parents": [
+          "input_0006"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: tissue_compliance: unknown_range"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0018": {
+        "id": "output_0018",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "surface_wetness_variation: high",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T09:42:19.417355",
+        "parents": [
+          "input_0007"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: surface_wetness_variation: high"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0019": {
+        "id": "output_0019",
+        "type": "output",
+        "content": {
+          "type": "recommended_experiment",
+          "name": "force_limit_characterization"
+        },
+        "timestamp": "2026-02-05T09:42:19.417364",
+        "parents": [
+          "input_0001",
+          "input_0002"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "rule_derived",
+            "provenance": [
+              "constraint: grip_force: 5.0N",
+              "constraint: normal_force: 8.0N"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0020": {
+        "id": "output_0020",
+        "type": "output",
+        "content": {
+          "type": "recommended_experiment",
+          "name": "tissue_compliance_bench_test"
+        },
+        "timestamp": "2026-02-05T09:42:19.417370",
+        "parents": [
+          "input_0006"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "rule_derived",
+            "provenance": [
+              "uncertainty: tissue_compliance: unknown_range"
+            ],
+            "requires_validation": true
+          }
+        }
+      }
+    }
+  }
+}

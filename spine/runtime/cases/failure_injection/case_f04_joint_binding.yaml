@@ -1,0 +1,27 @@
+problem:
+  name: "Range of motion exceeds joint limit"
+  domain: "robotic_design"
+
+constraints:
+  - "required_joint_angle: 185_degrees"
+  - "joint_limit: 170_degrees"
+  - "must_not_exceed_joint_limits"
+  - "full_workspace_access"
+
+uncertainties:
+  - "workspace_requirements: variable"
+  - "joint_clearance_tolerance: unknown"
+
+objectives:
+  - "adequate_reach"
+  - "smooth_articulation"
+
+design:
+  required_angle_deg: 185
+  joint_limit_deg: 170
+  violation_deg: 15
+
+metadata:
+  injected_failure: "joint_binding"
+  expected_detection: "Joint limit violation OR mechanical interference"
+  decision_delta_target: 2

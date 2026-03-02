@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMEGA — Wallet Firewall</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+::root{
+  --bg-deep:#fafafa;--bg-surface:#f4f4f6;--bg-raised:#ecedef;--bg-hover:#e4e5e8;
+  --border:#d5d7dc;--border-active:#b8bbc2;
+  --text-primary:#111214;--text-secondary:#363940;--text-muted:#5c5f69;
+  --green:#059669;--green-dim:#d1fae5;--green-glow:rgba(5,150,105,.08);
+  --amber:#d97706;--amber-dim:#fef3c7;--amber-glow:rgba(217,119,6,.08);
+  --red:#dc2626;--red-dim:#fee2e2;--red-glow:rgba(220,38,38,.08);
+  --blue:#2563eb;--blue-dim:#dbeafe;--blue-glow:rgba(37,99,235,.06);
+  --mono:'Courier New','Lucida Console',monospace;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --rad:6px;
+}
+html{font-size:14px}
+body{background:var(--bg-deep);color:var(--text-primary);font-family:var(--sans);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.strip{display:flex;align-items:center;justify-content:center;gap:14px;padding:4px 16px;background:var(--bg-deep);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:9px;color:#363940;flex-wrap:wrap}
+.strip-dot{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;margin-right:4px}
+.strip-dot.a{background:var(--amber)}.strip-dot.r{background:var(--red)}
+.strip-sep{color:var(--border)}
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border-bottom:1px solid var(--border);background:var(--bg-surface);position:sticky;top:0;z-index:10;flex-wrap:wrap;gap:8px}
+.hdr-left{display:flex;align-items:center;gap:12px}
+.logo{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:2px}
+.logo span{color:var(--green)}
+.logo-sub{font-family:var(--mono);font-size:9px;letter-spacing:1px;color:#363940}
+.pills{display:flex;gap:5px;flex-wrap:wrap}
+.pill{font-family:var(--mono);font-size:9px;padding:2px 7px;border-radius:3px;background:#f0f1f3;border:1px solid var(--border);color:#363940;white-space:nowrap}
+.pill.g{color:var(--green);border-color:var(--green-dim);background:#ecfdf5}
+.pill.a{color:var(--amber);border-color:var(--amber-dim);background:#fffbeb}
+.pill.r{color:var(--red);border-color:var(--red-dim);background:#fef2f2}
+.main{display:grid;grid-template-columns:260px 1fr 300px;min-height:calc(100vh - 80px)}
+@media(max-width:1100px){.main{grid-template-columns:1fr}}
+.left{border-right:1px solid var(--border);background:var(--bg-surface);padding:14px;overflow-y:auto}
+.ptitle{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:#363940;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;gap:6px}
+.field-label{font-family:var(--mono);font-size:10px;color:#111214;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center;gap:6px}
+.field-hint{font-size:9px;color:var(--text-muted)}
+.text-input{width:100%;padding:6px 8px;border-radius:4px;border:1px solid var(--border);background:#fff;font-family:var(--mono);font-size:11px;color:#111214;outline:none}
+.text-input:focus{border-color:var(--border-active);box-shadow:0 0 0 1px rgba(37,99,235,.15)}
+.select{width:100%;padding:6px 8px;border-radius:4px;border:1px solid var(--border);background:#fff;font-family:var(--mono);font-size:11px;color:#111214;outline:none;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#9ca3af 50%),linear-gradient(135deg,#9ca3af 50%,transparent 50%);background-position:calc(100% - 12px) 9px,calc(100% - 7px) 9px;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.select:focus{border-color:var(--border-active);box-shadow:0 0 0 1px rgba(37,99,235,.15)}
+.row{display:flex;align-items:center;gap:8px}
+.value-display{font-family:var(--mono);font-size:16px;font-weight:700;min-width:70px;color:#111214}
+.network-pill{display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;letter-spacing:1px;padding:4px 9px;border-radius:999px;border:1px solid var(--border);background:#fdfdfd;color:#111214}
+input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:3px;background:#c0c2c8;border-radius:2px;outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:#363940;border:2px solid #fff;cursor:pointer}
+.divider{height:1px;background:var(--border);margin:12px 0}
+.pol{font-family:var(--mono);font-size:9px;color:#363940;padding:5px 7px;background:#f4f4f6;border:1px solid var(--border);border-radius:3px;margin-bottom:5px;line-height:1.5}
+.pol b{color:var(--amber);font-weight:600}
+.scenario-explainer{padding:12px 14px;background:var(--bg-raised);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:6px;margin:10px 0 12px;font-family:var(--sans);font-size:12px;line-height:1.7;color:var(--text-secondary)}
+.scenario-explainer b{color:var(--text-primary);font-weight:600}
+.scenario-explainer .watch-for{margin-top:8px;padding-top:8px;border-top:1px solid var(--border);font-size:11px;color:var(--text-muted)}
+.scenario-explainer .watch-for b{color:var(--blue);font-size:11px}
+.ex-btns{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:6px}
+.btn-ex{font-family:var(--mono);font-size:9px;padding:5px 8px;border-radius:4px;border:1px solid var(--border);background:var(--bg-raised);color:#111214;cursor:pointer;text-align:left}
+.btn-ex:hover{background:var(--bg-hover);border-color:var(--border-active)}
+.btn-ex.active{border-color:var(--green);box-shadow:0 0 0 1px rgba(5,150,105,.2);background:#ecfdf5}
+.btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.btn{font-family:var(--mono);font-size:10px;padding:7px 12px;border-radius:4px;border:1px solid;cursor:pointer;text-align:center;flex:1;min-width:0}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-go{background:#ecfdf5;border-color:var(--green-dim);color:var(--green)}
+.btn-go:hover:not(:disabled){background:#d1fae5}
+.btn-x{background:var(--bg-raised);border-color:var(--border);color:var(--text-secondary)}
+.btn-x:hover:not(:disabled){background:var(--bg-hover)}
+.center{padding:20px 24px;display:flex;flex-direction:column;align-items:center;overflow-y:auto}
+.ch-title{text-align:center;margin-bottom:10px}
+.ch-title h2{font-size:15px;font-weight:600;margin-bottom:2px}
+.ch-title p{font-family:var(--mono);font-size:10px;color:#363940;letter-spacing:1px}
+.ibar-wrap{width:100%;max-width:460px;margin-bottom:10px}
+.ibar-lbl{font-family:var(--mono);font-size:9px;color:#363940;display:flex;justify-content:space-between;margin-bottom:3px}
+.ibar{height:3px;background:var(--bg-raised);border-radius:2px;overflow:hidden}
+.ifill{height:100%;width:100%;background:var(--green);border-radius:2px;transition:all .6s ease}
+.ifill.a{background:var(--amber)}.ifill.r{background:var(--red)}
+.chain{display:flex;flex-direction:column;align-items:center;width:100%;max-width:460px}
+.ng{width:100%;opacity:0;transform:translateY(10px);transition:all .4s ease}
+.ng.vis{opacity:1;transform:translateY(0)}
+.ng.ghost{opacity:.25!important}
+.ng.ghost .nb{border-style:dashed;border-color:var(--amber)!important}
+.ng.tampered .nb{border-color:var(--red)!important;box-shadow:0 0 0 1px rgba(220,38,38,.2)!important}
+.nb{width:100%;padding:10px 14px;background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--rad);cursor:pointer;transition:all .3s}
+.nb:hover{border-color:var(--border-active);background:var(--bg-raised)}
+.nb.sel{border-color:var(--green);box-shadow:0 0 0 1px rgba(5,150,105,.15)}
+.nb.blk{border-color:var(--amber);box-shadow:0 0 0 1px rgba(217,119,6,.15)}
+.nb.brk{border-color:var(--red);box-shadow:0 0 0 1px rgba(220,38,38,.15)}
+.nb.tgt{cursor:crosshair}
+.nh{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.nn{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1.5px;color:#111214}
+.ns{font-family:var(--mono);font-size:8px;padding:1px 5px;border-radius:2px}
+.sv{background:var(--green-glow);color:var(--green)}
+.sb{background:var(--amber-glow);color:var(--amber)}
+.sr{background:var(--red-glow);color:var(--red)}
+.nc{font-size:11px;color:#363940;line-height:1.5;margin-bottom:4px}
+.nhash{font-family:var(--mono);font-size:8px;color:var(--blue);opacity:.5;word-break:break-all}
+.conn{width:2px;height:18px;margin:0 auto;background:var(--border);transition:background .3s}
+.conn.v{background:var(--green)}.conn.b{background:var(--amber)}.conn.k{background:var(--red)}
+.bnr{width:100%;max-width:460px;padding:8px 14px;border-radius:var(--rad);margin-top:6px;font-family:var(--mono);font-size:10px;text-align:center;opacity:0;transform:translateY(6px);transition:all .4s ease;display:none}
+.bnr.vis{opacity:1;transform:translateY(0)}
+.bnr.amb{background:#fffbeb;border:1px solid var(--amber-dim);color:var(--amber)}
+.bnr.red{background:#fef2f2;border:1px solid var(--red-dim);color:var(--red)}
+.bnr.grn{background:#ecfdf5;border:1px solid var(--green-dim);color:var(--green)}
+.thint{font-family:var(--mono);font-size:10px;color:var(--red);padding:5px 12px;border:1px solid var(--red-dim);border-radius:4px;background:#fef2f2;margin-top:8px;display:none}
+.right{border-left:1px solid var(--border);background:var(--bg-surface);padding:14px;overflow-y:auto;font-size:12px}
+.mt{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:#363940;margin-bottom:10px;text-transform:uppercase}
+.ms{margin-bottom:12px}
+.mst{font-family:var(--mono);font-size:9px;letter-spacing:1px;color:#363940;margin-bottom:5px;padding-bottom:3px;border-bottom:1px solid var(--border)}
+.mf{display:flex;justify-content:space-between;padding:2px 0;gap:8px}
+.mk{font-family:var(--mono);font-size:10px;color:#363940;flex-shrink:0}
+.mv{font-family:var(--mono);font-size:10px;color:var(--text-secondary);text-align:right;max-width:170px}
+.mv.g{color:var(--green)}.mv.a{color:var(--amber)}.mv.r{color:var(--red)}
+.mex{font-size:11px;color:var(--text-secondary);line-height:1.6;padding:8px 10px;background:var(--bg-raised);border:1px solid var(--border);border-radius:4px;margin-top:6px}
+.mex b{color:var(--text-primary);font-weight:600}
+.mhash{font-family:var(--mono);font-size:8px;color:var(--blue);opacity:.9;word-break:break-all;line-height:1.4;padding:6px 8px;background:#f0f1f3;border-radius:3px;margin-top:4px;border:1px solid var(--border)}
+.vbtn{font-family:var(--mono);font-size:9px;padding:4px 8px;border-radius:3px;background:#f0f1f3;border:1px solid var(--border);color:var(--text-secondary);cursor:pointer;margin-top:4px}
+.vbtn:hover{border-color:var(--green);color:var(--green)}
+.mpg{display:flex;flex-wrap:wrap;gap:3px;margin-top:4px}
+.mp{font-family:var(--mono);font-size:7px;padding:1px 4px;border-radius:2px;background:var(--bg-raised);border:1px solid var(--border);color:var(--text-muted)}
+.mp.on{color:var(--green);border-color:var(--green-dim)}
+.empty-mech{color:#363940;font-family:var(--mono);font-size:10px;padding:20px 0;text-align:center}
+.ftr{padding:8px 20px;border-top:1px solid var(--border);background:var(--bg-surface);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.ftr-l{font-family:var(--mono);font-size:9px;color:var(--text-muted);letter-spacing:1px}
+.ftr-k{font-family:var(--mono);font-size:8px;color:var(--text-muted);opacity:.5}
+.ftr-r{display:flex;gap:12px}
+.ftr-r a{font-family:var(--mono);font-size:9px;color:var(--text-muted);text-decoration:none}
+.ftr-r a:hover{color:var(--text-secondary)}
+.info-trigger{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;background:rgba(37,99,235,.06);border:1px solid #b8bbc2;color:var(--blue,#2563eb);font-family:var(--mono);font-size:8px;font-weight:700;cursor:pointer;margin-left:5px;vertical-align:middle;transition:all 150ms ease;flex-shrink:0;position:relative;line-height:1}
+.info-trigger:hover{background:rgba(37,99,235,.1);border-color:rgba(37,99,235,.35);transform:scale(1.1)}
+.info-trigger.active{background:rgba(37,99,235,.15);border-color:var(--blue,#2563eb)}
+.info-panel{position:absolute;z-index:1000;width:280px;padding:10px 12px;background:#ffffff;border:1px solid #d5d7dc;border-radius:6px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;font-size:11px;color:#4a4d56;line-height:1.6;box-shadow:0 8px 32px rgba(0,0,0,.1);pointer-events:auto;opacity:0;transform:translateY(4px);transition:opacity 200ms ease,transform 200ms ease}
+.info-panel.visible{opacity:1;transform:translateY(0)}
+.info-panel b{color:#1a1c20;font-weight:600}
+.info-panel code{font-family:var(--mono);font-size:10px;color:#2563eb;background:rgba(37,99,235,.06);padding:1px 4px;border-radius:2px}
+.info-panel-arrow{position:absolute;top:-4px;left:14px;width:8px;height:8px;background:#ffffff;border-left:1px solid #d5d7dc;border-top:1px solid #d5d7dc;transform:rotate(45deg)}
+</style>
+</head>
+<body>
+<div class="strip" id="strip">
+  <span><span class="strip-dot" id="sd"></span><span id="ss">WALLET FIREWALL</span></span>
+  <span class="strip-sep">·</span>
+  <span id="sst">AWAITING TRANSACTION</span>
+  <span class="strip-sep">·</span>
+  <span>CHAIN: <span id="sch" style="color:var(--blue)">—</span></span>
+  <span class="strip-sep">·</span>
+  <span>BOUNDARY: <span id="sbnd" style="color:var(--amber)">Human policies</span></span>
+</div>
+<div class="hdr">
+  <div class="hdr-left">
+    <div>
+      <div class="logo"><span>Ω</span> OMEGA</div>
+      <div class="logo-sub">WALLET FIREWALL</div>
+      <div style="font-family:var(--mono);font-size:9px;color:var(--text-muted);margin-top:2px">Deterministic transaction governance for mobile wallets</div>
+    </div>
+  </div>
+  <div class="pills">
+    <div class="pill">SHA-256 CANONICAL<span class="info-trigger" data-info="<b>SHA-256 canonical hashing.</b> Every reasoning node is encoded in a canonical string and hashed. Change one character, and the hash changes completely. This is how the wallet proves nothing was altered after the fact.">i</span></div>
+    <div class="pill">ZERO DEPS<span class="info-trigger" data-info="<b>Zero dependencies.</b> No external libraries, servers, or wallets. Everything you see here runs in the browser. Identical inputs and policies always produce the same reasoning chain.">i</span></div>
+    <div class="pill">CLEARPATH TRACED</div>
+    <div class="pill g" id="cpill">AWAITING INPUT</div>
+    <div class="pill" id="tpill" style="display:none"></div>
+  </div>
+</div>
+<div class="main">
+  <div class="left">
+    <div class="ptitle">Transaction Builder</div>
+    <div class="field">
+      <div class="field-label"><span>To Address</span><span class="field-hint">Shortened display only</span></div>
+      <input id="toAddress" class="text-input" spellcheck="false" value="0x7a3f...c8d9" oninput="onFieldChange()">
+    </div>
+    <div style="margin-top:8px"></div>
+    <div class="field">
+      <div class="field-label">
+        <span>Amount<span class="info-trigger" data-info="<b>Transfer amount.</b> How much you're sending. Your MAX-TXN-001 policy caps single transfers at 10 SOL. Above that, the wallet blocks the transaction automatically.">i</span></span>
+        <span class="field-hint">Max 50 SOL</span>
+      </div>
+      <div class="row">
+        <div class="value-display" id="amountDisplay">2.0 SOL</div>
+        <input type="range" id="amountSlider" min="0" max="50" step="0.1" value="2" oninput="onAmountChange()">
+      </div>
+    </div>
+    <div style="margin-top:8px"></div>
+    <div class="row" style="gap:10px">
+      <div style="flex:1">
+        <div class="field-label"><span>Token</span></div>
+        <select id="tokenSelect" class="select" onchange="onFieldChange()">
+          <option value="SOL">SOL</option>
+          <option value="USDC">USDC</option>
+          <option value="BONK">BONK</option>
+        </select>
+      </div>
+      <div style="flex:1">
+        <div class="field-label"><span>Gas Priority</span></div>
+        <select id="gasSelect" class="select" onchange="onFieldChange()">
+          <option value="Normal">Normal</option>
+          <option value="High">High</option>
+          <option value="Urgent">Urgent</option>
+        </select>
+      </div>
+    </div>
+    <div style="margin-top:8px"></div>
+    <div class="field">
+      <div class="field-label">
+        <span>Contract Interaction<span class="info-trigger" data-info="<b>Contract type.</b> What you're interacting with. 'Known DEX' means a verified decentralised exchange. 'Flagged' means the contract has been identified as potentially malicious. Your policy blocks flagged contracts.">i</span></span>
+      </div>
+      <select id="contractSelect" class="select" onchange="onFieldChange()">
+        <option value="None">None (simple transfer)</option>
+        <option value="Known DEX">Known DEX</option>
+        <option value="Unknown Contract">Unknown contract</option>
+        <option value="Flagged Contract">Flagged contract</option>
+      </select>
+    </div>
+    <div style="margin-top:8px"></div>
+    <div class="field">
+      <div class="field-label">
+        <span>Slippage Tolerance<span class="info-trigger" data-info="<b>Slippage tolerance.</b> The maximum price movement you'll accept during a swap. High slippage often means low liquidity or a manipulated pool. Your SLIP-001 policy caps this at 2%.">i</span></span>
+        <span class="field-hint">0–50%</span>
+      </div>
+      <div class="row">
+        <div class="value-display" id="slipDisplay">0.5%</div>
+        <input type="range" id="slipSlider" min="0" max="50" step="0.1" value="0.5" oninput="onSlippageChange()">
+      </div>
+    </div>
+    <div style="margin-top:8px"></div>
+    <div class="field">
+      <div class="field-label">
+        <span>MEV Risk Score<span class="info-trigger" data-info="<b>MEV risk score.</b> Probability that a searcher will extract value from your transaction (e.g. sandwich attack). Calculated from current mempool activity. Above 0.3, your MEV-001 policy flags the transaction for manual confirmation.">i</span></span>
+        <span class="field-hint">0.00–1.00</span>
+      </div>
+      <div class="row">
+        <div class="value-display" id="mevDisplay">0.10</div>
+        <input type="range" id="mevSlider" min="0" max="100" step="1" value="10" oninput="onMevChange()">
+      </div>
+    </div>
+    <div style="margin-top:8px"></div>
+    <div class="field">
+      <div class="field-label"><span>Network</span></div>
+      <div class="network-pill">SOLANA</div>
+    </div>
+    <div class="divider"></div>
+    <div class="ptitle">User Policies<span class="info-trigger" data-info="<b>Your rules.</b> You set these before any transaction runs. The wallet enforces them automatically. You can change them — but the change itself is logged and hash-sealed. The wallet can't modify its own rules.">i</span></div>
+    <div class="pol"><b>MAX-TXN-001</b> Max single transfer 10 SOL</div>
+    <div class="pol"><b>CONTRACT-001</b> Block interactions with unknown/flagged contracts</div>
+    <div class="pol"><b>SLIP-001</b> Max slippage 2%</div>
+    <div class="pol"><b>MEV-001</b> Flag transactions with MEV risk &gt; 0.3</div>
+    <div class="pol"><b>COOL-001</b> Require confirmation delay for transfers &gt; 5 SOL</div>
+    <div class="divider"></div>
+    <div class="ptitle">Scenarios</div>
+    <div class="ex-btns">
+      <button class="btn-ex" id="btn-clean" onclick="loadScenario('clean')">Clean Transfer</button>
+      <button class="btn-ex" id="btn-amount" onclick="loadScenario('amount')">Amount Limit Breach</button>
+      <button class="btn-ex" id="btn-contract" onclick="loadScenario('contract')">Flagged Contract</button>
+      <button class="btn-ex" id="btn-slippage" onclick="loadScenario('slippage')">Slippage Too High</button>
+      <button class="btn-ex" id="btn-mev" onclick="loadScenario('mev')">MEV Risk Detected</button>
+      <button class="btn-ex" id="btn-multi" onclick="loadScenario('multi')">Multi-Policy Violation</button>
+      <button class="btn-ex" id="btn-cooldown" onclick="loadScenario('cooldown')">Confirmation Delay</button>
+    </div>
+    <div class="scenario-explainer" id="scenarioExplainer"></div>
+    <div class="btns">
+      <button class="btn btn-go" id="bgo" onclick="analyse()">▶ RUN EVALUATION</button>
+      <button class="btn btn-x" id="breset" onclick="resetChain()">↺ RESET</button>
+    </div>
+  </div>
+  <div class="center">
+    <div class="ch-title">
+      <h2>Governed Reasoning Chain</h2>
+      <p>OBSERVE → DERIVE → ASSUME → DECIDE → ACT</p>
+    </div>
+    <div class="ibar-wrap">
+      <div class="ibar-lbl">
+        <span>CHAIN INTEGRITY<span class="info-trigger" data-info="<b>Chain integrity.</b> Shows what percentage of the reasoning chain is verified. 100% means every node's hash checks out. If someone tampers with any node, integrity drops and you can see exactly where.">i</span></span>
+        <span id="ipct">100%</span>
+      </div>
+      <div class="ibar"><div class="ifill" id="ifill"></div></div>
+    </div>
+    <div style="font-family:var(--mono);font-size:9px;color:var(--text-muted);margin-bottom:10px;text-align:center;max-width:460px">
+      Deterministic protocol: identical inputs + identical policies → identical reasoning chain + identical hashes.
+    </div>
+    <div class="chain" id="chain"></div>
+    <div class="bnr amb" id="bnr-policy"></div>
+    <div class="bnr red" id="bnr-tamper"></div>
+    <div class="bnr grn" id="bnr-status"></div>
+    <div class="thint" id="thint">CLICK ANY NODE TO TAMPER<span class="info-trigger" data-info="<b>Tamper testing.</b> Click any node in the chain to simulate someone altering the record after the fact. Watch the hash chain break — every node downstream is invalidated. This is how the system proves nobody changed the reasoning.">i</span></div>
+  </div>
+  <div class="right">
+    <div class="mt">MECHANISM / AUDIT INSPECTOR<span class="info-trigger" data-info="<b>Mechanism panel.</b> For the selected reasoning step, this shows what happened, how the AI was constrained, the cryptographic proof (hash), and which OMEGA protocols were active. Click VERIFY to recompute the hash from the canonical encoding.">i</span></div>
+    <div id="mech"><div class="empty-mech">Run an evaluation or select a scenario to see the governed reasoning chain.</div></div>
+  </div>
+</div>
+<div class="ftr">
+  <div class="ftr-l">OMEGA WALLET FIREWALL · Deterministic transaction governance · Zero Dependencies · MIT Licensed</div>
+  <div class="ftr-k">SPACE / ENTER run · T tamper · R reset</div>
+  <div class="ftr-r">
+    <a href="https://omegaprotocol.org" target="_blank">omegaprotocol.org</a>
+    <a href="https://github.com/repowazdogz-droid" target="_blank">GitHub</a>
+  </div>
+</div>
+<script>
+(function(){let a=null,t=null;function c(){if(a){a.remove();a=null}if(t){t.classList.remove('active');t=null}}function p(r,s){document.body.appendChild(s);const o=r.getBoundingClientRect(),w=280;let l=o.left,u=o.bottom+6;l+w>window.innerWidth-12&&(l=window.innerWidth-w-12);l<12&&(l=12);u+200>window.innerHeight&&(u=o.top-8,s.style.transform='translateY(-100%)');s.style.left=l+'px';s.style.top=u+'px';s.style.position='fixed';const d=s.querySelector('.info-panel-arrow');d&&(d.style.left=Math.max(10,Math.min(w-20,o.left-l+o.width/2-4))+'px');requestAnimationFrame(()=>requestAnimationFrame(()=>s.classList.add('visible')))}document.addEventListener('click',e=>{const r=e.target.closest('.info-trigger');if(!r){c();return}e.stopPropagation();const s=r.getAttribute('data-info');if(!s)return;if(t===r){c();return}c();const o=document.createElement('div');o.className='info-panel';o.innerHTML='<div class="info-panel-arrow"></div>'+s;t=r;a=o;r.classList.add('active');p(r,o)});window.addEventListener('scroll',c,true);window.addEventListener('resize',c)})();
+const NODES=['observe','derive','assume','decide','act'];
+const LABELS={observe:'OBSERVE',derive:'DERIVE',assume:'ASSUME',decide:'DECIDE',act:'ACT'};
+const PROTOS=[{id:'CAP',v:'1.0'},{id:'CLP',v:'1.0'},{id:'CNL',v:'1.0'},{id:'ARP',v:'1.0'},{id:'HTP',v:'1.0'},{id:'DSP',v:'1.0'},{id:'TSP',v:'1.0'},{id:'EGP',v:'1.0'}];
+const NODE_PROTOS={observe:['CAP','ARP'],derive:['CAP','CLP','HTP'],assume:['CAP','ARP','EGP'],decide:['CAP','CLP','CNL','HTP','TSP','EGP'],act:['CAP','CNL','DSP','TSP']};
+let S={phase:'idle',nodes:{},selected:null,tampered:false,tamperedNode:null,traceId:0,currentScenario:null};
+const WALLET_SCENARIOS={clean:{fields:{to:'0x7a3f...c8d9',amount:2,token:'SOL',contract:'None',slippage:0.5,gas:'Normal',mev:0.10},expectedOutcome:'APPROVED',expectedPolicies:[]},amount:{fields:{to:'0x2b9e...91af',amount:15,token:'SOL',contract:'None',slippage:0.5,gas:'Normal',mev:0.12},expectedOutcome:'BLOCKED',expectedPolicies:['MAX-TXN-001']},contract:{fields:{to:'0xdead...c0de',amount:3,token:'SOL',contract:'Flagged Contract',slippage:0.5,gas:'Normal',mev:0.18},expectedOutcome:'BLOCKED',expectedPolicies:['CONTRACT-001']},slippage:{fields:{to:'DEX:ORCA',amount:5,token:'SOL',contract:'Known DEX',slippage:15,gas:'High',mev:0.22},expectedOutcome:'BLOCKED',expectedPolicies:['SLIP-001']},mev:{fields:{to:'DEX:JUP',amount:8,token:'SOL',contract:'Known DEX',slippage:1.5,gas:'High',mev:0.45},expectedOutcome:'FLAGGED',expectedPolicies:['MEV-001']},multi:{fields:{to:'0x9f1c...bb32',amount:25,token:'SOL',contract:'Unknown Contract',slippage:20,gas:'Urgent',mev:0.60},expectedOutcome:'BLOCKED',expectedPolicies:['MAX-TXN-001','CONTRACT-001','SLIP-001']},cooldown:{fields:{to:'0x4e7b...d0a1',amount:8,token:'USDC',contract:'None',slippage:0.5,gas:'Normal',mev:0.15},expectedOutcome:'HELD',expectedPolicies:['COOL-001']}};
+const WALLET_EXPLAINERS={clean:{title:'Clean Transfer',text:'A simple 2 SOL transfer to a known address. All five policies are checked. None triggered. Transaction approved and submitted.',watch:'Watch the DECIDE node — all policies evaluated, zero triggered. This is what governance looks like when everything is fine. The chain completes, the transaction goes through, and you have a full audit trail proving it was checked.'},amount:{title:'Amount Limit Breach',text:'Sending 15 SOL — above your 10 SOL limit. MAX-TXN-001 triggers automatically. The wallet refuses to send. Your money stays in your wallet.',watch:'Watch the DECIDE node block the transaction. The wallet didn\'t decide 15 SOL is too much — you did, when you set the policy. The wallet just enforced your rule.'},contract:{title:'Flagged Contract Blocked',text:'Sending 3 SOL to a contract that\'s been flagged as potentially malicious. CONTRACT-001 triggers. Transaction blocked regardless of amount.',watch:'Watch the OBSERVE node identify the contract as flagged, then the DECIDE node enforce the block. The amount is irrelevant — the destination is the problem.'},slippage:{title:'Slippage Too High',text:'Swapping 5 SOL with 15% slippage tolerance — far above your 2% limit. SLIP-001 blocks the swap before you lose money to a bad pool.',watch:'Watch the DERIVE node calculate slippage risk, then DECIDE block the swap. High slippage often means you\'re about to get exploited. Your policy prevents it.'},mev:{title:'MEV Risk Detected',text:'A swap that looks clean — amount fine, contract known, slippage low. But MEV risk is 0.45, above your 0.3 threshold. The wallet flags it for your explicit confirmation instead of blocking outright.',watch:'Watch the difference between BLOCKED and FLAGGED. This policy warns, not blocks. Because it\'s your money and your decision — but the system makes sure you see the risk first.'},multi:{title:'Multi-Policy Violation',text:'Everything is wrong. 25 SOL to an unknown contract with 20% slippage and high MEV risk. Three policies fire simultaneously. Transaction blocked.',watch:'Watch three separate violations appear in the DECIDE node. Not a vague “failed” — three specific, auditable reasons. The governance layer handles simultaneous violations independently.'},cooldown:{title:'Confirmation Delay',text:'A legitimate 8 SOL transfer to a known address. All policies pass except COOL-001 — the amount triggers a mandatory waiting period before execution.',watch:'Watch the DECIDE node approve the transaction but the ACT node hold it for confirmation. The delay is hash-sealed — proving the cooldown was enforced, not bypassed.'},custom:{title:'Custom Transaction',text:'You\'re in manual mode. Change any field and the evaluation runs through the same policy engine. Try pushing the amount, slippage, or MEV risk past your limits.',watch:'Try amount &gt; 10 SOL, contract = Flagged, slippage &gt; 2%, or MEV risk &gt; 0.3 on a DEX. Each triggers a different policy with a different enforcement action.'}};
+function updateExplainer(k){const ex=WALLET_EXPLAINERS[k]||WALLET_EXPLAINERS.custom;const el=document.getElementById('scenarioExplainer');if(!el)return;el.innerHTML='<b>'+ex.title+'</b><br><br>'+ex.text+'<div class="watch-for"><b>WATCH FOR:</b> '+ex.watch+'</div>'}
+function markScenario(k){S.currentScenario=k;document.querySelectorAll('.btn-ex').forEach(b=>b.classList.remove('active'));if(k&&k!=='custom'){const id='btn-'+k;const el=document.getElementById(id);if(el)el.classList.add('active')}}
+function setFields(f){document.getElementById('toAddress').value=f.to;document.getElementById('amountSlider').value=f.amount;document.getElementById('slipSlider').value=f.slippage;document.getElementById('mevSlider').value=Math.round(f.mev*100);document.getElementById('tokenSelect').value=f.token;document.getElementById('gasSelect').value=f.gas;document.getElementById('contractSelect').value=f.contract;syncDisplays()}
+function syncDisplays(){const amt=parseFloat(document.getElementById('amountSlider').value)||0;document.getElementById('amountDisplay').textContent=amt.toFixed(1)+' SOL';const sl=parseFloat(document.getElementById('slipSlider').value)||0;document.getElementById('slipDisplay').textContent=sl.toFixed(1)+'%';const mev=parseFloat(document.getElementById('mevSlider').value)||0;document.getElementById('mevDisplay').textContent=(mev/100).toFixed(2)}
+function onAmountChange(){syncDisplays();onFieldChange()}
+function onSlippageChange(){syncDisplays();onFieldChange()}
+function onMevChange(){syncDisplays();onFieldChange()}
+function onFieldChange(){markScenario('custom');updateExplainer('custom');if(S.phase==='complete'&&!S.tampered){reanalyse()}}
+function readTx(){return{to:document.getElementById('toAddress').value.trim()||'0x0000...0000',amount:parseFloat(document.getElementById('amountSlider').value)||0,token:document.getElementById('tokenSelect').value,contract:document.getElementById('contractSelect').value,slippage:parseFloat(document.getElementById('slipSlider').value)||0,gas:document.getElementById('gasSelect').value,mev:(parseFloat(document.getElementById('mevSlider').value)||0)/100,network:'Solana'}}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
+async function sha256(msg){const d=new TextEncoder().encode(msg);const h=await crypto.subtle.digest('SHA-256',d);return Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join('')}
+function canonical(id,content,prev,t){return`content:${content}|node:${id}|prev_hash:${prev}|timestamp:${t}`}
+function describeContract(c){if(c==='None')return'none';if(c==='Known DEX')return'known';if(c==='Unknown Contract')return'unknown';return'flagged'}
+function generateReasoning(tx){
+  const policiesEvaluated=5;
+  const triggered=[];
+  if(tx.amount>10)triggered.push({id:'MAX-TXN-001',kind:'BLOCK',detail:`${tx.amount.toFixed(1)} SOL exceeds 10 SOL limit.`});
+  if(tx.contract==='Unknown Contract'||tx.contract==='Flagged Contract'){
+    const why=tx.contract==='Flagged Contract'?'Destination contract is on the flagged list.':'Destination contract is unknown and not verified.';
+    triggered.push({id:'CONTRACT-001',kind:'BLOCK',detail:why});
+  }
+  if(tx.slippage>2)triggered.push({id:'SLIP-001',kind:'BLOCK',detail:`Slippage ${tx.slippage.toFixed(1)}% exceeds 2% limit.`});
+  if(tx.contract==='Known DEX'&&tx.mev>0.3)triggered.push({id:'MEV-001',kind:'FLAG',detail:`MEV risk ${tx.mev.toFixed(2)} above 0.30 threshold.`});
+  if(tx.contract==='None'&&tx.amount>5)triggered.push({id:'COOL-001',kind:'HOLD',detail:`Transfer ${tx.amount.toFixed(1)} SOL exceeds 5 SOL cooldown threshold.`});
+  const blockers=triggered.filter(p=>p.kind==='BLOCK');
+  const flags=triggered.filter(p=>p.kind==='FLAG');
+  const holds=triggered.filter(p=>p.kind==='HOLD');
+  let outcome='APPROVED';
+  if(blockers.length)outcome='BLOCKED';
+  else if(holds.length)outcome='HELD';
+  else if(flags.length)outcome='FLAGGED';
+  const primary=blockers[0]||holds[0]||flags[0]||null;
+  const policiesTriggered=triggered.length;
+  const riskLabel=blockers.length>0?'critical':(flags.length||holds.length)?'elevated':'clean';
+  const amountState=tx.amount>10?'exceeds':'within';
+  const contractState=describeContract(tx.contract);
+  const slipState=tx.slippage>2?'exceeds':'within';
+  const mevState=(tx.contract==='Known DEX'&&tx.mev>0.3)?'above':'below';
+  const observe=`Transaction received. To: ${tx.to}. Amount: ${tx.amount.toFixed(1)} SOL. Token: ${tx.token}. Contract: ${tx.contract}. Slippage: ${tx.slippage.toFixed(1)}%. Gas: ${tx.gas}. MEV risk score: ${tx.mev.toFixed(2)}. Network: Solana.`;
+  const derive=`${policiesEvaluated} policies evaluated. ${policiesTriggered} triggered. Risk assessment: ${riskLabel}. Amount: ${amountState} limit. Contract: ${contractState}. Slippage: ${slipState} tolerance. MEV risk: ${mevState} threshold.`;
+  const assume='Assumptions: Address is valid and reachable. Network fees estimated at current gas rate. Token balance sufficient. Contract bytecode matches known deployment hash. Price oracle data current within 30 seconds. MEV risk model based on mempool analysis of last 10 blocks.';
+  let decide;
+  if(outcome==='APPROVED'){decide='All policies pass. Transaction authorised. Proceeding to execution.';}
+  else if(outcome==='BLOCKED'){
+    let base=primary?`${primary.id} triggered. Transaction refused. ${primary.detail}`:'Policy boundary triggered. Transaction refused.';
+    const others=blockers.slice(1).map(p=>p.id);if(others.length)base+=` Additional policies triggered: ${others.join(', ')}.`;
+    decide=base;
+  }else if(outcome==='FLAGGED'){decide='MEV risk exceeds threshold. User confirmation required before proceeding.';}
+  else{decide='Cooldown policy active. Transaction held for confirmation delay before execution.';}
+  let act;
+  if(outcome==='APPROVED'){act='Transaction submitted to network. Hash: 0xTXN_HASH_DEMO. Confirmation pending.';}
+  else if(outcome==='BLOCKED'){act='Transaction NOT submitted. Policy violation logged. User notified with specific reasons.';}
+  else if(outcome==='FLAGGED'){act='Transaction paused. Awaiting user confirmation of MEV risk acceptance.';}
+  else{act='Transaction queued. Cooldown timer active. Re-confirmation required after delay.';}
+  return{contents:{observe,derive,assume,decide,act},outcome,triggered,primary,policiesEvaluated,policiesTriggered,riskLabel,tx};
+}
+async function buildChain(reasoning){
+  const t0=performance.now();const nodes={};let prev='0'.repeat(64);
+  for(const id of NODES){const ts=new Date().toISOString();const content=reasoning.contents[id];const can=canonical(id,content,prev,ts);const hash=await sha256(can);nodes[id]={id,label:LABELS[id],content,hash,prevHash:prev,canonical:can,timestamp:ts,status:'valid',protocols:NODE_PROTOS[id]};prev=hash}
+  if(reasoning.outcome!=='APPROVED'){nodes.decide.status='blocked';nodes.act.status='blocked';}
+  nodes._ms=Math.round(performance.now()-t0);nodes._reasoning=reasoning;return nodes;
+}
+function renderChain(){const el=document.getElementById('chain');el.innerHTML='';NODES.forEach((id,i)=>{const n=S.nodes[id];if(!n)return;const sc=n.status==='valid'?'sv':n.status==='blocked'?'sb':'sr';let label=n.label;if(id==='assume'){const txt='Assumptions are explicitly recorded so nothing is hidden. If these assumptions turn out to be wrong, this node shows exactly what the AI took for granted — making the reasoning auditable even when it fails.';label+=`<span class="info-trigger" data-info="${txt}">i</span>`}
+  const g=document.createElement('div');g.className='ng';g.id='ng-'+id;const bc=n.status==='blocked'?'blk':n.status==='broken'?'brk':'';const clickable=S.phase==='complete'&&!S.tampered;const click=clickable?`tamper('${id}')`:`select('${id}')`;const tgt=clickable?'tgt':'';g.innerHTML=`<div class="nb ${bc} ${S.selected===id?'sel':''} ${tgt}" onclick="${click}"><div class="nh"><span class="nn">${label}</span><span class="ns ${sc}">${n.status==='valid'?'VALID':n.status==='blocked'?'POLICY':n.status==='broken'?'TAMPERED':'STATE'}</span></div><div class="nc">${esc(n.content)}</div><div class="nhash">${n.hash}</div></div>`;el.appendChild(g);if(i<NODES.length-1){const c=document.createElement('div');c.className='conn';c.id='cn-'+id;el.appendChild(c)}});}
+function showNodes(){NODES.forEach((id,i)=>{const g=document.getElementById('ng-'+id);if(g)g.classList.add('vis');if(i<NODES.length-1){const c=document.getElementById('cn-'+id);if(!c)return;const next=NODES[i+1];if(S.nodes[next]&&S.nodes[next].status==='broken')c.className='conn k';else if(S.nodes.decide&&S.nodes.decide.status==='blocked'&&id==='decide')c.className='conn b';else c.className='conn v';}});if(S.nodes.act&&S.nodes._reasoning.outcome==='BLOCKED'){const g=document.getElementById('ng-act');if(g)g.classList.add('ghost')}}
+function updInteg(pct,cls){document.getElementById('ipct').textContent=pct+'%';const f=document.getElementById('ifill');f.style.width=pct+'%';f.className='ifill'+(cls?' '+cls:'')}
+function updPill(cls,txt){const p=document.getElementById('cpill');p.className='pill '+cls;p.textContent=txt}
+function updStrip(mode,label){const dot=document.getElementById('sd');const st=document.getElementById('sst');const hash=document.getElementById('sch');dot.className='strip-dot';if(mode==='approved'){st.textContent='TXN APPROVED';hash.textContent=S.nodes.act?S.nodes.act.hash.substring(0,16)+'…':'—';}
+else if(mode==='blocked'){dot.classList.add('a');st.textContent='TXN BLOCKED: '+(label||'');hash.textContent=S.nodes.decide?S.nodes.decide.hash.substring(0,16)+'…':'—';}
+else if(mode==='flagged'){dot.classList.add('a');st.textContent='TXN FLAGGED (MEV RISK)';hash.textContent=S.nodes.decide?S.nodes.decide.hash.substring(0,16)+'…':'—';}
+else if(mode==='held'){dot.classList.add('a');st.textContent='TXN HELD (COOLDOWN)';hash.textContent=S.nodes.decide?S.nodes.decide.hash.substring(0,16)+'…':'—';}
+else if(mode==='broken'){dot.classList.add('r');st.textContent='INTEGRITY VIOLATION';hash.textContent='✗ BROKEN';}}
+function showBanner(id,text,cls){const el=document.getElementById(id);el.textContent=text;el.style.display='block';el.className='bnr '+cls;requestAnimationFrame(()=>el.classList.add('vis'))}
+function hideBanners(){['bnr-policy','bnr-tamper','bnr-status'].forEach(id=>{const e=document.getElementById(id);e.classList.remove('vis');e.style.display='none'})}
+function select(id){S.selected=id;renderChain();showNodes();renderMechanism(id)}
+function renderMechanism(id){const n=S.nodes[id];if(!n)return;const r=S.nodes._reasoning;const el=document.getElementById('mech');const sc=n.status==='valid'?'g':n.status==='blocked'?'a':'r';const sl=n.status==='valid'?'VALID':n.status==='blocked'?'POLICY ENFORCED':'TAMPERED';const protos=PROTOS.map(p=>`<span class="mp ${n.protocols.includes(p.id)?'on':''}">${p.id}-${p.v}</span>`).join('');let html=`<div class="ms"><div class="mst">WHAT HAPPENED AT THIS STEP</div><div class="mf"><span class="mk">Node</span><span class="mv">${n.label}</span></div><div class="mf"><span class="mk">Status</span><span class="mv ${sc}">${sl}</span></div><div class="mf"><span class="mk">Timestamp</span><span class="mv">${n.timestamp.split('T')[1].split('.')[0]}</span></div><div class="mf"><span class="mk">Audit overhead</span><span class="mv">${S.nodes._ms||0}ms total chain</span></div></div><div class="ms"><div class="mst">HOW THE AI WAS CONSTRAINED</div><div class="mex">`;
+  if(id==='observe'){html+='<b>Input only.</b> The AI received this transaction and nothing else. No hidden state, no extra context. Every field you see here is exactly what the chain sees.'}
+  else if(id==='derive'){html+=`<b>Rule-based derivation.</b> Policies are evaluated against deterministic thresholds: amount, contract type, slippage, MEV risk, and cooldown. Risk label: <b>${r.riskLabel}</b>. No learned weights, no training data.`}
+  else if(id==='assume'){html+='<b>Explicit assumptions.</b> Address validity, oracle freshness, and mempool samples are treated as assumptions and logged. If any are later wrong, the decision can be replayed with corrected inputs.'}
+  else if(id==='decide'){if(r.outcome==='APPROVED'){html+='<b>No policy triggered.</b> All readings within bounds. The decision is to approve, but the evaluation itself is traceable and hash-chained.'}else if(r.outcome==='FLAGGED'){html+='<b>Warning, not block.</b> MEV-001 flags elevated extraction risk but does not block. The wallet forces an explicit human confirmation before proceeding.'}else if(r.outcome==='HELD'){html+='<b>Cooldown enforced.</b> COOL-001 requires a delay for transfers above your threshold. The system can\'t skip the pause — it is recorded in the chain.'}else{html+=`<b>Policy boundary enforced.</b> The AI is constrained by your mandates. Primary policy: <b>${r.primary?r.primary.id:'?'}</b>. It can <em>only</em> refuse to send; it cannot relax your limits.`}}
+  else if(id==='act'){if(r.outcome==='APPROVED'){html+='<b>Action executed within bounds.</b> Transaction is submitted with a hash you can re-derive from the canonical encoding. No extra behaviour is allowed beyond what the chain records.'}else if(r.outcome==='BLOCKED'){html+='<b>Action blocked by policy.</b> The transaction is never submitted. The refusal, and the exact policies that fired, are part of the audit trail.'}else if(r.outcome==='FLAGGED'){html+='<b>Awaiting user confirmation.</b> The wallet pauses and surfaces the MEV risk. Only an explicit human confirmation can move it forward.'}else{html+='<b>Cooldown queue.</b> The transaction is parked until the delay expires. The held state is part of the hash chain, proving the cooldown was enforced.'}}
+  html+='</div></div>';html+=`<div class="ms"><div class="mst">CRYPTOGRAPHIC PROOF</div><div class="mf"><span class="mk">Hash</span></div><div class="mhash">${n.hash}</div><button class="vbtn" onclick="verifyNode('${id}')">▶ VERIFY — RECOMPUTE FROM CANONICAL</button><div id="vresult"></div><div style="height:4px"></div><div class="mf"><span class="mk">Previous</span></div><div class="mhash">${n.prevHash}</div></div>`;html+=`<div class="ms"><div class="mst">ACTIVE PROTOCOLS</div><div class="mpg">${protos}</div></div>`;if(n.status==='broken'){html+=`<div class="ms"><div class="mst">INTEGRITY VIOLATION</div><div class="mf"><span class="mk">Origin</span><span class="mv r">${S.tamperedNode?LABELS[S.tamperedNode]:'?'}</span></div></div>`}el.innerHTML=html}
+async function verifyNode(id){const n=S.nodes[id];const el=document.getElementById('vresult');if(!el||!n)return;el.innerHTML='<span style="color:var(--text-muted)">Recomputing...</span>';await sleep(150);const h=await sha256(n.canonical);el.innerHTML=h===n.hash?'<div style="margin-top:4px;font-family:var(--mono);font-size:9px;color:var(--green)">✓ MATCH — hash verified from canonical encoding</div>':'<div style="margin-top:4px;font-family:var(--mono);font-size:9px;color:var(--red)">✗ MISMATCH — stored hash does not match recomputed</div>'}
+function loadScenario(name){const s=WALLET_SCENARIOS[name];if(!s)return;S.currentScenario=name;setFields(s.fields);updateExplainer(name);markScenario(name);analyse()}
+function updButtons(){document.getElementById('bgo').disabled=S.phase==='running'}
+async function reanalyse(){const tx=readTx();const reasoning=generateReasoning(tx);S.nodes=await buildChain(reasoning);renderChain();showNodes();applyOutcome(reasoning);if(S.selected)renderMechanism(S.selected)}
+async function analyse(){if(S.phase==='running')return;S.phase='running';S.tampered=false;S.tamperedNode=null;S.selected=null;hideBanners();document.getElementById('thint').style.display='none';updButtons();const tx=readTx();const reasoning=generateReasoning(tx);S.nodes=await buildChain(reasoning);renderChain();for(let i=0;i<NODES.length;i++){await sleep(220);const g=document.getElementById('ng-'+NODES[i]);if(g)g.classList.add('vis');if(i<NODES.length-1){const c=document.getElementById('cn-'+NODES[i]);if(c)c.className='conn v'}}applyOutcome(reasoning);S.phase='complete';updButtons();document.getElementById('tpill').style.display='';document.getElementById('tpill').textContent=`TRACED IN ${S.nodes._ms}ms`;document.getElementById('tpill').className='pill g';document.getElementById('thint').style.display='block';select(reasoning.outcome==='BLOCKED'?'decide':'observe')}
+function applyOutcome(reasoning){const o=reasoning.outcome;if(o==='APPROVED'){updInteg(100,'');updPill('g','TXN APPROVED');updStrip('approved',null);showBanner('bnr-status','✓ All policies pass. Transaction can proceed.','grn')}
+else if(o==='BLOCKED'){updInteg(100,'');const ids=reasoning.triggered.filter(p=>p.kind==='BLOCK').map(p=>p.id).join(', ');updPill('a','TXN BLOCKED');updStrip('blocked',ids);showBanner('bnr-policy',`▲ POLICY ENFORCED — ${ids}`,'amb')}
+else if(o==='FLAGGED'){updInteg(100,'');updPill('a','TXN FLAGGED');updStrip('flagged',null);showBanner('bnr-policy','▲ MEV-001 — Elevated extraction risk. Explicit confirmation required.','amb')}
+else{updInteg(100,'');updPill('a','TXN HELD');updStrip('held',null);showBanner('bnr-policy','▲ COOL-001 — Cooldown enforced for large transfer.','amb')}}
+async function tamper(id){if(S.phase!=='complete'||S.tampered)return;S.tampered=true;S.phase='tampered';S.tamperedNode=id;document.getElementById('thint').style.display='none';updButtons();const idx=NODES.indexOf(id);S.nodes[id].content='[ALTERED] '+S.nodes[id].content.substring(0,60)+'…';S.nodes[id].status='broken';renderChain();showNodes();for(let i=idx+1;i<NODES.length;i++){await sleep(250);S.nodes[NODES[i]].status='broken';renderChain();showNodes()}updInteg(40,'r');updPill('r','CHAIN BROKEN');updStrip('broken',null);showBanner('bnr-tamper',`⚠ CHAIN INTEGRITY VIOLATION — Tamper detected at ${LABELS[id]}`,'red');select(id)}
+function resetChain(){S.phase='idle';S.nodes={};S.selected=null;S.tampered=false;S.tamperedNode=null;document.getElementById('chain').innerHTML='';document.getElementById('mech').innerHTML='<div class="empty-mech">Run an evaluation or select a scenario to see the governed reasoning chain.</div>';document.getElementById('thint').style.display='none';document.getElementById('tpill').style.display='none';hideBanners();updPill('g','AWAITING INPUT');updInteg(100,'');updStrip('approved',null);updateExplainer('custom');markScenario(null);updButtons()}
+document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;const k=e.key.toLowerCase();if(k===' '||k==='enter'){e.preventDefault();if(S.phase==='idle'||S.phase==='complete')analyse()}else if(k==='t'&&S.phase==='complete'&&!S.tampered){const valid=NODES.filter(n=>S.nodes[n]&&S.nodes[n].status!=='broken');if(valid.length)tamper(valid[Math.floor(Math.random()*valid.length)])}else if(k==='r'){resetChain()}});syncDisplays();updateExplainer('clean');markScenario('clean');setFields(WALLET_SCENARIOS.clean.fields);
+</script>
+</body>
+</html>
+

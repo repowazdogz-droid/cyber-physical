@@ -1,0 +1,130 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OPLAS Concept Card Schema",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["id", "version", "signature", "template", "proof_obligations", "counterexamples", "provenance", "compatibility"],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "object",
+      "required": ["keys"],
+      "properties": {
+        "keys": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "predicate_dsl": {
+          "type": "string"
+        }
+      }
+    },
+    "template": {
+      "type": "object",
+      "required": ["template_dsl", "params"],
+      "properties": {
+        "template_dsl": {
+          "type": "string"
+        },
+        "params": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "proof_obligations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "translation_invariant",
+          "rotation_invariant",
+          "reflection_invariant",
+          "palette_invariant",
+          "scale_invariant",
+          "shape_preserved",
+          "count_preserved",
+          "connectivity_preserved",
+          "color_blind_safe"
+        ]
+      }
+    },
+    "counterexamples": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["task_id", "repr_id", "reason_code", "trace_id"],
+        "properties": {
+          "task_id": { "type": "string" },
+          "repr_id": { "type": "string" },
+          "reason_code": { "type": "string" },
+          "trace_id": { "type": "string" }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["introduced_by", "validated_on", "invalidated_on"],
+      "properties": {
+        "introduced_by": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "validated_on": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "invalidated_on": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["task_id", "trace_id", "reason_code"],
+            "properties": {
+              "task_id": { "type": "string" },
+              "trace_id": { "type": "string" },
+              "reason_code": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "required": ["repr_schema_version", "dsl_grammar_version"],
+      "properties": {
+        "repr_schema_version": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "required": ["min", "max"],
+              "properties": {
+                "min": { "type": "string" },
+                "max": { "type": "string" }
+              }
+            }
+          ]
+        },
+        "dsl_grammar_version": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "required": ["min", "max"],
+              "properties": {
+                "min": { "type": "string" },
+                "max": { "type": "string" }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+

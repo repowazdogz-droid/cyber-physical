@@ -1,0 +1,39 @@
+problem:
+  name: "Compliant object deformation changes grip geometry"
+  domain: "robotic_design"
+
+constraints:
+  - "grip_force: 8N"
+  - "object_compliance: 2mm/N"
+  - "deformation: 16mm"
+  - "grip_opening_limit: 12mm"
+  - "must_maintain_grip"
+
+uncertainties:
+  - "deformation_nonlinearity: variable"
+  - "grip_geometry_change: unknown"
+  - "slip_probability: unknown"
+
+objectives:
+  - "grip_stability"
+  - "force_control"
+
+design:
+  grip_force_n: 8
+  object_compliance_mm_per_n: 2
+  deformation_mm: 16
+  grip_opening_limit_mm: 12
+  # For interaction constraints
+  contact_force_n: 8
+  contact_area_mm2: 10
+  tissue_tolerance_mpa: 0.5
+  contact_duration_s: 2.0
+  pressure_limit_mpa: 1.0
+  normal_force_n: 8
+  friction_coefficient: 0.4
+  tangential_force_n: 5
+
+metadata:
+  injected_failure: "compliant_deformation"
+  failure_category: "interaction"
+  expected_detection: "Interaction constraint may trigger if deformation modeled"

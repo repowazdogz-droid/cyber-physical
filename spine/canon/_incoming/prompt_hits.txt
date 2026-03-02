@@ -1,0 +1,50 @@
+./trauma-informed-education-system/CONTRIBUTING.md:5:- **OMEGA-V**: visual/creative options only (no deciding).
+./trauma-informed-education-system/CONTRIBUTING.md:7:- **OMEGA-B**: execution steps only (cursor blocks; minimal).
+./trauma-informed-education-system/CONTRIBUTING.md:8:- **OMEGA-R**: reflection/learning only (post-mortem, patterns).
+./trauma-informed-education-system/CONTRIBUTING.md:9:- **OMEGA-G**: boundaries/refusals/safeguarding only.
+./trauma-informed-education-system/CONTRIBUTING.md:15:4) Any safeguarding/child-specific request -> OMEGA-G response.
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_README.md:14:## OMEGA-V — CREATIVE & VISUAL
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_README.md:64:## OMEGA-B — BUILD & EXECUTION
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_README.md:88:## OMEGA-R — REFLECTION & LEARNING
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_README.md:111:## OMEGA-G — GUARDRAILS & REFUSAL
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_CAPABILITY_LEDGER.md:30:- Generate options (OMEGA-V)
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_CAPABILITY_LEDGER.md:32:- Translate intent into execution steps (OMEGA-B)
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_CAPABILITY_LEDGER.md:33:- Support reflection and learning (OMEGA-R)
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_CAPABILITY_LEDGER.md:34:- Refuse unsafe or boundary-violating requests (OMEGA-G)
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/CONTRACT.md:46:- OMEGA-G overrides all other modes
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_FREEZE_LINE.md:31:- OMEGA-V
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_FREEZE_LINE.md:33:- OMEGA-B
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_FREEZE_LINE.md:34:- OMEGA-R
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_FREEZE_LINE.md:35:- OMEGA-G
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_MODE_GUIDE.md:11:## OMEGA-V — Creative & Visual Exploration
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_MODE_GUIDE.md:25:Never use OMEGA-V when:
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_MODE_GUIDE.md:51:## OMEGA-B — Build & Execution
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_MODE_GUIDE.md:65:Never use OMEGA-B to:
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_MODE_GUIDE.md:72:## OMEGA-R — Reflection & Learning
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_MODE_GUIDE.md:90:## OMEGA-G — Guardrails & Boundaries
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_MODE_GUIDE.md:103:OMEGA-G always overrides other modes.
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_MODE_GUIDE.md:109:1. OMEGA-G (always wins)
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_MODE_GUIDE.md:111:3. OMEGA-B
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_MODE_GUIDE.md:112:4. OMEGA-R
+./Archive/2025-12_consolidation/projects/omega-spatial/spine/OMEGA_MODE_GUIDE.md:113:5. OMEGA-G
+./spine/PROJECT_STRUCTURE.md:40:- **OMEGA-V**: Spatial exploration, visuals, variants, creative layouts
+./spine/PROJECT_STRUCTURE.md:42:- **OMEGA-B**: Building demos, scenes, pipelines (only when explicitly invoked)
+./spine/PROJECT_STRUCTURE.md:43:- **OMEGA-R**: Learning from demos, talks, experiments
+./spine/PROJECT_STRUCTURE.md:44:- **OMEGA-G**: Safety, boundary checks, demo risk control
+./spine/OMEGA_CAPABILITY_LEDGER.md:44:## 4) OMEGA-G refusal shape (hard structure)
+./spine/OMEGA_SYSTEM_SUMMARY.md:45:### OMEGA-G Refusal Shape
+./BUILD_LOG.md:3:## Block 1 — Structure & Routing (OMEGA-B)
+./BUILD_LOG.md:20:## Block 2 — Omega RC Input→Output Path (OMEGA-B)
+./BUILD_LOG.md:45:## Block 3 — Omega RC UI Polish for Comprehension (OMEGA-V)
+./BUILD_LOG.md:73:## Block 4 — Omega Protocol Site Pages (OMEGA-B)
+./BUILD_LOG.md:104:## Block 4.1 — Fix Protocol Names + Canonical Copy (OMEGA-B)
+./BUILD_LOG.md:130:## Block 5 — PDFs for Omega + Omega-A (OMEGA-B)
+./BUILD_LOG.md:151:## Block 5.1 — Produce Real PDFs + Fix Links (OMEGA-B)
+./BUILD_LOG.md:176:## Block 5.1 — Finish Block 5.1 (Generate + Verify PDFs) (OMEGA-B)
+./BUILD_LOG.md:197:## Block 5.1 — Fix PDFs to Exactly 2 Pages (OMEGA-B)
+./Docs/V1_DEMO_CONTENT.md:63:- **OMEGA-V**: visual layout, affordances, calm aesthetics
+./Docs/V1_DEMO_CONTENT.md:65:- **OMEGA-G**: blocks any request to animate, predict, or control
+./Docs/FIRST_DEMO_SPEC.md:68:- **OMEGA-V**: drives visual layout and exploration affordances
+./Docs/FIRST_DEMO_SPEC.md:70:- **OMEGA-G**: enforces "no action / no recommendation" boundaries
+./BUILD_PLAN.md:9:### Block 1 — Structure & Routing (OMEGA-B)
+./BUILD_PLAN.md:12:### Block 2 — Omega RC Input→Output Path (OMEGA-B)

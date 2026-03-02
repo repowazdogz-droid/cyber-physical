@@ -1,0 +1,14 @@
+{
+  "name": "omega-tutor-tests",
+  "private": true,
+  "scripts": {
+    "test": "vitest run",
+    "test:acceptance": "vitest run tests/acceptance"
+  },
+  "devDependencies": {
+    "@omega-tutor/core": "*",
+    "@omega-tutor/db": "*",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
+  }
+}

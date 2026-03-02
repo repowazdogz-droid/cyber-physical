@@ -1,0 +1,41 @@
+{
+  "case_id": "0f7bb76547c6",
+  "name": "Tolerance stack-up - 5 parts, each at +3\u03c3",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:19:57.657610",
+  "case_yaml": {
+    "problem": {
+      "name": "Tolerance stack-up - 5 parts, each at +3\u03c3",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "part_count: 5",
+      "tolerance_per_part: \u00b10.1mm",
+      "worst_case_stackup: +0.5mm",
+      "max_acceptable_stackup: 0.3mm",
+      "must_meet_assembly_tolerance"
+    ],
+    "uncertainties": [
+      "statistical_stackup: unknown",
+      "correlation_between_parts: variable",
+      "assembly_method_impact: unknown"
+    ],
+    "objectives": [
+      "assembly_precision",
+      "tolerance_control"
+    ]
+  },
+  "design_data": {
+    "part_count": 5,
+    "tolerance_per_part_mm": 0.1,
+    "worst_case_stackup_mm": 0.5,
+    "max_stackup_mm": 0.3,
+    "violation_mm": 0.2
+  },
+  "tags": [
+    "adversarial",
+    "geometric",
+    "test"
+  ],
+  "notes": "Injected failure: tolerance_stackup"
+}

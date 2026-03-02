@@ -1,0 +1,22 @@
+problem:
+  name: "Slip experiment: steel surface, dry, 2N normal force"
+  domain: "surgical_robotics"
+
+constraints:
+  - "normal_force: 2N"
+  - "must_not_slip"
+  - "friction_coefficient: 0.6"
+
+uncertainties:
+  - "surface_condition: variable"
+
+objectives:
+  - "secure_grip"
+
+design:
+  normal_force_n: 2.0
+  friction_coefficient: 0.6
+  surface_type: "steel"
+
+metadata:
+  experiment_type: "slip"

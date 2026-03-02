@@ -1,0 +1,709 @@
+{
+  "run_id": "9599a309c085",
+  "case_id": "22de8493667b",
+  "timestamp": "2026-02-05 09:57:55.900510",
+  "output": {
+    "decision_map": {
+      "constraints_checked": [
+        {
+          "constraint": "payload_mass: 15.0kg",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "arm_rated_capacity: 10.0kg",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "must_not_exceed_mass_limit",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "safe_operation",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        }
+      ],
+      "violations": []
+    },
+    "failure_modes": [],
+    "contradictions": [],
+    "unknowns": [
+      {
+        "item": "dynamic_load_multiplier: 1.2-1.5",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: dynamic_load_multiplier: 1.2-1.5"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.4,
+          "max_confidence": 0.4,
+          "sensitivity": 0.0,
+          "dependent_on": [
+            "dynamic_load_multiplier"
+          ]
+        }
+      },
+      {
+        "item": "fatigue_degradation: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: fatigue_degradation: unknown"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.36000000000000004,
+          "max_confidence": 0.42400000000000004,
+          "sensitivity": 0.07999999999999999,
+          "dependent_on": [
+            "fatigue_degradation"
+          ]
+        }
+      }
+    ],
+    "recommended_experiments": [],
+    "falsification_tests": [],
+    "formal_constraints": [
+      {
+        "constraint_id": "FORMAL_001",
+        "constraint_name": "mass_limit",
+        "result": "proven_violated",
+        "value": 15.0,
+        "threshold": 10.0,
+        "margin": -5.0,
+        "evidence": "Mass 15.00 kg EXCEEDS limit 10.0 kg (violation: 5.00 kg)",
+        "confidence": 1.0
+      },
+      {
+        "constraint_id": "FORMAL_002",
+        "constraint_name": "max_force",
+        "result": "unknown",
+        "value": null,
+        "threshold": 2.0,
+        "margin": null,
+        "evidence": "Max force not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_003",
+        "constraint_name": "max_acceleration",
+        "result": "unknown",
+        "value": null,
+        "threshold": 50.0,
+        "margin": null,
+        "evidence": "Max acceleration not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_004",
+        "constraint_name": "min_clearance",
+        "result": "unknown",
+        "value": null,
+        "threshold": 1.0,
+        "margin": null,
+        "evidence": "Clearance not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_005",
+        "constraint_name": "no_self_collision",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Self-collision check not performed",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_006",
+        "constraint_name": "cog_stability",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "COG stability check not performed",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_007",
+        "constraint_name": "torque_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": 5.0,
+        "margin": null,
+        "evidence": "Max torque not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_008",
+        "constraint_name": "jerk_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": 500.0,
+        "margin": null,
+        "evidence": "Max jerk not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_009",
+        "constraint_name": "actuator_duty_cycle",
+        "result": "unknown",
+        "value": null,
+        "threshold": 0.8,
+        "margin": null,
+        "evidence": "Actuator duty cycle not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_010",
+        "constraint_name": "resonance_margin",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Operating frequency or natural frequency not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_011",
+        "constraint_name": "thermal_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": 50.0,
+        "margin": null,
+        "evidence": "Power dissipation not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_012",
+        "constraint_name": "joint_range_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Joint range check not performed",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_013",
+        "constraint_name": "payload_ratio",
+        "result": "proven_violated",
+        "value": 1.5,
+        "threshold": 0.7,
+        "margin": -0.8,
+        "evidence": "Payload ratio 150.00% EXCEEDS limit 70.00% (15.00 kg / 10.00 kg)",
+        "confidence": 1.0
+      },
+      {
+        "constraint_id": "FORMAL_014",
+        "constraint_name": "stiffness_minimum",
+        "result": "unknown",
+        "value": null,
+        "threshold": 1000.0,
+        "margin": null,
+        "evidence": "End-effector stiffness not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_015",
+        "constraint_name": "voltage_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": 24.0,
+        "margin": null,
+        "evidence": "Max voltage not provided in design data",
+        "confidence": 0.0
+      }
+    ],
+    "trace_graph": {
+      "run_id": "d182a01f4481",
+      "timestamp": "2026-02-05T09:57:55.900438",
+      "nodes": {
+        "input_0000": {
+          "id": "input_0000",
+          "type": "input",
+          "content": {
+            "type": "problem",
+            "name": "Payload exceeds rated capacity",
+            "domain": "robotic_design"
+          },
+          "timestamp": "2026-02-05T09:57:55.895950",
+          "parents": [],
+          "metadata": {}
+        },
+        "input_0001": {
+          "id": "input_0001",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "payload_mass: 15.0kg"
+          },
+          "timestamp": "2026-02-05T09:57:55.895951",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0002": {
+          "id": "input_0002",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "arm_rated_capacity: 10.0kg"
+          },
+          "timestamp": "2026-02-05T09:57:55.895952",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0003": {
+          "id": "input_0003",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "must_not_exceed_mass_limit"
+          },
+          "timestamp": "2026-02-05T09:57:55.895953",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0004": {
+          "id": "input_0004",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "safe_operation"
+          },
+          "timestamp": "2026-02-05T09:57:55.895953",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0005": {
+          "id": "input_0005",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "dynamic_load_multiplier: 1.2-1.5"
+          },
+          "timestamp": "2026-02-05T09:57:55.895954",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0006": {
+          "id": "input_0006",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "fatigue_degradation: unknown"
+          },
+          "timestamp": "2026-02-05T09:57:55.895955",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0007": {
+          "id": "input_0007",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "adequate_payload_capacity"
+          },
+          "timestamp": "2026-02-05T09:57:55.895956",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0008": {
+          "id": "input_0008",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "long_term_reliability"
+          },
+          "timestamp": "2026-02-05T09:57:55.895956",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "inference_0009": {
+          "id": "inference_0009",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "payload_mass: 15.0kg",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T09:57:55.900379",
+          "parents": [
+            "input_0001"
+          ],
+          "metadata": {}
+        },
+        "inference_0010": {
+          "id": "inference_0010",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "arm_rated_capacity: 10.0kg",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T09:57:55.900381",
+          "parents": [
+            "input_0002"
+          ],
+          "metadata": {}
+        },
+        "inference_0011": {
+          "id": "inference_0011",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "must_not_exceed_mass_limit",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T09:57:55.900382",
+          "parents": [
+            "input_0003"
+          ],
+          "metadata": {}
+        },
+        "inference_0012": {
+          "id": "inference_0012",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "safe_operation",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T09:57:55.900382",
+          "parents": [
+            "input_0004"
+          ],
+          "metadata": {}
+        },
+        "output_0013": {
+          "id": "output_0013",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "dynamic_load_multiplier: 1.2-1.5",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T09:57:55.900397",
+          "parents": [
+            "input_0005"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: dynamic_load_multiplier: 1.2-1.5"
+              ],
+              "requires_validation": true
+            }
+          }
+        },
+        "output_0014": {
+          "id": "output_0014",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "fatigue_degradation: unknown",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T09:57:55.900405",
+          "parents": [
+            "input_0006"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: fatigue_degradation: unknown"
+              ],
+              "requires_validation": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "trace": {
+    "run_id": "d182a01f4481",
+    "timestamp": "2026-02-05T09:57:55.900438",
+    "nodes": {
+      "input_0000": {
+        "id": "input_0000",
+        "type": "input",
+        "content": {
+          "type": "problem",
+          "name": "Payload exceeds rated capacity",
+          "domain": "robotic_design"
+        },
+        "timestamp": "2026-02-05T09:57:55.895950",
+        "parents": [],
+        "metadata": {}
+      },
+      "input_0001": {
+        "id": "input_0001",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "payload_mass: 15.0kg"
+        },
+        "timestamp": "2026-02-05T09:57:55.895951",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0002": {
+        "id": "input_0002",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "arm_rated_capacity: 10.0kg"
+        },
+        "timestamp": "2026-02-05T09:57:55.895952",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0003": {
+        "id": "input_0003",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "must_not_exceed_mass_limit"
+        },
+        "timestamp": "2026-02-05T09:57:55.895953",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0004": {
+        "id": "input_0004",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "safe_operation"
+        },
+        "timestamp": "2026-02-05T09:57:55.895953",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0005": {
+        "id": "input_0005",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "dynamic_load_multiplier: 1.2-1.5"
+        },
+        "timestamp": "2026-02-05T09:57:55.895954",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0006": {
+        "id": "input_0006",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "fatigue_degradation: unknown"
+        },
+        "timestamp": "2026-02-05T09:57:55.895955",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0007": {
+        "id": "input_0007",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "adequate_payload_capacity"
+        },
+        "timestamp": "2026-02-05T09:57:55.895956",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0008": {
+        "id": "input_0008",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "long_term_reliability"
+        },
+        "timestamp": "2026-02-05T09:57:55.895956",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "inference_0009": {
+        "id": "inference_0009",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "payload_mass: 15.0kg",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:57:55.900379",
+        "parents": [
+          "input_0001"
+        ],
+        "metadata": {}
+      },
+      "inference_0010": {
+        "id": "inference_0010",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "arm_rated_capacity: 10.0kg",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:57:55.900381",
+        "parents": [
+          "input_0002"
+        ],
+        "metadata": {}
+      },
+      "inference_0011": {
+        "id": "inference_0011",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "must_not_exceed_mass_limit",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:57:55.900382",
+        "parents": [
+          "input_0003"
+        ],
+        "metadata": {}
+      },
+      "inference_0012": {
+        "id": "inference_0012",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "safe_operation",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:57:55.900382",
+        "parents": [
+          "input_0004"
+        ],
+        "metadata": {}
+      },
+      "output_0013": {
+        "id": "output_0013",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "dynamic_load_multiplier: 1.2-1.5",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T09:57:55.900397",
+        "parents": [
+          "input_0005"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: dynamic_load_multiplier: 1.2-1.5"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0014": {
+        "id": "output_0014",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "fatigue_degradation: unknown",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T09:57:55.900405",
+        "parents": [
+          "input_0006"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: fatigue_degradation: unknown"
+            ],
+            "requires_validation": true
+          }
+        }
+      }
+    }
+  },
+  "predictions": [],
+  "reviewer": null,
+  "review_notes": ""
+}

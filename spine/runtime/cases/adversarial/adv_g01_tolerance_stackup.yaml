@@ -1,0 +1,38 @@
+problem:
+  name: "Tolerance stack-up - 5 parts, each at +3σ"
+  domain: "robotic_design"
+
+constraints:
+  - "part_count: 5"
+  - "tolerance_per_part: ±0.1mm"
+  - "worst_case_stackup: +0.5mm"
+  - "max_acceptable_stackup: 0.3mm"
+  - "must_meet_assembly_tolerance"
+
+uncertainties:
+  - "statistical_stackup: unknown"
+  - "correlation_between_parts: variable"
+  - "assembly_method_impact: unknown"
+
+objectives:
+  - "assembly_precision"
+  - "tolerance_control"
+
+design:
+  part_count: 5
+  tolerance_per_part_mm: 0.1
+  worst_case_stackup_mm: 0.5
+  max_stackup_mm: 0.3
+  violation_mm: 0.2
+  # For tolerance stack constraint
+  parts:
+    - nominal_dim_mm: 10.0
+      tolerance_mm: 0.1
+      count: 5
+  assembly_clearance_mm: 0.3
+  min_clearance_mm: 1.0
+
+metadata:
+  injected_failure: "tolerance_stackup"
+  failure_category: "geometric"
+  expected_detection: "Geometric/clearance constraint may trigger"

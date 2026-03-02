@@ -1,0 +1,35 @@
+problem:
+  name: "Sensor drift + actuator wear + load increase = cascading degradation"
+  domain: "robotic_design"
+
+constraints:
+  - "sensor_drift: 2%/year"
+  - "actuator_wear: 5% efficiency loss"
+  - "load_increase: +15%"
+  - "combined_performance_degradation: unknown"
+  - "must_maintain_system_performance"
+
+uncertainties:
+  - "degradation_interaction: unknown"
+  - "compensation_capability: variable"
+  - "failure_timeline: unknown"
+
+objectives:
+  - "system_reliability"
+  - "degradation_management"
+
+design:
+  sensor_drift_percent_per_year: 2
+  actuator_efficiency_loss_percent: 5
+  load_increase_percent: 15
+  combined_degradation_factor: 1.22
+  system_margin: 0.78
+  # For FORMAL_036 (corrosion_rate) - cascading includes corrosion
+  corrosion_rate_mm_yr: 0.12
+  service_life_years: 8
+  wall_thickness_mm: 1.5
+
+metadata:
+  injected_failure: "cascading_degradation"
+  failure_category: "unknown"
+  expected_detection: "Multiple failure modes may emerge from degradation"

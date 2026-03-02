@@ -1,0 +1,36 @@
+problem:
+  name: "Three minor issues combine - borderline mass + marginal friction + slight misalignment"
+  domain: "robotic_design"
+
+constraints:
+  - "mass: 9.95kg (limit: 10kg)"
+  - "friction_coefficient: 0.35 (required: 0.4)"
+  - "misalignment: 0.8mm (limit: 1.0mm)"
+  - "each_individually_acceptable"
+  - "combination_risk: unknown"
+
+uncertainties:
+  - "interaction_effects: unknown"
+  - "cascading_failure_probability: variable"
+  - "safety_margin_adequacy: marginal"
+
+objectives:
+  - "combined_safety"
+  - "margin_management"
+
+design:
+  mass_kg: 9.95
+  mass_limit_kg: 10.0
+  friction_coeff: 0.35
+  required_friction_coeff: 0.4
+  misalignment_mm: 0.8
+  misalignment_limit_mm: 1.0
+  # For FORMAL_035 (slip_margin) - borderline case
+  normal_force_n: 8.0
+  friction_coefficient: 0.35
+  tangential_force_n: 2.0
+
+metadata:
+  injected_failure: "combined_minor_issues"
+  failure_category: "unknown"
+  expected_detection: "Multiple constraints may trigger, emergent risk"

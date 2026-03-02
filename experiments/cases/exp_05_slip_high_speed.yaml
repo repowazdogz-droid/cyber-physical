@@ -1,0 +1,23 @@
+problem:
+  name: "Slip experiment: high-speed grip (acceleration during contact)"
+  domain: "surgical_robotics"
+
+constraints:
+  - "normal_force: 2N"
+  - "acceleration: 5m/s²"
+  - "must_not_slip"
+
+uncertainties:
+  - "dynamic_friction: unknown"
+
+objectives:
+  - "rapid_grip"
+
+design:
+  normal_force_n: 2.0
+  friction_coefficient: 0.6
+  surface_type: "steel"
+  acceleration_ms2: 5.0
+
+metadata:
+  experiment_type: "slip"

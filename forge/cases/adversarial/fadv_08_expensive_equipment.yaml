@@ -1,0 +1,17 @@
+problem:
+  name: "Requires expensive equipment"
+  domain: "surgical_robotics"
+
+constraints:
+  - "measurement_precision: 0.001nm"
+  - "requires_synchrotron"
+
+uncertainties: []
+
+objectives:
+  - "high_precision"
+
+metadata:
+  trap_type: "overreach"
+  expected_forge_behavior: "Should flag experiments requiring >$1M equipment"
+  quality_gate_should_catch: true

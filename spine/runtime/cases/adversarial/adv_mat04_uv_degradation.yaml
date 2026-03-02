@@ -1,0 +1,39 @@
+problem:
+  name: "UV degradation of polymer seal"
+  domain: "robotic_design"
+
+constraints:
+  - "polymer_type: polyurethane"
+  - "uv_exposure: continuous"
+  - "expected_life: 5_years"
+  - "degradation_rate: 2%/year"
+  - "must_maintain_seal_integrity"
+
+uncertainties:
+  - "uv_intensity_variation: ±30%"
+  - "degradation_acceleration: unknown"
+  - "seal_performance_degradation: variable"
+
+objectives:
+  - "long_term_sealing"
+  - "material_stability"
+
+design:
+  polymer_type: "polyurethane"
+  uv_exposure: "continuous"
+  expected_life_years: 5
+  degradation_rate_percent_per_year: 2
+  total_degradation_percent: 10
+  # For FORMAL_026 (uv_degradation_risk)
+  uv_exposure_hours: 43800
+  uv_rated_life_hours: 43800
+  # For FORMAL_030 (thermal_material_coupling) - polymer under thermal load
+  applied_stress_mpa: 8.0
+  yield_strength_mpa: 15.0
+  operating_temp_c: 60
+  max_service_temp_c: 80
+
+metadata:
+  injected_failure: "uv_degradation"
+  failure_category: "material"
+  expected_detection: "Material degradation risk may be detected"

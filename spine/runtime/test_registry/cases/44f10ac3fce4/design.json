@@ -1,0 +1,8 @@
+{
+  "steady_state_power_w": 15,
+  "peak_power_w": 45,
+  "pulse_duration_ms": 200,
+  "thermal_capacity_w": 50,
+  "thermal_time_constant_ms": 750,
+  "estimated_temp_rise_c": 72
+}

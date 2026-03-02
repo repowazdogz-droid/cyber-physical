@@ -1,0 +1,18 @@
+problem:
+  name: "Measurement can't distinguish failure modes"
+  domain: "surgical_robotics"
+
+constraints:
+  - "must_not_slip"
+  - "must_not_damage"
+
+uncertainties:
+  - "failure_mode: slip_or_damage"
+
+objectives:
+  - "safe_grip"
+
+metadata:
+  trap_type: "confounded_test"
+  expected_forge_behavior: "Should flag measurements that can't distinguish between failure modes"
+  quality_gate_should_catch: true

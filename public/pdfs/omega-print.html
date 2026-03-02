@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omega Protocol</title>
+  <style>
+    /* ===== Print system: force 2 pages ===== */
+    @page { size: A4; margin: 12mm; }
+    html, body { margin: 0; padding: 0; }
+    body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: #111; }
+
+    /* Use a fixed A4 "page" container so layout can't drift */
+    .page {
+      box-sizing: border-box;
+      width: 210mm;
+      height: 297mm;
+      padding: 12mm;
+      break-after: page;
+      page-break-after: always;
+    }
+    .page:last-child { break-after: auto; page-break-after: auto; }
+
+    /* Typography tuned to fit */
+    h1 { font-size: 22px; margin: 0 0 6px 0; letter-spacing: -0.2px; }
+    h2 { font-size: 14px; margin: 10px 0 6px 0; }
+    h3 { font-size: 12px; margin: 10px 0 6px 0; }
+    p, li { font-size: 10.5px; line-height: 1.35; margin: 0 0 6px 0; }
+    ul { margin: 0 0 6px 16px; padding: 0; }
+    .small { font-size: 9.5px; line-height: 1.3; }
+    .muted { color: #444; }
+
+    /* Visual blocks compact */
+    .box {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 8px 10px;
+      margin: 8px 0;
+    }
+
+    /* Diagram row */
+    .diagram {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin: 8px 0 10px 0;
+      font-family: monospace;
+      font-size: 9px;
+      border: 1px solid #e5e5e5;
+      padding: 8px;
+      background: #fafafa;
+      border-radius: 4px;
+    }
+    .pill {
+      border: 1px solid #cfcfcf;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 10px;
+      white-space: nowrap;
+    }
+    .arrow { font-size: 12px; color: #666; }
+
+    /* Prevent annoying micro overflows */
+    .tight p, .tight li { margin-bottom: 4px; }
+    .no-break { break-inside: avoid; page-break-inside: avoid; }
+    hr { border: 0; border-top: 1px solid #e6e6e6; margin: 8px 0; }
+    
+    ol { margin: 0 0 6px 16px; padding: 0; }
+    .stopping-rule {
+      border-left: 3px solid #111;
+      padding-left: 10px;
+      margin: 8px 0;
+      font-style: italic;
+      font-size: 10px;
+    }
+    .example-box {
+      border: 1px solid #d4d4d4;
+      padding: 8px 10px;
+      margin: 8px 0;
+      background: #fafafa;
+      border-radius: 4px;
+    }
+    .example-box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Omega Protocol</h1>
+    
+    <h2>Structure</h2>
+    <div class="diagram">
+      Input: Claim or statement<br>
+      ↓<br>
+      [1] What it claims<br>
+      [2] What it assumes<br>
+      [3] What's actually shown<br>
+      [4] What's missing / unclear<br>
+      [5] Other framings<br>
+      ↓<br>
+      Output: Structured inspection
+    </div>
+
+    <h2>Sequence</h2>
+    <div class="box tight no-break">
+      <ol>
+        <li>Identify the core claim or statement</li>
+        <li>Extract what is explicitly asserted</li>
+        <li>Identify hidden assumptions and dependencies</li>
+        <li>Distinguish what is shown vs implied</li>
+        <li>Identify missing context or evidence</li>
+        <li>Explore alternative interpretations</li>
+      </ol>
+    </div>
+
+    <h2>Stopping Rule</h2>
+    <div class="box tight no-break stopping-rule">
+      Stop when all five elements (claims, assumptions, shown, missing, framings) are populated. Do not add conclusions, verdicts, or advice. The protocol exposes structure only.
+    </div>
+
+    <h2>What It's Not</h2>
+    <div class="box tight no-break">
+      <ul>
+        <li>Not a verdict or judgment</li>
+        <li>Not advice or recommendations</li>
+        <li>Not persuasion or argumentation</li>
+        <li>Not a conclusion generator</li>
+        <li>Not a truth detector</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page">
+    <h1>Omega Protocol — Worked Example</h1>
+
+    <div class="example-box">
+      <strong>Claim:</strong>
+      "AI-powered skin cancer detection app achieves 95% accuracy, matching dermatologist performance."
+    </div>
+
+    <h2>What it claims</h2>
+    <p class="small">An AI app for detecting skin cancer achieves 95% accuracy and performs as well as dermatologists.</p>
+
+    <h2>What it assumes</h2>
+    <ul>
+      <li>95% accuracy is sufficient for clinical use</li>
+      <li>"Matching dermatologist performance" means equivalent outcomes</li>
+      <li>The app works across diverse skin types and conditions</li>
+      <li>Accuracy metrics are comparable between app and dermatologists</li>
+      <li>False negatives and false positives have acceptable clinical impact</li>
+    </ul>
+
+    <h2>What's actually shown</h2>
+    <ul>
+      <li>No specific study details provided</li>
+      <li>No sample size or demographics</li>
+      <li>No definition of "accuracy" (sensitivity? specificity? overall?)</li>
+      <li>No comparison methodology described</li>
+      <li>No information about test conditions or image quality</li>
+    </ul>
+
+    <h2>What's missing / unclear</h2>
+    <ul>
+      <li>What dataset was used for training and testing</li>
+      <li>How dermatologist performance was measured</li>
+      <li>What types of skin lesions were included</li>
+      <li>Whether accuracy holds across different populations</li>
+      <li>What happens in cases of uncertainty</li>
+      <li>Regulatory approval status</li>
+      <li>Clinical validation results</li>
+    </ul>
+
+    <h2>Other framings</h2>
+    <ul>
+      <li>Could emphasize screening utility vs diagnostic accuracy</li>
+      <li>Could focus on accessibility (app available everywhere) vs accuracy tradeoffs</li>
+      <li>Could interpret "matching" as meeting minimum threshold vs equivalent performance</li>
+      <li>Could emphasize cost-effectiveness vs clinical accuracy</li>
+    </ul>
+  </div>
+</body>
+</html>

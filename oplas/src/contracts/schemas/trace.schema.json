@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OPLAS Verifier Trace Event Schema",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["run_id", "repr_id", "program_id", "tier", "status", "why", "details"],
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "repr_id": {
+      "type": "string"
+    },
+    "program_id": {
+      "type": "string"
+    },
+    "tier": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pass", "fail", "skip"]
+    },
+    "why": {
+      "type": "string",
+      "enum": [
+        "schema_invalid",
+        "type_mismatch",
+        "missing_required_field",
+        "shape_mismatch",
+        "count_mismatch",
+        "conservation_violation",
+        "example_failed",
+        "output_mismatch",
+        "coordinate_hack_detected",
+        "absolute_frame_unjustified",
+        "translation_test_failed",
+        "invariance_test_failed",
+        "palette_permutation_failed",
+        "rotation_test_failed",
+        "reflection_test_failed",
+        "runtime_error",
+        "timeout",
+        "budget_exceeded"
+      ]
+    },
+    "details": {
+      "type": "object",
+      "description": "Structured details (no ad-hoc prose)"
+    },
+    "cost_breakdown": {
+      "type": "object",
+      "properties": {
+        "n_nodes": { "type": "integer" },
+        "n_ops": { "type": "integer" },
+        "n_params": { "type": "integer" },
+        "n_literals": { "type": "integer" },
+        "runtime_steps": { "type": "integer" },
+        "abs_coord_refs": { "type": "integer" },
+        "color_binding_literals": { "type": "integer" },
+        "total_cost": { "type": "number" }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "tokens_in": { "type": "integer" },
+        "tokens_out": { "type": "integer" },
+        "latency_ms": { "type": "integer" },
+        "cost_usd_est": { "type": "number" },
+        "runtime_steps": { "type": "integer" }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

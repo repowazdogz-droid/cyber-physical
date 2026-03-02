@@ -1,0 +1,9 @@
+{
+  "spec_ambient_c": 25,
+  "actual_ambient_c": 55,
+  "max_operating_c": 85,
+  "thermal_margin_c": 10,
+  "power_dissipation_w": 35,
+  "estimated_temp_rise_c": 30,
+  "total_temp_c": 85
+}

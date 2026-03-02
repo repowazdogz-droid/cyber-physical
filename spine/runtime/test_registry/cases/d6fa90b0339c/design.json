@@ -1,0 +1,6 @@
+{
+  "max_acceleration_mps2": 45,
+  "jerk_limit_mps3": 500,
+  "actual_jerk_mps3": 750,
+  "violation_mps3": 250
+}

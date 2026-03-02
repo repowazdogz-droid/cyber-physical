@@ -1,0 +1,136 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Learning Board Highlight Reel",
+  "description": "Deterministic highlight reel from a recorded session",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Schema version (e.g., '0.1')"
+    },
+    "sessionId": {
+      "type": "string",
+      "description": "Session identifier"
+    },
+    "createdAtIso": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO timestamp when reel was created"
+    },
+    "durationMs": {
+      "type": "integer",
+      "description": "Total duration in milliseconds"
+    },
+    "moments": {
+      "type": "array",
+      "description": "Selected highlight moments",
+      "items": {
+        "$ref": "#/definitions/HighlightMoment"
+      },
+      "maxItems": 12
+    },
+    "selectedThoughtIds": {
+      "type": "array",
+      "description": "Thought IDs that appear in the reel",
+      "items": {
+        "type": "string"
+      }
+    },
+    "style": {
+      "$ref": "#/definitions/ReelStyle"
+    }
+  },
+  "required": ["version", "sessionId", "createdAtIso", "durationMs", "moments", "selectedThoughtIds", "style"],
+  "definitions": {
+    "HighlightMoment": {
+      "type": "object",
+      "properties": {
+        "t": {
+          "type": "integer",
+          "description": "Time in milliseconds from session start"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["PinToggled", "ExplainBackShown", "FocusEntered", "ClusterChanged", "CardSelected"]
+        },
+        "thoughtId": {
+          "type": "string",
+          "description": "Thought ID if applicable"
+        },
+        "clusterId": {
+          "type": "string",
+          "description": "Cluster ID if applicable"
+        },
+        "caption": {
+          "type": "string",
+          "description": "Human-readable caption"
+        },
+        "emphasis": {
+          "type": "string",
+          "enum": ["low", "medium", "high"],
+          "description": "Visual emphasis level"
+        },
+        "holdDurationMs": {
+          "type": "integer",
+          "description": "How long to hold this moment (milliseconds)"
+        }
+      },
+      "required": ["t", "type", "caption", "emphasis", "holdDurationMs"]
+    },
+    "ReelStyle": {
+      "type": "object",
+      "properties": {
+        "reduceMotion": {
+          "type": "boolean",
+          "description": "Whether reduce-motion mode is enabled"
+        },
+        "pacing": {
+          "type": "string",
+          "enum": ["calm", "normal"],
+          "description": "Pacing style"
+        }
+      },
+      "required": ["reduceMotion", "pacing"]
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

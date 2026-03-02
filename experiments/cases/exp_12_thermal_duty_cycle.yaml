@@ -1,0 +1,24 @@
+problem:
+  name: "Thermal experiment: duty cycle 80%, 1 hour"
+  domain: "surgical_robotics"
+
+constraints:
+  - "duration: 3600s"
+  - "power: 15W"
+  - "duty_cycle: 0.8"
+  - "must_not_overheat"
+
+uncertainties:
+  - "thermal_cycling: unknown"
+
+objectives:
+  - "intermittent_operation"
+
+design:
+  power_w: 15.0
+  duty_cycle: 0.8
+  duration_s: 3600
+  cooling: "passive"
+
+metadata:
+  experiment_type: "thermal"

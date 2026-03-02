@@ -1,0 +1,43 @@
+problem:
+  name: "Combined tolerance + thermal + deflection - dimensional envelope failure"
+  domain: "robotic_design"
+
+constraints:
+  - "initial_clearance: 2.5mm"
+  - "tolerance_stack: 0.8mm"
+  - "thermal_expansion: 0.6mm"
+  - "deflection: 0.5mm"
+  - "total_loss: 1.9mm"
+  - "must_maintain_clearance"
+
+uncertainties:
+  - "effect_interaction: unknown"
+  - "worst_case_combination: variable"
+  - "clearance_margin: marginal"
+
+objectives:
+  - "dimensional_stability"
+  - "clearance_margin"
+
+design:
+  initial_clearance_mm: 2.5
+  tolerance_stack_mm: 0.8
+  thermal_expansion_mm: 0.6
+  deflection_mm: 0.5
+  total_loss_mm: 1.9
+  # For dimensional envelope constraint - use simple format
+  parts: [{"nominal_dim_mm": 10.0, "tolerance_mm": 0.1, "count": 8}]
+  part1_cte: 23e-6
+  part1_length_mm: 200
+  part2_cte: 12e-6
+  part2_length_mm: 200
+  delta_temp_c: 50
+  applied_force_n: 12
+  beam_length_mm: 150
+  EI_nmm2: 5000
+  min_clearance_mm: 1.0
+
+metadata:
+  injected_failure: "dimensional_envelope_failure"
+  failure_category: "geometric"
+  expected_detection: "Dimensional envelope constraint should trigger"

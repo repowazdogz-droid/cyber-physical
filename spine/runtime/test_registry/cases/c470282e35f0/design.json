@@ -1,0 +1,6 @@
+{
+  "required_torque_nm": 7.5,
+  "actuator_limit_nm": 6.0,
+  "saturation_margin_nm": -1.5,
+  "max_torque_nm": 7.5
+}

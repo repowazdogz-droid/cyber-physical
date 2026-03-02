@@ -1,0 +1,39 @@
+{
+  "case_id": "94bc1404b439",
+  "name": "PID with marginal phase margin - 5\u00b0",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:16:55.920680",
+  "case_yaml": {
+    "problem": {
+      "name": "PID with marginal phase margin - 5\u00b0",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "phase_margin: 5\u00b0",
+      "minimum_phase_margin: 30\u00b0",
+      "gain_margin: 3dB",
+      "must_be_stable"
+    ],
+    "uncertainties": [
+      "model_uncertainty: \u00b120%",
+      "parameter_variation: unknown",
+      "disturbance_rejection: marginal"
+    ],
+    "objectives": [
+      "control_stability",
+      "robust_performance"
+    ]
+  },
+  "design_data": {
+    "phase_margin_deg": 5,
+    "min_phase_margin_deg": 30,
+    "gain_margin_db": 3,
+    "stability_margin": 0.17
+  },
+  "tags": [
+    "adversarial",
+    "control",
+    "test"
+  ],
+  "notes": "Injected failure: marginal_phase_margin"
+}

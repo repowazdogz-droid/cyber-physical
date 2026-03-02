@@ -1,0 +1,12 @@
+{
+  "motor_temp_c": 75,
+  "normal_response_ms": 50,
+  "degraded_response_ms": 80,
+  "required_response_ms": 60,
+  "thermal_degradation_factor": 1.6,
+  "power_dissipation_w": 38,
+  "applied_stress_mpa": 480,
+  "yield_strength_mpa": 1000,
+  "operating_temp_c": 75,
+  "max_service_temp_c": 100
+}

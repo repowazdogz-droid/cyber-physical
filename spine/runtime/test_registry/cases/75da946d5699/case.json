@@ -1,0 +1,42 @@
+{
+  "case_id": "75da946d5699",
+  "name": "Range of motion exceeds joint limit",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 09:42:11.559464",
+  "case_yaml": {
+    "problem": {
+      "name": "Range of motion exceeds joint limit",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "required_joint_angle: 185_degrees",
+      "joint_limit: 170_degrees",
+      "must_not_exceed_joint_limits",
+      "full_workspace_access"
+    ],
+    "uncertainties": [
+      "workspace_requirements: variable",
+      "joint_clearance_tolerance: unknown"
+    ],
+    "objectives": [
+      "adequate_reach",
+      "smooth_articulation"
+    ],
+    "metadata": {
+      "injected_failure": "joint_binding",
+      "expected_detection": "Joint limit violation OR mechanical interference",
+      "decision_delta_target": 2
+    }
+  },
+  "design_data": {
+    "required_angle_deg": 185,
+    "joint_limit_deg": 170,
+    "violation_deg": 15
+  },
+  "tags": [
+    "failure_injection",
+    "physics",
+    "test"
+  ],
+  "notes": "Injected failure: joint_binding"
+}

@@ -1,0 +1,537 @@
+{
+  "decision_map": {
+    "constraints_checked": [
+      {
+        "constraint": "motor_power: 45W",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "duty_cycle: 95%",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "thermal_capacity: 50W_continuous",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "ambient_temp: 35C",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "must_not_overheat",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "thermal_safety_critical",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      }
+    ],
+    "violations": []
+  },
+  "failure_modes": [],
+  "contradictions": [],
+  "unknowns": [
+    {
+      "item": "heat_sink_efficiency: unknown",
+      "impact": "medium",
+      "resolution": "investigation_required",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "uncertainty: heat_sink_efficiency: unknown"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": {
+        "base_confidence": 0.4,
+        "min_confidence": 0.36000000000000004,
+        "max_confidence": 0.42400000000000004,
+        "sensitivity": 0.07999999999999999,
+        "dependent_on": [
+          "heat_sink_efficiency"
+        ]
+      }
+    },
+    {
+      "item": "ambient_variation: high",
+      "impact": "medium",
+      "resolution": "investigation_required",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "uncertainty: ambient_variation: high"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": {
+        "base_confidence": 0.4,
+        "min_confidence": 0.4,
+        "max_confidence": 0.4,
+        "sensitivity": 0.0,
+        "dependent_on": [
+          "ambient_variation"
+        ]
+      }
+    }
+  ],
+  "recommended_experiments": [],
+  "falsification_tests": [],
+  "formal_constraints": [
+    {
+      "constraint_id": "FORMAL_001",
+      "constraint_name": "mass_limit",
+      "result": "unknown",
+      "value": null,
+      "threshold": 10.0,
+      "margin": null,
+      "evidence": "Total mass not provided in design data",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_002",
+      "constraint_name": "max_force",
+      "result": "unknown",
+      "value": null,
+      "threshold": 2.0,
+      "margin": null,
+      "evidence": "Max force not provided in design data",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_003",
+      "constraint_name": "max_acceleration",
+      "result": "unknown",
+      "value": null,
+      "threshold": 50.0,
+      "margin": null,
+      "evidence": "Max acceleration not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_004",
+      "constraint_name": "min_clearance",
+      "result": "unknown",
+      "value": null,
+      "threshold": 1.0,
+      "margin": null,
+      "evidence": "Clearance not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_005",
+      "constraint_name": "no_self_collision",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Self-collision check not performed",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_006",
+      "constraint_name": "cog_stability",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "COG stability check not performed",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_007",
+      "constraint_name": "torque_limit",
+      "result": "unknown",
+      "value": null,
+      "threshold": 5.0,
+      "margin": null,
+      "evidence": "Max torque not provided in design data",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_008",
+      "constraint_name": "jerk_limit",
+      "result": "unknown",
+      "value": null,
+      "threshold": 500.0,
+      "margin": null,
+      "evidence": "Max jerk not provided in design data",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_009",
+      "constraint_name": "actuator_duty_cycle",
+      "result": "unknown",
+      "value": null,
+      "threshold": 0.8,
+      "margin": null,
+      "evidence": "Actuator duty cycle not provided in design data",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_010",
+      "constraint_name": "resonance_margin",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Operating frequency or natural frequency not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_011",
+      "constraint_name": "thermal_limit",
+      "result": "proven_satisfied",
+      "value": 85.0,
+      "threshold": 85.0,
+      "margin": 0.0,
+      "evidence": "Temperature rise 85.0\u00b0C <= limit 85.0\u00b0C",
+      "confidence": 1.0
+    },
+    {
+      "constraint_id": "FORMAL_012",
+      "constraint_name": "joint_range_limit",
+      "result": "unknown",
+      "value": null,
+      "threshold": null,
+      "margin": null,
+      "evidence": "Joint range check not performed",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_013",
+      "constraint_name": "payload_ratio",
+      "result": "unknown",
+      "value": null,
+      "threshold": 0.7,
+      "margin": null,
+      "evidence": "Payload or max rated payload not provided",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_014",
+      "constraint_name": "stiffness_minimum",
+      "result": "unknown",
+      "value": null,
+      "threshold": 1000.0,
+      "margin": null,
+      "evidence": "End-effector stiffness not provided in design data",
+      "confidence": 0.0
+    },
+    {
+      "constraint_id": "FORMAL_015",
+      "constraint_name": "voltage_limit",
+      "result": "unknown",
+      "value": null,
+      "threshold": 24.0,
+      "margin": null,
+      "evidence": "Max voltage not provided in design data",
+      "confidence": 0.0
+    }
+  ],
+  "trace_graph": {
+    "run_id": "2b7e7ca67e22",
+    "timestamp": "2026-02-05T09:57:55.930742",
+    "nodes": {
+      "input_0000": {
+        "id": "input_0000",
+        "type": "input",
+        "content": {
+          "type": "problem",
+          "name": "Motor duty cycle causes thermal overload",
+          "domain": "robotic_design"
+        },
+        "timestamp": "2026-02-05T09:57:55.923900",
+        "parents": [],
+        "metadata": {}
+      },
+      "input_0001": {
+        "id": "input_0001",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "motor_power: 45W"
+        },
+        "timestamp": "2026-02-05T09:57:55.923901",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0002": {
+        "id": "input_0002",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "duty_cycle: 95%"
+        },
+        "timestamp": "2026-02-05T09:57:55.923902",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0003": {
+        "id": "input_0003",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "thermal_capacity: 50W_continuous"
+        },
+        "timestamp": "2026-02-05T09:57:55.923903",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0004": {
+        "id": "input_0004",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "ambient_temp: 35C"
+        },
+        "timestamp": "2026-02-05T09:57:55.923904",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0005": {
+        "id": "input_0005",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "must_not_overheat"
+        },
+        "timestamp": "2026-02-05T09:57:55.923904",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0006": {
+        "id": "input_0006",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "thermal_safety_critical"
+        },
+        "timestamp": "2026-02-05T09:57:55.923905",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0007": {
+        "id": "input_0007",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "heat_sink_efficiency: unknown"
+        },
+        "timestamp": "2026-02-05T09:57:55.923906",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0008": {
+        "id": "input_0008",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "ambient_variation: high"
+        },
+        "timestamp": "2026-02-05T09:57:55.923907",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0009": {
+        "id": "input_0009",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "continuous_operation"
+        },
+        "timestamp": "2026-02-05T09:57:55.923908",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0010": {
+        "id": "input_0010",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "thermal_stability"
+        },
+        "timestamp": "2026-02-05T09:57:55.923908",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "inference_0011": {
+        "id": "inference_0011",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "motor_power: 45W",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:57:55.930686",
+        "parents": [
+          "input_0001"
+        ],
+        "metadata": {}
+      },
+      "inference_0012": {
+        "id": "inference_0012",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "duty_cycle: 95%",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:57:55.930687",
+        "parents": [
+          "input_0002"
+        ],
+        "metadata": {}
+      },
+      "inference_0013": {
+        "id": "inference_0013",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "thermal_capacity: 50W_continuous",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:57:55.930688",
+        "parents": [
+          "input_0003"
+        ],
+        "metadata": {}
+      },
+      "inference_0014": {
+        "id": "inference_0014",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "ambient_temp: 35C",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:57:55.930689",
+        "parents": [
+          "input_0004"
+        ],
+        "metadata": {}
+      },
+      "inference_0015": {
+        "id": "inference_0015",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "must_not_overheat",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:57:55.930690",
+        "parents": [
+          "input_0005"
+        ],
+        "metadata": {}
+      },
+      "inference_0016": {
+        "id": "inference_0016",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "thermal_safety_critical",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:57:55.930691",
+        "parents": [
+          "input_0006"
+        ],
+        "metadata": {}
+      },
+      "output_0017": {
+        "id": "output_0017",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "heat_sink_efficiency: unknown",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T09:57:55.930704",
+        "parents": [
+          "input_0007"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: heat_sink_efficiency: unknown"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0018": {
+        "id": "output_0018",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "ambient_variation: high",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T09:57:55.930712",
+        "parents": [
+          "input_0008"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: ambient_variation: high"
+            ],
+            "requires_validation": true
+          }
+        }
+      }
+    }
+  }
+}

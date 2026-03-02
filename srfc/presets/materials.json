@@ -1,0 +1,37 @@
+{
+  "silicone_00_30": {
+    "name": "silicone_00_30",
+    "youngs_modulus_kpa": 45.0,
+    "shore_hardness": 30.0,
+    "friction_coeff": 0.8,
+    "max_strain": 2.5,
+    "notes": "Very soft silicone, good for delicate tissues. High friction may require lubrication."
+  },
+  "silicone_00_50": {
+    "name": "silicone_00_50",
+    "youngs_modulus_kpa": 120.0,
+    "shore_hardness": 50.0,
+    "friction_coeff": 0.7,
+    "max_strain": 2.0,
+    "notes": "Medium softness silicone. Common choice for soft robotics."
+  },
+  "tpu_soft": {
+    "name": "tpu_soft",
+    "youngs_modulus_kpa": 200.0,
+    "shore_hardness": 60.0,
+    "friction_coeff": 0.6,
+    "max_strain": 1.5,
+    "notes": "Thermoplastic polyurethane. Lower friction, higher modulus than silicone."
+  },
+  "hydrogel_soft": {
+    "name": "hydrogel_soft",
+    "youngs_modulus_kpa": 10.0,
+    "shore_hardness": 10.0,
+    "friction_coeff": 0.3,
+    "max_strain": 3.0,
+    "notes": "Ultra-soft hydrogel. Excellent friction properties but very low modulus."
+  }
+}
+
+
+

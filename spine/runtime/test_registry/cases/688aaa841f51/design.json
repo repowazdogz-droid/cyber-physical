@@ -1,0 +1,7 @@
+{
+  "nominal_compliance_mm_per_n": 0.5,
+  "min_compliance_mm_per_n": 0.17,
+  "max_compliance_mm_per_n": 1.5,
+  "variation_factor": 3.0,
+  "force_control_accuracy_percent": 10
+}

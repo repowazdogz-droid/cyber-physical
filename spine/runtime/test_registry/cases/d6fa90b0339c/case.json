@@ -1,0 +1,44 @@
+{
+  "case_id": "d6fa90b0339c",
+  "name": "Jerk exceeds safety limit",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 09:42:11.559769",
+  "case_yaml": {
+    "problem": {
+      "name": "Jerk exceeds safety limit",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "max_acceleration: 45mps2",
+      "jerk_limit: 500mps3",
+      "actual_jerk: 750mps3",
+      "must_not_exceed_jerk_limits",
+      "smooth_motion"
+    ],
+    "uncertainties": [
+      "control_bandwidth: unknown",
+      "vibration_response: untested"
+    ],
+    "objectives": [
+      "fast_positioning",
+      "patient_comfort"
+    ],
+    "metadata": {
+      "injected_failure": "acceleration_spike",
+      "expected_detection": "Acceleration limit violation",
+      "decision_delta_target": 2
+    }
+  },
+  "design_data": {
+    "max_acceleration_mps2": 45,
+    "jerk_limit_mps3": 500,
+    "actual_jerk_mps3": 750,
+    "violation_mps3": 250
+  },
+  "tags": [
+    "failure_injection",
+    "physics",
+    "test"
+  ],
+  "notes": "Injected failure: acceleration_spike"
+}

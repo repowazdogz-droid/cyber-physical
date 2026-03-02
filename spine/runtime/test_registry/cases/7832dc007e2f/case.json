@@ -1,0 +1,43 @@
+{
+  "case_id": "7832dc007e2f",
+  "name": "Ambient temperature shift - +30\u00b0C above spec",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:16:56.207754",
+  "case_yaml": {
+    "problem": {
+      "name": "Ambient temperature shift - +30\u00b0C above spec",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "spec_ambient_temp: 25\u00b0C",
+      "actual_ambient_temp: 55\u00b0C",
+      "max_operating_temp: 85\u00b0C",
+      "thermal_margin: 10\u00b0C",
+      "must_operate_in_spec"
+    ],
+    "uncertainties": [
+      "ambient_variation_range: unknown",
+      "thermal_margin_adequacy: variable",
+      "cooling_efficiency_at_temp: degraded"
+    ],
+    "objectives": [
+      "environmental_robustness",
+      "thermal_safety"
+    ]
+  },
+  "design_data": {
+    "spec_ambient_c": 25,
+    "actual_ambient_c": 55,
+    "max_operating_c": 85,
+    "thermal_margin_c": 10,
+    "power_dissipation_w": 35,
+    "estimated_temp_rise_c": 30,
+    "total_temp_c": 85
+  },
+  "tags": [
+    "adversarial",
+    "thermal",
+    "test"
+  ],
+  "notes": "Injected failure: ambient_temperature_shift"
+}

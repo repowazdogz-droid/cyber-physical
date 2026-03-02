@@ -1,0 +1,37 @@
+{
+  "case_id": "d385c753263e",
+  "name": "Revision surgery for thoracic pedicle screw aortic penetration",
+  "domain": "spine_surgery",
+  "created_at": "2026-02-05 08:40:54.332701",
+  "case_yaml": {
+    "problem": {
+      "name": "Revision surgery for thoracic pedicle screw aortic penetration",
+      "domain": "spine_surgery"
+    },
+    "constraints": [
+      "aorta_proximity_to_T6_T7: millimeters",
+      "freehand_screw_placement_inaccuracy",
+      "urgent_stabilization_required",
+      "patient_age: 53",
+      "trauma_with_paraplegia"
+    ],
+    "uncertainties": [
+      "pseudoaneurysm_risk: unknown_timeline",
+      "delayed_aortic_rupture_probability: unclear",
+      "asymptomatic_impingement_management: no_consensus"
+    ],
+    "objectives": [
+      "stabilize_T7_fracture",
+      "mitigate_vascular_injury",
+      "prevent_aortic_rupture"
+    ]
+  },
+  "design_data": null,
+  "tags": [
+    "spine",
+    "complication",
+    "vascular",
+    "real"
+  ],
+  "notes": "Real case from published literature"
+}

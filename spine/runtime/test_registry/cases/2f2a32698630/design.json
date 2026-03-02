@@ -1,0 +1,7 @@
+{
+  "bending_stress_mpa": 600,
+  "torsional_stress_mpa": 600,
+  "yield_strength_mpa": 1000,
+  "von_mises_mpa": 900,
+  "utilization": 0.9
+}

@@ -1,0 +1,17 @@
+{
+  "default": {
+    "min_roi_per_case": 500
+  },
+  "NHS": {
+    "min_roi_per_case": 300
+  },
+  "Private": {
+    "min_roi_per_case": 800
+  },
+  "SelfPay": {
+    "min_roi_per_case": 1000
+  }
+}
+
+
+

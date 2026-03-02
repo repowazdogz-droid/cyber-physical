@@ -1,0 +1,7 @@
+{
+  "part_count": 5,
+  "tolerance_per_part_mm": 0.1,
+  "worst_case_stackup_mm": 0.5,
+  "max_stackup_mm": 0.3,
+  "violation_mm": 0.2
+}

@@ -1,0 +1,42 @@
+{
+  "case_id": "ace1b53d639d",
+  "name": "Material fatigue + geometric tolerance = progressive failure",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:16:45.847427",
+  "case_yaml": {
+    "problem": {
+      "name": "Material fatigue + geometric tolerance = progressive failure",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "fatigue_stress: 0.48 \u00d7 yield",
+      "tolerance_stackup: 0.28mm (limit: 0.3mm)",
+      "cycles: 5M",
+      "progressive_clearance_reduction: unknown",
+      "must_withstand_combined_effects"
+    ],
+    "uncertainties": [
+      "fatigue_crack_growth: variable",
+      "tolerance_interaction: unknown",
+      "failure_progression: unknown"
+    ],
+    "objectives": [
+      "long_term_reliability",
+      "progressive_failure_prevention"
+    ]
+  },
+  "design_data": {
+    "fatigue_stress_mpa": 480,
+    "yield_strength_mpa": 1000,
+    "stress_ratio": 0.48,
+    "tolerance_stackup_mm": 0.28,
+    "tolerance_limit_mm": 0.3,
+    "cycles": 5000000
+  },
+  "tags": [
+    "adversarial",
+    "unknown",
+    "test"
+  ],
+  "notes": "Injected failure: fatigue_tolerance_interaction"
+}

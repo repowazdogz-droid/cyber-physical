@@ -1,0 +1,8 @@
+{
+  "dry_friction_coeff": 0.6,
+  "wet_friction_coeff": 0.3,
+  "required_friction_coeff": 0.4,
+  "grip_force_n": 5.0,
+  "max_friction_force_n": 1.5,
+  "slip_margin_n": -3.5
+}

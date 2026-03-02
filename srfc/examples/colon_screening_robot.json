@@ -1,0 +1,54 @@
+{
+  "procedure": {
+    "procedure_id": "colon_screening_v1",
+    "domain": "endoscopy",
+    "anatomy": "colon",
+    "description": "Soft robotic colonoscope for screening procedures",
+    "notes": "Must navigate haustral folds and tight curves"
+  },
+  "robot": {
+    "geometry": {
+      "outer_diameter_mm": 18.0,
+      "length_mm": 800.0,
+      "min_bend_radius_mm": 25.0,
+      "wall_thickness_mm": 2.0
+    },
+    "materials": {
+      "name": "silicone_00_50",
+      "youngs_modulus_kpa": 120.0,
+      "shore_hardness": 50.0,
+      "friction_coeff": 0.65,
+      "max_strain": 2.0,
+      "notes": "Medium softness silicone"
+    },
+    "actuation": {
+      "mode": "pneumatic",
+      "max_pressure_kpa": 4.0,
+      "response_time_ms": 180.0
+    },
+    "safety": {
+      "max_tip_force_n": 7.0,
+      "max_contact_pressure_kpa": 4.5,
+      "max_dwell_time_min": 55.0
+    },
+    "control": {
+      "control_mode": "teleop",
+      "closed_loop": true,
+      "sensing_modalities": ["force", "position"]
+    },
+    "tether": {
+      "has_tether": true,
+      "num_lines": 5,
+      "total_bundle_diameter_mm": 4.0
+    },
+    "manufacturing": {
+      "unit_cost_estimate": 150.0,
+      "expected_volume_per_year": 500,
+      "reusable": true,
+      "sterilization_method": "steam",
+      "tolerance_mm": 0.15,
+      "special_tooling_required": false
+    }
+  }
+}
+

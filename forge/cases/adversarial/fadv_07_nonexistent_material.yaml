@@ -1,0 +1,17 @@
+problem:
+  name: "Requires nonexistent material"
+  domain: "surgical_robotics"
+
+constraints:
+  - "strength: 10GPa at 1mm scale"
+  - "must_be_transparent_and_conductive"
+
+uncertainties: []
+
+objectives:
+  - "impossible_material"
+
+metadata:
+  trap_type: "overreach"
+  expected_forge_behavior: "Should not suggest materials that don't exist at required scale"
+  quality_gate_should_catch: true

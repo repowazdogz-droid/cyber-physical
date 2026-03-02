@@ -1,0 +1,31 @@
+problem:
+  name: "Trajectory clearance violation at pose 12/20"
+  domain: "robotic_design"
+
+constraints:
+  - "trajectory_poses: 20"
+  - "clearance_at_pose_12: 0.8mm"
+  - "minimum_threshold: 1.0mm"
+  - "must_avoid_collision"
+
+uncertainties:
+  - "pose_accuracy: variable"
+  - "clearance_measurement: unknown"
+  - "collision_risk: high"
+
+objectives:
+  - "trajectory_safety"
+  - "collision_avoidance"
+
+design:
+  trajectory_poses: 20
+  clearance_at_pose_12_mm: 0.8
+  minimum_threshold_mm: 1.0
+  # For trajectory clearance constraint
+  trajectory_clearances: [2.0, 1.9, 1.8, 1.7, 1.6, 1.5, 1.4, 1.3, 1.2, 1.1, 1.0, 0.9, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 2.0]
+  min_clearance_threshold_mm: 1.0
+
+metadata:
+  injected_failure: "trajectory_clearance_violation"
+  failure_category: "geometric"
+  expected_detection: "Trajectory clearance constraint should trigger"

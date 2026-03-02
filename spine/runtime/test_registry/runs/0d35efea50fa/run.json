@@ -1,0 +1,773 @@
+{
+  "run_id": "0d35efea50fa",
+  "case_id": "4be2ffaa2405",
+  "timestamp": "2026-02-05 09:52:54.755795",
+  "output": {
+    "decision_map": {
+      "constraints_checked": [
+        {
+          "constraint": "link1_radius: 0.025m",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "link2_radius: 0.030m",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "minimum_clearance_required: 0.01m",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "operating_config: [45deg, 120deg, -30deg]",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "must_not_self_collide",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        }
+      ],
+      "violations": []
+    },
+    "failure_modes": [],
+    "contradictions": [],
+    "unknowns": [
+      {
+        "item": "clearance_tolerance: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: clearance_tolerance: unknown"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.36000000000000004,
+          "max_confidence": 0.42400000000000004,
+          "sensitivity": 0.07999999999999999,
+          "dependent_on": [
+            "clearance_tolerance"
+          ]
+        }
+      },
+      {
+        "item": "deformation_under_load: variable",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: deformation_under_load: variable"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.4,
+          "max_confidence": 0.4,
+          "sensitivity": 0.0,
+          "dependent_on": [
+            "deformation_under_load"
+          ]
+        }
+      }
+    ],
+    "recommended_experiments": [],
+    "falsification_tests": [],
+    "formal_constraints": [
+      {
+        "constraint_id": "FORMAL_001",
+        "constraint_name": "mass_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": 10.0,
+        "margin": null,
+        "evidence": "Total mass not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_002",
+        "constraint_name": "max_force",
+        "result": "unknown",
+        "value": null,
+        "threshold": 2.0,
+        "margin": null,
+        "evidence": "Max force not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_003",
+        "constraint_name": "max_acceleration",
+        "result": "unknown",
+        "value": null,
+        "threshold": 50.0,
+        "margin": null,
+        "evidence": "Max acceleration not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_004",
+        "constraint_name": "min_clearance",
+        "result": "proven_violated",
+        "value": -3.0,
+        "threshold": 1.0,
+        "margin": -4.0,
+        "evidence": "Clearance -3.00 mm BELOW minimum",
+        "confidence": 1.0
+      },
+      {
+        "constraint_id": "FORMAL_005",
+        "constraint_name": "no_self_collision",
+        "result": "proven_violated",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Self-collision detected: ['link1', 'link2']",
+        "confidence": 1.0
+      },
+      {
+        "constraint_id": "FORMAL_006",
+        "constraint_name": "cog_stability",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "COG stability check not performed",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_007",
+        "constraint_name": "torque_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": 5.0,
+        "margin": null,
+        "evidence": "Max torque not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_008",
+        "constraint_name": "jerk_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": 500.0,
+        "margin": null,
+        "evidence": "Max jerk not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_009",
+        "constraint_name": "actuator_duty_cycle",
+        "result": "unknown",
+        "value": null,
+        "threshold": 0.8,
+        "margin": null,
+        "evidence": "Actuator duty cycle not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_010",
+        "constraint_name": "resonance_margin",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Operating frequency or natural frequency not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_011",
+        "constraint_name": "thermal_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": 50.0,
+        "margin": null,
+        "evidence": "Power dissipation not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_012",
+        "constraint_name": "joint_range_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": null,
+        "margin": null,
+        "evidence": "Joint range check not performed",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_013",
+        "constraint_name": "payload_ratio",
+        "result": "unknown",
+        "value": null,
+        "threshold": 0.7,
+        "margin": null,
+        "evidence": "Payload or max rated payload not provided",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_014",
+        "constraint_name": "stiffness_minimum",
+        "result": "unknown",
+        "value": null,
+        "threshold": 1000.0,
+        "margin": null,
+        "evidence": "End-effector stiffness not provided in design data",
+        "confidence": 0.0
+      },
+      {
+        "constraint_id": "FORMAL_015",
+        "constraint_name": "voltage_limit",
+        "result": "unknown",
+        "value": null,
+        "threshold": 24.0,
+        "margin": null,
+        "evidence": "Max voltage not provided in design data",
+        "confidence": 0.0
+      }
+    ],
+    "trace_graph": {
+      "run_id": "3e01b7e1da14",
+      "timestamp": "2026-02-05T09:52:54.755687",
+      "nodes": {
+        "input_0000": {
+          "id": "input_0000",
+          "type": "input",
+          "content": {
+            "type": "problem",
+            "name": "Two links intersect at operating configuration",
+            "domain": "robotic_design"
+          },
+          "timestamp": "2026-02-05T09:52:54.748773",
+          "parents": [],
+          "metadata": {}
+        },
+        "input_0001": {
+          "id": "input_0001",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "link1_radius: 0.025m"
+          },
+          "timestamp": "2026-02-05T09:52:54.748775",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0002": {
+          "id": "input_0002",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "link2_radius: 0.030m"
+          },
+          "timestamp": "2026-02-05T09:52:54.748776",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0003": {
+          "id": "input_0003",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "minimum_clearance_required: 0.01m"
+          },
+          "timestamp": "2026-02-05T09:52:54.748776",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0004": {
+          "id": "input_0004",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "operating_config: [45deg, 120deg, -30deg]"
+          },
+          "timestamp": "2026-02-05T09:52:54.748777",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0005": {
+          "id": "input_0005",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "must_not_self_collide"
+          },
+          "timestamp": "2026-02-05T09:52:54.748778",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0006": {
+          "id": "input_0006",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "clearance_tolerance: unknown"
+          },
+          "timestamp": "2026-02-05T09:52:54.748779",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0007": {
+          "id": "input_0007",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "deformation_under_load: variable"
+          },
+          "timestamp": "2026-02-05T09:52:54.748779",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0008": {
+          "id": "input_0008",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "full_workspace_access"
+          },
+          "timestamp": "2026-02-05T09:52:54.748780",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0009": {
+          "id": "input_0009",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "collision_free_motion"
+          },
+          "timestamp": "2026-02-05T09:52:54.748781",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "inference_0010": {
+          "id": "inference_0010",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "link1_radius: 0.025m",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T09:52:54.755614",
+          "parents": [
+            "input_0001"
+          ],
+          "metadata": {}
+        },
+        "inference_0011": {
+          "id": "inference_0011",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "link2_radius: 0.030m",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T09:52:54.755615",
+          "parents": [
+            "input_0002"
+          ],
+          "metadata": {}
+        },
+        "inference_0012": {
+          "id": "inference_0012",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "minimum_clearance_required: 0.01m",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T09:52:54.755616",
+          "parents": [
+            "input_0003"
+          ],
+          "metadata": {}
+        },
+        "inference_0013": {
+          "id": "inference_0013",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "operating_config: [45deg, 120deg, -30deg]",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T09:52:54.755617",
+          "parents": [
+            "input_0004"
+          ],
+          "metadata": {}
+        },
+        "inference_0014": {
+          "id": "inference_0014",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "must_not_self_collide",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T09:52:54.755618",
+          "parents": [
+            "input_0005"
+          ],
+          "metadata": {}
+        },
+        "output_0015": {
+          "id": "output_0015",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "clearance_tolerance: unknown",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T09:52:54.755639",
+          "parents": [
+            "input_0006"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: clearance_tolerance: unknown"
+              ],
+              "requires_validation": true
+            }
+          }
+        },
+        "output_0016": {
+          "id": "output_0016",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "deformation_under_load: variable",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T09:52:54.755649",
+          "parents": [
+            "input_0007"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: deformation_under_load: variable"
+              ],
+              "requires_validation": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "trace": {
+    "run_id": "3e01b7e1da14",
+    "timestamp": "2026-02-05T09:52:54.755687",
+    "nodes": {
+      "input_0000": {
+        "id": "input_0000",
+        "type": "input",
+        "content": {
+          "type": "problem",
+          "name": "Two links intersect at operating configuration",
+          "domain": "robotic_design"
+        },
+        "timestamp": "2026-02-05T09:52:54.748773",
+        "parents": [],
+        "metadata": {}
+      },
+      "input_0001": {
+        "id": "input_0001",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "link1_radius: 0.025m"
+        },
+        "timestamp": "2026-02-05T09:52:54.748775",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0002": {
+        "id": "input_0002",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "link2_radius: 0.030m"
+        },
+        "timestamp": "2026-02-05T09:52:54.748776",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0003": {
+        "id": "input_0003",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "minimum_clearance_required: 0.01m"
+        },
+        "timestamp": "2026-02-05T09:52:54.748776",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0004": {
+        "id": "input_0004",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "operating_config: [45deg, 120deg, -30deg]"
+        },
+        "timestamp": "2026-02-05T09:52:54.748777",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0005": {
+        "id": "input_0005",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "must_not_self_collide"
+        },
+        "timestamp": "2026-02-05T09:52:54.748778",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0006": {
+        "id": "input_0006",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "clearance_tolerance: unknown"
+        },
+        "timestamp": "2026-02-05T09:52:54.748779",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0007": {
+        "id": "input_0007",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "deformation_under_load: variable"
+        },
+        "timestamp": "2026-02-05T09:52:54.748779",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0008": {
+        "id": "input_0008",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "full_workspace_access"
+        },
+        "timestamp": "2026-02-05T09:52:54.748780",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0009": {
+        "id": "input_0009",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "collision_free_motion"
+        },
+        "timestamp": "2026-02-05T09:52:54.748781",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "inference_0010": {
+        "id": "inference_0010",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "link1_radius: 0.025m",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:52:54.755614",
+        "parents": [
+          "input_0001"
+        ],
+        "metadata": {}
+      },
+      "inference_0011": {
+        "id": "inference_0011",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "link2_radius: 0.030m",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:52:54.755615",
+        "parents": [
+          "input_0002"
+        ],
+        "metadata": {}
+      },
+      "inference_0012": {
+        "id": "inference_0012",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "minimum_clearance_required: 0.01m",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:52:54.755616",
+        "parents": [
+          "input_0003"
+        ],
+        "metadata": {}
+      },
+      "inference_0013": {
+        "id": "inference_0013",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "operating_config: [45deg, 120deg, -30deg]",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:52:54.755617",
+        "parents": [
+          "input_0004"
+        ],
+        "metadata": {}
+      },
+      "inference_0014": {
+        "id": "inference_0014",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "must_not_self_collide",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T09:52:54.755618",
+        "parents": [
+          "input_0005"
+        ],
+        "metadata": {}
+      },
+      "output_0015": {
+        "id": "output_0015",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "clearance_tolerance: unknown",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T09:52:54.755639",
+        "parents": [
+          "input_0006"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: clearance_tolerance: unknown"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0016": {
+        "id": "output_0016",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "deformation_under_load: variable",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T09:52:54.755649",
+        "parents": [
+          "input_0007"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: deformation_under_load: variable"
+            ],
+            "requires_validation": true
+          }
+        }
+      }
+    }
+  },
+  "predictions": [],
+  "reviewer": null,
+  "review_notes": ""
+}

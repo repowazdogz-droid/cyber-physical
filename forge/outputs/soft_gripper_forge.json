@@ -1,0 +1,264 @@
+{
+  "case_name": "Soft gripper for tissue manipulation",
+  "timestamp": "2026-02-05T12:41:16.457904",
+  "hypotheses": [
+    {
+      "id": "h001",
+      "hypothesis_text": "Failure elimination: What mechanism would eliminate slip failures entirely? Gecko-inspired directional adhesion or shape-locking?",
+      "category": "failure_elimination",
+      "testable_prediction": "If we use gecko-inspired directional adhesion, slip should be eliminated even at low normal force",
+      "falsification_test": "Build gecko-adhesive gripper, test slip threshold vs normal force, compare to friction-based",
+      "falsification_cost": "medium",
+      "falsification_time": "weeks",
+      "confidence": 0.7,
+      "adjacent_domains": [
+        "gecko_adhesion",
+        "biomimetics"
+      ],
+      "assumptions_challenged": [
+        "friction is the only grip mechanism",
+        "normal force must exceed tangential"
+      ],
+      "evidence_type": "adjacency_transfer",
+      "provenance": [
+        "failure_mode:slip_under_load"
+      ],
+      "requires_validation": true
+    },
+    {
+      "id": "h002",
+      "hypothesis_text": "Uncertainty collapse: What measurement would collapse tissue compliance uncertainty? Force-displacement curve or indentation modulus?",
+      "category": "uncertainty_collapse",
+      "testable_prediction": "If we measure force-displacement curve on representative tissue, compliance uncertainty should reduce from \u00b150% to \u00b110%",
+      "falsification_test": "Measure force-displacement curves on 10+ tissue samples, compute statistics",
+      "falsification_cost": "low",
+      "falsification_time": "days",
+      "confidence": 0.9,
+      "adjacent_domains": [
+        "biomechanics",
+        "tissue_characterization"
+      ],
+      "assumptions_challenged": [
+        "tissue properties are unknowable",
+        "compliance is too variable"
+      ],
+      "evidence_type": "rule_based",
+      "provenance": [
+        "unknown:tissue_compliance: unknown_range"
+      ],
+      "requires_validation": false
+    },
+    {
+      "id": "h003",
+      "hypothesis_text": "Uncertainty collapse: What measurement would collapse friction uncertainty? Slip threshold test or coefficient measurement?",
+      "category": "uncertainty_collapse",
+      "testable_prediction": "If we measure slip threshold on representative surfaces, friction uncertainty should reduce from \u00b140% to \u00b115%",
+      "falsification_test": "Measure slip threshold on 5+ representative surfaces, compute friction coefficient distribution",
+      "falsification_cost": "low",
+      "falsification_time": "hours",
+      "confidence": 0.85,
+      "adjacent_domains": [
+        "tribology",
+        "surface_science"
+      ],
+      "assumptions_challenged": [
+        "friction is too variable to measure",
+        "surfaces are too diverse"
+      ],
+      "evidence_type": "rule_based",
+      "provenance": [
+        "unknown:friction_coefficient: 0.3-0.6"
+      ],
+      "requires_validation": false
+    }
+  ],
+  "adjacencies": [
+    {
+      "source_domain": "soft_robotics",
+      "target_application": "surgical_gripping",
+      "technique": "compliant actuation",
+      "relevance_score": 1.0,
+      "reference_hint": "Soft robotics grippers \u2192 gentle tissue manipulation"
+    },
+    {
+      "source_domain": "fluidic_actuation",
+      "target_application": "gentle_manipulation",
+      "technique": "pneumatic/hydraulic",
+      "relevance_score": 1.0,
+      "reference_hint": "Fluidic \u2192 low-force actuation"
+    },
+    {
+      "source_domain": "microsurgery",
+      "target_application": "surgical_robotics",
+      "technique": "precision positioning",
+      "relevance_score": 0.85,
+      "reference_hint": "Microsurgery techniques \u2192 scaled-up precision"
+    },
+    {
+      "source_domain": "gecko_adhesion",
+      "target_application": "surgical_gripping",
+      "technique": "directional adhesion",
+      "relevance_score": 0.85,
+      "reference_hint": "Gecko adhesion \u2192 slip-resistant grippers"
+    },
+    {
+      "source_domain": "origami_engineering",
+      "target_application": "deployable_structures",
+      "technique": "folded mechanisms",
+      "relevance_score": 0.8,
+      "reference_hint": "Origami \u2192 deployable surgical tools"
+    },
+    {
+      "source_domain": "haptic_feedback",
+      "target_application": "surgical_control",
+      "technique": "force feedback",
+      "relevance_score": 0.8,
+      "reference_hint": "Haptics \u2192 surgical force control"
+    },
+    {
+      "source_domain": "continuum_robotics",
+      "target_application": "endoscopic_access",
+      "technique": "snake-like motion",
+      "relevance_score": 0.8,
+      "reference_hint": "Continuum \u2192 endoscopic navigation"
+    },
+    {
+      "source_domain": "biomimetics",
+      "target_application": "surgical_design",
+      "technique": "nature-inspired mechanisms",
+      "relevance_score": 0.75,
+      "reference_hint": "Biomimetics \u2192 bio-inspired surgical tools"
+    },
+    {
+      "source_domain": "variable_stiffness",
+      "target_application": "compliant_robotics",
+      "technique": "stiffness modulation",
+      "relevance_score": 0.75,
+      "reference_hint": "Variable stiffness \u2192 adaptive compliance"
+    },
+    {
+      "source_domain": "shape_memory_alloys",
+      "target_application": "adaptive_instruments",
+      "technique": "phase transformation",
+      "relevance_score": 0.7,
+      "reference_hint": "SMA \u2192 adaptive surgical instruments"
+    }
+  ],
+  "experiments": [
+    {
+      "hypothesis_id": "h001",
+      "experiment_name": "Test: Failure elimination: What mechanism would eliminate slip fai...",
+      "objective": "If we use gecko-inspired directional adhesion, slip should be eliminated even at low normal force",
+      "method": "bench",
+      "measurements": [
+        "applied force (N)",
+        "grip force (N)",
+        "slip threshold (N)"
+      ],
+      "success_criterion": "Observe: If we use gecko-inspired directional adhesion, slip should be eliminated even at low normal force",
+      "falsification_criterion": "Build gecko-adhesive gripper, test slip threshold vs normal force, compare to friction-based",
+      "estimated_cost": "medium",
+      "estimated_time": "weeks",
+      "equipment_needed": [
+        "force gauge",
+        "load cell",
+        "test fixture"
+      ],
+      "data_to_feed_back": [
+        "applied_force_measured",
+        "grip_force_measured",
+        "slip_threshold_measured",
+        "hypothesis_confirmed_or_falsified"
+      ],
+      "confidence": 0.7,
+      "evidence_type": "adjacency_transfer",
+      "provenance": [
+        "failure_mode:slip_under_load"
+      ],
+      "requires_validation": true,
+      "quality_score": 6,
+      "needs_more_context": false,
+      "missing_fields": [],
+      "is_spam": false,
+      "safety_check": true
+    },
+    {
+      "hypothesis_id": "h002",
+      "experiment_name": "Test: Uncertainty collapse: What measurement would collapse tissue...",
+      "objective": "If we measure force-displacement curve on representative tissue, compliance uncertainty should reduce from \u00b150% to \u00b110%",
+      "method": "bench",
+      "measurements": [
+        "applied force (N)",
+        "grip force (N)",
+        "slip threshold (N)",
+        "force (N)",
+        "displacement (mm)",
+        "compliance (mm/N)"
+      ],
+      "success_criterion": "Observe: If we measure force-displacement curve on representative tissue, compliance uncertainty should reduce from \u00b150% to \u00b110%",
+      "falsification_criterion": "Measure force-displacement curves on 10+ tissue samples, compute statistics",
+      "estimated_cost": "low",
+      "estimated_time": "days",
+      "equipment_needed": [
+        "force gauge",
+        "load cell",
+        "test fixture"
+      ],
+      "data_to_feed_back": [
+        "applied_force_measured",
+        "grip_force_measured",
+        "slip_threshold_measured",
+        "hypothesis_confirmed_or_falsified"
+      ],
+      "confidence": 0.9,
+      "evidence_type": "rule_based",
+      "provenance": [
+        "unknown:tissue_compliance: unknown_range"
+      ],
+      "requires_validation": false,
+      "quality_score": 6,
+      "needs_more_context": true,
+      "missing_fields": [],
+      "is_spam": true,
+      "safety_check": true
+    },
+    {
+      "hypothesis_id": "h003",
+      "experiment_name": "Test: Uncertainty collapse: What measurement would collapse fricti...",
+      "objective": "If we measure slip threshold on representative surfaces, friction uncertainty should reduce from \u00b140% to \u00b115%",
+      "method": "bench",
+      "measurements": [
+        "normal force (N)",
+        "tangential force (N)",
+        "friction coefficient"
+      ],
+      "success_criterion": "Observe: If we measure slip threshold on representative surfaces, friction uncertainty should reduce from \u00b140% to \u00b115%",
+      "falsification_criterion": "Measure slip threshold on 5+ representative surfaces, compute friction coefficient distribution",
+      "estimated_cost": "low",
+      "estimated_time": "hours",
+      "equipment_needed": [
+        "test fixture",
+        "measurement equipment"
+      ],
+      "data_to_feed_back": [
+        "normal_force_measured",
+        "tangential_force_measured",
+        "friction_coefficient_measured",
+        "hypothesis_confirmed_or_falsified"
+      ],
+      "confidence": 0.85,
+      "evidence_type": "rule_based",
+      "provenance": [
+        "unknown:friction_coefficient: 0.3-0.6"
+      ],
+      "requires_validation": false,
+      "quality_score": 5,
+      "needs_more_context": true,
+      "missing_fields": [
+        "has_equipment_list"
+      ],
+      "is_spam": true,
+      "safety_check": true
+    }
+  ]
+}

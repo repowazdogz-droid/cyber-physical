@@ -1,0 +1,24 @@
+(program (seq (let cropped (crop_to_bbox grid objs)) (paste_at base cropped (rel center 0 0))))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

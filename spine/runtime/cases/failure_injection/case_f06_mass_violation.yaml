@@ -1,0 +1,27 @@
+problem:
+  name: "Payload exceeds rated capacity"
+  domain: "robotic_design"
+
+constraints:
+  - "payload_mass: 15.0kg"
+  - "arm_rated_capacity: 10.0kg"
+  - "must_not_exceed_mass_limit"
+  - "safe_operation"
+
+uncertainties:
+  - "dynamic_load_multiplier: 1.2-1.5"
+  - "fatigue_degradation: unknown"
+
+objectives:
+  - "adequate_payload_capacity"
+  - "long_term_reliability"
+
+design:
+  payload_mass_kg: 15.0
+  rated_capacity_kg: 10.0
+  violation_kg: 5.0
+
+metadata:
+  injected_failure: "mass_violation"
+  expected_detection: "Mass limit formal constraint violation"
+  decision_delta_target: 3

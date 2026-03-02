@@ -1,0 +1,257 @@
+{
+  "stimulus_id": "st-010",
+  "analysis_id": "bb5f0858-c808-4190-a812-26de16535d4f",
+  "case_id": "78460ce1-0fda-4344-94a6-02fcd01521eb",
+  "duration_ms": 10207,
+  "success": true,
+  "confidence_score": 0.2473,
+  "confidence_breakdown": {
+    "per_lens": [
+      {
+        "lens_id": "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "claim_count": 6,
+        "scoring_claim_count": 6,
+        "supported_claim_count": 4,
+        "mean_evidence_strength": 0.6666666666666666,
+        "contribution_to_agreement": 1.1330555555555555
+      },
+      {
+        "lens_id": "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+        "claim_count": 8,
+        "scoring_claim_count": 8,
+        "supported_claim_count": 6,
+        "mean_evidence_strength": 0.7625000000000001,
+        "contribution_to_agreement": 1.7025000000000001
+      },
+      {
+        "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+        "claim_count": 7,
+        "scoring_claim_count": 7,
+        "supported_claim_count": 5,
+        "mean_evidence_strength": 0.7142857142857143,
+        "contribution_to_agreement": 0.913611111111111
+      },
+      {
+        "lens_id": "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "claim_count": 6,
+        "scoring_claim_count": 6,
+        "supported_claim_count": 4,
+        "mean_evidence_strength": 0.65,
+        "contribution_to_agreement": 0.5802777777777778
+      },
+      {
+        "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "claim_count": 7,
+        "scoring_claim_count": 7,
+        "supported_claim_count": 5,
+        "mean_evidence_strength": 0.6714285714285715,
+        "contribution_to_agreement": 1.5497222222222222
+      }
+    ],
+    "per_theme": [
+      {
+        "strength": 0.9666666666666667,
+        "theme_id": "217255a9-c3cc-50b4-bd55-72ca7c7cee66",
+        "agreement_type": "convergence",
+        "participating_lenses": 3
+      },
+      {
+        "strength": 0.7,
+        "theme_id": "2ef8b6d3-051c-58ef-8307-5c9e6c63ffaf",
+        "agreement_type": "convergence",
+        "participating_lenses": 3
+      },
+      {
+        "strength": 0.7333333333333334,
+        "theme_id": "47bd9fa8-02de-5c05-ae76-ff867f71e785",
+        "agreement_type": "convergence",
+        "participating_lenses": 3
+      },
+      {
+        "strength": 0.6499999999999999,
+        "theme_id": "9097daf8-eac8-5e18-9ceb-bbb3af90c6bb",
+        "agreement_type": "convergence",
+        "participating_lenses": 2
+      },
+      {
+        "strength": 0.5125,
+        "theme_id": "b0780ede-3c50-5ee6-9f51-ee6859003805",
+        "agreement_type": "convergence",
+        "participating_lenses": 5
+      },
+      {
+        "strength": 0.6,
+        "theme_id": "b25c7111-5fe8-5577-8cf2-5de2141df348",
+        "agreement_type": "convergence",
+        "participating_lenses": 2
+      },
+      {
+        "strength": 0.7666666666666666,
+        "theme_id": "bf94a780-1eab-597f-a892-806d27d09c63",
+        "agreement_type": "convergence",
+        "participating_lenses": 3
+      },
+      {
+        "strength": 0.95,
+        "theme_id": "dd746387-8e2f-5c6c-89aa-574410a38649",
+        "agreement_type": "convergence",
+        "participating_lenses": 2
+      }
+    ],
+    "raw_score": 0.2472619459500813,
+    "drift_flags": [],
+    "final_score": 0.2473,
+    "agreement_factor": 0.41156249999999994,
+    "lens_count_factor": 1,
+    "divergence_penalty": 0,
+    "unsupported_penalty": 0.14705882352941177,
+    "low_evidence_warning": false,
+    "evidence_density_factor": 0.33647057791797247,
+    "high_contradiction_warning": false
+  },
+  "convergence_count": 8,
+  "divergence_count": 0,
+  "orphan_count": 7,
+  "convergence_points": [
+    {
+      "strength": 0.9666666666666667,
+      "theme_id": "217255a9-c3cc-50b4-bd55-72ca7c7cee66",
+      "theme_label": "Partnership exclusivity would require an additional $30M upfront.",
+      "evidence_density": 0.4033333209657746,
+      "supporting_claims": [
+        "0ba85e2d-7b42-4f58-b94a-f0d3f95b49eb",
+        "a0038b7f-2d52-4622-a482-188c38a0f837",
+        "be53e88b-71ca-44c0-8905-97f8d5a7d5a3"
+      ],
+      "supporting_lenses": [
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    },
+    {
+      "strength": 0.7,
+      "theme_id": "2ef8b6d3-051c-58ef-8307-5c9e6c63ffaf",
+      "theme_label": "There is a re-identification risk in sharing anonymized data with the AI firm.",
+      "evidence_density": 0.4124999873513604,
+      "supporting_claims": [
+        "1e5cadc6-214f-4c1f-8611-5a53e9da4ead",
+        "cef6d99a-25c8-4c12-a486-391148012191",
+        "d3681e7c-17c6-4e80-a297-17a392ce8b82",
+        "f34963ba-f417-41b6-95fb-e6e10e8d8756"
+      ],
+      "supporting_lenses": [
+        "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    },
+    {
+      "strength": 0.7333333333333334,
+      "theme_id": "47bd9fa8-02de-5c05-ae76-ff867f71e785",
+      "theme_label": "Three ongoing FDA submissions reference data integrity commitments that could be complicated by third-party access.",
+      "evidence_density": 0.513333317592804,
+      "supporting_claims": [
+        "4823bd13-4a5e-471f-839a-dea05a4ea5d1",
+        "d3d97521-bfdd-4802-96e6-c6b9f6d0bae3",
+        "ea08e3c2-9f01-4f03-8ac4-c7e2373f7a7d"
+      ],
+      "supporting_lenses": [
+        "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "6d1a58fb-4982-409a-b2bb-984d36a3feea"
+      ]
+    },
+    {
+      "strength": 0.6499999999999999,
+      "theme_id": "9097daf8-eac8-5e18-9ceb-bbb3af90c6bb",
+      "theme_label": "The partnership with the AI firm could accelerate the pharmaceutical company's pipeline by 2-3 years.",
+      "evidence_density": 0.5499999831351472,
+      "supporting_claims": [
+        "26d971e8-e15d-41d6-b610-0a5bdf8cd45a",
+        "6248b0c4-b686-446b-8b54-424e315e23f0"
+      ],
+      "supporting_lenses": [
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "6d1a58fb-4982-409a-b2bb-984d36a3feea"
+      ]
+    },
+    {
+      "strength": 0.5125,
+      "theme_id": "b0780ede-3c50-5ee6-9f51-ee6859003805",
+      "theme_label": "The AI firm's technology is capable of significantly accelerating drug discovery.",
+      "evidence_density": 0.041249998735136045,
+      "supporting_claims": [
+        "169fb460-b2bc-4afb-b9ce-aa2842df7581",
+        "471c8de3-c734-4fe2-9403-d45bf856f1e8",
+        "4a59a080-8c37-459d-819b-47eae06071a9",
+        "5ccf4fe1-9e38-4500-a9e0-12af1d6c4cf9",
+        "82b482b8-8d4f-4282-8ac2-f6c3b6cffffc",
+        "a4a5b466-7516-4432-afae-63fdbe2519b8",
+        "b400012a-5ce7-430d-bbd6-62e1826049a9",
+        "f4f0831d-c9b4-468a-b6b3-f0eebee8510c"
+      ],
+      "supporting_lenses": [
+        "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    },
+    {
+      "strength": 0.6,
+      "theme_id": "b25c7111-5fe8-5577-8cf2-5de2141df348",
+      "theme_label": "The partnership will not violate existing data protection laws.",
+      "evidence_density": 0.2199999932540589,
+      "supporting_claims": [
+        "80722d19-1a83-4f4f-bdcd-c5d3b3618aac",
+        "accaaf39-b4eb-4002-af01-5c6f721288c3"
+      ],
+      "supporting_lenses": [
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "5d323a15-6d2a-48d7-ad02-3f65a3c259f8"
+      ]
+    },
+    {
+      "strength": 0.7666666666666666,
+      "theme_id": "bf94a780-1eab-597f-a892-806d27d09c63",
+      "theme_label": "There is a re-identification risk despite anonymization of the dataset.",
+      "evidence_density": 0.513333317592804,
+      "supporting_claims": [
+        "22821e29-d660-49e1-94a6-f1452ea552c3",
+        "ac614abb-9e52-4987-967c-b7a3af6106e0",
+        "e10e2f7b-d17f-429f-8b2d-a8bd0eb48ba1"
+      ],
+      "supporting_lenses": [
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    },
+    {
+      "strength": 0.95,
+      "theme_id": "dd746387-8e2f-5c6c-89aa-574410a38649",
+      "theme_label": "Consent forms from pre-2018 studies did not contemplate AI use.",
+      "evidence_density": 0.4949999848216325,
+      "supporting_claims": [
+        "06a17bac-91b5-47cf-96ec-473b9a1c3b89",
+        "170d259c-49c2-4c23-acfb-44a339c6f9da"
+      ],
+      "supporting_lenses": [
+        "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "6d1a58fb-4982-409a-b2bb-984d36a3feea"
+      ]
+    }
+  ],
+  "divergence_points": [],
+  "orphan_claims": [
+    "b50e218d-c8a8-4c99-bfb8-679003cdd4ea",
+    "78b2378d-dac4-4a31-8d24-a9fcdcd5b19f",
+    "d8dda381-4fbf-44ea-9579-be28a7c5253b",
+    "49c5afd7-ec1c-492e-ac34-d57186eb5f2e",
+    "ef52674a-54fe-42ed-9ae2-e63e8c323c39",
+    "4c077793-cb0f-43ab-866f-7e53b647c6cf",
+    "b06755b7-f1f3-4559-a4e6-23cd448e39d1"
+  ]
+}

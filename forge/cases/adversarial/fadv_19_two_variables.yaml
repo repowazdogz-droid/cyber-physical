@@ -1,0 +1,21 @@
+problem:
+  name: "Test changes two variables"
+  domain: "surgical_robotics"
+
+constraints:
+  - "mass_limit: 10kg"
+  - "force_limit: 5N"
+
+uncertainties: []
+
+objectives:
+  - "optimize"
+
+design:
+  total_mass_kg: 12.0
+  max_force_n: 6.0
+
+metadata:
+  trap_type: "confounded_test"
+  expected_forge_behavior: "Should flag experiments that change multiple variables simultaneously"
+  quality_gate_should_catch: true

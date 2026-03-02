@@ -1,0 +1,41 @@
+problem:
+  name: "Intermittent cooling - fan cycles on/off every 30s"
+  domain: "robotic_design"
+
+constraints:
+  - "fan_cycle_period: 30s"
+  - "duty_cycle: 50%"
+  - "power_dissipation: 40W"
+  - "cooling_capacity_on: 50W"
+  - "cooling_capacity_off: 5W"
+  - "must_prevent_overheating"
+
+uncertainties:
+  - "thermal_time_constant: variable"
+  - "peak_temperature: unknown"
+  - "thermal_cycling_stress: unknown"
+
+objectives:
+  - "thermal_management"
+  - "reliability"
+
+design:
+  fan_cycle_period_s: 30
+  fan_duty_cycle: 0.5
+  power_dissipation_w: 40
+  cooling_capacity_on_w: 50
+  cooling_capacity_off_w: 5
+  # For thermal constraints
+  power_density_w_per_mm2: 0.8
+  duty_cycle: 0.5
+  cooling_factor: 0.5
+  thermal_rating_w: 50
+  temperature_rise_celsius: 85
+  max_temperature_celsius: 70
+  operating_temp_c: 85
+  max_service_temp_c: 100
+
+metadata:
+  injected_failure: "intermittent_cooling"
+  failure_category: "thermal"
+  expected_detection: "Thermal constraint may trigger if intermittent cooling modeled"

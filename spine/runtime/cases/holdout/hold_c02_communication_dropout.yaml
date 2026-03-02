@@ -1,0 +1,35 @@
+problem:
+  name: "Communication dropout 50ms every 10s"
+  domain: "robotic_design"
+
+constraints:
+  - "dropout_duration: 50ms"
+  - "dropout_period: 10s"
+  - "control_period: 20ms"
+  - "max_latency: 30ms"
+  - "must_maintain_control"
+
+uncertainties:
+  - "dropout_timing: variable"
+  - "control_degradation: unknown"
+  - "stability_impact: unknown"
+
+objectives:
+  - "communication_reliability"
+  - "control_continuity"
+
+design:
+  dropout_duration_ms: 50
+  dropout_period_ms: 10000
+  control_period_ms: 20
+  max_latency_ms: 30
+  # For control constraints
+  control_latency_ms: 50
+  control_period_ms: 20
+  control_bandwidth_hz: 50
+  task_frequency_hz: 10
+
+metadata:
+  injected_failure: "communication_dropout"
+  failure_category: "control"
+  expected_detection: "Control constraint should trigger on latency violation"

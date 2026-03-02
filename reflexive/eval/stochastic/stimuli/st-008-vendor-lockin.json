@@ -1,0 +1,5 @@
+{
+  "id": "st-008",
+  "text": "Our entire production infrastructure runs on AWS (annual spend $14M, 3-year committed). AWS has announced a 22% price increase for reserved instances effective next renewal in 9 months. Our platform team has prototyped a multi-cloud abstraction layer that would enable migration to GCP or Azure within 6 months, but it adds 15% latency overhead and requires rewriting our data pipeline. An alternative proposal is to negotiate an enterprise discount agreement with AWS by committing to $20M/year for 5 years, which would reduce the effective increase to 8%. Our CTO advocates for multi-cloud independence; our VP Engineering warns the abstraction layer will become permanent technical debt. Current AWS dependency includes 23 managed services.",
+  "type": "decision"
+}

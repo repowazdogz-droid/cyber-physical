@@ -1,0 +1,22 @@
+problem:
+  name: "Origami for load-bearing structure"
+  domain: "surgical_robotics"
+
+constraints:
+  - "load_capacity: 1000N"
+  - "must_be_rigid_under_load"
+  - "deployable: yes"
+
+uncertainties: []
+
+objectives:
+  - "strong_deployable"
+
+design:
+  load_n: 1000.0
+  stiffness_required_nm: 10000.0
+
+metadata:
+  trap_type: "misleading_adjacency"
+  expected_forge_behavior: "Should not suggest origami for load-bearing (compliance = weakness)"
+  quality_gate_should_catch: true

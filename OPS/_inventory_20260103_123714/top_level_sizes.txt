@@ -1,0 +1,20 @@
+636M	personal-site
+564M	omega-workspace-v1
+510M	shared-reality-site
+479M	node_modules
+440M	trauma-informed-education-system
+436M	Archive
+429M	constraint-universe-site
+ 94M	constraint-universe
+2.9M	omega-vision
+2.4M	spine
+1.6M	app
+944K	oplas
+420K	public
+376K	package-lock.json
+168K	tsconfig.tsbuildinfo
+ 80K	Docs
+ 76K	scripts
+ 72K	OPS
+ 68K	Omega:notes
+ 60K	shared-reality-programme

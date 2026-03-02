@@ -1,0 +1,18 @@
+problem:
+  name: "Case with only unknowns"
+  domain: "surgical_robotics"
+
+constraints: []
+
+uncertainties:
+  - "parameter1: unknown"
+  - "parameter2: unknown"
+  - "parameter3: unknown"
+
+objectives:
+  - "solve problem"
+
+metadata:
+  trap_type: "non_actionable"
+  expected_forge_behavior: "Should generate uncertainty collapse hypotheses but no constraint relaxation"
+  quality_gate_should_catch: false

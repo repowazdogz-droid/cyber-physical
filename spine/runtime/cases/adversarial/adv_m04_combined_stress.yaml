@@ -1,0 +1,30 @@
+problem:
+  name: "Combined bending + torsion at 90% yield"
+  domain: "robotic_design"
+
+constraints:
+  - "bending_stress: 0.6 × yield"
+  - "torsional_stress: 0.6 × yield"
+  - "von_mises_equivalent: 0.9 × yield"
+  - "must_stay_below_yield"
+
+uncertainties:
+  - "stress_interaction_model: von_mises_vs_max_principal"
+  - "yield_strength_variability: ±8%"
+  - "load_combination_uncertainty: unknown"
+
+objectives:
+  - "structural_integrity"
+  - "safety_factor_requirement"
+
+design:
+  bending_stress_mpa: 600
+  torsional_stress_mpa: 600
+  yield_strength_mpa: 1000
+  von_mises_mpa: 900
+  utilization: 0.9
+
+metadata:
+  injected_failure: "combined_stress_failure"
+  failure_category: "mechanical"
+  expected_detection: "Force constraint may trigger if equivalent stress considered"

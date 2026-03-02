@@ -1,0 +1,41 @@
+{
+  "case_id": "d18378c9f1e9",
+  "name": "Sensor drift + actuator wear + load increase = cascading degradation",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:12:27.854507",
+  "case_yaml": {
+    "problem": {
+      "name": "Sensor drift + actuator wear + load increase = cascading degradation",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "sensor_drift: 2%/year",
+      "actuator_wear: 5% efficiency loss",
+      "load_increase: +15%",
+      "combined_performance_degradation: unknown",
+      "must_maintain_system_performance"
+    ],
+    "uncertainties": [
+      "degradation_interaction: unknown",
+      "compensation_capability: variable",
+      "failure_timeline: unknown"
+    ],
+    "objectives": [
+      "system_reliability",
+      "degradation_management"
+    ]
+  },
+  "design_data": {
+    "sensor_drift_percent_per_year": 2,
+    "actuator_efficiency_loss_percent": 5,
+    "load_increase_percent": 15,
+    "combined_degradation_factor": 1.22,
+    "system_margin": 0.78
+  },
+  "tags": [
+    "adversarial",
+    "unknown",
+    "test"
+  ],
+  "notes": "Injected failure: cascading_degradation"
+}

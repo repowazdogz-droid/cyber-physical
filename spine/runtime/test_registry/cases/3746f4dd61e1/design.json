@@ -1,0 +1,7 @@
+{
+  "error_per_joint_deg": 0.5,
+  "joint_count": 6,
+  "worst_case_error_deg": 3.0,
+  "max_error_deg": 2.0,
+  "violation_deg": 1.0
+}

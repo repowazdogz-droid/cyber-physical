@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMEGA — Research Governance</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #08090c;
+  --surface: #0e1017;
+  --raised: #141720;
+  --hover: #1a1e2a;
+  --border: #1e2233;
+  --border-hi: #2a3050;
+  --t1: #e2e4ea;
+  --t2: #8890a4;
+  --t3: #555d74;
+  --green: #34d399;
+  --green-d: #166534;
+  --green-g: rgba(52,211,153,0.12);
+  --amber: #fbbf24;
+  --amber-d: #854d0e;
+  --amber-g: rgba(251,191,36,0.12);
+  --red: #f87171;
+  --red-d: #991b1b;
+  --red-g: rgba(248,113,113,0.12);
+  --blue: #60a5fa;
+  --blue-g: rgba(96,165,250,0.08);
+  --purple: #a78bfa;
+  --purple-g: rgba(167,139,250,0.08);
+  --mono: 'SF Mono','Cascadia Code','Fira Code','Consolas',monospace;
+  --sans: -apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+}
+
+html { font-size: 14px; }
+body { background: var(--bg); color: var(--t1); font-family: var(--sans); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+
+/* ─── TRUST STRIP ─── */
+.strip {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  padding: 5px 16px; border-bottom: 1px solid var(--border);
+  font-family: var(--mono); font-size: 9px; letter-spacing: .5px; color: var(--t3); flex-wrap: wrap;
+}
+.strip-item { display: flex; align-items: center; gap: 4px; }
+.strip-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+.strip-dot.amber { background: var(--amber); }
+.strip-dot.red { background: var(--red); }
+
+/* ─── HEADER ─── */
+.hdr {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 24px; border-bottom: 1px solid var(--border);
+}
+.hdr-left { display: flex; align-items: center; gap: 12px; }
+.hdr-logo { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--t3); }
+.hdr-title { font-size: 15px; font-weight: 600; }
+.hdr-sub { font-size: 10px; color: var(--t2); font-family: var(--mono); }
+.hdr-btns { display: flex; gap: 8px; }
+.hdr-btn {
+  padding: 4px 10px; background: var(--raised); border: 1px solid var(--border); border-radius: 4px;
+  color: var(--t2); font-family: var(--mono); font-size: 10px; cursor: pointer; transition: all 150ms;
+}
+.hdr-btn:hover { border-color: var(--blue); color: var(--blue); }
+.hdr-btn.active { border-color: var(--blue); color: var(--blue); background: var(--blue-g); }
+
+/* ─── PROGRESS BAR ─── */
+.progress {
+  display: flex; align-items: stretch; border-bottom: 1px solid var(--border);
+}
+.prog-step {
+  flex: 1; padding: 8px 4px; text-align: center; border-right: 1px solid var(--border);
+  font-family: var(--mono); font-size: 9px; letter-spacing: .3px; color: var(--t3);
+  cursor: pointer; transition: all 150ms; position: relative; user-select: none;
+}
+.prog-step:last-child { border-right: none; }
+.prog-step:hover { background: var(--raised); }
+.prog-step.active { color: var(--blue); background: var(--blue-g); }
+.prog-step.done-block { color: var(--red); }
+.prog-step.done-allow { color: var(--green); }
+.prog-step.done-warn { color: var(--amber); }
+.prog-step.done-grad { color: var(--purple); }
+.prog-step.locked { opacity: .3; cursor: default; }
+.prog-step .prog-icon {
+  display: block; font-size: 12px; margin-bottom: 2px;
+}
+.prog-step .prog-label { display: block; }
+
+/* ─── MAIN CONTENT ─── */
+.content {
+  max-width: 720px; margin: 0 auto; padding: 28px 24px 100px;
+}
+
+/* Step explainer */
+.explainer-box {
+  padding: 14px 16px; background: var(--surface); border: 1px solid var(--border);
+  border-left: 3px solid var(--blue); border-radius: 0 8px 8px 0;
+  margin-bottom: 20px; font-size: 12px; color: var(--t2); line-height: 1.7;
+}
+.explainer-box strong { color: var(--t1); }
+
+/* Section title */
+.sec-title { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+.sec-sub { font-size: 12px; color: var(--t2); line-height: 1.6; margin-bottom: 16px; }
+
+/* Proposal JSON */
+.code-block {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  padding: 14px 16px; margin-bottom: 16px; font-family: var(--mono);
+  font-size: 11px; line-height: 1.7; color: var(--t2); overflow-x: auto; white-space: pre;
+}
+.ck { color: var(--blue); }
+.cs { color: var(--green); }
+.cn { color: var(--amber); }
+.ch { background: rgba(248,113,113,.1); padding: 1px 3px; border-radius: 2px; }
+.cm { color: var(--t3); }
+
+/* Run button */
+.run-btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 11px 24px;
+  background: var(--raised); border: 1px solid var(--border); border-radius: 8px;
+  color: var(--t1); font-family: var(--mono); font-size: 12px; letter-spacing: .5px;
+  cursor: pointer; transition: all 150ms;
+}
+.run-btn:hover { border-color: var(--blue); background: var(--hover); }
+.run-btn:disabled { opacity: .3; cursor: default; }
+
+/* Governance output card */
+.gov-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  overflow: hidden; margin-top: 20px; animation: fadeUp 300ms ease;
+}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+.gov-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px; border-bottom: 1px solid var(--border); background: var(--raised);
+}
+.gov-tag { font-family: var(--mono); font-size: 9px; letter-spacing: 1px; color: var(--t3); }
+.gov-badge {
+  font-family: var(--mono); font-size: 10px; font-weight: 600; padding: 3px 10px;
+  border-radius: 4px; letter-spacing: .5px;
+}
+.gov-badge.block { background: var(--red-g); color: var(--red); border: 1px solid var(--red-d); }
+.gov-badge.allow { background: var(--green-g); color: var(--green); border: 1px solid var(--green-d); }
+.gov-badge.warn { background: var(--amber-g); color: var(--amber); border: 1px solid var(--amber-d); }
+.gov-badge.grad { background: var(--purple-g); color: var(--purple); border: 1px solid rgba(167,139,250,.3); }
+
+.gov-body { padding: 16px; }
+.gov-section { margin-bottom: 14px; }
+.gov-section:last-child { margin-bottom: 0; }
+.gov-lbl { font-family: var(--mono); font-size: 9px; letter-spacing: 1px; color: var(--t3); margin-bottom: 6px; }
+.gov-row {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 4px 0; font-size: 12px; color: var(--t2); line-height: 1.6;
+}
+.gov-icon { flex-shrink: 0; width: 16px; text-align: center; font-size: 11px; margin-top: 2px; }
+.gov-req {
+  padding: 8px 12px; background: var(--bg); border-left: 2px solid var(--amber);
+  border-radius: 0 4px 4px 0; font-size: 11px; color: var(--t2); line-height: 1.5; margin-bottom: 4px;
+}
+.gov-req.met { border-left-color: var(--green); }
+
+/* Claim ladder */
+.ladder { display: flex; margin: 16px 0; }
+.ladder-tier {
+  flex: 1; padding: 10px 6px; border: 1px solid var(--border); text-align: center;
+  font-family: var(--mono); font-size: 9px; letter-spacing: .5px; color: var(--t3); transition: all 300ms;
+}
+.ladder-tier:first-child { border-radius: 6px 0 0 6px; }
+.ladder-tier:last-child { border-radius: 0 6px 6px 0; }
+.ladder-tier + .ladder-tier { border-left: none; }
+.ladder-tier.l-active { background: var(--blue-g); border-color: var(--blue); color: var(--blue); }
+.ladder-tier.l-pass { background: var(--green-g); border-color: var(--green-d); color: var(--green); }
+.ladder-tier.l-block { background: var(--red-g); border-color: var(--red-d); color: var(--red); }
+.ladder-tier.l-grad { background: var(--purple-g); border-color: rgba(167,139,250,.3); color: var(--purple); }
+
+/* Hash compare */
+.hash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.hash-box { padding: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; }
+.hash-lbl { font-family: var(--mono); font-size: 9px; letter-spacing: 1px; color: var(--t3); margin-bottom: 6px; }
+.hash-val { font-family: var(--mono); font-size: 10px; word-break: break-all; line-height: 1.5; }
+.hash-val.ok { color: var(--green); }
+.hash-val.bad { color: var(--red); }
+
+/* ─── AUDIT DRAWER ─── */
+.audit-toggle {
+  position: fixed; bottom: 16px; right: 16px; z-index: 50;
+  padding: 8px 14px; background: var(--raised); border: 1px solid var(--border); border-radius: 8px;
+  font-family: var(--mono); font-size: 10px; color: var(--t2); cursor: pointer; transition: all 150ms;
+}
+.audit-toggle:hover { border-color: var(--blue); color: var(--blue); }
+.audit-toggle .badge {
+  display: inline-block; min-width: 16px; padding: 1px 5px; margin-left: 6px;
+  background: var(--red-g); color: var(--red); border-radius: 10px; font-size: 9px; text-align: center;
+}
+
+.audit-drawer {
+  position: fixed; bottom: 0; right: 0; width: 380px; max-height: 60vh;
+  background: var(--surface); border-left: 1px solid var(--border); border-top: 1px solid var(--border);
+  border-radius: 12px 0 0 0; z-index: 60; overflow: hidden;
+  transform: translateY(100%); transition: transform 250ms ease;
+}
+.audit-drawer.open { transform: translateY(0); }
+.audit-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--raised);
+}
+.audit-title { font-family: var(--mono); font-size: 9px; letter-spacing: 1.5px; color: var(--t3); }
+.audit-close { background: none; border: none; color: var(--t3); cursor: pointer; font-size: 16px; }
+.audit-list { padding: 12px; overflow-y: auto; max-height: calc(60vh - 44px); }
+.a-entry {
+  padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px;
+  margin-bottom: 5px; font-size: 11px; animation: fadeUp 200ms ease;
+}
+.a-entry.a-block { border-left: 3px solid var(--red); }
+.a-entry.a-allow { border-left: 3px solid var(--green); }
+.a-entry.a-warn { border-left: 3px solid var(--amber); }
+.a-entry.a-info { border-left: 3px solid var(--blue); }
+.a-entry.a-grad { border-left: 3px solid var(--purple); }
+.a-time { font-family: var(--mono); font-size: 9px; color: var(--t3); margin-bottom: 2px; }
+.a-msg { color: var(--t2); line-height: 1.4; }
+.a-hash { font-family: var(--mono); font-size: 9px; color: var(--t3); margin-top: 3px; word-break: break-all; }
+
+/* ─── HOW IT WORKS PANEL ─── */
+.info-panel {
+  display: none; padding: 20px 24px; border-bottom: 1px solid var(--border); background: var(--surface);
+}
+.info-panel.visible { display: block; }
+.info-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 12px; }
+.info-card { padding: 12px; background: var(--raised); border: 1px solid var(--border); border-radius: 6px; }
+.info-card-t { font-family: var(--mono); font-size: 9px; letter-spacing: 1px; color: var(--t3); margin-bottom: 6px; }
+.info-card-b { font-size: 11px; color: var(--t2); line-height: 1.5; }
+.info-p { font-size: 12px; color: var(--t2); line-height: 1.7; margin-bottom: 8px; max-width: 800px; }
+.info-p strong { color: var(--t1); }
+
+/* ─── INTRO ─── */
+.intro {
+  position: fixed; inset: 0; background: rgba(8,9,12,.94);
+  display: flex; align-items: center; justify-content: center; z-index: 200;
+}
+.intro-card {
+  max-width: 540px; padding: 32px 36px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 12px;
+}
+.intro-card h1 { font-size: 20px; font-weight: 600; text-align: center; margin-bottom: 4px; }
+.intro-card .i-sub { font-family: var(--mono); font-size: 10px; color: var(--t3); letter-spacing: 1px; text-align: center; margin-bottom: 16px; }
+.intro-card p { font-size: 12px; color: var(--t2); line-height: 1.7; margin-bottom: 10px; }
+.i-quote {
+  padding: 12px 16px; background: var(--bg); border-left: 2px solid var(--amber);
+  border-radius: 0 6px 6px 0; font-size: 11px; color: var(--t2); line-height: 1.6;
+  margin-bottom: 14px; font-style: italic;
+}
+.i-list { padding: 12px 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; margin-bottom: 16px; }
+.i-list-t { font-family: var(--mono); font-size: 9px; letter-spacing: 1px; color: var(--t3); margin-bottom: 8px; }
+.i-item { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--t2); padding: 3px 0; }
+.i-icon { flex-shrink: 0; width: 14px; text-align: center; }
+.i-start {
+  display: block; width: 100%; padding: 12px; background: var(--raised); border: 1px solid var(--green-d);
+  border-radius: 8px; color: var(--green); font-family: var(--mono); font-size: 12px;
+  letter-spacing: 1px; cursor: pointer; transition: all 150ms; text-align: center;
+}
+.i-start:hover { background: var(--green-g); border-color: var(--green); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 700px) {
+  .progress { overflow-x: auto; }
+  .prog-step { min-width: 70px; padding: 6px 2px; }
+  .prog-label { display: none !important; }
+  .content { padding: 20px 16px 100px; }
+  .info-grid { grid-template-columns: 1fr 1fr; }
+  .hash-grid { grid-template-columns: 1fr; }
+  .audit-drawer { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ INTRO ═══ -->
+<div class="intro" id="intro">
+  <div class="intro-card">
+    <h1>The Bigger Hidden Size Trap</h1>
+    <div class="i-sub">OMEGA RESEARCH GOVERNANCE</div>
+    <p>An autonomous ML agent proposes doubling a transformer's hidden size. Loss improves. It declares a breakthrough — but it just rediscovered that bigger models have lower loss.</p>
+    <div class="i-quote">"I tried an 8-agent AI research setup… they could implement ideas but couldn't generate good ones. They ran nonsensical variations and didn't design proper experiments."<br>— Paraphrased from Andrej Karpathy, Feb 2025</div>
+    <p>This demo walks through <strong>OMEGA Research catching that trap at every stage</strong> — from proposal to graduation.</p>
+    <div class="i-list">
+      <div class="i-list-t">7 STEPS — 4 GOVERNANCE LAYERS</div>
+      <div class="i-item"><div class="i-icon" style="color:var(--red)">◼</div>Uncontrolled scaling → blocked</div>
+      <div class="i-item"><div class="i-icon" style="color:var(--amber)">◆</div>Malformed study → schema error</div>
+      <div class="i-item"><div class="i-icon" style="color:var(--green)">✓</div>Proper study → allowed</div>
+      <div class="i-item"><div class="i-icon" style="color:var(--red)">◼</div>Single-seed luck → blocked</div>
+      <div class="i-item"><div class="i-icon" style="color:var(--red)">◼</div>Noisy results → blocked</div>
+      <div class="i-item"><div class="i-icon" style="color:var(--purple)">★</div>Clean results + human → graduated</div>
+      <div class="i-item"><div class="i-icon" style="color:var(--red)">⚠</div>Tampered record → chain breaks</div>
+    </div>
+    <button class="i-start" onclick="start()">BEGIN SCENARIO ▸</button>
+  </div>
+</div>
+
+<!-- ═══ STRIP ═══ -->
+<div class="strip">
+  <div class="strip-item"><div class="strip-dot" id="sd-proto"></div><span>PROTOCOL v0.1.0</span></div>
+  <div class="strip-item"><div class="strip-dot" id="sd-hash"></div><span>CHAIN: <span id="s-hash">GENESIS</span></span></div>
+  <div class="strip-item"><div class="strip-dot"></div><span>45 TESTS</span></div>
+  <div class="strip-item"><div class="strip-dot" id="sd-claims"></div><span>CLAIMS: <span id="s-claims">0</span></span></div>
+  <div class="strip-item"><div class="strip-dot" id="sd-blocks" style="background:var(--t3)"></div><span>BLOCKS: <span id="s-blocks">0</span></span></div>
+</div>
+
+<!-- ═══ HEADER ═══ -->
+<div class="hdr">
+  <div class="hdr-left">
+    <div class="hdr-logo">OMEGA</div>
+    <div>
+      <div class="hdr-title">Research Governance Runtime</div>
+      <div class="hdr-sub">Deterministic · Identical inputs → identical decisions → identical hashes · Not an LLM</div>
+    </div>
+  </div>
+  <div class="hdr-btns">
+    <button class="hdr-btn" id="info-btn" onclick="toggleInfo()">? HOW IT WORKS</button>
+  </div>
+</div>
+
+<!-- ═══ INFO PANEL ═══ -->
+<div class="info-panel" id="info-panel">
+  <div class="info-p"><strong>OMEGA Research is a governance runtime for autonomous ML agents.</strong> It enforces the scientific method programmatically — every proposal validated, every result replicated, every claim graduated through a ladder, every record hash-chained.</div>
+  <div class="info-p"><strong>It is deterministic — not an LLM.</strong> Given identical inputs and policies, it produces identical decisions and identical hashes. Pure Python + Pydantic. No neural network, no hallucination surface.</div>
+  <div class="info-grid">
+    <div class="info-card"><div class="info-card-t">LAYER 1 · PROTOCOL</div><div class="info-card-b">Validates proposals. Enforces baselines, scaling policy, ablation requirements, determinism controls.</div></div>
+    <div class="info-card"><div class="info-card-t">LAYER 2 · EVIDENCE</div><div class="info-card-b">Tracks experiments, results, edges. Detects duplicates and contradictions. Append-only.</div></div>
+    <div class="info-card"><div class="info-card-t">LAYER 3 · LIFECYCLE</div><div class="info-card-b">Observation → Replicated → Baseline-Beating → Graduated. No skipping. Human approves final step.</div></div>
+    <div class="info-card"><div class="info-card-t">LAYER 4 · TRUST</div><div class="info-card-b">SHA-256 hash chain. Canonical JSON. Tamper-evident. Modify any field → chain breaks.</div></div>
+  </div>
+</div>
+
+<!-- ═══ PROGRESS BAR ═══ -->
+<div class="progress" id="progress">
+  <div class="prog-step active" id="p0" onclick="goStep(0)"><span class="prog-icon">1</span><span class="prog-label">Naive Scaling</span></div>
+  <div class="prog-step locked" id="p1" onclick="goStep(1)"><span class="prog-icon">2</span><span class="prog-label">No Intermediate</span></div>
+  <div class="prog-step locked" id="p2" onclick="goStep(2)"><span class="prog-icon">3</span><span class="prog-label">Proper Study</span></div>
+  <div class="prog-step locked" id="p3" onclick="goStep(3)"><span class="prog-icon">4</span><span class="prog-label">Single Run</span></div>
+  <div class="prog-step locked" id="p4" onclick="goStep(4)"><span class="prog-icon">5</span><span class="prog-label">High Variance</span></div>
+  <div class="prog-step locked" id="p5" onclick="goStep(5)"><span class="prog-icon">6</span><span class="prog-label">Graduation</span></div>
+  <div class="prog-step locked" id="p6" onclick="goStep(6)"><span class="prog-icon">7</span><span class="prog-label">Tamper</span></div>
+</div>
+
+<!-- ═══ CONTENT ═══ -->
+<div class="content" id="content"></div>
+
+<!-- ═══ AUDIT TOGGLE ═══ -->
+<div class="audit-toggle" onclick="toggleAudit()">AUDIT LOG <span class="badge" id="a-count">0</span></div>
+
+<!-- ═══ AUDIT DRAWER ═══ -->
+<div class="audit-drawer" id="audit-drawer">
+  <div class="audit-header">
+    <div class="audit-title">GOVERNANCE AUDIT LOG</div>
+    <button class="audit-close" onclick="toggleAudit()">✕</button>
+  </div>
+  <div class="audit-list" id="audit-list">
+    <div class="a-entry a-info">
+      <div class="a-time">00:00:00</div>
+      <div class="a-msg">Runtime initialised. Baseline: hidden_size=512, params=10M, loss=2.5.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<div style="position:fixed;bottom:0;left:0;right:0;padding:5px 24px;background:var(--bg);border-top:1px solid var(--border);font-family:var(--mono);font-size:9px;color:var(--t3);display:flex;justify-content:space-between;z-index:40">
+  <span>OMEGA RESEARCH · SHA-256 (Web Crypto) · Pydantic + JSONL · MIT</span>
+  <span><a href="https://omegaprotocol.org" target="_blank" style="color:var(--t3);text-decoration:none">omegaprotocol.org</a> · <a href="https://github.com/repowazdogz-droid" target="_blank" style="color:var(--t3);text-decoration:none">GitHub</a></span>
+</div>
+
+<script>
+// ═══════════════════════════════════
+// ENGINE
+// ═══════════════════════════════════
+
+let cur = 0, done = new Set(), blocks = 0, claims = 0, auditN = 0;
+let hc = 'GENESIS';
+
+async function sha256(s) {
+  const d = new TextEncoder().encode(s);
+  const b = await crypto.subtle.digest('SHA-256', d);
+  return Array.from(new Uint8Array(b)).map(x => x.toString(16).padStart(2,'0')).join('');
+}
+
+async function chain(data) {
+  hc = (await sha256(hc + ':' + data)).slice(0, 16);
+  document.getElementById('s-hash').textContent = hc + '…';
+}
+
+function updStrip() {
+  document.getElementById('s-blocks').textContent = blocks;
+  document.getElementById('s-claims').textContent = claims;
+  if (blocks > 0) document.getElementById('sd-blocks').style.background = 'var(--red)';
+  if (claims > 0) document.getElementById('sd-claims').className = 'strip-dot amber';
+}
+
+function audit(msg, type) {
+  auditN++;
+  document.getElementById('a-count').textContent = auditN;
+  const list = document.getElementById('audit-list');
+  const t = new Date().toTimeString().split(' ')[0];
+  const el = document.createElement('div');
+  el.className = 'a-entry a-' + type;
+  el.innerHTML = `<div class="a-time">${t}</div><div class="a-msg">${msg}</div><div class="a-hash">chain: ${hc}</div>`;
+  list.insertBefore(el, list.firstChild.nextSibling);
+}
+
+function start() { document.getElementById('intro').style.display = 'none'; render(0); }
+
+function toggleInfo() {
+  const p = document.getElementById('info-panel');
+  const b = document.getElementById('info-btn');
+  p.classList.toggle('visible');
+  b.classList.toggle('active');
+}
+
+function toggleAudit() { document.getElementById('audit-drawer').classList.toggle('open'); }
+
+function goStep(i) {
+  if (i > 0 && !done.has(i - 1)) return;
+  cur = i;
+  document.querySelectorAll('.prog-step').forEach((el, j) => { el.classList.remove('active'); if (j === i) el.classList.add('active'); });
+  render(i);
+}
+
+function finish(i, type) {
+  done.add(i);
+  const p = document.getElementById('p' + i);
+  p.classList.add('done-' + type);
+  const icons = { block: '◼', allow: '✓', warn: '◆', grad: '★' };
+  p.querySelector('.prog-icon').textContent = icons[type] || '✓';
+  const nx = document.getElementById('p' + (i + 1));
+  if (nx) nx.classList.remove('locked');
+}
+
+function render(i) { STEPS[i](document.getElementById('content')); }
+
+// ─── STEPS ───
+
+const STEPS = [
+  // 1
+  (c) => { c.innerHTML = `
+    <div class="explainer-box"><strong>What's happening:</strong> The agent proposes doubling hidden size (512→1024), doubling parameters and tripling compute. No scaling hypothesis declared. <strong>The governor doesn't ask whether bigger models work — that's obvious. It asks whether this experiment can isolate why.</strong></div>
+    <div class="sec-title">Naive Scaling Proposal</div>
+    <div class="sec-sub">Agent submits an experiment that increases compute without justification.</div>
+    <div class="code-block"><span class="ck">hypothesis</span>: <span class="cs">"Larger hidden size improves loss"</span>
+<span class="ck">baseline</span>:  { <span class="ck">hidden_size</span>: <span class="cn">512</span>, <span class="ck">params</span>: <span class="cn">10M</span> }
+<span class="ck">proposed</span>:  { <span class="ck">hidden_size</span>: <span class="cn ch">1024</span>, <span class="ck">params</span>: <span class="cn ch">20M</span> }
+<span class="ck">scaling_hypothesis</span>: <span class="ch">null</span>
+<span class="ck">flops</span>: <span class="cn ch">3.0e15</span>  <span class="cm">// baseline: 1.0e15</span></div>
+    <button class="run-btn" id="r0" onclick="s0()">▸ SUBMIT TO SCALING GOVERNOR</button>
+    <div id="o0"></div>`; },
+
+  // 2
+  (c) => { c.innerHTML = `
+    <div class="explainer-box"><strong>What's happening:</strong> The agent adds a scaling hypothesis — but declares a "scaling study" that only tests two points (512 and 1024). A proper study needs intermediate measurements to fit a curve, not just compare endpoints. Pydantic catches this at the schema level.</div>
+    <div class="sec-title">Missing Intermediate Scales</div>
+    <div class="sec-sub">Schema validation happens before governance. Structural requirements are enforced on the data model itself.</div>
+    <div class="code-block"><span class="ck">scaling_hypothesis</span>: {
+  <span class="ck">type</span>: <span class="cs">"scaling_study"</span>,
+  <span class="ck">intermediate_scales</span>: <span class="ch">[]</span>  <span class="cm">// empty</span>
+}</div>
+    <button class="run-btn" id="r1" onclick="s1()">▸ VALIDATE SCHEMA</button>
+    <div id="o1"></div>`; },
+
+  // 3
+  (c) => { c.innerHTML = `
+    <div class="explainer-box"><strong>What's happening:</strong> The agent declares a proper scaling study: 512→768→1024 with baseline included. Three points lets you fit a curve. The compute increase is now justified by an explicit hypothesis. The governor allows it.</div>
+    <div class="sec-title">Proper Scaling Study</div>
+    <div class="sec-sub">Well-formed proposal with intermediate scale, baseline, and justification.</div>
+    <div class="code-block"><span class="ck">scaling_hypothesis</span>: {
+  <span class="ck">type</span>: <span class="cs">"scaling_study"</span>,
+  <span class="ck">intermediate_scales</span>: [<span class="cn">768</span>],
+  <span class="ck">baseline_scale_included</span>: <span class="cn">true</span>
+}
+<span class="cm">// Tests at: 512 → 768 → 1024</span></div>
+    <button class="run-btn" id="r2" onclick="s2()">▸ SUBMIT TO SCALING GOVERNOR</button>
+    <div id="o2"></div>`; },
+
+  // 4
+  (c) => { c.innerHTML = `
+    <div class="explainer-box"><strong>What's happening:</strong> Loss drops from 2.5 to 2.1. The agent tries to promote its claim from Observation to Replicated. But one run proves nothing — the random seed affects initialisation, data order, and gradient noise. A different seed could produce a completely different result.</div>
+    <div class="sec-title">Single Run Promotion</div>
+    <div class="ladder">
+      <div class="ladder-tier l-active" id="l-obs4">OBSERVATION</div>
+      <div class="ladder-tier" id="l-rep4">REPLICATED</div>
+      <div class="ladder-tier" id="l-bas4">BASELINE-BEATING</div>
+      <div class="ladder-tier" id="l-grd4">GRADUATED</div>
+    </div>
+    <div class="code-block"><span class="ck">runs</span>: <span class="cn ch">1</span>  <span class="cm">// required: ≥3</span>
+<span class="ck">result</span>: { <span class="ck">loss</span>: <span class="cn">2.1</span>, <span class="ck">seed</span>: <span class="cn">42</span> }</div>
+    <button class="run-btn" id="r3" onclick="s3()">▸ ATTEMPT PROMOTION</button>
+    <div id="o3"></div>`; },
+
+  // 5
+  (c) => { c.innerHTML = `
+    <div class="explainer-box"><strong>What's happening:</strong> Three runs, three seeds. But seed 137 produces loss 2.8 — <strong>worse than the baseline of 2.5.</strong> The standard deviation (0.47) is larger than the improvement (0.23). If the noise is bigger than the signal, the effect isn't real.</div>
+    <div class="sec-title">High Variance Results</div>
+    <div class="ladder">
+      <div class="ladder-tier l-pass">OBSERVATION</div>
+      <div class="ladder-tier l-active" id="l-rep5">REPLICATED</div>
+      <div class="ladder-tier">BASELINE-BEATING</div>
+      <div class="ladder-tier">GRADUATED</div>
+    </div>
+    <div class="code-block"><span class="ck">seed 42</span>:  loss <span class="cn">2.1</span>
+<span class="ck">seed 137</span>: loss <span class="cn ch">2.8</span>  <span class="cm">// worse than baseline (2.5)</span>
+<span class="ck">seed 256</span>: loss <span class="cn">1.9</span>
+
+<span class="cm">mean: 2.27 · std: 0.47 · CV: 20.7% (max: 10%)</span>
+<span class="cm">std (0.47) > improvement (0.23) → noise > signal</span></div>
+    <button class="run-btn" id="r4" onclick="s4()">▸ CHECK REPLICATION GATE</button>
+    <div id="o4"></div>`; },
+
+  // 6
+  (c) => { c.innerHTML = `
+    <div class="explainer-box"><strong>What's happening:</strong> New runs with better controls produce consistent results. The claim progresses: Observation → Replicated → Baseline-Beating. But the final step — <strong>Graduated — always requires a human.</strong> No agent can approve its own finding. You are the chief scientist.</div>
+    <div class="sec-title">Clean Graduation</div>
+    <div class="ladder">
+      <div class="ladder-tier l-pass">OBSERVATION</div>
+      <div class="ladder-tier" id="l-rep6">REPLICATED</div>
+      <div class="ladder-tier" id="l-bas6">BASELINE-BEATING</div>
+      <div class="ladder-tier" id="l-grd6">GRADUATED</div>
+    </div>
+    <div class="code-block"><span class="ck">seed 42</span>:  loss <span class="cn">2.12</span>
+<span class="ck">seed 137</span>: loss <span class="cn">2.08</span>
+<span class="ck">seed 256</span>: loss <span class="cn">2.15</span>
+
+<span class="cm">mean: 2.117 · std: 0.035 · CV: 1.7% ✓</span>
+<span class="cm">improvement: 15.3% · effect_size: 0.153 ✓</span></div>
+    <button class="run-btn" id="r5" onclick="s5()">▸ PROMOTE THROUGH LIFECYCLE</button>
+    <div id="o5"></div>`; },
+
+  // 7
+  (c) => { c.innerHTML = `
+    <div class="explainer-box"><strong>What's happening:</strong> Every result is hashed at recording time and chained to the previous record. Change any field — even loss from 2.12 to 0.001 — and the hash changes completely. The chain breaks. All downstream records are invalidated. Fraud is detectable by construction.</div>
+    <div class="sec-title">Tamper Detection</div>
+    <div class="code-block"><span class="ck">original</span>: { <span class="ck">loss</span>: <span class="cn">2.12</span> }  →  hash: <span class="cs" id="h-orig">computing…</span>
+
+<span style="color:var(--red)">// tamper: loss 2.12 → 0.001</span>
+
+<span class="ck">tampered</span>: { <span class="ck">loss</span>: <span class="cn ch">0.001</span> }  →  hash: <span class="cs" id="h-tamp">computing…</span></div>
+    <button class="run-btn" id="r6" onclick="s6()">▸ VERIFY HASH CHAIN</button>
+    <div id="o6"></div>`; }
+];
+
+// ─── EXECUTORS ───
+
+async function s0() {
+  document.getElementById('r0').disabled = true;
+  await chain('naive-blocked'); blocks++; updStrip();
+  document.getElementById('o0').innerHTML = `
+    <div class="gov-card"><div class="gov-bar"><span class="gov-tag">SCALING GOVERNOR</span><span class="gov-badge block">◼ BLOCK</span></div>
+    <div class="gov-body">
+      <div class="gov-section"><div class="gov-lbl">POLICY EVENTS</div>
+        <div class="gov-row"><div class="gov-icon" style="color:var(--amber)">◆</div>Compute delta: params +100%, FLOPs +200%</div>
+        <div class="gov-row"><div class="gov-icon" style="color:var(--red)">◼</div>No scaling hypothesis for significant compute increase</div>
+      </div>
+      <div class="gov-section"><div class="gov-lbl">WHY</div>
+        <div class="gov-row"><div class="gov-icon" style="color:var(--t3)">↳</div>Without a scaling hypothesis, this experiment can't distinguish "my architecture is better" from "bigger models always have lower loss." Blocked before any compute is wasted.</div>
+      </div>
+    </div></div>`;
+  audit('BLOCK — param +100%, FLOP +200%, no scaling hypothesis.', 'block');
+  finish(0, 'block');
+}
+
+async function s1() {
+  document.getElementById('r1').disabled = true;
+  await chain('schema-error'); blocks++; updStrip();
+  document.getElementById('o1').innerHTML = `
+    <div class="gov-card"><div class="gov-bar"><span class="gov-tag">PYDANTIC VALIDATION</span><span class="gov-badge warn">◆ SCHEMA ERROR</span></div>
+    <div class="gov-body">
+      <div class="gov-section"><div class="gov-lbl">ERROR</div>
+        <div class="gov-row"><div class="gov-icon" style="color:var(--red)">✕</div>"Scaling study must include at least one intermediate scale point"</div>
+      </div>
+      <div class="gov-section"><div class="gov-lbl">WHY</div>
+        <div class="gov-row"><div class="gov-icon" style="color:var(--t3)">↳</div>Two points (512, 1024) is a comparison, not a study. You need at least one intermediate to fit a curve and distinguish a scaling law from a lucky configuration.</div>
+      </div>
+    </div></div>`;
+  audit('SCHEMA ERROR — Empty intermediate_scales.', 'warn');
+  finish(1, 'warn');
+}
+
+async function s2() {
+  document.getElementById('r2').disabled = true;
+  await chain('proper-allowed');
+  document.getElementById('o2').innerHTML = `
+    <div class="gov-card"><div class="gov-bar"><span class="gov-tag">SCALING GOVERNOR</span><span class="gov-badge allow">✓ ALLOW</span></div>
+    <div class="gov-body">
+      <div class="gov-section"><div class="gov-lbl">CHECKS PASSED</div>
+        <div class="gov-row"><div class="gov-icon" style="color:var(--green)">✓</div>Scaling hypothesis: SCALING_STUDY</div>
+        <div class="gov-row"><div class="gov-icon" style="color:var(--green)">✓</div>Intermediate: [768]</div>
+        <div class="gov-row"><div class="gov-icon" style="color:var(--green)">✓</div>Baseline scale included</div>
+      </div>
+      <div class="gov-section"><div class="gov-lbl">WHY</div>
+        <div class="gov-row"><div class="gov-icon" style="color:var(--t3)">↳</div>Compute increase justified by explicit hypothesis. Three scale points enable curve fitting. Results labeled SCALING_STUDY.</div>
+      </div>
+    </div></div>`;
+  audit('ALLOW — 3 scale points. Labeled SCALING_STUDY.', 'allow');
+  finish(2, 'allow');
+}
+
+async function s3() {
+  document.getElementById('r3').disabled = true;
+  await chain('single-run-blocked'); blocks++; claims = 1; updStrip();
+  document.getElementById('l-obs4').classList.replace('l-active', 'l-pass');
+  document.getElementById('l-rep4').classList.add('l-block');
+  document.getElementById('o3').innerHTML = `
+    <div class="gov-card"><div class="gov-bar"><span class="gov-tag">CLAIM LIFECYCLE</span><span class="gov-badge block">◼ BLOCKED</span></div>
+    <div class="gov-body">
+      <div class="gov-section"><div class="gov-lbl">ATTEMPTED</div>
+        <div class="gov-row"><div class="gov-icon" style="color:var(--blue)">→</div>OBSERVATION → REPLICATED</div>
+      </div>
+      <div class="gov-section"><div class="gov-lbl">WHY</div>
+        <div class="gov-row"><div class="gov-icon" style="color:var(--t3)">↳</div>One run can't distinguish a real effect from seed-specific luck. The replication gate requires ≥3 runs with different seeds to compute variance. Currently: 1 of 3.</div>
+      </div>
+    </div></div>`;
+  audit('BLOCK — 1/3 runs. Cannot promote.', 'block');
+  finish(3, 'block');
+}
+
+async function s4() {
+  document.getElementById('r4').disabled = true;
+  await chain('high-variance'); blocks++; updStrip();
+  document.getElementById('l-rep5').classList.replace('l-active', 'l-block');
+  document.getElementById('o4').innerHTML = `
+    <div class="gov-card"><div class="gov-bar"><span class="gov-tag">REPLICATION GATE</span><span class="gov-badge block">◼ HIGH VARIANCE</span></div>
+    <div class="gov-body">
+      <div class="gov-section"><div class="gov-lbl">STATISTICS</div>
+        <div class="gov-row"><div class="gov-icon" style="color:var(--t3)">μ</div>Mean: 2.267</div>
+        <div class="gov-row"><div class="gov-icon" style="color:var(--t3)">σ</div>Std: 0.473</div>
+        <div class="gov-row"><div class="gov-icon" style="color:var(--red)">!</div>CV: 20.7% — exceeds 10% threshold</div>
+        <div class="gov-row"><div class="gov-icon" style="color:var(--red)">!</div>Std (0.47) > improvement (0.23) — noise exceeds signal</div>
+      </div>
+      <div class="gov-section"><div class="gov-lbl">WHY</div>
+        <div class="gov-row"><div class="gov-icon" style="color:var(--t3)">↳</div>Seed 137 produced loss 2.8 — <strong>worse than baseline.</strong> If one in three runs doesn't even beat the baseline, the effect isn't real.</div>
+      </div>
+    </div></div>`;
+  audit('BLOCK — CV=20.7%, std > improvement. Effect is noise.', 'block');
+  finish(4, 'block');
+}
+
+async function s5() {
+  document.getElementById('r5').disabled = true;
+  const out = document.getElementById('o5');
+
+  setTimeout(async () => {
+    document.getElementById('l-rep6').classList.add('l-pass');
+    await chain('replicated');
+    audit('REPLICATED — 3 runs, CV=1.7%. PASS.', 'allow');
+  }, 600);
+
+  setTimeout(async () => {
+    document.getElementById('l-bas6').classList.add('l-pass');
+    await chain('baseline-beating');
+    audit('BASELINE-BEATING — effect 0.153, direction correct.', 'allow');
+  }, 1300);
+
+  setTimeout(async () => {
+    claims++; updStrip();
+    out.innerHTML = `
+      <div class="gov-card"><div class="gov-bar"><span class="gov-tag">CLAIM LIFECYCLE</span><span class="gov-badge allow">✓ BASELINE-BEATING</span></div>
+      <div class="gov-body">
+        <div class="gov-section"><div class="gov-lbl">TRACE</div>
+          <div class="gov-row"><div class="gov-icon" style="color:var(--green)">✓</div>OBSERVATION → REPLICATED: 3 runs, CV=1.7%</div>
+          <div class="gov-row"><div class="gov-icon" style="color:var(--green)">✓</div>REPLICATED → BASELINE-BEATING: effect=0.153, correct direction</div>
+          <div class="gov-row"><div class="gov-icon" style="color:var(--amber)">◆</div>BASELINE-BEATING → GRADUATED: <strong>requires human</strong></div>
+        </div>
+        <div class="gov-section"><div class="gov-lbl">WHY</div>
+          <div class="gov-row"><div class="gov-icon" style="color:var(--t3)">↳</div>No agent can declare its own work graduated. A human chief scientist must review and approve. Machines propose, humans decide.</div>
+        </div>
+      </div></div>
+      <button class="run-btn" id="rg" onclick="grad()" style="margin-top:16px">★ APPROVE AS CHIEF SCIENTIST</button>`;
+  }, 2200);
+}
+
+async function grad() {
+  document.getElementById('rg').disabled = true;
+  document.getElementById('l-grd6').classList.add('l-grad');
+  await chain('graduated');
+  audit('GRADUATED — Approved by warren@omega.org.', 'grad');
+  document.getElementById('o5').innerHTML += `
+    <div class="gov-card" style="margin-top:14px"><div class="gov-bar"><span class="gov-tag">GRADUATION</span><span class="gov-badge grad">★ GRADUATED</span></div>
+    <div class="gov-body">
+      <div class="gov-row"><div class="gov-icon" style="color:var(--purple)">★</div>Approved by: warren@omega.org</div>
+      <div class="gov-row"><div class="gov-icon" style="color:var(--green)">✓</div>No contradicting edges · Requirements hold · Chain sealed</div>
+    </div></div>`;
+  finish(5, 'grad');
+}
+
+async function s6() {
+  document.getElementById('r6').disabled = true;
+  const oh = await sha256('result-loss-2.12-seed-42');
+  const th = await sha256('result-loss-0.001-seed-42');
+  document.getElementById('h-orig').textContent = oh.slice(0, 20) + '…';
+  document.getElementById('h-tamp').textContent = th.slice(0, 20) + '…';
+  await chain('tamper');
+  document.getElementById('sd-hash').className = 'strip-dot red';
+
+  document.getElementById('o6').innerHTML = `
+    <div class="gov-card"><div class="gov-bar"><span class="gov-tag">TRUST LAYER</span><span class="gov-badge block">⚠ CHAIN BROKEN</span></div>
+    <div class="gov-body">
+      <div class="gov-section"><div class="gov-lbl">HASH COMPARISON</div>
+        <div class="hash-grid">
+          <div class="hash-box"><div class="hash-lbl">ORIGINAL</div><div class="hash-val ok">${oh}</div></div>
+          <div class="hash-box"><div class="hash-lbl">TAMPERED</div><div class="hash-val bad">${th}</div></div>
+        </div>
+      </div>
+      <div class="gov-section"><div class="gov-lbl">WHY</div>
+        <div class="gov-row"><div class="gov-icon" style="color:var(--t3)">↳</div>Every record is hash-chained. Changing loss from 2.12 to 0.001 produces a completely different hash. The chain can't be repaired without re-signing every downstream record. Fraud detectable by construction.</div>
+      </div>
+    </div></div>`;
+  audit('⚠ TAMPER — Hash mismatch. Chain broken.', 'block');
+  finish(6, 'block');
+}
+
+render(0);
+</script>
+</body>
+</html>

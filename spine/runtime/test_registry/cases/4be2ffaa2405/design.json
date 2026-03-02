@@ -1,0 +1,9 @@
+{
+  "min_clearance_mm": 1.0,
+  "actual_clearance_mm": -3.0,
+  "self_collision_detected": true,
+  "collision_pairs": [
+    "link1",
+    "link2"
+  ]
+}

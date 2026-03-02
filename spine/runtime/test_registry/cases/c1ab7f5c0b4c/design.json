@@ -1,0 +1,13 @@
+{
+  "operating_stress_mpa": 600,
+  "yield_strength_mpa": 1000,
+  "stress_ratio": 0.6,
+  "environment": "saline",
+  "material_susceptibility": "high",
+  "tensile_stress_mpa": 600,
+  "scc_threshold_mpa": 500,
+  "corrosive_environment": true,
+  "corrosion_rate_mm_yr": 0.15,
+  "service_life_years": 5,
+  "wall_thickness_mm": 2.0
+}

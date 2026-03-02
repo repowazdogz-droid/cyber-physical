@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-02-27T11:29:44.351Z",
+  "warning": "Citations are model-generated and may be fabricated or loosely attributed. Verify before use.",
+  "citations": [
+    {
+      "engine": "dec",
+      "title": "Horizontal infrastructure adoption dynamics in research organizations",
+      "finding": "Shared platforms without anchor customer programmes experience low adoption and high abandonment rates",
+      "source_ref": "general knowledge — not verified"
+    },
+    {
+      "engine": "dec",
+      "title": "Time-to-value in centralized vs distributed infrastructure models",
+      "finding": "Vertical-first with planned federation typically delivers usable capability 6-9 months faster than horizontal-first designs",
+      "source_ref": "general knowledge — not verified"
+    },
+    {
+      "engine": "dec",
+      "title": "Political economy of research infrastructure funding",
+      "finding": "Infrastructure investment is vulnerable to defunding when programme directors face short-term delivery pressure and can credibly blame infrastructure delays",
+      "source_ref": "general knowledge — not verified"
+    },
+    {
+      "engine": "dec",
+      "title": "Governance requirements for successful shared service platforms",
+      "finding": "Effective horizontal platforms require an empowered owner with veto authority over parallel programme investments",
+      "source_ref": "general knowledge — not verified"
+    }
+  ]
+}

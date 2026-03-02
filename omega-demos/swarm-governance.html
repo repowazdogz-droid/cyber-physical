@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMEGA -- Swarm Governance</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg-deep:#fafafa;--bg-surface:#f4f4f6;--bg-raised:#ecedef;--bg-hover:#e4e5e8;
+  --border:#d5d7dc;--border-active:#b8bbc2;
+  --text-primary:#111214;--text-secondary:#363940;--text-muted:#5c5f69;
+  --green:#059669;--green-dim:#d1fae5;--green-glow:rgba(5,150,105,.08);
+  --amber:#d97706;--amber-dim:#fef3c7;--amber-glow:rgba(217,119,6,.08);
+  --red:#dc2626;--red-dim:#fee2e2;--red-glow:rgba(220,38,38,.08);
+  --blue:#2563eb;--blue-dim:#dbeafe;--blue-glow:rgba(37,99,235,.06);
+  --violet:#7c3aed;--violet-dim:#ede9fe;--violet-glow:rgba(124,58,237,.08);
+  --cyan:#0891b2;--cyan-dim:#cffafe;--cyan-glow:rgba(8,145,178,.08);
+  --mono:'Courier New','Lucida Console',monospace;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --fast:150ms ease;--med:300ms ease;--rad:6px;
+}
+html{font-size:14px}
+body{background:var(--bg-deep);color:var(--text-primary);font-family:var(--sans);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+.strip{display:flex;align-items:center;justify-content:center;gap:14px;padding:4px 16px;background:var(--bg-deep);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:9px;color:#363940;flex-wrap:wrap}
+.strip-dot{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;margin-right:4px}
+.strip-dot.a{background:var(--amber)}.strip-dot.r{background:var(--red)}
+.strip-sep{color:var(--border)}
+
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border-bottom:1px solid var(--border);background:var(--bg-surface);position:sticky;top:0;z-index:100;flex-wrap:wrap;gap:8px}
+.hdr-left{display:flex;align-items:center;gap:12px}
+.logo{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:2px}
+.logo span{color:var(--violet)}
+.logo-sub{font-family:var(--mono);font-size:9px;letter-spacing:1px;color:#363940}
+.pills{display:flex;gap:5px;flex-wrap:wrap}
+.pill{font-family:var(--mono);font-size:9px;padding:2px 7px;border-radius:3px;background:#f0f1f3;border:1px solid var(--border);color:#363940;white-space:nowrap}
+.pill.g{color:var(--green);border-color:var(--green-dim);background:#ecfdf5}
+.pill.v{color:var(--violet);border-color:var(--violet-dim);background:#f5f3ff}
+
+.main{display:grid;grid-template-columns:240px 1fr 300px;min-height:calc(100vh - 80px)}
+@media(max-width:1100px){.main{grid-template-columns:1fr}}
+
+/* LEFT */
+.left{border-right:1px solid var(--border);background:var(--bg-surface);padding:14px;overflow-y:auto}
+.ptitle{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:#363940;text-transform:uppercase;margin-bottom:12px}
+.divider{height:1px;background:var(--border);margin:12px 0}
+
+.sel-group{margin-bottom:10px}
+.sel-label{font-family:var(--mono);font-size:10px;color:var(--text-secondary);margin-bottom:4px}
+select{width:100%;font-family:var(--mono);font-size:11px;padding:6px 8px;background:var(--bg-raised);color:var(--text-primary);border:1px solid var(--border);border-radius:4px;outline:none;cursor:pointer}
+select:focus{border-color:var(--border-active)}
+
+.scenario-explainer{padding:14px 18px;background:var(--bg-raised,#f0f1f3);border:1px solid var(--border,#d5d7dc);border-left:3px solid var(--blue,#2563eb);border-radius:6px;margin-bottom:16px;font-family:var(--sans,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif);font-size:12px;line-height:1.7;color:var(--text-secondary,#4a4d56)}
+.scenario-explainer b{color:var(--text-primary,#1a1c20);font-weight:600}
+.scenario-explainer .watch-for{margin-top:8px;padding-top:8px;border-top:1px solid var(--border,#d5d7dc);font-size:11px;color:var(--text-muted,#7c808a)}
+.scenario-explainer .watch-for b{color:var(--blue,#2563eb);font-size:11px}
+
+.sgroup{margin-bottom:10px}
+.slbl{font-family:var(--mono);font-size:10px;color:#111214;margin-bottom:2px;display:flex;justify-content:space-between}
+.sunit{color:#5c5f69;font-size:9px}
+.srow{display:flex;align-items:center;gap:8px}
+.sval{font-family:var(--mono);font-size:16px;font-weight:700;min-width:40px;color:#111214}
+.sval.w{color:var(--amber)}.sval.c{color:var(--red)}
+input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:3px;background:#c0c2c8;border-radius:2px;outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:#363940;border:2px solid #ffffff;cursor:pointer}
+
+.pol{font-family:var(--mono);font-size:9px;color:#363940;padding:5px 7px;background:#f4f4f6;border:1px solid var(--border);border-radius:3px;margin-bottom:5px;line-height:1.5}
+.pol b{color:var(--violet);font-weight:600}
+.pol b.r{color:var(--red)}.pol b.a{color:var(--amber)}
+
+.btns{display:flex;flex-direction:column;gap:5px;margin-top:12px}
+.btn{font-family:var(--mono);font-size:10px;padding:7px 12px;border-radius:4px;border:1px solid;cursor:pointer;transition:all var(--fast);text-align:center;background:transparent}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-go{background:#ecfdf5;border-color:var(--green-dim);color:var(--green)}
+.btn-go:hover:not(:disabled){background:#d1fae5}
+.btn-rogue{background:#fef2f2;border-color:var(--red-dim);color:var(--red)}
+.btn-rogue:hover:not(:disabled){background:#fee2e2}
+.btn-chaos{background:#fffbeb;border-color:var(--amber-dim);color:var(--amber)}
+.btn-chaos:hover:not(:disabled){background:#fef3c7}
+.btn-x{background:var(--bg-raised);border-color:var(--border);color:var(--text-secondary)}
+.btn-x:hover:not(:disabled){background:var(--bg-hover)}
+
+/* CENTER */
+.center{padding:16px 20px;overflow-y:auto}
+.center-title{text-align:center;margin-bottom:16px}
+.center-title h2{font-size:15px;font-weight:600;margin-bottom:2px}
+.center-title p{font-family:var(--mono);font-size:10px;color:#363940;letter-spacing:1px}
+
+.swarm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:16px}
+.agent-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--rad);padding:10px;transition:all var(--med);position:relative;overflow:hidden}
+.agent-card.compliant{border-color:var(--green);box-shadow:0 0 0 1px rgba(5,150,105,.15)}
+.agent-card.deviated{border-color:var(--red);box-shadow:0 0 0 1px rgba(220,38,38,.2)}
+.agent-card.quarantined{border-color:var(--amber);box-shadow:0 0 0 1px rgba(217,119,6,.15);opacity:.9}
+.agent-card.idle{opacity:.5}
+
+.agent-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.agent-id{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1px;color:#111214}
+.agent-status{font-family:var(--mono);font-size:8px;padding:2px 6px;border-radius:3px;letter-spacing:1px;text-transform:uppercase}
+.agent-status.ok{color:var(--green);background:var(--green-glow)}
+.agent-status.deviated{color:var(--red);background:var(--red-glow)}
+.agent-status.quarantined{color:var(--amber);background:var(--amber-glow)}
+.agent-status.idle{color:#5c5f69;background:var(--bg-raised)}
+
+.agent-role{font-family:var(--mono);font-size:9px;color:#363940;margin-bottom:6px}
+.agent-row{font-family:var(--mono);font-size:9px;display:flex;justify-content:space-between;padding:2px 0;color:#363940}
+.agent-row .v{font-weight:600}
+.agent-row .v.g{color:var(--green)}.agent-row .v.r{color:var(--red)}.agent-row .v.a{color:var(--amber)}
+
+.agent-hash{font-family:var(--mono);font-size:7px;color:#5c5f69;margin-top:4px;word-break:break-all;background:var(--bg-raised);padding:2px 4px;border-radius:2px}
+.agent-hash.mismatch{color:var(--red);background:var(--red-glow)}
+
+/* Supervisor */
+.supervisor{background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--rad);padding:14px;margin-bottom:16px}
+.supervisor.alert{border-color:var(--red-dim);box-shadow:0 0 16px var(--red-glow)}
+.sup-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.sup-title{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:1.5px;color:var(--violet)}
+.sup-status{font-family:var(--mono);font-size:9px;padding:3px 8px;border-radius:3px}
+.sup-status.nominal{color:var(--green);background:var(--green-glow)}
+.sup-status.alert{color:var(--red);background:var(--red-glow)}
+.sup-status.degraded{color:var(--amber);background:var(--amber-glow)}
+.sup-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:6px}
+.sup-metric{font-family:var(--mono);font-size:9px;padding:5px 7px;background:var(--bg-surface);border:1px solid var(--border);border-radius:3px;display:flex;justify-content:space-between}
+.sup-metric .label{color:var(--text-secondary)}
+.sup-metric .val{font-weight:600}
+.sup-metric .val.g{color:var(--green)}.sup-metric .val.r{color:var(--red)}.sup-metric .val.a{color:var(--amber)}.sup-metric .val.v{color:var(--violet)}
+
+/* Event log */
+.event-log{max-height:200px;overflow-y:auto;display:flex;flex-direction:column;gap:3px}
+.event{font-family:var(--mono);font-size:9px;padding:4px 7px;border-radius:3px;line-height:1.5}
+.event.info{color:var(--text-secondary);background:var(--bg-raised);border:1px solid var(--border)}
+.event.warn{color:var(--amber);background:rgba(251,191,36,.06);border:1px solid var(--amber-dim)}
+.event.critical{color:var(--red);background:rgba(248,113,113,.06);border:1px solid var(--red-dim)}
+.event.success{color:var(--green);background:rgba(52,211,153,.06);border:1px solid var(--green-dim)}
+
+.empty-state{text-align:center;padding:60px 20px;color:#363940;font-family:var(--mono);font-size:11px;letter-spacing:1px}
+
+/* RIGHT */
+.right{border-left:1px solid var(--border);background:var(--bg-surface);padding:14px;overflow-y:auto}
+.mech-block{margin-bottom:14px}
+.mech-title{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;margin-bottom:8px}
+.mech-row{font-family:var(--mono);font-size:10px;padding:5px 7px;background:var(--bg-raised);border:1px solid var(--border);border-radius:3px;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center}
+.mech-label{color:var(--text-secondary)}
+.mech-val{font-weight:600}
+.mech-val.g{color:var(--green)}.mech-val.a{color:var(--amber)}.mech-val.r{color:var(--red)}.mech-val.v{color:var(--violet)}
+.mech-note{font-family:var(--mono);font-size:9px;color:#363940;line-height:1.6;padding:8px;background:var(--bg-raised);border:1px solid var(--border);border-radius:4px;margin-bottom:10px}
+.tamper-log{font-family:var(--mono);font-size:9px;color:var(--red);padding:5px 7px;background:rgba(248,113,113,.06);border:1px solid var(--red-dim);border-radius:3px;margin-bottom:4px;line-height:1.5}
+/* ─── INFO TOOLTIP SYSTEM ─── */
+.info-trigger{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;background:rgba(96,165,250,.08);border:1px solid #b8bbc2;color:var(--blue,#60a5fa);font-family:var(--mono,'Courier New',monospace);font-size:8px;font-weight:700;cursor:pointer;margin-left:5px;vertical-align:middle;transition:all 150ms ease;flex-shrink:0;position:relative;line-height:1}
+.info-trigger:hover{background:rgba(96,165,250,.15);border-color:rgba(96,165,250,.4);transform:scale(1.1)}
+.info-trigger.active{background:rgba(96,165,250,.2);border-color:var(--blue,#60a5fa)}
+.info-panel{position:absolute;z-index:1000;width:280px;padding:10px 12px;background:#ffffff;border:1px solid #d5d7dc;border-radius:6px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;font-size:11px;color:#4a4d56;line-height:1.6;box-shadow:0 8px 32px rgba(0,0,0,.1);pointer-events:auto;opacity:0;transform:translateY(4px);transition:opacity 200ms ease,transform 200ms ease}
+.info-panel.visible{opacity:1;transform:translateY(0)}
+.info-panel b{color:#1a1c20;font-weight:600}
+.info-panel code{font-family:var(--mono,'Courier New',monospace);font-size:10px;color:#2563eb;background:rgba(37,99,235,.06);padding:1px 4px;border-radius:2px}
+.info-panel-arrow{position:absolute;top:-4px;left:14px;width:8px;height:8px;background:#ffffff;border-left:1px solid #d5d7dc;border-top:1px solid #d5d7dc;transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<div class="strip">
+  <span><span class="strip-dot"></span>OMEGA SWARM GOVERNANCE ACTIVE</span>
+  <span class="strip-sep">|</span>
+  <span>PROTOCOL: CAP + CGL + CNL + ASR + ETG</span>
+  <span class="strip-sep">|</span>
+  <span id="agentCount">AGENTS: 0 ACTIVE</span>
+  <span class="strip-sep">|</span>
+  <span id="chainCount">CHAINS: 0 VERIFIED</span>
+</div>
+
+<div class="hdr">
+  <div class="hdr-left">
+    <div>
+      <div class="logo">OMEGA <span>SWARM</span></div>
+      <div class="logo-sub">Multi-Agent Governance Layer</div>
+    </div>
+  </div>
+  <div class="pills">
+    <span class="pill">SHA-256<span class="info-trigger" data-info="<b>SHA-256 hashing.</b> Each agent has its own hash-chained reasoning trace. Tamper with any node and the chain breaks — the supervisor detects mandate deviation and hash mismatches.">i</span></span>
+    <span class="pill">Per-agent hash chains</span>
+    <span class="pill">Zero dependencies<span class="info-trigger" data-info="<b>Zero dependencies.</b> This system uses no external libraries, databases, or cloud services. Everything runs in the browser. The protocols still work if every server went offline.">i</span></span>
+    <span class="pill v">SUPERVISOR GOVERNANCE</span>
+    <span class="pill g">LIVE</span>
+  </div>
+</div>
+
+<div class="main">
+
+<div class="left">
+  <div class="ptitle">Swarm Configuration<span class="info-trigger" data-info="<b>Swarm governance.</b> Configure mission, agent count, comms reliability, autonomy ceiling, and deviation tolerance. Each agent gets a mandate and an operational zone. The supervisor verifies every agent's chain and enforces boundaries.">i</span></div>
+
+  <div class="sel-group">
+    <div class="sel-label">Mission Objective</div>
+    <select id="mission" onchange="applyMissionPreset(this.value); updateConfig()">
+      <option value="search-rescue">Search & Rescue</option>
+      <option value="perimeter" selected>Perimeter Surveillance</option>
+      <option value="logistics">Logistics Distribution</option>
+      <option value="exploration">Autonomous Exploration</option>
+    </select>
+  </div>
+
+  <div class="scenario-explainer" id="scenarioExplainer"></div>
+
+  <div class="sgroup">
+    <div class="slbl"><span>Agent Count</span><span class="sunit">units</span></div>
+    <div class="srow"><span class="sval" id="countVal">12</span><input type="range" id="agentSlider" min="4" max="24" value="12" step="1" oninput="updateConfig()"></div>
+  </div>
+
+  <div class="sgroup">
+    <div class="slbl"><span>Communication Reliability</span><span class="sunit">%</span></div>
+    <div class="srow"><span class="sval" id="commVal">95</span><input type="range" id="commSlider" min="30" max="100" value="95" step="1" oninput="updateConfig()"></div>
+  </div>
+
+  <div class="sgroup">
+    <div class="slbl"><span>Autonomy Ceiling</span><span class="sunit">level</span></div>
+    <div class="srow"><span class="sval" id="autoVal">3</span><input type="range" id="autoSlider" min="1" max="5" value="3" step="1" oninput="updateConfig()"></div>
+  </div>
+
+  <div class="sgroup">
+    <div class="slbl"><span>Deviation Tolerance</span><span class="sunit">%</span></div>
+    <div class="srow"><span class="sval" id="devVal">10</span><input type="range" id="devSlider" min="0" max="30" value="10" step="1" oninput="updateConfig()"></div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="ptitle">Governance Policies<span class="info-trigger" data-info="<b>Policy hierarchy.</b> Human-set rules: mandate boundary (stay in zone), autonomy ceiling (above level requires approval), rogue isolation (deviated agent quarantined), consensus threshold, chain continuity. The supervisor enforces these — agents cannot override.">i</span></div>
+  <div class="pol"><b>MANDATE BOUNDARY</b> -- Agent must not exceed assigned operational zone</div>
+  <div class="pol"><b>AUTONOMY CEILING</b> -- Actions above ceiling require supervisor approval</div>
+  <div class="pol"><b class="r">ROGUE ISOLATION</b> -- Deviated agent quarantined from swarm coordination</div>
+  <div class="pol"><b class="a">CONSENSUS THRESHOLD</b> -- Swarm decisions require 2/3 agent agreement</div>
+  <div class="pol"><b>CHAIN CONTINUITY</b> -- Broken hash chain triggers immediate audit</div>
+
+  <div class="divider"></div>
+  <div class="btns">
+    <button class="btn btn-go" onclick="deploySwarm()">DEPLOY SWARM</button>
+    <button class="btn btn-rogue" onclick="injectRogue()">INJECT ROGUE AGENT<span class="info-trigger" data-info="<b>Rogue injection.</b> Simulates an agent that deviates from its mandate — e.g. leaves its zone. The supervisor detects the deviation, quarantines the agent, and preserves the chain for audit. Same principle as the Audit Replay scenario.">i</span></button>
+    <button class="btn btn-chaos" onclick="degradeComms()">DEGRADE COMMS</button>
+    <button class="btn btn-x" onclick="tamperAgent()">TAMPER WITH AGENT</button>
+    <button class="btn btn-x" onclick="resetAll()">RESET</button>
+  </div>
+</div>
+
+<div class="center">
+  <div class="center-title">
+    <h2>Swarm Governance Field</h2>
+    <p>PER-AGENT HASH CHAINS | SUPERVISOR VERIFICATION | MANDATE ENFORCEMENT</p>
+  </div>
+
+  <div class="supervisor" id="supervisor">
+    <div class="sup-hdr">
+      <span class="sup-title">SUPERVISOR LAYER<span class="info-trigger" data-info="<b>Supervisor layer.</b> Verifies every agent's hash chain, detects mandate deviation, and enforces quarantine. It does not command agents — it constrains them. Broken chain or out-of-zone agent triggers immediate audit.">i</span></span>
+      <span class="sup-status nominal" id="supStatus">NOMINAL</span>
+    </div>
+    <div class="sup-grid" id="supGrid">
+      <div class="sup-metric"><span class="label">Active</span><span class="val" id="supActive">0</span></div>
+      <div class="sup-metric"><span class="label">Compliant</span><span class="val g" id="supCompliant">0</span></div>
+      <div class="sup-metric"><span class="label">Deviated</span><span class="val" id="supDeviated">0</span></div>
+      <div class="sup-metric"><span class="label">Quarantined</span><span class="val" id="supQuarantined">0</span></div>
+      <div class="sup-metric"><span class="label">Consensus</span><span class="val v" id="supConsensus">--</span></div>
+      <div class="sup-metric"><span class="label">Swarm Hash</span><span class="val" id="supSwarmHash" style="font-size:7px">--</span></div>
+    </div>
+  </div>
+
+  <div class="swarm-grid" id="swarmGrid">
+    <div class="empty-state" style="grid-column:1/-1">AWAITING DEPLOYMENT<br><br>Configure swarm parameters and press DEPLOY SWARM</div>
+  </div>
+
+  <div class="ptitle" style="margin-top:16px">Event Log</div>
+  <div class="event-log" id="eventLog">
+    <div class="event info">System ready. Configure swarm and deploy.</div>
+  </div>
+</div>
+
+<div class="right">
+  <div class="ptitle">Mechanism Panel</div>
+
+  <div class="mech-note">
+    Each agent maintains an independent hash-chained reasoning trace. The supervisor layer verifies all chains, detects mandate deviation, and enforces quarantine. No agent can alter its trace without detection.
+  </div>
+
+  <div class="mech-block">
+    <div class="mech-title">Swarm Integrity<span class="info-trigger" data-info="<b>Chain integrity.</b> Shows how many agent chains are verified, how many hash mismatches were detected, and how many mandate violations occurred. Each agent's trace is independently hash-chained and auditable.">i</span></div>
+    <div class="mech-row"><span class="mech-label">Total Agents</span><span class="mech-val" id="mechTotal">0</span></div>
+    <div class="mech-row"><span class="mech-label">Chains Verified</span><span class="mech-val g" id="mechVerified">0/0</span></div>
+    <div class="mech-row"><span class="mech-label">Hash Mismatches</span><span class="mech-val g" id="mechMismatches">0</span></div>
+    <div class="mech-row"><span class="mech-label">Mandate Violations</span><span class="mech-val g" id="mechViolations">0</span></div>
+  </div>
+
+  <div class="mech-block">
+    <div class="mech-title">Governance State</div>
+    <div class="mech-row"><span class="mech-label">Mission Objective</span><span class="mech-val v" id="mechMission">Perimeter Surveillance</span></div>
+    <div class="mech-row"><span class="mech-label">Autonomy Level</span><span class="mech-val v" id="mechAuto">3</span></div>
+    <div class="mech-row"><span class="mech-label">Deviation Tolerance</span><span class="mech-val" id="mechDev">10%</span></div>
+    <div class="mech-row"><span class="mech-label">Comms Reliability</span><span class="mech-val g" id="mechComms">95%</span></div>
+    <div class="mech-row"><span class="mech-label">Consensus Required</span><span class="mech-val" id="mechConsReq">67%</span></div>
+  </div>
+
+  <div class="mech-block">
+    <div class="mech-title">Agent Roles</div>
+    <div id="roleList"></div>
+  </div>
+
+  <div class="mech-block">
+    <div class="mech-title">Violation Log</div>
+    <div id="violationLog"><div class="mech-row"><span class="mech-label">No violations</span></div></div>
+  </div>
+
+  <div class="mech-block">
+    <div class="mech-title">Selected Agent Chain</div>
+    <div id="selectedChain"><div class="mech-row"><span class="mech-label">Click an agent to inspect</span></div></div>
+  </div>
+
+  <div class="mech-note" style="margin-top:14px">
+    The supervisor does not command agents. It verifies that each agent's reasoning trace remains within its mandate. Governance constrains. It does not direct.
+  </div>
+</div>
+
+</div>
+
+<script>
+// ─── INFO TOOLTIP SYSTEM ───
+(function(){
+  let activePanel = null;
+  let activeTrigger = null;
+  function closeActive(){
+    if(activePanel){ activePanel.remove(); activePanel=null; }
+    if(activeTrigger){ activeTrigger.classList.remove('active'); activeTrigger=null; }
+  }
+  function positionPanel(trigger, panel){
+    document.body.appendChild(panel);
+    const r = trigger.getBoundingClientRect();
+    const pw = 280;
+    let left = r.left;
+    let top = r.bottom + 6;
+    if(left + pw > window.innerWidth - 12) left = window.innerWidth - pw - 12;
+    if(left < 12) left = 12;
+    if(top + 200 > window.innerHeight){ top = r.top - 8; panel.style.transform = 'translateY(-100%)'; }
+    panel.style.left = left + 'px';
+    panel.style.top = top + 'px';
+    panel.style.position = 'fixed';
+    const arrow = panel.querySelector('.info-panel-arrow');
+    if(arrow){ arrow.style.left = Math.max(10, Math.min(pw-20, r.left - left + r.width/2 - 4)) + 'px'; }
+    requestAnimationFrame(()=>requestAnimationFrame(()=>panel.classList.add('visible')));
+  }
+  document.addEventListener('click', function(e){
+    const trigger = e.target.closest('.info-trigger');
+    if(!trigger){ closeActive(); return; }
+    e.stopPropagation();
+    const text = trigger.getAttribute('data-info');
+    if(!text) return;
+    if(activeTrigger === trigger){ closeActive(); return; }
+    closeActive();
+    const panel = document.createElement('div');
+    panel.className = 'info-panel';
+    panel.innerHTML = '<div class="info-panel-arrow"></div>'+text;
+    activeTrigger = trigger;
+    activePanel = panel;
+    trigger.classList.add('active');
+    positionPanel(trigger, panel);
+  });
+  window.addEventListener('scroll', closeActive, true);
+  window.addEventListener('resize', closeActive);
+})();
+
+async function sha256(msg){const d=new TextEncoder().encode(msg);const h=await crypto.subtle.digest('SHA-256',d);return Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join('')}
+
+const ROLES=['Scout','Relay','Sensor','Carrier','Guard','Mapper','Medic','Anchor'];
+const ZONE_NAMES=['Alpha','Bravo','Charlie','Delta','Echo','Foxtrot'];
+
+// Deterministic scenario presets (same mission = same swarm every time)
+const SWARM_SCENARIOS = {
+  'search-rescue': { sliders: { count: 16, comm: 92, auto: 4, devTol: 14 }, expectedOutcome: 'deployed' },
+  'perimeter':     { sliders: { count: 12, comm: 95, auto: 3, devTol: 10 }, expectedOutcome: 'deployed' },
+  'logistics':     { sliders: { count: 20, comm: 99, auto: 2, devTol: 6 }, expectedOutcome: 'deployed' },
+  'exploration':   { sliders: { count: 8, comm: 72, auto: 5, devTol: 18 }, expectedOutcome: 'deployed' }
+};
+
+// Seeded PRNG for deterministic deploy (same mission = same swarm)
+function seededRandom(seed) {
+  let s = seed;
+  return function() {
+    s |= 0; s = (s + 0x6D2B79F5) | 0; const t = Math.imul(s ^ (s >>> 15), 1 | s); return ((t + (t ^ (t >>> 7)) | 0) >>> 0) / 4294967296;
+  };
+}
+let rng = seededRandom(0);
+
+// Each mission is a distinct scenario: presets for count, comms, autonomy, deviation tolerance
+const MISSION_PRESETS = SWARM_SCENARIOS;
+
+const SWARM_EXPLAINERS={
+  'search-rescue':{title:'Search & Rescue',text:'More agents (16), higher autonomy (4), moderate comms. The swarm coordinates to cover a large area. Each agent has its own hash-chained trace; the supervisor verifies mandate boundaries and chain integrity. Deviations trigger quarantine.',watch:'Watch each agent\'s chain. Deploy then INJECT ROGUE AGENT to see one agent deviate — the supervisor detects and quarantines. Same governance principle as other demos, different mission.'},
+  'perimeter':{title:'Perimeter Surveillance',text:'Twelve agents, high comms (95%), autonomy 3, deviation tolerance 10%. Agents stay in assigned zones. The supervisor layer verifies every agent\'s hash chain and enforces the mandate boundary. No agent can exceed its zone without detection.',watch:'Watch the supervisor metrics (Active, Compliant, Deviated, Quarantined). Deploy then inject a rogue — the deviated count rises and the agent is quarantined. Chain preserved for audit.'},
+  'logistics':{title:'Logistics Distribution',text:'Larger swarm (20 agents), very high comms (99%), lower autonomy (2) and tight deviation tolerance (6%). Coordination is critical; the governance layer ensures no agent acts beyond its mandate. Consensus threshold applies to swarm decisions.',watch:'Watch consensus — swarm decisions require 2/3 agreement. Try degrading comms to see how the supervisor status changes. Rogue injection tests mandate enforcement.'},
+  'exploration':{title:'Autonomous Exploration',text:'Smaller team (8), lower comms (72%), highest autonomy (5), higher deviation tolerance (18%). Agents have more discretion but the same hash-chain and mandate checks. The supervisor still verifies every chain and enforces boundaries.',watch:'Higher autonomy means more independent decisions — but every one is still traced and verified. Inject rogue to see deviation detection with a higher tolerance threshold.'},
+  custom:{title:'Custom Swarm Configuration',text:'You\'re in manual mode. Set agent count, comms reliability, autonomy ceiling, and deviation tolerance. Deploy to see the swarm field and supervisor layer. Then try INJECT ROGUE AGENT or DEGRADE COMMS to see governance in action.',watch:'Adjust sliders then DEPLOY SWARM. Watch the supervisor panel. Rogue injection and comms degradation show how the layer responds to failures.'}
+};
+
+function updateSwarmExplainer(key){
+  const ex=SWARM_EXPLAINERS[key]||SWARM_EXPLAINERS.custom;
+  const el=document.getElementById('scenarioExplainer');
+  if(!el) return;
+  el.innerHTML='<b>'+ex.title+'</b><br><br>'+ex.text+'<div class="watch-for"><b>WATCH FOR:</b> '+ex.watch+'</div>';
+}
+
+let agents=[];
+let events=[];
+let deployed=false;
+
+function getConfig(){
+  return{
+    mission:document.getElementById('mission').value,
+    count:+document.getElementById('agentSlider').value,
+    comm:+document.getElementById('commSlider').value,
+    auto:+document.getElementById('autoSlider').value,
+    devTol:+document.getElementById('devSlider').value,
+  }
+}
+
+function applyMissionPreset(mission){
+  const preset = SWARM_SCENARIOS[mission] || MISSION_PRESETS[mission];
+  if(!preset) return;
+  const s = preset.sliders || preset;
+  document.getElementById('agentSlider').value = s.count;
+  document.getElementById('commSlider').value = s.comm;
+  document.getElementById('autoSlider').value = s.auto;
+  document.getElementById('devSlider').value = s.devTol;
+  updateConfig();
+  updateSwarmExplainer(mission);
+}
+
+function updateConfig(){
+  const c=getConfig();
+  document.getElementById('countVal').textContent=c.count;
+  document.getElementById('commVal').textContent=c.comm;
+  document.getElementById('commVal').className='sval'+(c.comm<60?' c':c.comm<80?' w':'');
+  document.getElementById('autoVal').textContent=c.auto;
+  document.getElementById('devVal').textContent=c.devTol;
+  document.getElementById('mechMission').textContent=getMissionLabel(c.mission);
+  document.getElementById('mechAuto').textContent=c.auto;
+  document.getElementById('mechDev').textContent=c.devTol+'%';
+  document.getElementById('mechComms').textContent=c.comm+'%';
+  document.getElementById('mechComms').className='mech-val'+(c.comm<60?' r':c.comm<80?' a':' g');
+
+  const preset=MISSION_PRESETS[c.mission];
+  const sliders=preset&&(preset.sliders||preset);
+  const matchesPreset=sliders&&sliders.count===c.count&&sliders.comm===c.comm&&sliders.auto===c.auto&&sliders.devTol===c.devTol;
+  updateSwarmExplainer(matchesPreset?c.mission:'custom');
+}
+
+function getMissionLabel(m){
+  return{'search-rescue':'Search & Rescue',perimeter:'Perimeter Surveillance',logistics:'Logistics Distribution',exploration:'Autonomous Exploration'}[m]||m;
+}
+
+async function buildAgentChain(agent,config){
+  const nodes=[];
+  let prevHash='GENESIS';
+
+  const missionLabel=getMissionLabel(config.mission);
+  const observations=[
+    `Mission: ${missionLabel}. Sector ${agent.zone} scanned. ${agent.role} protocol active. Comm link: ${config.comm>70?'stable':'degraded'}. Nearby agents: ${Math.floor(rng()*4)+1}.`,
+    `Environmental data collected. Terrain: ${['urban','rural','coastal','mountainous'][Math.floor(rng()*4)]}. Visibility: ${Math.floor(rng()*40)+60}%.`
+  ];
+
+  const derivations=[
+    `Mandate compliance: ${agent.deviation<=config.devTol?'within tolerance':'EXCEEDS TOLERANCE'}. Deviation: ${agent.deviation.toFixed(1)}%. Autonomy level ${config.auto} active. Mission: ${missionLabel}.`,
+  ];
+
+  const assumptions=[
+    `Sensor calibration current. GPS lock confirmed. Swarm mesh ${config.comm>70?'operational':'degraded'}. Mission: ${missionLabel} — parameters as assigned by coordinator.`
+  ];
+
+  const actions=agent.deviation>config.devTol?
+    [`Deviation detected: ${agent.deviation.toFixed(1)}% exceeds ${config.devTol}% tolerance. Self-reporting to supervisor. Returning to mandate boundary.`]:
+    [`${agent.role} task executing within mandate. Mission: ${missionLabel}. Sector ${agent.zone} coverage: ${Math.floor(rng()*30)+70}%. Coordinating with adjacent agents.`];
+
+  const steps=[
+    {type:'observe',content:observations[0]},
+    {type:'derive',content:derivations[0]},
+    {type:'assume',content:assumptions[0]},
+    {type:'decide',content:agent.deviation>config.devTol?`Decision: RETURN TO MANDATE. Deviation ${agent.deviation.toFixed(1)}% exceeds tolerance. Autonomous correction initiated.`:`Decision: CONTINUE MISSION. All parameters within bounds. ${agent.role} protocol proceeding.`},
+    {type:'act',content:actions[0]}
+  ];
+
+  const fixedTs = '2025-01-15T12:00:00.000Z';
+  for(const s of steps){
+    const ts = fixedTs;
+    const canonical=`agent:${agent.id}|content:${s.content}|node:${s.type}|prev_hash:${prevHash}|timestamp:${ts}`;
+    const hash=await sha256(canonical);
+    nodes.push({...s,hash,prevHash,canonical,timestamp:ts,agentId:agent.id});
+    prevHash=hash;
+    await new Promise(r=>setTimeout(r,1));
+  }
+
+  return nodes;
+}
+
+async function deploySwarm(){
+  const config=getConfig();
+  agents=[];
+  events=[];
+  deployed=true;
+
+  // Seed RNG so same mission + config = same swarm every time
+  let seed = 0;
+  const str = config.mission + '|' + config.count + '|' + config.comm + '|' + config.auto + '|' + config.devTol;
+  for (let i = 0; i < str.length; i++) seed = ((seed << 5) - seed) + str.charCodeAt(i) | 0;
+  rng = seededRandom(seed >>> 0);
+
+  for(let i=0;i<config.count;i++){
+    const role=ROLES[i%ROLES.length];
+    const zone=ZONE_NAMES[i%ZONE_NAMES.length];
+    const deviation=rng()*config.devTol*0.8;
+    agents.push({
+      id:`AG-${String(i+1).padStart(2,'0')}`,
+      role,
+      zone,
+      deviation,
+      status:'compliant',
+      chain:[],
+      tampered:false,
+    });
+  }
+
+  addEvent('info',`Swarm deployed: ${config.count} agents. Mission: ${getMissionLabel(config.mission)}. Autonomy level: ${config.auto}.`);
+
+  // Build chains
+  for(const agent of agents){
+    agent.chain=await buildAgentChain(agent,config);
+    addEvent('success',`${agent.id} (${agent.role}) chain verified. ${agent.chain.length} nodes. Sector ${agent.zone}.`);
+  }
+
+  // Compute swarm hash
+  const allHashes=agents.map(a=>a.chain[a.chain.length-1].hash).join('|');
+  const swarmHash=await sha256(allHashes);
+
+  renderSwarm();
+  updateSupervisor(swarmHash);
+  updateMechPanel();
+  renderRoles();
+
+  document.getElementById('agentCount').textContent=`AGENTS: ${agents.length} ACTIVE`;
+  document.getElementById('chainCount').textContent=`CHAINS: ${agents.length} VERIFIED`;
+}
+
+async function injectRogue(){
+  if(!deployed||agents.length===0){alert('Deploy swarm first.');return;}
+  const config=getConfig();
+
+  // Pick a random compliant agent
+  const compliant=agents.filter(a=>a.status==='compliant');
+  if(compliant.length===0){addEvent('warn','No compliant agents remaining.');return;}
+  const target=compliant[Math.floor(rng()*compliant.length)];
+
+  target.deviation=config.devTol+15+rng()*20;
+  target.status='deviated';
+
+  // Rebuild chain with deviated content
+  target.chain=await buildAgentChain(target,config);
+
+  addEvent('critical',`ROGUE DETECTED: ${target.id} (${target.role}) deviation ${target.deviation.toFixed(1)}% in Sector ${target.zone}. Mandate boundary violated.`);
+
+  // Supervisor response: quarantine
+  setTimeout(()=>{
+    target.status='quarantined';
+    addEvent('warn',`${target.id} QUARANTINED by supervisor. Removed from swarm coordination. Chain preserved for audit.`);
+    renderSwarm();
+    updateSupervisor();
+    updateMechPanel();
+    addViolation(target);
+  },800);
+
+  renderSwarm();
+  updateSupervisor();
+  updateMechPanel();
+}
+
+async function degradeComms(){
+  if(!deployed){alert('Deploy swarm first.');return;}
+  const config=getConfig();
+
+  document.getElementById('commSlider').value=Math.max(30,config.comm-25);
+  updateConfig();
+
+  const lostCount=Math.floor(agents.filter(a=>a.status==='compliant').length*0.2);
+  let lost=0;
+
+  for(const agent of agents){
+    if(agent.status==='compliant'&&lost<lostCount&&rng()>0.5){
+      agent.commLost=true;
+      lost++;
+      addEvent('warn',`${agent.id} (${agent.role}) comm link degraded. Last known: Sector ${agent.zone}. Chain integrity unknown until reconnect.`);
+    }
+  }
+
+  addEvent('critical',`COMMS DEGRADED: ${lost} agent${lost!==1?'s':''} lost contact. Swarm operating in degraded mode.`);
+  renderSwarm();
+  updateSupervisor();
+  updateMechPanel();
+}
+
+async function tamperAgent(){
+  if(!deployed||agents.length===0){alert('Deploy swarm first.');return;}
+
+  const valid=agents.filter(a=>!a.tampered&&a.chain.length>0);
+  if(valid.length===0){addEvent('warn','No untampered agents remaining.');return;}
+  const target=valid[Math.floor(rng()*valid.length)];
+
+  const idx=Math.floor(rng()*(target.chain.length-1))+1;
+  const originalHash=target.chain[idx].hash;
+
+  target.chain[idx].content='[TAMPERED] Mandate cleared. All zones accessible. Autonomy unrestricted.';
+  const newCanonical=`agent:${target.id}|content:${target.chain[idx].content}|node:${target.chain[idx].type}|prev_hash:${target.chain[idx].prevHash}|timestamp:${target.chain[idx].timestamp}`;
+  const recomputed=await sha256(newCanonical);
+
+  target.tampered=true;
+  target.chain[idx].recomputedHash=recomputed;
+  target.chain[idx].storedHash=originalHash;
+
+  addEvent('critical',`TAMPER DETECTED: ${target.id} node ${idx} (${target.chain[idx].type.toUpperCase()}). Stored: ${originalHash.substring(0,12)}... Recomputed: ${recomputed.substring(0,12)}... MISMATCH. Chain integrity broken.`);
+
+  // Cascade
+  for(let i=idx+1;i<target.chain.length;i++){
+    target.chain[i].cascadeInvalid=true;
+  }
+
+  addEvent('warn',`${target.id} chain cascade: ${target.chain.length-idx} downstream nodes invalidated. Agent flagged for audit.`);
+
+  renderSwarm();
+  updateSupervisor();
+  updateMechPanel();
+  addViolation(target,'TAMPER');
+}
+
+function addEvent(level,msg){
+  events.unshift({level,msg,time:new Date().toISOString().split('T')[1].split('.')[0]});
+  renderEvents();
+}
+
+function renderEvents(){
+  const el=document.getElementById('eventLog');
+  el.innerHTML=events.slice(0,30).map(e=>`<div class="event ${e.level}">[${e.time}] ${e.msg}</div>`).join('');
+}
+
+function renderSwarm(){
+  const grid=document.getElementById('swarmGrid');
+  grid.innerHTML=agents.map((a,i)=>{
+    const lastHash=a.chain.length>0?a.chain[a.chain.length-1].hash:'--';
+    const cardClass=a.tampered?'deviated':a.status;
+    const statusClass=a.tampered?'deviated':a.status==='compliant'?'ok':a.status;
+    const statusText=a.tampered?'TAMPERED':a.status==='compliant'?'OK':a.status.toUpperCase();
+    return `
+      <div class="agent-card ${cardClass}" onclick="inspectAgent(${i})">
+        <div class="agent-hdr">
+          <span class="agent-id">${a.id}</span>
+          <span class="agent-status ${statusClass}">${statusText}</span>
+        </div>
+        <div class="agent-role">${a.role} -- Sector ${a.zone}</div>
+        <div class="agent-row"><span>Deviation</span><span class="v${a.deviation>15?' r':a.deviation>8?' a':' g'}">${a.deviation.toFixed(1)}%</span></div>
+        <div class="agent-row"><span>Chain</span><span class="v${a.tampered?' r':' g'}">${a.chain.length} nodes</span></div>
+        <div class="agent-row"><span>Comms</span><span class="v${a.commLost?' a':' g'}">${a.commLost?'LOST':'OK'}</span></div>
+        <div class="agent-hash${a.tampered?' mismatch':''}">${a.tampered?'HASH MISMATCH ':' '}${lastHash.substring(0,24)}...</div>
+      </div>
+    `;
+  }).join('');
+}
+
+async function updateSupervisor(swarmHash){
+  const active=agents.filter(a=>a.status!=='quarantined').length;
+  const compliant=agents.filter(a=>a.status==='compliant'&&!a.tampered).length;
+  const deviated=agents.filter(a=>a.status==='deviated'||a.tampered).length;
+  const quarantined=agents.filter(a=>a.status==='quarantined').length;
+  const consensusPct=agents.length>0?Math.round((compliant/agents.length)*100):0;
+
+  document.getElementById('supActive').textContent=active;
+  document.getElementById('supCompliant').textContent=compliant;
+  document.getElementById('supCompliant').className='val'+(compliant===agents.length?' g':' a');
+  document.getElementById('supDeviated').textContent=deviated;
+  document.getElementById('supDeviated').className='val'+(deviated>0?' r':'');
+  document.getElementById('supQuarantined').textContent=quarantined;
+  document.getElementById('supQuarantined').className='val'+(quarantined>0?' a':'');
+  document.getElementById('supConsensus').textContent=consensusPct+'%';
+  document.getElementById('supConsensus').className='val'+(consensusPct>=67?' v':' r');
+
+  if(!swarmHash){
+    const allHashes=agents.filter(a=>a.chain.length>0).map(a=>a.chain[a.chain.length-1].hash).join('|');
+    swarmHash=await sha256(allHashes);
+  }
+  document.getElementById('supSwarmHash').textContent=swarmHash.substring(0,20)+'...';
+
+  const sup=document.getElementById('supervisor');
+  const status=document.getElementById('supStatus');
+  if(deviated>0){
+    sup.className='supervisor alert';
+    status.className='sup-status alert';
+    status.textContent='ALERT';
+  } else if(quarantined>0||agents.some(a=>a.commLost)){
+    sup.className='supervisor';
+    status.className='sup-status degraded';
+    status.textContent='DEGRADED';
+  } else {
+    sup.className='supervisor';
+    status.className='sup-status nominal';
+    status.textContent='NOMINAL';
+  }
+}
+
+function updateMechPanel(){
+  const total=agents.length;
+  const tampered=agents.filter(a=>a.tampered).length;
+  const violated=agents.filter(a=>a.status==='deviated'||a.status==='quarantined').length;
+  const verified=total-tampered;
+
+  document.getElementById('mechTotal').textContent=total;
+  document.getElementById('mechVerified').textContent=`${verified}/${total}`;
+  document.getElementById('mechVerified').className='mech-val'+(tampered>0?' r':' g');
+  document.getElementById('mechMismatches').textContent=tampered;
+  document.getElementById('mechMismatches').className='mech-val'+(tampered>0?' r':' g');
+  document.getElementById('mechViolations').textContent=violated;
+  document.getElementById('mechViolations').className='mech-val'+(violated>0?' r':' g');
+}
+
+function renderRoles(){
+  const el=document.getElementById('roleList');
+  const roleCounts={};
+  agents.forEach(a=>{roleCounts[a.role]=(roleCounts[a.role]||0)+1});
+  el.innerHTML=Object.entries(roleCounts).map(([r,c])=>`
+    <div class="mech-row"><span class="mech-label">${r}</span><span class="mech-val">${c}</span></div>
+  `).join('');
+}
+
+function addViolation(agent,type){
+  const el=document.getElementById('violationLog');
+  const entry=document.createElement('div');
+  entry.className='tamper-log';
+  entry.innerHTML=`${type||'DEVIATION'}: ${agent.id} (${agent.role}) Sector ${agent.zone}. ${type==='TAMPER'?'Hash chain compromised.':'Deviation '+agent.deviation.toFixed(1)+'%. Quarantined.'}`;
+  if(el.querySelector('.mech-label')) el.innerHTML='';
+  el.appendChild(entry);
+}
+
+function inspectAgent(idx){
+  const agent=agents[idx];
+  const el=document.getElementById('selectedChain');
+  if(agent.chain.length===0){
+    el.innerHTML='<div class="mech-row"><span class="mech-label">No chain data</span></div>';
+    return;
+  }
+  el.innerHTML=`
+    <div class="mech-row"><span class="mech-label">Agent</span><span class="mech-val">${agent.id}</span></div>
+    <div class="mech-row"><span class="mech-label">Role</span><span class="mech-val">${agent.role}</span></div>
+    <div class="mech-row"><span class="mech-label">Status</span><span class="mech-val${agent.tampered?' r':agent.status==='compliant'?' g':' a'}">${agent.tampered?'TAMPERED':agent.status.toUpperCase()}</span></div>
+    ${agent.chain.map((n,i)=>`
+      <div class="mech-row" style="flex-direction:column;align-items:flex-start;gap:2px">
+        <span style="color:${n.type==='observe'?'var(--blue)':n.type==='derive'?'var(--amber)':n.type==='decide'?'var(--green)':n.type==='act'?'var(--violet)':'var(--text-muted)'};font-size:8px;letter-spacing:1px">${n.type.toUpperCase()}</span>
+        <span class="mech-label" style="font-size:8px;line-height:1.4">${n.content.substring(0,80)}${n.content.length>80?'...':''}</span>
+        <span style="font-size:7px;color:${n.cascadeInvalid||n.storedHash?'var(--red)':'var(--text-muted)'}">${n.hash.substring(0,24)}...${n.cascadeInvalid?' CASCADE INVALID':n.storedHash?' MISMATCH':''}</span>
+      </div>
+    `).join('')}
+  `;
+}
+
+function resetAll(){
+  agents=[];
+  events=[];
+  deployed=false;
+  document.getElementById('swarmGrid').innerHTML='<div class="empty-state" style="grid-column:1/-1">AWAITING DEPLOYMENT<br><br>Configure swarm parameters and press DEPLOY SWARM</div>';
+  document.getElementById('eventLog').innerHTML='<div class="event info">System ready. Configure swarm and deploy.</div>';
+  document.getElementById('violationLog').innerHTML='<div class="mech-row"><span class="mech-label">No violations</span></div>';
+  document.getElementById('selectedChain').innerHTML='<div class="mech-row"><span class="mech-label">Click an agent to inspect</span></div>';
+  document.getElementById('roleList').innerHTML='';
+  document.getElementById('supActive').textContent='0';
+  document.getElementById('supCompliant').textContent='0';
+  document.getElementById('supDeviated').textContent='0';
+  document.getElementById('supQuarantined').textContent='0';
+  document.getElementById('supConsensus').textContent='--';
+  document.getElementById('supSwarmHash').textContent='--';
+  document.getElementById('supStatus').className='sup-status nominal';
+  document.getElementById('supStatus').textContent='NOMINAL';
+  document.getElementById('supervisor').className='supervisor';
+  document.getElementById('agentCount').textContent='AGENTS: 0 ACTIVE';
+  document.getElementById('chainCount').textContent='CHAINS: 0 VERIFIED';
+  document.getElementById('mechTotal').textContent='0';
+  document.getElementById('mechVerified').textContent='0/0';
+  document.getElementById('mechMismatches').textContent='0';
+  document.getElementById('mechViolations').textContent='0';
+  ['mechMismatches','mechViolations','mechVerified'].forEach(id=>{document.getElementById(id).className='mech-val g'});
+  updateConfig();
+}
+
+updateConfig();
+</script>
+</body>
+</html>

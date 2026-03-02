@@ -1,0 +1,7 @@
+{
+  "sensor_drift_percent_per_year": 2,
+  "actuator_efficiency_loss_percent": 5,
+  "load_increase_percent": 15,
+  "combined_degradation_factor": 1.22,
+  "system_margin": 0.78
+}

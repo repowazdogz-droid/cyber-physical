@@ -1,0 +1,12 @@
+problem:
+  name: "Fatigue experiment: 100 cycles at 70% max load"
+  domain: "surgical_robotics"
+constraints: ["cycles: 100", "must_not_fail"]
+uncertainties: ["fatigue_life: unknown"]
+objectives: ["endurance"]
+design:
+  cycles: 100
+  load_n: 3.5
+  material: "silicone"
+metadata:
+  experiment_type: "fatigue"

@@ -1,0 +1,7 @@
+{"timestamp": "2026-01-22T12:04:16.095539+00:00", "version": "v2", "procedure_id": "colon_screening_v1", "domain": "endoscopy", "anatomy": "colon", "overall_status": "AMBER", "overall_score": 0.8375}
+{"timestamp": "2026-01-22T12:04:18.320667+00:00", "version": "v2", "procedure_id": "airway_suction_assist_v1", "domain": "ENT", "anatomy": "trachea", "overall_status": "AMBER", "overall_score": 0.8125}
+{"timestamp": "2026-01-22T12:04:23.034747+00:00", "version": "v2", "procedure_id": "colon_screening_v1", "domain": "endoscopy", "anatomy": "colon", "overall_status": "AMBER", "overall_score": 0.9}
+{"timestamp": "2026-01-22T12:04:28.785145+00:00", "version": "v2", "procedure_id": "colon_screening_v1", "domain": "endoscopy", "anatomy": "colon", "overall_status": "AMBER", "overall_score": 0.9}
+{"timestamp": "2026-01-22T12:04:31.081916+00:00", "version": "v2", "procedure_id": "colon_screening_v1", "domain": "endoscopy", "anatomy": "colon", "overall_status": "AMBER", "overall_score": 0.9}
+{"timestamp": "2026-01-22T12:10:09.697815+00:00", "version": "v2", "procedure_id": "colon_screening_v1", "domain": "endoscopy", "anatomy": "colon", "overall_status": "AMBER", "overall_score": 0.9}
+{"timestamp": "2026-01-22T12:22:42.192232+00:00", "version": "v2", "procedure_id": "colon_screening_v1", "domain": "endoscopy", "anatomy": "colon", "overall_status": "AMBER", "overall_score": 0.9}

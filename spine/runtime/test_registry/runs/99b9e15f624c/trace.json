@@ -1,0 +1,359 @@
+{
+  "run_id": "a318416ab356",
+  "timestamp": "2026-02-05T09:57:55.880469",
+  "nodes": {
+    "input_0000": {
+      "id": "input_0000",
+      "type": "input",
+      "content": {
+        "type": "problem",
+        "name": "Low friction coefficient on wet tissue",
+        "domain": "robotic_design"
+      },
+      "timestamp": "2026-02-05T09:57:55.874658",
+      "parents": [],
+      "metadata": {}
+    },
+    "input_0001": {
+      "id": "input_0001",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "grip_force: 5.0N"
+      },
+      "timestamp": "2026-02-05T09:57:55.874659",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0002": {
+      "id": "input_0002",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "normal_force: 8.0N"
+      },
+      "timestamp": "2026-02-05T09:57:55.874661",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0003": {
+      "id": "input_0003",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "friction_coefficient: 0.1"
+      },
+      "timestamp": "2026-02-05T09:57:55.874661",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0004": {
+      "id": "input_0004",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "must_not_slip"
+      },
+      "timestamp": "2026-02-05T09:57:55.874662",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0005": {
+      "id": "input_0005",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "tissue_surface: wet"
+      },
+      "timestamp": "2026-02-05T09:57:55.874663",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0006": {
+      "id": "input_0006",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "tissue_compliance: unknown_range"
+      },
+      "timestamp": "2026-02-05T09:57:55.874664",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0007": {
+      "id": "input_0007",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "surface_wetness_variation: high"
+      },
+      "timestamp": "2026-02-05T09:57:55.874665",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0008": {
+      "id": "input_0008",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "secure_grasping"
+      },
+      "timestamp": "2026-02-05T09:57:55.874666",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0009": {
+      "id": "input_0009",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "no_tissue_damage"
+      },
+      "timestamp": "2026-02-05T09:57:55.874667",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "inference_0010": {
+      "id": "inference_0010",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "grip_force: 5.0N",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:57:55.880363",
+      "parents": [
+        "input_0001"
+      ],
+      "metadata": {}
+    },
+    "inference_0011": {
+      "id": "inference_0011",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "normal_force: 8.0N",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:57:55.880364",
+      "parents": [
+        "input_0002"
+      ],
+      "metadata": {}
+    },
+    "inference_0012": {
+      "id": "inference_0012",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "friction_coefficient: 0.1",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:57:55.880365",
+      "parents": [
+        "input_0003"
+      ],
+      "metadata": {}
+    },
+    "inference_0013": {
+      "id": "inference_0013",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "must_not_slip",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:57:55.880366",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {}
+    },
+    "inference_0014": {
+      "id": "inference_0014",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "tissue_surface: wet",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:57:55.880366",
+      "parents": [
+        "input_0005"
+      ],
+      "metadata": {}
+    },
+    "output_0015": {
+      "id": "output_0015",
+      "type": "output",
+      "content": {
+        "type": "failure_mode",
+        "mode": "slip_under_load",
+        "severity": "high",
+        "mitigation": "increase_friction_coefficient"
+      },
+      "timestamp": "2026-02-05T09:57:55.880391",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "constraint: must_not_slip"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0016": {
+      "id": "output_0016",
+      "type": "output",
+      "content": {
+        "type": "failure_mode",
+        "mode": "excessive_force_damage",
+        "severity": "medium",
+        "mitigation": "implement_force_limiting_control"
+      },
+      "timestamp": "2026-02-05T09:57:55.880408",
+      "parents": [
+        "input_0001",
+        "input_0002"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "constraint: grip_force: 5.0N",
+            "constraint: normal_force: 8.0N"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0017": {
+      "id": "output_0017",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "tissue_compliance: unknown_range",
+        "impact": "critical",
+        "resolution": "bench_test_required"
+      },
+      "timestamp": "2026-02-05T09:57:55.880424",
+      "parents": [
+        "input_0006"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: tissue_compliance: unknown_range"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0018": {
+      "id": "output_0018",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "surface_wetness_variation: high",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T09:57:55.880433",
+      "parents": [
+        "input_0007"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: surface_wetness_variation: high"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0019": {
+      "id": "output_0019",
+      "type": "output",
+      "content": {
+        "type": "recommended_experiment",
+        "name": "force_limit_characterization"
+      },
+      "timestamp": "2026-02-05T09:57:55.880443",
+      "parents": [
+        "input_0001",
+        "input_0002"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "rule_derived",
+          "provenance": [
+            "constraint: grip_force: 5.0N",
+            "constraint: normal_force: 8.0N"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0020": {
+      "id": "output_0020",
+      "type": "output",
+      "content": {
+        "type": "recommended_experiment",
+        "name": "tissue_compliance_bench_test"
+      },
+      "timestamp": "2026-02-05T09:57:55.880450",
+      "parents": [
+        "input_0006"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "rule_derived",
+          "provenance": [
+            "uncertainty: tissue_compliance: unknown_range"
+          ],
+          "requires_validation": true
+        }
+      }
+    }
+  }
+}

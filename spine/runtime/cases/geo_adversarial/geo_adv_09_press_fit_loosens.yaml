@@ -1,0 +1,42 @@
+problem:
+  name: "Press-fit loosens at temperature - CTE mismatch"
+  domain: "robotic_design"
+
+constraints:
+  - "hub_material: steel"
+  - "shaft_material: aluminum"
+  - "interference_at_room_temp: 0.05mm"
+  - "operating_temp: 80°C"
+  - "must_maintain_interference"
+
+uncertainties:
+  - "temperature_distribution: variable"
+  - "interference_loss: unknown"
+  - "joint_integrity: marginal"
+
+objectives:
+  - "joint_stability"
+  - "thermal_compatibility"
+
+design:
+  hub_material: "steel"
+  shaft_material: "aluminum"
+  interference_at_room_temp_mm: 0.05
+  operating_temp_c: 80
+  room_temp_c: 20
+  # For thermal expansion constraint
+  part1_cte: 12e-6
+  part1_length_mm: 20.0
+  part2_cte: 23e-6
+  part2_length_mm: 20.0
+  delta_temp_c: 60
+  initial_clearance_mm: -0.05
+  min_clearance_mm: 0.0
+  # For thermal gap closure constraint
+  initial_gap_mm: -0.02
+  thermal_expansion_mm: 0.05
+
+metadata:
+  injected_failure: "press_fit_loosening"
+  failure_category: "geometric"
+  expected_detection: "Thermal expansion constraint should trigger"

@@ -1,0 +1,69 @@
+.callout {
+  padding: 24px;
+  border-radius: 8px;
+  border-left: 4px solid;
+  margin: 24px 0;
+}
+
+.callout.info {
+  background: #f0f4f8;
+  border-left-color: #4a90e2;
+  color: #1a1a1a;
+}
+
+.callout.warning {
+  background: #fff8e1;
+  border-left-color: #ffa726;
+  color: #1a1a1a;
+}
+
+.callout.success {
+  background: #e8f5e9;
+  border-left-color: #66bb6a;
+  color: #1a1a1a;
+}
+
+@media (min-width: 768px) {
+  .callout {
+    padding: 32px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

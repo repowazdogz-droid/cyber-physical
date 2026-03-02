@@ -1,0 +1,7 @@
+{
+  "melting_temp_c": 200,
+  "operating_temp_c": 160,
+  "temp_ratio": 0.8,
+  "creep_strain_rate_per_hour": 0.001,
+  "expected_life_hours": 1000
+}

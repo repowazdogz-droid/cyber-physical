@@ -1,0 +1,8 @@
+{
+  "cycles": 10000000,
+  "stress_amplitude_mpa": 450,
+  "yield_strength_mpa": 1000,
+  "endurance_limit_mpa": 500,
+  "stress_ratio": 0.45,
+  "stress_concentration": 1.3
+}

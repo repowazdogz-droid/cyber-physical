@@ -1,0 +1,66 @@
+{
+  "created_at": "2026-02-08T12:31:10.383Z",
+  "labeled_pairs": 100,
+  "same_count": 6,
+  "different_count": 94,
+  "optimal": {
+    "sim_match": 0.96,
+    "sim_reject": 0.9,
+    "precision": 1,
+    "recall": 0.5,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.97,
+    "tp": 3,
+    "fp": 0,
+    "tn": 94,
+    "fn": 3,
+    "borderline_count": 3
+  },
+  "threshold_sensitive": true,
+  "danger_zone_pairs": [
+    {
+      "similarity": 0.9412,
+      "claim_a": "Non-compliance with DORA Phase 2 resulted in penalties amounting to 2% of global annual turnover.",
+      "claim_b": "Failure to comply with DORA Phase 2 could result in penalties up to 2% of global turnover."
+    }
+  ],
+  "current_config": {
+    "sim_match": 0.86,
+    "sim_reject": 0.5,
+    "precision": 0.5555555555555556,
+    "recall": 0.8333333333333334,
+    "f1": 0.6666666666666667
+  },
+  "same_pairs": [
+    {
+      "similarity": 0.9902,
+      "claim_a": "Deploying the model without addressing bias could lead to regulatory penalties and reputational dama",
+      "claim_b": "Deploying the ML model without addressing bias could lead to regulatory penalties and reputational d"
+    },
+    {
+      "similarity": 0.9704,
+      "claim_a": "HelioTech has $200M in annual revenue growing at 15% year-over-year.",
+      "claim_b": "HelioTech has an annual revenue of $200M, growing at 15% year over year."
+    },
+    {
+      "similarity": 0.9609,
+      "claim_a": "AWS has announced a 22% price increase for reserved instances effective at the next renewal in 9 mon",
+      "claim_b": "AWS will increase reserved instance prices by 22% effective next renewal in 9 months."
+    },
+    {
+      "similarity": 0.8991,
+      "claim_a": "HelioTech's $200M annual revenue is growing at 15% YoY.",
+      "claim_b": "HelioTech generates $200M in annual revenue with a 15% year-over-year growth rate."
+    },
+    {
+      "similarity": 0.8798,
+      "claim_a": "Acquiring HelioTech could enhance our technological capabilities due to their strong engineering tea",
+      "claim_b": "HelioTech's strong engineering team of 150 could enhance our product development capabilities."
+    },
+    {
+      "similarity": 0.6599,
+      "claim_a": "Market conditions in Southeast Asia remain favorable for SaaS products.",
+      "claim_b": "Market dynamics in Southeast Asia will remain favorable for new entrants."
+    }
+  ]
+}

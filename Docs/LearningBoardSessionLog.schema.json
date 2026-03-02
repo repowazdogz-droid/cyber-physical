@@ -1,0 +1,176 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Learning Board Session Log",
+  "description": "Deterministic log of board interactions for replay and sharing",
+  "type": "object",
+  "properties": {
+    "sessionId": {
+      "type": "string",
+      "description": "Unique session identifier"
+    },
+    "version": {
+      "type": "string",
+      "description": "Schema version (e.g., '0.1')"
+    },
+    "startedAtIso": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO timestamp when recording started"
+    },
+    "events": {
+      "type": "array",
+      "description": "Chronological list of events",
+      "items": {
+        "$ref": "#/definitions/LogEvent"
+      },
+      "maxItems": 2000
+    }
+  },
+  "required": ["sessionId", "version", "startedAtIso", "events"],
+  "definitions": {
+    "LogEvent": {
+      "type": "object",
+      "properties": {
+        "t": {
+          "type": "integer",
+          "description": "Milliseconds since session start"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "CardSelected",
+            "FocusEntered",
+            "FocusExited",
+            "ClusterChanged",
+            "PinToggled",
+            "ExplainBackShown",
+            "DemoStepAdvanced",
+            "SpotlightShown",
+            "SpotlightDismissed"
+          ]
+        },
+        "payload": {
+          "type": "object",
+          "description": "Event-specific payload"
+        }
+      },
+      "required": ["t", "type", "payload"]
+    },
+    "CardSelectedPayload": {
+      "type": "object",
+      "properties": {
+        "thoughtId": {
+          "type": "string"
+        }
+      },
+      "required": ["thoughtId"]
+    },
+    "FocusEnteredPayload": {
+      "type": "object",
+      "properties": {
+        "thoughtId": {
+          "type": "string"
+        }
+      },
+      "required": ["thoughtId"]
+    },
+    "FocusExitedPayload": {
+      "type": "object",
+      "properties": {}
+    },
+    "ClusterChangedPayload": {
+      "type": "object",
+      "properties": {
+        "clusterId": {
+          "type": "string",
+          "enum": ["All", "Questions", "Examples", "Attempts", "Uncertainty", "Hints", "Reflections"]
+        }
+      },
+      "required": ["clusterId"]
+    },
+    "PinToggledPayload": {
+      "type": "object",
+      "properties": {
+        "thoughtId": {
+          "type": "string"
+        },
+        "isPinned": {
+          "type": "boolean"
+        }
+      },
+      "required": ["thoughtId", "isPinned"]
+    },
+    "ExplainBackShownPayload": {
+      "type": "object",
+      "properties": {
+        "thoughtId": {
+          "type": "string"
+        }
+      },
+      "required": ["thoughtId"]
+    },
+    "DemoStepAdvancedPayload": {
+      "type": "object",
+      "properties": {
+        "stepIndex": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": ["stepIndex"]
+    },
+    "SpotlightShownPayload": {
+      "type": "object",
+      "properties": {
+        "thoughtId": {
+          "type": "string"
+        }
+      },
+      "required": ["thoughtId"]
+    },
+    "SpotlightDismissedPayload": {
+      "type": "object",
+      "properties": {}
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

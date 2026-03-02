@@ -1,0 +1,13 @@
+{
+  "current": {
+    "low_max": 0.4,
+    "moderate_max": 0.7,
+    "high_max": 0.9
+  },
+  "recommended": {
+    "low_max": 0.13,
+    "moderate_max": 0.17,
+    "high_max": 0.21
+  },
+  "reason": "Score range [0.039, 0.272] with std=0.054 is clustered"
+}

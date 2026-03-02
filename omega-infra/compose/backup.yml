@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  backup:
+    build:
+      context: ..
+      dockerfile: Dockerfile.backup
+    container_name: omega-backup
+    restart: unless-stopped
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - DAC_OVERRIDE
+      - FOWNER
+      - SETGID
+      - SETUID
+    tmpfs:
+      - /tmp
+      - /run
+      - /var/tmp
+    volumes:
+      - postgres_data:/var/backup/postgres:ro
+      - redis_data:/var/backup/redis:ro
+      - app_data:/var/backup/app:ro
+      - ../backups:/backups:ro
+      - ../compose:/backup-config/compose:ro
+      - ../env:/backup-config/env:ro
+      - restic_cache:/root/.cache/restic
+      - backup_logs:/var/log
+      - staging:/staging
+    environment:
+      - RESTIC_REPOSITORY=${RESTIC_REPOSITORY}
+      - RESTIC_PASSWORD=${RESTIC_PASSWORD}
+      - AWS_ACCESS_KEY_ID=${B2_ACCOUNT_ID:-}
+      - AWS_SECRET_ACCESS_KEY=${B2_ACCOUNT_KEY:-}
+      - BACKUP_SCHEDULE=${BACKUP_SCHEDULE:-0 2 * * *}
+      - RETENTION_DAILY=7
+      - RETENTION_WEEKLY=4
+      - RETENTION_MONTHLY=6
+      - HEALTHCHECK_WEBHOOK=${HEALTHCHECK_WEBHOOK:-}
+      - LOG_FILE=/var/log/backup.log
+      - PGHOST=${PGHOST:-postgres}
+      - PGPORT=${PGPORT:-5432}
+      - PGUSER=${PGUSER:-postgres}
+      - PGPASSWORD=${PGPASSWORD:-}
+      - REDIS_HOST=${REDIS_HOST:-redis}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - REDIS_PASSWORD=${REDIS_PASSWORD:-}
+      - REDIS_BGSAVE_TIMEOUT_SECONDS=${REDIS_BGSAVE_TIMEOUT_SECONDS:-600}
+    networks:
+      - default
+
+volumes:
+  postgres_data:
+    external: true
+  redis_data:
+    external: true
+  app_data:
+    external: true
+  restic_cache:
+    driver: local
+  backup_logs:
+    driver: local
+  staging:
+    driver: local

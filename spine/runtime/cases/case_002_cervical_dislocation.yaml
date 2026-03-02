@@ -1,0 +1,26 @@
+problem:
+  name: "Posterior stabilization for extreme C6/C7 dislocation with cord transection"
+  domain: "spine_surgery"
+
+constraints:
+  - "extreme_mechanical_instability"
+  - "spinal_shock_at_admission"
+  - "complete_cord_transection"
+  - "patient_age: 22"
+  - "trauma_case_mva"
+
+uncertainties:
+  - "optimal_surgical_timing_in_complete_transection: debated"
+  - "functional_recovery_potential: extremely_low"
+  - "one_stage_vs_two_stage_approach: unclear_benefit"
+
+objectives:
+  - "restore_spinal_alignment"
+  - "immediate_mechanical_stabilization"
+  - "prevent_secondary_injury"
+
+metadata:
+  source: "https://academic.oup.com/jscr/article/2024/2/rjae039/7601947"
+  authors: "Zagorac et al., 2024"
+  outcome_known: true
+  outcome: "Favorable alignment; post-op sepsis but stabilized"

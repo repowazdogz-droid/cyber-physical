@@ -1,0 +1,23 @@
+problem:
+  name: "Force experiment: cyclic loading 1N, 100 cycles"
+  domain: "surgical_robotics"
+
+constraints:
+  - "applied_force: 1N"
+  - "cycles: 100"
+  - "must_not_damage"
+
+uncertainties:
+  - "cyclic_damage: unknown"
+
+objectives:
+  - "repeated_grip"
+
+design:
+  applied_force_n: 1.0
+  tissue_stiffness: 2.0
+  gripper_config: "soft"
+  cycles: 100
+
+metadata:
+  experiment_type: "force"

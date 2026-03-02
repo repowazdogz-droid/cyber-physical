@@ -1,0 +1,32 @@
+{
+  "name": "oplas",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Omega Post-LLM Abstraction System",
+  "scripts": {
+    "gate1a": "tsx scripts/run-gate1a.ts",
+    "gate1a-grid": "tsx scripts/run-gate1a-grid.ts",
+    "replay": "tsx scripts/replay.ts",
+    "replay-task": "tsx scripts/replay-task.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:contracts": "vitest run src/contracts/tests",
+    "test:grid2d": "vitest run src/domains/grid_2d/__tests__",
+    "test:dsl": "vitest run src/dsl/v0/__tests__",
+    "test:executor": "vitest run src/executor/v0/__tests__",
+    "test:verifier": "vitest run src/verifier/v0/__tests__",
+    "test:orchestrator": "vitest run src/orchestrator/v0/__tests__",
+    "run-task": "tsx scripts/run-task.ts",
+    "replay-task": "tsx scripts/replay-task-orchestrator.ts",
+    "regression": "tsx scripts/run-regression.ts",
+    "vault:hygiene": "tsx src/vault/v0/scripts/hygiene.ts"
+  },
+  "dependencies": {
+    "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.0",
+    "vitest": "^1.0.0"
+  }
+}
+

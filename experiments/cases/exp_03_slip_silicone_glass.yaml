@@ -1,0 +1,22 @@
+problem:
+  name: "Slip experiment: silicone on glass, varying force 0.5-3N"
+  domain: "surgical_robotics"
+
+constraints:
+  - "normal_force: 0.5-3N"
+  - "must_not_slip"
+  - "friction_coefficient: 0.5"
+
+uncertainties:
+  - "force_variation: 0.5-3N"
+
+objectives:
+  - "variable_grip"
+
+design:
+  normal_force_n: 2.0
+  friction_coefficient: 0.5
+  surface_type: "glass"
+
+metadata:
+  experiment_type: "slip"

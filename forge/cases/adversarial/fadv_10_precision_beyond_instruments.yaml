@@ -1,0 +1,17 @@
+problem:
+  name: "Precision beyond available instruments"
+  domain: "surgical_robotics"
+
+constraints:
+  - "position_accuracy: 0.0001nm"
+  - "force_resolution: 0.001pN"
+
+uncertainties: []
+
+objectives:
+  - "ultra_precision"
+
+metadata:
+  trap_type: "overreach"
+  expected_forge_behavior: "Should flag measurement precision beyond available instruments"
+  quality_gate_should_catch: true

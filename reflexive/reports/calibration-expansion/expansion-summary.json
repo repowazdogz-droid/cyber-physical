@@ -1,0 +1,842 @@
+{
+  "created_at": "2026-02-08T11:54:51.000Z",
+  "total_stimuli": 10,
+  "successful": 9,
+  "results": [
+    {
+      "stimulus_id": "st-001",
+      "analysis_id": "7aa8676e-0e90-4752-86ed-f90a6b776fc0",
+      "case_id": "1373e132-6a17-4667-b35d-7fb0a2b02b62",
+      "duration_ms": 11086,
+      "success": true,
+      "confidence_score": 0.2147,
+      "confidence_breakdown": {
+        "per_lens": [
+          {
+            "lens_id": "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+            "claim_count": 6,
+            "scoring_claim_count": 6,
+            "supported_claim_count": 4,
+            "mean_evidence_strength": 0.6666666666666666,
+            "contribution_to_agreement": 0.4177777777777778
+          },
+          {
+            "lens_id": "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+            "claim_count": 5,
+            "scoring_claim_count": 5,
+            "supported_claim_count": 2,
+            "mean_evidence_strength": 0.6,
+            "contribution_to_agreement": 0.45666666666666667
+          },
+          {
+            "lens_id": "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+            "claim_count": 7,
+            "scoring_claim_count": 7,
+            "supported_claim_count": 5,
+            "mean_evidence_strength": 0.7000000000000001,
+            "contribution_to_agreement": 0.21111111111111114
+          },
+          {
+            "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+            "claim_count": 8,
+            "scoring_claim_count": 8,
+            "supported_claim_count": 5,
+            "mean_evidence_strength": 0.6625,
+            "contribution_to_agreement": 0.46111111111111114
+          },
+          {
+            "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+            "claim_count": 7,
+            "scoring_claim_count": 7,
+            "supported_claim_count": 4,
+            "mean_evidence_strength": 0.6714285714285715,
+            "contribution_to_agreement": 0.4177777777777778
+          }
+        ],
+        "per_theme": [
+          {
+            "strength": 0.5,
+            "theme_id": "1f215a56-6fd3-5bf9-a8d1-fe76f87bdb8e",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          },
+          {
+            "strength": 0.8444444444444446,
+            "theme_id": "46a42b2f-b06c-584f-ac30-d9569d78a88b",
+            "agreement_type": "convergence",
+            "participating_lenses": 4
+          },
+          {
+            "strength": 0.6200000000000001,
+            "theme_id": "8f23643e-da48-51d8-8878-274157442802",
+            "agreement_type": "convergence",
+            "participating_lenses": 3
+          }
+        ],
+        "raw_score": 0.2147090884311821,
+        "drift_flags": [],
+        "final_score": 0.2147,
+        "agreement_factor": 0.4158518518518519,
+        "lens_count_factor": 1,
+        "divergence_penalty": 0,
+        "unsupported_penalty": 0.19393939393939394,
+        "low_evidence_warning": false,
+        "evidence_density_factor": 0.2266666567550313,
+        "high_contradiction_warning": false
+      },
+      "convergence_count": 3,
+      "divergence_count": 0,
+      "orphan_count": 17
+    },
+    {
+      "stimulus_id": "st-002",
+      "analysis_id": "95bf8ba8-bd97-42b9-8b3d-9ac3e9d529e7",
+      "case_id": "fbe2f68b-8e79-41f9-9150-1eaeda6bcbd1",
+      "duration_ms": 9072,
+      "success": true,
+      "confidence_score": 0.1752,
+      "confidence_breakdown": {
+        "per_lens": [
+          {
+            "lens_id": "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+            "claim_count": 5,
+            "scoring_claim_count": 5,
+            "supported_claim_count": 3,
+            "mean_evidence_strength": 0.7,
+            "contribution_to_agreement": 0.84
+          },
+          {
+            "lens_id": "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+            "claim_count": 5,
+            "scoring_claim_count": 5,
+            "supported_claim_count": 2,
+            "mean_evidence_strength": 0.62,
+            "contribution_to_agreement": 0.39
+          },
+          {
+            "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+            "claim_count": 6,
+            "scoring_claim_count": 6,
+            "supported_claim_count": 4,
+            "mean_evidence_strength": 0.6833333333333332,
+            "contribution_to_agreement": 1.04
+          },
+          {
+            "lens_id": "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+            "claim_count": 6,
+            "scoring_claim_count": 6,
+            "supported_claim_count": 4,
+            "mean_evidence_strength": 0.7000000000000001,
+            "contribution_to_agreement": 0
+          },
+          {
+            "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+            "claim_count": 6,
+            "scoring_claim_count": 6,
+            "supported_claim_count": 3,
+            "mean_evidence_strength": 0.65,
+            "contribution_to_agreement": 0.59
+          }
+        ],
+        "per_theme": [
+          {
+            "strength": 0.9,
+            "theme_id": "03cfed5c-4c8a-5870-8b3a-313fa0f211fd",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          },
+          {
+            "strength": 0.9,
+            "theme_id": "604dcd95-5a5d-5519-8675-169aadbfde60",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          },
+          {
+            "strength": 0.5599999999999999,
+            "theme_id": "b257fcf5-c75f-5e8c-9d02-60aa90cd9797",
+            "agreement_type": "convergence",
+            "participating_lenses": 4
+          },
+          {
+            "strength": 0.5,
+            "theme_id": "f2280323-00a9-5371-b86f-78f5f378748e",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          }
+        ],
+        "raw_score": 0.17523928436109867,
+        "drift_flags": [],
+        "final_score": 0.1752,
+        "agreement_factor": 0.342,
+        "lens_count_factor": 1,
+        "divergence_penalty": 0,
+        "unsupported_penalty": 0.21785714285714283,
+        "low_evidence_warning": false,
+        "evidence_density_factor": 0.21607142315868036,
+        "high_contradiction_warning": false
+      },
+      "convergence_count": 4,
+      "divergence_count": 0,
+      "orphan_count": 17
+    },
+    {
+      "stimulus_id": "st-003",
+      "analysis_id": "92605794-dd64-4b8e-a49b-709d65b7d27e",
+      "case_id": "79c25718-5e50-4b14-98a9-9b474ea554ca",
+      "duration_ms": 8663,
+      "success": true,
+      "confidence_score": 0.1952,
+      "confidence_breakdown": {
+        "per_lens": [
+          {
+            "lens_id": "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+            "claim_count": 3,
+            "scoring_claim_count": 3,
+            "supported_claim_count": 2,
+            "mean_evidence_strength": 0.6333333333333333,
+            "contribution_to_agreement": 0
+          },
+          {
+            "lens_id": "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+            "claim_count": 7,
+            "scoring_claim_count": 7,
+            "supported_claim_count": 5,
+            "mean_evidence_strength": 0.7000000000000001,
+            "contribution_to_agreement": 0.8305555555555555
+          },
+          {
+            "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+            "claim_count": 5,
+            "scoring_claim_count": 5,
+            "supported_claim_count": 4,
+            "mean_evidence_strength": 0.76,
+            "contribution_to_agreement": 0.8805555555555555
+          },
+          {
+            "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+            "claim_count": 7,
+            "scoring_claim_count": 7,
+            "supported_claim_count": 3,
+            "mean_evidence_strength": 0.6571428571428571,
+            "contribution_to_agreement": 1.1555555555555554
+          },
+          {
+            "lens_id": "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+            "claim_count": 5,
+            "scoring_claim_count": 5,
+            "supported_claim_count": 3,
+            "mean_evidence_strength": 0.6599999999999999,
+            "contribution_to_agreement": 0
+          }
+        ],
+        "per_theme": [
+          {
+            "strength": 0.9,
+            "theme_id": "1d02dc98-c588-5404-ad5b-37da39cb579b",
+            "agreement_type": "convergence",
+            "participating_lenses": 3
+          },
+          {
+            "strength": 0.6499999999999999,
+            "theme_id": "1d5a210d-6dfb-5d9f-8f78-98a1d28d8094",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          },
+          {
+            "strength": 0.55,
+            "theme_id": "4758fbf4-979c-5915-bfb1-8414d5774141",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          },
+          {
+            "strength": 0.7666666666666666,
+            "theme_id": "8e4d4f4d-994f-5fe2-a94a-d885dc19d0bb",
+            "agreement_type": "convergence",
+            "participating_lenses": 3
+          }
+        ],
+        "raw_score": 0.1952037023363775,
+        "drift_flags": [],
+        "final_score": 0.1952,
+        "agreement_factor": 0.37,
+        "lens_count_factor": 1,
+        "divergence_penalty": 0,
+        "unsupported_penalty": 0.18888888888888888,
+        "low_evidence_warning": false,
+        "evidence_density_factor": 0.2281481426788432,
+        "high_contradiction_warning": false
+      },
+      "convergence_count": 4,
+      "divergence_count": 0,
+      "orphan_count": 15
+    },
+    {
+      "stimulus_id": "st-004",
+      "analysis_id": "51493c90-080a-451d-a549-52f64766bd70",
+      "case_id": "a337dda9-7176-4507-9895-bd14086067ee",
+      "duration_ms": 10249,
+      "success": true,
+      "confidence_score": 0.1754,
+      "confidence_breakdown": {
+        "per_lens": [
+          {
+            "lens_id": "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+            "claim_count": 5,
+            "scoring_claim_count": 5,
+            "supported_claim_count": 3,
+            "mean_evidence_strength": 0.6799999999999999,
+            "contribution_to_agreement": 0.3
+          },
+          {
+            "lens_id": "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+            "claim_count": 7,
+            "scoring_claim_count": 7,
+            "supported_claim_count": 5,
+            "mean_evidence_strength": 0.6857142857142858,
+            "contribution_to_agreement": 0.9
+          },
+          {
+            "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+            "claim_count": 6,
+            "scoring_claim_count": 6,
+            "supported_claim_count": 4,
+            "mean_evidence_strength": 0.7166666666666668,
+            "contribution_to_agreement": 0
+          },
+          {
+            "lens_id": "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+            "claim_count": 8,
+            "scoring_claim_count": 8,
+            "supported_claim_count": 6,
+            "mean_evidence_strength": 0.725,
+            "contribution_to_agreement": 1
+          },
+          {
+            "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+            "claim_count": 8,
+            "scoring_claim_count": 8,
+            "supported_claim_count": 5,
+            "mean_evidence_strength": 0.625,
+            "contribution_to_agreement": 0.5666666666666667
+          }
+        ],
+        "per_theme": [
+          {
+            "strength": 0.6,
+            "theme_id": "0f9ffb1c-d985-5d86-b116-c4b96813f5ff",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          },
+          {
+            "strength": 0.8,
+            "theme_id": "28348b64-e3e9-54fd-a7dd-1fb9ce8273c7",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          },
+          {
+            "strength": 0.5,
+            "theme_id": "dc26bc19-34d8-5740-ab27-7f312a85b3ec",
+            "agreement_type": "convergence",
+            "participating_lenses": 3
+          },
+          {
+            "strength": 0.8666666666666667,
+            "theme_id": "ef1badd9-0770-5323-8712-b5bbc68997e8",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          }
+        ],
+        "raw_score": 0.17538235110952563,
+        "drift_flags": [],
+        "final_score": 0.1754,
+        "agreement_factor": 0.3016666666666667,
+        "lens_count_factor": 1,
+        "divergence_penalty": 0,
+        "unsupported_penalty": 0.16176470588235295,
+        "low_evidence_warning": false,
+        "evidence_density_factor": 0.2555882279675143,
+        "high_contradiction_warning": false
+      },
+      "convergence_count": 4,
+      "divergence_count": 0,
+      "orphan_count": 24
+    },
+    {
+      "stimulus_id": "st-005",
+      "analysis_id": "b30c26d7-24d3-4866-9623-31664fb57839",
+      "case_id": "821c121b-675a-4a14-a981-6be9b7529edf",
+      "duration_ms": 10480,
+      "success": true,
+      "confidence_score": 0.2668,
+      "confidence_breakdown": {
+        "per_lens": [
+          {
+            "lens_id": "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+            "claim_count": 6,
+            "scoring_claim_count": 6,
+            "supported_claim_count": 4,
+            "mean_evidence_strength": 0.6833333333333332,
+            "contribution_to_agreement": 0
+          },
+          {
+            "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+            "claim_count": 7,
+            "scoring_claim_count": 7,
+            "supported_claim_count": 5,
+            "mean_evidence_strength": 0.6857142857142857,
+            "contribution_to_agreement": 0.2777777777777778
+          },
+          {
+            "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+            "claim_count": 6,
+            "scoring_claim_count": 6,
+            "supported_claim_count": 4,
+            "mean_evidence_strength": 0.65,
+            "contribution_to_agreement": 0.2777777777777778
+          },
+          {
+            "lens_id": "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+            "claim_count": 9,
+            "scoring_claim_count": 9,
+            "supported_claim_count": 7,
+            "mean_evidence_strength": 0.7444444444444444,
+            "contribution_to_agreement": 0.2777777777777778
+          },
+          {
+            "lens_id": "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+            "claim_count": 6,
+            "scoring_claim_count": 6,
+            "supported_claim_count": 4,
+            "mean_evidence_strength": 0.6333333333333333,
+            "contribution_to_agreement": 0
+          }
+        ],
+        "per_theme": [
+          {
+            "strength": 0.8333333333333334,
+            "theme_id": "9ef5c6bf-9b8b-57b1-aad6-547721315a7f",
+            "agreement_type": "convergence",
+            "participating_lenses": 3
+          }
+        ],
+        "raw_score": 0.266838232666185,
+        "drift_flags": [],
+        "final_score": 0.2668,
+        "agreement_factor": 0.5,
+        "lens_count_factor": 1,
+        "divergence_penalty": 0,
+        "unsupported_penalty": 0.14705882352941177,
+        "low_evidence_warning": false,
+        "evidence_density_factor": 0.2555882247823869,
+        "high_contradiction_warning": false
+      },
+      "convergence_count": 1,
+      "divergence_count": 0,
+      "orphan_count": 31
+    },
+    {
+      "stimulus_id": "st-006",
+      "analysis_id": "efad6e9a-ac6d-4616-b795-43980dee99fb",
+      "case_id": "8ea22fd8-208e-4273-ae95-51e8510c0bb2",
+      "duration_ms": 10023,
+      "success": true,
+      "confidence_score": 0.1674,
+      "confidence_breakdown": {
+        "per_lens": [
+          {
+            "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+            "claim_count": 7,
+            "scoring_claim_count": 7,
+            "supported_claim_count": 5,
+            "mean_evidence_strength": 0.6285714285714287,
+            "contribution_to_agreement": 1.09625
+          },
+          {
+            "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+            "claim_count": 6,
+            "scoring_claim_count": 6,
+            "supported_claim_count": 4,
+            "mean_evidence_strength": 0.6166666666666667,
+            "contribution_to_agreement": 0.77125
+          },
+          {
+            "lens_id": "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+            "claim_count": 6,
+            "scoring_claim_count": 6,
+            "supported_claim_count": 4,
+            "mean_evidence_strength": 0.6,
+            "contribution_to_agreement": 0.44625
+          },
+          {
+            "lens_id": "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+            "claim_count": 8,
+            "scoring_claim_count": 8,
+            "supported_claim_count": 6,
+            "mean_evidence_strength": 0.7625000000000001,
+            "contribution_to_agreement": 0.11499999999999999
+          },
+          {
+            "lens_id": "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+            "claim_count": 6,
+            "scoring_claim_count": 6,
+            "supported_claim_count": 4,
+            "mean_evidence_strength": 0.6666666666666666,
+            "contribution_to_agreement": 0.57125
+          }
+        ],
+        "per_theme": [
+          {
+            "strength": 0.65,
+            "theme_id": "0c23b055-5350-51e7-8b34-c43ac564b7bc",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          },
+          {
+            "strength": 0.575,
+            "theme_id": "4882ef5e-2974-55e3-be07-ff5677237adb",
+            "agreement_type": "convergence",
+            "participating_lenses": 5
+          },
+          {
+            "strength": 0.525,
+            "theme_id": "9c7ef9b2-1d23-5397-8b8a-b58bfc3719d5",
+            "agreement_type": "convergence",
+            "participating_lenses": 4
+          },
+          {
+            "strength": 0.6,
+            "theme_id": "ba0ab664-30e4-585b-a63b-a834ba16855e",
+            "agreement_type": "convergence",
+            "participating_lenses": 3
+          },
+          {
+            "strength": 0.6499999999999999,
+            "theme_id": "f33278fc-18a0-52fe-a906-cd1b826e7dc2",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          },
+          {
+            "strength": 0.8777777777777778,
+            "theme_id": "eb34ad6d-9429-5d1b-a53b-a4245b4aac17",
+            "agreement_type": "divergence",
+            "participating_lenses": 4
+          }
+        ],
+        "raw_score": 0.16742153502713036,
+        "drift_flags": [],
+        "final_score": 0.1674,
+        "agreement_factor": 0.31249999999999994,
+        "lens_count_factor": 1,
+        "divergence_penalty": 0.1142857142857143,
+        "unsupported_penalty": 0.15151515151515152,
+        "low_evidence_warning": false,
+        "evidence_density_factor": 0.2666666595890411,
+        "high_contradiction_warning": false
+      },
+      "convergence_count": 5,
+      "divergence_count": 1,
+      "orphan_count": 1
+    },
+    {
+      "stimulus_id": "st-007",
+      "analysis_id": "78e5fc5a-f45a-4511-be1d-65f607471278",
+      "case_id": "3e7a8003-14ae-4df4-93ee-35d7d07a72eb",
+      "duration_ms": 8629,
+      "success": true,
+      "confidence_score": 0.2621,
+      "confidence_breakdown": {
+        "per_lens": [
+          {
+            "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+            "claim_count": 6,
+            "scoring_claim_count": 6,
+            "supported_claim_count": 4,
+            "mean_evidence_strength": 0.65,
+            "contribution_to_agreement": 1.0138888888888888
+          },
+          {
+            "lens_id": "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+            "claim_count": 6,
+            "scoring_claim_count": 6,
+            "supported_claim_count": 4,
+            "mean_evidence_strength": 0.7166666666666667,
+            "contribution_to_agreement": 1.5138888888888888
+          },
+          {
+            "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+            "claim_count": 7,
+            "scoring_claim_count": 7,
+            "supported_claim_count": 5,
+            "mean_evidence_strength": 0.6857142857142857,
+            "contribution_to_agreement": 0.7888888888888889
+          }
+        ],
+        "per_theme": [
+          {
+            "strength": 0.6499999999999999,
+            "theme_id": "092edda0-b78b-5678-bb71-642e18fd2da0",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          },
+          {
+            "strength": 0.8666666666666667,
+            "theme_id": "1db8afbc-ee99-54cb-b9af-ac0b590c6718",
+            "agreement_type": "convergence",
+            "participating_lenses": 3
+          },
+          {
+            "strength": 0.5,
+            "theme_id": "9fe4f888-548f-5ff5-9e41-2f2198afe765",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          },
+          {
+            "strength": 0.5,
+            "theme_id": "bbbedb2c-e68a-5f63-bc23-59555f6c75b4",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          },
+          {
+            "strength": 0.8,
+            "theme_id": "c54ae3ad-ab99-5cba-9e46-9d0656d56ba9",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          }
+        ],
+        "raw_score": 0.26210526202445317,
+        "drift_flags": [],
+        "final_score": 0.2621,
+        "agreement_factor": 0.4999999999999999,
+        "lens_count_factor": 1,
+        "divergence_penalty": 0,
+        "unsupported_penalty": 0.15789473684210525,
+        "low_evidence_warning": false,
+        "evidence_density_factor": 0.24315789020307618,
+        "high_contradiction_warning": false
+      },
+      "convergence_count": 5,
+      "divergence_count": 0,
+      "orphan_count": 8
+    },
+    {
+      "stimulus_id": "st-008",
+      "analysis_id": "7069c8a8-39b2-4c4c-9b7a-c466acee1034",
+      "case_id": "b33f10bd-0743-4a30-baaf-2bc58851731e",
+      "duration_ms": 11976,
+      "success": true,
+      "confidence_score": 0.193,
+      "confidence_breakdown": {
+        "per_lens": [
+          {
+            "lens_id": "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+            "claim_count": 6,
+            "scoring_claim_count": 6,
+            "supported_claim_count": 4,
+            "mean_evidence_strength": 0.7166666666666667,
+            "contribution_to_agreement": 0.31666666666666665
+          },
+          {
+            "lens_id": "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+            "claim_count": 8,
+            "scoring_claim_count": 8,
+            "supported_claim_count": 6,
+            "mean_evidence_strength": 0.675,
+            "contribution_to_agreement": 0.8273809523809524
+          },
+          {
+            "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+            "claim_count": 7,
+            "scoring_claim_count": 7,
+            "supported_claim_count": 5,
+            "mean_evidence_strength": 0.6857142857142858,
+            "contribution_to_agreement": 0.3773809523809524
+          },
+          {
+            "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+            "claim_count": 7,
+            "scoring_claim_count": 7,
+            "supported_claim_count": 5,
+            "mean_evidence_strength": 0.6428571428571429,
+            "contribution_to_agreement": 0.3607142857142857
+          },
+          {
+            "lens_id": "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+            "claim_count": 6,
+            "scoring_claim_count": 6,
+            "supported_claim_count": 3,
+            "mean_evidence_strength": 0.65,
+            "contribution_to_agreement": 0.6607142857142857
+          }
+        ],
+        "per_theme": [
+          {
+            "strength": 0.6,
+            "theme_id": "14846a64-7420-5363-bcf2-32e2e2183493",
+            "agreement_type": "convergence",
+            "participating_lenses": 4
+          },
+          {
+            "strength": 0.5,
+            "theme_id": "3a742ef7-eac9-5f54-9af3-2120234b8bbc",
+            "agreement_type": "convergence",
+            "participating_lenses": 3
+          },
+          {
+            "strength": 0.6,
+            "theme_id": "6051d9c7-3e95-5c0f-a4ac-bc81edee1284",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          },
+          {
+            "strength": 0.8428571428571429,
+            "theme_id": "bd7aa568-3193-5ad2-b62d-001c2959e57a",
+            "agreement_type": "convergence",
+            "participating_lenses": 4
+          },
+          {
+            "strength": 0.7750000000000001,
+            "theme_id": "0ed705c8-b93f-5798-8adf-cf7d0abdb16c",
+            "agreement_type": "divergence",
+            "participating_lenses": 3
+          }
+        ],
+        "raw_score": 0.19297100645439827,
+        "drift_flags": [],
+        "final_score": 0.193,
+        "agreement_factor": 0.33885714285714286,
+        "lens_count_factor": 1,
+        "divergence_penalty": 0.026666666666666665,
+        "unsupported_penalty": 0.16176470588235295,
+        "low_evidence_warning": false,
+        "evidence_density_factor": 0.27499999220414767,
+        "high_contradiction_warning": false
+      },
+      "convergence_count": 4,
+      "divergence_count": 1,
+      "orphan_count": 13
+    },
+    {
+      "stimulus_id": "st-009",
+      "analysis_id": "2fa5bad6-fc2f-4132-8b78-1a31a3568790",
+      "case_id": "3d38fc4d-f22a-4d49-9d21-145db011c732",
+      "duration_ms": 11816,
+      "success": false,
+      "error": "No synthesis row found"
+    },
+    {
+      "stimulus_id": "st-010",
+      "analysis_id": "bb5f0858-c808-4190-a812-26de16535d4f",
+      "case_id": "78460ce1-0fda-4344-94a6-02fcd01521eb",
+      "duration_ms": 10207,
+      "success": true,
+      "confidence_score": 0.2473,
+      "confidence_breakdown": {
+        "per_lens": [
+          {
+            "lens_id": "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+            "claim_count": 6,
+            "scoring_claim_count": 6,
+            "supported_claim_count": 4,
+            "mean_evidence_strength": 0.6666666666666666,
+            "contribution_to_agreement": 1.1330555555555555
+          },
+          {
+            "lens_id": "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+            "claim_count": 8,
+            "scoring_claim_count": 8,
+            "supported_claim_count": 6,
+            "mean_evidence_strength": 0.7625000000000001,
+            "contribution_to_agreement": 1.7025000000000001
+          },
+          {
+            "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+            "claim_count": 7,
+            "scoring_claim_count": 7,
+            "supported_claim_count": 5,
+            "mean_evidence_strength": 0.7142857142857143,
+            "contribution_to_agreement": 0.913611111111111
+          },
+          {
+            "lens_id": "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+            "claim_count": 6,
+            "scoring_claim_count": 6,
+            "supported_claim_count": 4,
+            "mean_evidence_strength": 0.65,
+            "contribution_to_agreement": 0.5802777777777778
+          },
+          {
+            "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+            "claim_count": 7,
+            "scoring_claim_count": 7,
+            "supported_claim_count": 5,
+            "mean_evidence_strength": 0.6714285714285715,
+            "contribution_to_agreement": 1.5497222222222222
+          }
+        ],
+        "per_theme": [
+          {
+            "strength": 0.9666666666666667,
+            "theme_id": "217255a9-c3cc-50b4-bd55-72ca7c7cee66",
+            "agreement_type": "convergence",
+            "participating_lenses": 3
+          },
+          {
+            "strength": 0.7,
+            "theme_id": "2ef8b6d3-051c-58ef-8307-5c9e6c63ffaf",
+            "agreement_type": "convergence",
+            "participating_lenses": 3
+          },
+          {
+            "strength": 0.7333333333333334,
+            "theme_id": "47bd9fa8-02de-5c05-ae76-ff867f71e785",
+            "agreement_type": "convergence",
+            "participating_lenses": 3
+          },
+          {
+            "strength": 0.6499999999999999,
+            "theme_id": "9097daf8-eac8-5e18-9ceb-bbb3af90c6bb",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          },
+          {
+            "strength": 0.5125,
+            "theme_id": "b0780ede-3c50-5ee6-9f51-ee6859003805",
+            "agreement_type": "convergence",
+            "participating_lenses": 5
+          },
+          {
+            "strength": 0.6,
+            "theme_id": "b25c7111-5fe8-5577-8cf2-5de2141df348",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          },
+          {
+            "strength": 0.7666666666666666,
+            "theme_id": "bf94a780-1eab-597f-a892-806d27d09c63",
+            "agreement_type": "convergence",
+            "participating_lenses": 3
+          },
+          {
+            "strength": 0.95,
+            "theme_id": "dd746387-8e2f-5c6c-89aa-574410a38649",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          }
+        ],
+        "raw_score": 0.2472619459500813,
+        "drift_flags": [],
+        "final_score": 0.2473,
+        "agreement_factor": 0.41156249999999994,
+        "lens_count_factor": 1,
+        "divergence_penalty": 0,
+        "unsupported_penalty": 0.14705882352941177,
+        "low_evidence_warning": false,
+        "evidence_density_factor": 0.33647057791797247,
+        "high_contradiction_warning": false
+      },
+      "convergence_count": 8,
+      "divergence_count": 0,
+      "orphan_count": 7
+    }
+  ]
+}

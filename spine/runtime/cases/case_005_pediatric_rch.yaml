@@ -1,0 +1,26 @@
+problem:
+  name: "Hemivertebra resection complicated by remote cerebellar hemorrhage"
+  domain: "spine_surgery"
+
+constraints:
+  - "patient_age: 5.5_years"
+  - "small_anatomical_structures"
+  - "high_kyphotic_angle: 70_degrees"
+  - "congenital_deformity"
+  - "pediatric_dural_management"
+
+uncertainties:
+  - "rch_pathophysiology: poorly_understood"
+  - "pediatric_icp_change_prediction: unreliable"
+  - "growth_preservation_vs_fusion: tradeoff"
+
+objectives:
+  - "correct_kyphotic_deformity"
+  - "maintain_spinal_growth_potential"
+  - "safe_hemivertebra_resection"
+
+metadata:
+  source: "https://pubmed.ncbi.nlm.nih.gov/38638780/"
+  authors: "Pappa et al., 2024"
+  outcome_known: true
+  outcome: "Favorable after early RCH recognition"

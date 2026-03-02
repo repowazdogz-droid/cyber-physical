@@ -1,0 +1,39 @@
+problem:
+  name: "Unreachable grasp pose - tolerance stack eats clearance"
+  domain: "robotic_design"
+
+constraints:
+  - "grasp_clearance_required: 1.5mm"
+  - "assembly_parts: 8"
+  - "tolerance_per_part: ±0.1mm"
+  - "must_reach_grasp_pose"
+
+uncertainties:
+  - "tolerance_distribution: variable"
+  - "worst_case_stackup: unknown"
+  - "grasp_feasibility: marginal"
+
+objectives:
+  - "grasp_reachability"
+  - "assembly_tolerance"
+
+design:
+  grasp_clearance_required_mm: 1.5
+  assembly_parts: 8
+  tolerance_per_part_mm: 0.1
+  # For pose reachability constraint
+  ik_feasible: false
+  joint_margin_deg: 2
+  collision_free_approach: false
+  # For tolerance stack constraint
+  parts:
+    - nominal_dim_mm: 10.0
+      tolerance_mm: 0.1
+      count: 8
+  assembly_clearance_mm: 1.5
+  min_clearance_mm: 1.0
+
+metadata:
+  injected_failure: "unreachable_grasp"
+  failure_category: "geometric"
+  expected_detection: "Tolerance stack constraint should trigger"

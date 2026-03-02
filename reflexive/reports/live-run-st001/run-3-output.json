@@ -1,0 +1,573 @@
+{
+  "run_number": 3,
+  "started_at": "2026-02-08T11:43:03.660Z",
+  "completed_at": "2026-02-08T11:43:15.239Z",
+  "duration_ms": 11579,
+  "success": true,
+  "engine_output": {
+    "synthesis": {
+      "convergence_points": [
+        {
+          "strength": 0.5,
+          "theme_id": "793bf3e3-0e9d-516d-91ad-941740fd116f",
+          "theme_label": "Market conditions remain stable during acquisition period.",
+          "evidence_density": 0,
+          "supporting_claims": [
+            "54cd2129-9b05-4899-b920-4d45c7a3ace2",
+            "b0a879bc-b2be-4c50-94c0-4f66ee1456b9"
+          ],
+          "supporting_lenses": [
+            "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+            "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+          ]
+        },
+        {
+          "strength": 0.5,
+          "theme_id": "a9ec01d8-79d9-5d03-832a-0e792b26d442",
+          "theme_label": "The engineering team will remain intact post-acquisition.",
+          "evidence_density": 0,
+          "supporting_claims": [
+            "48c3221d-6dee-4bcc-b119-d4c3506d94e0",
+            "c1467e85-998f-4004-8938-afc0f8c3799a"
+          ],
+          "supporting_lenses": [
+            "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+            "6d1a58fb-4982-409a-b2bb-984d36a3feea"
+          ]
+        },
+        {
+          "strength": 0.6,
+          "theme_id": "c3076ac6-3d11-56cd-87c5-fcb0ea159a84",
+          "theme_label": "HelioTech's revenue growth will continue at the current rate.",
+          "evidence_density": 0.15714285188084368,
+          "supporting_claims": [
+            "0f5af08e-9a4f-41eb-9b9d-c881511468cf",
+            "1f3d6f39-e9cd-4fba-af46-8ebb3efc6b1f",
+            "2cb82180-91c3-4990-8457-5d4f166a7350",
+            "6c3d98c5-4864-4392-bb60-1eafd04e4aae",
+            "bceb15fc-187f-4295-a150-7f31d6530aa6",
+            "c1bdf0ac-eb7d-4e26-b37a-e9d654521926",
+            "f3c13cbe-2374-4663-b2c7-ac8d079d64de"
+          ],
+          "supporting_lenses": [
+            "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+            "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+            "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+            "6d1a58fb-4982-409a-b2bb-984d36a3feea"
+          ]
+        }
+      ],
+      "divergence_points": [
+        {
+          "nature": "contradictory",
+          "severity": 0.8571428571428573,
+          "theme_id": "51c3f011-56ca-565c-8858-97e66feaa435",
+          "positions": [
+            {
+              "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+              "claim_ids": [
+                "16d8f2fa-679c-4b3e-a721-0df4991b7334",
+                "354befbd-5571-49ee-b93c-c9115b2d3dbd"
+              ],
+              "position_summary": "HelioTech has an annual revenue of $200M growing at 15% YoY."
+            },
+            {
+              "lens_id": "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+              "claim_ids": [
+                "768ccb67-57b6-483e-9be3-9801d5febd1e",
+                "8266308c-eecb-4360-bd44-675fdb4e5a4e",
+                "9351b5e2-9b81-4297-af09-eb84790ca72a"
+              ],
+              "position_summary": "HelioTech has an annual revenue of $200M growing at 15% YoY."
+            },
+            {
+              "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+              "claim_ids": [
+                "9e5db3ea-fcf5-4413-84ed-4ee7331c6430"
+              ],
+              "position_summary": "HelioTech has an annual revenue of $200M growing at 15% YoY."
+            },
+            {
+              "lens_id": "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+              "claim_ids": [
+                "f4f0d6d9-d9ef-42f8-bad8-fcbd5ccc20bc"
+              ],
+              "position_summary": "HelioTech has an annual revenue of $200M growing at 15% YoY."
+            }
+          ],
+          "theme_label": "HelioTech has an annual revenue of $200M growing at 15% YoY."
+        }
+      ],
+      "orphan_claims": [
+        "469cad93-454f-4457-9ddb-a58b7ed79777",
+        "1c6fed87-efd6-4fec-a9a6-6385e1da707c",
+        "023a63aa-10b9-4278-aa7d-62a7b078b6e8",
+        "5e8b19dd-5e43-4dad-80ab-da1b0d3f755b",
+        "fbd2beac-0e16-4320-ba8a-e6fcb7ac7d34",
+        "a189dd0d-a674-47ac-b575-476ab26259bc",
+        "93d79954-dd14-4204-84f9-d83a3f47ae37",
+        "63c8cf42-415e-4609-bd71-9dcb377b1e0c",
+        "8385bbbd-769a-4dd0-9e6d-f3ea7ffbf795",
+        "2caf40a7-7be2-48e0-bb88-5429b9641717",
+        "7bdb48f1-be40-46bf-bf11-8669b9fff019",
+        "2525c088-4174-446d-9367-7984cc310507",
+        "d6f01337-6aed-4904-84a7-9abd5c2950c1",
+        "b5f9d073-5856-491e-8341-7024d96c7df8",
+        "779584f8-ec8c-432c-a644-3fef62fc739d"
+      ],
+      "confidence_score": 0.1262,
+      "confidence_breakdown": {
+        "per_lens": [
+          {
+            "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+            "claim_count": 7,
+            "scoring_claim_count": 7,
+            "supported_claim_count": 4,
+            "mean_evidence_strength": 0.6857142857142858,
+            "contribution_to_agreement": 0.25
+          },
+          {
+            "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+            "claim_count": 6,
+            "scoring_claim_count": 6,
+            "supported_claim_count": 4,
+            "mean_evidence_strength": 0.6666666666666666,
+            "contribution_to_agreement": 0.4
+          },
+          {
+            "lens_id": "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+            "claim_count": 8,
+            "scoring_claim_count": 8,
+            "supported_claim_count": 5,
+            "mean_evidence_strength": 0.7,
+            "contribution_to_agreement": 0.4
+          },
+          {
+            "lens_id": "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+            "claim_count": 7,
+            "scoring_claim_count": 7,
+            "supported_claim_count": 5,
+            "mean_evidence_strength": 0.7428571428571429,
+            "contribution_to_agreement": 0.4
+          },
+          {
+            "lens_id": "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+            "claim_count": 5,
+            "scoring_claim_count": 5,
+            "supported_claim_count": 3,
+            "mean_evidence_strength": 0.62,
+            "contribution_to_agreement": 0.15
+          }
+        ],
+        "per_theme": [
+          {
+            "strength": 0.5,
+            "theme_id": "793bf3e3-0e9d-516d-91ad-941740fd116f",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          },
+          {
+            "strength": 0.5,
+            "theme_id": "a9ec01d8-79d9-5d03-832a-0e792b26d442",
+            "agreement_type": "convergence",
+            "participating_lenses": 2
+          },
+          {
+            "strength": 0.6,
+            "theme_id": "c3076ac6-3d11-56cd-87c5-fcb0ea159a84",
+            "agreement_type": "convergence",
+            "participating_lenses": 4
+          },
+          {
+            "strength": 0.8571428571428573,
+            "theme_id": "51c3f011-56ca-565c-8858-97e66feaa435",
+            "agreement_type": "divergence",
+            "participating_lenses": 4
+          }
+        ],
+        "raw_score": 0.1262448145498848,
+        "drift_flags": [],
+        "final_score": 0.1262,
+        "agreement_factor": 0.22,
+        "lens_count_factor": 1,
+        "divergence_penalty": 0.042105263157894736,
+        "unsupported_penalty": 0.18181818181818182,
+        "low_evidence_warning": false,
+        "evidence_density_factor": 0.2433333251851852,
+        "high_contradiction_warning": false
+      },
+      "confidence_rationale": "Confidence: Low (12.6%). Moderate agreement (22.0%). Moderate evidence (24.3% density). Some unsupported claims penalize confidence.",
+      "computed_at": "2026-02-08T11:43:15.226Z"
+    },
+    "claim_annotations": [
+      {
+        "claim_id": "469cad93-454f-4457-9ddb-a58b7ed79777",
+        "about_entity_canonical": "engineering team",
+        "validity": "strict",
+        "polarity": "positive",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "2caf40a7-7be2-48e0-bb88-5429b9641717",
+        "about_entity_canonical": "integration complexity",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "c1bdf0ac-eb7d-4e26-b37a-e9d654521926",
+        "about_entity_canonical": "HelioTech",
+        "validity": "strict",
+        "polarity": "positive",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "6c3d98c5-4864-4392-bb60-1eafd04e4aae",
+        "about_entity_canonical": "HelioTech",
+        "validity": "strict",
+        "polarity": "positive",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": "2026-03-10T00:00:00.000Z",
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "bceb15fc-187f-4295-a150-7f31d6530aa6",
+        "about_entity_canonical": "HelioTech",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "63c8cf42-415e-4609-bd71-9dcb377b1e0c",
+        "about_entity_canonical": "Our",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "023a63aa-10b9-4278-aa7d-62a7b078b6e8",
+        "about_entity_canonical": "HelioTech",
+        "validity": "strict",
+        "polarity": "positive",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "c1467e85-998f-4004-8938-afc0f8c3799a",
+        "about_entity_canonical": "engineering team",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": "2026-03-10T00:00:00.000Z",
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "768ccb67-57b6-483e-9be3-9801d5febd1e",
+        "about_entity_canonical": "HelioTech",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "9351b5e2-9b81-4297-af09-eb84790ca72a",
+        "about_entity_canonical": "HelioTech",
+        "validity": "strict",
+        "polarity": "positive",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "8266308c-eecb-4360-bd44-675fdb4e5a4e",
+        "about_entity_canonical": "HelioTech",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "8385bbbd-769a-4dd0-9e6d-f3ea7ffbf795",
+        "about_entity_canonical": "acquisition decision deadline",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "fbd2beac-0e16-4320-ba8a-e6fcb7ac7d34",
+        "about_entity_canonical": "acquisition impact",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "0f5af08e-9a4f-41eb-9b9d-c881511468cf",
+        "about_entity_canonical": "HelioTech",
+        "validity": "strict",
+        "polarity": "positive",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": "2026-03-10T00:00:00.000Z",
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "9e5db3ea-fcf5-4413-84ed-4ee7331c6430",
+        "about_entity_canonical": "HelioTech",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "48c3221d-6dee-4bcc-b119-d4c3506d94e0",
+        "about_entity_canonical": "engineering team",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": "2026-03-10T00:00:00.000Z",
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "1c6fed87-efd6-4fec-a9a6-6385e1da707c",
+        "about_entity_canonical": "board deadline for",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": "2026-03-10T00:00:00.000Z",
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "b5f9d073-5856-491e-8341-7024d96c7df8",
+        "about_entity_canonical": "hp-compaq merger 2002",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "d6f01337-6aed-4904-84a7-9abd5c2950c1",
+        "about_entity_canonical": "technical debt",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "779584f8-ec8c-432c-a644-3fef62fc739d",
+        "about_entity_canonical": "technical debt",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "2525c088-4174-446d-9367-7984cc310507",
+        "about_entity_canonical": "competitors",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": "2026-03-10T00:00:00.000Z",
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "93d79954-dd14-4204-84f9-d83a3f47ae37",
+        "about_entity_canonical": "board of directors",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "7bdb48f1-be40-46bf-bf11-8669b9fff019",
+        "about_entity_canonical": "regulatory approval for",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": "2026-03-10T00:00:00.000Z",
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "54cd2129-9b05-4899-b920-4d45c7a3ace2",
+        "about_entity_canonical": "market conditions remain",
+        "validity": "strict",
+        "polarity": "positive",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": "2026-03-10T00:00:00.000Z",
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "16d8f2fa-679c-4b3e-a721-0df4991b7334",
+        "about_entity_canonical": "HelioTech",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "354befbd-5571-49ee-b93c-c9115b2d3dbd",
+        "about_entity_canonical": "HelioTech",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "f4f0d6d9-d9ef-42f8-bad8-fcbd5ccc20bc",
+        "about_entity_canonical": "HelioTech",
+        "validity": "strict",
+        "polarity": "positive",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "a189dd0d-a674-47ac-b575-476ab26259bc",
+        "about_entity_canonical": "aol-time warner acquisition",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "1f3d6f39-e9cd-4fba-af46-8ebb3efc6b1f",
+        "about_entity_canonical": "HelioTech",
+        "validity": "strict",
+        "polarity": "positive",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": null,
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "b0a879bc-b2be-4c50-94c0-4f66ee1456b9",
+        "about_entity_canonical": "market conditions remain",
+        "validity": "strict",
+        "polarity": "positive",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": "2026-03-10T00:00:00.000Z",
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "f3c13cbe-2374-4663-b2c7-ac8d079d64de",
+        "about_entity_canonical": "HelioTech",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": "2026-03-10T00:00:00.000Z",
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "2cb82180-91c3-4990-8457-5d4f166a7350",
+        "about_entity_canonical": "HelioTech",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": "2026-03-10T00:00:00.000Z",
+        "stale_unsupported": false
+      },
+      {
+        "claim_id": "5e8b19dd-5e43-4dad-80ab-da1b0d3f755b",
+        "about_entity_canonical": "acquiring company has",
+        "validity": "strict",
+        "polarity": "neutral",
+        "scoring_eligible": true,
+        "evidence_density": 0,
+        "expires_at": "2026-03-10T00:00:00.000Z",
+        "stale_unsupported": false
+      }
+    ],
+    "drift": null
+  },
+  "lens_results": [
+    {
+      "lens_name": "historical_analogy",
+      "success": true,
+      "claim_count": 7,
+      "parse_success": true,
+      "duration_ms": 0
+    },
+    {
+      "lens_name": "analytical",
+      "success": true,
+      "claim_count": 8,
+      "parse_success": true,
+      "duration_ms": 0
+    },
+    {
+      "lens_name": "premortem",
+      "success": true,
+      "claim_count": 5,
+      "parse_success": true,
+      "duration_ms": 0
+    },
+    {
+      "lens_name": "adversarial",
+      "success": true,
+      "claim_count": 6,
+      "parse_success": true,
+      "duration_ms": 0
+    },
+    {
+      "lens_name": "stakeholder_impact",
+      "success": true,
+      "claim_count": 7,
+      "parse_success": true,
+      "duration_ms": 0
+    }
+  ]
+}

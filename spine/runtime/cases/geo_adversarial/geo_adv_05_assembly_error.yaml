@@ -1,0 +1,41 @@
+problem:
+  name: "Assembly error exceeds budget - 5 stage stack"
+  domain: "robotic_design"
+
+constraints:
+  - "assembly_stages: 5"
+  - "error_per_stage: 0.15mm"
+  - "error_budget: 0.3mm"
+  - "must_meet_budget"
+
+uncertainties:
+  - "error_correlation: variable"
+  - "worst_case_combination: unknown"
+  - "budget_adequacy: marginal"
+
+objectives:
+  - "assembly_precision"
+  - "error_control"
+
+design:
+  assembly_stages: 5
+  error_per_stage_mm: 0.15
+  error_budget_mm: 0.3
+  # For assembly error constraint
+  assembly_stages:
+    - positioning_error_mm: 0.15
+      stage_name: "stage_1"
+    - positioning_error_mm: 0.15
+      stage_name: "stage_2"
+    - positioning_error_mm: 0.15
+      stage_name: "stage_3"
+    - positioning_error_mm: 0.15
+      stage_name: "stage_4"
+    - positioning_error_mm: 0.15
+      stage_name: "stage_5"
+  error_budget_mm: 0.3
+
+metadata:
+  injected_failure: "assembly_error_exceeded"
+  failure_category: "geometric"
+  expected_detection: "Assembly error constraint should trigger"

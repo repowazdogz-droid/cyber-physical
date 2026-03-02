@@ -1,0 +1,37 @@
+{
+  "analysis_id": "550e8400-e29b-41d4-a716-446655440000",
+  "created_at": "2026-02-08T13:50:00.000Z",
+  "inputs": {
+    "stimulus": {
+      "text": "Should we acquire Company X for $500M? They have $200M annual revenue.",
+      "type": "decision"
+    },
+    "options": {
+      "dry_run": true
+    }
+  },
+  "run_metadata": {
+    "duration_ms": 5,
+    "models": {
+      "lens_llm": "gpt-4o",
+      "embedder": "nomic-embed-text"
+    },
+    "engine_config_snapshot": {
+      "W_a": 0.35,
+      "W_e": 0.35,
+      "W_u": 0.15,
+      "W_d": 0.15,
+      "SIM_MATCH": 0.96,
+      "SIM_REJECT": 0.90
+    }
+  },
+  "lens_results": [],
+  "claims": [],
+  "evidence": {
+    "items": [],
+    "links": []
+  },
+  "warnings": [
+    "Dry run mode - no analysis executed"
+  ]
+}

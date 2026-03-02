@@ -1,0 +1,28 @@
+problem:
+  name: "Endoscopic tool for discitis treatment"
+  domain: "surgical_robotics"
+
+constraints:
+  - "tool_diameter: <5mm for endoscopic access"
+  - "operating_temperature: <60°C"
+  - "continuous_operation: 2+ hours"
+  - "must_not_overheat"
+  - "must_maintain_precision"
+
+uncertainties:
+  - "thermal_buildup_rate: unknown"
+  - "cooling_efficiency: variable"
+  - "tissue_contact_temperature: unknown"
+
+objectives:
+  - "extended_operation"
+  - "thermal_safety"
+  - "precise_control"
+
+design:
+  tool_diameter_mm: 4.5
+  motor_power_w: 15.0
+  duty_cycle: 0.85
+  operating_temp_c: 55.0
+  max_temp_c: 60.0
+  cooling_factor: 0.3

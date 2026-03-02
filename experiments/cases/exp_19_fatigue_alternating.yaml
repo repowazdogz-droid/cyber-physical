@@ -1,0 +1,23 @@
+problem:
+  name: "Fatigue experiment: alternating grip-release at max speed"
+  domain: "surgical_robotics"
+
+constraints:
+  - "cycles: 500"
+  - "load: 6N"
+  - "max_speed: yes"
+  - "must_not_fail"
+
+uncertainties:
+  - "rapid_cycling: unknown"
+
+objectives:
+  - "rapid_operation"
+
+design:
+  cycles: 500
+  load_n: 6.0
+  material: "polymer"
+
+metadata:
+  experiment_type: "fatigue"

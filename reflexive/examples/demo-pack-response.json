@@ -1,0 +1,87 @@
+{
+  "analysis_id": "550e8400-e29b-41d4-a716-446655440000",
+  "created_at": "2026-02-08T13:50:00.000Z",
+  "request": {
+    "stimulus": {
+      "text": "Should we acquire Company X for $500M? They have $200M annual revenue growing 15% YoY.",
+      "type": "decision"
+    },
+    "options": {
+      "dry_run": false
+    }
+  },
+  "summary": {
+    "confidence_score": 0.2163,
+    "band": "Low",
+    "convergence_count": 3,
+    "divergence_count": 0,
+    "orphan_count": 16
+  },
+  "synthesis": {
+    "confidence_score": 0.2163,
+    "confidence_breakdown": {
+      "agreement_factor": 0.3727,
+      "evidence_density_factor": 0.2200,
+      "unsupported_penalty": 0.2241,
+      "divergence_penalty": 0.0000
+    },
+    "convergence_points": [
+      {
+        "theme": "Revenue growth trajectory",
+        "supporting_claims": ["claim-1", "claim-2"],
+        "supporting_lenses": ["analytical", "stakeholder_impact"]
+      }
+    ],
+    "divergence_points": [],
+    "orphan_claims": ["claim-5", "claim-8", "claim-12"]
+  },
+  "artifacts": {
+    "analysis_id": "550e8400-e29b-41d4-a716-446655440000",
+    "created_at": "2026-02-08T13:50:00.000Z",
+    "config_snapshot": {
+      "W_a": 0.35,
+      "W_e": 0.35,
+      "W_u": 0.15,
+      "W_d": 0.15,
+      "SIM_MATCH": 0.96,
+      "SIM_REJECT": 0.90
+    },
+    "lens_artifacts": [
+      {
+        "lens": "analytical",
+        "status": "ok",
+        "raw_text": "Based on the acquisition proposal, I identify the following key claims:\n\n1. Company X has $200M annual revenue\n2. Revenue is growing at 15% YoY\n3. Acquisition price is $500M\n\nThese factors suggest a revenue multiple of 2.5x, which is reasonable for a growth company.",
+        "claim_ids": ["claim-1", "claim-2", "claim-3"],
+        "duration_ms": 1500
+      }
+    ],
+    "claim_artifacts": [
+      {
+        "claim_id": "claim-1",
+        "lens": "analytical",
+        "text": "Company X has $200M annual revenue",
+        "about_entity": "Company X",
+        "polarity": "neutral",
+        "category": "factual",
+        "provenance": {
+          "lens_raw_ref": "lens:analytical:claim:0"
+        }
+      }
+    ],
+    "evidence_artifacts": {
+      "items": [],
+      "links": []
+    }
+  },
+  "config_snapshot": {
+    "W_a": 0.35,
+    "W_e": 0.35,
+    "W_u": 0.15,
+    "W_d": 0.15,
+    "SIM_MATCH": 0.96,
+    "SIM_REJECT": 0.90,
+    "BAND_LOW_MAX": 0.25,
+    "BAND_MODERATE_MAX": 0.50,
+    "BAND_HIGH_MAX": 0.75
+  }
+}

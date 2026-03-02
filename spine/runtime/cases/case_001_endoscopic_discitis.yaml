@@ -1,0 +1,27 @@
+problem:
+  name: "Full endoscopic debridement for severe lumbosacral discitis"
+  domain: "spine_surgery"
+
+constraints:
+  - "anatomically_difficult_ventral_access"
+  - "severe_spinal_stenosis_from_phlegmon"
+  - "iatrogenic_infection_origin"
+  - "patient_age: 64"
+  - "female_patient"
+
+uncertainties:
+  - "endoscopic_vs_open_debridement_efficacy: unknown_comparison"
+  - "percutaneous_screw_stability_in_infection: untested_long_term"
+  - "fusion_rate_in_infected_tissue: variable"
+
+objectives:
+  - "neural_decompression"
+  - "pathogen_identification"
+  - "mechanical_stabilization"
+  - "infection_resolution"
+
+metadata:
+  source: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11381435/"
+  authors: "Rajkumar & Li, 2024"
+  outcome_known: true
+  outcome: "Resolution of neurological symptoms and improved mobility"

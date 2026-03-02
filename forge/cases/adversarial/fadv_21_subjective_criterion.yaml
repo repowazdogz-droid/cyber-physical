@@ -1,0 +1,17 @@
+problem:
+  name: "Subjective success criterion"
+  domain: "surgical_robotics"
+
+constraints:
+  - "must_feel_right"
+  - "should_be_good"
+
+uncertainties: []
+
+objectives:
+  - "subjective_quality"
+
+metadata:
+  trap_type: "confounded_test"
+  expected_forge_behavior: "Should flag subjective success criteria"
+  quality_gate_should_catch: true

@@ -1,0 +1,215 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "KernelSpec",
+  "description": "Kernel specification schema (v1.0.0)",
+  "type": "object",
+  "required": ["version", "kernelId", "adapterId", "name", "outcomes"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Spec version"
+    },
+    "kernelId": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Kernel ID"
+    },
+    "adapterId": {
+      "type": "string",
+      "description": "Adapter ID"
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Kernel name"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 500,
+      "description": "Kernel description"
+    },
+    "outcomes": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "required": ["outcomeId", "label", "conditions", "confidence", "rationale"],
+        "properties": {
+          "outcomeId": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "label": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "conditions": {
+            "type": "array",
+            "maxItems": 10,
+            "items": {
+              "type": "object",
+              "required": ["signalKey", "operator", "value"],
+              "properties": {
+                "signalKey": {
+                  "type": "string",
+                  "maxLength": 100
+                },
+                "operator": {
+                  "type": "string",
+                  "enum": ["eq", "ne", "gt", "gte", "lt", "lte", "in", "not_in"]
+                },
+                "value": {
+                  "oneOf": [
+                    { "type": "string" },
+                    { "type": "number" },
+                    { "type": "boolean" },
+                    { "type": "array" }
+                  ]
+                }
+              }
+            }
+          },
+          "confidence": {
+            "type": "string",
+            "enum": ["Low", "Medium", "High", "Unknown"]
+          },
+          "rationale": {
+            "type": "string",
+            "maxLength": 500
+          }
+        }
+      }
+    },
+    "policies": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "required": ["policyId", "name", "conditions", "action", "reason"],
+        "properties": {
+          "policyId": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "conditions": {
+            "type": "array",
+            "maxItems": 10
+          },
+          "action": {
+            "type": "string",
+            "enum": ["allow", "deny", "force", "constrain"]
+          },
+          "targetOutcome": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 300
+          }
+        }
+      }
+    },
+    "overrides": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "required": ["overrideId", "name", "conditions", "forcedOutcome", "reason"],
+        "properties": {
+          "overrideId": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "conditions": {
+            "type": "array",
+            "maxItems": 10
+          },
+          "forcedOutcome": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 300
+          }
+        }
+      }
+    },
+    "disallows": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "required": ["disallowId", "name", "conditions", "disallowedOutcome", "reason"],
+        "properties": {
+          "disallowId": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "conditions": {
+            "type": "array",
+            "maxItems": 10
+          },
+          "disallowedOutcome": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 300
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

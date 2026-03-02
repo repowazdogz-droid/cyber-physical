@@ -1,0 +1,667 @@
+/* TSRFC Clinical Audit Dashboard Styles */
+
+.page {
+  min-height: 100vh;
+  background-color: #F5F6F7;
+  padding: 0;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Header Bar */
+.headerBar,
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 56px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #D0D7DE;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.primaryButton {
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #D0D7DE;
+  background-color: #FFFFFF;
+  color: #0969DA;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.primaryButton:hover {
+  background-color: #FAFBFC;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.headerTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1F2328;
+  margin: 0;
+}
+
+.headerSubtitle {
+  font-size: 12px;
+  color: #57606A;
+}
+
+.exportButton {
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #D0D7DE;
+  background-color: #FFFFFF;
+  color: #0969DA;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.exportButton:hover {
+  background-color: #FAFBFC;
+}
+
+/* Context Strip */
+.contextStrip {
+  background-color: #FAFBFC;
+  border-bottom: 1px solid #E1E4E8;
+  padding: 8px 24px;
+  font-size: 12px;
+  color: #57606A;
+}
+
+.contextItem {
+  display: inline;
+}
+
+.contextSeparator {
+  margin: 0 8px;
+  color: #D0D7DE;
+}
+
+/* Concept Cards Grid */
+.cardsGrid,
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+/* Concept Card */
+.conceptCard,
+.card {
+  background-color: #FFFFFF;
+  border: 1px solid #D0D7DE;
+  border-radius: 4px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Decision Band */
+.decisionBand {
+  padding: 8px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.decisionBandGo,
+.decisionGo {
+  background-color: rgba(40, 167, 69, 0.08);
+  border-left: 4px solid #28A745;
+}
+
+.decisionBandCautious,
+.decisionCautious {
+  background-color: rgba(227, 98, 9, 0.08);
+  border-left: 4px solid #E36209;
+}
+
+.decisionBandNoGo,
+.decisionNoGo {
+  background-color: rgba(215, 58, 73, 0.08);
+  border-left: 4px solid #D73A49;
+}
+
+.decisionLabel {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.decisionLabelGo {
+  color: #28A745;
+}
+
+.decisionLabelCautious {
+  color: #E36209;
+}
+
+.decisionLabelNoGo {
+  color: #D73A49;
+}
+
+.decisionReason {
+  font-size: 12px;
+  color: #57606A;
+}
+
+.decisionSub {
+  font-size: 11px;
+  color: #57606A;
+  margin-top: 2px;
+}
+
+/* Card Content */
+.cardContent,
+.cardBody {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1F2328;
+  margin: 0;
+}
+
+.cardSubtitle {
+  font-size: 12px;
+  color: #57606A;
+  margin-top: 4px;
+}
+
+/* Concept Summary */
+.conceptSummary {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+}
+
+.conceptInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.conceptName {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1F2328;
+  margin: 0;
+}
+
+.conceptMeta {
+  font-size: 12px;
+  color: #57606A;
+}
+
+.statsColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.statTile {
+  border: 1px solid #E1E4E8;
+  border-radius: 3px;
+  padding: 8px;
+  min-width: 100px;
+}
+
+.statLabel {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #57606A;
+  margin-bottom: 4px;
+}
+
+.statValue,
+.statValueMono {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Liberation Mono", "Courier New", monospace;
+  color: #1F2328;
+}
+
+.statSubtext {
+  font-size: 9px;
+  color: #57606A;
+  margin-top: 2px;
+  line-height: 1.3;
+}
+
+/* Failure Surface Heatmap */
+.heatmapSection {
+  margin-top: 8px;
+}
+
+.sectionTitle {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #57606A;
+  margin-bottom: 8px;
+}
+
+.heatmapGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+}
+
+.heatmapCell {
+  border: 1px solid #E1E4E8;
+  border-radius: 3px;
+  padding: 8px 4px;
+  text-align: center;
+  min-height: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.heatmapCellLow {
+  background-color: rgba(40, 167, 69, 0.1);
+}
+
+.heatmapCellMedium {
+  background-color: rgba(227, 98, 9, 0.1);
+}
+
+.heatmapCellHigh {
+  background-color: rgba(215, 58, 73, 0.1);
+}
+
+.heatmapLabel {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #57606A;
+}
+
+.heatmapValue {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.heatmapValueLow {
+  color: #28A745;
+}
+
+.heatmapValueMedium {
+  color: #E36209;
+}
+
+.heatmapValueHigh {
+  color: #D73A49;
+}
+
+/* Risk Breakdown */
+.riskBreakdown {
+  margin-top: 8px;
+}
+
+.riskRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.riskLabel {
+  font-size: 12px;
+  color: #24292F;
+}
+
+.riskIndicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.riskDots {
+  display: flex;
+  gap: 3px;
+}
+
+.riskDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid #E1E4E8;
+}
+
+.riskDotActive {
+  border: none;
+}
+
+.riskDotLow {
+  background-color: #28A745;
+}
+
+.riskDotMedium {
+  background-color: #E36209;
+}
+
+.riskDotHigh {
+  background-color: #D73A49;
+}
+
+.riskValue {
+  font-size: 11px;
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Liberation Mono", "Courier New", monospace;
+  min-width: 32px;
+  text-align: right;
+}
+
+/* Evidence Snapshot */
+.evidenceSnapshot {
+  margin-top: 8px;
+}
+
+.evidenceLine {
+  font-size: 12px;
+  color: #57606A;
+  margin-bottom: 4px;
+}
+
+/* Explainer Card */
+.explainerCard,
+.explainer {
+  background-color: #FFFFFF;
+  border: 1px solid #D0D7DE;
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+
+.explainerText {
+  font-size: 12px;
+  color: #57606A;
+  line-height: 1.6;
+  margin: 0 0 8px 0;
+}
+
+.explainerText:last-child {
+  margin-bottom: 0;
+}
+
+.explainerTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1F2328;
+  margin: 0 0 8px 0;
+}
+
+.explainerList {
+  margin: 0 0 8px 0;
+  padding-left: 20px;
+  font-size: 12px;
+  color: #57606A;
+  line-height: 1.6;
+}
+
+.explainerList li {
+  margin-bottom: 4px;
+}
+
+.explainerFooter {
+  font-size: 11px;
+  color: #57606A;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Scenario Switcher */
+.scenarioSwitcher {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.scenarioLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: #57606A;
+}
+
+.scenarioButtons {
+  display: flex;
+  gap: 4px;
+}
+
+.scenarioButton {
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #D0D7DE;
+  background-color: #FFFFFF;
+  color: #24292F;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.scenarioButton:hover {
+  background-color: #FAFBFC;
+  border-color: #D0D7DE;
+}
+
+.scenarioButtonActive {
+  background-color: rgba(9, 105, 218, 0.08);
+  border-color: #0969DA;
+  color: #0969DA;
+  font-weight: 500;
+}
+
+.scenarioButtonActive:hover {
+  background-color: rgba(9, 105, 218, 0.12);
+}
+
+/* Comparative Analysis */
+.comparativeSection {
+  margin-top: 24px;
+}
+
+/* Interpretation Card */
+.interpretationCard {
+  background-color: #FFFFFF;
+  border: 1px solid #D0D7DE;
+  border-radius: 4px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.interpretationTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1F2328;
+  margin: 0 0 12px 0;
+}
+
+.interpretationSection {
+  margin-bottom: 16px;
+}
+
+.interpretationSection:last-child {
+  margin-bottom: 0;
+}
+
+.interpretationSectionTitle {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #57606A;
+  margin-bottom: 6px;
+}
+
+.interpretationText {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #24292F;
+}
+
+.comparativeTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1F2328;
+  margin-bottom: 12px;
+}
+
+.comparativeCard {
+  background-color: #FFFFFF;
+  border: 1px solid #D0D7DE;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.comparativeTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.comparativeTable th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #57606A;
+  padding: 8px 12px;
+  border-bottom: 1px solid #D0D7DE;
+  background-color: #FAFBFC;
+}
+
+.comparativeTable td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #E1E4E8;
+}
+
+.comparativeTable tr:nth-child(even) td {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.comparativeTable tr:hover td {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* Table (simplified version) */
+.table {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tableHeaderRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: #FAFBFC;
+  border-bottom: 1px solid #D0D7DE;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #57606A;
+}
+
+.tableHeaderCell {
+  /* Inherits from parent */
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid #E1E4E8;
+  font-size: 13px;
+}
+
+.tableRow:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.tableRow:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.tableCell {
+  color: #24292F;
+}
+
+.tableCellMono {
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Liberation Mono", "Courier New", monospace;
+  color: #24292F;
+}
+
+.tableValue {
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.deltaBadge {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 500;
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.deltaBadgePositive {
+  background-color: rgba(40, 167, 69, 0.1);
+  color: #28A745;
+}
+
+.deltaBadgeNegative {
+  background-color: rgba(215, 58, 73, 0.1);
+  color: #D73A49;
+}
+
+.deltaBadgeNeutral {
+  background-color: rgba(106, 115, 125, 0.1);
+  color: #6A737D;
+}
+

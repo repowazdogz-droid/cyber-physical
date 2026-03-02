@@ -1,0 +1,41 @@
+{
+  "case_id": "7e9958ee7850",
+  "name": "UV degradation of polymer seal",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:12:27.999551",
+  "case_yaml": {
+    "problem": {
+      "name": "UV degradation of polymer seal",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "polymer_type: polyurethane",
+      "uv_exposure: continuous",
+      "expected_life: 5_years",
+      "degradation_rate: 2%/year",
+      "must_maintain_seal_integrity"
+    ],
+    "uncertainties": [
+      "uv_intensity_variation: \u00b130%",
+      "degradation_acceleration: unknown",
+      "seal_performance_degradation: variable"
+    ],
+    "objectives": [
+      "long_term_sealing",
+      "material_stability"
+    ]
+  },
+  "design_data": {
+    "polymer_type": "polyurethane",
+    "uv_exposure": "continuous",
+    "expected_life_years": 5,
+    "degradation_rate_percent_per_year": 2,
+    "total_degradation_percent": 10
+  },
+  "tags": [
+    "adversarial",
+    "material",
+    "test"
+  ],
+  "notes": "Injected failure: uv_degradation"
+}

@@ -1,0 +1,490 @@
+{
+  "decision_map": {
+    "constraints_checked": [
+      {
+        "constraint": "expected_workspace: clear",
+        "checked": true,
+        "contract_matched": "28_scope_boundary_contract",
+        "violation": null
+      },
+      {
+        "constraint": "obstacle_present: true",
+        "checked": true,
+        "contract_matched": "spine_contract",
+        "violation": null
+      },
+      {
+        "constraint": "contact_force_limit: 2.0N",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      {
+        "constraint": "collision_detection: enabled",
+        "checked": true,
+        "contract_matched": "32_model_routing_and_orchestration_contract",
+        "violation": null
+      },
+      {
+        "constraint": "must_avoid_collision",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      }
+    ],
+    "violations": []
+  },
+  "failure_modes": [
+    {
+      "mode": "excessive_force_damage",
+      "severity": "medium",
+      "category": "mechanical",
+      "detectability_score": 5,
+      "severity_detectability_product": 10,
+      "likelihood": 5,
+      "severity_score": 5,
+      "detectability_inverse": 5,
+      "risk_priority_number": 125,
+      "mitigation": "implement_force_limiting_control",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "constraint: contact_force_limit: 2.0N"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": null
+    }
+  ],
+  "contradictions": [],
+  "unknowns": [
+    {
+      "item": "obstacle_location: unknown",
+      "impact": "medium",
+      "resolution": "investigation_required",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "uncertainty: obstacle_location: unknown"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": {
+        "base_confidence": 0.4,
+        "min_confidence": 0.36000000000000004,
+        "max_confidence": 0.42400000000000004,
+        "sensitivity": 0.07999999999999999,
+        "dependent_on": [
+          "obstacle_location"
+        ]
+      }
+    },
+    {
+      "item": "collision_detection_latency: variable",
+      "impact": "medium",
+      "resolution": "investigation_required",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "uncertainty: collision_detection_latency: variable"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": {
+        "base_confidence": 0.4,
+        "min_confidence": 0.4,
+        "max_confidence": 0.4,
+        "sensitivity": 0.0,
+        "dependent_on": [
+          "collision_detection_latency"
+        ]
+      }
+    },
+    {
+      "item": "force_limiting_response: unknown",
+      "impact": "medium",
+      "resolution": "investigation_required",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "heuristic",
+        "provenance": [
+          "uncertainty: force_limiting_response: unknown"
+        ],
+        "requires_validation": true
+      },
+      "conditional_confidence": {
+        "base_confidence": 0.4,
+        "min_confidence": 0.36000000000000004,
+        "max_confidence": 0.42400000000000004,
+        "sensitivity": 0.07999999999999999,
+        "dependent_on": [
+          "force_limiting_response"
+        ]
+      }
+    }
+  ],
+  "recommended_experiments": [
+    {
+      "name": "force_limit_characterization",
+      "epistemic": {
+        "confidence": 0.4,
+        "evidence_type": "rule_derived",
+        "provenance": [
+          "constraint: contact_force_limit: 2.0N"
+        ],
+        "requires_validation": true
+      }
+    }
+  ],
+  "falsification_tests": [],
+  "formal_constraints": [],
+  "trace_graph": {
+    "run_id": "f9ba6d9f2b80",
+    "timestamp": "2026-02-05T10:12:27.921495",
+    "nodes": {
+      "input_0000": {
+        "id": "input_0000",
+        "type": "input",
+        "content": {
+          "type": "problem",
+          "name": "Unexpected rigid obstacle contact",
+          "domain": "robotic_design"
+        },
+        "timestamp": "2026-02-05T10:12:27.915244",
+        "parents": [],
+        "metadata": {}
+      },
+      "input_0001": {
+        "id": "input_0001",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "expected_workspace: clear"
+        },
+        "timestamp": "2026-02-05T10:12:27.915246",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0002": {
+        "id": "input_0002",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "obstacle_present: true"
+        },
+        "timestamp": "2026-02-05T10:12:27.915247",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0003": {
+        "id": "input_0003",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "contact_force_limit: 2.0N"
+        },
+        "timestamp": "2026-02-05T10:12:27.915248",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0004": {
+        "id": "input_0004",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "collision_detection: enabled"
+        },
+        "timestamp": "2026-02-05T10:12:27.915249",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0005": {
+        "id": "input_0005",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "must_avoid_collision"
+        },
+        "timestamp": "2026-02-05T10:12:27.915250",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0006": {
+        "id": "input_0006",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "obstacle_location: unknown"
+        },
+        "timestamp": "2026-02-05T10:12:27.915251",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0007": {
+        "id": "input_0007",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "collision_detection_latency: variable"
+        },
+        "timestamp": "2026-02-05T10:12:27.915252",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0008": {
+        "id": "input_0008",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "force_limiting_response: unknown"
+        },
+        "timestamp": "2026-02-05T10:12:27.915253",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0009": {
+        "id": "input_0009",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "collision_avoidance"
+        },
+        "timestamp": "2026-02-05T10:12:27.915254",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0010": {
+        "id": "input_0010",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "force_limiting"
+        },
+        "timestamp": "2026-02-05T10:12:27.915255",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "inference_0011": {
+        "id": "inference_0011",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "expected_workspace: clear",
+          "checked": true,
+          "contract_matched": "28_scope_boundary_contract",
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:12:27.921435",
+        "parents": [
+          "input_0001"
+        ],
+        "metadata": {}
+      },
+      "inference_0012": {
+        "id": "inference_0012",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "obstacle_present: true",
+          "checked": true,
+          "contract_matched": "spine_contract",
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:12:27.921436",
+        "parents": [
+          "input_0002"
+        ],
+        "metadata": {}
+      },
+      "inference_0013": {
+        "id": "inference_0013",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "contact_force_limit: 2.0N",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:12:27.921437",
+        "parents": [
+          "input_0003"
+        ],
+        "metadata": {}
+      },
+      "inference_0014": {
+        "id": "inference_0014",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "collision_detection: enabled",
+          "checked": true,
+          "contract_matched": "32_model_routing_and_orchestration_contract",
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:12:27.921438",
+        "parents": [
+          "input_0004"
+        ],
+        "metadata": {}
+      },
+      "inference_0015": {
+        "id": "inference_0015",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "must_avoid_collision",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:12:27.921438",
+        "parents": [
+          "input_0005"
+        ],
+        "metadata": {}
+      },
+      "output_0016": {
+        "id": "output_0016",
+        "type": "output",
+        "content": {
+          "type": "failure_mode",
+          "mode": "excessive_force_damage",
+          "severity": "medium",
+          "mitigation": "implement_force_limiting_control"
+        },
+        "timestamp": "2026-02-05T10:12:27.921459",
+        "parents": [
+          "input_0003"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "constraint: contact_force_limit: 2.0N"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0017": {
+        "id": "output_0017",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "obstacle_location: unknown",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:12:27.921472",
+        "parents": [
+          "input_0006"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: obstacle_location: unknown"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0018": {
+        "id": "output_0018",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "collision_detection_latency: variable",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:12:27.921479",
+        "parents": [
+          "input_0007"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: collision_detection_latency: variable"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0019": {
+        "id": "output_0019",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "force_limiting_response: unknown",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:12:27.921485",
+        "parents": [
+          "input_0008"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: force_limiting_response: unknown"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0020": {
+        "id": "output_0020",
+        "type": "output",
+        "content": {
+          "type": "recommended_experiment",
+          "name": "force_limit_characterization"
+        },
+        "timestamp": "2026-02-05T10:12:27.921491",
+        "parents": [
+          "input_0003"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "rule_derived",
+            "provenance": [
+              "constraint: contact_force_limit: 2.0N"
+            ],
+            "requires_validation": true
+          }
+        }
+      }
+    }
+  }
+}

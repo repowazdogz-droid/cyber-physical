@@ -1,0 +1,14 @@
+{
+  "case_name": "Endoluminal Sleeve",
+  "material": "silicone",
+  "actuator": "pneumatic",
+  "diameter_mm": 15.0,
+  "length_mm": 200.0,
+  "target_env": "in_body_endoluminal",
+  "latency_budget_ms": 40,
+  "force_requirement": "low",
+  "sensing": ["pressure", "position"],
+  "control_strategy": "closed_loop"
+}
+
+

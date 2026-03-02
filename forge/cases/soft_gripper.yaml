@@ -1,0 +1,28 @@
+problem:
+  name: "Soft gripper for tissue manipulation"
+  domain: "surgical_robotics"
+
+constraints:
+  - "total_mass_limit: 10kg"
+  - "max_force: 2N"
+  - "must_not_slip"
+  - "must_not_damage_tissue"
+  - "gentle_manipulation"
+
+uncertainties:
+  - "tissue_compliance: unknown_range"
+  - "friction_coefficient: 0.3-0.6"
+  - "surface_variation: high"
+
+objectives:
+  - "safe_manipulation"
+  - "precise_positioning"
+  - "minimal_trauma"
+
+design:
+  total_mass_kg: 8.5
+  max_force_n: 1.5
+  normal_force_n: 10.0
+  friction_coefficient: 0.4
+  tangential_force_n: 3.0
+  contact_area_mm2: 50.0

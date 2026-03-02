@@ -1,0 +1,8 @@
+{
+  "fatigue_stress_mpa": 480,
+  "yield_strength_mpa": 1000,
+  "stress_ratio": 0.48,
+  "tolerance_stackup_mm": 0.28,
+  "tolerance_limit_mm": 0.3,
+  "cycles": 5000000
+}

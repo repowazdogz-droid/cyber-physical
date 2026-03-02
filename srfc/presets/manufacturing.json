@@ -1,0 +1,13 @@
+{
+  "max_unit_cost_estimate": 200.0,
+  "max_tolerance_mm": 0.10,
+  "max_tooling_risk": 1.0,
+  "preferred_sterilization_methods": [
+    "steam",
+    "gamma",
+    "EO"
+  ]
+}
+
+
+

@@ -1,0 +1,32 @@
+problem:
+  name: "Thermal expansion mismatch - aluminum + steel"
+  domain: "robotic_design"
+
+constraints:
+  - "material1: aluminum (α=23×10⁻⁶/°C)"
+  - "material2: steel (α=12×10⁻⁶/°C)"
+  - "temperature_range: -20°C to +60°C"
+  - "length: 100mm"
+  - "must_accommodate_expansion"
+
+uncertainties:
+  - "thermal_cycling_frequency: variable"
+  - "stress_accumulation: unknown"
+  - "joint_integrity: variable"
+
+objectives:
+  - "thermal_compatibility"
+  - "structural_integrity"
+
+design:
+  material1_alpha_per_c: 23e-6
+  material2_alpha_per_c: 12e-6
+  length_mm: 100
+  temp_range_c: 80
+  expansion_diff_mm: 0.088
+  min_clearance_mm: 0.1
+
+metadata:
+  injected_failure: "thermal_expansion_mismatch"
+  failure_category: "geometric"
+  expected_detection: "Geometric/clearance constraint may trigger"

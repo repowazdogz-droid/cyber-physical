@@ -1,0 +1,174 @@
+{
+  "stimulus_id": "st-002",
+  "analysis_id": "95bf8ba8-bd97-42b9-8b3d-9ac3e9d529e7",
+  "case_id": "fbe2f68b-8e79-41f9-9150-1eaeda6bcbd1",
+  "duration_ms": 9072,
+  "success": true,
+  "confidence_score": 0.1752,
+  "confidence_breakdown": {
+    "per_lens": [
+      {
+        "lens_id": "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "claim_count": 5,
+        "scoring_claim_count": 5,
+        "supported_claim_count": 3,
+        "mean_evidence_strength": 0.7,
+        "contribution_to_agreement": 0.84
+      },
+      {
+        "lens_id": "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "claim_count": 5,
+        "scoring_claim_count": 5,
+        "supported_claim_count": 2,
+        "mean_evidence_strength": 0.62,
+        "contribution_to_agreement": 0.39
+      },
+      {
+        "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+        "claim_count": 6,
+        "scoring_claim_count": 6,
+        "supported_claim_count": 4,
+        "mean_evidence_strength": 0.6833333333333332,
+        "contribution_to_agreement": 1.04
+      },
+      {
+        "lens_id": "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+        "claim_count": 6,
+        "scoring_claim_count": 6,
+        "supported_claim_count": 4,
+        "mean_evidence_strength": 0.7000000000000001,
+        "contribution_to_agreement": 0
+      },
+      {
+        "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "claim_count": 6,
+        "scoring_claim_count": 6,
+        "supported_claim_count": 3,
+        "mean_evidence_strength": 0.65,
+        "contribution_to_agreement": 0.59
+      }
+    ],
+    "per_theme": [
+      {
+        "strength": 0.9,
+        "theme_id": "03cfed5c-4c8a-5870-8b3a-313fa0f211fd",
+        "agreement_type": "convergence",
+        "participating_lenses": 2
+      },
+      {
+        "strength": 0.9,
+        "theme_id": "604dcd95-5a5d-5519-8675-169aadbfde60",
+        "agreement_type": "convergence",
+        "participating_lenses": 2
+      },
+      {
+        "strength": 0.5599999999999999,
+        "theme_id": "b257fcf5-c75f-5e8c-9d02-60aa90cd9797",
+        "agreement_type": "convergence",
+        "participating_lenses": 4
+      },
+      {
+        "strength": 0.5,
+        "theme_id": "f2280323-00a9-5371-b86f-78f5f378748e",
+        "agreement_type": "convergence",
+        "participating_lenses": 2
+      }
+    ],
+    "raw_score": 0.17523928436109867,
+    "drift_flags": [],
+    "final_score": 0.1752,
+    "agreement_factor": 0.342,
+    "lens_count_factor": 1,
+    "divergence_penalty": 0,
+    "unsupported_penalty": 0.21785714285714283,
+    "low_evidence_warning": false,
+    "evidence_density_factor": 0.21607142315868036,
+    "high_contradiction_warning": false
+  },
+  "convergence_count": 4,
+  "divergence_count": 0,
+  "orphan_count": 17,
+  "convergence_points": [
+    {
+      "strength": 0.9,
+      "theme_id": "03cfed5c-4c8a-5870-8b3a-313fa0f211fd",
+      "theme_label": "Current ARR is $50M, primarily from the US and EU markets.",
+      "evidence_density": 0.3299999917332572,
+      "supporting_claims": [
+        "753f04ba-6272-41ca-b7e5-c7341f280d82",
+        "e2bf3913-dca0-4153-89b6-43a6cea77bc4"
+      ],
+      "supporting_lenses": [
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    },
+    {
+      "strength": 0.9,
+      "theme_id": "604dcd95-5a5d-5519-8675-169aadbfde60",
+      "theme_label": "Competitors have an 18-month head start in the Southeast Asian market.",
+      "evidence_density": 0.43999998897767634,
+      "supporting_claims": [
+        "7a9b9b34-3366-4950-a83e-7f79382de55a",
+        "efcdad46-643a-46dd-97f4-93ba8269848d"
+      ],
+      "supporting_lenses": [
+        "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    },
+    {
+      "strength": 0.5599999999999999,
+      "theme_id": "b257fcf5-c75f-5e8c-9d02-60aa90cd9797",
+      "theme_label": "The SaaS product can be successfully localized for Southeast Asian markets.",
+      "evidence_density": 0.17599999559107055,
+      "supporting_claims": [
+        "43df9413-8835-4bc0-957f-8086bb6774f1",
+        "a4edad1e-4b19-4bdd-b6de-a496df91e088",
+        "c864e748-1c42-4a06-bc95-026a5a67bd65",
+        "cbfa1312-a6c8-49fe-b822-e2705ed97a9a",
+        "d38a090a-3ff4-4d7b-9cbd-f751aa023b55"
+      ],
+      "supporting_lenses": [
+        "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    },
+    {
+      "strength": 0.5,
+      "theme_id": "f2280323-00a9-5371-b86f-78f5f378748e",
+      "theme_label": "Regulatory environments in Singapore and Indonesia are supportive of SaaS products.",
+      "evidence_density": 0,
+      "supporting_claims": [
+        "663c5c57-2c25-4948-9bc4-a36edc89322b",
+        "76d769fa-4965-42e5-be52-d2eb0de86040"
+      ],
+      "supporting_lenses": [
+        "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "5d323a15-6d2a-48d7-ad02-3f65a3c259f8"
+      ]
+    }
+  ],
+  "divergence_points": [],
+  "orphan_claims": [
+    "8bd2075e-9acb-436b-958b-f2665028f960",
+    "b807f00b-3dd7-43f7-8013-6396852e1852",
+    "2af81ee7-91f0-4794-a6a0-12786d98e1c6",
+    "64dfc40f-6f10-4187-8429-411986d41058",
+    "7edfd3fd-cb8b-4a47-b637-9dfd99516f73",
+    "2ae10875-6720-4221-b3fd-80c5af96c245",
+    "38a8bed0-5f75-49ea-ad6b-a0f1c2735bff",
+    "f70dfb3b-f0f2-4801-b319-7c67a174a728",
+    "ef6e93dd-420c-4a34-8ba0-0abee9695c3a",
+    "2e095c96-7ab0-49ba-9c90-e4e956cf7d91",
+    "1dc6d949-fb76-4324-9c74-e5a22ff20f43",
+    "b85bf025-e9ff-4651-b74e-95a4fdde5626",
+    "9b9bab80-ab7c-458a-804c-ed319362550e",
+    "4075aaa0-f1f9-4477-86b6-5a626154325f",
+    "c35e52d1-d196-425e-9e6e-03f900a7252f",
+    "4916c643-2c08-47e5-8042-00a9e1df61dd",
+    "7f2d2d97-15e4-4892-a1d8-f62cde8dd141"
+  ]
+}

@@ -1,0 +1,22 @@
+problem:
+  name: "Force experiment: 0.5N on soft tissue (liver analog)"
+  domain: "surgical_robotics"
+
+constraints:
+  - "applied_force: 0.5N"
+  - "must_not_damage_tissue"
+  - "tissue_stiffness: 1.5N/mm"
+
+uncertainties:
+  - "tissue_variation: unknown"
+
+objectives:
+  - "gentle_manipulation"
+
+design:
+  applied_force_n: 0.5
+  tissue_stiffness: 1.5
+  gripper_config: "soft"
+
+metadata:
+  experiment_type: "force"

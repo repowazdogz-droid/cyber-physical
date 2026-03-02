@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMEGA — Programmable Trust Infrastructure</title>
+<meta name="description" content="Three computational primitives for governing autonomous systems: governance, reasoning, traceability. Eight protocols, 297 tests, zero dependencies. SHA-256 hash-chained. For security researchers and trust infrastructure designers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#fafafa;--bg2:#f4f4f6;--bg3:#ecedef;--bg4:#e4e5e8;
+  --border:#d5d7dc;--border2:#b8bbc2;
+  --t1:#111214;--t2:#363940;--t3:#5c5f69;--t4:#787c88;
+  --green:#059669;--green-d:#d1fae5;--green-g:rgba(5,150,105,.08);
+  --amber:#d97706;--amber-d:#fef3c7;--amber-g:rgba(217,119,6,.08);
+  --red:#dc2626;--red-d:#fee2e2;--red-g:rgba(220,38,38,.08);
+  --blue:#2563eb;--blue-d:#dbeafe;--blue-g:rgba(37,99,235,.06);
+  --mono:'JetBrains Mono',monospace;
+  --serif:'Instrument Serif',Georgia,serif;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t1);font-family:var(--mono);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--green-d);color:var(--green)}
+a{color:inherit;text-decoration:none}
+
+/* ─── GRID BACKGROUND ─── */
+.grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.03;
+  background-image:linear-gradient(var(--t4) 1px,transparent 1px),linear-gradient(90deg,var(--t4) 1px,transparent 1px);
+  background-size:60px 60px}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;
+  background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-omega{font-size:22px;color:var(--green);font-weight:300}
+.nav-name{font-size:11px;font-weight:700;letter-spacing:3px;color:#363940}
+.nav-links{display:flex;gap:24px}
+.nav-links a{font-size:10px;letter-spacing:2px;color:var(--t3);text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--t1)}
+.nav-gh{font-size:10px;letter-spacing:1px;padding:6px 14px;border:1px solid var(--border2);border-radius:4px;color:var(--t2);transition:all .2s}
+.nav-gh:hover{border-color:var(--green);color:var(--green)}
+@media(max-width:768px){nav{padding:12px 20px}.nav-links{display:none}}
+
+/* ─── SECTIONS ─── */
+section{position:relative;z-index:1}
+.container{max-width:1100px;margin:0 auto;padding:0 40px}
+@media(max-width:768px){.container{padding:0 20px}}
+
+/* ─── HERO ─── */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:80px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:9px;letter-spacing:2px;color:var(--green);
+  padding:4px 12px;border:1px solid var(--green-d);border-radius:3px;margin-bottom:32px;width:fit-content}
+.hero-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-family:var(--serif);font-size:clamp(40px,6vw,72px);font-weight:400;line-height:1.1;letter-spacing:-.02em;margin-bottom:24px;max-width:800px}
+.hero h1 em{font-style:italic;color:var(--green)}
+.hero-sub{font-size:14px;color:var(--t2);line-height:1.8;max-width:560px;margin-bottom:48px;font-weight:300}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap}
+.hero-stat{display:flex;flex-direction:column;gap:2px}
+.hero-stat-n{font-size:28px;font-weight:300;color:var(--t1)}
+.hero-stat-l{font-size:9px;letter-spacing:2px;color:#363940;text-transform:uppercase}
+.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:3px;color:var(--t4);text-transform:uppercase;animation:drift 2s ease infinite}
+@keyframes drift{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+/* ─── HERO CTA ─── */
+.hero-cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:32px}
+.hero-cta-primary{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:1px;padding:14px 28px;border-radius:6px;background:var(--green);color:#ffffff;border:none;cursor:pointer;text-decoration:none;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.hero-cta-primary:hover{background:#047857;box-shadow:0 2px 8px rgba(5,150,105,.25);transform:translateY(-1px)}
+.hero-cta-secondary{font-size:12px;color:var(--t2);letter-spacing:1px;text-decoration:none;transition:color .2s;border-bottom:1px solid transparent}
+.hero-cta-secondary:hover{color:var(--green);border-bottom-color:var(--green)}
+
+/* ─── DOMAINS ─── */
+.domains{padding:80px 0;border-top:1px solid var(--border)}
+.domains-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px}
+@media(max-width:900px){.domains-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.domains-grid{grid-template-columns:1fr}}
+.domain-card{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:20px;transition:all .25s;text-decoration:none;color:inherit;display:block}
+.domain-card:hover{border-color:var(--green);box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.domain-card h3{font-family:var(--serif);font-size:20px;font-weight:400;margin-bottom:8px;color:var(--t1)}
+.domain-card p{font-size:12px;color:var(--t3);line-height:1.6;margin-bottom:12px;font-weight:300}
+.domain-card .try{font-family:var(--mono);font-size:10px;letter-spacing:1px;color:var(--green);font-weight:600}
+.domain-one-liner{font-size:13px;color:var(--t3);line-height:1.7;max-width:720px;margin:40px auto 0;text-align:center;font-weight:300}
+
+/* ─── PROTOCOL TABLE ─── */
+.proto-table{width:100%;border-collapse:collapse;margin-top:24px;font-size:12px}
+.proto-table th{text-align:left;padding:10px 14px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--t4);text-transform:uppercase;font-weight:500}
+.proto-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--t2);vertical-align:top}
+.proto-table tr:hover td{background:var(--bg3)}
+.proto-table .proto-name a{color:var(--t1);font-weight:600;text-decoration:none}
+.proto-table .proto-name a:hover{color:var(--green)}
+.proto-table .proto-desc{color:var(--t3);line-height:1.5;font-weight:300}
+.proto-table .proto-tests{font-family:var(--mono);font-size:10px;color:var(--t4);white-space:nowrap}
+
+/* ─── ALL DEMOS ─── */
+.all-demos{padding:80px 0;border-top:1px solid var(--border)}
+.all-demos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:24px}
+.all-demo-item{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:14px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;transition:all .2s;text-decoration:none;color:inherit}
+.all-demo-item:hover{border-color:var(--border2)}
+.all-demo-item h4{font-size:13px;font-weight:600;margin-bottom:2px;color:var(--t1)}
+.all-demo-item p{font-size:11px;color:var(--t3);line-height:1.5;margin:0;font-weight:300}
+.all-demo-item .arrow{color:var(--green);font-size:10px;letter-spacing:1px;flex-shrink:0}
+
+/* ─── SECTION HEADERS ─── */
+.sh{margin-bottom:32px}
+.sh-tag{font-size:9px;letter-spacing:3px;color:var(--t4);text-transform:uppercase;margin-bottom:12px}
+.sh h2{font-family:var(--serif);font-size:clamp(28px,4vw,44px);font-weight:400;line-height:1.2;letter-spacing:-.01em}
+.sh h2 em{font-style:italic;color:var(--green)}
+
+/* ─── PROBLEM ─── */
+.problem{padding:60px 0;border-top:1px solid var(--border)}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+@media(max-width:768px){.problem-grid{grid-template-columns:1fr;gap:32px}}
+.problem-text{font-size:15px;color:var(--t2);line-height:1.9;font-weight:300}
+.problem-text strong{color:var(--t1);font-weight:500}
+.problem-cards{display:flex;flex-direction:column;gap:12px}
+.pcard{padding:16px 20px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;transition:all .3s}
+.pcard:hover{border-color:var(--border2);background:var(--bg4)}
+.pcard-h{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.pcard-dot{width:6px;height:6px;border-radius:50%}
+.pcard-dot.r{background:var(--red)}.pcard-dot.a{background:var(--amber)}.pcard-dot.b{background:var(--blue)}
+.pcard-title{font-size:10px;letter-spacing:1px;color:var(--t2);font-weight:500}
+.pcard-body{font-size:12px;color:var(--t3);line-height:1.6;font-weight:300}
+
+/* ─── CHAIN ─── */
+.chain-section{padding:60px 0;border-top:1px solid var(--border)}
+.chain-visual{display:flex;align-items:center;justify-content:center;gap:0;margin:32px 0;flex-wrap:wrap}
+.chain-node{padding:12px 24px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;font-size:11px;letter-spacing:2px;font-weight:500;color:var(--t2);transition:all .3s;cursor:default}
+.chain-node:hover{border-color:var(--green);color:var(--green);box-shadow:0 0 0 1px rgba(5,150,105,.15)}
+.chain-arrow{font-size:14px;color:var(--t4);padding:0 6px}
+.chain-explain{font-size:13px;color:var(--t3);line-height:1.8;max-width:640px;margin:0 auto;text-align:center;font-weight:300}
+@media(max-width:600px){.chain-node{padding:8px 14px;font-size:9px}.chain-arrow{font-size:10px;padding:0 2px}}
+
+/* ─── PROTOCOLS ─── */
+.protocols{padding:60px 0;border-top:1px solid var(--border)}
+.proto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.proto{padding:20px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;transition:all .3s;cursor:pointer;text-decoration:none;display:block}
+.proto:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.proto-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.proto-id{font-size:9px;letter-spacing:1px;color:var(--t4);font-weight:400}
+.proto-badge{font-size:8px;padding:2px 6px;border-radius:2px;letter-spacing:1px}
+.proto-badge.live{background:var(--green-g);color:var(--green)}
+.proto-name{font-size:14px;font-weight:600;letter-spacing:.5px;margin-bottom:4px;color:var(--t1)}
+.proto-desc{font-size:11px;color:var(--t3);line-height:1.6;font-weight:300}
+.proto-tests{font-size:9px;color:var(--t4);margin-top:10px;letter-spacing:1px}
+
+/* ─── DEMOS ─── */
+.demos{padding:120px 0;border-top:1px solid var(--border)}
+.demo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.demo{position:relative;padding:28px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:all .4s}
+.demo:hover{border-color:var(--border2);box-shadow:0 4px 16px rgba(0,0,0,.08)}
+a.demo-link{text-decoration:none;color:inherit;display:block}
+.demo-glow{position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;opacity:.06;pointer-events:none}
+.demo-glow.g{background:var(--green)}.demo-glow.a{background:var(--amber)}.demo-glow.b{background:var(--blue)}.demo-glow.r{background:var(--red)}
+.demo-tag{font-size:9px;letter-spacing:2px;color:var(--t4);text-transform:uppercase;margin-bottom:12px}
+.demo h3{font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:8px;position:relative}
+.demo-desc{font-size:12px;color:var(--t3);line-height:1.7;font-weight:300;margin-bottom:16px;position:relative}
+.demo-pills{display:flex;gap:6px;flex-wrap:wrap;position:relative}
+.demo-pill{font-size:8px;padding:3px 8px;border-radius:3px;background:var(--bg);border:1px solid var(--border);color:var(--t3);letter-spacing:1px}
+.demo-pill.g{color:var(--green);border-color:var(--green-d)}
+
+/* ─── PRINCIPLE ─── */
+.principle{padding:48px 0;border-top:1px solid var(--border)}
+.principle-block{padding:48px;border:1px solid var(--border);border-radius:8px;background:var(--bg2);text-align:center;max-width:720px;margin:0 auto}
+.principle-block h3{font-family:var(--serif);font-size:28px;font-weight:400;margin-bottom:16px;line-height:1.3}
+.principle-block h3 em{font-style:italic;color:var(--amber)}
+.principle-block p{font-size:13px;color:var(--t3);line-height:1.8;font-weight:300}
+
+/* ─── TECHNICAL ─── */
+.technical{padding:60px 0;border-top:1px solid var(--border)}
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:40px}
+.tech-item{padding:20px;border:1px solid var(--border);border-radius:6px;background:var(--bg2)}
+.tech-label{font-size:9px;letter-spacing:2px;color:#363940;text-transform:uppercase;margin-bottom:8px}
+.tech-value{font-size:14px;font-weight:500;color:var(--t2)}
+
+/* ─── FOOTER ─── */
+footer{padding:60px 0;border-top:1px solid var(--border)}
+.ftr-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+@media(max-width:768px){.ftr-grid{grid-template-columns:1fr;gap:24px}}
+.ftr-brand{display:flex;flex-direction:column;gap:12px}
+.ftr-omega{font-size:32px;color:var(--green);font-weight:300}
+.ftr-tagline{font-size:11px;color:var(--t3);line-height:1.6;font-weight:300;max-width:300px}
+.ftr-col-title{font-size:9px;letter-spacing:2px;color:var(--t4);text-transform:uppercase;margin-bottom:12px}
+.ftr-col a{display:block;font-size:11px;color:var(--t3);margin-bottom:8px;transition:color .2s;font-weight:300}
+.ftr-col a:hover{color:var(--t1)}
+.ftr-bottom{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.ftr-copy{font-size:10px;color:var(--t4);letter-spacing:1px}
+
+/* ─── ANIMATIONS ─── */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+/* ─── INFO TOOLTIP SYSTEM ─── */
+.info-trigger{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;background:rgba(37,99,235,.06);border:1px solid #b8bbc2;color:var(--blue,#2563eb);font-family:var(--mono);font-size:8px;font-weight:700;cursor:pointer;margin-left:5px;vertical-align:middle;transition:all 150ms ease;flex-shrink:0;position:relative;line-height:1}
+.info-trigger:hover{background:rgba(37,99,235,.1);border-color:rgba(37,99,235,.35);transform:scale(1.1)}
+.info-trigger.active{background:rgba(37,99,235,.15);border-color:var(--blue,#2563eb)}
+.info-panel{position:absolute;z-index:1000;width:280px;padding:10px 12px;background:#ffffff;border:1px solid #d5d7dc;border-radius:6px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;font-size:11px;color:#4a4d56;line-height:1.6;box-shadow:0 8px 32px rgba(0,0,0,.1);pointer-events:auto;opacity:0;transform:translateY(4px);transition:opacity 200ms ease,transform 200ms ease}
+.info-panel.visible{opacity:1;transform:translateY(0)}
+.info-panel b{color:#1a1c20;font-weight:600}
+.info-panel code{font-family:var(--mono);font-size:10px;color:#2563eb;background:rgba(37,99,235,.06);padding:1px 4px;border-radius:2px}
+.info-panel-arrow{position:absolute;top:-4px;left:14px;width:8px;height:8px;background:#ffffff;border-left:1px solid #d5d7dc;border-top:1px solid #d5d7dc;transform:rotate(45deg)}
+
+/* ─── EXPANDABLE SECTIONS (details/summary) ─── */
+.primitives-section, .formal-section, .open-questions-section, .research-section{padding:60px 0;border-top:1px solid var(--border)}
+details{border:1px solid var(--border);border-radius:8px;padding:0;margin:1rem 0;background:var(--bg2)}
+details summary{padding:1rem 1.5rem;cursor:pointer;font-weight:600;font-size:1.1rem;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--t1);font-family:var(--mono)}
+details summary::after{content:'+';font-size:1.5rem;color:var(--t4);transition:transform 0.2s}
+details[open] summary::after{content:'-'}
+details > div{padding:0 1.5rem 1.5rem;font-size:0.95rem;line-height:1.7;color:var(--t2)}
+details > div p{margin:0 0 0.75em}
+details > div p:last-child{margin-bottom:0}
+details > div strong{color:var(--t1)}
+details > div ul{margin:.5em 0 1em 1.25em;padding:0;list-style:disc}
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<nav>
+  <div class="nav-logo">
+    <span class="nav-omega">&Omega;</span>
+    <span class="nav-name">OMEGA</span>
+  </div>
+  <div class="nav-links">
+    <a href="#primitives">Primitives</a>
+    <a href="#problem">Problem</a>
+    <a href="#protocols">Protocols</a>
+    <a href="#formal-properties">Formal</a>
+    <a href="#technical">Technical</a>
+    <a href="#domains">Demos</a>
+  </div>
+  <a href="omega-break-it.html" target="_blank" class="nav-gh" style="border-color:var(--green-d);color:var(--green)">Live Demos &rarr;</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge"><span class="hero-dot"></span>OPEN SOURCE TRUST INFRASTRUCTURE</div>
+    <h1>The governance layer <em>autonomous systems</em> will need</h1>
+    <p class="hero-sub">Three computational primitives for governing autonomous systems — governance, reasoning, traceability. Implemented across eight protocols. Hash-chained. Zero dependencies.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="hero-stat-n">3</span><span class="hero-stat-l">Primitives</span></div>
+      <div class="hero-stat"><span class="hero-stat-n">8</span><span class="hero-stat-l">Protocols</span></div>
+      <div class="hero-stat"><span class="hero-stat-n">297</span><span class="hero-stat-l">Tests passing</span></div>
+      <div class="hero-stat"><span class="hero-stat-n">0</span><span class="hero-stat-l">Dependencies<span class="info-trigger" data-info="<b>Zero dependencies.</b> OMEGA uses no external libraries, databases, or cloud services. Everything runs in the browser or your stack. If every server on Earth went offline, the protocols still work.">i</span></span></div>
+      <div class="hero-stat"><span class="hero-stat-n">8</span><span class="hero-stat-l">Domains proven</span></div>
+      <div class="hero-stat"><span class="hero-stat-n">9</span><span class="hero-stat-l">Live demos</span></div>
+    </div>
+    <div class="hero-cta">
+      <a href="omega-break-it.html" class="hero-cta-primary">Break something &rarr;</a>
+      <a href="#domains" class="hero-cta-secondary">See the demos &darr;</a>
+    </div>
+  </div>
+  <div class="hero-scroll">&darr; Scroll</div>
+</section>
+
+<!-- ─── THREE PRIMITIVES ─── -->
+<section class="primitives-section" id="primitives">
+  <div class="container">
+    <div class="sh fade-in"><div class="sh-tag">Foundation</div><h2>Three irreducible primitives</h2></div>
+    <p class="problem-text fade-in" style="margin-bottom:24px">Every autonomous system that makes decisions needs exactly three things. Remove any one and the system is ungovernable.</p>
+    <p class="problem-text fade-in" style="margin-bottom:32px">Historical precedent: foundational systems often reduce to a small set of irreducible primitives (e.g., relational algebra, public-key exchange, hash chaining). We propose an analogous reduction for autonomous system governance.</p>
+    <div class="fade-in">
+      <details>
+        <summary>Governance — Constraint Enforcement</summary>
+        <div>
+          <p><strong>Is this action allowed?</strong></p>
+          <p>The governance primitive evaluates behavioural constraints deterministically before an action executes. No neural network in the enforcement path. The agent proposes, governance disposes.</p>
+          <p><strong>Properties:</strong></p>
+          <ul>
+            <li><strong>Pre-execution:</strong> constraints are checked before the action, not after</li>
+            <li><strong>Deterministic:</strong> same input, same decision, every time</li>
+            <li><strong>External to agent:</strong> the agent cannot modify its own governance boundary</li>
+            <li><strong>Domain-agnostic:</strong> the constraint language changes, the enforcement mechanism does not</li>
+          </ul>
+          <p><strong>Protocols:</strong> Ethics Gate (EGP-1.0), Consent Ledger (CNL-1.0)</p>
+        </div>
+      </details>
+      <details>
+        <summary>Reasoning — Soundness Verification</summary>
+        <div>
+          <p><strong>Is this reasoning sound?</strong></p>
+          <p>The reasoning primitive makes the inferential structure of every decision inspectable. Each step in the chain — observation, derivation, assumption, decision — is individually verifiable.</p>
+          <p><strong>Properties:</strong></p>
+          <ul>
+            <li><strong>Structural:</strong> exposes the reasoning graph, not just the conclusion</li>
+            <li><strong>Assumption-explicit:</strong> every assumption is named and trackable</li>
+            <li><strong>Bias-detectable:</strong> cognitive patterns (anchoring, confirmation, availability) are flagged</li>
+            <li><strong>Composable:</strong> reasoning chains can be compared across agents or decisions</li>
+          </ul>
+          <p><strong>Protocols:</strong> Cognitive Ledger (CLP-1.0), Assumption Registry (ARP-1.0), Dispute Protocol (DSP-1.0)</p>
+        </div>
+      </details>
+      <details>
+        <summary>Traceability — Decision Recording</summary>
+        <div>
+          <p><strong>What happened and can we prove it?</strong></p>
+          <p>The traceability primitive creates a tamper-evident, append-only record of every decision. SHA-256 hash-chaining. Each record includes the hash of its predecessor. Modify any record and every downstream hash breaks.</p>
+          <p><strong>Properties:</strong></p>
+          <ul>
+            <li><strong>Append-only:</strong> records can be added, never modified or deleted</li>
+            <li><strong>Hash-chained:</strong> SHA-256, each record references its predecessor's hash</li>
+            <li><strong>Tamper-evident:</strong> any modification is detectable by recomputing the chain</li>
+            <li><strong>Forensic:</strong> supports post-hoc reconstruction of complete decision history</li>
+            <li><strong>Not a blockchain:</strong> linear chain, no distributed consensus, no network required</li>
+          </ul>
+          <p><strong>Protocols:</strong> Clearpath (CAP-1.0), Harm Trace (HTP-1.0), Trust Score (TSP-1.0)</p>
+        </div>
+      </details>
+    </div>
+    <p class="problem-text fade-in" style="margin-top:24px">We propose that these three primitives are independently necessary and jointly sufficient for governing autonomous systems. The claim of irreducibility is empirical — validated across 8 protocols, 297 tests, and 8 domains — and is proposed for formal mathematical proof.</p>
+  </div>
+</section>
+
+<!-- ─── DOMAINS ─── -->
+<section class="domains" id="domains">
+  <div class="container">
+    <div class="sh fade-in"><div class="sh-tag">Proof</div><h2>One architecture. Multiple domains.</h2></div>
+    <div class="domains-grid">
+      <a href="treaty-runtime.html" class="domain-card fade-in">
+        <h3>Treaty Runtime (Flagship)</h3>
+        <p>Cyber-physical treaty runtime for multi-agent governance over a shared actuator. Deterministic gate, reasoning spine, and hash-chained trace.</p>
+        <span class="try">Try it &rarr;</span>
+      </a>
+      <a href="defence-autonomous-governance.html" class="domain-card fade-in">
+        <h3>Defence</h3>
+        <p>An autonomous system wants to fire. The governance layer checks ROE, PID, civilian proximity. Engagement blocked.</p>
+        <span class="try">Try it &rarr;</span>
+      </a>
+      <a href="mev-trust-auction-v2.html" class="domain-card fade-in">
+        <h3>Finance</h3>
+        <p>Four agents auction block space. One tampers with a bid. The system catches the exact byte that changed.</p>
+        <span class="try">Try it &rarr;</span>
+      </a>
+      <a href="factory-floor-intelligence.html" class="domain-card fade-in">
+        <h3>Manufacturing</h3>
+        <p>A bearing overheats. Risk score exceeds threshold. The line slows automatically. Supervisor sign-off required to resume.</p>
+        <span class="try">Try it &rarr;</span>
+      </a>
+      <a href="swarm-governance.html" class="domain-card fade-in">
+        <h3>Multi-Agent</h3>
+        <p>A swarm of autonomous agents coordinates. Governance traces every decision across every agent in the swarm.</p>
+        <span class="try">Try it &rarr;</span>
+      </a>
+      <a href="wallet-firewall.html" class="domain-card fade-in">
+        <h3>Consumer Finance</h3>
+        <p>A mobile wallet runs your policies on every transaction. Scam transfers blocked. High-risk swaps flagged before they execute.</p>
+        <span class="try">Try it &rarr;</span>
+      </a>
+      <a href="research-governance.html" class="domain-card fade-in">
+        <h3>Autonomous Research</h3>
+        <p>Deterministic experiment governance for ML agents. Scaling governor, replication gate, claim lifecycle, tamper-evident records. Catches the failure modes Karpathy documented.</p>
+        <span class="try">Try it &rarr;</span>
+      </a>
+    </div>
+    <p class="domain-one-liner fade-in">Same reasoning spine. Same hash chain. Same tamper detection. The policies change. The enforcement doesn't.</p>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ─── -->
+<section class="chain-section" id="how-it-works">
+  <div class="container">
+    <div class="sh fade-in" style="text-align:center"><div class="sh-tag">The foundation</div><h2>One reasoning structure. <em>Every</em> domain.</h2></div>
+    <div class="chain-visual fade-in">
+      <div class="chain-node">OBSERVE</div><span class="chain-arrow">&rarr;</span>
+      <div class="chain-node">DERIVE</div><span class="chain-arrow">&rarr;</span>
+      <div class="chain-node">ASSUME</div><span class="chain-arrow">&rarr;</span>
+      <div class="chain-node">DECIDE</div><span class="chain-arrow">&rarr;</span>
+      <div class="chain-node">ACT</div>
+    </div>
+    <p class="chain-explain fade-in">Each node is hash-chained. Each transition is auditable. Tamper any node and every downstream hash breaks.<span class="info-trigger" data-info="<b>Previous hash.</b> Each node stores the hash of the node before it. This creates a chain — tamper with one node and every hash downstream breaks. Same principle as blockchain.">i</span></p>
+  </div>
+</section>
+
+<!-- ─── PROBLEM ─── -->
+<section class="problem" id="problem">
+  <div class="container">
+    <div class="sh fade-in"><div class="sh-tag">The problem</div><h2>Intelligence scales.<br><em>Trust</em> does not.</h2></div>
+    <div class="problem-text fade-in" style="max-width:640px">
+      <strong>No verifiability:</strong> AI decides. Nobody can inspect why or prove the record wasn't altered.<br><br>
+      <strong>No boundaries:</strong> Policies exist on paper. Nothing enforces them at the point of action.<br><br>
+      <strong>No dispute surface:</strong> When it goes wrong, there's no structured way to find where reasoning diverged from intent.
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROTOCOLS ─── -->
+<section class="protocols" id="protocols">
+  <div class="container">
+    <div class="sh fade-in"><div class="sh-tag">The trust stack</div><h2>Eight protocols.<br><em>Complete</em> accountability.</h2></div>
+    <table class="proto-table fade-in">
+      <thead><tr><th>Protocol</th><th>What it does</th><th>Tests</th></tr></thead>
+      <tbody>
+        <tr><td class="proto-name"><a href="https://github.com/repowazdogz-droid/clearpath" target="_blank">Clearpath (CAP-1.0)</a></td><td class="proto-desc">Hash-chained decision traces</td><td class="proto-tests">27</td></tr>
+        <tr><td class="proto-name"><a href="https://github.com/repowazdogz-droid/cognitive-ledger" target="_blank">Cognitive Ledger (CLP-1.0)</a></td><td class="proto-desc">Reasoning patterns and bias detection</td><td class="proto-tests">33</td></tr>
+        <tr><td class="proto-name"><a href="https://github.com/repowazdogz-droid/consent-ledger" target="_blank">Consent Ledger (CNL-1.0)</a></td><td class="proto-desc">Human authorisation vs agent action</td><td class="proto-tests">26</td></tr>
+        <tr><td class="proto-name"><a href="https://github.com/repowazdogz-droid/assumption-registry" target="_blank">Assumption Registry (ARP-1.0)</a></td><td class="proto-desc">Explicit assumption tracking</td><td class="proto-tests">26</td></tr>
+        <tr><td class="proto-name"><a href="https://github.com/repowazdogz-droid/harm-trace" target="_blank">Harm Trace (HTP-1.0)</a></td><td class="proto-desc">Consequence chains from decision to impact</td><td class="proto-tests">26</td></tr>
+        <tr><td class="proto-name"><a href="https://github.com/repowazdogz-droid/dispute-protocol" target="_blank">Dispute Protocol (DSP-1.0)</a></td><td class="proto-desc">Find first point of divergence</td><td class="proto-tests">25</td></tr>
+        <tr><td class="proto-name"><a href="https://github.com/repowazdogz-droid/trust-score" target="_blank">Trust Score (TSP-1.0)</a></td><td class="proto-desc">Multi-dimensional agent reliability</td><td class="proto-tests">28</td></tr>
+        <tr><td class="proto-name"><a href="https://github.com/repowazdogz-droid/ethics-gate" target="_blank">Ethics Gate (EGP-1.0)</a></td><td class="proto-desc">Harm scanning — flags, never blocks</td><td class="proto-tests">41</td></tr>
+      </tbody>
+    </table>
+    <div class="principle-block fade-in" style="margin-top:48px">
+      <h3>The system holds the line.<br><em>The human drew it.</em></h3>
+      <p>OMEGA does not make ethical decisions. It does not override human judgment. It makes reasoning visible, enforces boundaries at the point of action, and ensures that when things go wrong, you can find exactly where and why. Safety and human care first. In every protocol. In every decision. That principle is not configurable.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FORMAL PROPERTIES ─── -->
+<section class="formal-section" id="formal-properties">
+  <div class="container">
+    <div class="sh fade-in"><div class="sh-tag">For researchers</div><h2>Formal properties</h2></div>
+    <div class="fade-in">
+      <details>
+        <summary>Threat Model</summary>
+        <div>
+          <p>OMEGA assumes the governance runtime is external to and trusted by the agent. The agent cannot modify its own governance constraints. The trusted computing base (TCB) of OMEGA is the governance runtime and the integrity of SHA-256. If an agent controls its own governance runtime, enforcement can be circumvented — this is an explicit design boundary, not a limitation. OMEGA assumes a single-writer append-only model. Byzantine distributed consensus is out of scope.</p>
+          <p><strong>What OMEGA prevents:</strong></p>
+          <ul>
+            <li>Unauthorised actions executing (governance primitive)</li>
+            <li>Reasoning chains being opaque or uninspectable (reasoning primitive)</li>
+            <li>Decision records being modified, deleted, or reordered (traceability primitive)</li>
+          </ul>
+          <p><strong>What OMEGA does not claim to prevent:</strong></p>
+          <ul>
+            <li>Covert communication between agents (steganographic collusion)</li>
+            <li>Adversarial agents that control their own runtime</li>
+            <li>Side-channel attacks on the governance evaluation</li>
+            <li>Attacks on the hash function itself (relies on SHA-256 collision resistance)</li>
+          </ul>
+          <p><strong>Current scope:</strong> single-agent governance. Multi-agent composition — specifically, how governance constraints compose when agents with different trust boundaries interact — is an open research question.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Hash Chain Specification</summary>
+        <div>
+          <p><strong>Algorithm:</strong> SHA-256</p>
+          <p><strong>Structure:</strong> Linear chain (not a Merkle tree, not a DAG)</p>
+          <p><strong>Each record:</strong> { data, timestamp, previousHash, hash }</p>
+          <p><strong>hash</strong> = SHA-256( canonical_json(data) + timestamp + previousHash )</p>
+          <p><strong>Encoding:</strong> canonical JSON serialisation (key-order invariant)</p>
+          <p><strong>Integrity guarantee:</strong> If any record in the chain is modified, its hash changes, which invalidates the hash of every subsequent record. Verification requires recomputing the full chain from genesis.</p>
+          <p><strong>What the hash chain provides:</strong></p>
+          <ul>
+            <li>Tamper evidence (detection of any modification)</li>
+            <li>Ordering (each record has exactly one predecessor)</li>
+            <li>Append-only semantics (new records extend, never replace)</li>
+          </ul>
+          <p><strong>What the hash chain does not provide:</strong></p>
+          <ul>
+            <li>Confidentiality (records are plaintext)</li>
+            <li>Non-repudiation (no digital signatures on records)</li>
+            <li>Distributed consensus (single-writer assumption)</li>
+            <li>Zero-knowledge properties (verifier sees all data)</li>
+            <li>Author authentication (the hash chain provides integrity and tamper evidence, not author authentication — no signatures in v1)</li>
+          </ul>
+          <p><strong>Potential extensions under consideration:</strong> ZK proofs for governance compliance verification without revealing constraints; digital signatures for multi-party audit scenarios; Merkle tree structure for efficient partial-chain verification.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Governance Enforcement Model</summary>
+        <div>
+          <p>The governance primitive operates as a synchronous gate. The execution flow is:</p>
+          <ol style="margin:.5em 0 1em 1.25em;padding:0">
+            <li>Agent proposes action</li>
+            <li>Governance runtime evaluates action against constraint set</li>
+            <li>If all constraints are satisfied → action executes</li>
+            <li>If any constraint is violated → action blocked, violation recorded</li>
+            <li>Decision (allow/block) is appended to the hash chain</li>
+          </ol>
+          <p><strong>Properties:</strong></p>
+          <ul>
+            <li><strong>Synchronous:</strong> no action executes without governance evaluation</li>
+            <li><strong>Fail-closed:</strong> if governance cannot evaluate, default is block</li>
+            <li><strong>Deterministic:</strong> constraint evaluation has no randomness, no learned components</li>
+            <li><strong>Auditable:</strong> every governance decision is recorded with full context</li>
+          </ul>
+          <p>The constraint language is domain-specific. The enforcement mechanism is domain-agnostic. A defence ROE constraint and a financial compliance constraint use different policy languages but identical enforcement architecture.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Relationship to Multi-Agent Security</summary>
+        <div>
+          <p>Recent work in multi-agent security identifies threats that emerge from interactions between AI agents — including steganographic collusion, illusory attacks, and coordinated swarm exploitation. A key finding: anomaly detection alone is fundamentally insufficient against adversaries that can optimise for undetectability.</p>
+          <p>OMEGA's governance primitive takes the complementary approach: instead of detecting bad behaviour after the fact, it prevents unauthorised actions from executing before the fact. This is architectural enforcement, not behavioural monitoring.</p>
+          <p><strong>Current limitations:</strong></p>
+          <ul>
+            <li>OMEGA governs individual agents, not interactions between agents</li>
+            <li>Cross-agent governance composition is an open research problem</li>
+            <li>OMEGA does not address covert communication channels between agents</li>
+          </ul>
+          <p>The intersection of deterministic governance enforcement and multi-agent security — specifically, how governance constraints compose across trust boundaries — represents a significant open research direction.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Relationship to Quantitative Risk Modelling</summary>
+        <div>
+          <p>Recent work on AI risk management argues that verifiable, provably-safe AI architectures are urgently needed to supply deterministic evidence where current models are the result of opaque end-to-end optimisation.</p>
+          <p>OMEGA provides exactly this deterministic evidence layer:</p>
+          <ul>
+            <li>Every governance decision is recorded with full context</li>
+            <li>Every reasoning chain is structurally inspectable</li>
+            <li>Every record is tamper-evident and independently verifiable</li>
+          </ul>
+          <p>This enables quantitative risk assessment based on architectural guarantees rather than behavioural observation — deterministic evidence that a constraint was evaluated and satisfied, not probabilistic confidence that a model will behave.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TECHNICAL ─── -->
+<section class="technical" id="technical">
+  <div class="container">
+    <div class="sh fade-in"><div class="sh-tag">Architecture</div><h2>Library, not service.<br><em>Protocol</em>, not platform.</h2></div>
+    <div class="tech-grid fade-in">
+      <div class="tech-item"><div class="tech-label">Language</div><div class="tech-value">TypeScript</div></div>
+      <div class="tech-item"><div class="tech-label">Hashing<span class="info-trigger" data-info="<b>SHA-256 hashing.</b> Industry-standard cryptographic hash function. Used by Bitcoin, SSL certificates, and digital signatures worldwide. Produces a unique 64-character fingerprint for any input.">i</span></div><div class="tech-value">SHA-256</div></div>
+      <div class="tech-item"><div class="tech-label">Dependencies<span class="info-trigger" data-info="<b>Zero dependencies.</b> No npm runtime deps for the core protocols. Library, not service. You import it; it doesn't call home.">i</span></div><div class="tech-value">Zero</div></div>
+      <div class="tech-item"><div class="tech-label">License</div><div class="tech-value">MIT</div></div>
+      <div class="tech-item"><div class="tech-label">Server</div><div class="tech-value">None required</div></div>
+      <div class="tech-item"><div class="tech-label">Database</div><div class="tech-value">None required</div></div>
+      <div class="tech-item"><div class="tech-label">Chaining<span class="info-trigger" data-info="<b>Chain integrity.</b> Each reasoning step is hash-chained. Tamper any node and every downstream hash breaks. The chain is the proof that nothing was altered after the fact.">i</span></div><div class="tech-value">Tamper-evident</div></div>
+      <div class="tech-item"><div class="tech-label">Demos</div><div class="tech-value">Offline-capable</div></div>
+    </div>
+    <p class="chain-explain fade-in" style="margin-top:40px">A clinical tool imports Clearpath &mdash; every recommendation generates an audit trace. An autonomous agent imports the Consent Ledger &mdash; every action is verified against its mandate. A factory controller imports the Ethics Gate &mdash; every actuator command is checked against human-set boundaries. The protocol is domain-agnostic. The audit mechanism is identical. The stakes change.</p>
+  </div>
+</section>
+
+<!-- ─── ALL DEMOS ─── -->
+<section class="all-demos" id="all-demos">
+  <div class="container">
+    <div class="sh fade-in"><div class="sh-tag">All live demos</div><h2>Try every demo.</h2></div>
+    <p class="domain-one-liner fade-in" style="margin-top:12px">Flagship: <strong>Cyber-Physical Treaty Runtime</strong> — multi-agent governance over a shared actuator with deterministic enforcement and verifiable trace.</p>
+    <div class="all-demos-grid">
+      <a href="treaty-runtime.html" class="all-demo-item fade-in" target="_blank"><div><h4>Treaty Runtime (Flagship)</h4><p>Cyber-physical treaty runtime for multi-agent governance and verifiable enforcement.</p></div><span class="arrow">&rarr;</span></a>
+      <a href="omega-break-it.html" class="all-demo-item fade-in" target="_blank"><div><h4>Break It (All Demos)</h4><p>Adversarial testing across all protocols</p></div><span class="arrow">&rarr;</span></a>
+      <a href="factory-floor-intelligence.html" class="all-demo-item fade-in" target="_blank"><div><h4>Factory Floor</h4><p>Industrial safety governance</p></div><span class="arrow">&rarr;</span></a>
+      <a href="defence-autonomous-governance.html" class="all-demo-item fade-in" target="_blank"><div><h4>Defence Governance</h4><p>Autonomous weapons constraints</p></div><span class="arrow">&rarr;</span></a>
+      <a href="mev-trust-auction-v2.html" class="all-demo-item fade-in" target="_blank"><div><h4>MEV Auction</h4><p>Adversarial financial coordination</p></div><span class="arrow">&rarr;</span></a>
+      <a href="swarm-governance.html" class="all-demo-item fade-in" target="_blank"><div><h4>Swarm Governance</h4><p>Multi-agent coordination</p></div><span class="arrow">&rarr;</span></a>
+      <a href="audit-replay.html" class="all-demo-item fade-in" target="_blank"><div><h4>Audit Replay</h4><p>Post-hoc forensic chain analysis</p></div><span class="arrow">&rarr;</span></a>
+      <a href="red-team.html" class="all-demo-item fade-in" target="_blank"><div><h4>Red Team</h4><p>Adversarial protocol stress testing</p></div><span class="arrow">&rarr;</span></a>
+      <a href="wallet-firewall.html" class="all-demo-item fade-in" target="_blank"><div><h4>Wallet Firewall</h4><p>Deterministic transaction firewall for consumer wallets</p></div><span class="arrow">&rarr;</span></a>
+      <div class="all-demo-item fade-in" style="display:flex;align-items:flex-start;gap:0">
+  <a href="research-governance.html" target="_blank" style="flex:1;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;text-decoration:none;color:inherit;min-width:0"><div><h4>Research Governance</h4><p>7-step interactive scenario: scaling governor, schema validation, replication gate, claim lifecycle, tamper detection. The Bigger Hidden Size Trap.</p></div><span class="arrow">&rarr;</span></a>
+  <a href="omega-research-paper.pdf" target="_blank" rel="noopener" style="font-size:10px;color:var(--t3);text-decoration:none;font-family:var(--mono);flex-shrink:0;align-self:center;padding-left:12px">Paper (PDF)</a>
+</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── OPEN QUESTIONS ─── -->
+<section class="open-questions-section" id="open-questions">
+  <div class="container">
+    <div class="sh fade-in"><div class="sh-tag">Research frontier</div><h2>Open questions</h2></div>
+    <p class="problem-text fade-in" style="margin-bottom:24px">These are the problems we have not solved. They represent the frontier of this work.</p>
+    <ol class="fade-in" style="margin:0;padding:0 0 0 1.25em;color:var(--t2);font-size:14px;line-height:2;font-weight:300">
+      <li style="margin-bottom:12px"><strong style="color:var(--t1)">Irreducibility proof</strong> — Can it be formally proven that governance, reasoning, and traceability are the minimal complete set? What mathematical framework is appropriate?</li>
+      <li style="margin-bottom:12px"><strong style="color:var(--t1)">Multi-agent composition</strong> — How do governance constraints compose when multiple agents with different trust boundaries interact? What are the sufficient conditions for safe composition?</li>
+      <li style="margin-bottom:12px"><strong style="color:var(--t1)">Information-theoretic limits</strong> — What guarantees are provable for each primitive? Where are the fundamental limits of deterministic governance enforcement?</li>
+      <li style="margin-bottom:12px"><strong style="color:var(--t1)">Zero-knowledge governance</strong> — Can an agent prove it operated within its governance constraints without revealing what those constraints are? What proof systems are suitable?</li>
+      <li style="margin-bottom:12px"><strong style="color:var(--t1)">Adversarial robustness</strong> — Under what threat models does external governance enforcement remain sound? What side-channel attacks are possible?</li>
+      <li style="margin-bottom:12px"><strong style="color:var(--t1)">Formal verification</strong> — Can the governance enforcement mechanism itself be formally verified? What properties should the verification target?</li>
+      <li style="margin-bottom:12px"><strong style="color:var(--t1)">Trusted execution assumptions</strong> — What hardware or isolation guarantees are required to prevent governance bypass in cyber-physical deployments?</li>
+    </ol>
+    <p class="problem-text fade-in" style="margin-top:24px">If you are working on any of these problems, we would like to hear from you.</p>
+  </div>
+</section>
+
+<!-- ─── RESEARCH PAPER ─── -->
+<section class="research-section" id="research">
+  <div class="container">
+    <div class="sh fade-in"><div class="sh-tag">Paper</div><h2>Research</h2></div>
+    <div class="fade-in">
+      <details>
+        <summary>OMEGA Research v1 — Three Computational Primitives for Autonomous System Governance</summary>
+        <div>
+          <p>The full research paper is available as PDF.</p>
+          <p><strong>Abstract:</strong> This paper identifies three irreducible computational primitives required for governing autonomous AI systems: governance (constraint enforcement), reasoning (soundness verification), and traceability (decision recording). We present implementations across eight protocols validated by 297 formal tests and deployed across eight domains including defence, finance, manufacturing, and clinical environments. We argue these primitives are independently necessary and jointly sufficient, and we position this work relative to historical computational primitives including Codd's relational model, Merkle's hash chain, and Diffie-Hellman's key exchange.</p>
+          <p><a href="omega-research-paper.pdf" target="_blank" rel="noopener" style="color:var(--green);font-weight:600">Download PDF &rarr;</a></p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="container">
+    <div class="ftr-grid">
+      <div class="ftr-brand">
+        <span class="ftr-omega">&Omega;</span>
+        <div class="ftr-tagline">Programmable trust infrastructure for autonomous systems. Built in Bristol. Open-source for humanity.</div>
+      </div>
+      <div class="ftr-col">
+        <div class="ftr-col-title">Protocols</div>
+        <a href="https://github.com/repowazdogz-droid/clearpath" target="_blank">Clearpath</a>
+        <a href="https://github.com/repowazdogz-droid/cognitive-ledger" target="_blank">Cognitive Ledger</a>
+        <a href="https://github.com/repowazdogz-droid/consent-ledger" target="_blank">Consent Ledger</a>
+        <a href="https://github.com/repowazdogz-droid/assumption-registry" target="_blank">Assumption Registry</a>
+        <a href="https://github.com/repowazdogz-droid/harm-trace" target="_blank">Harm Trace</a>
+        <a href="https://github.com/repowazdogz-droid/dispute-protocol" target="_blank">Dispute Protocol</a>
+        <a href="https://github.com/repowazdogz-droid/trust-score" target="_blank">Trust Score</a>
+        <a href="https://github.com/repowazdogz-droid/ethics-gate" target="_blank">Ethics Gate</a>
+      </div>
+      <div class="ftr-col">
+        <div class="ftr-col-title">Live Demos</div>
+        <a href="treaty-runtime.html" target="_blank">Treaty Runtime (Flagship)</a>
+        <a href="omega-break-it.html" target="_blank">Break It (All Demos)</a>
+        <a href="factory-floor-intelligence.html" target="_blank">Factory Floor</a>
+        <a href="defence-autonomous-governance.html" target="_blank">Defence Governance</a>
+        <a href="mev-trust-auction-v2.html" target="_blank">MEV Auction</a>
+        <a href="swarm-governance.html" target="_blank">Swarm Governance</a>
+        <a href="omega-trust-layer-demo.html" target="_blank">Trust Layer v4</a>
+        <a href="audit-replay.html" target="_blank">Audit Replay</a>
+        <a href="red-team.html" target="_blank">Red Team</a>
+        <a href="research-governance.html" target="_blank">Research Governance</a>
+      </div>
+    </div>
+    <div class="ftr-bottom">
+      <span class="ftr-copy">&copy; 2026 OMEGA Protocol. MIT Licensed.</span>
+      <span class="ftr-copy">Safety and human care first. Not configurable.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── INFO TOOLTIP SYSTEM ───
+(function(){
+  let activePanel = null;
+  let activeTrigger = null;
+  function closeActive(){
+    if(activePanel){ activePanel.remove(); activePanel=null; }
+    if(activeTrigger){ activeTrigger.classList.remove('active'); activeTrigger=null; }
+  }
+  function positionPanel(trigger, panel){
+    document.body.appendChild(panel);
+    const r = trigger.getBoundingClientRect();
+    const pw = 280;
+    let left = r.left;
+    let top = r.bottom + 6;
+    if(left + pw > window.innerWidth - 12) left = window.innerWidth - pw - 12;
+    if(left < 12) left = 12;
+    if(top + 200 > window.innerHeight){ top = r.top - 8; panel.style.transform = 'translateY(-100%)'; }
+    panel.style.left = left + 'px';
+    panel.style.top = top + 'px';
+    panel.style.position = 'fixed';
+    const arrow = panel.querySelector('.info-panel-arrow');
+    if(arrow){ arrow.style.left = Math.max(10, Math.min(pw-20, r.left - left + r.width/2 - 4)) + 'px'; }
+    requestAnimationFrame(()=>requestAnimationFrame(()=>panel.classList.add('visible')));
+  }
+  document.addEventListener('click', function(e){
+    const trigger = e.target.closest('.info-trigger');
+    if(!trigger){ closeActive(); return; }
+    e.stopPropagation();
+    const text = trigger.getAttribute('data-info');
+    if(!text) return;
+    if(activeTrigger === trigger){ closeActive(); return; }
+    closeActive();
+    const panel = document.createElement('div');
+    panel.className = 'info-panel';
+    panel.innerHTML = '<div class="info-panel-arrow"></div>'+text;
+    activeTrigger = trigger;
+    activePanel = panel;
+    trigger.classList.add('active');
+    positionPanel(trigger, panel);
+  });
+  window.addEventListener('scroll', closeActive, true);
+  window.addEventListener('resize', closeActive);
+})();
+
+// Intersection Observer for fade-in animations
+const observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(function(el) {
+  observer.observe(el);
+});
+
+// Smooth scroll for nav links
+document.querySelectorAll('nav a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+
+</body>
+</html>

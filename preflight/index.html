@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preflight — UNIFIED + FORGE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      body { font-family: 'Outfit', system-ui, sans-serif; }
+      textarea { resize: vertical; min-height: 120px; }
+    </style>
+  </head>
+  <body class="bg-[#0c0c0e] text-[#e4e4e8] min-h-screen antialiased">
+    <div class="max-w-2xl mx-auto px-4 py-10">
+      <header class="mb-10">
+        <h1 class="text-2xl font-semibold tracking-tight text-white">Preflight</h1>
+        <p class="mt-1 text-sm text-[#6b6b75]">UNIFIED + FORGE in one run. Paste into Cursor with Omega open.</p>
+      </header>
+
+      <div class="space-y-6">
+        <div>
+          <label class="block text-sm font-medium text-[#a0a0a8] mb-2">Run</label>
+          <select id="type" class="w-full rounded-lg border border-[#2a2a2e] bg-[#141416] px-4 py-3 text-[#e4e4e8] focus:border-[#4a9eff] focus:outline-none focus:ring-1 focus:ring-[#4a9eff]">
+            <option value="decision">Decision preflight (G3/G4)</option>
+            <option value="leverage">Leverage scan</option>
+            <option value="meeting">Meeting handoff (RELAY)</option>
+            <option value="absence">Absence detector</option>
+          </select>
+        </div>
+
+        <div id="decision-fields" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-[#a0a0a8] mb-2">Decision (one sentence)</label>
+            <input type="text" id="decision-text" placeholder="e.g. Take the lead role on the ARIA bid" class="w-full rounded-lg border border-[#2a2a2e] bg-[#141416] px-4 py-3 placeholder:text-[#5a5a62] focus:border-[#4a9eff] focus:outline-none focus:ring-1 focus:ring-[#4a9eff]" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-[#a0a0a8] mb-2">Gravity</label>
+            <select id="gravity" class="w-full rounded-lg border border-[#2a2a2e] bg-[#141416] px-4 py-3 text-[#e4e4e8] focus:border-[#4a9eff] focus:outline-none focus:ring-1 focus:ring-[#4a9eff]">
+              <option value="G3 — Irreversible">G3 — Irreversible</option>
+              <option value="G4 — Identity-defining">G4 — Identity-defining</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="context-field" class="hidden">
+          <label class="block text-sm font-medium text-[#a0a0a8] mb-2">Context (2–3 lines)</label>
+          <textarea id="context-text" placeholder="Current focus, constraint, one metric that matters" class="w-full rounded-lg border border-[#2a2a2e] bg-[#141416] px-4 py-3 placeholder:text-[#5a5a62] focus:border-[#4a9eff] focus:outline-none focus:ring-1 focus:ring-[#4a9eff]"></textarea>
+        </div>
+
+        <div id="meeting-field" class="hidden">
+          <label class="block text-sm font-medium text-[#a0a0a8] mb-2">Meeting notes or transcript</label>
+          <textarea id="meeting-text" placeholder="Paste notes or transcript" class="w-full rounded-lg border border-[#2a2a2e] bg-[#141416] px-4 py-3 placeholder:text-[#5a5a62] focus:border-[#4a9eff] focus:outline-none focus:ring-1 focus:ring-[#4a9eff]"></textarea>
+        </div>
+
+        <div id="absence-field" class="hidden">
+          <label class="block text-sm font-medium text-[#a0a0a8] mb-2">Domain or space</label>
+          <textarea id="absence-text" placeholder="e.g. clinical decision support, my product category, fundraising pre-seed" class="w-full rounded-lg border border-[#2a2a2e] bg-[#141416] px-4 py-3 placeholder:text-[#5a5a62] focus:border-[#4a9eff] focus:outline-none focus:ring-1 focus:ring-[#4a9eff]"></textarea>
+        </div>
+
+        <div class="pt-2">
+          <button type="button" id="copy-btn" class="w-full rounded-lg bg-[#4a9eff] py-3 font-medium text-[#0c0c0e] hover:bg-[#5aa8ff] focus:outline-none focus:ring-2 focus:ring-[#4a9eff] focus:ring-offset-2 focus:ring-offset-[#0c0c0e]">
+            Build prompt & copy to clipboard
+          </button>
+          <p id="copy-status" class="mt-2 text-center text-xs text-[#6b6b75] hidden">Copied. Paste into Cursor and send.</p>
+        </div>
+
+        <div class="rounded-lg border border-[#2a2a2e] bg-[#141416] p-4">
+          <label class="block text-sm font-medium text-[#a0a0a8] mb-2">Preview</label>
+          <pre id="preview" class="whitespace-pre-wrap break-words text-sm text-[#a0a0a8] font-mono">Select a run type and fill the field. Prompt will appear here.</pre>
+        </div>
+      </div>
+
+      <footer class="mt-12 pt-6 border-t border-[#2a2a2e] text-xs text-[#6b6b75]">
+        Preflight prompt pack lives in <code class="text-[#a0a0a8]">preflight/prompts/</code>. Open this project in Cursor so UNIFIED + FORGE rules load, then paste the prompt.
+      </footer>
+    </div>
+
+    <script>
+      const PROMPTS = {
+        decision: `Run as OMEGA UNIFIED + OMEGA FORGE.
+
+**DECISION PREFLIGHT**
+
+**Decision (one sentence):** {{INPUT}}
+
+**Gravity:** {{GRAVITY}}
+
+Produce a single one-pager artifact with these sections. No filler. Operator-standard: a competent person could use this to decide or to kill the decision.
+
+1. **LOAD-BEARING ASSUMPTIONS**
+   List the 3 assumptions that most determine the outcome. For each: one line.
+   Use FORGE Assumption Excavator: which is least examined? Mark it.
+
+2. **FAILURE CONDITIONS**
+   INVERSION: What would guarantee this fails? List 3–5. Be specific.
+
+3. **SECOND-ORDER EFFECTS**
+   If we do this, what happens next? (Next 6–12 months.) What becomes possible? What becomes impossible or harder?
+
+4. **KILL SIGNALS**
+   What would make you stop or reverse? (Observable, not vague.)
+
+5. **DOUBLE SIGNALS**
+   What would confirm this is the right move? (Observable.)
+
+6. **ONE THING THAT WOULD CHANGE MY MIND**
+   Single sentence. Evidence or event that would flip the decision.
+
+7. **REDUCTION HORIZON**
+   If reasoning has reached values or non-falsifiable claims, state: "Explanation ends here. What follows is choice." and stop.
+
+Output format: markdown one-pager, copy-paste ready. No preamble.`,
+
+        leverage: `Run as OMEGA UNIFIED + OMEGA FORGE.
+
+**LEVERAGE SCAN**
+
+**Context (2–3 lines: current focus, current constraint, one metric that matters):** {{INPUT}}
+
+Apply UNIFIED Leverage Detection + Trajectory Guard. Scan for moves that are:
+- low effort / high strategic return
+- reputation compounding
+- revenue accelerating or option-creating
+- network expanding
+
+Output a single artifact:
+
+1. **TOP 3 CANDIDATE MOVES**
+   For each: one line description, one line why it's leverage, one line cost/effort.
+   Mark the highest leverage one.
+
+2. **KILL SIGNALS (for the top move)**
+   What would mean this move was wrong? Observable.
+
+3. **NEXT MOVE**
+   One concrete next step (calendar, message, or 30-minute block). If none is obvious, say "Need: [single missing input]".
+
+4. **DRIFT CHECK**
+   Is the current focus aligned with the top candidate? If not, one sentence on the gap.
+
+No persuasion. Options + trade-offs only. Output: markdown, copy-paste ready.`,
+
+        meeting: `Run as OMEGA UNIFIED in RELAY mode.
+
+**MEETING HANDOFF**
+
+**Meeting notes or transcript:** {{INPUT}}
+
+Produce the four RELAY shapes in order:
+
+1. **SIGNAL**
+   What you say in 10–20 seconds. 1–3 bullets. No jargon. No caveats.
+
+2. **EXPLANATION**
+   What you say when asked "why?" Short paragraph or 3–5 bullets.
+
+3. **HUMAN SYNTHESIS**
+   What a high-judgment person would naturally say. Socially fluent. No framework language. ≤ 90 seconds spoken.
+
+4. **TRACE**
+   Key assumptions, uncertainties, failure modes, confidence band. Compact.
+
+If explanation collapses into axioms or values, declare: "Explanation ends here. What follows is choice."
+
+Output format: markdown. Copy-paste ready for email, Slack, or brief.`,
+
+        absence: `Run as OMEGA FORGE.
+
+**ABSENCE DETECTOR**
+
+**Domain or space (e.g. "clinical decision support", "my product category", "fundraising for pre-seed"):** {{INPUT}}
+
+Apply FORGE Absence Detector:
+
+- What is conspicuously **missing** from this space?
+- What does nobody build, ask, measure, or name — and why?
+- The absence is often more informative than what is present. Most important innovations fill gaps that were invisible.
+
+Output a single artifact:
+
+1. **3–5 GAPS**
+   For each: what's missing (one line), why it might be invisible (one line), one way to test if it's real (one line).
+
+2. **MOST UNDERRATED GAP**
+   Which gap, if filled, would have the highest leverage? One sentence.
+
+3. **ONE QUESTION NOBODY ASKS**
+   A question that would meaningfully advance understanding in this space. Not rhetorical — answerable with effort.
+
+Output: markdown, copy-paste ready. No filler.`
+      };
+
+      const typeEl = document.getElementById('type');
+      const decisionFields = document.getElementById('decision-fields');
+      const contextField = document.getElementById('context-field');
+      const meetingField = document.getElementById('meeting-field');
+      const absenceField = document.getElementById('absence-field');
+      const decisionText = document.getElementById('decision-text');
+      const gravityEl = document.getElementById('gravity');
+      const contextText = document.getElementById('context-text');
+      const meetingText = document.getElementById('meeting-text');
+      const absenceText = document.getElementById('absence-text');
+      const previewEl = document.getElementById('preview');
+      const copyBtn = document.getElementById('copy-btn');
+      const copyStatus = document.getElementById('copy-status');
+
+      function showFields() {
+        const t = typeEl.value;
+        decisionFields.classList.toggle('hidden', t !== 'decision');
+        contextField.classList.toggle('hidden', t !== 'leverage');
+        meetingField.classList.toggle('hidden', t !== 'meeting');
+        absenceField.classList.toggle('hidden', t !== 'absence');
+        updatePreview();
+      }
+
+      function getInput() {
+        const t = typeEl.value;
+        if (t === 'decision') return decisionText.value.trim() || '[Your decision in one sentence]';
+        if (t === 'leverage') return contextText.value.trim() || '[Current focus, constraint, one metric]';
+        if (t === 'meeting') return meetingText.value.trim() || '[Paste meeting notes or transcript]';
+        if (t === 'absence') return absenceText.value.trim() || '[Domain or space]';
+        return '';
+      }
+
+      function getGravity() {
+        return typeEl.value === 'decision' ? gravityEl.value : '';
+      }
+
+      function buildPrompt() {
+        const t = typeEl.value;
+        let out = PROMPTS[t].replace('{{INPUT}}', getInput());
+        if (t === 'decision') out = out.replace('{{GRAVITY}}', getGravity());
+        return out;
+      }
+
+      function updatePreview() {
+        previewEl.textContent = buildPrompt();
+      }
+
+      typeEl.addEventListener('change', showFields);
+      decisionText.addEventListener('input', updatePreview);
+      gravityEl.addEventListener('change', updatePreview);
+      contextText.addEventListener('input', updatePreview);
+      meetingText.addEventListener('input', updatePreview);
+      absenceText.addEventListener('input', updatePreview);
+
+      copyBtn.addEventListener('click', async () => {
+        const prompt = buildPrompt();
+        try {
+          await navigator.clipboard.writeText(prompt);
+          copyStatus.classList.remove('hidden');
+          copyBtn.textContent = 'Copied';
+          setTimeout(() => {
+            copyStatus.classList.add('hidden');
+            copyBtn.textContent = 'Build prompt & copy to clipboard';
+          }, 2000);
+        } catch (e) {
+          previewEl.textContent = prompt + '\n\n[Copy failed — select and copy from preview above]';
+        }
+      });
+
+      showFields();
+    </script>
+  </body>
+</html>

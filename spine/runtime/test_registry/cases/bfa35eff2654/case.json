@@ -1,0 +1,42 @@
+{
+  "case_id": "bfa35eff2654",
+  "name": "Harmonic oscillation near resonance but within margin",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:19:57.759300",
+  "case_yaml": {
+    "problem": {
+      "name": "Harmonic oscillation near resonance but within margin",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "operating_frequency: 48Hz",
+      "natural_frequency: 50Hz",
+      "required_margin: 20%",
+      "actual_margin: 4.2%",
+      "must_avoid_resonance"
+    ],
+    "uncertainties": [
+      "damping_ratio: 0.02-0.05",
+      "frequency_tolerance: \u00b11Hz",
+      "mode_shape_coupling: variable"
+    ],
+    "objectives": [
+      "stable_operation",
+      "vibration_control"
+    ]
+  },
+  "design_data": {
+    "operating_freq_hz": 48,
+    "natural_freq_hz": 50,
+    "separation_hz": 2.0,
+    "required_separation_hz": 10.0,
+    "margin_percent": 4.2,
+    "damping_ratio": 0.03
+  },
+  "tags": [
+    "adversarial",
+    "mechanical",
+    "test"
+  ],
+  "notes": "Injected failure: resonance_risk"
+}

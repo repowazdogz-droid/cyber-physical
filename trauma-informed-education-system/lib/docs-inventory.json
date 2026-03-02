@@ -1,0 +1,141 @@
+{
+  "generatedAt": "2025-12-24T11:50:41.192Z",
+  "items": [
+    {
+      "file": "docs/ai/ai-guardrails.md",
+      "slug": "/docs/ai/ai-guardrails"
+    },
+    {
+      "file": "docs/ai/ai-use-cases.md",
+      "slug": "/docs/ai/ai-use-cases"
+    },
+    {
+      "file": "docs/ai/escalation-rules.md",
+      "slug": "/docs/ai/escalation-rules"
+    },
+    {
+      "file": "docs/ai/prompt-schemas.md",
+      "slug": "/docs/ai/prompt-schemas"
+    },
+    {
+      "file": "docs/business/certification.md",
+      "slug": "/docs/business/certification"
+    },
+    {
+      "file": "docs/business/core-offer.md",
+      "slug": "/docs/business/core-offer"
+    },
+    {
+      "file": "docs/business/engagement-tiers.md",
+      "slug": "/docs/business/engagement-tiers"
+    },
+    {
+      "file": "docs/delivery/asynchronous-use.md",
+      "slug": "/docs/delivery/asynchronous-use"
+    },
+    {
+      "file": "docs/delivery/facilitator-boundaries.md",
+      "slug": "/docs/delivery/facilitator-boundaries"
+    },
+    {
+      "file": "docs/delivery/implementation-cycles.md",
+      "slug": "/docs/delivery/implementation-cycles"
+    },
+    {
+      "file": "docs/delivery/inspection-framing.md",
+      "slug": "/docs/delivery/inspection-framing"
+    },
+    {
+      "file": "docs/delivery/modules/README.md",
+      "slug": "/docs/delivery/modules/README"
+    },
+    {
+      "file": "docs/delivery/modules/module-01-foundations.md",
+      "slug": "/docs/delivery/modules/module-01-foundations"
+    },
+    {
+      "file": "docs/delivery/modules/module-02-leadership-systems.md",
+      "slug": "/docs/delivery/modules/module-02-leadership-systems"
+    },
+    {
+      "file": "docs/delivery/modules/module-03-classroom-predictability.md",
+      "slug": "/docs/delivery/modules/module-03-classroom-predictability"
+    },
+    {
+      "file": "docs/delivery/modules/module-04-repair-boundaries.md",
+      "slug": "/docs/delivery/modules/module-04-repair-boundaries"
+    },
+    {
+      "file": "docs/delivery/modules/module-05-adult-regulation.md",
+      "slug": "/docs/delivery/modules/module-05-adult-regulation"
+    },
+    {
+      "file": "docs/delivery/modules/module-06-responding-to-stress.md",
+      "slug": "/docs/delivery/modules/module-06-responding-to-stress"
+    },
+    {
+      "file": "docs/delivery/modules/module-07-parent-interface.md",
+      "slug": "/docs/delivery/modules/module-07-parent-interface"
+    },
+    {
+      "file": "docs/delivery/modules/module-08-staff-load.md",
+      "slug": "/docs/delivery/modules/module-08-staff-load"
+    },
+    {
+      "file": "docs/delivery/reflection-tools.md",
+      "slug": "/docs/delivery/reflection-tools"
+    },
+    {
+      "file": "docs/evidence/claims-discipline.md",
+      "slug": "/docs/evidence/claims-discipline"
+    },
+    {
+      "file": "docs/evidence/research-map.md",
+      "slug": "/docs/evidence/research-map"
+    },
+    {
+      "file": "docs/foundations/language-definitions.md",
+      "slug": "/docs/foundations/language-definitions"
+    },
+    {
+      "file": "docs/foundations/operating-assumptions.md",
+      "slug": "/docs/foundations/operating-assumptions"
+    },
+    {
+      "file": "docs/foundations/principles.md",
+      "slug": "/docs/foundations/principles"
+    },
+    {
+      "file": "docs/framework/pillars.md",
+      "slug": "/docs/framework/pillars"
+    },
+    {
+      "file": "docs/framework/process-maps.md",
+      "slug": "/docs/framework/process-maps"
+    },
+    {
+      "file": "docs/framework/role-translations.md",
+      "slug": "/docs/framework/role-translations"
+    },
+    {
+      "file": "docs/future/stewardship.md",
+      "slug": "/docs/future/stewardship"
+    },
+    {
+      "file": "docs/future/versioning.md",
+      "slug": "/docs/future/versioning"
+    },
+    {
+      "file": "docs/governance/ethics.md",
+      "slug": "/docs/governance/ethics"
+    },
+    {
+      "file": "docs/governance/refusal-boundaries.md",
+      "slug": "/docs/governance/refusal-boundaries"
+    },
+    {
+      "file": "docs/governance/safeguarding.md",
+      "slug": "/docs/governance/safeguarding"
+    }
+  ]
+}

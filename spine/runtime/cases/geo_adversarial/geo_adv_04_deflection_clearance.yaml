@@ -1,0 +1,36 @@
+problem:
+  name: "Deflection under load reduces clearance to zero"
+  domain: "robotic_design"
+
+constraints:
+  - "applied_load: 15N"
+  - "beam_length: 150mm"
+  - "EI_stiffness: 5000_N·mm²"
+  - "initial_clearance: 0.8mm"
+  - "must_maintain_clearance"
+
+uncertainties:
+  - "load_distribution: variable"
+  - "stiffness_variation: unknown"
+  - "deflection_accuracy: unknown"
+
+objectives:
+  - "structural_stiffness"
+  - "clearance_maintenance"
+
+design:
+  applied_load_n: 15
+  beam_length_mm: 150
+  EI_stiffness_nmm2: 5000
+  initial_clearance_mm: 0.8
+  # For deflection constraint
+  applied_force_n: 15
+  beam_length_mm: 150
+  EI_nmm2: 5000
+  initial_clearance_mm: 0.8
+  min_clearance_mm: 1.0
+
+metadata:
+  injected_failure: "deflection_clearance_loss"
+  failure_category: "geometric"
+  expected_detection: "Deflection constraint should trigger"

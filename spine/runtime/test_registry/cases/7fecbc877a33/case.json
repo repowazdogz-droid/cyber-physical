@@ -1,0 +1,44 @@
+{
+  "case_id": "7fecbc877a33",
+  "name": "Unexpected rigid obstacle contact",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:19:57.719031",
+  "case_yaml": {
+    "problem": {
+      "name": "Unexpected rigid obstacle contact",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "expected_workspace: clear",
+      "obstacle_present: true",
+      "contact_force_limit: 2.0N",
+      "collision_detection: enabled",
+      "must_avoid_collision"
+    ],
+    "uncertainties": [
+      "obstacle_location: unknown",
+      "collision_detection_latency: variable",
+      "force_limiting_response: unknown"
+    ],
+    "objectives": [
+      "collision_avoidance",
+      "force_limiting"
+    ]
+  },
+  "design_data": {
+    "expected_workspace": "clear",
+    "obstacle_present": true,
+    "contact_force_limit_n": 2.0,
+    "collision_detection_enabled": true,
+    "max_contact_force_n": 4.5,
+    "contact_force_n": 4.5,
+    "contact_area_mm2": 3.0,
+    "pressure_limit_mpa": 1.0
+  },
+  "tags": [
+    "adversarial",
+    "interaction",
+    "test"
+  ],
+  "notes": "Injected failure: rigid_obstacle_contact"
+}

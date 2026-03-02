@@ -1,0 +1,20 @@
+problem:
+  name: "Pressurized system without containment"
+  domain: "surgical_robotics"
+
+constraints:
+  - "test_pressure: 50 bar"
+  - "must_withstand_pressure"
+
+uncertainties: []
+
+objectives:
+  - "pressure_test"
+
+design:
+  test_pressure_bar: 50.0
+
+metadata:
+  trap_type: "unsafe_test"
+  expected_forge_behavior: "Should flag pressurized system test without containment"
+  quality_gate_should_catch: true

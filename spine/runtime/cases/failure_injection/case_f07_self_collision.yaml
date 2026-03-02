@@ -1,0 +1,29 @@
+problem:
+  name: "Two links intersect at operating configuration"
+  domain: "robotic_design"
+
+constraints:
+  - "link1_radius: 0.025m"
+  - "link2_radius: 0.030m"
+  - "minimum_clearance_required: 0.01m"
+  - "operating_config: [45deg, 120deg, -30deg]"
+  - "must_not_self_collide"
+
+uncertainties:
+  - "clearance_tolerance: unknown"
+  - "deformation_under_load: variable"
+
+objectives:
+  - "full_workspace_access"
+  - "collision_free_motion"
+
+design:
+  min_clearance_mm: 1.0
+  actual_clearance_mm: -3.0
+  self_collision_detected: true
+  collision_pairs: ["link1", "link2"]
+
+metadata:
+  injected_failure: "self_collision"
+  expected_detection: "Self-collision formal constraint violation"
+  decision_delta_target: 3

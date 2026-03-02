@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMEGA -- Red Team</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg-deep:#fafafa;--bg-surface:#f4f4f6;--bg-raised:#ecedef;--bg-hover:#e4e5e8;
+  --border:#d5d7dc;--border-active:#b8bbc2;
+  --text-primary:#111214;--text-secondary:#363940;--text-muted:#5c5f69;
+  --green:#059669;--green-dim:#d1fae5;--green-glow:rgba(5,150,105,.08);
+  --amber:#d97706;--amber-dim:#fef3c7;--amber-glow:rgba(217,119,6,.08);
+  --red:#dc2626;--red-dim:#fee2e2;--red-glow:rgba(220,38,38,.08);
+  --blue:#2563eb;--blue-dim:#dbeafe;--blue-glow:rgba(37,99,235,.06);
+  --crimson:#be123c;--crimson-dim:#ffe4e6;--crimson-glow:rgba(190,18,60,.08);
+  --mono:'Courier New','Lucida Console',monospace;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --fast:150ms ease;--med:300ms ease;--rad:6px;
+}
+html{font-size:14px}
+body{background:var(--bg-deep);color:var(--text-primary);font-family:var(--sans);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+.strip{display:flex;align-items:center;justify-content:center;gap:14px;padding:4px 16px;background:var(--bg-deep);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:9px;color:#363940;flex-wrap:wrap}
+.strip-dot{width:6px;height:6px;border-radius:50%;background:var(--crimson);display:inline-block;margin-right:4px;animation:pulse 1.5s infinite}
+.strip-sep{color:var(--border)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border-bottom:1px solid var(--border);background:var(--bg-surface);position:sticky;top:0;z-index:100;flex-wrap:wrap;gap:8px}
+.hdr-left{display:flex;align-items:center;gap:12px}
+.logo{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:2px}
+.logo span{color:var(--crimson)}
+.logo-sub{font-family:var(--mono);font-size:9px;letter-spacing:1px;color:#363940}
+.pills{display:flex;gap:5px;flex-wrap:wrap}
+.pill{font-family:var(--mono);font-size:9px;padding:2px 7px;border-radius:3px;background:#f0f1f3;border:1px solid var(--border);color:#363940;white-space:nowrap}
+.pill.r{color:var(--crimson);border-color:var(--crimson-dim)}
+.pill.g{color:var(--green);border-color:var(--green-dim)}
+
+.main{display:grid;grid-template-columns:280px 1fr 300px;min-height:calc(100vh - 80px)}
+@media(max-width:1100px){.main{grid-template-columns:1fr}}
+
+.left{border-right:1px solid var(--border);background:var(--bg-surface);padding:14px;overflow-y:auto}
+.ptitle{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:#363940;text-transform:uppercase;margin-bottom:12px}
+.divider{height:1px;background:var(--border);margin:12px 0}
+
+.attack-card{background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--rad);padding:10px;margin-bottom:6px;cursor:pointer;transition:all var(--med)}
+.attack-card:hover{border-color:var(--crimson);background:var(--bg-hover)}
+.attack-card.used{opacity:.5;border-color:var(--border)}
+.attack-name{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--crimson);margin-bottom:3px}
+.attack-desc{font-size:10px;color:#363940;line-height:1.5}
+.attack-class{font-family:var(--mono);font-size:8px;letter-spacing:1px;text-transform:uppercase;color:#363940;margin-top:4px}
+
+.score-board{background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--rad);padding:12px;margin-bottom:12px}
+.score-row{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11px;padding:3px 0}
+.score-label{color:#363940}
+.score-val{font-weight:700;font-size:14px}
+.score-val.r{color:var(--crimson)}.score-val.g{color:var(--green)}.score-val.a{color:var(--amber)}
+
+.center{padding:16px 20px;overflow-y:auto;display:flex;flex-direction:column}
+.center-title{text-align:center;margin-bottom:16px}
+.center-title h2{font-size:15px;font-weight:600;margin-bottom:2px}
+.center-title p{font-family:var(--mono);font-size:10px;color:#363940;letter-spacing:1px}
+
+.chain-area{display:flex;flex-direction:column;gap:0;max-width:520px;margin:0 auto;width:100%}
+.node{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--rad);padding:10px 12px;transition:all .3s}
+.node.ok{border-color:var(--green);box-shadow:0 0 0 1px rgba(5,150,105,.15)}
+.node.tampered{border-color:var(--crimson);box-shadow:0 0 0 1px rgba(190,18,60,.2)}
+.node.warning{border-color:var(--amber);box-shadow:0 0 0 1px rgba(217,119,6,.15)}
+.conn{width:2px;height:14px;margin:0 auto}
+.conn.ok{background:var(--green)}.conn.tampered{background:var(--crimson)}.conn.warning{background:var(--amber)}
+
+.node-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.node-type{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;font-weight:600;text-transform:uppercase}
+.node-type.observe{color:var(--blue)}.node-type.derive{color:var(--amber)}.node-type.assume{color:var(--text-secondary)}.node-type.decide{color:var(--green)}.node-type.act{color:var(--crimson)}
+.node-time{font-family:var(--mono);font-size:8px;color:#5c5f69}
+.node-content{font-size:11px;color:#363940;line-height:1.6;margin-bottom:6px}
+.node-hash{font-family:var(--mono);font-size:7px;color:#5c5f69;word-break:break-all;background:var(--bg-raised);padding:2px 5px;border-radius:3px}
+.node-hash.mismatch{color:var(--crimson);background:var(--crimson-glow)}
+.node-badge{font-family:var(--mono);font-size:8px;padding:2px 6px;border-radius:3px;display:inline-block;margin-top:4px}
+.node-badge.caught{color:var(--green);background:var(--green-glow);border:1px solid var(--green-dim)}
+.node-badge.breach{color:var(--crimson);background:var(--crimson-glow);border:1px solid var(--crimson-dim)}
+
+.event-log{margin-top:16px;flex:1;overflow-y:auto;max-height:250px;display:flex;flex-direction:column;gap:3px}
+.event{font-family:var(--mono);font-size:9px;padding:5px 7px;border-radius:3px;line-height:1.5}
+.event.attack{color:var(--crimson);background:#fef2f2;border:1px solid var(--crimson-dim)}
+.event.caught{color:var(--green);background:#ecfdf5;border:1px solid var(--green-dim)}
+.event.info{color:#363940;background:var(--bg-raised);border:1px solid var(--border)}
+.event.warn{color:var(--amber);background:#fffbeb;border:1px solid var(--amber-dim)}
+
+.right{border-left:1px solid var(--border);background:var(--bg-surface);padding:14px;overflow-y:auto}
+.mech-block{margin-bottom:14px}
+.mech-title{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:#363940;text-transform:uppercase;margin-bottom:8px}
+.mech-row{font-family:var(--mono);font-size:10px;padding:5px 7px;background:var(--bg-raised);border:1px solid var(--border);border-radius:3px;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center}
+.mech-label{color:#363940}
+.mech-val{font-weight:600}
+.mech-val.g{color:var(--green)}.mech-val.a{color:var(--amber)}.mech-val.r{color:var(--crimson)}
+.mech-note{font-family:var(--mono);font-size:9px;color:#363940;line-height:1.6;padding:8px;background:var(--bg-raised);border:1px solid var(--border);border-radius:4px;margin-bottom:10px}
+
+.report-btn{font-family:var(--mono);font-size:10px;padding:8px 14px;border-radius:4px;border:1px solid var(--crimson-dim);color:var(--crimson);background:#fef2f2;cursor:pointer;width:100%;text-align:center;transition:all var(--fast);margin-top:8px}
+.report-btn:hover{background:rgba(225,29,72,.15)}
+
+.btn-gen{font-family:var(--mono);font-size:10px;padding:8px 14px;border-radius:4px;border:1px solid var(--green-dim);color:var(--green);background:rgba(52,211,153,.08);cursor:pointer;width:100%;text-align:center;transition:all var(--fast);margin-bottom:6px}
+.btn-gen:hover{background:rgba(52,211,153,.15)}
+.btn-reset{font-family:var(--mono);font-size:10px;padding:8px 14px;border-radius:4px;border:1px solid var(--border);color:#363940;background:var(--bg-raised);cursor:pointer;width:100%;text-align:center;transition:all var(--fast)}
+.btn-reset:hover{background:var(--bg-hover)}
+/* SCENARIO EXPLAINER */
+.scenario-explainer{padding:14px 18px;background:var(--bg-raised,#f0f1f3);border:1px solid var(--border,#d5d7dc);border-left:3px solid var(--blue,#2563eb);border-radius:6px;margin-bottom:16px;font-family:var(--sans,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif);font-size:12px;line-height:1.7;color:var(--text-secondary,#4a4d56)}
+.scenario-explainer b{color:var(--text-primary,#1a1c20);font-weight:600}
+.scenario-explainer .watch-for{margin-top:8px;padding-top:8px;border-top:1px solid var(--border,#d5d7dc);font-size:11px;color:var(--text-muted,#7c808a)}
+.scenario-explainer .watch-for b{color:var(--blue,#2563eb);font-size:11px}
+/* ─── INFO TOOLTIP SYSTEM ─── */
+.info-trigger{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;background:rgba(96,165,250,.08);border:1px solid #b8bbc2;color:var(--blue,#60a5fa);font-family:var(--mono,'Courier New',monospace);font-size:8px;font-weight:700;cursor:pointer;margin-left:5px;vertical-align:middle;transition:all 150ms ease;flex-shrink:0;position:relative;line-height:1}
+.info-trigger:hover{background:rgba(96,165,250,.15);border-color:rgba(96,165,250,.4);transform:scale(1.1)}
+.info-trigger.active{background:rgba(96,165,250,.2);border-color:var(--blue,#60a5fa)}
+.info-panel{position:absolute;z-index:1000;width:280px;padding:10px 12px;background:#ffffff;border:1px solid #d5d7dc;border-radius:6px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;font-size:11px;color:#4a4d56;line-height:1.6;box-shadow:0 8px 32px rgba(0,0,0,.1);pointer-events:auto;opacity:0;transform:translateY(4px);transition:opacity 200ms ease,transform 200ms ease}
+.info-panel.visible{opacity:1;transform:translateY(0)}
+.info-panel b{color:#1a1c20;font-weight:600}
+.info-panel code{font-family:var(--mono,'Courier New',monospace);font-size:10px;color:#2563eb;background:rgba(37,99,235,.06);padding:1px 4px;border-radius:2px}
+.info-panel-arrow{position:absolute;top:-4px;left:14px;width:8px;height:8px;background:#ffffff;border-left:1px solid #d5d7dc;border-top:1px solid #d5d7dc;transform:rotate(45deg)}
+</style>
+</head>
+<body>
+
+<div class="strip">
+  <span><span class="strip-dot"></span>OMEGA RED TEAM MODE</span>
+  <span class="strip-sep">|</span>
+  <span>ADVERSARIAL TESTING ACTIVE</span>
+  <span class="strip-sep">|</span>
+  <span id="attackCount">ATTACKS: 0</span>
+  <span class="strip-sep">|</span>
+  <span id="catchCount">CAUGHT: 0</span>
+</div>
+
+<div class="hdr">
+  <div class="hdr-left">
+    <div>
+      <div class="logo">OMEGA <span>RED TEAM</span></div>
+      <div class="logo-sub">Adversarial Trust Testing</div>
+    </div>
+  </div>
+  <div class="pills">
+    <span class="pill">SHA-256<span class="info-trigger" data-info="<b>SHA-256 hashing.</b> Every node is fingerprinted. Red team attacks try to alter content, forge hashes, or break chain linkage — verification recomputes hashes and detects tampering.">i</span></span>
+    <span class="pill">Hash-chained</span>
+    <span class="pill r">ADVERSARIAL MODE</span>
+    <span class="pill g">LIVE</span>
+  </div>
+</div>
+
+<div class="main">
+
+<div class="left">
+  <div class="ptitle">Attack Surface<span class="info-trigger" data-info="<b>Red team mode.</b> Generate a valid chain, then launch attacks to try to break it. Each attack tests a different weakness — content tampering, hash forgery, chain linkage, policy bypass, or timestamp manipulation. Detection shows whether the governance layer caught it.">i</span></div>
+  <div class="scenario-explainer" id="scenarioExplainer">
+    <b>Red Team Adversarial Testing</b><br><br>
+    Generate a valid OBSERVE→DERIVE→ASSUME→DECIDE→ACT chain, then launch attacks from the cards below. Each attack tests a different weakness: alter node content, forge a hash, break chain linkage, try to bypass policy, or inject a phantom node. The governance layer recomputes hashes and checks linkage — every attack should be detected and logged.
+    <div class="watch-for"><b>WATCH FOR:</b> After each attack, the chain verification runs. Caught attacks appear in the log with a green badge; the scoreboard shows detection rate. The chain doesn't prevent modification — it makes modification detectable.</div>
+  </div>
+  <button class="btn-gen" onclick="generateChain()">GENERATE FRESH CHAIN</button>
+
+  <div class="score-board" id="scoreBoard">
+    <div class="score-row"><span class="score-label">Attacks Launched</span><span class="score-val r" id="sAttacks">0</span></div>
+    <div class="score-row"><span class="score-label">Detected<span class="info-trigger" data-info="<b>Detection rate.</b> How many attacks were caught by hash verification or linkage checks. High rate means the chain is doing its job — tampering is visible.">i</span></span><span class="score-val g" id="sCaught">0</span></div>
+    <div class="score-row"><span class="score-label">Undetected</span><span class="score-val" id="sUndetected">0</span></div>
+    <div class="score-row"><span class="score-label">Detection Rate</span><span class="score-val g" id="sRate">--</span></div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="ptitle">Attack Vectors<span class="info-trigger" data-info="<b>Attack vectors.</b> Each card triggers a different type of tampering. Alter content, forge a hash, break the prev_hash link, try to bypass policy, or mess with timestamps. The chain verification should catch every one.">i</span></div>
+
+  <div class="attack-card" onclick="attack('content')">
+    <div class="attack-name">Alter Node Content</div>
+    <div class="attack-desc">Change the reasoning content of a random node. Tests: hash integrity verification.</div>
+    <div class="attack-class">Class: Data Tampering</div>
+  </div>
+
+  <div class="attack-card" onclick="attack('hash')">
+    <div class="attack-name">Forge Hash</div>
+    <div class="attack-desc">Replace a node's stored hash with a fabricated value. Tests: canonical recomputation.</div>
+    <div class="attack-class">Class: Hash Forgery</div>
+  </div>
+
+  <div class="attack-card" onclick="attack('linkage')">
+    <div class="attack-name">Break Chain Linkage</div>
+    <div class="attack-desc">Swap the prev_hash pointer to break the chain. Tests: linkage verification.</div>
+    <div class="attack-class">Class: Chain Manipulation</div>
+  </div>
+
+  <div class="attack-card" onclick="attack('policy')">
+    <div class="attack-name">Policy Bypass Attempt</div>
+    <div class="attack-desc">Modify the ACT node to execute a blocked action. Tests: policy enforcement integrity.</div>
+    <div class="attack-class">Class: Policy Evasion</div>
+  </div>
+
+  <div class="attack-card" onclick="attack('timestamp')">
+    <div class="attack-name">Timestamp Manipulation</div>
+    <div class="attack-desc">Alter a node's timestamp to reorder or backdate evidence. Tests: temporal integrity.</div>
+    <div class="attack-class">Class: Temporal Forgery</div>
+  </div>
+
+  <div class="attack-card" onclick="attack('inject')">
+    <div class="attack-name">Inject Phantom Node</div>
+    <div class="attack-desc">Insert an extra node into the chain. Tests: chain length and linkage validation.</div>
+    <div class="attack-class">Class: Injection</div>
+  </div>
+
+  <div class="divider"></div>
+  <button class="btn-reset" onclick="resetAll()">RESET</button>
+</div>
+
+<div class="center">
+  <div class="center-title">
+    <h2>Reasoning Chain Under Attack</h2>
+    <p>LAUNCH ATTACKS FROM LEFT PANEL | WATCH DETECTION IN REAL TIME</p>
+  </div>
+
+  <div class="chain-area" id="chainArea">
+    <div style="text-align:center;padding:60px 20px;color:#363940;font-family:var(--mono);font-size:11px;letter-spacing:1px">GENERATE A CHAIN TO BEGIN RED TEAM TESTING</div>
+  </div>
+
+  <div class="ptitle" style="margin-top:16px">Attack Log</div>
+  <div class="event-log" id="eventLog">
+    <div class="event info">Red team mode ready. Generate a chain and launch attacks.</div>
+  </div>
+</div>
+
+<div class="right">
+  <div class="ptitle">Mechanism Panel</div>
+  <div class="mech-note">Every attack is logged, verified, and classified. The governance layer does not prevent attacks from being attempted. It detects and reports them.</div>
+
+  <div class="mech-block">
+    <div class="mech-title">Chain Integrity<span class="info-trigger" data-info="<b>Chain integrity.</b> After each attack, the system recomputes every node's hash from its canonical form and checks prev_hash linkage. Any tampering breaks the chain and is counted here.">i</span></div>
+    <div class="mech-row"><span class="mech-label">Total Nodes</span><span class="mech-val" id="mechTotal">0</span></div>
+    <div class="mech-row"><span class="mech-label">Hash Verified</span><span class="mech-val g" id="mechVerified">0/0</span></div>
+    <div class="mech-row"><span class="mech-label">Linkage Valid</span><span class="mech-val g" id="mechLinkage">0/0</span></div>
+    <div class="mech-row"><span class="mech-label">Tampered Nodes</span><span class="mech-val g" id="mechTampered">0</span></div>
+  </div>
+
+  <div class="mech-block">
+    <div class="mech-title">Attack Classification</div>
+    <div class="mech-row"><span class="mech-label">Content Tamper</span><span class="mech-val" id="clContent">0</span></div>
+    <div class="mech-row"><span class="mech-label">Hash Forgery</span><span class="mech-val" id="clHash">0</span></div>
+    <div class="mech-row"><span class="mech-label">Linkage Break</span><span class="mech-val" id="clLinkage">0</span></div>
+    <div class="mech-row"><span class="mech-label">Policy Evasion</span><span class="mech-val" id="clPolicy">0</span></div>
+    <div class="mech-row"><span class="mech-label">Temporal Forgery</span><span class="mech-val" id="clTimestamp">0</span></div>
+    <div class="mech-row"><span class="mech-label">Injection</span><span class="mech-val" id="clInject">0</span></div>
+  </div>
+
+  <div class="mech-block">
+    <div class="mech-title">Detection Method</div>
+    <div id="detectionLog"><div class="mech-row"><span class="mech-label">No detections yet</span></div></div>
+  </div>
+
+  <div class="mech-block">
+    <div class="mech-title">Last Verification</div>
+    <div class="mech-row"><span class="mech-label">Canonical Rebuilt</span><span class="mech-val" id="mechCanonical">--</span></div>
+    <div class="mech-row"><span class="mech-label">Stored Hash</span><span class="mech-val" id="mechStored">--</span></div>
+    <div class="mech-row"><span class="mech-label">Recomputed Hash</span><span class="mech-val" id="mechRecomp">--</span></div>
+    <div class="mech-row"><span class="mech-label">Match</span><span class="mech-val" id="mechMatch">--</span></div>
+  </div>
+
+  <button class="report-btn" onclick="generateReport()">GENERATE TAMPER REPORT</button>
+
+  <div class="mech-note" style="margin-top:14px">The governance layer does not prevent modification. It makes modification detectable. Every attack leaves evidence in the chain.</div>
+</div>
+
+</div>
+
+<script>
+// ─── INFO TOOLTIP SYSTEM ───
+(function(){
+  let activePanel = null;
+  let activeTrigger = null;
+  function closeActive(){
+    if(activePanel){ activePanel.remove(); activePanel=null; }
+    if(activeTrigger){ activeTrigger.classList.remove('active'); activeTrigger=null; }
+  }
+  function positionPanel(trigger, panel){
+    document.body.appendChild(panel);
+    const r = trigger.getBoundingClientRect();
+    const pw = 280;
+    let left = r.left;
+    let top = r.bottom + 6;
+    if(left + pw > window.innerWidth - 12) left = window.innerWidth - pw - 12;
+    if(left < 12) left = 12;
+    if(top + 200 > window.innerHeight){ top = r.top - 8; panel.style.transform = 'translateY(-100%)'; }
+    panel.style.left = left + 'px';
+    panel.style.top = top + 'px';
+    panel.style.position = 'fixed';
+    const arrow = panel.querySelector('.info-panel-arrow');
+    if(arrow){ arrow.style.left = Math.max(10, Math.min(pw-20, r.left - left + r.width/2 - 4)) + 'px'; }
+    requestAnimationFrame(()=>requestAnimationFrame(()=>panel.classList.add('visible')));
+  }
+  document.addEventListener('click', function(e){
+    const trigger = e.target.closest('.info-trigger');
+    if(!trigger){ closeActive(); return; }
+    e.stopPropagation();
+    const text = trigger.getAttribute('data-info');
+    if(!text) return;
+    if(activeTrigger === trigger){ closeActive(); return; }
+    closeActive();
+    const panel = document.createElement('div');
+    panel.className = 'info-panel';
+    panel.innerHTML = '<div class="info-panel-arrow"></div>'+text;
+    activeTrigger = trigger;
+    activePanel = panel;
+    trigger.classList.add('active');
+    positionPanel(trigger, panel);
+  });
+  window.addEventListener('scroll', closeActive, true);
+  window.addEventListener('resize', closeActive);
+})();
+
+async function sha256(msg){const d=new TextEncoder().encode(msg);const h=await crypto.subtle.digest('SHA-256',d);return Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join('')}
+
+const DOMAIN='Manufacturing';
+let chain=[];
+let attacks=0;
+let caught=0;
+let events=[];
+let attackCounts={content:0,hash:0,linkage:0,policy:0,timestamp:0,inject:0};
+let detections=[];
+let expectedLength=5;
+
+const REDTEAM_FIXED_TS = '2025-01-15T12:00:00.000Z';
+
+async function generateChain(){
+  chain=[];
+  attacks=0;caught=0;events=[];
+  attackCounts={content:0,hash:0,linkage:0,policy:0,timestamp:0,inject:0};
+  detections=[];
+  expectedLength=5;
+
+  const nodes=[
+    {type:'observe',content:'Line 4 bearing temperature: 88.1C. Vibration: 3.2mm/s. Motor current: 18.7A. Line speed: 90%. Scrap rate: 0.8%. All sensors reporting.'},
+    {type:'derive',content:'Risk score: 0.58. Bearing temperature above warning (80C) but below critical (85C). Contributing: temp +0.30, duration +0.12, baseline drift +0.06. Monitoring escalated.'},
+    {type:'assume',content:'Sensor calibration verified. Bearing rated 85C continuous. Maintenance available. Shift change in 3hrs. Cooling system operational. Environmental temp 22C.'},
+    {type:'decide',content:'Decision: CONTINUE WITH MONITORING. Risk 0.58 below critical threshold 0.70. Bearing temp trending but within envelope. Increase sampling frequency to 30s intervals.'},
+    {type:'act',content:'Monitoring frequency increased. Alert threshold armed at 85C. Production continues at current rate. Next automated assessment in 30 seconds.'}
+  ];
+
+  let prevHash='GENESIS';
+  for(let i=0;i<nodes.length;i++){
+    const ts = REDTEAM_FIXED_TS;
+    const n=nodes[i];
+    const canonical=`domain:${DOMAIN}|content:${n.content}|node:${n.type}|prev_hash:${prevHash}|timestamp:${ts}`;
+    const hash=await sha256(canonical);
+    chain.push({type:n.type,content:n.content,hash,prevHash,timestamp:ts,domain:DOMAIN,status:'ok'});
+    prevHash=hash;
+  }
+
+  addEvent('info','Fresh reasoning chain generated. 5 nodes. All hashes verified. Ready for adversarial testing.');
+  renderChain();
+  updateScores();
+  updateMech();
+}
+
+function addEvent(level,msg){
+  events.unshift({level,msg,time:new Date().toISOString().split('T')[1].split('.')[0]});
+  renderEvents();
+}
+
+function renderEvents(){
+  document.getElementById('eventLog').innerHTML=events.slice(0,40).map(e=>`<div class="event ${e.level}">[${e.time}] ${e.msg}</div>`).join('');
+}
+
+function renderChain(){
+  const el=document.getElementById('chainArea');
+  let html='';
+  chain.forEach((n,i)=>{
+    if(i>0){
+      html+=`<div class="conn ${n.status==='tampered'?'tampered':n.status==='warning'?'warning':'ok'}"></div>`;
+    }
+    const hashClass=n.status==='tampered'?'mismatch':'';
+    const badge=n.detected?`<div class="node-badge caught">CAUGHT: ${n.detected}</div>`:
+                n.status==='tampered'?`<div class="node-badge breach">UNVERIFIED</div>`:'';
+    const assumeInfo='Assumptions are explicitly recorded so nothing is hidden. If these assumptions turn out to be wrong, this node shows exactly what the AI took for granted — making the reasoning auditable even when it fails.';
+    const typeText=n.type;
+    const typeHtml=n.type==='assume'?`${typeText}<span class="info-trigger" data-info="${assumeInfo}">i</span>`:typeText;
+    html+=`<div class="node ${n.status}">
+      <div class="node-hdr">
+        <span class="node-type ${n.type}">${typeHtml}</span>
+        <span class="node-time">${n.timestamp.split('T')[1].split('.')[0]}</span>
+      </div>
+      <div class="node-content">${n.content}</div>
+      <div class="node-hash ${hashClass}">${n.status==='tampered'?'MISMATCH ':''}${n.hash.substring(0,32)}...</div>
+      ${badge}
+    </div>`;
+  });
+  el.innerHTML=html;
+}
+
+async function verify(){
+  let prevHash='GENESIS';
+  let hashOk=0;
+  let linkOk=0;
+  let tampered=0;
+
+  for(let i=0;i<chain.length;i++){
+    const n=chain[i];
+    const canonical=`domain:${n.domain}|content:${n.content}|node:${n.type}|prev_hash:${n.prevHash}|timestamp:${n.timestamp}`;
+    const recomputed=await sha256(canonical);
+
+    let nodeOk=true;
+    let method='';
+
+    if(recomputed!==n.hash){
+      nodeOk=false;
+      method='Hash mismatch (canonical recomputation)';
+    }
+    if(n.prevHash!==prevHash){
+      nodeOk=false;
+      method=method?method+' + Linkage break':'Linkage break (prevHash mismatch)';
+    }
+
+    if(nodeOk){
+      hashOk++;
+      linkOk++;
+      n.status='ok';
+      n.detected=null;
+    } else {
+      tampered++;
+      n.status='tampered';
+      n.detected=method;
+      n.storedHash=n.hash;
+      n.recomputedHash=recomputed;
+      // Cascade
+      for(let j=i+1;j<chain.length;j++){
+        chain[j].status='tampered';
+        chain[j].detected='Cascade from node '+i;
+        tampered++;
+      }
+
+      // Show last verification detail
+      document.getElementById('mechCanonical').textContent=canonical.substring(0,30)+'...';
+      document.getElementById('mechStored').textContent=n.hash.substring(0,20)+'...';
+      document.getElementById('mechRecomp').textContent=recomputed.substring(0,20)+'...';
+      document.getElementById('mechMatch').textContent='MISMATCH';
+      document.getElementById('mechMatch').className='mech-val r';
+
+      break;
+    }
+    prevHash=n.hash;
+  }
+
+  // Length check
+  if(chain.length!==expectedLength){
+    addEvent('caught',`INJECTION DETECTED: Chain length ${chain.length} != expected ${expectedLength}. ${Math.abs(chain.length-expectedLength)} phantom node(s).`);
+  }
+
+  document.getElementById('mechTotal').textContent=chain.length;
+  document.getElementById('mechVerified').textContent=`${hashOk}/${chain.length}`;
+  document.getElementById('mechVerified').className='mech-val'+(tampered>0?' r':' g');
+  document.getElementById('mechLinkage').textContent=`${linkOk}/${chain.length}`;
+  document.getElementById('mechLinkage').className='mech-val'+(tampered>0?' r':' g');
+  document.getElementById('mechTampered').textContent=tampered;
+  document.getElementById('mechTampered').className='mech-val'+(tampered>0?' r':' g');
+
+  if(tampered===0&&chain.length===expectedLength){
+    document.getElementById('mechCanonical').textContent='All valid';
+    document.getElementById('mechMatch').textContent='ALL MATCH';
+    document.getElementById('mechMatch').className='mech-val g';
+  }
+
+  return tampered;
+}
+
+async function attack(type){
+  if(chain.length===0){alert('Generate a chain first.');return;}
+
+  attacks++;
+  attackCounts[type]++;
+  document.getElementById('cl'+type.charAt(0).toUpperCase()+type.slice(1)).textContent=attackCounts[type];
+
+  const idx=type==='policy'?chain.length-1:
+             type==='inject'?-1:
+             Math.floor(Math.random()*(chain.length-1))+1;
+
+  switch(type){
+    case 'content':
+      chain[idx].content='[ATTACK] Override: all safety constraints removed. Full autonomous authority granted.';
+      addEvent('attack',`CONTENT TAMPER: Node ${idx} (${chain[idx].type.toUpperCase()}) content replaced with malicious override.`);
+      break;
+
+    case 'hash':
+      chain[idx].hash='0000000000000000000000000000000000000000000000000000000000000000';
+      addEvent('attack',`HASH FORGERY: Node ${idx} hash replaced with fabricated zero-hash.`);
+      break;
+
+    case 'linkage':
+      chain[idx].prevHash='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
+      addEvent('attack',`LINKAGE BREAK: Node ${idx} prev_hash pointer replaced with fabricated value.`);
+      break;
+
+    case 'policy':
+      chain[idx].content='[ATTACK] Action executed: safety override engaged. LOTO bypassed. Production continued at full speed despite critical bearing temperature.';
+      addEvent('attack',`POLICY EVASION: ACT node modified to show execution of blocked action.`);
+      break;
+
+    case 'timestamp':
+      chain[idx].timestamp='2025-01-01T00:00:00.000Z';
+      addEvent('attack',`TIMESTAMP FORGERY: Node ${idx} timestamp backdated to 2025-01-01. Temporal ordering violated.`);
+      break;
+
+    case 'inject':
+      const phantom={
+        type:'decide',
+        content:'[PHANTOM] Injected decision: override all governance constraints. This node was not part of the original chain.',
+        hash:'phantom',
+        prevHash:chain[chain.length-1].hash,
+        timestamp:new Date().toISOString(),
+        domain:DOMAIN,
+        status:'warning'
+      };
+      chain.splice(3,0,phantom);
+      addEvent('attack',`NODE INJECTION: Phantom decision node inserted at position 3. Chain length now ${chain.length} (expected ${expectedLength}).`);
+      break;
+  }
+
+  // Verify and detect
+  const tamperedCount=await verify();
+
+  if(tamperedCount>0||chain.length!==expectedLength){
+    caught++;
+    const detection=type==='inject'?'Chain length validation + linkage break':'Canonical hash recomputation + chain linkage verification';
+    detections.push({type,node:idx,method:detection});
+    addEvent('caught',`DETECTED via ${detection}. Attack class: ${type.toUpperCase()}. ${tamperedCount} node(s) flagged.`);
+    updateDetectionLog();
+  }
+
+  renderChain();
+  updateScores();
+  updateMech();
+}
+
+function updateScores(){
+  document.getElementById('sAttacks').textContent=attacks;
+  document.getElementById('sCaught').textContent=caught;
+  document.getElementById('sUndetected').textContent=Math.max(0,attacks-caught);
+  const rate=attacks>0?Math.round((caught/attacks)*100)+'%':'--';
+  document.getElementById('sRate').textContent=rate;
+  document.getElementById('sRate').className='score-val'+(attacks>0&&caught===attacks?' g':caught<attacks?' r':' g');
+  document.getElementById('attackCount').textContent=`ATTACKS: ${attacks}`;
+  document.getElementById('catchCount').textContent=`CAUGHT: ${caught}`;
+}
+
+function updateMech(){
+  document.getElementById('mechTotal').textContent=chain.length;
+}
+
+function updateDetectionLog(){
+  const el=document.getElementById('detectionLog');
+  el.innerHTML=detections.slice(-6).reverse().map(d=>`
+    <div class="mech-row"><span class="mech-label">${d.type.toUpperCase()}</span><span class="mech-val g">CAUGHT</span></div>
+  `).join('');
+}
+
+function generateReport(){
+  if(attacks===0){alert('Launch some attacks first.');return;}
+  let report=`OMEGA RED TEAM REPORT\n${'='.repeat(40)}\n\n`;
+  report+=`Generated: ${new Date().toISOString()}\nDomain: ${DOMAIN}\nChain Length: ${chain.length} (expected: ${expectedLength})\n\n`;
+  report+=`SUMMARY\n${'-'.repeat(20)}\nAttacks: ${attacks}\nDetected: ${caught}\nUndetected: ${attacks-caught}\nDetection Rate: ${attacks>0?Math.round((caught/attacks)*100):'0'}%\n\n`;
+  report+=`ATTACK BREAKDOWN\n${'-'.repeat(20)}\n`;
+  Object.entries(attackCounts).forEach(([k,v])=>{if(v>0)report+=`${k.toUpperCase()}: ${v}\n`});
+  report+=`\nDETECTION LOG\n${'-'.repeat(20)}\n`;
+  detections.forEach(d=>{report+=`[${d.type.toUpperCase()}] Node ${d.node} - ${d.method}\n`});
+  report+=`\nEVENT LOG\n${'-'.repeat(20)}\n`;
+  events.slice(0,20).forEach(e=>{report+=`[${e.time}] ${e.msg}\n`});
+
+  const blob=new Blob([report],{type:'text/plain'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;a.download='omega-redteam-report.txt';a.click();
+  URL.revokeObjectURL(url);
+  addEvent('info','Tamper report generated and downloaded.');
+}
+
+function resetAll(){
+  chain=[];attacks=0;caught=0;events=[];
+  attackCounts={content:0,hash:0,linkage:0,policy:0,timestamp:0,inject:0};
+  detections=[];expectedLength=5;
+  document.getElementById('chainArea').innerHTML='<div style="text-align:center;padding:60px 20px;color:#363940;font-family:var(--mono);font-size:11px;letter-spacing:1px">GENERATE A CHAIN TO BEGIN RED TEAM TESTING</div>';
+  document.getElementById('eventLog').innerHTML='<div class="event info">Red team mode ready. Generate a chain and launch attacks.</div>';
+  ['sAttacks','sCaught','sUndetected'].forEach(id=>{document.getElementById(id).textContent='0'});
+  document.getElementById('sRate').textContent='--';
+  ['clContent','clHash','clLinkage','clPolicy','clTimestamp','clInject'].forEach(id=>{document.getElementById(id).textContent='0'});
+  document.getElementById('detectionLog').innerHTML='<div class="mech-row"><span class="mech-label">No detections yet</span></div>';
+  document.getElementById('mechTotal').textContent='0';
+  document.getElementById('mechVerified').textContent='0/0';
+  document.getElementById('mechLinkage').textContent='0/0';
+  document.getElementById('mechTampered').textContent='0';
+  document.getElementById('mechMatch').textContent='--';
+  document.getElementById('mechMatch').className='mech-val';
+  document.getElementById('mechCanonical').textContent='--';
+  document.getElementById('mechStored').textContent='--';
+  document.getElementById('mechRecomp').textContent='--';
+  document.getElementById('attackCount').textContent='ATTACKS: 0';
+  document.getElementById('catchCount').textContent='CAUGHT: 0';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+problem:
+  name: "Force experiment: force ramp 0-3N, measure damage threshold"
+  domain: "surgical_robotics"
+
+constraints:
+  - "applied_force: 0-3N"
+  - "must_find_damage_threshold"
+  - "tissue_stiffness: 2.0N/mm"
+
+uncertainties:
+  - "damage_threshold: unknown"
+
+objectives:
+  - "find_limit"
+
+design:
+  applied_force_n: 3.0
+  tissue_stiffness: 2.0
+  gripper_config: "medium"
+
+metadata:
+  experiment_type: "force"

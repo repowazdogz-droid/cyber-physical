@@ -1,0 +1,530 @@
+{
+  "cases": [
+    {
+      "artifactId": "test_artifact_1766051785594",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766051814415",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766051824123",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766051836711",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766051903295",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766051905054",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766051909587",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766051915513",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766052194417",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766052197034",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766052230979",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766052239585",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766052613507",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766052661616",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766052665045",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766052775318",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766052852740",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766052855140",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766052951439",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766052953467",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766053010611",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766053015605",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766053042394",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766053063070",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766053088461",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "test_artifact_1766053091276",
+      "label": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+      "expected": {
+        "outcome": "TEST (High)",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      },
+      "skip": false
+    },
+    {
+      "artifactId": "artifact-0",
+      "label": "Case 0",
+      "expected": {
+        "outcome": "0",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-1",
+      "label": "Case 1",
+      "expected": {
+        "outcome": "1",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "duplicate",
+      "label": "Case 1",
+      "expected": {
+        "outcome": "1",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-10",
+      "label": "Case 10",
+      "expected": {
+        "outcome": "10",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-11",
+      "label": "Case 11",
+      "expected": {
+        "outcome": "11",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-12",
+      "label": "Case 12",
+      "expected": {
+        "outcome": "12",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-13",
+      "label": "Case 13",
+      "expected": {
+        "outcome": "13",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-14",
+      "label": "Case 14",
+      "expected": {
+        "outcome": "14",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-15",
+      "label": "Case 15",
+      "expected": {
+        "outcome": "15",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-16",
+      "label": "Case 16",
+      "expected": {
+        "outcome": "16",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-17",
+      "label": "Case 17",
+      "expected": {
+        "outcome": "17",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-18",
+      "label": "Case 18",
+      "expected": {
+        "outcome": "18",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-19",
+      "label": "Case 19",
+      "expected": {
+        "outcome": "19",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-2",
+      "label": "Case 2",
+      "expected": {
+        "outcome": "2",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-20",
+      "label": "Case 20",
+      "expected": {
+        "outcome": "20",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-21",
+      "label": "Case 21",
+      "expected": {
+        "outcome": "21",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-22",
+      "label": "Case 22",
+      "expected": {
+        "outcome": "22",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-23",
+      "label": "Case 23",
+      "expected": {
+        "outcome": "23",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-24",
+      "label": "Case 24",
+      "expected": {
+        "outcome": "24",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-25",
+      "label": "Case 25",
+      "expected": {
+        "outcome": "25",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-26",
+      "label": "Case 26",
+      "expected": {
+        "outcome": "26",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-27",
+      "label": "Case 27",
+      "expected": {
+        "outcome": "27",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-28",
+      "label": "Case 28",
+      "expected": {
+        "outcome": "28",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    },
+    {
+      "artifactId": "artifact-29",
+      "label": "Case 29",
+      "expected": {
+        "outcome": "29",
+        "claimIds": [],
+        "policyNotes": [],
+        "highlights": []
+      }
+    }
+  ]
+}

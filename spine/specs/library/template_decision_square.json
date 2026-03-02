@@ -1,0 +1,151 @@
+{
+  "version": "1.0.0",
+  "kernelId": "template_decision_square",
+  "adapterId": "spec:template_decision_square",
+  "name": "Decision Square Template",
+  "description": "Domain-agnostic decision square with two axes (A/B) + overrides + disallows",
+  "outcomes": [
+    {
+      "outcomeId": "QUADRANT_1",
+      "label": "Quadrant 1 (High A, High B)",
+      "conditions": [
+        {
+          "signalKey": "axisA",
+          "operator": "gte",
+          "value": 70
+        },
+        {
+          "signalKey": "axisB",
+          "operator": "gte",
+          "value": 70
+        }
+      ],
+      "confidence": "High",
+      "rationale": "Both axes are high - optimal conditions"
+    },
+    {
+      "outcomeId": "QUADRANT_2",
+      "label": "Quadrant 2 (High A, Low B)",
+      "conditions": [
+        {
+          "signalKey": "axisA",
+          "operator": "gte",
+          "value": 70
+        },
+        {
+          "signalKey": "axisB",
+          "operator": "lt",
+          "value": 70
+        }
+      ],
+      "confidence": "Medium",
+      "rationale": "Axis A is high but Axis B is low - caution needed"
+    },
+    {
+      "outcomeId": "QUADRANT_3",
+      "label": "Quadrant 3 (Low A, Low B)",
+      "conditions": [
+        {
+          "signalKey": "axisA",
+          "operator": "lt",
+          "value": 70
+        },
+        {
+          "signalKey": "axisB",
+          "operator": "lt",
+          "value": 70
+        }
+      ],
+      "confidence": "Low",
+      "rationale": "Both axes are low - suboptimal conditions"
+    },
+    {
+      "outcomeId": "QUADRANT_4",
+      "label": "Quadrant 4 (Low A, High B)",
+      "conditions": [
+        {
+          "signalKey": "axisA",
+          "operator": "lt",
+          "value": 70
+        },
+        {
+          "signalKey": "axisB",
+          "operator": "gte",
+          "value": 70
+        }
+      ],
+      "confidence": "Medium",
+      "rationale": "Axis B is high but Axis A is low - caution needed"
+    }
+  ],
+  "overrides": [
+    {
+      "overrideId": "emergency_override",
+      "name": "Emergency Override",
+      "conditions": [
+        {
+          "signalKey": "emergency",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "forcedOutcome": "QUADRANT_1",
+      "reason": "Emergency mode activated - force optimal outcome"
+    }
+  ],
+  "disallows": [
+    {
+      "disallowId": "block_quadrant_3",
+      "name": "Block Quadrant 3",
+      "conditions": [
+        {
+          "signalKey": "blockSuboptimal",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "disallowedOutcome": "QUADRANT_3",
+      "reason": "Suboptimal outcome is blocked by policy"
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

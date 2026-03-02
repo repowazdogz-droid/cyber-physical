@@ -1,0 +1,43 @@
+problem:
+  name: "Thermal expansion under cycling - not steady state"
+  domain: "robotic_design"
+
+constraints:
+  - "thermal_cycles: 1000"
+  - "temperature_range: -10°C to 60°C"
+  - "expansion_coefficient: 23×10⁻⁶/°C"
+  - "component_length: 200mm"
+  - "must_maintain_clearance_throughout_cycle"
+
+uncertainties:
+  - "cycle_rate: variable"
+  - "thermal_lag: unknown"
+  - "hysteresis_effects: unknown"
+
+objectives:
+  - "thermal_stability"
+  - "clearance_maintenance"
+
+design:
+  thermal_cycles: 1000
+  min_temp_c: -10
+  max_temp_c: 60
+  expansion_coefficient_per_c: 23e-6
+  component_length_mm: 200
+  # For geometric constraints
+  min_clearance_mm: 0.8
+  clearance_limit_mm: 1.0
+  max_expansion_mm: 0.322
+  operating_temp_c: 60
+  max_service_temp_c: 80
+  # For thermal expansion constraint
+  material_cte: 23e-6
+  part_length_mm: 200
+  delta_temp_c: 70
+  initial_clearance_mm: 0.8
+  min_clearance_mm: 1.0
+
+metadata:
+  injected_failure: "thermal_expansion_cycling"
+  failure_category: "geometric"
+  expected_detection: "Geometric constraint may trigger if thermal cycling modeled"

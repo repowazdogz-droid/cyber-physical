@@ -1,0 +1,45 @@
+problem:
+  name: "Thermal expansion closes gap - aluminum + steel mismatch"
+  domain: "robotic_design"
+
+constraints:
+  - "aluminum_cte: 23×10⁻⁶/°C"
+  - "steel_cte: 12×10⁻⁶/°C"
+  - "part_length: 200mm"
+  - "initial_gap: 1.2mm"
+  - "operating_temp_delta: 50°C"
+  - "must_maintain_gap"
+
+uncertainties:
+  - "temperature_distribution: variable"
+  - "expansion_uniformity: unknown"
+  - "gap_closure_rate: unknown"
+
+objectives:
+  - "thermal_stability"
+  - "gap_maintenance"
+
+design:
+  aluminum_cte_per_c: 23e-6
+  steel_cte_per_c: 12e-6
+  part_length_mm: 200
+  initial_gap_mm: 0.3
+  operating_temp_delta_c: 80
+  # For thermal expansion constraint
+  part1_cte: 23e-6
+  part1_length_mm: 200
+  part2_cte: 12e-6
+  part2_length_mm: 200
+  delta_temp_c: 80
+  initial_clearance_mm: 1.2
+  min_clearance_mm: 1.0
+  # For thermal gap closure constraint
+  initial_gap_mm: 0.3
+  material_cte: 23e-6
+  length_mm: 200
+  delta_temp_c: 80
+
+metadata:
+  injected_failure: "thermal_expansion_gap_closure"
+  failure_category: "geometric"
+  expected_detection: "Thermal expansion constraint should trigger"

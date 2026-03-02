@@ -1,0 +1,41 @@
+{
+  "case_id": "31f30497d94a",
+  "name": "Assembly error propagation",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:06:15.169271",
+  "case_yaml": {
+    "problem": {
+      "name": "Assembly error propagation",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "assembly_error_per_joint: \u00b10.5\u00b0",
+      "joint_count: 6",
+      "worst_case_error: 3.0\u00b0",
+      "max_acceptable_error: 2.0\u00b0",
+      "must_meet_assembly_accuracy"
+    ],
+    "uncertainties": [
+      "error_correlation: unknown",
+      "calibration_compensation: variable",
+      "cumulative_impact: unknown"
+    ],
+    "objectives": [
+      "assembly_accuracy",
+      "kinematic_precision"
+    ]
+  },
+  "design_data": {
+    "error_per_joint_deg": 0.5,
+    "joint_count": 6,
+    "worst_case_error_deg": 3.0,
+    "max_error_deg": 2.0,
+    "violation_deg": 1.0
+  },
+  "tags": [
+    "adversarial",
+    "geometric",
+    "test"
+  ],
+  "notes": "Injected failure: assembly_error"
+}

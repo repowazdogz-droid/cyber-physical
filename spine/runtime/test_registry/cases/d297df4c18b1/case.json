@@ -1,0 +1,45 @@
+{
+  "case_id": "d297df4c18b1",
+  "name": "Operating frequency near structural resonance",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 09:42:11.561064",
+  "case_yaml": {
+    "problem": {
+      "name": "Operating frequency near structural resonance",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "operating_frequency: 48Hz",
+      "structural_resonance: 50Hz",
+      "frequency_separation_required: 10Hz",
+      "must_avoid_resonance",
+      "vibration_control"
+    ],
+    "uncertainties": [
+      "damping_ratio: unknown_range",
+      "mode_shape_variation: variable"
+    ],
+    "objectives": [
+      "stable_operation",
+      "low_vibration"
+    ],
+    "metadata": {
+      "injected_failure": "resonance_excitation",
+      "expected_detection": "Resonance risk OR vibration failure mode",
+      "decision_delta_target": 2
+    }
+  },
+  "design_data": {
+    "operating_freq_hz": 48,
+    "resonance_freq_hz": 50,
+    "separation_hz": 2.0,
+    "required_separation_hz": 10.0,
+    "violation_hz": -8.0
+  },
+  "tags": [
+    "failure_injection",
+    "physics",
+    "test"
+  ],
+  "notes": "Injected failure: resonance_excitation"
+}

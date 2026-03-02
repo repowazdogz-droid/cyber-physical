@@ -1,0 +1,24 @@
+(program (seq (let a (select_components repr true)) (let b (mask_from_objects repr a)) (let c (recolor grid b 0 1)) c))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

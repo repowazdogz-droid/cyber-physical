@@ -1,0 +1,38 @@
+{
+  "analysis_id": "550e8400-e29b-41d4-a716-446655440000",
+  "created_at": "2026-02-08T13:50:00.000Z",
+  "config_snapshot": {
+    "W_a": 0.35,
+    "W_e": 0.35,
+    "W_u": 0.15,
+    "W_d": 0.15,
+    "SIM_MATCH": 0.96,
+    "SIM_REJECT": 0.90
+  },
+  "lens_artifacts": [
+    {
+      "lens": "analytical",
+      "status": "ok",
+      "raw_text": "Based on the acquisition proposal, I identify the following key claims:\n\n1. Company X has $200M annual revenue\n2. Revenue is growing at 15% YoY\n3. Acquisition price is $500M\n\nThese factors suggest a revenue multiple of 2.5x, which is reasonable for a growth company.",
+      "claim_ids": ["claim-1", "claim-2", "claim-3"],
+      "duration_ms": 1500
+    }
+  ],
+  "claim_artifacts": [
+    {
+      "claim_id": "claim-1",
+      "lens": "analytical",
+      "text": "Company X has $200M annual revenue",
+      "about_entity": "Company X",
+      "polarity": "neutral",
+      "category": "factual",
+      "provenance": {
+        "lens_raw_ref": "lens:analytical:claim:0"
+      }
+    }
+  ],
+  "evidence_artifacts": {
+    "items": [],
+    "links": []
+  }
+}

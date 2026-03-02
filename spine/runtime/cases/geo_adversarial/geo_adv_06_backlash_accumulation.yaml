@@ -1,0 +1,32 @@
+problem:
+  name: "Backlash accumulation over 5000 cycles"
+  domain: "robotic_design"
+
+constraints:
+  - "backlash_per_cycle: 0.0001mm"
+  - "total_cycles: 5000"
+  - "positioning_tolerance: 0.3mm"
+  - "must_maintain_precision"
+
+uncertainties:
+  - "backlash_variation: variable"
+  - "wear_acceleration: unknown"
+  - "precision_degradation: unknown"
+
+objectives:
+  - "positioning_precision"
+  - "long_term_accuracy"
+
+design:
+  backlash_per_cycle_mm: 0.0001
+  total_cycles: 5000
+  positioning_tolerance_mm: 0.3
+  # For backlash constraint
+  backlash_per_cycle_mm: 0.0001
+  n_cycles: 5000
+  positioning_tolerance_mm: 0.3
+
+metadata:
+  injected_failure: "backlash_accumulation"
+  failure_category: "geometric"
+  expected_detection: "Backlash constraint should trigger"

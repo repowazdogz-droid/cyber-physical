@@ -1,0 +1,654 @@
+{
+  "run_id": "5dff15278479",
+  "case_id": "29054de8c1fd",
+  "timestamp": "2026-02-05 10:06:15.236327",
+  "output": {
+    "decision_map": {
+      "constraints_checked": [
+        {
+          "constraint": "bending_stress: 0.6 \u00d7 yield",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "torsional_stress: 0.6 \u00d7 yield",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "von_mises_equivalent: 0.9 \u00d7 yield",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "must_stay_below_yield",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        }
+      ],
+      "violations": []
+    },
+    "failure_modes": [],
+    "contradictions": [],
+    "unknowns": [
+      {
+        "item": "stress_interaction_model: von_mises_vs_max_principal",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: stress_interaction_model: von_mises_vs_max_principal"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.25,
+          "max_confidence": 0.49,
+          "sensitivity": 0.3,
+          "dependent_on": [
+            "stress_interaction_model"
+          ]
+        }
+      },
+      {
+        "item": "yield_strength_variability: \u00b18%",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: yield_strength_variability: \u00b18%"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.4,
+          "max_confidence": 0.4,
+          "sensitivity": 0.0,
+          "dependent_on": [
+            "yield_strength_variability"
+          ]
+        }
+      },
+      {
+        "item": "load_combination_uncertainty: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: load_combination_uncertainty: unknown"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.36000000000000004,
+          "max_confidence": 0.42400000000000004,
+          "sensitivity": 0.07999999999999999,
+          "dependent_on": [
+            "load_combination_uncertainty"
+          ]
+        }
+      }
+    ],
+    "recommended_experiments": [],
+    "falsification_tests": [],
+    "formal_constraints": [],
+    "trace_graph": {
+      "run_id": "cd95b587e770",
+      "timestamp": "2026-02-05T10:06:15.236261",
+      "nodes": {
+        "input_0000": {
+          "id": "input_0000",
+          "type": "input",
+          "content": {
+            "type": "problem",
+            "name": "Combined bending + torsion at 90% yield",
+            "domain": "robotic_design"
+          },
+          "timestamp": "2026-02-05T10:06:15.231065",
+          "parents": [],
+          "metadata": {}
+        },
+        "input_0001": {
+          "id": "input_0001",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "bending_stress: 0.6 \u00d7 yield"
+          },
+          "timestamp": "2026-02-05T10:06:15.231066",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0002": {
+          "id": "input_0002",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "torsional_stress: 0.6 \u00d7 yield"
+          },
+          "timestamp": "2026-02-05T10:06:15.231067",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0003": {
+          "id": "input_0003",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "von_mises_equivalent: 0.9 \u00d7 yield"
+          },
+          "timestamp": "2026-02-05T10:06:15.231068",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0004": {
+          "id": "input_0004",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "must_stay_below_yield"
+          },
+          "timestamp": "2026-02-05T10:06:15.231069",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0005": {
+          "id": "input_0005",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "stress_interaction_model: von_mises_vs_max_principal"
+          },
+          "timestamp": "2026-02-05T10:06:15.231070",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0006": {
+          "id": "input_0006",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "yield_strength_variability: \u00b18%"
+          },
+          "timestamp": "2026-02-05T10:06:15.231071",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0007": {
+          "id": "input_0007",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "load_combination_uncertainty: unknown"
+          },
+          "timestamp": "2026-02-05T10:06:15.231071",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0008": {
+          "id": "input_0008",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "structural_integrity"
+          },
+          "timestamp": "2026-02-05T10:06:15.231072",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0009": {
+          "id": "input_0009",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "safety_factor_requirement"
+          },
+          "timestamp": "2026-02-05T10:06:15.231073",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "inference_0010": {
+          "id": "inference_0010",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "bending_stress: 0.6 \u00d7 yield",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T10:06:15.236225",
+          "parents": [
+            "input_0001"
+          ],
+          "metadata": {}
+        },
+        "inference_0011": {
+          "id": "inference_0011",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "torsional_stress: 0.6 \u00d7 yield",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T10:06:15.236226",
+          "parents": [
+            "input_0002"
+          ],
+          "metadata": {}
+        },
+        "inference_0012": {
+          "id": "inference_0012",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "von_mises_equivalent: 0.9 \u00d7 yield",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T10:06:15.236227",
+          "parents": [
+            "input_0003"
+          ],
+          "metadata": {}
+        },
+        "inference_0013": {
+          "id": "inference_0013",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "must_stay_below_yield",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T10:06:15.236228",
+          "parents": [
+            "input_0004"
+          ],
+          "metadata": {}
+        },
+        "output_0014": {
+          "id": "output_0014",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "stress_interaction_model: von_mises_vs_max_principal",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T10:06:15.236243",
+          "parents": [
+            "input_0005"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: stress_interaction_model: von_mises_vs_max_principal"
+              ],
+              "requires_validation": true
+            }
+          }
+        },
+        "output_0015": {
+          "id": "output_0015",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "yield_strength_variability: \u00b18%",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T10:06:15.236251",
+          "parents": [
+            "input_0006"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: yield_strength_variability: \u00b18%"
+              ],
+              "requires_validation": true
+            }
+          }
+        },
+        "output_0016": {
+          "id": "output_0016",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "load_combination_uncertainty: unknown",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T10:06:15.236257",
+          "parents": [
+            "input_0007"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: load_combination_uncertainty: unknown"
+              ],
+              "requires_validation": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "trace": {
+    "run_id": "cd95b587e770",
+    "timestamp": "2026-02-05T10:06:15.236261",
+    "nodes": {
+      "input_0000": {
+        "id": "input_0000",
+        "type": "input",
+        "content": {
+          "type": "problem",
+          "name": "Combined bending + torsion at 90% yield",
+          "domain": "robotic_design"
+        },
+        "timestamp": "2026-02-05T10:06:15.231065",
+        "parents": [],
+        "metadata": {}
+      },
+      "input_0001": {
+        "id": "input_0001",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "bending_stress: 0.6 \u00d7 yield"
+        },
+        "timestamp": "2026-02-05T10:06:15.231066",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0002": {
+        "id": "input_0002",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "torsional_stress: 0.6 \u00d7 yield"
+        },
+        "timestamp": "2026-02-05T10:06:15.231067",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0003": {
+        "id": "input_0003",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "von_mises_equivalent: 0.9 \u00d7 yield"
+        },
+        "timestamp": "2026-02-05T10:06:15.231068",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0004": {
+        "id": "input_0004",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "must_stay_below_yield"
+        },
+        "timestamp": "2026-02-05T10:06:15.231069",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0005": {
+        "id": "input_0005",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "stress_interaction_model: von_mises_vs_max_principal"
+        },
+        "timestamp": "2026-02-05T10:06:15.231070",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0006": {
+        "id": "input_0006",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "yield_strength_variability: \u00b18%"
+        },
+        "timestamp": "2026-02-05T10:06:15.231071",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0007": {
+        "id": "input_0007",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "load_combination_uncertainty: unknown"
+        },
+        "timestamp": "2026-02-05T10:06:15.231071",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0008": {
+        "id": "input_0008",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "structural_integrity"
+        },
+        "timestamp": "2026-02-05T10:06:15.231072",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0009": {
+        "id": "input_0009",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "safety_factor_requirement"
+        },
+        "timestamp": "2026-02-05T10:06:15.231073",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "inference_0010": {
+        "id": "inference_0010",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "bending_stress: 0.6 \u00d7 yield",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:06:15.236225",
+        "parents": [
+          "input_0001"
+        ],
+        "metadata": {}
+      },
+      "inference_0011": {
+        "id": "inference_0011",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "torsional_stress: 0.6 \u00d7 yield",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:06:15.236226",
+        "parents": [
+          "input_0002"
+        ],
+        "metadata": {}
+      },
+      "inference_0012": {
+        "id": "inference_0012",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "von_mises_equivalent: 0.9 \u00d7 yield",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:06:15.236227",
+        "parents": [
+          "input_0003"
+        ],
+        "metadata": {}
+      },
+      "inference_0013": {
+        "id": "inference_0013",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "must_stay_below_yield",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T10:06:15.236228",
+        "parents": [
+          "input_0004"
+        ],
+        "metadata": {}
+      },
+      "output_0014": {
+        "id": "output_0014",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "stress_interaction_model: von_mises_vs_max_principal",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:06:15.236243",
+        "parents": [
+          "input_0005"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: stress_interaction_model: von_mises_vs_max_principal"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0015": {
+        "id": "output_0015",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "yield_strength_variability: \u00b18%",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:06:15.236251",
+        "parents": [
+          "input_0006"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: yield_strength_variability: \u00b18%"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0016": {
+        "id": "output_0016",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "load_combination_uncertainty: unknown",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T10:06:15.236257",
+        "parents": [
+          "input_0007"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: load_combination_uncertainty: unknown"
+            ],
+            "requires_validation": true
+          }
+        }
+      }
+    }
+  },
+  "predictions": [],
+  "reviewer": null,
+  "review_notes": ""
+}

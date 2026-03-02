@@ -1,0 +1,8 @@
+{
+  "continuous_load_nm": 5.7,
+  "actuator_rating_nm": 6.0,
+  "duty_cycle_percent": 95,
+  "duration_hours": 4,
+  "utilization": 0.95,
+  "estimated_temp_rise_c": 78
+}

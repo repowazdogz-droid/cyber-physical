@@ -1,0 +1,42 @@
+{
+  "case_id": "597eac53ff37",
+  "name": "Duty cycle abuse - 95% sustained for 4 hours",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:12:13.971476",
+  "case_yaml": {
+    "problem": {
+      "name": "Duty cycle abuse - 95% sustained for 4 hours",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "continuous_load: 5.7Nm",
+      "actuator_rating: 6.0Nm",
+      "duty_cycle: 95%",
+      "duration: 4_hours",
+      "must_not_exceed_continuous_rating"
+    ],
+    "uncertainties": [
+      "thermal_rise_rate: unknown",
+      "cooling_efficiency_over_time: variable",
+      "cumulative_thermal_damage: unknown"
+    ],
+    "objectives": [
+      "sustained_operation",
+      "thermal_management"
+    ]
+  },
+  "design_data": {
+    "continuous_load_nm": 5.7,
+    "actuator_rating_nm": 6.0,
+    "duty_cycle_percent": 95,
+    "duration_hours": 4,
+    "utilization": 0.95,
+    "estimated_temp_rise_c": 78
+  },
+  "tags": [
+    "adversarial",
+    "thermal",
+    "test"
+  ],
+  "notes": "Injected failure: duty_cycle_abuse"
+}

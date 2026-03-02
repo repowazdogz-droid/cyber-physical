@@ -1,0 +1,12 @@
+problem:
+  name: "Force experiment: tissue stiffness 500 N/m equiv, 1N"
+  domain: "surgical_robotics"
+constraints: ["applied_force: 1N", "must_not_damage_tissue"]
+uncertainties: ["tissue_variation: unknown"]
+objectives: ["gentle_manipulation"]
+design:
+  applied_force_n: 1.0
+  tissue_stiffness: 0.5
+  gripper_config: "medium"
+metadata:
+  experiment_type: "force"

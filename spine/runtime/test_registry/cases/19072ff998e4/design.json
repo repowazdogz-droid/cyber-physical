@@ -1,0 +1,8 @@
+{
+  "material1_alpha_per_c": "23e-6",
+  "material2_alpha_per_c": "12e-6",
+  "length_mm": 100,
+  "temp_range_c": 80,
+  "expansion_diff_mm": 0.088,
+  "min_clearance_mm": 0.1
+}

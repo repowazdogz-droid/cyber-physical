@@ -1,0 +1,30 @@
+problem:
+  name: "Borderline mass violation - 9.95kg on 10kg limit"
+  domain: "robotic_design"
+
+constraints:
+  - "total_mass_limit: 10.0kg"
+  - "actual_mass: 9.95kg"
+  - "must_not_exceed_mass_limit"
+  - "safety_margin_required"
+
+uncertainties:
+  - "mass_measurement_uncertainty: ±0.1kg"
+  - "dynamic_load_multiplier: 1.05-1.15"
+  - "manufacturing_tolerance: ±2%"
+
+objectives:
+  - "meet_mass_budget"
+  - "maintain_safety_margin"
+
+design:
+  total_mass_kg: 9.95
+  mass_limit_kg: 10.0
+  margin_kg: 0.05
+  measurement_uncertainty_kg: 0.1
+  dynamic_multiplier: 1.1
+
+metadata:
+  injected_failure: "borderline_mass"
+  failure_category: "mechanical"
+  expected_detection: "Mass limit constraint may trigger if uncertainty considered"

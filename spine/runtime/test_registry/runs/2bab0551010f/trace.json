@@ -1,0 +1,346 @@
+{
+  "run_id": "6f01681fce7f",
+  "timestamp": "2026-02-05T10:12:13.850807",
+  "nodes": {
+    "input_0000": {
+      "id": "input_0000",
+      "type": "input",
+      "content": {
+        "type": "problem",
+        "name": "Tissue compliance varies 3x from nominal",
+        "domain": "robotic_design"
+      },
+      "timestamp": "2026-02-05T10:12:13.845078",
+      "parents": [],
+      "metadata": {}
+    },
+    "input_0001": {
+      "id": "input_0001",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "nominal_compliance: 0.5 mm/N"
+      },
+      "timestamp": "2026-02-05T10:12:13.845079",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0002": {
+      "id": "input_0002",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "actual_compliance_range: 0.17-1.5 mm/N"
+      },
+      "timestamp": "2026-02-05T10:12:13.845080",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0003": {
+      "id": "input_0003",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "variation_factor: 3x"
+      },
+      "timestamp": "2026-02-05T10:12:13.845081",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0004": {
+      "id": "input_0004",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "force_control_accuracy: \u00b110%"
+      },
+      "timestamp": "2026-02-05T10:12:13.845082",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0005": {
+      "id": "input_0005",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "must_handle_variation"
+      },
+      "timestamp": "2026-02-05T10:12:13.845083",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0006": {
+      "id": "input_0006",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "tissue_type_variation: high"
+      },
+      "timestamp": "2026-02-05T10:12:13.845084",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0007": {
+      "id": "input_0007",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "patient_specific_properties: unknown"
+      },
+      "timestamp": "2026-02-05T10:12:13.845085",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0008": {
+      "id": "input_0008",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "control_adaptation: variable"
+      },
+      "timestamp": "2026-02-05T10:12:13.845086",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0009": {
+      "id": "input_0009",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "force_control_precision"
+      },
+      "timestamp": "2026-02-05T10:12:13.845087",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0010": {
+      "id": "input_0010",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "tissue_safety"
+      },
+      "timestamp": "2026-02-05T10:12:13.845088",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "inference_0011": {
+      "id": "inference_0011",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "nominal_compliance: 0.5 mm/N",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:12:13.850708",
+      "parents": [
+        "input_0001"
+      ],
+      "metadata": {}
+    },
+    "inference_0012": {
+      "id": "inference_0012",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "actual_compliance_range: 0.17-1.5 mm/N",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:12:13.850709",
+      "parents": [
+        "input_0002"
+      ],
+      "metadata": {}
+    },
+    "inference_0013": {
+      "id": "inference_0013",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "variation_factor: 3x",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:12:13.850710",
+      "parents": [
+        "input_0003"
+      ],
+      "metadata": {}
+    },
+    "inference_0014": {
+      "id": "inference_0014",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "force_control_accuracy: \u00b110%",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:12:13.850711",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {}
+    },
+    "inference_0015": {
+      "id": "inference_0015",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "must_handle_variation",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:12:13.850712",
+      "parents": [
+        "input_0005"
+      ],
+      "metadata": {}
+    },
+    "output_0016": {
+      "id": "output_0016",
+      "type": "output",
+      "content": {
+        "type": "failure_mode",
+        "mode": "excessive_force_damage",
+        "severity": "medium",
+        "mitigation": "implement_force_limiting_control"
+      },
+      "timestamp": "2026-02-05T10:12:13.850762",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "constraint: force_control_accuracy: \u00b110%"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0017": {
+      "id": "output_0017",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "tissue_type_variation: high",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:12:13.850776",
+      "parents": [
+        "input_0006"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: tissue_type_variation: high"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0018": {
+      "id": "output_0018",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "patient_specific_properties: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:12:13.850782",
+      "parents": [
+        "input_0007"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: patient_specific_properties: unknown"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0019": {
+      "id": "output_0019",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "control_adaptation: variable",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:12:13.850789",
+      "parents": [
+        "input_0008"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: control_adaptation: variable"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0020": {
+      "id": "output_0020",
+      "type": "output",
+      "content": {
+        "type": "recommended_experiment",
+        "name": "force_limit_characterization"
+      },
+      "timestamp": "2026-02-05T10:12:13.850802",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "rule_derived",
+          "provenance": [
+            "constraint: force_control_accuracy: \u00b110%"
+          ],
+          "requires_validation": true
+        }
+      }
+    }
+  }
+}

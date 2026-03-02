@@ -1,0 +1,21 @@
+problem:
+  name: "Bio-adhesive in high temperature"
+  domain: "surgical_robotics"
+
+constraints:
+  - "operating_temperature: 200°C"
+  - "must_adhere_to_tissue"
+  - "biocompatible: yes"
+
+uncertainties: []
+
+objectives:
+  - "high_temp_adhesion"
+
+design:
+  operating_temp_c: 200.0
+
+metadata:
+  trap_type: "misleading_adjacency"
+  expected_forge_behavior: "Should not suggest bio-adhesive at high temp (denatures)"
+  quality_gate_should_catch: true

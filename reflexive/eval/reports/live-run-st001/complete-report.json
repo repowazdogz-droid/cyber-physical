@@ -1,0 +1,57 @@
+{
+  "id": "live-st001-20260208",
+  "created_at": "2026-02-08T10:49:00.000Z",
+  "stimulus": {
+    "id": "st-001",
+    "text": "Should we acquire HelioTech for $500M? They have $200M annual revenue growing 15% YoY, a strong engineering team of 150, but significant technical debt in their legacy platform. Our board wants a decision by end of Q2.",
+    "type": "decision"
+  },
+  "runs": 5,
+  "results": [
+    {
+      "run_number": 1,
+      "started_at": "2026-02-08T10:42:53.572Z",
+      "completed_at": "2026-02-08T10:43:38.000Z",
+      "duration_ms": 45000,
+      "success": false,
+      "error": "INSUFFICIENT_INPUT: Only 2 lenses completed (minimum 3). Errors: 56a5c4a1-2f32-4fc1-a590-c0342eb593bc:LLM call timed out; 0bdc6ca0-d232-457b-bb38-2711584e66f9:LLM call timed out; c1829216-f59c-4f89-8ce1-c2313b5195f2:LLM call timed out"
+    },
+    {
+      "run_number": 2,
+      "started_at": "2026-02-08T10:43:38.000Z",
+      "completed_at": "2026-02-08T10:44:23.000Z",
+      "duration_ms": 45000,
+      "success": false,
+      "error": "INSUFFICIENT_INPUT: Only 2 lenses completed (minimum 3). Errors: 56a5c4a1-2f32-4fc1-a590-c0342eb593bc:LLM call timed out; 5d323a15-6d2a-48d7-ad02-3f65a3c259f8:LLM call timed out; 0bdc6ca0-d232-457b-bb38-2711584e66f9:LLM call timed out"
+    },
+    {
+      "run_number": 3,
+      "started_at": "2026-02-08T10:44:23.000Z",
+      "completed_at": "2026-02-08T10:45:08.000Z",
+      "duration_ms": 45000,
+      "success": false,
+      "error": "INSUFFICIENT_INPUT: Only 2 lenses completed (minimum 3). Errors: 5d323a15-6d2a-48d7-ad02-3f65a3c259f8:LLM call timed out; 0bdc6ca0-d232-457b-bb38-2711584e66f9:LLM call timed out; c1829216-f59c-4f89-8ce1-c2313b5195f2:LLM call timed out"
+    },
+    {
+      "run_number": 4,
+      "started_at": "2026-02-08T10:45:08.000Z",
+      "completed_at": "2026-02-08T10:45:53.000Z",
+      "duration_ms": 45000,
+      "success": false,
+      "error": "INSUFFICIENT_INPUT: Only 1 lenses completed (minimum 3). Errors: 56a5c4a1-2f32-4fc1-a590-c0342eb593bc:LLM call timed out; 5d323a15-6d2a-48d7-ad02-3f65a3c259f8:LLM call timed out; 0bdc6ca0-d232-457b-bb38-2711584e66f9:LLM call timed out; c1829216-f59c-4f89-8ce1-c2313b5195f2:LLM call timed out"
+    },
+    {
+      "run_number": 5,
+      "started_at": "2026-02-08T10:45:53.000Z",
+      "completed_at": "2026-02-08T10:49:00.000Z",
+      "duration_ms": 187000,
+      "success": false,
+      "error": "Process killed - Run 5 hung during lens invocation"
+    }
+  ],
+  "aggregate": {
+    "success_rate": 0,
+    "confidence_scores": [],
+    "latencies_ms": []
+  }
+}

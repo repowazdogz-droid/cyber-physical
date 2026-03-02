@@ -1,0 +1,23 @@
+problem:
+  name: "Gecko adhesion underwater"
+  domain: "surgical_robotics"
+
+constraints:
+  - "gripper_must_work_underwater"
+  - "must_not_slip"
+  - "low_normal_force: 2N"
+
+uncertainties:
+  - "friction_underwater: unknown"
+
+objectives:
+  - "underwater_gripping"
+
+design:
+  normal_force_n: 2.0
+  environment: "underwater"
+
+metadata:
+  trap_type: "misleading_adjacency"
+  expected_forge_behavior: "Should not suggest gecko adhesion for underwater (fails wet)"
+  quality_gate_should_catch: true

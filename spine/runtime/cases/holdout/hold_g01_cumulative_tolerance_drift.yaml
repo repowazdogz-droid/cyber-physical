@@ -1,0 +1,41 @@
+problem:
+  name: "Cumulative tolerance drift - 6 parts, each +2σ"
+  domain: "robotic_design"
+
+constraints:
+  - "part_count: 6"
+  - "tolerance_per_part: ±0.05mm"
+  - "statistical_drift: +2σ per part"
+  - "nominal_dimension: 50.0mm"
+  - "must_maintain_assembly_fit"
+
+uncertainties:
+  - "manufacturing_bias: unknown"
+  - "drift_correlation: variable"
+  - "worst_case_stackup: unknown"
+
+objectives:
+  - "dimensional_accuracy"
+  - "assembly_reliability"
+
+design:
+  part_count: 6
+  tolerance_per_part_mm: 0.05
+  sigma_multiplier: 2.0
+  nominal_dimension_mm: 50.0
+  cumulative_drift_mm: 0.6
+  # For geometric constraints
+  min_clearance_mm: 0.3
+  clearance_limit_mm: 1.0
+  tolerance_stackup_mm: 0.6
+  # For tolerance stack constraint
+  parts:
+    - nominal_dim_mm: 50.0
+      tolerance_mm: 0.05
+      count: 6
+  assembly_clearance_mm: 0.3
+
+metadata:
+  injected_failure: "cumulative_tolerance_drift"
+  failure_category: "geometric"
+  expected_detection: "Geometric constraint may trigger if tolerance stackup modeled"

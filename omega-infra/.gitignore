@@ -1,0 +1,24 @@
+# Environment secrets
+env/.env
+env/*.key
+env/secrets/
+
+# Restore artifacts
+/tmp/restore/
+/tmp/postgres-dumps/
+/tmp/redis-dumps/
+
+# Logs
+*.log
+/var/log/backup.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

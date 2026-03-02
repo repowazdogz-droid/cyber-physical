@@ -1,0 +1,313 @@
+{
+  "run_id": "5dda4c469fc3",
+  "timestamp": "2026-02-05T08:40:56.344413",
+  "nodes": {
+    "input_0000": {
+      "id": "input_0000",
+      "type": "input",
+      "content": {
+        "type": "problem",
+        "name": "Revision surgery for thoracic pedicle screw aortic penetration",
+        "domain": "spine_surgery"
+      },
+      "timestamp": "2026-02-05T08:40:56.338894",
+      "parents": [],
+      "metadata": {}
+    },
+    "input_0001": {
+      "id": "input_0001",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "aorta_proximity_to_T6_T7: millimeters"
+      },
+      "timestamp": "2026-02-05T08:40:56.338895",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0002": {
+      "id": "input_0002",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "freehand_screw_placement_inaccuracy"
+      },
+      "timestamp": "2026-02-05T08:40:56.338896",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0003": {
+      "id": "input_0003",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "urgent_stabilization_required"
+      },
+      "timestamp": "2026-02-05T08:40:56.338896",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0004": {
+      "id": "input_0004",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "patient_age: 53"
+      },
+      "timestamp": "2026-02-05T08:40:56.338897",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0005": {
+      "id": "input_0005",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "trauma_with_paraplegia"
+      },
+      "timestamp": "2026-02-05T08:40:56.338898",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0006": {
+      "id": "input_0006",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "pseudoaneurysm_risk: unknown_timeline"
+      },
+      "timestamp": "2026-02-05T08:40:56.338899",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0007": {
+      "id": "input_0007",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "delayed_aortic_rupture_probability: unclear"
+      },
+      "timestamp": "2026-02-05T08:40:56.338900",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0008": {
+      "id": "input_0008",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "asymptomatic_impingement_management: no_consensus"
+      },
+      "timestamp": "2026-02-05T08:40:56.338900",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0009": {
+      "id": "input_0009",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "stabilize_T7_fracture"
+      },
+      "timestamp": "2026-02-05T08:40:56.338901",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0010": {
+      "id": "input_0010",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "mitigate_vascular_injury"
+      },
+      "timestamp": "2026-02-05T08:40:56.338902",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0011": {
+      "id": "input_0011",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "prevent_aortic_rupture"
+      },
+      "timestamp": "2026-02-05T08:40:56.338903",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "inference_0012": {
+      "id": "inference_0012",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "aorta_proximity_to_T6_T7: millimeters",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T08:40:56.344376",
+      "parents": [
+        "input_0001"
+      ],
+      "metadata": {}
+    },
+    "inference_0013": {
+      "id": "inference_0013",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "freehand_screw_placement_inaccuracy",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T08:40:56.344377",
+      "parents": [
+        "input_0002"
+      ],
+      "metadata": {}
+    },
+    "inference_0014": {
+      "id": "inference_0014",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "urgent_stabilization_required",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T08:40:56.344378",
+      "parents": [
+        "input_0003"
+      ],
+      "metadata": {}
+    },
+    "inference_0015": {
+      "id": "inference_0015",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "patient_age: 53",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T08:40:56.344379",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {}
+    },
+    "inference_0016": {
+      "id": "inference_0016",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "trauma_with_paraplegia",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T08:40:56.344380",
+      "parents": [
+        "input_0005"
+      ],
+      "metadata": {}
+    },
+    "output_0017": {
+      "id": "output_0017",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "pseudoaneurysm_risk: unknown_timeline",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T08:40:56.344395",
+      "parents": [
+        "input_0006"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: pseudoaneurysm_risk: unknown_timeline"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0018": {
+      "id": "output_0018",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "delayed_aortic_rupture_probability: unclear",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T08:40:56.344402",
+      "parents": [
+        "input_0007"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: delayed_aortic_rupture_probability: unclear"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0019": {
+      "id": "output_0019",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "asymptomatic_impingement_management: no_consensus",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T08:40:56.344409",
+      "parents": [
+        "input_0008"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: asymptomatic_impingement_management: no_consensus"
+          ],
+          "requires_validation": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "polymer_type": "polyurethane",
+  "uv_exposure": "continuous",
+  "expected_life_years": 5,
+  "degradation_rate_percent_per_year": 2,
+  "total_degradation_percent": 10
+}

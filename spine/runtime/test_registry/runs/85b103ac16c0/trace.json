@@ -1,0 +1,313 @@
+{
+  "run_id": "07e0e1e65964",
+  "timestamp": "2026-02-05T08:40:56.337762",
+  "nodes": {
+    "input_0000": {
+      "id": "input_0000",
+      "type": "input",
+      "content": {
+        "type": "problem",
+        "name": "Hyperbaric oxygen therapy for post-operative foot drop",
+        "domain": "spine_surgery"
+      },
+      "timestamp": "2026-02-05T08:40:56.332192",
+      "parents": [],
+      "metadata": {}
+    },
+    "input_0001": {
+      "id": "input_0001",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "failed_conservative_management"
+      },
+      "timestamp": "2026-02-05T08:40:56.332193",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0002": {
+      "id": "input_0002",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "acute_traumatic_nerve_ischemia"
+      },
+      "timestamp": "2026-02-05T08:40:56.332194",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0003": {
+      "id": "input_0003",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "multiple_motor_levels_L2_S1"
+      },
+      "timestamp": "2026-02-05T08:40:56.332195",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0004": {
+      "id": "input_0004",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "patient_age: 50"
+      },
+      "timestamp": "2026-02-05T08:40:56.332196",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0005": {
+      "id": "input_0005",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "post_revision_surgery"
+      },
+      "timestamp": "2026-02-05T08:40:56.332197",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0006": {
+      "id": "input_0006",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "hbot_duration_and_dosage: no_standard_protocol"
+      },
+      "timestamp": "2026-02-05T08:40:56.332198",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0007": {
+      "id": "input_0007",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "recovery_timeline_predictability: low"
+      },
+      "timestamp": "2026-02-05T08:40:56.332199",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0008": {
+      "id": "input_0008",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "nerve_recovery_ceiling: unknown"
+      },
+      "timestamp": "2026-02-05T08:40:56.332199",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0009": {
+      "id": "input_0009",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "improve_neurologic_recovery"
+      },
+      "timestamp": "2026-02-05T08:40:56.332200",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0010": {
+      "id": "input_0010",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "restore_lower_limb_power"
+      },
+      "timestamp": "2026-02-05T08:40:56.332201",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0011": {
+      "id": "input_0011",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "restore_ambulation"
+      },
+      "timestamp": "2026-02-05T08:40:56.332202",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "inference_0012": {
+      "id": "inference_0012",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "failed_conservative_management",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T08:40:56.337717",
+      "parents": [
+        "input_0001"
+      ],
+      "metadata": {}
+    },
+    "inference_0013": {
+      "id": "inference_0013",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "acute_traumatic_nerve_ischemia",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T08:40:56.337718",
+      "parents": [
+        "input_0002"
+      ],
+      "metadata": {}
+    },
+    "inference_0014": {
+      "id": "inference_0014",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "multiple_motor_levels_L2_S1",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T08:40:56.337719",
+      "parents": [
+        "input_0003"
+      ],
+      "metadata": {}
+    },
+    "inference_0015": {
+      "id": "inference_0015",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "patient_age: 50",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T08:40:56.337720",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {}
+    },
+    "inference_0016": {
+      "id": "inference_0016",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "post_revision_surgery",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T08:40:56.337721",
+      "parents": [
+        "input_0005"
+      ],
+      "metadata": {}
+    },
+    "output_0017": {
+      "id": "output_0017",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "hbot_duration_and_dosage: no_standard_protocol",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T08:40:56.337743",
+      "parents": [
+        "input_0006"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: hbot_duration_and_dosage: no_standard_protocol"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0018": {
+      "id": "output_0018",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "recovery_timeline_predictability: low",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T08:40:56.337751",
+      "parents": [
+        "input_0007"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: recovery_timeline_predictability: low"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0019": {
+      "id": "output_0019",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "nerve_recovery_ceiling: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T08:40:56.337758",
+      "parents": [
+        "input_0008"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: nerve_recovery_ceiling: unknown"
+          ],
+          "requires_validation": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+problem:
+  name: "Fatigue experiment: 1000 grip cycles, nominal load"
+  domain: "surgical_robotics"
+
+constraints:
+  - "cycles: 1000"
+  - "load: 5N"
+  - "must_not_fail"
+
+uncertainties:
+  - "fatigue_life: unknown"
+
+objectives:
+  - "endurance"
+
+design:
+  cycles: 1000
+  load_n: 5.0
+  material: "silicone"
+
+metadata:
+  experiment_type: "fatigue"

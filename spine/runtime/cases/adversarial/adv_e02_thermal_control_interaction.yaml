@@ -1,0 +1,37 @@
+problem:
+  name: "Thermal + control interaction - hot motor = slower response"
+  domain: "robotic_design"
+
+constraints:
+  - "motor_temp: 75°C"
+  - "normal_response_time: 50ms"
+  - "degraded_response_time: 80ms"
+  - "required_response_time: 60ms"
+  - "must_maintain_control_performance"
+
+uncertainties:
+  - "thermal_degradation_model: unknown"
+  - "control_performance_impact: variable"
+  - "stability_margin_reduction: unknown"
+
+objectives:
+  - "thermal_management"
+  - "control_performance"
+
+design:
+  motor_temp_c: 75
+  normal_response_ms: 50
+  degraded_response_ms: 80
+  required_response_ms: 60
+  thermal_degradation_factor: 1.6
+  power_dissipation_w: 38
+  # For FORMAL_030 (thermal_material_coupling)
+  applied_stress_mpa: 480
+  yield_strength_mpa: 1000
+  operating_temp_c: 75
+  max_service_temp_c: 100
+
+metadata:
+  injected_failure: "thermal_control_interaction"
+  failure_category: "unknown"
+  expected_detection: "Thermal and control constraints may both trigger"

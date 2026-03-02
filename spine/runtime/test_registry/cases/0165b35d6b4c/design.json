@@ -1,0 +1,6 @@
+{
+  "required_precision_mm": 0.01,
+  "encoder_resolution_mm": 0.05,
+  "positioning_accuracy_mm": 0.02,
+  "resolution_ratio": 5.0
+}

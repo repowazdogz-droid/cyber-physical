@@ -1,0 +1,28 @@
+{
+  "id": "gc-010",
+  "name": "All lenses fail",
+  "description": "All 5 perspectives failed. No claims.",
+  "artifact_04_section": "§9.10",
+  "constraints_tested": ["precondition_validation", "INSUFFICIENT_INPUT"],
+  "input": {
+    "analysis_id": "analysis-1",
+    "case_id": "case-1",
+    "stimulus": {
+      "text": "Should we acquire HelioTech for $500M?",
+      "type": "decision"
+    },
+    "context_snapshot": [],
+    "perspectives": [
+      { "id": "perspective-0", "lens_id": "lens-analytical", "lens_name": "analytical", "lens_orientation": "convergent", "lens_version": 1, "state": "failed" },
+      { "id": "perspective-1", "lens_id": "lens-adversarial", "lens_name": "adversarial", "lens_orientation": "divergent", "lens_version": 1, "state": "failed" },
+      { "id": "perspective-2", "lens_id": "lens-historical", "lens_name": "historical_analogy", "lens_orientation": "orthogonal", "lens_version": 1, "state": "failed" },
+      { "id": "perspective-3", "lens_id": "lens-stakeholder", "lens_name": "stakeholder_impact", "lens_orientation": "orthogonal", "lens_version": 1, "state": "failed" },
+      { "id": "perspective-4", "lens_id": "lens-premortem", "lens_name": "premortem", "lens_orientation": "divergent", "lens_version": 1, "state": "failed" }
+    ],
+    "claims": [],
+    "evidence_items": [],
+    "claim_evidence_links": [],
+    "prior_syntheses": []
+  },
+  "embeddings": {}
+}

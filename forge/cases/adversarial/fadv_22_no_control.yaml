@@ -1,0 +1,16 @@
+problem:
+  name: "No control condition"
+  domain: "surgical_robotics"
+
+constraints:
+  - "performance: improve"
+
+uncertainties: []
+
+objectives:
+  - "better_design"
+
+metadata:
+  trap_type: "confounded_test"
+  expected_forge_behavior: "Should flag experiments without control condition"
+  quality_gate_should_catch: false

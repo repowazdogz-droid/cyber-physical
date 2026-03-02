@@ -1,0 +1,139 @@
+{
+  "version": "1.0.0",
+  "kernelId": "safe_landing_decision_square_v2_3",
+  "adapterId": "spec:uav_safe_landing_v2_3",
+  "name": "UAV Safe Landing Decision Square v2.3",
+  "description": "Safe landing decision logic for UAVs based on altitude, health, environment hazard, and time to contact",
+  "outcomes": [
+    {
+      "outcomeId": "S1",
+      "label": "S1 - Continue Mission (Nominal)",
+      "conditions": [
+        {
+          "signalKey": "altitudeMeters",
+          "operator": "gte",
+          "value": 100
+        },
+        {
+          "signalKey": "healthPercentage",
+          "operator": "gte",
+          "value": 70
+        },
+        {
+          "signalKey": "environmentHazardLevel",
+          "operator": "lte",
+          "value": 2
+        },
+        {
+          "signalKey": "timeToContactSeconds",
+          "operator": "gte",
+          "value": 30
+        }
+      ],
+      "confidence": "High",
+      "rationale": "All conditions nominal - safe to continue mission"
+    },
+    {
+      "outcomeId": "S2",
+      "label": "S2 - Prepare Landing (Degraded)",
+      "conditions": [
+        {
+          "signalKey": "altitudeMeters",
+          "operator": "gte",
+          "value": 50
+        },
+        {
+          "signalKey": "altitudeMeters",
+          "operator": "lt",
+          "value": 100
+        },
+        {
+          "signalKey": "healthPercentage",
+          "operator": "gte",
+          "value": 50
+        },
+        {
+          "signalKey": "environmentHazardLevel",
+          "operator": "lte",
+          "value": 3
+        }
+      ],
+      "confidence": "Medium",
+      "rationale": "Some conditions suboptimal - prepare for landing"
+    },
+    {
+      "outcomeId": "S3",
+      "label": "S3 - Execute Landing (Critical)",
+      "conditions": [
+        {
+          "signalKey": "altitudeMeters",
+          "operator": "lt",
+          "value": 50
+        },
+        {
+          "signalKey": "healthPercentage",
+          "operator": "lt",
+          "value": 50
+        }
+      ],
+      "confidence": "High",
+      "rationale": "Low altitude and/or low health - execute landing now"
+    },
+    {
+      "outcomeId": "S4",
+      "label": "S4 - Emergency Abort",
+      "conditions": [
+        {
+          "signalKey": "environmentHazardLevel",
+          "operator": "gt",
+          "value": 3
+        }
+      ],
+      "confidence": "High",
+      "rationale": "High environment hazard - emergency abort required"
+    }
+  ],
+  "overrides": [
+    {
+      "overrideId": "time_critical_override",
+      "name": "Time Critical Override",
+      "conditions": [
+        {
+          "signalKey": "timeToContactSeconds",
+          "operator": "lt",
+          "value": 10
+        }
+      ],
+      "forcedOutcome": "S4",
+      "reason": "Time to contact is critical - force emergency abort"
+    },
+    {
+      "overrideId": "environment_override",
+      "name": "Environment Override",
+      "conditions": [
+        {
+          "signalKey": "environmentHazardLevel",
+          "operator": "gt",
+          "value": 4
+        }
+      ],
+      "forcedOutcome": "S4",
+      "reason": "Extreme environment hazard - force emergency abort"
+    }
+  ],
+  "disallows": [
+    {
+      "disallowId": "disallow_s1_low_health",
+      "name": "Disallow S1 with Low Health",
+      "conditions": [
+        {
+          "signalKey": "healthPercentage",
+          "operator": "lt",
+          "value": 50
+        }
+      ],
+      "disallowedOutcome": "S1",
+      "reason": "Cannot continue mission (S1) with health below 50%"
+    }
+  ]
+}

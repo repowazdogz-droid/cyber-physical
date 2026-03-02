@@ -1,0 +1,55 @@
+/
+/about
+/deploy
+/docs
+/docs/
+/docs/ai/ai-guardrails
+/docs/delivery/implementation-cycles
+/docs/delivery/inspection-framing
+/docs/delivery/modules/module-01-foundations
+/docs/delivery/modules/module-03-classroom-predictability
+/docs/delivery/modules/module-07-parent-interface
+/docs/delivery/reflection-tools
+/docs/evidence/claims-discipline
+/docs/evidence/research-map
+/docs/foundations/principles
+/docs/framework/pillars
+/docs/framework/process-maps
+/docs/framework/role-translations
+/docs/governance/ethics
+/docs/governance/refusal-boundaries
+/docs/governance/safeguarding
+/implementation
+/packs
+/packs/leadership-5min
+/packs/leadership-60min
+/packs/leadership-60min/print
+/packs/parents-30min
+/packs/parents-5min
+/packs/staff-5min
+/packs/staff-60min
+/roles/leadership
+/roles/parents
+/roles/staff
+/roles/trusts
+/search
+/search?q=
+/start
+app/components/Sidebar.tsx:19:            <Link key={x.href} href={x.href} className="sidebarLink">
+app/components/TopBar.tsx:11:      href={href}
+app/components/ui.tsx:34:  if (props.href) return <a className={cls} href={props.href} style={props.style}>{props.children}</a>;
+app/docs/DocsClient.tsx:28:              <Link key={item.slug} href={item.path} className="pill hover:bg-muted/70">
+app/docs/DocsClient.tsx:57:            <Link key={item.slug} href={item.path} className="card card-pad hover:opacity-95">
+app/implementation/page.tsx:66:                  <Link href={item.href} className="text-primary hover:underline">{item.title}</Link>
+app/layout.tsx:11:    <a href={href} className="block rounded-md px-3 py-2 text-sm hover:bg-muted">
+app/packs/[id]/page.tsx:49:          <a className="btn-secondary" href={`/packs/${pack.id}/print`}>Print / Save PDF</a>
+app/packs/[id]/page.tsx:77:                <Link href={item.href} className="text-primary hover:underline">{item.title}</Link>
+app/packs/page.tsx:21:          <Link key={pack.id} href={`/packs/${pack.id}`} className="card card-pad hover:opacity-95">
+app/page.tsx:22:        <Link className="btn btn-primary" href={PRODUCT.primaryCTA.href}>
+app/page.tsx:25:        <Link className="btn btn-secondary" href={PRODUCT.secondaryCTA.href}>
+app/roles/leadership/page.tsx:23:                <Link href={`/docs/${slug}`}>{title}</Link>
+app/roles/parents/page.tsx:23:                <Link href={`/docs/${slug}`}>{title}</Link>
+app/roles/staff/page.tsx:23:                <Link href={`/docs/${slug}`}>{title}</Link>
+app/search/SearchContent.tsx:83:                <Link key={item.slug} href={item.path} className="card-item">
+app/start/page.tsx:222:                <a className="btn-primary" href={`/packs/${recommendedPack.id}`}>
+app/start/page.tsx:235:                    <Link href={link.href} className="text-primary hover:underline">{link.title}</Link>

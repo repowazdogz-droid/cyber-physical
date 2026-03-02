@@ -1,0 +1,37 @@
+{
+  "case_id": "05e5188d3aa6",
+  "name": "Hemivertebra resection complicated by remote cerebellar hemorrhage",
+  "domain": "spine_surgery",
+  "created_at": "2026-02-05 08:40:54.332861",
+  "case_yaml": {
+    "problem": {
+      "name": "Hemivertebra resection complicated by remote cerebellar hemorrhage",
+      "domain": "spine_surgery"
+    },
+    "constraints": [
+      "patient_age: 5.5_years",
+      "small_anatomical_structures",
+      "high_kyphotic_angle: 70_degrees",
+      "congenital_deformity",
+      "pediatric_dural_management"
+    ],
+    "uncertainties": [
+      "rch_pathophysiology: poorly_understood",
+      "pediatric_icp_change_prediction: unreliable",
+      "growth_preservation_vs_fusion: tradeoff"
+    ],
+    "objectives": [
+      "correct_kyphotic_deformity",
+      "maintain_spinal_growth_potential",
+      "safe_hemivertebra_resection"
+    ]
+  },
+  "design_data": null,
+  "tags": [
+    "spine",
+    "pediatric",
+    "complication",
+    "real"
+  ],
+  "notes": "Real case from published literature"
+}

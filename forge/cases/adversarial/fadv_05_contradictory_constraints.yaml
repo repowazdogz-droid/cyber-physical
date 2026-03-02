@@ -1,0 +1,19 @@
+problem:
+  name: "Contradictory constraints"
+  domain: "surgical_robotics"
+
+constraints:
+  - "must_be_rigid"
+  - "must_be_flexible"
+  - "must_be_heavy"
+  - "must_be_light"
+
+uncertainties: []
+
+objectives:
+  - "impossible_design"
+
+metadata:
+  trap_type: "non_actionable"
+  expected_forge_behavior: "Should generate contradiction resolution hypotheses"
+  quality_gate_should_catch: false

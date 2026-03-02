@@ -1,0 +1,300 @@
+{
+  "run_id": "b027a6fb95a7",
+  "timestamp": "2026-02-05T10:12:13.781881",
+  "nodes": {
+    "input_0000": {
+      "id": "input_0000",
+      "type": "input",
+      "content": {
+        "type": "problem",
+        "name": "Three minor issues combine - borderline mass + marginal friction + slight misalignment",
+        "domain": "robotic_design"
+      },
+      "timestamp": "2026-02-05T10:12:13.775131",
+      "parents": [],
+      "metadata": {}
+    },
+    "input_0001": {
+      "id": "input_0001",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "mass: 9.95kg (limit: 10kg)"
+      },
+      "timestamp": "2026-02-05T10:12:13.775133",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0002": {
+      "id": "input_0002",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "friction_coefficient: 0.35 (required: 0.4)"
+      },
+      "timestamp": "2026-02-05T10:12:13.775134",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0003": {
+      "id": "input_0003",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "misalignment: 0.8mm (limit: 1.0mm)"
+      },
+      "timestamp": "2026-02-05T10:12:13.775135",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0004": {
+      "id": "input_0004",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "each_individually_acceptable"
+      },
+      "timestamp": "2026-02-05T10:12:13.775136",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0005": {
+      "id": "input_0005",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "combination_risk: unknown"
+      },
+      "timestamp": "2026-02-05T10:12:13.775137",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0006": {
+      "id": "input_0006",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "interaction_effects: unknown"
+      },
+      "timestamp": "2026-02-05T10:12:13.775138",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0007": {
+      "id": "input_0007",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "cascading_failure_probability: variable"
+      },
+      "timestamp": "2026-02-05T10:12:13.775139",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0008": {
+      "id": "input_0008",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "safety_margin_adequacy: marginal"
+      },
+      "timestamp": "2026-02-05T10:12:13.775140",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0009": {
+      "id": "input_0009",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "combined_safety"
+      },
+      "timestamp": "2026-02-05T10:12:13.775141",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0010": {
+      "id": "input_0010",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "margin_management"
+      },
+      "timestamp": "2026-02-05T10:12:13.775142",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "inference_0011": {
+      "id": "inference_0011",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "mass: 9.95kg (limit: 10kg)",
+        "checked": true,
+        "contract_matched": "65_cognitive_twin_authoring_contract",
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:12:13.781742",
+      "parents": [
+        "input_0001"
+      ],
+      "metadata": {}
+    },
+    "inference_0012": {
+      "id": "inference_0012",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "friction_coefficient: 0.35 (required: 0.4)",
+        "checked": true,
+        "contract_matched": "45_human_override_and_emergency_stop_contract",
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:12:13.781744",
+      "parents": [
+        "input_0002"
+      ],
+      "metadata": {}
+    },
+    "inference_0013": {
+      "id": "inference_0013",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "misalignment: 0.8mm (limit: 1.0mm)",
+        "checked": true,
+        "contract_matched": "65_cognitive_twin_authoring_contract",
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:12:13.781745",
+      "parents": [
+        "input_0003"
+      ],
+      "metadata": {}
+    },
+    "inference_0014": {
+      "id": "inference_0014",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "each_individually_acceptable",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:12:13.781747",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {}
+    },
+    "inference_0015": {
+      "id": "inference_0015",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "combination_risk: unknown",
+        "checked": true,
+        "contract_matched": "58_simulation_authoring_contract",
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:12:13.781748",
+      "parents": [
+        "input_0005"
+      ],
+      "metadata": {}
+    },
+    "output_0016": {
+      "id": "output_0016",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "interaction_effects: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:12:13.781780",
+      "parents": [
+        "input_0006"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: interaction_effects: unknown"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0017": {
+      "id": "output_0017",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "cascading_failure_probability: variable",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:12:13.781792",
+      "parents": [
+        "input_0007"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: cascading_failure_probability: variable"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0018": {
+      "id": "output_0018",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "safety_margin_adequacy: marginal",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:12:13.781800",
+      "parents": [
+        "input_0008"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: safety_margin_adequacy: marginal"
+          ],
+          "requires_validation": true
+        }
+      }
+    }
+  }
+}

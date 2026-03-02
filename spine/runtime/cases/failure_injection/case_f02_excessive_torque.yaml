@@ -1,0 +1,27 @@
+problem:
+  name: "Joint torque exceeds actuator limit"
+  domain: "robotic_design"
+
+constraints:
+  - "max_joint_torque: 8.5Nm"
+  - "actuator_limit: 6.0Nm"
+  - "must_not_exceed_actuator_limits"
+  - "smooth_motion_required"
+
+uncertainties:
+  - "dynamic_load_variation: unknown_range"
+  - "friction_model_accuracy: low"
+
+objectives:
+  - "adequate_grip_force"
+  - "precise_positioning"
+
+design:
+  max_torque_nm: 8.5
+  actuator_limit_nm: 6.0
+  violation_margin: -2.5
+
+metadata:
+  injected_failure: "excessive_torque"
+  expected_detection: "Force limit violation OR excessive force damage failure mode"
+  decision_delta_target: 3

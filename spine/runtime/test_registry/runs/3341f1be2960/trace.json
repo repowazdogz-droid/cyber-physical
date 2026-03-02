@@ -1,0 +1,345 @@
+{
+  "run_id": "fe6966c7223c",
+  "timestamp": "2026-02-05T09:42:14.368211",
+  "nodes": {
+    "input_0000": {
+      "id": "input_0000",
+      "type": "input",
+      "content": {
+        "type": "problem",
+        "name": "Top-heavy gripper with COG outside support polygon",
+        "domain": "robotic_design"
+      },
+      "timestamp": "2026-02-05T09:42:14.359449",
+      "parents": [],
+      "metadata": {}
+    },
+    "input_0001": {
+      "id": "input_0001",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "gripper_mass: 2.5kg"
+      },
+      "timestamp": "2026-02-05T09:42:14.359451",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0002": {
+      "id": "input_0002",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "payload_mass: 1.0kg"
+      },
+      "timestamp": "2026-02-05T09:42:14.359453",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0003": {
+      "id": "input_0003",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "total_mass: 3.5kg"
+      },
+      "timestamp": "2026-02-05T09:42:14.359454",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0004": {
+      "id": "input_0004",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "center_of_mass_height: 0.45m"
+      },
+      "timestamp": "2026-02-05T09:42:14.359455",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0005": {
+      "id": "input_0005",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "support_polygon_width: 0.08m"
+      },
+      "timestamp": "2026-02-05T09:42:14.359456",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0006": {
+      "id": "input_0006",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "must_not_tip_over"
+      },
+      "timestamp": "2026-02-05T09:42:14.359457",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0007": {
+      "id": "input_0007",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "must_not_slip"
+      },
+      "timestamp": "2026-02-05T09:42:14.359457",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0008": {
+      "id": "input_0008",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "surface_friction_coefficient: 0.6"
+      },
+      "timestamp": "2026-02-05T09:42:14.359458",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0009": {
+      "id": "input_0009",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "payload_distribution: unknown"
+      },
+      "timestamp": "2026-02-05T09:42:14.359459",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0010": {
+      "id": "input_0010",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "stable_grasping"
+      },
+      "timestamp": "2026-02-05T09:42:14.359460",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0011": {
+      "id": "input_0011",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "precise_manipulation"
+      },
+      "timestamp": "2026-02-05T09:42:14.359461",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "inference_0012": {
+      "id": "inference_0012",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "gripper_mass: 2.5kg",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:42:14.368096",
+      "parents": [
+        "input_0001"
+      ],
+      "metadata": {}
+    },
+    "inference_0013": {
+      "id": "inference_0013",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "payload_mass: 1.0kg",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:42:14.368098",
+      "parents": [
+        "input_0002"
+      ],
+      "metadata": {}
+    },
+    "inference_0014": {
+      "id": "inference_0014",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "total_mass: 3.5kg",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:42:14.368099",
+      "parents": [
+        "input_0003"
+      ],
+      "metadata": {}
+    },
+    "inference_0015": {
+      "id": "inference_0015",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "center_of_mass_height: 0.45m",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:42:14.368100",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {}
+    },
+    "inference_0016": {
+      "id": "inference_0016",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "support_polygon_width: 0.08m",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:42:14.368101",
+      "parents": [
+        "input_0005"
+      ],
+      "metadata": {}
+    },
+    "inference_0017": {
+      "id": "inference_0017",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "must_not_tip_over",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:42:14.368102",
+      "parents": [
+        "input_0006"
+      ],
+      "metadata": {}
+    },
+    "inference_0018": {
+      "id": "inference_0018",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "must_not_slip",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:42:14.368103",
+      "parents": [
+        "input_0007"
+      ],
+      "metadata": {}
+    },
+    "output_0019": {
+      "id": "output_0019",
+      "type": "output",
+      "content": {
+        "type": "failure_mode",
+        "mode": "slip_under_load",
+        "severity": "high",
+        "mitigation": "increase_friction_coefficient"
+      },
+      "timestamp": "2026-02-05T09:42:14.368139",
+      "parents": [
+        "input_0007"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "constraint: must_not_slip"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0020": {
+      "id": "output_0020",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "surface_friction_coefficient: 0.6",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T09:42:14.368160",
+      "parents": [
+        "input_0008"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: surface_friction_coefficient: 0.6"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0021": {
+      "id": "output_0021",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "payload_distribution: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T09:42:14.368173",
+      "parents": [
+        "input_0009"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: payload_distribution: unknown"
+          ],
+          "requires_validation": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "operating_freq_hz": 48,
+  "resonance_freq_hz": 50,
+  "separation_hz": 2.0,
+  "required_separation_hz": 10.0,
+  "violation_hz": -8.0
+}

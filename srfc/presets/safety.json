@@ -1,0 +1,30 @@
+{
+  "defaults": {
+    "max_tip_force_n": 5.0,
+    "max_contact_pressure_kpa": 5.0,
+    "max_dwell_time_min": 30.0
+  },
+  "colon": {
+    "max_tip_force_n": 8.0,
+    "max_contact_pressure_kpa": 5.0,
+    "max_dwell_time_min": 60.0
+  },
+  "trachea": {
+    "max_tip_force_n": 3.0,
+    "max_contact_pressure_kpa": 3.0,
+    "max_dwell_time_min": 15.0
+  },
+  "esophagus": {
+    "max_tip_force_n": 5.0,
+    "max_contact_pressure_kpa": 4.0,
+    "max_dwell_time_min": 30.0
+  },
+  "nasal_passage": {
+    "max_tip_force_n": 1.0,
+    "max_contact_pressure_kpa": 2.0,
+    "max_dwell_time_min": 10.0
+  }
+}
+
+
+

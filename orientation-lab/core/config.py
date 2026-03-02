@@ -1,0 +1,25 @@
+"""Configuration and boundaries for Orientation Lab"""
+from typing import Dict, Any
+
+# Anti-optimization settings
+ENABLE_AUTHORITY_DETECTION = True
+ENABLE_OPTIMIZATION_DETECTION = True
+REQUIRE_EXPLICIT_UNCERTAINTY = True
+
+# Assumption tracking
+MAX_ASSUMPTIONS_PER_MODEL = 100
+MAX_DEPENDENCY_DEPTH = 10
+MAX_UNCERTAINTY_VARIABLES = 50
+
+# Session limits
+MAX_MODELS_PER_SESSION = 20
+MAX_PARTICIPANTS = 50
+MAX_DISAGREEMENT_POINTS = 100
+
+# Export settings
+OPLAS_EXPORT_VERSION = "1.0"
+ARTIFACT_FORMAT_VERSION = "1.0"
+
+# Facilitation settings
+ENABLE_CONVERSATION_FLOW_GUIDANCE = True
+REQUIRE_EXPLICIT_BOUNDARIES = True

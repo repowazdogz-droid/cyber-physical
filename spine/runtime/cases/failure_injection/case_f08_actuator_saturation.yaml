@@ -1,0 +1,29 @@
+problem:
+  name: "Continuous load at 95% actuator capacity"
+  domain: "robotic_design"
+
+constraints:
+  - "continuous_load: 5.7Nm"
+  - "actuator_continuous_rating: 6.0Nm"
+  - "duty_cycle: 100%"
+  - "must_not_exceed_continuous_rating"
+  - "thermal_management_required"
+
+uncertainties:
+  - "thermal_rise_rate: unknown"
+  - "cooling_efficiency: variable"
+
+objectives:
+  - "sustained_operation"
+  - "thermal_safety"
+
+design:
+  continuous_load_nm: 5.7
+  continuous_rating_nm: 6.0
+  utilization_percent: 95.0
+  thermal_margin: 0.3
+
+metadata:
+  injected_failure: "actuator_saturation"
+  expected_detection: "Thermal overload risk OR force limit concern"
+  decision_delta_target: 2

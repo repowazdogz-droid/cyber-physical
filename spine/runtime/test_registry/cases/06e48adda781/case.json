@@ -1,0 +1,47 @@
+{
+  "case_id": "06e48adda781",
+  "name": "Motor duty cycle causes thermal overload",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 09:42:11.561403",
+  "case_yaml": {
+    "problem": {
+      "name": "Motor duty cycle causes thermal overload",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "motor_power: 45W",
+      "duty_cycle: 95%",
+      "thermal_capacity: 50W_continuous",
+      "ambient_temp: 35C",
+      "must_not_overheat",
+      "thermal_safety_critical"
+    ],
+    "uncertainties": [
+      "heat_sink_efficiency: unknown",
+      "ambient_variation: high"
+    ],
+    "objectives": [
+      "continuous_operation",
+      "thermal_stability"
+    ],
+    "metadata": {
+      "injected_failure": "thermal_runaway",
+      "expected_detection": "Thermal overload risk OR material degradation",
+      "decision_delta_target": 2
+    }
+  },
+  "design_data": {
+    "motor_power_w": 45,
+    "duty_cycle_percent": 95,
+    "effective_power_w": 42.75,
+    "thermal_capacity_w": 50,
+    "margin_w": 7.25,
+    "estimated_temp_rise_c": 85
+  },
+  "tags": [
+    "failure_injection",
+    "physics",
+    "test"
+  ],
+  "notes": "Injected failure: thermal_runaway"
+}

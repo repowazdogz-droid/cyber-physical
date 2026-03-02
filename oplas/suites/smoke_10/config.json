@@ -1,0 +1,33 @@
+{
+  "name": "smoke_10",
+  "description": "Smoke test suite with 10 tasks",
+  "tasks_dir": "tasks",
+  "seed": 42,
+  "thresholds": {
+    "max_solve_rate_drop": 0.1,
+    "max_cost_increase": 0.5
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

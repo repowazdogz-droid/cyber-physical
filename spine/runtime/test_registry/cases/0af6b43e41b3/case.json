@@ -1,0 +1,41 @@
+{
+  "case_id": "0af6b43e41b3",
+  "name": "Clearance reduction under load deflection",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:06:15.161132",
+  "case_yaml": {
+    "problem": {
+      "name": "Clearance reduction under load deflection",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "nominal_clearance: 2.0mm",
+      "deflection_under_load: 1.5mm",
+      "remaining_clearance: 0.5mm",
+      "min_required_clearance: 1.0mm",
+      "must_maintain_clearance"
+    ],
+    "uncertainties": [
+      "load_variation: \u00b120%",
+      "deflection_model_accuracy: variable",
+      "dynamic_effects: unknown"
+    ],
+    "objectives": [
+      "collision_avoidance",
+      "structural_clearance"
+    ]
+  },
+  "design_data": {
+    "nominal_clearance_mm": 2.0,
+    "deflection_mm": 1.5,
+    "remaining_clearance_mm": 0.5,
+    "min_clearance_mm": 1.0,
+    "violation_mm": -0.5
+  },
+  "tags": [
+    "adversarial",
+    "geometric",
+    "test"
+  ],
+  "notes": "Injected failure: clearance_reduction"
+}

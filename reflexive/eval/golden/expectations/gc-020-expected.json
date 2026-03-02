@@ -1,0 +1,20 @@
+{
+  "case_id": "gc-020",
+  "TODO": true,
+  "convergence_count": 0,
+  "divergence_count": 0,
+  "divergence_natures": [],
+  "orphan_count": 0,
+  "lens_count_factor": 0,
+  "low_evidence_warning": false,
+  "high_contradiction_warning": false,
+  "confidence_score": { "min": 0, "max": 1 },
+  "agreement_factor": { "min": 0, "max": 1 },
+  "evidence_density_factor": { "min": 0, "max": 1 },
+  "unsupported_penalty": { "min": 0, "max": 1 },
+  "divergence_penalty": { "min": 0, "max": 1 },
+  "convergence_lenses": [],
+  "invalid_claims_excluded": [],
+  "orphan_claims_expected": [],
+  "drift": { "expected_null": true }
+}

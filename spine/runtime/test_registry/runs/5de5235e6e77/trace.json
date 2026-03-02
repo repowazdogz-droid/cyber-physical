@@ -1,0 +1,234 @@
+{
+  "run_id": "2f56843b494f",
+  "timestamp": "2026-02-05T09:58:04.123293",
+  "nodes": {
+    "input_0000": {
+      "id": "input_0000",
+      "type": "input",
+      "content": {
+        "type": "problem",
+        "name": "Range of motion exceeds joint limit",
+        "domain": "robotic_design"
+      },
+      "timestamp": "2026-02-05T09:58:04.118699",
+      "parents": [],
+      "metadata": {}
+    },
+    "input_0001": {
+      "id": "input_0001",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "required_joint_angle: 185_degrees"
+      },
+      "timestamp": "2026-02-05T09:58:04.118700",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0002": {
+      "id": "input_0002",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "joint_limit: 170_degrees"
+      },
+      "timestamp": "2026-02-05T09:58:04.118702",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0003": {
+      "id": "input_0003",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "must_not_exceed_joint_limits"
+      },
+      "timestamp": "2026-02-05T09:58:04.118703",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0004": {
+      "id": "input_0004",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "full_workspace_access"
+      },
+      "timestamp": "2026-02-05T09:58:04.118703",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0005": {
+      "id": "input_0005",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "workspace_requirements: variable"
+      },
+      "timestamp": "2026-02-05T09:58:04.118704",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0006": {
+      "id": "input_0006",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "joint_clearance_tolerance: unknown"
+      },
+      "timestamp": "2026-02-05T09:58:04.118705",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0007": {
+      "id": "input_0007",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "adequate_reach"
+      },
+      "timestamp": "2026-02-05T09:58:04.118706",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0008": {
+      "id": "input_0008",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "smooth_articulation"
+      },
+      "timestamp": "2026-02-05T09:58:04.118706",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "inference_0009": {
+      "id": "inference_0009",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "required_joint_angle: 185_degrees",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:58:04.123234",
+      "parents": [
+        "input_0001"
+      ],
+      "metadata": {}
+    },
+    "inference_0010": {
+      "id": "inference_0010",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "joint_limit: 170_degrees",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:58:04.123235",
+      "parents": [
+        "input_0002"
+      ],
+      "metadata": {}
+    },
+    "inference_0011": {
+      "id": "inference_0011",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "must_not_exceed_joint_limits",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:58:04.123236",
+      "parents": [
+        "input_0003"
+      ],
+      "metadata": {}
+    },
+    "inference_0012": {
+      "id": "inference_0012",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "full_workspace_access",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T09:58:04.123237",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {}
+    },
+    "output_0013": {
+      "id": "output_0013",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "workspace_requirements: variable",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T09:58:04.123251",
+      "parents": [
+        "input_0005"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: workspace_requirements: variable"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0014": {
+      "id": "output_0014",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "joint_clearance_tolerance: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T09:58:04.123258",
+      "parents": [
+        "input_0006"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: joint_clearance_tolerance: unknown"
+          ],
+          "requires_validation": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "operating_freq_hz": 48,
+  "natural_freq_hz": 50,
+  "separation_hz": 2.0,
+  "required_separation_hz": 10.0,
+  "margin_percent": 4.2,
+  "damping_ratio": 0.03
+}

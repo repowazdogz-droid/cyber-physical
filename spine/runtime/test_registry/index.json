@@ -1,0 +1,4723 @@
+{
+  "cases": {
+    "67303d68c756": {
+      "name": "Full endoscopic debridement for severe lumbosacral discitis",
+      "domain": "spine_surgery",
+      "created_at": "2026-02-05T08:40:54.332133",
+      "tags": [
+        "spine",
+        "infection",
+        "endoscopic",
+        "real"
+      ],
+      "run_count": 1
+    },
+    "51872d462c7e": {
+      "name": "Posterior stabilization for extreme C6/C7 dislocation with cord transection",
+      "domain": "spine_surgery",
+      "created_at": "2026-02-05T08:40:54.332321",
+      "tags": [
+        "spine",
+        "trauma",
+        "cervical",
+        "real"
+      ],
+      "run_count": 1
+    },
+    "91efeaac168e": {
+      "name": "Hyperbaric oxygen therapy for post-operative foot drop",
+      "domain": "spine_surgery",
+      "created_at": "2026-02-05T08:40:54.332600",
+      "tags": [
+        "spine",
+        "complication",
+        "salvage",
+        "real"
+      ],
+      "run_count": 1
+    },
+    "d385c753263e": {
+      "name": "Revision surgery for thoracic pedicle screw aortic penetration",
+      "domain": "spine_surgery",
+      "created_at": "2026-02-05T08:40:54.332771",
+      "tags": [
+        "spine",
+        "complication",
+        "vascular",
+        "real"
+      ],
+      "run_count": 1
+    },
+    "05e5188d3aa6": {
+      "name": "Hemivertebra resection complicated by remote cerebellar hemorrhage",
+      "domain": "spine_surgery",
+      "created_at": "2026-02-05T08:40:54.332930",
+      "tags": [
+        "spine",
+        "pediatric",
+        "complication",
+        "real"
+      ],
+      "run_count": 1
+    },
+    "96c8f974bc1b": {
+      "name": "Top-heavy gripper with COG outside support polygon",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T09:42:11.558735",
+      "tags": [
+        "failure_injection",
+        "physics",
+        "test"
+      ],
+      "run_count": 8
+    },
+    "961edc9e3650": {
+      "name": "Joint torque exceeds actuator limit",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T09:42:11.559041",
+      "tags": [
+        "failure_injection",
+        "physics",
+        "test"
+      ],
+      "run_count": 7
+    },
+    "b13786470450": {
+      "name": "Low friction coefficient on wet tissue",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T09:42:11.559328",
+      "tags": [
+        "failure_injection",
+        "physics",
+        "test"
+      ],
+      "run_count": 7
+    },
+    "75da946d5699": {
+      "name": "Range of motion exceeds joint limit",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T09:42:11.559623",
+      "tags": [
+        "failure_injection",
+        "physics",
+        "test"
+      ],
+      "run_count": 7
+    },
+    "d6fa90b0339c": {
+      "name": "Jerk exceeds safety limit",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T09:42:11.559920",
+      "tags": [
+        "failure_injection",
+        "physics",
+        "test"
+      ],
+      "run_count": 7
+    },
+    "22de8493667b": {
+      "name": "Payload exceeds rated capacity",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T09:42:11.560216",
+      "tags": [
+        "failure_injection",
+        "physics",
+        "test"
+      ],
+      "run_count": 7
+    },
+    "4be2ffaa2405": {
+      "name": "Two links intersect at operating configuration",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T09:42:11.560540",
+      "tags": [
+        "failure_injection",
+        "physics",
+        "test"
+      ],
+      "run_count": 7
+    },
+    "fd3231f0ffe7": {
+      "name": "Continuous load at 95% actuator capacity",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T09:42:11.560890",
+      "tags": [
+        "failure_injection",
+        "physics",
+        "test"
+      ],
+      "run_count": 7
+    },
+    "d297df4c18b1": {
+      "name": "Operating frequency near structural resonance",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T09:42:11.561224",
+      "tags": [
+        "failure_injection",
+        "physics",
+        "test"
+      ],
+      "run_count": 7
+    },
+    "06e48adda781": {
+      "name": "Motor duty cycle causes thermal overload",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T09:42:11.561571",
+      "tags": [
+        "failure_injection",
+        "physics",
+        "test"
+      ],
+      "run_count": 7
+    },
+    "c9c789bebd8f": {
+      "name": "PID with marginal phase margin - 5\u00b0",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:05:47.081008",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 0
+    },
+    "0a49ace9868c": {
+      "name": "PID with marginal phase margin - 5\u00b0",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.076138",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "6e8a81580430": {
+      "name": "Sensor latency 50ms on 100ms control loop",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.083546",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "870a1a83ff01": {
+      "name": "Actuator saturation during trajectory change",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.090904",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "af5b87819082": {
+      "name": "Encoder resolution insufficient for task",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.097618",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "57102b246d06": {
+      "name": "Feedforward model mismatch 20%",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.104554",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "698a04f3ecdc": {
+      "name": "Three minor issues combine - borderline mass + marginal friction + slight misalignment",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.111853",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "a34450f2b2e5": {
+      "name": "Thermal + control interaction - hot motor = slower response",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.120378",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "a5b50312a994": {
+      "name": "Material fatigue + geometric tolerance = progressive failure",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.128751",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "c983e27daf1b": {
+      "name": "Sensor drift + actuator wear + load increase = cascading degradation",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.137169",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "b1ec40ba4f9a": {
+      "name": "Tolerance stack-up - 5 parts, each at +3\u03c3",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.145422",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "4e5cba021b20": {
+      "name": "Thermal expansion mismatch - aluminum + steel",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.152882",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "0af6b43e41b3": {
+      "name": "Clearance reduction under load deflection",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.161284",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "31f30497d94a": {
+      "name": "Assembly error propagation",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.169414",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "6174f435cce6": {
+      "name": "Tissue compliance varies 3x from nominal",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.176785",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "40c663345f90": {
+      "name": "Surface friction drops 50% - wet conditions",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.184641",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "db77db583a40": {
+      "name": "Unexpected rigid obstacle contact",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.192514",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "1e005488e99e": {
+      "name": "Object mass varies \u00b140% from expected",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.201163",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "3ca337b6ad49": {
+      "name": "Borderline mass violation - 9.95kg on 10kg limit",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.208681",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "1dfc9abea982": {
+      "name": "Fatigue cycling - 10M cycles at marginal stress",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.215626",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "6131ac7eccbe": {
+      "name": "Harmonic oscillation near resonance but within margin",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.222310",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "29054de8c1fd": {
+      "name": "Combined bending + torsion at 90% yield",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.230615",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "989b58630a85": {
+      "name": "Backlash accumulation over 1000 cycles",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.237817",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "5fdd77067227": {
+      "name": "Creep at elevated temperature - 0.8 Tm",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.245915",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "4f43a655c26e": {
+      "name": "Stiffness mismatch between mating parts - 10x ratio",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.253852",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "ed73342c33f4": {
+      "name": "Stress corrosion in saline environment",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.261852",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "300aa6bb2646": {
+      "name": "UV degradation of polymer seal",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.268882",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "44f10ac3fce4": {
+      "name": "Transient thermal spike - 200ms pulse at 3x steady-state",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.277380",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "044963856f9f": {
+      "name": "Cooling degradation - fan failure at 80% load",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.286367",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "d8fd1b3dbdeb": {
+      "name": "Duty cycle abuse - 95% sustained for 4 hours",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.294481",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "f5cc77b756d2": {
+      "name": "Ambient temperature shift - +30\u00b0C above spec",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:06:15.302700",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "928fc6629d45": {
+      "name": "PID with marginal phase margin - 5\u00b0",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.733170",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "614028b3c59f": {
+      "name": "Sensor latency 50ms on 100ms control loop",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.743145",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "c470282e35f0": {
+      "name": "Actuator saturation during trajectory change",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.751217",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "3d0414bd54b6": {
+      "name": "Encoder resolution insufficient for task",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.758843",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "80504c867513": {
+      "name": "Feedforward model mismatch 20%",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.766636",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "8f058155775e": {
+      "name": "Three minor issues combine - borderline mass + marginal friction + slight misalignment",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.774633",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "7fc2fc1f3090": {
+      "name": "Thermal + control interaction - hot motor = slower response",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.784194",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "d980539343eb": {
+      "name": "Material fatigue + geometric tolerance = progressive failure",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.793396",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "c119b89fbbcb": {
+      "name": "Sensor drift + actuator wear + load increase = cascading degradation",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.802445",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "f9c764e34530": {
+      "name": "Tolerance stack-up - 5 parts, each at +3\u03c3",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.811199",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "99c86e3dbc80": {
+      "name": "Thermal expansion mismatch - aluminum + steel",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.819020",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "b53161caea93": {
+      "name": "Clearance reduction under load deflection",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.828186",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "770ce9103e3f": {
+      "name": "Assembly error propagation",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.836655",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "e2839f3f94d9": {
+      "name": "Tissue compliance varies 3x from nominal",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.844508",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "386bf15fd1a1": {
+      "name": "Surface friction drops 50% - wet conditions",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.852805",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "3085c6695232": {
+      "name": "Unexpected rigid obstacle contact",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.860969",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "4d9d687e0f5a": {
+      "name": "Object mass varies \u00b140% from expected",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.869766",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "a6707a99bbd5": {
+      "name": "Borderline mass violation - 9.95kg on 10kg limit",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.878012",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "22f382b64176": {
+      "name": "Fatigue cycling - 10M cycles at marginal stress",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.885312",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "9d0290db295b": {
+      "name": "Harmonic oscillation near resonance but within margin",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.893206",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "2f2a32698630": {
+      "name": "Combined bending + torsion at 90% yield",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.902074",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "897bb2e23c61": {
+      "name": "Backlash accumulation over 1000 cycles",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.910088",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "01bc38068afa": {
+      "name": "Creep at elevated temperature - 0.8 Tm",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.919216",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "2ac7626cb724": {
+      "name": "Stiffness mismatch between mating parts - 10x ratio",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.928023",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "4f13f7c9a4cf": {
+      "name": "Stress corrosion in saline environment",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.936816",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "192b269213b2": {
+      "name": "UV degradation of polymer seal",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.944941",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "f19a3b1c85c7": {
+      "name": "Transient thermal spike - 200ms pulse at 3x steady-state",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.954099",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "20be49cde48b": {
+      "name": "Cooling degradation - fan failure at 80% load",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.962980",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "597eac53ff37": {
+      "name": "Duty cycle abuse - 95% sustained for 4 hours",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.971626",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "761c696a576b": {
+      "name": "Ambient temperature shift - +30\u00b0C above spec",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:13.980561",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "a279709e7420": {
+      "name": "PID with marginal phase margin - 5\u00b0",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.785111",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "78de2f72d2dc": {
+      "name": "Sensor latency 50ms on 100ms control loop",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.794308",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "4db97f1473c3": {
+      "name": "Actuator saturation during trajectory change",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.802367",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "0165b35d6b4c": {
+      "name": "Encoder resolution insufficient for task",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.810031",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "46e65e7e9a38": {
+      "name": "Feedforward model mismatch 20%",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.818087",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "b0f1b6e74c93": {
+      "name": "Three minor issues combine - borderline mass + marginal friction + slight misalignment",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.826333",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "b312e66e6b62": {
+      "name": "Thermal + control interaction - hot motor = slower response",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.835800",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "d36fef0c0094": {
+      "name": "Material fatigue + geometric tolerance = progressive failure",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.845353",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "d18378c9f1e9": {
+      "name": "Sensor drift + actuator wear + load increase = cascading degradation",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.854655",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "7f12dc6754d0": {
+      "name": "Tolerance stack-up - 5 parts, each at +3\u03c3",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.863603",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "cf82f8166a93": {
+      "name": "Thermal expansion mismatch - aluminum + steel",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.871633",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "0b30d6e312d7": {
+      "name": "Clearance reduction under load deflection",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.880967",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "e1bc82c20d76": {
+      "name": "Assembly error propagation",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.889796",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "688aaa841f51": {
+      "name": "Tissue compliance varies 3x from nominal",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.897859",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "24d2cab285d5": {
+      "name": "Surface friction drops 50% - wet conditions",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.906177",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "ea17a0a1407d": {
+      "name": "Unexpected rigid obstacle contact",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.914544",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "6d72036d14b5": {
+      "name": "Object mass varies \u00b140% from expected",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.923492",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "668228fcfc6a": {
+      "name": "Borderline mass violation - 9.95kg on 10kg limit",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.931763",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "77b04440f6f5": {
+      "name": "Fatigue cycling - 10M cycles at marginal stress",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.939243",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "02252d7fbeb9": {
+      "name": "Harmonic oscillation near resonance but within margin",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.947018",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "c50117981f88": {
+      "name": "Combined bending + torsion at 90% yield",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.956006",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "0d0656683bbc": {
+      "name": "Backlash accumulation over 1000 cycles",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.964124",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "f87c3d25b384": {
+      "name": "Creep at elevated temperature - 0.8 Tm",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.973381",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "347736405102": {
+      "name": "Stiffness mismatch between mating parts - 10x ratio",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.982622",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "de28f3106058": {
+      "name": "Stress corrosion in saline environment",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.991466",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "7e9958ee7850": {
+      "name": "UV degradation of polymer seal",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:27.999686",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "b024b9c9a314": {
+      "name": "Transient thermal spike - 200ms pulse at 3x steady-state",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:28.008687",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "2da32c9afa30": {
+      "name": "Cooling degradation - fan failure at 80% load",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:28.017788",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "093ec0fbd276": {
+      "name": "Duty cycle abuse - 95% sustained for 4 hours",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:28.026448",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "04db6e2316f4": {
+      "name": "Ambient temperature shift - +30\u00b0C above spec",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:12:28.035594",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "21f8af369bd4": {
+      "name": "PID with marginal phase margin - 5\u00b0",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.780855",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "6bb47e94e074": {
+      "name": "Sensor latency 50ms on 100ms control loop",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.790711",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "57bf0531d260": {
+      "name": "Actuator saturation during trajectory change",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.799399",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "22752a570a4c": {
+      "name": "Encoder resolution insufficient for task",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.807681",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "3a68af13d8f0": {
+      "name": "Feedforward model mismatch 20%",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.816296",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "8b3542f6b7e5": {
+      "name": "Three minor issues combine - borderline mass + marginal friction + slight misalignment",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.825421",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "f907e72d5bca": {
+      "name": "Thermal + control interaction - hot motor = slower response",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.835904",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "ace1b53d639d": {
+      "name": "Material fatigue + geometric tolerance = progressive failure",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.847607",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "400be62ec188": {
+      "name": "Sensor drift + actuator wear + load increase = cascading degradation",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.857462",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "3dbd6472e685": {
+      "name": "Tolerance stack-up - 5 parts, each at +3\u03c3",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.866873",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "19072ff998e4": {
+      "name": "Thermal expansion mismatch - aluminum + steel",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.875645",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "8ba62d5452ea": {
+      "name": "Clearance reduction under load deflection",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.885530",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "c06ee3af6ab4": {
+      "name": "Assembly error propagation",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.894494",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "f9679ccedd85": {
+      "name": "Tissue compliance varies 3x from nominal",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.902842",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "f6df9171ccb8": {
+      "name": "Surface friction drops 50% - wet conditions",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.911559",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "7d4a51550fa3": {
+      "name": "Unexpected rigid obstacle contact",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.920768",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "dfbe41c5cb17": {
+      "name": "Object mass varies \u00b140% from expected",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.930183",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "31ba75e96e08": {
+      "name": "Borderline mass violation - 9.95kg on 10kg limit",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.939062",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "44c2178847ad": {
+      "name": "Fatigue cycling - 10M cycles at marginal stress",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.947432",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "b834fa51331d": {
+      "name": "Harmonic oscillation near resonance but within margin",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.955758",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "235ba6791308": {
+      "name": "Combined bending + torsion at 90% yield",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.965241",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "40f89e3a03f9": {
+      "name": "Backlash accumulation over 1000 cycles",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.973993",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "9ae19a755e9c": {
+      "name": "Creep at elevated temperature - 0.8 Tm",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.982994",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "b8d805d50d94": {
+      "name": "Stiffness mismatch between mating parts - 10x ratio",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:45.992310",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "dc13c64f946a": {
+      "name": "Stress corrosion in saline environment",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:46.001771",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "b1674a676ca0": {
+      "name": "UV degradation of polymer seal",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:46.010199",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "56b3827e9189": {
+      "name": "Transient thermal spike - 200ms pulse at 3x steady-state",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:46.020522",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "61cf7edb5b88": {
+      "name": "Cooling degradation - fan failure at 80% load",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:46.030398",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "856c6c0e42e2": {
+      "name": "Duty cycle abuse - 95% sustained for 4 hours",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:46.039610",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "1aef2e231546": {
+      "name": "Ambient temperature shift - +30\u00b0C above spec",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:46.049575",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "1c5c1a0d0788": {
+      "name": "PID with marginal phase margin - 5\u00b0",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.780694",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "cd5c0b0ca0ca": {
+      "name": "Sensor latency 50ms on 100ms control loop",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.792108",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "25b896c4a469": {
+      "name": "Actuator saturation during trajectory change",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.802383",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "959906edc902": {
+      "name": "Encoder resolution insufficient for task",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.811018",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "233a62deb8ed": {
+      "name": "Feedforward model mismatch 20%",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.819909",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "33641c7cb1a6": {
+      "name": "Three minor issues combine - borderline mass + marginal friction + slight misalignment",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.828593",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "73869704b90b": {
+      "name": "Thermal + control interaction - hot motor = slower response",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.838797",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "4a05c01d5fd8": {
+      "name": "Material fatigue + geometric tolerance = progressive failure",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.848715",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "20163a56ac7d": {
+      "name": "Sensor drift + actuator wear + load increase = cascading degradation",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.858735",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "4789e4cdc355": {
+      "name": "Tolerance stack-up - 5 parts, each at +3\u03c3",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.868265",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "d531951f7e09": {
+      "name": "Thermal expansion mismatch - aluminum + steel",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.877182",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "0568f9bfb955": {
+      "name": "Clearance reduction under load deflection",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.887268",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "877264369076": {
+      "name": "Assembly error propagation",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.896417",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "bc88e1a2dd7e": {
+      "name": "Tissue compliance varies 3x from nominal",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.905134",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "5ddced01ece0": {
+      "name": "Surface friction drops 50% - wet conditions",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.914296",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "d3de187a2a4b": {
+      "name": "Unexpected rigid obstacle contact",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.924319",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "63e2dd57b33f": {
+      "name": "Object mass varies \u00b140% from expected",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.934251",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "86018dd26be4": {
+      "name": "Borderline mass violation - 9.95kg on 10kg limit",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.943178",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "8eefb7c43c5b": {
+      "name": "Fatigue cycling - 10M cycles at marginal stress",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.951409",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "ba2ec6f4b9d1": {
+      "name": "Harmonic oscillation near resonance but within margin",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.960010",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "1eaead553221": {
+      "name": "Combined bending + torsion at 90% yield",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.969930",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "066806b72dfe": {
+      "name": "Backlash accumulation over 1000 cycles",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.979035",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "3e4bf0541a74": {
+      "name": "Creep at elevated temperature - 0.8 Tm",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.988366",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "9b9d13124153": {
+      "name": "Stiffness mismatch between mating parts - 10x ratio",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:52.997946",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "7ec4b6cb69c7": {
+      "name": "Stress corrosion in saline environment",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:53.007650",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "452476642b8f": {
+      "name": "UV degradation of polymer seal",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:53.016518",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "65ef432fb2fd": {
+      "name": "Transient thermal spike - 200ms pulse at 3x steady-state",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:53.026773",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "09baf33fbf7b": {
+      "name": "Cooling degradation - fan failure at 80% load",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:53.036854",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "e5e1a6b11d1e": {
+      "name": "Duty cycle abuse - 95% sustained for 4 hours",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:53.046287",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "354cceac86d5": {
+      "name": "Ambient temperature shift - +30\u00b0C above spec",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:53.056317",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "94bc1404b439": {
+      "name": "PID with marginal phase margin - 5\u00b0",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:55.920925",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "157d99de4644": {
+      "name": "Sensor latency 50ms on 100ms control loop",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:55.931548",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "f0245c0b1458": {
+      "name": "Actuator saturation during trajectory change",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:55.941180",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "1e1d35f66213": {
+      "name": "Encoder resolution insufficient for task",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:55.950330",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "aa3dae5eb9df": {
+      "name": "Feedforward model mismatch 20%",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:55.960240",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "345f8d2a96ce": {
+      "name": "Three minor issues combine - borderline mass + marginal friction + slight misalignment",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:55.969366",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "3cc096e0b41d": {
+      "name": "Thermal + control interaction - hot motor = slower response",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:55.979728",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "5732eb3bbd48": {
+      "name": "Material fatigue + geometric tolerance = progressive failure",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:55.990012",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "e93b7ec4566f": {
+      "name": "Sensor drift + actuator wear + load increase = cascading degradation",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.000609",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "4345dc336698": {
+      "name": "Tolerance stack-up - 5 parts, each at +3\u03c3",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.010739",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "aed6775ea6ba": {
+      "name": "Thermal expansion mismatch - aluminum + steel",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.020126",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "ce891d5fdd51": {
+      "name": "Clearance reduction under load deflection",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.030978",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "696a48cdcac3": {
+      "name": "Assembly error propagation",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.040503",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "c5dcef8de64f": {
+      "name": "Tissue compliance varies 3x from nominal",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.049635",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "50e6dbcf46c5": {
+      "name": "Surface friction drops 50% - wet conditions",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.059079",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "7db43edd91ae": {
+      "name": "Unexpected rigid obstacle contact",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.069105",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "1ee23606a5d5": {
+      "name": "Object mass varies \u00b140% from expected",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.079124",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "e622827fbdb0": {
+      "name": "Borderline mass violation - 9.95kg on 10kg limit",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.088703",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "a413b4b33e01": {
+      "name": "Fatigue cycling - 10M cycles at marginal stress",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.097375",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "dc272c83dba7": {
+      "name": "Harmonic oscillation near resonance but within margin",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.106846",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "e523ef1edc65": {
+      "name": "Combined bending + torsion at 90% yield",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.117356",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "a5b314d42077": {
+      "name": "Backlash accumulation over 1000 cycles",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.127008",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "e2c1eb018b5d": {
+      "name": "Creep at elevated temperature - 0.8 Tm",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.137041",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "8e78767ef436": {
+      "name": "Stiffness mismatch between mating parts - 10x ratio",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.146996",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "0761116e083b": {
+      "name": "Stress corrosion in saline environment",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.157407",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "523668ec01e8": {
+      "name": "UV degradation of polymer seal",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.166503",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "a0a7b78a9c94": {
+      "name": "Transient thermal spike - 200ms pulse at 3x steady-state",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.177170",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "8e6822d2541a": {
+      "name": "Cooling degradation - fan failure at 80% load",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.187528",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "ab31a1814383": {
+      "name": "Duty cycle abuse - 95% sustained for 4 hours",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.197286",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "7832dc007e2f": {
+      "name": "Ambient temperature shift - +30\u00b0C above spec",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:16:56.207888",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "17b48ea992d5": {
+      "name": "PID with marginal phase margin - 5\u00b0",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.563028",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "acebbc3e255f": {
+      "name": "Sensor latency 50ms on 100ms control loop",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.575296",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "fbf38949a47c": {
+      "name": "Actuator saturation during trajectory change",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.585276",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "731fceaee21a": {
+      "name": "Encoder resolution insufficient for task",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.595030",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "343bcf27cf19": {
+      "name": "Feedforward model mismatch 20%",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.604602",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "d4bec8471ce9": {
+      "name": "Three minor issues combine - borderline mass + marginal friction + slight misalignment",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.613917",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "298700bffaf9": {
+      "name": "Thermal + control interaction - hot motor = slower response",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.624955",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "a7e8ba4e52cd": {
+      "name": "Material fatigue + geometric tolerance = progressive failure",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.635493",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "1d2bb5ab52bc": {
+      "name": "Sensor drift + actuator wear + load increase = cascading degradation",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.646501",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "0f7bb76547c6": {
+      "name": "Tolerance stack-up - 5 parts, each at +3\u03c3",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.657753",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "1d5aca5b2754": {
+      "name": "Thermal expansion mismatch - aluminum + steel",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.667097",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "61fa66fc054b": {
+      "name": "Clearance reduction under load deflection",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.678009",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "3746f4dd61e1": {
+      "name": "Assembly error propagation",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.688161",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "bf346c3ddc2d": {
+      "name": "Tissue compliance varies 3x from nominal",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.697699",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "1d72faac001f": {
+      "name": "Surface friction drops 50% - wet conditions",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.708640",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "7fecbc877a33": {
+      "name": "Unexpected rigid obstacle contact",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.719177",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "40b7c99baff8": {
+      "name": "Object mass varies \u00b140% from expected",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.730248",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "17defa2ec97e": {
+      "name": "Borderline mass violation - 9.95kg on 10kg limit",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.740880",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "dc6e5e5c9feb": {
+      "name": "Fatigue cycling - 10M cycles at marginal stress",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.749850",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "bfa35eff2654": {
+      "name": "Harmonic oscillation near resonance but within margin",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.759432",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "2893bcbbc2bf": {
+      "name": "Combined bending + torsion at 90% yield",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.770675",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "0927d3f3c7a6": {
+      "name": "Backlash accumulation over 1000 cycles",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.780494",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "50d906d58d57": {
+      "name": "Creep at elevated temperature - 0.8 Tm",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.790880",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "688b5395a807": {
+      "name": "Stiffness mismatch between mating parts - 10x ratio",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.801571",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "1c9fa5d3438e": {
+      "name": "Stress corrosion in saline environment",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.812282",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "48d9533198f6": {
+      "name": "UV degradation of polymer seal",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.822046",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "df02ae188ebf": {
+      "name": "Transient thermal spike - 200ms pulse at 3x steady-state",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.833608",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "2611e32b23ae": {
+      "name": "Cooling degradation - fan failure at 80% load",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.844359",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "7f59822f90e4": {
+      "name": "Duty cycle abuse - 95% sustained for 4 hours",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.854481",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "ad11cc9a53cf": {
+      "name": "Ambient temperature shift - +30\u00b0C above spec",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:19:57.865573",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "8266284a059b": {
+      "name": "PID with marginal phase margin - 5\u00b0",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.185191",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "28e48fe74385": {
+      "name": "Sensor latency 50ms on 100ms control loop",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.196554",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "c0bdf3146e24": {
+      "name": "Actuator saturation during trajectory change",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.206722",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "7614e5b82280": {
+      "name": "Encoder resolution insufficient for task",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.216668",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "a59980d3ee8e": {
+      "name": "Feedforward model mismatch 20%",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.226827",
+      "tags": [
+        "adversarial",
+        "control",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "ac66e3411db4": {
+      "name": "Three minor issues combine - borderline mass + marginal friction + slight misalignment",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.236583",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "c0204b4da408": {
+      "name": "Thermal + control interaction - hot motor = slower response",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.248094",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "d4fe924383a2": {
+      "name": "Material fatigue + geometric tolerance = progressive failure",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.259106",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "c9becce35ebe": {
+      "name": "Sensor drift + actuator wear + load increase = cascading degradation",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.270649",
+      "tags": [
+        "adversarial",
+        "unknown",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "fb667e3afc36": {
+      "name": "Tolerance stack-up - 5 parts, each at +3\u03c3",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.282756",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "3f43c58928cf": {
+      "name": "Thermal expansion mismatch - aluminum + steel",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.292559",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "6f991a1115cb": {
+      "name": "Clearance reduction under load deflection",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.303962",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "9f7a662ee399": {
+      "name": "Assembly error propagation",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.314163",
+      "tags": [
+        "adversarial",
+        "geometric",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "1dd5f112c786": {
+      "name": "Tissue compliance varies 3x from nominal",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.323907",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "ff70260eb59f": {
+      "name": "Surface friction drops 50% - wet conditions",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.335130",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "a12f691bcc81": {
+      "name": "Unexpected rigid obstacle contact",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.346438",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "861e79135a9a": {
+      "name": "Object mass varies \u00b140% from expected",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.358052",
+      "tags": [
+        "adversarial",
+        "interaction",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "38b657263e7e": {
+      "name": "Borderline mass violation - 9.95kg on 10kg limit",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.369324",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "e9ff4d8546cc": {
+      "name": "Fatigue cycling - 10M cycles at marginal stress",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.378655",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "4e4d9aa01043": {
+      "name": "Harmonic oscillation near resonance but within margin",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.388607",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "f90d9fa1dc8b": {
+      "name": "Combined bending + torsion at 90% yield",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.399774",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "ee95ce162dd3": {
+      "name": "Backlash accumulation over 1000 cycles",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.410045",
+      "tags": [
+        "adversarial",
+        "mechanical",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "e5dbb4f3a7fa": {
+      "name": "Creep at elevated temperature - 0.8 Tm",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.420790",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "223fd9235c7c": {
+      "name": "Stiffness mismatch between mating parts - 10x ratio",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.431944",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "c1ab7f5c0b4c": {
+      "name": "Stress corrosion in saline environment",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.443138",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "53d710dec7c5": {
+      "name": "UV degradation of polymer seal",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.453511",
+      "tags": [
+        "adversarial",
+        "material",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "43334782e9d5": {
+      "name": "Transient thermal spike - 200ms pulse at 3x steady-state",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.466079",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "764d7d0bf5ee": {
+      "name": "Cooling degradation - fan failure at 80% load",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.477606",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "8725f6099ccf": {
+      "name": "Duty cycle abuse - 95% sustained for 4 hours",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.488231",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    },
+    "cf479784303a": {
+      "name": "Ambient temperature shift - +30\u00b0C above spec",
+      "domain": "robotic_design",
+      "created_at": "2026-02-05T10:21:20.500290",
+      "tags": [
+        "adversarial",
+        "thermal",
+        "test"
+      ],
+      "run_count": 1
+    }
+  },
+  "runs": {
+    "37cc3427078e": {
+      "case_id": "67303d68c756",
+      "timestamp": "2026-02-05T08:40:56.325268",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "69270c5c6b97": {
+      "case_id": "51872d462c7e",
+      "timestamp": "2026-02-05T08:40:56.332080",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "85b103ac16c0": {
+      "case_id": "91efeaac168e",
+      "timestamp": "2026-02-05T08:40:56.338793",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "2ba232e92bfa": {
+      "case_id": "d385c753263e",
+      "timestamp": "2026-02-05T08:40:56.345473",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "0170fd708852": {
+      "case_id": "05e5188d3aa6",
+      "timestamp": "2026-02-05T08:40:56.352488",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "3341f1be2960": {
+      "case_id": "96c8f974bc1b",
+      "timestamp": "2026-02-05T09:42:14.369513",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "4d15e93b556b": {
+      "case_id": "96c8f974bc1b",
+      "timestamp": "2026-02-05T09:42:19.405958",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "e1c269b8a880": {
+      "case_id": "961edc9e3650",
+      "timestamp": "2026-02-05T09:42:19.411421",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "56d50782957c": {
+      "case_id": "b13786470450",
+      "timestamp": "2026-02-05T09:42:19.418549",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "6939606199b7": {
+      "case_id": "75da946d5699",
+      "timestamp": "2026-02-05T09:42:19.424401",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "bdfe823770b0": {
+      "case_id": "d6fa90b0339c",
+      "timestamp": "2026-02-05T09:42:19.431740",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "fb319ffe28e0": {
+      "case_id": "22de8493667b",
+      "timestamp": "2026-02-05T09:42:19.437219",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "4acb5d59db0b": {
+      "case_id": "4be2ffaa2405",
+      "timestamp": "2026-02-05T09:42:19.445015",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "6720b99a19f3": {
+      "case_id": "fd3231f0ffe7",
+      "timestamp": "2026-02-05T09:42:19.451911",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "199b5328fe24": {
+      "case_id": "d297df4c18b1",
+      "timestamp": "2026-02-05T09:42:19.459434",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "5c5d8cde2da6": {
+      "case_id": "06e48adda781",
+      "timestamp": "2026-02-05T09:42:19.467385",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "849b13bed8c8": {
+      "case_id": "96c8f974bc1b",
+      "timestamp": "2026-02-05T09:42:36.008661",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "8e782b90ad3b": {
+      "case_id": "961edc9e3650",
+      "timestamp": "2026-02-05T09:42:36.014917",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "396b564e9a60": {
+      "case_id": "b13786470450",
+      "timestamp": "2026-02-05T09:42:36.022579",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "5b562b084cde": {
+      "case_id": "75da946d5699",
+      "timestamp": "2026-02-05T09:42:36.028556",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "92bfa7f3eecf": {
+      "case_id": "d6fa90b0339c",
+      "timestamp": "2026-02-05T09:42:36.035997",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "cf7ec4314786": {
+      "case_id": "22de8493667b",
+      "timestamp": "2026-02-05T09:42:36.042266",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "8107d15ef268": {
+      "case_id": "4be2ffaa2405",
+      "timestamp": "2026-02-05T09:42:36.050945",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "a330b20aa1d0": {
+      "case_id": "fd3231f0ffe7",
+      "timestamp": "2026-02-05T09:42:36.058323",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "0a2485a3463f": {
+      "case_id": "d297df4c18b1",
+      "timestamp": "2026-02-05T09:42:36.066195",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "99f80ed2079c": {
+      "case_id": "06e48adda781",
+      "timestamp": "2026-02-05T09:42:36.074696",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "6909463fff68": {
+      "case_id": "96c8f974bc1b",
+      "timestamp": "2026-02-05T09:52:54.712071",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "9bc7fe2cec59": {
+      "case_id": "961edc9e3650",
+      "timestamp": "2026-02-05T09:52:54.718961",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "8835c3aa8881": {
+      "case_id": "b13786470450",
+      "timestamp": "2026-02-05T09:52:54.727186",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "d5a2e7a9dae5": {
+      "case_id": "75da946d5699",
+      "timestamp": "2026-02-05T09:52:54.734116",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "b34f617a33b9": {
+      "case_id": "d6fa90b0339c",
+      "timestamp": "2026-02-05T09:52:54.742697",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "b897683ac7d8": {
+      "case_id": "22de8493667b",
+      "timestamp": "2026-02-05T09:52:54.748558",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "0d35efea50fa": {
+      "case_id": "4be2ffaa2405",
+      "timestamp": "2026-02-05T09:52:54.756773",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "dbe4c876c0ca": {
+      "case_id": "fd3231f0ffe7",
+      "timestamp": "2026-02-05T09:52:54.763691",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "0c7e1a052009": {
+      "case_id": "d297df4c18b1",
+      "timestamp": "2026-02-05T09:52:54.771471",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "5c91f99317f9": {
+      "case_id": "06e48adda781",
+      "timestamp": "2026-02-05T09:52:54.779762",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "cf095169faa1": {
+      "case_id": "96c8f974bc1b",
+      "timestamp": "2026-02-05T09:57:41.264415",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "c8337a82836f": {
+      "case_id": "961edc9e3650",
+      "timestamp": "2026-02-05T09:57:41.270650",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "894a33ff8e0b": {
+      "case_id": "b13786470450",
+      "timestamp": "2026-02-05T09:57:41.278377",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "16a549c57173": {
+      "case_id": "75da946d5699",
+      "timestamp": "2026-02-05T09:57:41.284356",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "c29933cec218": {
+      "case_id": "d6fa90b0339c",
+      "timestamp": "2026-02-05T09:57:41.291787",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "077613f180e1": {
+      "case_id": "22de8493667b",
+      "timestamp": "2026-02-05T09:57:41.297357",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "244272d6a82b": {
+      "case_id": "4be2ffaa2405",
+      "timestamp": "2026-02-05T09:57:41.305856",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "a50288a17572": {
+      "case_id": "fd3231f0ffe7",
+      "timestamp": "2026-02-05T09:57:41.312639",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "90446cffed1e": {
+      "case_id": "d297df4c18b1",
+      "timestamp": "2026-02-05T09:57:41.320219",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "f4ba763c1b7a": {
+      "case_id": "06e48adda781",
+      "timestamp": "2026-02-05T09:57:41.328380",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "f6871082a314": {
+      "case_id": "96c8f974bc1b",
+      "timestamp": "2026-02-05T09:57:55.866757",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "41b3db48f5b3": {
+      "case_id": "961edc9e3650",
+      "timestamp": "2026-02-05T09:57:55.874357",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "99b9e15f624c": {
+      "case_id": "b13786470450",
+      "timestamp": "2026-02-05T09:57:55.882171",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "81f9c6b2f20d": {
+      "case_id": "75da946d5699",
+      "timestamp": "2026-02-05T09:57:55.888201",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "9a98ae925898": {
+      "case_id": "d6fa90b0339c",
+      "timestamp": "2026-02-05T09:57:55.895700",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "9599a309c085": {
+      "case_id": "22de8493667b",
+      "timestamp": "2026-02-05T09:57:55.901404",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "b75cb861fd45": {
+      "case_id": "4be2ffaa2405",
+      "timestamp": "2026-02-05T09:57:55.909367",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "ed7ba6a9b26e": {
+      "case_id": "fd3231f0ffe7",
+      "timestamp": "2026-02-05T09:57:55.916091",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "99dd0959613d": {
+      "case_id": "d297df4c18b1",
+      "timestamp": "2026-02-05T09:57:55.923642",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "7dc22e5107db": {
+      "case_id": "06e48adda781",
+      "timestamp": "2026-02-05T09:57:55.931839",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "1b2a18c2c206": {
+      "case_id": "96c8f974bc1b",
+      "timestamp": "2026-02-05T09:58:04.104836",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "bc213b22ced9": {
+      "case_id": "961edc9e3650",
+      "timestamp": "2026-02-05T09:58:04.110761",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "d8406eb015b7": {
+      "case_id": "b13786470450",
+      "timestamp": "2026-02-05T09:58:04.118407",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "5de5235e6e77": {
+      "case_id": "75da946d5699",
+      "timestamp": "2026-02-05T09:58:04.124295",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "85ac20495a42": {
+      "case_id": "d6fa90b0339c",
+      "timestamp": "2026-02-05T09:58:04.131962",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "c7668f40c859": {
+      "case_id": "22de8493667b",
+      "timestamp": "2026-02-05T09:58:04.137679",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "70388c383137": {
+      "case_id": "4be2ffaa2405",
+      "timestamp": "2026-02-05T09:58:04.145833",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "e21b099f9f1f": {
+      "case_id": "fd3231f0ffe7",
+      "timestamp": "2026-02-05T09:58:04.152622",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "e7455288616c": {
+      "case_id": "d297df4c18b1",
+      "timestamp": "2026-02-05T09:58:04.160214",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "cb4982627ea5": {
+      "case_id": "06e48adda781",
+      "timestamp": "2026-02-05T09:58:04.168484",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "4132a152ec9f": {
+      "case_id": "96c8f974bc1b",
+      "timestamp": "2026-02-05T09:58:11.316454",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "14f72c63d066": {
+      "case_id": "961edc9e3650",
+      "timestamp": "2026-02-05T09:58:11.322379",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "44af28744cc7": {
+      "case_id": "b13786470450",
+      "timestamp": "2026-02-05T09:58:11.330299",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "11f9fcf5e18a": {
+      "case_id": "75da946d5699",
+      "timestamp": "2026-02-05T09:58:11.336549",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "d26b18cc8155": {
+      "case_id": "d6fa90b0339c",
+      "timestamp": "2026-02-05T09:58:11.344305",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "e95400a8afcd": {
+      "case_id": "22de8493667b",
+      "timestamp": "2026-02-05T09:58:11.350129",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "c9cc5ad90b45": {
+      "case_id": "4be2ffaa2405",
+      "timestamp": "2026-02-05T09:58:11.358629",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "592b4fbc9cfd": {
+      "case_id": "fd3231f0ffe7",
+      "timestamp": "2026-02-05T09:58:11.365867",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "85b05403291d": {
+      "case_id": "d297df4c18b1",
+      "timestamp": "2026-02-05T09:58:11.373812",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "825d3a860dac": {
+      "case_id": "06e48adda781",
+      "timestamp": "2026-02-05T09:58:11.382168",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "77dfb4853f21": {
+      "case_id": "0a49ace9868c",
+      "timestamp": "2026-02-05T10:06:15.083024",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "90f394998945": {
+      "case_id": "6e8a81580430",
+      "timestamp": "2026-02-05T10:06:15.090384",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "e9e692d0fa83": {
+      "case_id": "870a1a83ff01",
+      "timestamp": "2026-02-05T10:06:15.096908",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "89493a115da6": {
+      "case_id": "af5b87819082",
+      "timestamp": "2026-02-05T10:06:15.104026",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "7104e38a6e40": {
+      "case_id": "57102b246d06",
+      "timestamp": "2026-02-05T10:06:15.111344",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "fcf795ef847d": {
+      "case_id": "698a04f3ecdc",
+      "timestamp": "2026-02-05T10:06:15.119838",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "664c8fc01230": {
+      "case_id": "a34450f2b2e5",
+      "timestamp": "2026-02-05T10:06:15.128194",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "dd9d0881d3b4": {
+      "case_id": "a5b50312a994",
+      "timestamp": "2026-02-05T10:06:15.136607",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "d9183c125bf9": {
+      "case_id": "c983e27daf1b",
+      "timestamp": "2026-02-05T10:06:15.144863",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "4c28be456322": {
+      "case_id": "b1ec40ba4f9a",
+      "timestamp": "2026-02-05T10:06:15.152329",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "3e8ddc7ec7db": {
+      "case_id": "4e5cba021b20",
+      "timestamp": "2026-02-05T10:06:15.160627",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "9a126ab2aa55": {
+      "case_id": "0af6b43e41b3",
+      "timestamp": "2026-02-05T10:06:15.168807",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "27b0d41b98c6": {
+      "case_id": "31f30497d94a",
+      "timestamp": "2026-02-05T10:06:15.176194",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "b4038d6069cc": {
+      "case_id": "6174f435cce6",
+      "timestamp": "2026-02-05T10:06:15.184002",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "1f5ee4d8e6ec": {
+      "case_id": "40c663345f90",
+      "timestamp": "2026-02-05T10:06:15.191854",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "af06523da3c2": {
+      "case_id": "db77db583a40",
+      "timestamp": "2026-02-05T10:06:15.200578",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "6e68da8a0756": {
+      "case_id": "1e005488e99e",
+      "timestamp": "2026-02-05T10:06:15.208112",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "86a9f47704ed": {
+      "case_id": "3ca337b6ad49",
+      "timestamp": "2026-02-05T10:06:15.215040",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "c494ad4fadb2": {
+      "case_id": "1dfc9abea982",
+      "timestamp": "2026-02-05T10:06:15.221684",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "43f88c954c61": {
+      "case_id": "6131ac7eccbe",
+      "timestamp": "2026-02-05T10:06:15.229872",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "5dff15278479": {
+      "case_id": "29054de8c1fd",
+      "timestamp": "2026-02-05T10:06:15.237159",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "35c50422900f": {
+      "case_id": "989b58630a85",
+      "timestamp": "2026-02-05T10:06:15.245252",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "7d069dfff258": {
+      "case_id": "5fdd77067227",
+      "timestamp": "2026-02-05T10:06:15.253222",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "795b77b535f7": {
+      "case_id": "4f43a655c26e",
+      "timestamp": "2026-02-05T10:06:15.261228",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "86627e3bce2d": {
+      "case_id": "ed73342c33f4",
+      "timestamp": "2026-02-05T10:06:15.268240",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "2552cc19456c": {
+      "case_id": "300aa6bb2646",
+      "timestamp": "2026-02-05T10:06:15.276731",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "21a8e239a9b3": {
+      "case_id": "44f10ac3fce4",
+      "timestamp": "2026-02-05T10:06:15.285442",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "0a1048f315c7": {
+      "case_id": "044963856f9f",
+      "timestamp": "2026-02-05T10:06:15.293793",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "3a757007f55e": {
+      "case_id": "d8fd1b3dbdeb",
+      "timestamp": "2026-02-05T10:06:15.301869",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "23eed421249a": {
+      "case_id": "f5cc77b756d2",
+      "timestamp": "2026-02-05T10:06:15.310167",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "98029696d682": {
+      "case_id": "928fc6629d45",
+      "timestamp": "2026-02-05T10:12:13.741959",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "4eb38e129c5a": {
+      "case_id": "614028b3c59f",
+      "timestamp": "2026-02-05T10:12:13.750379",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "895cdebe70f8": {
+      "case_id": "c470282e35f0",
+      "timestamp": "2026-02-05T10:12:13.757943",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "e47bc56d09e6": {
+      "case_id": "3d0414bd54b6",
+      "timestamp": "2026-02-05T10:12:13.765774",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "d019acb1d7c7": {
+      "case_id": "80504c867513",
+      "timestamp": "2026-02-05T10:12:13.773828",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "f97ff180cd4f": {
+      "case_id": "8f058155775e",
+      "timestamp": "2026-02-05T10:12:13.783345",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "e4275df8c82c": {
+      "case_id": "7fc2fc1f3090",
+      "timestamp": "2026-02-05T10:12:13.792646",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "737dffb3c36d": {
+      "case_id": "d980539343eb",
+      "timestamp": "2026-02-05T10:12:13.801639",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "e01ebd68fb45": {
+      "case_id": "c119b89fbbcb",
+      "timestamp": "2026-02-05T10:12:13.810388",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "5e93f857313f": {
+      "case_id": "f9c764e34530",
+      "timestamp": "2026-02-05T10:12:13.818294",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "9e02098a7aa7": {
+      "case_id": "99c86e3dbc80",
+      "timestamp": "2026-02-05T10:12:13.827279",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "c646b01b9200": {
+      "case_id": "b53161caea93",
+      "timestamp": "2026-02-05T10:12:13.835857",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "616d122e51c7": {
+      "case_id": "770ce9103e3f",
+      "timestamp": "2026-02-05T10:12:13.843736",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "2bab0551010f": {
+      "case_id": "e2839f3f94d9",
+      "timestamp": "2026-02-05T10:12:13.851968",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "856327a64999": {
+      "case_id": "386bf15fd1a1",
+      "timestamp": "2026-02-05T10:12:13.860178",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "7f8b13881e1e": {
+      "case_id": "3085c6695232",
+      "timestamp": "2026-02-05T10:12:13.868991",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "8155fe6239bd": {
+      "case_id": "4d9d687e0f5a",
+      "timestamp": "2026-02-05T10:12:13.877181",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "a07d79832631": {
+      "case_id": "a6707a99bbd5",
+      "timestamp": "2026-02-05T10:12:13.884469",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "2ae39746e1ce": {
+      "case_id": "22f382b64176",
+      "timestamp": "2026-02-05T10:12:13.892264",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "62aac9ea4c10": {
+      "case_id": "9d0290db295b",
+      "timestamp": "2026-02-05T10:12:13.901148",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "57701d512378": {
+      "case_id": "2f2a32698630",
+      "timestamp": "2026-02-05T10:12:13.909151",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "94118c5577c3": {
+      "case_id": "897bb2e23c61",
+      "timestamp": "2026-02-05T10:12:13.918239",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "9d34aa3df370": {
+      "case_id": "01bc38068afa",
+      "timestamp": "2026-02-05T10:12:13.927150",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "d6086fb588f7": {
+      "case_id": "2ac7626cb724",
+      "timestamp": "2026-02-05T10:12:13.935784",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "8fb0b0bc4c28": {
+      "case_id": "4f13f7c9a4cf",
+      "timestamp": "2026-02-05T10:12:13.944081",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "e32acebec346": {
+      "case_id": "192b269213b2",
+      "timestamp": "2026-02-05T10:12:13.953132",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "804f9264e1cd": {
+      "case_id": "f19a3b1c85c7",
+      "timestamp": "2026-02-05T10:12:13.961930",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "6b94ed0a8113": {
+      "case_id": "20be49cde48b",
+      "timestamp": "2026-02-05T10:12:13.970691",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "0832c791c1d6": {
+      "case_id": "597eac53ff37",
+      "timestamp": "2026-02-05T10:12:13.979322",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "b2c80230d06b": {
+      "case_id": "761c696a576b",
+      "timestamp": "2026-02-05T10:12:13.988212",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "7fda35e188a0": {
+      "case_id": "a279709e7420",
+      "timestamp": "2026-02-05T10:12:27.793061",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "c205edc94a3b": {
+      "case_id": "78de2f72d2dc",
+      "timestamp": "2026-02-05T10:12:27.801370",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "fa0aff832672": {
+      "case_id": "4db97f1473c3",
+      "timestamp": "2026-02-05T10:12:27.808856",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "e1684ac03d7f": {
+      "case_id": "0165b35d6b4c",
+      "timestamp": "2026-02-05T10:12:27.817053",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "5e2c386623ee": {
+      "case_id": "46e65e7e9a38",
+      "timestamp": "2026-02-05T10:12:27.825452",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "49742a93656b": {
+      "case_id": "b0f1b6e74c93",
+      "timestamp": "2026-02-05T10:12:27.834918",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "c6cd632794da": {
+      "case_id": "b312e66e6b62",
+      "timestamp": "2026-02-05T10:12:27.844358",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "3d14031633d6": {
+      "case_id": "d36fef0c0094",
+      "timestamp": "2026-02-05T10:12:27.853696",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "01d34df9b6fe": {
+      "case_id": "d18378c9f1e9",
+      "timestamp": "2026-02-05T10:12:27.862621",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "0950a8fe1c50": {
+      "case_id": "7f12dc6754d0",
+      "timestamp": "2026-02-05T10:12:27.870709",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "d6952bc9e5bd": {
+      "case_id": "cf82f8166a93",
+      "timestamp": "2026-02-05T10:12:27.879867",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "30ad71ed2cd7": {
+      "case_id": "0b30d6e312d7",
+      "timestamp": "2026-02-05T10:12:27.888826",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "e6544bb9a0d1": {
+      "case_id": "e1bc82c20d76",
+      "timestamp": "2026-02-05T10:12:27.896947",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "c0c222f97190": {
+      "case_id": "688aaa841f51",
+      "timestamp": "2026-02-05T10:12:27.905268",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "82c091be7e43": {
+      "case_id": "24d2cab285d5",
+      "timestamp": "2026-02-05T10:12:27.913586",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "47d66385884f": {
+      "case_id": "ea17a0a1407d",
+      "timestamp": "2026-02-05T10:12:27.922584",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "1f45e3f14918": {
+      "case_id": "6d72036d14b5",
+      "timestamp": "2026-02-05T10:12:27.930812",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "79875d2de459": {
+      "case_id": "668228fcfc6a",
+      "timestamp": "2026-02-05T10:12:27.938241",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "cfd73025ddc3": {
+      "case_id": "77b04440f6f5",
+      "timestamp": "2026-02-05T10:12:27.945882",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "53155eb35b29": {
+      "case_id": "02252d7fbeb9",
+      "timestamp": "2026-02-05T10:12:27.954913",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "f61a97e2a631": {
+      "case_id": "c50117981f88",
+      "timestamp": "2026-02-05T10:12:27.962997",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "3079a694535e": {
+      "case_id": "0d0656683bbc",
+      "timestamp": "2026-02-05T10:12:27.972382",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "9d0b71c4725f": {
+      "case_id": "f87c3d25b384",
+      "timestamp": "2026-02-05T10:12:27.981571",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "9a06b38eab9d": {
+      "case_id": "347736405102",
+      "timestamp": "2026-02-05T10:12:27.990319",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "8fa9bd9de4ce": {
+      "case_id": "de28f3106058",
+      "timestamp": "2026-02-05T10:12:27.998704",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "4394498c2f4b": {
+      "case_id": "7e9958ee7850",
+      "timestamp": "2026-02-05T10:12:28.007680",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "15b1742536f5": {
+      "case_id": "b024b9c9a314",
+      "timestamp": "2026-02-05T10:12:28.016622",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "b2e82ea6a6e6": {
+      "case_id": "2da32c9afa30",
+      "timestamp": "2026-02-05T10:12:28.025464",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "9c377b35be2d": {
+      "case_id": "093ec0fbd276",
+      "timestamp": "2026-02-05T10:12:28.034205",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "e977d98f89ac": {
+      "case_id": "04db6e2316f4",
+      "timestamp": "2026-02-05T10:12:28.043188",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "d587e05982ef": {
+      "case_id": "21f8af369bd4",
+      "timestamp": "2026-02-05T10:16:45.789153",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "d0cd82c059fe": {
+      "case_id": "6bb47e94e074",
+      "timestamp": "2026-02-05T10:16:45.798067",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "75fc400c5aff": {
+      "case_id": "57bf0531d260",
+      "timestamp": "2026-02-05T10:16:45.806171",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "5737a0e57ec7": {
+      "case_id": "22752a570a4c",
+      "timestamp": "2026-02-05T10:16:45.814928",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "97397feb1589": {
+      "case_id": "3a68af13d8f0",
+      "timestamp": "2026-02-05T10:16:45.824115",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "ac4d5ddbfb62": {
+      "case_id": "8b3542f6b7e5",
+      "timestamp": "2026-02-05T10:16:45.834640",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "ce611852db5b": {
+      "case_id": "f907e72d5bca",
+      "timestamp": "2026-02-05T10:16:45.846268",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "9b027519a57f": {
+      "case_id": "ace1b53d639d",
+      "timestamp": "2026-02-05T10:16:45.856284",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "b0214b67cc44": {
+      "case_id": "400be62ec188",
+      "timestamp": "2026-02-05T10:16:45.865718",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "85a768dd17f5": {
+      "case_id": "3dbd6472e685",
+      "timestamp": "2026-02-05T10:16:45.874527",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "26581ae8d85a": {
+      "case_id": "19072ff998e4",
+      "timestamp": "2026-02-05T10:16:45.884217",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "945f61944790": {
+      "case_id": "8ba62d5452ea",
+      "timestamp": "2026-02-05T10:16:45.893335",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "37bf50a453ac": {
+      "case_id": "c06ee3af6ab4",
+      "timestamp": "2026-02-05T10:16:45.901716",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "c0db56236b43": {
+      "case_id": "f9679ccedd85",
+      "timestamp": "2026-02-05T10:16:45.910465",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "2978d274910e": {
+      "case_id": "f6df9171ccb8",
+      "timestamp": "2026-02-05T10:16:45.919667",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "8c9818120399": {
+      "case_id": "7d4a51550fa3",
+      "timestamp": "2026-02-05T10:16:45.929052",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "367d36f468ca": {
+      "case_id": "dfbe41c5cb17",
+      "timestamp": "2026-02-05T10:16:45.937954",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "586f03c0e63f": {
+      "case_id": "31ba75e96e08",
+      "timestamp": "2026-02-05T10:16:45.946226",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "3a63381502e4": {
+      "case_id": "44c2178847ad",
+      "timestamp": "2026-02-05T10:16:45.954403",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "60157a7a3110": {
+      "case_id": "b834fa51331d",
+      "timestamp": "2026-02-05T10:16:45.963939",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "8d162d81bd76": {
+      "case_id": "235ba6791308",
+      "timestamp": "2026-02-05T10:16:45.972614",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "b686327e7293": {
+      "case_id": "40f89e3a03f9",
+      "timestamp": "2026-02-05T10:16:45.981830",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "abd4d9220e30": {
+      "case_id": "9ae19a755e9c",
+      "timestamp": "2026-02-05T10:16:45.991189",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "37f3e6976c18": {
+      "case_id": "b8d805d50d94",
+      "timestamp": "2026-02-05T10:16:46.000348",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "cff734453cf6": {
+      "case_id": "dc13c64f946a",
+      "timestamp": "2026-02-05T10:16:46.008979",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "4d3836e21830": {
+      "case_id": "b1674a676ca0",
+      "timestamp": "2026-02-05T10:16:46.019279",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "b37d041eac86": {
+      "case_id": "56b3827e9189",
+      "timestamp": "2026-02-05T10:16:46.028920",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "ca4af9d6952c": {
+      "case_id": "61cf7edb5b88",
+      "timestamp": "2026-02-05T10:16:46.038403",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "ed2a0b2bdf90": {
+      "case_id": "856c6c0e42e2",
+      "timestamp": "2026-02-05T10:16:46.047922",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "d7e7ce510566": {
+      "case_id": "1aef2e231546",
+      "timestamp": "2026-02-05T10:16:46.057311",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "5f46c8dad4ca": {
+      "case_id": "1c5c1a0d0788",
+      "timestamp": "2026-02-05T10:16:52.789900",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "f431fce7a20b": {
+      "case_id": "cd5c0b0ca0ca",
+      "timestamp": "2026-02-05T10:16:52.800732",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "5be518b8b0d4": {
+      "case_id": "25b896c4a469",
+      "timestamp": "2026-02-05T10:16:52.809353",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "90304626e9c0": {
+      "case_id": "959906edc902",
+      "timestamp": "2026-02-05T10:16:52.818485",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "403b3129edce": {
+      "case_id": "233a62deb8ed",
+      "timestamp": "2026-02-05T10:16:52.827419",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "997e4d90bd75": {
+      "case_id": "33641c7cb1a6",
+      "timestamp": "2026-02-05T10:16:52.837565",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "776fbedc34bd": {
+      "case_id": "73869704b90b",
+      "timestamp": "2026-02-05T10:16:52.847507",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "c19b5fb3e45c": {
+      "case_id": "4a05c01d5fd8",
+      "timestamp": "2026-02-05T10:16:52.857437",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "dae2fa5f6362": {
+      "case_id": "20163a56ac7d",
+      "timestamp": "2026-02-05T10:16:52.867036",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "a78fa4fcd4a8": {
+      "case_id": "4789e4cdc355",
+      "timestamp": "2026-02-05T10:16:52.875932",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "60d6b813945e": {
+      "case_id": "d531951f7e09",
+      "timestamp": "2026-02-05T10:16:52.885790",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "2b3a0c38d62e": {
+      "case_id": "0568f9bfb955",
+      "timestamp": "2026-02-05T10:16:52.895198",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "9644dc17b836": {
+      "case_id": "877264369076",
+      "timestamp": "2026-02-05T10:16:52.903873",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "caf2bcc00f2f": {
+      "case_id": "bc88e1a2dd7e",
+      "timestamp": "2026-02-05T10:16:52.913000",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "5036fc201aff": {
+      "case_id": "5ddced01ece0",
+      "timestamp": "2026-02-05T10:16:52.922959",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "c8cce9431e87": {
+      "case_id": "d3de187a2a4b",
+      "timestamp": "2026-02-05T10:16:52.932772",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "45de937dfc43": {
+      "case_id": "63e2dd57b33f",
+      "timestamp": "2026-02-05T10:16:52.941891",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "f5c893f359d2": {
+      "case_id": "86018dd26be4",
+      "timestamp": "2026-02-05T10:16:52.950153",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "f19c771480a4": {
+      "case_id": "8eefb7c43c5b",
+      "timestamp": "2026-02-05T10:16:52.958483",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "69489028b1cc": {
+      "case_id": "ba2ec6f4b9d1",
+      "timestamp": "2026-02-05T10:16:52.968346",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "e02e4a62af2f": {
+      "case_id": "1eaead553221",
+      "timestamp": "2026-02-05T10:16:52.977460",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "ca2f2e407973": {
+      "case_id": "066806b72dfe",
+      "timestamp": "2026-02-05T10:16:52.987058",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "feaa9e19ed57": {
+      "case_id": "3e4bf0541a74",
+      "timestamp": "2026-02-05T10:16:52.996672",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "0a899fefd56e": {
+      "case_id": "9b9d13124153",
+      "timestamp": "2026-02-05T10:16:53.006023",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "1ec98ba05643": {
+      "case_id": "7ec4b6cb69c7",
+      "timestamp": "2026-02-05T10:16:53.015119",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "7699ee5ba6e2": {
+      "case_id": "452476642b8f",
+      "timestamp": "2026-02-05T10:16:53.025446",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "b609ce8eaf6f": {
+      "case_id": "65ef432fb2fd",
+      "timestamp": "2026-02-05T10:16:53.035206",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "003843f7b001": {
+      "case_id": "09baf33fbf7b",
+      "timestamp": "2026-02-05T10:16:53.044915",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "58cf5ee04c6e": {
+      "case_id": "e5e1a6b11d1e",
+      "timestamp": "2026-02-05T10:16:53.054458",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "f92480fea933": {
+      "case_id": "354cceac86d5",
+      "timestamp": "2026-02-05T10:16:53.064157",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "a88a794991aa": {
+      "case_id": "94bc1404b439",
+      "timestamp": "2026-02-05T10:16:55.929140",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "bb707fe38803": {
+      "case_id": "157d99de4644",
+      "timestamp": "2026-02-05T10:16:55.939433",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "e1c9a70fe10c": {
+      "case_id": "f0245c0b1458",
+      "timestamp": "2026-02-05T10:16:55.948234",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "d285eb5c2edf": {
+      "case_id": "1e1d35f66213",
+      "timestamp": "2026-02-05T10:16:55.958522",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "58d8541edc48": {
+      "case_id": "aa3dae5eb9df",
+      "timestamp": "2026-02-05T10:16:55.967995",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "7acfebc91ea6": {
+      "case_id": "345f8d2a96ce",
+      "timestamp": "2026-02-05T10:16:55.978343",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "9ea544ec4e80": {
+      "case_id": "3cc096e0b41d",
+      "timestamp": "2026-02-05T10:16:55.988615",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "8239dc89e5f0": {
+      "case_id": "5732eb3bbd48",
+      "timestamp": "2026-02-05T10:16:55.999073",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "b1bb0fd82c6e": {
+      "case_id": "e93b7ec4566f",
+      "timestamp": "2026-02-05T10:16:56.009232",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "4871ebf3d267": {
+      "case_id": "4345dc336698",
+      "timestamp": "2026-02-05T10:16:56.018610",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "2272c2b563ce": {
+      "case_id": "aed6775ea6ba",
+      "timestamp": "2026-02-05T10:16:56.029211",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "8729b5a43200": {
+      "case_id": "ce891d5fdd51",
+      "timestamp": "2026-02-05T10:16:56.039071",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "4d2af7e267cb": {
+      "case_id": "696a48cdcac3",
+      "timestamp": "2026-02-05T10:16:56.048131",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "0582b2cd1356": {
+      "case_id": "c5dcef8de64f",
+      "timestamp": "2026-02-05T10:16:56.057569",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "b2c041bb7589": {
+      "case_id": "50e6dbcf46c5",
+      "timestamp": "2026-02-05T10:16:56.067565",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "ab2ab8a582ba": {
+      "case_id": "7db43edd91ae",
+      "timestamp": "2026-02-05T10:16:56.077717",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "19057173ac3a": {
+      "case_id": "1ee23606a5d5",
+      "timestamp": "2026-02-05T10:16:56.087197",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "df5c2e516a1a": {
+      "case_id": "e622827fbdb0",
+      "timestamp": "2026-02-05T10:16:56.095919",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "b09f39336ef7": {
+      "case_id": "a413b4b33e01",
+      "timestamp": "2026-02-05T10:16:56.105036",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "506acb3fa575": {
+      "case_id": "dc272c83dba7",
+      "timestamp": "2026-02-05T10:16:56.115490",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "59d7040c920d": {
+      "case_id": "e523ef1edc65",
+      "timestamp": "2026-02-05T10:16:56.125178",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "0587e96e1b1a": {
+      "case_id": "a5b314d42077",
+      "timestamp": "2026-02-05T10:16:56.135454",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "a06361ee4556": {
+      "case_id": "e2c1eb018b5d",
+      "timestamp": "2026-02-05T10:16:56.145528",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "2874ee240bd8": {
+      "case_id": "8e78767ef436",
+      "timestamp": "2026-02-05T10:16:56.155292",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "7f6bca67d8c9": {
+      "case_id": "0761116e083b",
+      "timestamp": "2026-02-05T10:16:56.164963",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "bcce3c9f461d": {
+      "case_id": "523668ec01e8",
+      "timestamp": "2026-02-05T10:16:56.175652",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "de5e96a120d8": {
+      "case_id": "a0a7b78a9c94",
+      "timestamp": "2026-02-05T10:16:56.185691",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "a3139b9d5f8e": {
+      "case_id": "8e6822d2541a",
+      "timestamp": "2026-02-05T10:16:56.195777",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "490d9b3b73e4": {
+      "case_id": "ab31a1814383",
+      "timestamp": "2026-02-05T10:16:56.205723",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "8d3b5b1ec1ea": {
+      "case_id": "7832dc007e2f",
+      "timestamp": "2026-02-05T10:16:56.215994",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "e4aada4922d6": {
+      "case_id": "17b48ea992d5",
+      "timestamp": "2026-02-05T10:19:57.572606",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "a1a0b01a3bf4": {
+      "case_id": "acebbc3e255f",
+      "timestamp": "2026-02-05T10:19:57.583337",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "3b5efaa71a07": {
+      "case_id": "fbf38949a47c",
+      "timestamp": "2026-02-05T10:19:57.592699",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "88b48fda9ef1": {
+      "case_id": "731fceaee21a",
+      "timestamp": "2026-02-05T10:19:57.602667",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "0ef0699abaa3": {
+      "case_id": "343bcf27cf19",
+      "timestamp": "2026-02-05T10:19:57.612372",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "d5fe746ce009": {
+      "case_id": "d4bec8471ce9",
+      "timestamp": "2026-02-05T10:19:57.622995",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "08b36ea76676": {
+      "case_id": "298700bffaf9",
+      "timestamp": "2026-02-05T10:19:57.633899",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "2e9a0e3a8ab4": {
+      "case_id": "a7e8ba4e52cd",
+      "timestamp": "2026-02-05T10:19:57.644517",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "e3fb19384a08": {
+      "case_id": "1d2bb5ab52bc",
+      "timestamp": "2026-02-05T10:19:57.655829",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "0f411f99b69d": {
+      "case_id": "0f7bb76547c6",
+      "timestamp": "2026-02-05T10:19:57.665459",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "76a4530b5013": {
+      "case_id": "1d5aca5b2754",
+      "timestamp": "2026-02-05T10:19:57.676056",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "7c1e48a2db9e": {
+      "case_id": "61fa66fc054b",
+      "timestamp": "2026-02-05T10:19:57.686485",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "c7074ab6601b": {
+      "case_id": "3746f4dd61e1",
+      "timestamp": "2026-02-05T10:19:57.696019",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "56de3edabee7": {
+      "case_id": "bf346c3ddc2d",
+      "timestamp": "2026-02-05T10:19:57.706278",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "4715d77823b8": {
+      "case_id": "1d72faac001f",
+      "timestamp": "2026-02-05T10:19:57.717158",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "b6d98fda8c04": {
+      "case_id": "7fecbc877a33",
+      "timestamp": "2026-02-05T10:19:57.728219",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "76719555282d": {
+      "case_id": "40b7c99baff8",
+      "timestamp": "2026-02-05T10:19:57.738503",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "a5357b621657": {
+      "case_id": "17defa2ec97e",
+      "timestamp": "2026-02-05T10:19:57.748193",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "4aaa1976eba9": {
+      "case_id": "dc6e5e5c9feb",
+      "timestamp": "2026-02-05T10:19:57.757454",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "dade02c2a14e": {
+      "case_id": "bfa35eff2654",
+      "timestamp": "2026-02-05T10:19:57.768549",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "48fe23c031fb": {
+      "case_id": "2893bcbbc2bf",
+      "timestamp": "2026-02-05T10:19:57.778478",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "8342355cae91": {
+      "case_id": "0927d3f3c7a6",
+      "timestamp": "2026-02-05T10:19:57.789149",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "366ee5be646f": {
+      "case_id": "50d906d58d57",
+      "timestamp": "2026-02-05T10:19:57.799517",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "ad425aac0d92": {
+      "case_id": "688b5395a807",
+      "timestamp": "2026-02-05T10:19:57.810137",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "05eb1ff7b184": {
+      "case_id": "1c9fa5d3438e",
+      "timestamp": "2026-02-05T10:19:57.820010",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "249c3d4799b1": {
+      "case_id": "48d9533198f6",
+      "timestamp": "2026-02-05T10:19:57.831187",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "23a9ab741904": {
+      "case_id": "df02ae188ebf",
+      "timestamp": "2026-02-05T10:19:57.842248",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "005accf879c9": {
+      "case_id": "2611e32b23ae",
+      "timestamp": "2026-02-05T10:19:57.852818",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "3317ab3f5f8d": {
+      "case_id": "7f59822f90e4",
+      "timestamp": "2026-02-05T10:19:57.863146",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "121924b6c3b3": {
+      "case_id": "ad11cc9a53cf",
+      "timestamp": "2026-02-05T10:19:57.873819",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "718663d1ab4d": {
+      "case_id": "8266284a059b",
+      "timestamp": "2026-02-05T10:21:20.193750",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "ed69f5dfee4f": {
+      "case_id": "28e48fe74385",
+      "timestamp": "2026-02-05T10:21:20.204578",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "7347bdeb99c4": {
+      "case_id": "c0bdf3146e24",
+      "timestamp": "2026-02-05T10:21:20.214129",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "19d10d7a542f": {
+      "case_id": "7614e5b82280",
+      "timestamp": "2026-02-05T10:21:20.224680",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "c606050f9706": {
+      "case_id": "a59980d3ee8e",
+      "timestamp": "2026-02-05T10:21:20.234759",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "36c65f9cd2ab": {
+      "case_id": "ac66e3411db4",
+      "timestamp": "2026-02-05T10:21:20.245904",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "2c8ac21f94c6": {
+      "case_id": "c0204b4da408",
+      "timestamp": "2026-02-05T10:21:20.257305",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "160feb458991": {
+      "case_id": "d4fe924383a2",
+      "timestamp": "2026-02-05T10:21:20.268357",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "f54eefb22384": {
+      "case_id": "c9becce35ebe",
+      "timestamp": "2026-02-05T10:21:20.280541",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "4d266e7d7b3d": {
+      "case_id": "fb667e3afc36",
+      "timestamp": "2026-02-05T10:21:20.290763",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "f1b207eeaa77": {
+      "case_id": "3f43c58928cf",
+      "timestamp": "2026-02-05T10:21:20.301705",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "6d6fab51be9a": {
+      "case_id": "6f991a1115cb",
+      "timestamp": "2026-02-05T10:21:20.312334",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "caa105040e74": {
+      "case_id": "9f7a662ee399",
+      "timestamp": "2026-02-05T10:21:20.322092",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "08de8a37b964": {
+      "case_id": "1dd5f112c786",
+      "timestamp": "2026-02-05T10:21:20.332499",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "f236d7cab0ff": {
+      "case_id": "ff70260eb59f",
+      "timestamp": "2026-02-05T10:21:20.344114",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "840d7770909c": {
+      "case_id": "a12f691bcc81",
+      "timestamp": "2026-02-05T10:21:20.355806",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "307daf148940": {
+      "case_id": "861e79135a9a",
+      "timestamp": "2026-02-05T10:21:20.366558",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "f11b5fbb4683": {
+      "case_id": "38b657263e7e",
+      "timestamp": "2026-02-05T10:21:20.376711",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "a9b4f77fbd59": {
+      "case_id": "e9ff4d8546cc",
+      "timestamp": "2026-02-05T10:21:20.386382",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "b9cbe01458d3": {
+      "case_id": "4e4d9aa01043",
+      "timestamp": "2026-02-05T10:21:20.397539",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "4911727507ff": {
+      "case_id": "f90d9fa1dc8b",
+      "timestamp": "2026-02-05T10:21:20.407795",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "1b176dec707f": {
+      "case_id": "ee95ce162dd3",
+      "timestamp": "2026-02-05T10:21:20.418858",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "7b4aa0052f80": {
+      "case_id": "e5dbb4f3a7fa",
+      "timestamp": "2026-02-05T10:21:20.429678",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "43058a91f46b": {
+      "case_id": "223fd9235c7c",
+      "timestamp": "2026-02-05T10:21:20.440815",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "edfa6a6cddd0": {
+      "case_id": "c1ab7f5c0b4c",
+      "timestamp": "2026-02-05T10:21:20.451065",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "88da6d241e63": {
+      "case_id": "53d710dec7c5",
+      "timestamp": "2026-02-05T10:21:20.463097",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "7e4099353637": {
+      "case_id": "43334782e9d5",
+      "timestamp": "2026-02-05T10:21:20.475211",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "282a67fd89d6": {
+      "case_id": "764d7d0bf5ee",
+      "timestamp": "2026-02-05T10:21:20.486368",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "189a2b1f584f": {
+      "case_id": "8725f6099ccf",
+      "timestamp": "2026-02-05T10:21:20.497429",
+      "reviewer": null,
+      "outcome_status": "pending"
+    },
+    "9548fbff62f8": {
+      "case_id": "cf479784303a",
+      "timestamp": "2026-02-05T10:21:20.508897",
+      "reviewer": null,
+      "outcome_status": "pending"
+    }
+  }
+}

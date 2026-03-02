@@ -1,0 +1,29 @@
+problem:
+  name: "PID with marginal phase margin - 5°"
+  domain: "robotic_design"
+
+constraints:
+  - "phase_margin: 5°"
+  - "minimum_phase_margin: 30°"
+  - "gain_margin: 3dB"
+  - "must_be_stable"
+
+uncertainties:
+  - "model_uncertainty: ±20%"
+  - "parameter_variation: unknown"
+  - "disturbance_rejection: marginal"
+
+objectives:
+  - "control_stability"
+  - "robust_performance"
+
+design:
+  phase_margin_deg: 5
+  min_phase_margin_deg: 30
+  gain_margin_db: 3
+  stability_margin: 0.17
+
+metadata:
+  injected_failure: "marginal_phase_margin"
+  failure_category: "control"
+  expected_detection: "Control stability issue may be detected"

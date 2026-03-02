@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OMEGA Demos — Scenario Test Runner</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg-deep: #fafafa;
+      --bg-surface: #f4f4f6;
+      --bg-raised: #ecedef;
+      --border: #d5d7dc;
+      --text-primary: #111214;
+      --text-secondary: #363940;
+      --green: #059669;
+      --red: #dc2626;
+      --amber: #d97706;
+      --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --mono: 'Courier New', 'Lucida Console', monospace;
+    }
+    body {
+      font-family: var(--sans);
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      padding: 24px;
+      min-height: 100vh;
+    }
+    h1 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .btn {
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 10px 18px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg-raised);
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+    .btn:hover { background: #e4e5e8; }
+    .btn-run {
+      background: #ecfdf5;
+      border-color: var(--green);
+      color: var(--green);
+    }
+    .btn-run:hover { background: #d1fae5; }
+    .btn-run:disabled { opacity: 0.6; cursor: not-allowed; }
+    .progress-wrap {
+      flex: 1;
+      max-width: 400px;
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--green);
+      width: 0%;
+      transition: width 0.2s ease;
+    }
+    .progress-label {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    th, td {
+      padding: 8px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background: var(--bg-raised);
+      font-weight: 600;
+    }
+    tr.fail { background: #fef2f2; }
+    tr.pass { background: #f0fdf4; }
+    .pass-badge { color: var(--green); font-weight: 600; }
+    .fail-badge { color: var(--red); font-weight: 600; }
+    .summary {
+      margin-top: 20px;
+      padding: 14px 18px;
+      background: var(--bg-raised);
+      border-radius: 6px;
+      font-size: 13px;
+    }
+    .summary.fail { border-left: 4px solid var(--red); }
+    .summary.pass { border-left: 4px solid var(--green); }
+    .detail { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+  </style>
+</head>
+<body>
+  <h1>OMEGA Demos — Scenario Test Runner</h1>
+  <p class="subtitle">Run before deploy. Requires a local server (e.g. npx serve .).</p>
+
+  <div class="toolbar">
+    <button class="btn btn-run" id="btnRun" onclick="runAllTests()">RUN ALL TESTS</button>
+    <div class="progress-wrap"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-label" id="progressLabel">—</span>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Demo</th>
+        <th>Scenario</th>
+        <th>Check</th>
+        <th>Expected</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody id="resultsBody"></tbody>
+  </table>
+
+  <div class="summary" id="summary" style="display:none"></div>
+
+  <script>
+    function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+    const TEST_SUITE = [
+      {
+        demo: 'mev-trust-auction-v2.html',
+        scenarios: [
+          {
+            name: 'Clean Auction',
+            trigger: (win) => { win.runScenario('clean'); },
+            wait: 5500,
+            checks: [
+              {
+                name: 'No blocked bundles',
+                test: (doc) => {
+                  const cards = doc.querySelectorAll('.bundle-card');
+                  const blocked = [...cards].filter(el => el.querySelector('.bs-blocked') || (el.textContent && el.textContent.includes('BLOCKED') && el.querySelector('.bundle-status')));
+                  return blocked.length === 0;
+                },
+                expected: 'Zero bundles with BLOCKED status'
+              },
+              {
+                name: 'No broken bundles',
+                test: (doc) => {
+                  const cards = doc.querySelectorAll('.bundle-card');
+                  const broken = [...cards].filter(el => el.querySelector('.bs-broken') || (el.textContent && el.textContent.includes('BROKEN')));
+                  return broken.length === 0;
+                },
+                expected: 'Zero bundles with BROKEN status'
+              },
+              {
+                name: 'No adversarial alerts',
+                test: (doc) => {
+                  const body = doc.body.textContent;
+                  return !body.includes('CENSORSHIP DETECTED') &&
+                         !body.includes('ADVERSARIAL INTEGRITY CHECK FAILED') &&
+                         !body.includes('EQUIVOCATION DETECTED');
+                },
+                expected: 'No adversarial alert text'
+              },
+              {
+                name: 'Watcher verification present',
+                test: (doc) => doc.body.textContent.includes('Watcher verification:'),
+                expected: 'Watcher verification hash present'
+              }
+            ]
+          },
+          {
+            name: 'Sandwich Attack Blocked',
+            trigger: (win) => { win.runScenario('sandwich'); },
+            wait: 5500,
+            checks: [
+              {
+                name: 'Exactly one sandwich blocked',
+                test: (doc) => {
+                  const cards = doc.querySelectorAll('.bundle-card');
+                  const blockedSandwich = [...cards].filter(el =>
+                    (el.querySelector('.bs-blocked') || (el.textContent && el.textContent.includes('BLOCKED'))) &&
+                    (el.textContent.includes('SANDWICH'))
+                  );
+                  return blockedSandwich.length === 1;
+                },
+                expected: 'Exactly 1 bundle SANDWICH + BLOCKED'
+              },
+              {
+                name: 'Policy mentions SANDWICH_DETECTED',
+                test: (doc) => doc.body.textContent.includes('SANDWICH_DETECTED'),
+                expected: 'SANDWICH_DETECTED in policy'
+              },
+              {
+                name: 'No censorship alert',
+                test: (doc) => !doc.body.textContent.includes('CENSORSHIP DETECTED'),
+                expected: 'No CENSORSHIP DETECTED'
+              },
+              {
+                name: 'No tampering alert',
+                test: (doc) => !doc.body.textContent.includes('ADVERSARIAL INTEGRITY CHECK FAILED'),
+                expected: 'No tampering alerts'
+              },
+              {
+                name: 'Non-sandwich not blocked',
+                test: (doc) => {
+                  const cards = doc.querySelectorAll('.bundle-card');
+                  const wronglyBlocked = [...cards].filter(el =>
+                    (el.querySelector('.bs-blocked') || (el.textContent && el.textContent.includes('BLOCKED'))) &&
+                    !el.textContent.includes('SANDWICH')
+                  );
+                  return wronglyBlocked.length === 0;
+                },
+                expected: 'No non-sandwich BLOCKED'
+              }
+            ]
+          },
+          {
+            name: 'Bid Tampering Caught',
+            trigger: (win) => { win.runScenario('tamper'); },
+            wait: 7000,
+            checks: [
+              {
+                name: 'Tampering detected',
+                test: (doc) => {
+                  const body = doc.body.textContent;
+                  return body.includes('ADVERSARIAL INTEGRITY CHECK FAILED') || body.includes('bid altered');
+                },
+                expected: 'Adversarial integrity / bid altered'
+              },
+              {
+                name: 'At least one BROKEN',
+                test: (doc) => doc.body.textContent.includes('BROKEN'),
+                expected: 'At least one BROKEN bundle'
+              },
+              {
+                name: 'No sandwich block',
+                test: (doc) => !doc.body.textContent.includes('SANDWICH_DETECTED'),
+                expected: 'No sandwich policy'
+              }
+            ]
+          },
+          {
+            name: 'Relay Censorship',
+            trigger: (win) => { win.runScenario('censor'); },
+            wait: 7000,
+            checks: [
+              {
+                name: 'Censorship detected',
+                test: (doc) => doc.body.textContent.includes('CENSORSHIP DETECTED'),
+                expected: 'CENSORSHIP DETECTED present'
+              },
+              {
+                name: 'No sandwich block',
+                test: (doc) => !doc.body.textContent.includes('SANDWICH_DETECTED'),
+                expected: 'No sandwich policy'
+              }
+            ]
+          },
+          {
+            name: 'Full Adversarial',
+            trigger: (win) => { win.runScenario('adversarial'); },
+            wait: 9000,
+            checks: [
+              {
+                name: 'Sandwich blocked',
+                test: (doc) => {
+                  const body = doc.body.textContent;
+                  return body.includes('SANDWICH_DETECTED') || (body.includes('SANDWICH') && body.includes('BLOCKED'));
+                },
+                expected: 'Sandwich blocked'
+              },
+              {
+                name: 'Tampering detected',
+                test: (doc) => {
+                  const body = doc.body.textContent;
+                  return body.includes('ADVERSARIAL INTEGRITY CHECK FAILED') || body.includes('BROKEN');
+                },
+                expected: 'Bid tampering detected'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        demo: 'factory-floor-intelligence.html',
+        scenarios: [
+          {
+            name: 'Nominal',
+            trigger: (win) => { win.loadExample('nominal'); win.analyse(); },
+            wait: 3500,
+            checks: [
+              {
+                name: 'No policies triggered',
+                test: (doc) => {
+                  const body = doc.body.textContent;
+                  return !body.includes('LOTO ENFORCED') && !body.includes('LINE HALT') && !body.includes('DERATE');
+                },
+                expected: 'No policy enforcement'
+              },
+              {
+                name: 'Line speed 100% or no derate',
+                test: (doc) => {
+                  const body = doc.body.textContent;
+                  return body.includes('100%') || !body.includes('70%');
+                },
+                expected: 'Line speed 100%'
+              }
+            ]
+          },
+          {
+            name: 'Safety Derate',
+            trigger: (win) => { win.loadExample('safety'); win.analyse(); },
+            wait: 3500,
+            checks: [
+              {
+                name: 'Safety policy triggered',
+                test: (doc) => {
+                  const body = doc.body.textContent;
+                  return body.includes('MFG-SAFE-001') || body.includes('DERATE') || body.includes('70%');
+                },
+                expected: 'MFG-SAFE-001 / 70% derate'
+              },
+              {
+                name: 'Bearing temp >= 95',
+                test: (doc) => {
+                  const el = doc.getElementById('vt');
+                  return el && parseFloat(el.textContent) >= 95;
+                },
+                expected: 'Bearing temp >= 95°C'
+              }
+            ]
+          },
+          {
+            name: 'LOTO Breach',
+            trigger: (win) => { win.loadExample('loto'); win.analyse(); },
+            wait: 3500,
+            checks: [
+              {
+                name: 'LOTO enforced',
+                test: (doc) => {
+                  const body = doc.body.textContent;
+                  return body.includes('LOTO') && (body.includes('LOCKOUT') || body.includes('MFG-LOTO-001'));
+                },
+                expected: 'LOTO lockout'
+              },
+              {
+                name: 'Motor current > 22A',
+                test: (doc) => {
+                  const el = doc.getElementById('vc');
+                  return el && parseFloat(el.textContent) > 22;
+                },
+                expected: 'Motor current > 22A'
+              }
+            ]
+          },
+          {
+            name: 'Quality Halt',
+            trigger: (win) => { win.loadExample('quality'); win.analyse(); },
+            wait: 3500,
+            checks: [
+              {
+                name: 'Quality policy triggered',
+                test: (doc) => {
+                  const body = doc.body.textContent;
+                  return body.includes('MFG-QUAL-001') || body.includes('HALT') || body.includes('LINE HALT');
+                },
+                expected: 'MFG-QUAL-001 / line halt'
+              },
+              {
+                name: 'Scrap rate > 5%',
+                test: (doc) => {
+                  const el = doc.getElementById('vr');
+                  return el && parseFloat(el.textContent) > 5;
+                },
+                expected: 'Scrap rate > 5%'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        demo: 'defence-autonomous-governance.html',
+        scenarios: [
+          {
+            name: 'ISR',
+            trigger: (win) => { win.applyMissionPreset('isr'); win.runAnalysis(); },
+            wait: 3500,
+            checks: [
+              {
+                name: 'Monitoring / no engagement',
+                test: (doc) => {
+                  const body = doc.body.textContent;
+                  return body.includes('MONITORING') || body.includes('WEAPONS HOLD') ||
+                    (!body.includes('CLEARED TO ENGAGE') && !body.includes('Executing'));
+                },
+                expected: 'Monitoring, no engagement'
+              }
+            ]
+          },
+          {
+            name: 'Convoy Escort',
+            trigger: (win) => { win.applyMissionPreset('escort'); win.runAnalysis(); },
+            wait: 3500,
+            checks: [
+              {
+                name: 'Blocked by PID',
+                test: (doc) => {
+                  const body = doc.body.textContent;
+                  return body.includes('PID') && (body.includes('BLOCKED') || body.includes('below'));
+                },
+                expected: 'Engagement blocked by PID'
+              }
+            ]
+          },
+          {
+            name: 'Precision Strike',
+            trigger: (win) => { win.applyMissionPreset('strike'); win.runAnalysis(); },
+            wait: 3500,
+            checks: [
+              {
+                name: 'Blocked by civilian proximity',
+                test: (doc) => {
+                  const body = doc.body.textContent;
+                  return (body.includes('CIVILIAN') || body.includes('civilian')) &&
+                    (body.includes('BLOCKED') || body.includes('SAFE ZONE'));
+                },
+                expected: 'Blocked by civilian proximity'
+              }
+            ]
+          },
+          {
+            name: 'CASEVAC',
+            trigger: (win) => { win.applyMissionPreset('casevac'); win.runAnalysis(); },
+            wait: 3500,
+            checks: [
+              {
+                name: 'Danger close / human auth',
+                test: (doc) => {
+                  const body = doc.body.textContent;
+                  return body.includes('DANGER CLOSE') || body.includes('HUMAN AUTH') || body.includes('friendly');
+                },
+                expected: 'DANGER CLOSE or human auth'
+              }
+            ]
+          }
+        ]
+      }
+    ];
+
+    let totalChecks = 0;
+    function countChecks() {
+      let n = 0;
+      TEST_SUITE.forEach(d => d.scenarios.forEach(s => { n += s.checks.length; }));
+      return n;
+    }
+
+    async function runAllTests() {
+      const btn = document.getElementById('btnRun');
+      const tbody = document.getElementById('resultsBody');
+      const progressFill = document.getElementById('progressFill');
+      const progressLabel = document.getElementById('progressLabel');
+      const summaryEl = document.getElementById('summary');
+
+      btn.disabled = true;
+      tbody.innerHTML = '';
+      summaryEl.style.display = 'none';
+      totalChecks = countChecks();
+      let done = 0;
+      const results = [];
+
+      for (const demo of TEST_SUITE) {
+        const iframe = document.createElement('iframe');
+        iframe.src = demo.demo;
+        iframe.style.cssText = 'width:1200px;height:900px;position:absolute;left:-9999px;top:0;';
+        document.body.appendChild(iframe);
+
+        await new Promise(resolve => { iframe.onload = resolve; });
+        await sleep(2500);
+
+        const win = iframe.contentWindow;
+        const doc = iframe.contentDocument;
+        if (!win || !doc) {
+          results.push({ demo: demo.demo, scenario: '—', check: 'LOAD', pass: false, expected: 'Iframe loaded', detail: 'No contentWindow/contentDocument' });
+          document.body.removeChild(iframe);
+          continue;
+        }
+
+        for (const scenario of demo.scenarios) {
+          try {
+            if (win.resetAll) { win.resetAll(); await sleep(400); }
+            else if (win.reset) { win.reset(); await sleep(400); }
+          } catch (_) {}
+
+          try {
+            scenario.trigger(win);
+          } catch (e) {
+            results.push({ demo: demo.demo, scenario: scenario.name, check: 'TRIGGER', pass: false, expected: 'Trigger runs', detail: e.message });
+            progressLabel.textContent = demo.demo + ' — ' + scenario.name + ' (trigger error)';
+            done += scenario.checks.length;
+            progressFill.style.width = (100 * done / totalChecks) + '%';
+            continue;
+          }
+
+          await sleep(scenario.wait);
+          progressLabel.textContent = demo.demo + ' — ' + scenario.name;
+
+          for (const check of scenario.checks) {
+            let pass = false;
+            let detail = 'OK';
+            try {
+              pass = check.test(doc);
+              if (!pass) detail = 'Expected: ' + check.expected;
+            } catch (e) {
+              detail = 'ERROR: ' + e.message;
+            }
+            results.push({
+              demo: demo.demo,
+              scenario: scenario.name,
+              check: check.name,
+              pass: pass,
+              expected: check.expected,
+              detail: detail
+            });
+            done++;
+            progressFill.style.width = (100 * done / totalChecks) + '%';
+          }
+        }
+
+        document.body.removeChild(iframe);
+      }
+
+      progressLabel.textContent = 'Done';
+
+      results.forEach(r => {
+        const tr = document.createElement('tr');
+        tr.className = r.pass ? 'pass' : 'fail';
+        tr.innerHTML =
+          '<td>' + r.demo + '</td>' +
+          '<td>' + r.scenario + '</td>' +
+          '<td>' + r.check + '</td>' +
+          '<td>' + r.expected + '</td>' +
+          '<td><span class="' + (r.pass ? 'pass-badge' : 'fail-badge') + '">' + (r.pass ? 'PASS' : 'FAIL') + '</span>' +
+          (r.detail && !r.pass ? '<div class="detail">' + r.detail + '</div>' : '') + '</td>';
+        tbody.appendChild(tr);
+      });
+
+      const passed = results.filter(r => r.pass).length;
+      const failed = results.filter(r => !r.pass).length;
+      summaryEl.style.display = 'block';
+      summaryEl.className = 'summary ' + (failed > 0 ? 'fail' : 'pass');
+      summaryEl.textContent = 'Total: ' + passed + ' passed, ' + failed + ' failed (of ' + results.length + ' checks).';
+      if (failed > 0) {
+        const failList = results.filter(r => !r.pass).map(r => r.demo + ' / ' + r.scenario + ' / ' + r.check).join('; ');
+        summaryEl.innerHTML += '<div class="detail">Failed: ' + failList + '</div>';
+      }
+
+      btn.disabled = false;
+      return results;
+    }
+  </script>
+</body>
+</html>

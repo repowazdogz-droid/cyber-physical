@@ -1,0 +1,37 @@
+problem:
+  name: "Vibration-induced fastener loosening"
+  domain: "robotic_design"
+
+constraints:
+  - "vibration_frequency: 200Hz"
+  - "vibration_amplitude: 0.5g"
+  - "fastener_preload: 500N"
+  - "required_preload: 400N"
+  - "must_maintain_joint_integrity"
+
+uncertainties:
+  - "loosening_rate: variable"
+  - "resonance_effects: unknown"
+  - "preload_loss: unknown"
+
+objectives:
+  - "joint_stability"
+  - "vibration_resistance"
+
+design:
+  vibration_frequency_hz: 200
+  vibration_amplitude_g: 0.5
+  fastener_preload_n: 500
+  required_preload_n: 400
+  # For mechanical constraints
+  applied_stress_mpa: 450
+  yield_strength_mpa: 1000
+  # For resonance constraint
+  operating_frequency_hz: 200
+  natural_frequency_hz: 190
+  resonance_margin_percent: 5.0
+
+metadata:
+  injected_failure: "vibration_fastener_loosening"
+  failure_category: "mechanical"
+  expected_detection: "Mechanical constraint may trigger if vibration loosening modeled"

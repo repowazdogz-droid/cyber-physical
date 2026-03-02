@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0c0c0e;
+  --orb: rgba(120, 180, 200, 0.35);
+  --orb-glow: rgba(140, 200, 220, 0.2);
+  --text: #e4e4e8;
+  --muted: #6b6b75;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Outfit", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}

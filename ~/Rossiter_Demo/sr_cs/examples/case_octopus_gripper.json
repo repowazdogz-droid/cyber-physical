@@ -1,0 +1,14 @@
+{
+  "case_name": "Octopus Gripper",
+  "material": "silicone",
+  "actuator": "pneumatic",
+  "diameter_mm": 30.0,
+  "length_mm": 150.0,
+  "target_env": "underwater_ocean",
+  "latency_budget_ms": 80,
+  "force_requirement": "medium",
+  "sensing": ["pressure"],
+  "control_strategy": "closed_loop"
+}
+
+

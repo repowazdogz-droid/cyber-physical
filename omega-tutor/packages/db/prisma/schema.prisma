@@ -1,0 +1,340 @@
+// Omega Tutor V1 — Prisma schema
+// Detect → Diagnose → Repair → Remember
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Learner & session
+// ---------------------------------------------------------------------------
+
+model Learner {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  email     String?  @unique // optional for V1; anonymous by default
+  sessions  Session[]
+  observations      Observation[]
+  misconceptionEntries MisconceptionEntry[]
+  schedulerQueueItems SchedulerQueueItem[]
+}
+
+enum SessionType {
+  STANDARD
+  ADJUDICATION
+}
+
+model Session {
+  id           String      @id @default(cuid())
+  learnerId    String      @map("learner_id")
+  learner      Learner     @relation(fields: [learnerId], references: [id], onDelete: Cascade)
+  startAt      DateTime    @map("start_at")
+  endAt        DateTime?   @map("end_at")
+  sessionType  SessionType @default(STANDARD) @map("session_type")
+  probes       Probe[]     @relation("ExecutedInSession")
+  repairs      Repair[]
+  observations Observation[]
+  disputes     Dispute[]
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  @@map("sessions")
+}
+
+// ---------------------------------------------------------------------------
+// Concept graph
+// ---------------------------------------------------------------------------
+
+model Concept {
+  id          String    @id @default(cuid())
+  externalId  String    @unique @map("external_id") // e.g. "kinematics"
+  name        String
+  description String?
+  createdAt   DateTime  @default(now())
+  edgesFrom   ConceptEdge[] @relation("FromConcept")
+  edgesTo     ConceptEdge[] @relation("ToConcept")
+  probes      Probe[]
+  observations Observation[]
+  misconceptionTargets MisconceptionTarget[]
+  misconceptionEntries MisconceptionEntry[]
+}
+
+enum EdgeSource {
+  SEEDED
+  LEARNED
+}
+
+model ConceptEdge {
+  id              String     @id @default(cuid())
+  fromConceptId   String     @map("from_concept_id")
+  toConceptId     String     @map("to_concept_id")
+  fromConcept     Concept    @relation("FromConcept", fields: [fromConceptId], references: [id], onDelete: Cascade)
+  toConcept       Concept    @relation("ToConcept", fields: [toConceptId], references: [id], onDelete: Cascade)
+  edgeType        String     @map("edge_type")  // e.g. PREREQUISITE, RELATES
+  proximityWeight Float     @default(1) @map("proximity_weight")
+  source          EdgeSource @default(SEEDED)
+  createdAt       DateTime   @default(now())
+
+  @@unique([fromConceptId, toConceptId, edgeType])
+  @@map("concept_edges")
+}
+
+// ---------------------------------------------------------------------------
+// Config (immutable, versioned tunables)
+// ---------------------------------------------------------------------------
+
+model ConfigVersion {
+  id                          String   @id @default(cuid())
+  version                     Int      @unique
+  gatingMinObservations       Int      @map("gating_min_observations")
+  gatingMatchStrengthThreshold Float    @map("gating_match_strength_threshold")
+  confidenceHalfLifeDays      Int      @map("confidence_half_life_days")
+  schedulerProbeRatioCap      Float    @map("scheduler_probe_ratio_cap")
+  schedulerMinMinutesBetween  Int      @map("scheduler_min_minutes_between")
+  createdAt                   DateTime @default(now())
+
+  misconceptionEntries    MisconceptionEntry[]
+  misconceptionTransitions MisconceptionEntryStateTransition[]
+  @@map("config_versions")
+}
+
+// ---------------------------------------------------------------------------
+// Probe & observation
+// ---------------------------------------------------------------------------
+
+enum ProbeType {
+  DIAGNOSTIC
+  ADJUDICATION
+  VERIFICATION
+  TRANSFER
+}
+
+enum ProbeCreatedBy {
+  SCHEDULER
+  ADJUDICATION
+  MANUAL
+}
+
+enum ProbeStatus {
+  PENDING
+  EXECUTED
+  SKIPPED
+  EXPIRED
+}
+
+model Probe {
+  id                      String        @id @default(cuid())
+  type                    ProbeType
+  targetMisconceptionEntryId String?    @map("target_misconception_entry_id")
+  targetMisconceptionEntry   MisconceptionEntry? @relation("ProbesTargetingEntry", fields: [targetMisconceptionEntryId], references: [id], onDelete: SetNull)
+  targetConceptId         String        @map("target_concept_id")
+  targetConcept           Concept       @relation(fields: [targetConceptId], references: [id], onDelete: Cascade)
+  surfaceFormFamily       String        @map("surface_form_family")
+  promptContentRef        String        @map("prompt_content_ref") // ref to template / JSON
+  createdBy               ProbeCreatedBy @map("created_by")
+  status                  ProbeStatus  @default(PENDING)
+  executedInSessionId     String?       @map("executed_in_session_id")
+  executedInSession      Session?      @relation("ExecutedInSession", fields: [executedInSessionId], references: [id], onDelete: SetNull)
+  executedAt             DateTime?     @map("executed_at")
+  resultObservationId     String?       @unique @map("result_observation_id")
+  resultObservation      Observation?  @relation("ProbeResult", fields: [resultObservationId], references: [id], onDelete: SetNull)
+  producedObservations   Observation[] @relation("ProbeProducer")
+  createdAt               DateTime      @default(now())
+
+  schedulerQueueItems     SchedulerQueueItem[]
+  repairsVerifiedBy       Repair[]      @relation("VerificationProbe")
+  repairTransferProbes    RepairTransferProbe[] @relation("TransferProbes")
+
+  @@map("probes")
+}
+
+model Observation {
+  id             String   @id @default(cuid())
+  learnerId      String   @map("learner_id")
+  learner        Learner  @relation(fields: [learnerId], references: [id], onDelete: Cascade)
+  sessionId      String   @map("session_id")
+  session        Session  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  probeId        String   @map("probe_id")
+  conceptId      String   @map("concept_id")
+  concept        Concept  @relation(fields: [conceptId], references: [id], onDelete: Cascade)
+  rawResponse    String   @map("raw_response")
+  parsedFeatures Json     @map("parsed_features") // structured extraction
+  matchStrength  Float    @map("match_strength")
+  grammarLabel   String   @map("grammar_label")   // links to misconception target
+  timestamp      DateTime @default(now())
+
+  producer       Probe    @relation("ProbeProducer", fields: [probeId], references: [id], onDelete: Cascade)
+  resultOfProbe  Probe?   @relation("ProbeResult")
+  misconceptionLinks ObservationMisconceptionEntry[]
+
+  @@map("observations")
+}
+
+// ---------------------------------------------------------------------------
+// Misconception entry (state machine + evidence chain)
+// ---------------------------------------------------------------------------
+
+enum MisconceptionState {
+  EMERGING
+  ACTIVE
+  REPAIRED_PROVISIONAL
+  REPAIRED_STABLE
+  DORMANT
+  DISCONFIRMED
+}
+
+model MisconceptionEntry {
+  id                String   @id @default(cuid())
+  learnerId         String   @map("learner_id")
+  learner           Learner  @relation(fields: [learnerId], references: [id], onDelete: Cascade)
+  conceptId         String   @map("concept_id")
+  concept           Concept  @relation(fields: [conceptId], references: [id], onDelete: Cascade)
+  grammarLabel      String   @map("grammar_label")
+  state             MisconceptionState @default(EMERGING)
+  confidenceScore   Float    @map("confidence_score")
+  lastObservedAt    DateTime? @map("last_observed_at")
+  lastContactAt     DateTime? @map("last_contact_at")
+  configVersionId   String   @map("config_version_id")
+  configVersion     ConfigVersion @relation(fields: [configVersionId], references: [id], onDelete: Restrict)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  probesTargeting   Probe[]  @relation("ProbesTargetingEntry")
+  observationLinks  ObservationMisconceptionEntry[]
+  repairs           Repair[]
+  stateTransitions  MisconceptionEntryStateTransition[]
+  disputes          Dispute[]
+}
+
+// Evidence chain: which observations support this entry
+model ObservationMisconceptionEntry {
+  id                  String   @id @default(cuid())
+  observationId       String   @map("observation_id")
+  observation         Observation @relation(fields: [observationId], references: [id], onDelete: Cascade)
+  misconceptionEntryId String @map("misconception_entry_id")
+  misconceptionEntry   MisconceptionEntry @relation(fields: [misconceptionEntryId], references: [id], onDelete: Cascade)
+  createdAt           DateTime @default(now())
+
+  @@unique([observationId, misconceptionEntryId])
+  @@map("observation_misconception_entries")
+}
+
+// Per-transition config snapshot for audit
+model MisconceptionEntryStateTransition {
+  id                  String   @id @default(cuid())
+  misconceptionEntryId String @map("misconception_entry_id")
+  misconceptionEntry   MisconceptionEntry @relation(fields: [misconceptionEntryId], references: [id], onDelete: Cascade)
+  toState             MisconceptionState @map("to_state")
+  configVersionId     String   @map("config_version_id")
+  configVersion       ConfigVersion @relation(fields: [configVersionId], references: [id], onDelete: Restrict)
+  createdAt           DateTime @default(now())
+
+  @@map("misconception_entry_state_transitions")
+}
+
+// ---------------------------------------------------------------------------
+// Misconception targets (seeded: concept + grammar_label + surface_form_family)
+// ---------------------------------------------------------------------------
+
+model MisconceptionTarget {
+  id                 String   @id @default(cuid())
+  conceptId          String   @map("concept_id")
+  concept            Concept  @relation(fields: [conceptId], references: [id], onDelete: Cascade)
+  grammarLabel       String   @map("grammar_label")
+  surfaceFormFamily  String   @map("surface_form_family")
+  description        String?
+  createdAt          DateTime @default(now())
+
+  @@unique([conceptId, grammarLabel, surfaceFormFamily])
+  @@map("misconception_targets")
+}
+
+// ---------------------------------------------------------------------------
+// Repair
+// ---------------------------------------------------------------------------
+
+model Repair {
+  id                    String   @id @default(cuid())
+  misconceptionEntryId  String   @map("misconception_entry_id")
+  misconceptionEntry    MisconceptionEntry @relation(fields: [misconceptionEntryId], references: [id], onDelete: Cascade)
+  sessionId             String   @map("session_id")
+  session                Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  interventionType      String   @map("intervention_type")
+  contentRef            String   @map("content_ref")
+  attemptedAt            DateTime @map("attempted_at")
+  verifiedAt            DateTime? @map("verified_at")
+  verificationProbeId   String?   @map("verification_probe_id")
+  verificationProbe     Probe?   @relation("VerificationProbe", fields: [verificationProbeId], references: [id], onDelete: SetNull)
+  createdAt              DateTime @default(now())
+
+  transferProbes        RepairTransferProbe[]
+
+  @@map("repairs")
+}
+
+model RepairTransferProbe {
+  repairId String @map("repair_id")
+  probeId  String @map("probe_id")
+  repair   Repair @relation(fields: [repairId], references: [id], onDelete: Cascade)
+  probe    Probe  @relation("TransferProbes", fields: [probeId], references: [id], onDelete: Cascade)
+  @@id([repairId, probeId])
+  @@map("repair_transfer_probes")
+}
+
+// ---------------------------------------------------------------------------
+// Scheduler queue (DB-backed; no Redis for V1)
+// ---------------------------------------------------------------------------
+
+enum SchedulerQueueStatus {
+  PENDING
+  DISPATCHED
+  EXECUTED
+  SKIPPED
+  EXPIRED
+}
+
+model SchedulerQueueItem {
+  id           String               @id @default(cuid())
+  probeId      String               @map("probe_id")
+  probe        Probe                @relation(fields: [probeId], references: [id], onDelete: Cascade)
+  learnerId    String               @map("learner_id")
+  learner      Learner              @relation(fields: [learnerId], references: [id], onDelete: Cascade)
+  priorityScore Float               @map("priority_score")
+  reason       String
+  scheduledFor DateTime            @map("scheduled_for")
+  status       SchedulerQueueStatus  @default(PENDING)
+  createdAt    DateTime            @default(now())
+  updatedAt    DateTime            @updatedAt
+
+  @@map("scheduler_queue_items")
+}
+
+// ---------------------------------------------------------------------------
+// Dispute (1 per misconception per session)
+// ---------------------------------------------------------------------------
+
+enum DisputeStatus {
+  PENDING
+  ADJUDICATING
+  UPHELD
+  REJECTED
+}
+
+model Dispute {
+  id                   String       @id @default(cuid())
+  misconceptionEntryId String      @map("misconception_entry_id")
+  misconceptionEntry   MisconceptionEntry @relation(fields: [misconceptionEntryId], references: [id], onDelete: Cascade)
+  sessionId            String       @map("session_id")
+  session              Session      @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  userClaim            String       @map("user_claim")
+  status               DisputeStatus @default(PENDING)
+  createdAt            DateTime     @default(now())
+
+  @@unique([misconceptionEntryId, sessionId])
+  @@map("disputes")
+}

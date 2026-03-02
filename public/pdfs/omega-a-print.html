@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omega-A (Alignment) Protocol</title>
+  <style>
+    /* ===== Print system: force 2 pages ===== */
+    @page { size: A4; margin: 12mm; }
+    html, body { margin: 0; padding: 0; }
+    body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: #111; }
+
+    /* Use a fixed A4 "page" container so layout can't drift */
+    .page {
+      box-sizing: border-box;
+      width: 210mm;
+      height: 297mm;
+      padding: 12mm;
+      break-after: page;
+      page-break-after: always;
+    }
+    .page:last-child { break-after: auto; page-break-after: auto; }
+
+    /* Typography tuned to fit */
+    h1 { font-size: 22px; margin: 0 0 6px 0; letter-spacing: -0.2px; }
+    h2 { font-size: 14px; margin: 10px 0 6px 0; }
+    h3 { font-size: 12px; margin: 10px 0 6px 0; }
+    p, li { font-size: 10.5px; line-height: 1.35; margin: 0 0 6px 0; }
+    ul { margin: 0 0 6px 16px; padding: 0; }
+    .small { font-size: 9.5px; line-height: 1.3; }
+    .muted { color: #444; }
+
+    /* Visual blocks compact */
+    .box {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 8px 10px;
+      margin: 8px 0;
+    }
+
+    /* Diagram row */
+    .diagram {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin: 8px 0 10px 0;
+      font-family: monospace;
+      font-size: 9px;
+      border: 1px solid #e5e5e5;
+      padding: 8px;
+      background: #fafafa;
+      border-radius: 4px;
+    }
+    .pill {
+      border: 1px solid #cfcfcf;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 10px;
+      white-space: nowrap;
+    }
+    .arrow { font-size: 12px; color: #666; }
+
+    /* Prevent annoying micro overflows */
+    .tight p, .tight li { margin-bottom: 4px; }
+    .no-break { break-inside: avoid; page-break-inside: avoid; }
+    hr { border: 0; border-top: 1px solid #e6e6e6; margin: 8px 0; }
+    
+    ol { margin: 0 0 6px 16px; padding: 0; }
+    .stopping-rule {
+      border-left: 3px solid #111;
+      padding-left: 10px;
+      margin: 8px 0;
+      font-style: italic;
+      font-size: 10px;
+    }
+    .example-box {
+      border: 1px solid #d4d4d4;
+      padding: 8px 10px;
+      margin: 8px 0;
+      background: #fafafa;
+      border-radius: 4px;
+    }
+    .example-box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Omega-A (Alignment)</h1>
+    
+    <h2>Structure</h2>
+    <div class="diagram">
+      Input: Decision, recommendation, or proposal<br>
+      ↓<br>
+      [1] Mandate: Who decides? What authority?<br>
+      [2] Authority signals: How is authority communicated?<br>
+      [3] Decision substitution: Where are decisions made?<br>
+      [4] Value injection: What values are embedded?<br>
+      [5] Control preservation: How is human control maintained?<br>
+      ↓<br>
+      Output: Decision-boundary alignment map
+    </div>
+
+    <h2>Sequence</h2>
+    <div class="box tight no-break">
+      <ol>
+        <li>Identify the decision or recommendation</li>
+        <li>Map decision authority and mandate</li>
+        <li>Identify authority signals and communication</li>
+        <li>Locate decision substitution points</li>
+        <li>Identify embedded values and preferences</li>
+        <li>Examine control preservation mechanisms</li>
+      </ol>
+    </div>
+
+    <h2>Stopping Rule</h2>
+    <div class="box tight no-break stopping-rule">
+      Stop when all five elements (mandate, authority signals, decision substitution, value injection, control preservation) are mapped. Do not evaluate whether alignment is "good" or "bad"—only expose where decisions are made and how boundaries are maintained.
+    </div>
+
+    <h2>What It's Not</h2>
+    <div class="box tight no-break">
+      <ul>
+        <li>Not an evaluation of decision quality</li>
+        <li>Not a recommendation for how decisions should be made</li>
+        <li>Not a judgment about authority legitimacy</li>
+        <li>Not a prescription for control mechanisms</li>
+        <li>Not a value judgment about embedded preferences</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page">
+    <h1>Omega-A (Alignment) — Worked Example</h1>
+
+    <div class="example-box">
+      <strong>Recommendation:</strong>
+      "Deploy AI system to automatically approve loan applications under $50,000 with credit scores above 700."
+    </div>
+
+    <h2>Mandate</h2>
+    <ul>
+      <li>Who decides: System (AI) makes approval decisions automatically</li>
+      <li>What authority: Delegated from loan officers to automated system</li>
+      <li>Scope: Applications under $50,000 with credit scores above 700</li>
+      <li>Boundary: Above threshold, human review required</li>
+    </ul>
+
+    <h2>Authority signals</h2>
+    <ul>
+      <li>System approval communicates: "Low risk, standard criteria met"</li>
+      <li>Automatic processing signals: "No human review needed"</li>
+      <li>Thresholds signal: "$50k and 700 score = safe to automate"</li>
+      <li>No explicit signal about who bears responsibility for errors</li>
+    </ul>
+
+    <h2>Decision substitution</h2>
+    <ul>
+      <li>AI system substitutes for loan officer judgment in approval decision</li>
+      <li>Decision point: Binary approve/deny replaces nuanced evaluation</li>
+      <li>Substitution scope: Limited to specific criteria (amount, credit score)</li>
+      <li>Edge cases: Unclear how borderline cases (699 score, $50,001) are handled</li>
+    </ul>
+
+    <h2>Value injection</h2>
+    <ul>
+      <li>Efficiency prioritized: Speed and volume over individual consideration</li>
+      <li>Risk tolerance: Implicit acceptance of false positives/negatives within threshold</li>
+      <li>Fairness assumption: Credit score is sufficient proxy for creditworthiness</li>
+      <li>Cost-benefit: Automation cost savings vs potential error costs</li>
+    </ul>
+
+    <h2>Control preservation</h2>
+    <ul>
+      <li>Override mechanism: Human review available for appeals (not specified)</li>
+      <li>Escalation path: Unclear how to escalate automated decisions</li>
+      <li>Autonomy ceiling: System operates within defined thresholds only</li>
+      <li>Operator agency: Loan officers retain control outside threshold, but unclear how they monitor or intervene</li>
+      <li>Audit trail: Not specified whether decisions are logged or reviewable</li>
+    </ul>
+  </div>
+</body>
+</html>

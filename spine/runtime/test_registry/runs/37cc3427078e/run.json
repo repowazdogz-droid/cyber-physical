@@ -1,0 +1,770 @@
+{
+  "run_id": "37cc3427078e",
+  "case_id": "67303d68c756",
+  "timestamp": "2026-02-05 08:40:56.324079",
+  "output": {
+    "decision_map": {
+      "constraints_checked": [
+        {
+          "constraint": "anatomically_difficult_ventral_access",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "severe_spinal_stenosis_from_phlegmon",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "iatrogenic_infection_origin",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "patient_age: 64",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        {
+          "constraint": "female_patient",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        }
+      ],
+      "violations": []
+    },
+    "failure_modes": [],
+    "contradictions": [],
+    "unknowns": [
+      {
+        "item": "endoscopic_vs_open_debridement_efficacy: unknown_comparison",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: endoscopic_vs_open_debridement_efficacy: unknown_comparison"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.36000000000000004,
+          "max_confidence": 0.42400000000000004,
+          "sensitivity": 0.07999999999999999,
+          "dependent_on": [
+            "endoscopic_vs_open_debridement_efficacy"
+          ]
+        }
+      },
+      {
+        "item": "percutaneous_screw_stability_in_infection: untested_long_term",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: percutaneous_screw_stability_in_infection: untested_long_term"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.32,
+          "max_confidence": 0.448,
+          "sensitivity": 0.16000000000000003,
+          "dependent_on": [
+            "percutaneous_screw_stability_in_infection"
+          ]
+        }
+      },
+      {
+        "item": "fusion_rate_in_infected_tissue: variable",
+        "impact": "medium",
+        "resolution": "investigation_required",
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: fusion_rate_in_infected_tissue: variable"
+          ],
+          "requires_validation": true
+        },
+        "conditional_confidence": {
+          "base_confidence": 0.4,
+          "min_confidence": 0.4,
+          "max_confidence": 0.4,
+          "sensitivity": 0.0,
+          "dependent_on": [
+            "fusion_rate_in_infected_tissue"
+          ]
+        }
+      }
+    ],
+    "recommended_experiments": [],
+    "falsification_tests": [],
+    "formal_constraints": [],
+    "trace_graph": {
+      "run_id": "601826d7f6fa",
+      "timestamp": "2026-02-05T08:40:56.323900",
+      "nodes": {
+        "input_0000": {
+          "id": "input_0000",
+          "type": "input",
+          "content": {
+            "type": "problem",
+            "name": "Full endoscopic debridement for severe lumbosacral discitis",
+            "domain": "spine_surgery"
+          },
+          "timestamp": "2026-02-05T08:40:56.317238",
+          "parents": [],
+          "metadata": {}
+        },
+        "input_0001": {
+          "id": "input_0001",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "anatomically_difficult_ventral_access"
+          },
+          "timestamp": "2026-02-05T08:40:56.317240",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0002": {
+          "id": "input_0002",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "severe_spinal_stenosis_from_phlegmon"
+          },
+          "timestamp": "2026-02-05T08:40:56.317242",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0003": {
+          "id": "input_0003",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "iatrogenic_infection_origin"
+          },
+          "timestamp": "2026-02-05T08:40:56.317243",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0004": {
+          "id": "input_0004",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "patient_age: 64"
+          },
+          "timestamp": "2026-02-05T08:40:56.317244",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0005": {
+          "id": "input_0005",
+          "type": "input",
+          "content": {
+            "type": "constraint",
+            "value": "female_patient"
+          },
+          "timestamp": "2026-02-05T08:40:56.317245",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0006": {
+          "id": "input_0006",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "endoscopic_vs_open_debridement_efficacy: unknown_comparison"
+          },
+          "timestamp": "2026-02-05T08:40:56.317246",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0007": {
+          "id": "input_0007",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "percutaneous_screw_stability_in_infection: untested_long_term"
+          },
+          "timestamp": "2026-02-05T08:40:56.317247",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0008": {
+          "id": "input_0008",
+          "type": "input",
+          "content": {
+            "type": "uncertainty",
+            "value": "fusion_rate_in_infected_tissue: variable"
+          },
+          "timestamp": "2026-02-05T08:40:56.317248",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0009": {
+          "id": "input_0009",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "neural_decompression"
+          },
+          "timestamp": "2026-02-05T08:40:56.317248",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0010": {
+          "id": "input_0010",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "pathogen_identification"
+          },
+          "timestamp": "2026-02-05T08:40:56.317249",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0011": {
+          "id": "input_0011",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "mechanical_stabilization"
+          },
+          "timestamp": "2026-02-05T08:40:56.317250",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "input_0012": {
+          "id": "input_0012",
+          "type": "input",
+          "content": {
+            "type": "objective",
+            "value": "infection_resolution"
+          },
+          "timestamp": "2026-02-05T08:40:56.317251",
+          "parents": [
+            "input_0000"
+          ],
+          "metadata": {}
+        },
+        "inference_0013": {
+          "id": "inference_0013",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "anatomically_difficult_ventral_access",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T08:40:56.323823",
+          "parents": [
+            "input_0001"
+          ],
+          "metadata": {}
+        },
+        "inference_0014": {
+          "id": "inference_0014",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "severe_spinal_stenosis_from_phlegmon",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T08:40:56.323825",
+          "parents": [
+            "input_0002"
+          ],
+          "metadata": {}
+        },
+        "inference_0015": {
+          "id": "inference_0015",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "iatrogenic_infection_origin",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T08:40:56.323826",
+          "parents": [
+            "input_0003"
+          ],
+          "metadata": {}
+        },
+        "inference_0016": {
+          "id": "inference_0016",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "patient_age: 64",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T08:40:56.323827",
+          "parents": [
+            "input_0004"
+          ],
+          "metadata": {}
+        },
+        "inference_0017": {
+          "id": "inference_0017",
+          "type": "inference",
+          "content": {
+            "type": "constraint_check",
+            "constraint": "female_patient",
+            "checked": true,
+            "contract_matched": null,
+            "violation": null
+          },
+          "timestamp": "2026-02-05T08:40:56.323828",
+          "parents": [
+            "input_0005"
+          ],
+          "metadata": {}
+        },
+        "output_0018": {
+          "id": "output_0018",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "endoscopic_vs_open_debridement_efficacy: unknown_comparison",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T08:40:56.323871",
+          "parents": [
+            "input_0006"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: endoscopic_vs_open_debridement_efficacy: unknown_comparison"
+              ],
+              "requires_validation": true
+            }
+          }
+        },
+        "output_0019": {
+          "id": "output_0019",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "percutaneous_screw_stability_in_infection: untested_long_term",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T08:40:56.323886",
+          "parents": [
+            "input_0007"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: percutaneous_screw_stability_in_infection: untested_long_term"
+              ],
+              "requires_validation": true
+            }
+          }
+        },
+        "output_0020": {
+          "id": "output_0020",
+          "type": "output",
+          "content": {
+            "type": "unknown",
+            "item": "fusion_rate_in_infected_tissue: variable",
+            "impact": "medium",
+            "resolution": "investigation_required"
+          },
+          "timestamp": "2026-02-05T08:40:56.323895",
+          "parents": [
+            "input_0008"
+          ],
+          "metadata": {
+            "epistemic": {
+              "confidence": 0.4,
+              "evidence_type": "heuristic",
+              "provenance": [
+                "uncertainty: fusion_rate_in_infected_tissue: variable"
+              ],
+              "requires_validation": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "trace": {
+    "run_id": "601826d7f6fa",
+    "timestamp": "2026-02-05T08:40:56.323900",
+    "nodes": {
+      "input_0000": {
+        "id": "input_0000",
+        "type": "input",
+        "content": {
+          "type": "problem",
+          "name": "Full endoscopic debridement for severe lumbosacral discitis",
+          "domain": "spine_surgery"
+        },
+        "timestamp": "2026-02-05T08:40:56.317238",
+        "parents": [],
+        "metadata": {}
+      },
+      "input_0001": {
+        "id": "input_0001",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "anatomically_difficult_ventral_access"
+        },
+        "timestamp": "2026-02-05T08:40:56.317240",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0002": {
+        "id": "input_0002",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "severe_spinal_stenosis_from_phlegmon"
+        },
+        "timestamp": "2026-02-05T08:40:56.317242",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0003": {
+        "id": "input_0003",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "iatrogenic_infection_origin"
+        },
+        "timestamp": "2026-02-05T08:40:56.317243",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0004": {
+        "id": "input_0004",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "patient_age: 64"
+        },
+        "timestamp": "2026-02-05T08:40:56.317244",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0005": {
+        "id": "input_0005",
+        "type": "input",
+        "content": {
+          "type": "constraint",
+          "value": "female_patient"
+        },
+        "timestamp": "2026-02-05T08:40:56.317245",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0006": {
+        "id": "input_0006",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "endoscopic_vs_open_debridement_efficacy: unknown_comparison"
+        },
+        "timestamp": "2026-02-05T08:40:56.317246",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0007": {
+        "id": "input_0007",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "percutaneous_screw_stability_in_infection: untested_long_term"
+        },
+        "timestamp": "2026-02-05T08:40:56.317247",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0008": {
+        "id": "input_0008",
+        "type": "input",
+        "content": {
+          "type": "uncertainty",
+          "value": "fusion_rate_in_infected_tissue: variable"
+        },
+        "timestamp": "2026-02-05T08:40:56.317248",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0009": {
+        "id": "input_0009",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "neural_decompression"
+        },
+        "timestamp": "2026-02-05T08:40:56.317248",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0010": {
+        "id": "input_0010",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "pathogen_identification"
+        },
+        "timestamp": "2026-02-05T08:40:56.317249",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0011": {
+        "id": "input_0011",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "mechanical_stabilization"
+        },
+        "timestamp": "2026-02-05T08:40:56.317250",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "input_0012": {
+        "id": "input_0012",
+        "type": "input",
+        "content": {
+          "type": "objective",
+          "value": "infection_resolution"
+        },
+        "timestamp": "2026-02-05T08:40:56.317251",
+        "parents": [
+          "input_0000"
+        ],
+        "metadata": {}
+      },
+      "inference_0013": {
+        "id": "inference_0013",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "anatomically_difficult_ventral_access",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T08:40:56.323823",
+        "parents": [
+          "input_0001"
+        ],
+        "metadata": {}
+      },
+      "inference_0014": {
+        "id": "inference_0014",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "severe_spinal_stenosis_from_phlegmon",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T08:40:56.323825",
+        "parents": [
+          "input_0002"
+        ],
+        "metadata": {}
+      },
+      "inference_0015": {
+        "id": "inference_0015",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "iatrogenic_infection_origin",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T08:40:56.323826",
+        "parents": [
+          "input_0003"
+        ],
+        "metadata": {}
+      },
+      "inference_0016": {
+        "id": "inference_0016",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "patient_age: 64",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T08:40:56.323827",
+        "parents": [
+          "input_0004"
+        ],
+        "metadata": {}
+      },
+      "inference_0017": {
+        "id": "inference_0017",
+        "type": "inference",
+        "content": {
+          "type": "constraint_check",
+          "constraint": "female_patient",
+          "checked": true,
+          "contract_matched": null,
+          "violation": null
+        },
+        "timestamp": "2026-02-05T08:40:56.323828",
+        "parents": [
+          "input_0005"
+        ],
+        "metadata": {}
+      },
+      "output_0018": {
+        "id": "output_0018",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "endoscopic_vs_open_debridement_efficacy: unknown_comparison",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T08:40:56.323871",
+        "parents": [
+          "input_0006"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: endoscopic_vs_open_debridement_efficacy: unknown_comparison"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0019": {
+        "id": "output_0019",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "percutaneous_screw_stability_in_infection: untested_long_term",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T08:40:56.323886",
+        "parents": [
+          "input_0007"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: percutaneous_screw_stability_in_infection: untested_long_term"
+            ],
+            "requires_validation": true
+          }
+        }
+      },
+      "output_0020": {
+        "id": "output_0020",
+        "type": "output",
+        "content": {
+          "type": "unknown",
+          "item": "fusion_rate_in_infected_tissue: variable",
+          "impact": "medium",
+          "resolution": "investigation_required"
+        },
+        "timestamp": "2026-02-05T08:40:56.323895",
+        "parents": [
+          "input_0008"
+        ],
+        "metadata": {
+          "epistemic": {
+            "confidence": 0.4,
+            "evidence_type": "heuristic",
+            "provenance": [
+              "uncertainty: fusion_rate_in_infected_tissue: variable"
+            ],
+            "requires_validation": true
+          }
+        }
+      }
+    }
+  },
+  "predictions": [],
+  "reviewer": null,
+  "review_notes": ""
+}

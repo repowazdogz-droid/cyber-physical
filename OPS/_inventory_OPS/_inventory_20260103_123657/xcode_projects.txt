@@ -1,0 +1,6 @@
+omega-vision/OmegaGallery/OmegaGallery.xcodeproj
+omega-vision/OmegaGallery/OmegaGallery.xcodeproj/project.xcworkspace
+omega-vision/OmegaVision/OmegaGallery/OmegaGallery.xcodeproj
+omega-vision/OmegaVision/OmegaGallery/OmegaGallery.xcodeproj/project.xcworkspace
+omega-vision/OmegaVision/OmegaVision.xcodeproj
+omega-vision/OmegaVision/OmegaVision.xcodeproj/project.xcworkspace

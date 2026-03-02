@@ -1,0 +1,41 @@
+{
+  "case_id": "9ae19a755e9c",
+  "name": "Creep at elevated temperature - 0.8 Tm",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:16:45.982873",
+  "case_yaml": {
+    "problem": {
+      "name": "Creep at elevated temperature - 0.8 Tm",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "operating_temp: 0.8 \u00d7 melting_temp",
+      "melting_temp: 200\u00b0C",
+      "operating_temp: 160\u00b0C",
+      "creep_strain_rate: 0.001/hour",
+      "must_withstand_long_term"
+    ],
+    "uncertainties": [
+      "creep_life_prediction: variable",
+      "temperature_variation: \u00b110\u00b0C",
+      "stress_acceleration: unknown"
+    ],
+    "objectives": [
+      "long_term_stability",
+      "material_integrity"
+    ]
+  },
+  "design_data": {
+    "melting_temp_c": 200,
+    "operating_temp_c": 160,
+    "temp_ratio": 0.8,
+    "creep_strain_rate_per_hour": 0.001,
+    "expected_life_hours": 1000
+  },
+  "tags": [
+    "adversarial",
+    "material",
+    "test"
+  ],
+  "notes": "Injected failure: creep_deformation"
+}

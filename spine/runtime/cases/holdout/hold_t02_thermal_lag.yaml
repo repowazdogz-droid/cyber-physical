@@ -1,0 +1,38 @@
+problem:
+  name: "Thermal lag - sensor reads 20s behind actual temp"
+  domain: "robotic_design"
+
+constraints:
+  - "sensor_lag: 20s"
+  - "thermal_time_constant: 15s"
+  - "control_period: 100ms"
+  - "max_temp_limit: 75°C"
+  - "must_prevent_overshoot"
+
+uncertainties:
+  - "actual_temperature: unknown"
+  - "overshoot_magnitude: variable"
+  - "control_response: unknown"
+
+objectives:
+  - "temperature_control"
+  - "safety_margin"
+
+design:
+  sensor_lag_s: 20
+  thermal_time_constant_s: 15
+  control_period_ms: 100
+  max_temp_limit_c: 75
+  # For thermal constraints
+  temperature_rise_celsius: 80
+  max_temperature_celsius: 70
+  operating_temp_c: 80
+  max_service_temp_c: 100
+  # For control constraints
+  control_latency_ms: 20000
+  control_period_ms: 100
+
+metadata:
+  injected_failure: "thermal_lag"
+  failure_category: "thermal"
+  expected_detection: "Thermal or control constraint may trigger if lag modeled"

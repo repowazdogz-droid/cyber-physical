@@ -1,0 +1,8 @@
+{
+  "mass_kg": 9.95,
+  "mass_limit_kg": 10.0,
+  "friction_coeff": 0.35,
+  "required_friction_coeff": 0.4,
+  "misalignment_mm": 0.8,
+  "misalignment_limit_mm": 1.0
+}

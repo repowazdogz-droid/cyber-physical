@@ -1,0 +1,17 @@
+problem:
+  name: "Proposes changing physics constant"
+  domain: "surgical_robotics"
+
+constraints:
+  - "gravity: 0.1g"
+  - "speed_of_light: variable"
+
+uncertainties: []
+
+objectives:
+  - "physics_modification"
+
+metadata:
+  trap_type: "overreach"
+  expected_forge_behavior: "Should not suggest changing physics constants"
+  quality_gate_should_catch: true

@@ -1,0 +1,270 @@
+{
+  "created_at": "2026-02-08T13:31:02.255Z",
+  "analyses_count": 29,
+  "train_count": 21,
+  "test_count": 8,
+  "current_weights": {
+    "W_a": 0.45,
+    "W_e": 0.25,
+    "W_u": 0.15,
+    "W_d": 0.15
+  },
+  "recommended_weights": {
+    "W_a": 0.35,
+    "W_e": 0.35,
+    "W_u": 0.15,
+    "W_d": 0.15
+  },
+  "current_correlation": {
+    "full": 0.611931461795176,
+    "train": 0.5553870138919932,
+    "test": 0.717255730066289
+  },
+  "recommended_correlation": {
+    "full": 0.6699125122232776,
+    "train": 0.6170966821022147,
+    "test": 0.7824607964359516
+  },
+  "overfit": false,
+  "score_distribution": {
+    "current": {
+      "min": 0.059205,
+      "max": 0.306095,
+      "mean": 0.18541172413793108,
+      "std": 0.05331844426417078
+    },
+    "recommended": {
+      "min": 0.03853499999999999,
+      "max": 0.272455,
+      "mean": 0.16687206896551723,
+      "std": 0.05358869747851238
+    }
+  },
+  "band_coverage": {
+    "current": [
+      "Low"
+    ],
+    "recommended": [
+      "Low"
+    ]
+  },
+  "top_5_combos": [
+    {
+      "W_a": 0.35,
+      "W_e": 0.35,
+      "W_u": 0.15,
+      "W_d": 0.15,
+      "trainCorr": 0.6170966821022147,
+      "testCorr": 0.7824607964359516
+    },
+    {
+      "W_a": 0.35,
+      "W_e": 0.3,
+      "W_u": 0.15,
+      "W_d": 0.2,
+      "trainCorr": 0.6047547484601704,
+      "testCorr": 0.6520506636966263
+    },
+    {
+      "W_a": 0.35,
+      "W_e": 0.3,
+      "W_u": 0.2,
+      "W_d": 0.15,
+      "trainCorr": 0.6047547484601704,
+      "testCorr": 0.717255730066289
+    },
+    {
+      "W_a": 0.35,
+      "W_e": 0.35,
+      "W_u": 0.2,
+      "W_d": 0.1,
+      "trainCorr": 0.6047547484601704,
+      "testCorr": 0.7824607964359516
+    },
+    {
+      "W_a": 0.4,
+      "W_e": 0.35,
+      "W_u": 0.15,
+      "W_d": 0.1,
+      "trainCorr": 0.6047547484601704,
+      "testCorr": 0.717255730066289
+    }
+  ],
+  "safe_to_apply": true,
+  "per_analysis": [
+    {
+      "analysis_id": "4bb8eeeb-20da-4c18-b00d-e2b2a9eace89",
+      "human_rating": 2,
+      "current_score": 0.172425,
+      "recommended_score": 0.12754499999999996
+    },
+    {
+      "analysis_id": "9e9970dd-c8b4-4495-8401-2630bd2b4c1f",
+      "human_rating": 3,
+      "current_score": 0.177345,
+      "recommended_score": 0.13272499999999998
+    },
+    {
+      "analysis_id": "8bedee62-a753-4bc0-bb13-32e9fa6155a4",
+      "human_rating": 3,
+      "current_score": 0.087945,
+      "recommended_score": 0.061274999999999996
+    },
+    {
+      "analysis_id": "6b3bd488-7848-44c6-ae28-bf0dce1cd5bd",
+      "human_rating": 2,
+      "current_score": 0.059205,
+      "recommended_score": 0.03853499999999999
+    },
+    {
+      "analysis_id": "0828cca0-ddd7-4b0f-9b5a-a4b5e8e48349",
+      "human_rating": 3,
+      "current_score": 0.10143000000000002,
+      "recommended_score": 0.07038
+    },
+    {
+      "analysis_id": "4b900b07-b7fb-4701-b40d-b20fafc7b438",
+      "human_rating": 2,
+      "current_score": 0.15507,
+      "recommended_score": 0.11405000000000001
+    },
+    {
+      "analysis_id": "6ad89095-8d35-469e-bd9a-34702c8570e1",
+      "human_rating": 3,
+      "current_score": 0.15513000000000002,
+      "recommended_score": 0.11528
+    },
+    {
+      "analysis_id": "58ac2e51-2bc7-477b-86ec-cd426a61df1f",
+      "human_rating": 3,
+      "current_score": 0.210125,
+      "recommended_score": 0.192565
+    },
+    {
+      "analysis_id": "c48e58ae-5aa6-48fb-b419-674b9677bb48",
+      "human_rating": 3,
+      "current_score": 0.14389000000000002,
+      "recommended_score": 0.14559000000000002
+    },
+    {
+      "analysis_id": "6b3891fa-fd01-4f39-bc9f-32279d0a3648",
+      "human_rating": 5,
+      "current_score": 0.23493499999999998,
+      "recommended_score": 0.21271499999999996
+    },
+    {
+      "analysis_id": "57d6520f-e0fc-43c1-afcb-028512ead7d5",
+      "human_rating": 3,
+      "current_score": 0.17151999999999998,
+      "recommended_score": 0.16626
+    },
+    {
+      "analysis_id": "530211cb-72cc-435a-b056-b06a0298c3f3",
+      "human_rating": 3,
+      "current_score": 0.15304,
+      "recommended_score": 0.15286
+    },
+    {
+      "analysis_id": "365352d2-c442-4adb-a772-09522721bce9",
+      "human_rating": 4,
+      "current_score": 0.306095,
+      "recommended_score": 0.272455
+    },
+    {
+      "analysis_id": "ce7c6362-02ee-4e59-8fb0-4c51d5f91c04",
+      "human_rating": 3,
+      "current_score": 0.16451,
+      "recommended_score": 0.16323
+    },
+    {
+      "analysis_id": "7cd7bc07-8e83-421b-a247-cff99991ba0d",
+      "human_rating": 3,
+      "current_score": 0.12624000000000002,
+      "recommended_score": 0.12857000000000002
+    },
+    {
+      "analysis_id": "6cb033fb-28a7-4f82-bfe2-58d3081e71bd",
+      "human_rating": 3,
+      "current_score": 0.1921,
+      "recommended_score": 0.1771
+    },
+    {
+      "analysis_id": "292d09e0-f20a-4184-b601-04ef37d3c6da",
+      "human_rating": 4,
+      "current_score": 0.219995,
+      "recommended_score": 0.200355
+    },
+    {
+      "analysis_id": "7aa8676e-0e90-4752-86ed-f90a6b776fc0",
+      "human_rating": 2,
+      "current_score": 0.214745,
+      "recommended_score": 0.195825
+    },
+    {
+      "analysis_id": "95bf8ba8-bd97-42b9-8b3d-9ac3e9d529e7",
+      "human_rating": 2,
+      "current_score": 0.17524,
+      "recommended_score": 0.16265
+    },
+    {
+      "analysis_id": "92605794-dd64-4b8e-a49b-709d65b7d27e",
+      "human_rating": 3,
+      "current_score": 0.19519,
+      "recommended_score": 0.181
+    },
+    {
+      "analysis_id": "51493c90-080a-451d-a549-52f64766bd70",
+      "human_rating": 2,
+      "current_score": 0.17539500000000002,
+      "recommended_score": 0.17078500000000002
+    },
+    {
+      "analysis_id": "b30c26d7-24d3-4866-9623-31664fb57839",
+      "human_rating": 4,
+      "current_score": 0.266835,
+      "recommended_score": 0.24239499999999997
+    },
+    {
+      "analysis_id": "efad6e9a-ac6d-4616-b795-43980dee99fb",
+      "human_rating": 3,
+      "current_score": 0.16743,
+      "recommended_score": 0.16285000000000002
+    },
+    {
+      "analysis_id": "78e5fc5a-f45a-4511-be1d-65f607471278",
+      "human_rating": 5,
+      "current_score": 0.262115,
+      "recommended_score": 0.236435
+    },
+    {
+      "analysis_id": "7069c8a8-39b2-4c4c-9b7a-c466acee1034",
+      "human_rating": 3,
+      "current_score": 0.19298,
+      "recommended_score": 0.18658999999999995
+    },
+    {
+      "analysis_id": "bb5f0858-c808-4190-a812-26de16535d4f",
+      "human_rating": 4,
+      "current_score": 0.24728000000000006,
+      "recommended_score": 0.23976999999999998
+    },
+    {
+      "analysis_id": "1b084d51-0f80-48ee-adb0-8a79c2512014",
+      "human_rating": 3,
+      "current_score": 0.1891,
+      "recommended_score": 0.17382999999999998
+    },
+    {
+      "analysis_id": "80285605-fd40-4614-bc74-d6ffd5023be3",
+      "human_rating": 3,
+      "current_score": 0.21796500000000002,
+      "recommended_score": 0.198295
+    },
+    {
+      "analysis_id": "b01c585f-7430-4f25-b42c-6f7929cd1de8",
+      "human_rating": 4,
+      "current_score": 0.241665,
+      "recommended_score": 0.21737499999999998
+    }
+  ]
+}

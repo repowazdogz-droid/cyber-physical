@@ -1,0 +1,168 @@
+{
+  "case_name": "Endoscopic tool for discitis treatment",
+  "timestamp": "2026-02-05T12:35:30.137465",
+  "hypotheses": [
+    {
+      "id": "h001",
+      "hypothesis_text": "Uncertainty collapse: What measurement would collapse thermal uncertainty? Temperature time-series or thermal imaging?",
+      "category": "uncertainty_collapse",
+      "testable_prediction": "If we measure temperature time-series during operation, thermal uncertainty should reduce from \u00b120\u00b0C to \u00b15\u00b0C",
+      "falsification_test": "Run thermal test with thermocouples, measure temperature profile over time",
+      "falsification_cost": "low",
+      "falsification_time": "days",
+      "confidence": 0.8,
+      "adjacent_domains": [
+        "thermal_measurement",
+        "thermography"
+      ],
+      "assumptions_challenged": [
+        "thermal behavior is unpredictable",
+        "steady-state assumptions hold"
+      ]
+    },
+    {
+      "id": "h002",
+      "hypothesis_text": "Uncertainty collapse: What measurement would collapse thermal uncertainty? Temperature time-series or thermal imaging?",
+      "category": "uncertainty_collapse",
+      "testable_prediction": "If we measure temperature time-series during operation, thermal uncertainty should reduce from \u00b120\u00b0C to \u00b15\u00b0C",
+      "falsification_test": "Run thermal test with thermocouples, measure temperature profile over time",
+      "falsification_cost": "low",
+      "falsification_time": "days",
+      "confidence": 0.8,
+      "adjacent_domains": [
+        "thermal_measurement",
+        "thermography"
+      ],
+      "assumptions_challenged": [
+        "thermal behavior is unpredictable",
+        "steady-state assumptions hold"
+      ]
+    }
+  ],
+  "adjacencies": [
+    {
+      "source_domain": "soft_robotics",
+      "target_application": "surgical_gripping",
+      "technique": "compliant actuation",
+      "relevance_score": 0.9,
+      "reference_hint": "Soft robotics grippers \u2192 gentle tissue manipulation"
+    },
+    {
+      "source_domain": "fluidic_actuation",
+      "target_application": "gentle_manipulation",
+      "technique": "pneumatic/hydraulic",
+      "relevance_score": 0.9,
+      "reference_hint": "Fluidic \u2192 low-force actuation"
+    },
+    {
+      "source_domain": "microsurgery",
+      "target_application": "surgical_robotics",
+      "technique": "precision positioning",
+      "relevance_score": 0.85,
+      "reference_hint": "Microsurgery techniques \u2192 scaled-up precision"
+    },
+    {
+      "source_domain": "origami_engineering",
+      "target_application": "deployable_structures",
+      "technique": "folded mechanisms",
+      "relevance_score": 0.8,
+      "reference_hint": "Origami \u2192 deployable surgical tools"
+    },
+    {
+      "source_domain": "haptic_feedback",
+      "target_application": "surgical_control",
+      "technique": "force feedback",
+      "relevance_score": 0.8,
+      "reference_hint": "Haptics \u2192 surgical force control"
+    },
+    {
+      "source_domain": "continuum_robotics",
+      "target_application": "endoscopic_access",
+      "technique": "snake-like motion",
+      "relevance_score": 0.8,
+      "reference_hint": "Continuum \u2192 endoscopic navigation"
+    },
+    {
+      "source_domain": "gecko_adhesion",
+      "target_application": "surgical_gripping",
+      "technique": "directional adhesion",
+      "relevance_score": 0.75,
+      "reference_hint": "Gecko adhesion \u2192 slip-resistant grippers"
+    },
+    {
+      "source_domain": "biomimetics",
+      "target_application": "surgical_design",
+      "technique": "nature-inspired mechanisms",
+      "relevance_score": 0.75,
+      "reference_hint": "Biomimetics \u2192 bio-inspired surgical tools"
+    },
+    {
+      "source_domain": "variable_stiffness",
+      "target_application": "compliant_robotics",
+      "technique": "stiffness modulation",
+      "relevance_score": 0.75,
+      "reference_hint": "Variable stiffness \u2192 adaptive compliance"
+    },
+    {
+      "source_domain": "shape_memory_alloys",
+      "target_application": "adaptive_instruments",
+      "technique": "phase transformation",
+      "relevance_score": 0.7,
+      "reference_hint": "SMA \u2192 adaptive surgical instruments"
+    }
+  ],
+  "experiments": [
+    {
+      "hypothesis_id": "h001",
+      "experiment_name": "Test: Uncertainty collapse: What measurement would collapse therma...",
+      "objective": "If we measure temperature time-series during operation, thermal uncertainty should reduce from \u00b120\u00b0C to \u00b15\u00b0C",
+      "method": "bench",
+      "measurements": [
+        "temperature (\u00b0C)",
+        "time (s)",
+        "power (W)"
+      ],
+      "success_criterion": "Observe: If we measure temperature time-series during operation, thermal uncertainty should reduce from \u00b120\u00b0C to \u00b15\u00b0C",
+      "falsification_criterion": "Run thermal test with thermocouples, measure temperature profile over time",
+      "estimated_cost": "low",
+      "estimated_time": "days",
+      "equipment_needed": [
+        "thermal camera",
+        "thermocouples",
+        "power supply"
+      ],
+      "data_to_feed_back": [
+        "temperature_measured",
+        "time_measured",
+        "power_measured",
+        "hypothesis_confirmed_or_falsified"
+      ]
+    },
+    {
+      "hypothesis_id": "h002",
+      "experiment_name": "Test: Uncertainty collapse: What measurement would collapse therma...",
+      "objective": "If we measure temperature time-series during operation, thermal uncertainty should reduce from \u00b120\u00b0C to \u00b15\u00b0C",
+      "method": "bench",
+      "measurements": [
+        "temperature (\u00b0C)",
+        "time (s)",
+        "power (W)"
+      ],
+      "success_criterion": "Observe: If we measure temperature time-series during operation, thermal uncertainty should reduce from \u00b120\u00b0C to \u00b15\u00b0C",
+      "falsification_criterion": "Run thermal test with thermocouples, measure temperature profile over time",
+      "estimated_cost": "low",
+      "estimated_time": "days",
+      "equipment_needed": [
+        "thermal camera",
+        "thermocouples",
+        "power supply"
+      ],
+      "data_to_feed_back": [
+        "temperature_measured",
+        "time_measured",
+        "power_measured",
+        "hypothesis_confirmed_or_falsified"
+      ]
+    }
+  ]
+}

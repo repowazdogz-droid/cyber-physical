@@ -1,0 +1,33 @@
+{
+  "id": "spine_unsafe_procedure_v1",
+  "name": "Experimental Spine Procedure with Insufficient Evidence",
+  "domain": "surgery",
+  "subdomain": "spine",
+  "risk_class": "IIb",
+  "jurisdiction": "UK",
+  "payer_mix": ["NHS"],
+  "evidence": {
+    "num_studies": 1,
+    "num_rcts": 0,
+    "total_patients": 10,
+    "follow_up_months": 1
+  },
+  "regulatory": {
+    "has_ce_mark": false,
+    "strategy_defined": false,
+    "pathway": "unknown"
+  },
+  "reimbursement": {
+    "has_procedure_code": false,
+    "estimated_cost_per_case": 5000,
+    "estimated_savings_per_case": 2000
+  },
+  "adoption": {
+    "training_hours": 40,
+    "requires_new_hardware": true,
+    "workflow_disruption": "high"
+  }
+}
+
+
+

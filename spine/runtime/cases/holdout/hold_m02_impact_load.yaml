@@ -1,0 +1,38 @@
+problem:
+  name: "Impact load 3x static - drop scenario"
+  domain: "robotic_design"
+
+constraints:
+  - "static_load: 50N"
+  - "impact_multiplier: 3.0"
+  - "impact_load: 150N"
+  - "design_limit: 120N"
+  - "must_withstand_impact"
+
+uncertainties:
+  - "impact_duration: variable"
+  - "energy_absorption: unknown"
+  - "stress_concentration: unknown"
+
+objectives:
+  - "impact_resistance"
+  - "structural_integrity"
+
+design:
+  static_load_n: 50
+  impact_multiplier: 3.0
+  impact_load_n: 150
+  design_limit_n: 120
+  # For mechanical constraints
+  max_force_n: 150
+  max_force_limit_n: 120
+  applied_stress_mpa: 600
+  yield_strength_mpa: 1000
+  # For acceleration constraint
+  max_acceleration_mps2: 150
+  max_accel_limit_mps2: 50
+
+metadata:
+  injected_failure: "impact_load"
+  failure_category: "mechanical"
+  expected_detection: "Mechanical constraint should trigger on impact load"

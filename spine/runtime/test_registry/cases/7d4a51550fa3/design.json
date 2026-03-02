@@ -1,0 +1,7 @@
+{
+  "expected_workspace": "clear",
+  "obstacle_present": true,
+  "contact_force_limit_n": 2.0,
+  "collision_detection_enabled": true,
+  "max_contact_force_n": 4.5
+}

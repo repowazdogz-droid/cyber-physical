@@ -1,0 +1,5 @@
+{
+  "required_angle_deg": 185,
+  "joint_limit_deg": 170,
+  "violation_deg": 15
+}

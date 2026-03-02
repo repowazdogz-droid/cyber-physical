@@ -1,0 +1,21 @@
+FROM alpine:3.19
+
+RUN apk add --no-cache \
+    restic=0.16.4-r0 \
+    postgresql-client \
+    redis \
+    dcron \
+    jq \
+    curl \
+    util-linux \
+    && rm -rf /var/cache/apk/*
+
+WORKDIR /backups
+
+COPY backups/ /backups/
+RUN chmod +x /backups/*.sh
+
+VOLUME ["/staging", "/root/.cache/restic", "/var/log"]
+
+ENTRYPOINT ["/backups/entrypoint.sh"]
+CMD []

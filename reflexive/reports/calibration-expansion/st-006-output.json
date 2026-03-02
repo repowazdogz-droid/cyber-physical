@@ -1,0 +1,240 @@
+{
+  "stimulus_id": "st-006",
+  "analysis_id": "efad6e9a-ac6d-4616-b795-43980dee99fb",
+  "case_id": "8ea22fd8-208e-4273-ae95-51e8510c0bb2",
+  "duration_ms": 10023,
+  "success": true,
+  "confidence_score": 0.1674,
+  "confidence_breakdown": {
+    "per_lens": [
+      {
+        "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+        "claim_count": 7,
+        "scoring_claim_count": 7,
+        "supported_claim_count": 5,
+        "mean_evidence_strength": 0.6285714285714287,
+        "contribution_to_agreement": 1.09625
+      },
+      {
+        "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "claim_count": 6,
+        "scoring_claim_count": 6,
+        "supported_claim_count": 4,
+        "mean_evidence_strength": 0.6166666666666667,
+        "contribution_to_agreement": 0.77125
+      },
+      {
+        "lens_id": "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "claim_count": 6,
+        "scoring_claim_count": 6,
+        "supported_claim_count": 4,
+        "mean_evidence_strength": 0.6,
+        "contribution_to_agreement": 0.44625
+      },
+      {
+        "lens_id": "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+        "claim_count": 8,
+        "scoring_claim_count": 8,
+        "supported_claim_count": 6,
+        "mean_evidence_strength": 0.7625000000000001,
+        "contribution_to_agreement": 0.11499999999999999
+      },
+      {
+        "lens_id": "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "claim_count": 6,
+        "scoring_claim_count": 6,
+        "supported_claim_count": 4,
+        "mean_evidence_strength": 0.6666666666666666,
+        "contribution_to_agreement": 0.57125
+      }
+    ],
+    "per_theme": [
+      {
+        "strength": 0.65,
+        "theme_id": "0c23b055-5350-51e7-8b34-c43ac564b7bc",
+        "agreement_type": "convergence",
+        "participating_lenses": 2
+      },
+      {
+        "strength": 0.575,
+        "theme_id": "4882ef5e-2974-55e3-be07-ff5677237adb",
+        "agreement_type": "convergence",
+        "participating_lenses": 5
+      },
+      {
+        "strength": 0.525,
+        "theme_id": "9c7ef9b2-1d23-5397-8b8a-b58bfc3719d5",
+        "agreement_type": "convergence",
+        "participating_lenses": 4
+      },
+      {
+        "strength": 0.6,
+        "theme_id": "ba0ab664-30e4-585b-a63b-a834ba16855e",
+        "agreement_type": "convergence",
+        "participating_lenses": 3
+      },
+      {
+        "strength": 0.6499999999999999,
+        "theme_id": "f33278fc-18a0-52fe-a906-cd1b826e7dc2",
+        "agreement_type": "convergence",
+        "participating_lenses": 2
+      },
+      {
+        "strength": 0.8777777777777778,
+        "theme_id": "eb34ad6d-9429-5d1b-a53b-a4245b4aac17",
+        "agreement_type": "divergence",
+        "participating_lenses": 4
+      }
+    ],
+    "raw_score": 0.16742153502713036,
+    "drift_flags": [],
+    "final_score": 0.1674,
+    "agreement_factor": 0.31249999999999994,
+    "lens_count_factor": 1,
+    "divergence_penalty": 0.1142857142857143,
+    "unsupported_penalty": 0.15151515151515152,
+    "low_evidence_warning": false,
+    "evidence_density_factor": 0.2666666595890411,
+    "high_contradiction_warning": false
+  },
+  "convergence_count": 5,
+  "divergence_count": 1,
+  "orphan_count": 1,
+  "convergence_points": [
+    {
+      "strength": 0.65,
+      "theme_id": "0c23b055-5350-51e7-8b34-c43ac564b7bc",
+      "theme_label": "The R&D investment could enhance product differentiation in the AI-native market.",
+      "evidence_density": 0.3299999912414384,
+      "supporting_claims": [
+        "45a91e9f-18d2-4d09-bac4-5b135a437d10",
+        "96889fce-5c5a-47dc-8796-a22ad49c7251"
+      ],
+      "supporting_lenses": [
+        "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    },
+    {
+      "strength": 0.575,
+      "theme_id": "4882ef5e-2974-55e3-be07-ff5677237adb",
+      "theme_label": "The board's decision timeline remains unchanged.",
+      "evidence_density": 0.1649999956207192,
+      "supporting_claims": [
+        "05a27396-8db7-4ccf-9aa5-a8151094194d",
+        "28f4c053-60d0-48a7-a9a7-bf727c9d359f",
+        "328cff7e-57a8-4122-9a3d-c0939dbac7e9",
+        "5b8b79b9-8672-43c9-80cb-c7ba8f32bf07",
+        "884186ff-f80e-4b84-8e84-1298557114ad",
+        "90217d95-5d00-4cdf-8f62-5cb25ebe5b3b",
+        "95f37385-6bc9-426a-bcdc-f52328e978a7",
+        "9da4e8db-19e5-4b68-91c6-af4902e6fc0b",
+        "b580c383-c74e-4b22-9c05-f081bc3bab36",
+        "c30ac777-0ea7-46ba-90f6-deeacfa0e7cd",
+        "d2e441c0-419b-4af0-a7db-bed50487a0c2",
+        "e0f4bc10-a1b8-4637-9dc4-96e381623091"
+      ],
+      "supporting_lenses": [
+        "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    },
+    {
+      "strength": 0.525,
+      "theme_id": "9c7ef9b2-1d23-5397-8b8a-b58bfc3719d5",
+      "theme_label": "Interest rates remain stable for debt financing.",
+      "evidence_density": 0.0824999978103596,
+      "supporting_claims": [
+        "2044805b-c776-4ddc-8385-e5c1bcd5a5ad",
+        "859bce53-cbbd-4d80-b5d9-eb7d8b9c5d2c",
+        "e3bb907c-400c-4587-b30a-ea15cc2c75c4",
+        "f290c758-0c7b-4cd7-a432-e4435454d7ec"
+      ],
+      "supporting_lenses": [
+        "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    },
+    {
+      "strength": 0.6,
+      "theme_id": "ba0ab664-30e4-585b-a63b-a834ba16855e",
+      "theme_label": "Returning $200M to shareholders via buyback could temporarily increase stock value.",
+      "evidence_density": 0.4399999883219179,
+      "supporting_claims": [
+        "970e19e9-e042-44f7-bef5-aec2ca259597",
+        "992ec93b-c0ba-46f7-a0bb-326a78e6cd81",
+        "ad4fd43f-bd9c-4d49-8f1b-1c1c8f2664f8"
+      ],
+      "supporting_lenses": [
+        "0bdc6ca0-d232-457b-bb38-2711584e66f9",
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    },
+    {
+      "strength": 0.6499999999999999,
+      "theme_id": "f33278fc-18a0-52fe-a906-cd1b826e7dc2",
+      "theme_label": "Investing $120M in R&D carries the risk of uncertain ROI within 24 months.",
+      "evidence_density": 0.4399999883219179,
+      "supporting_claims": [
+        "57bcab95-24e6-4a5c-b463-41a3962b655f",
+        "f1b4cd96-9478-4021-bfe0-948690690439"
+      ],
+      "supporting_lenses": [
+        "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+        "c1829216-f59c-4f89-8ce1-c2313b5195f2"
+      ]
+    }
+  ],
+  "divergence_points": [
+    {
+      "nature": "contradictory",
+      "severity": 0.8777777777777778,
+      "theme_id": "eb34ad6d-9429-5d1b-a53b-a4245b4aac17",
+      "positions": [
+        {
+          "lens_id": "56a5c4a1-2f32-4fc1-a590-c0342eb593bc",
+          "claim_ids": [
+            "0b79a6b3-b985-44ab-9b58-692d1fe95d45"
+          ],
+          "position_summary": "Proposal B involves investing $120M in R&D to build an AI-native platform over 24 months."
+        },
+        {
+          "lens_id": "6d1a58fb-4982-409a-b2bb-984d36a3feea",
+          "claim_ids": [
+            "18b20f3c-660a-4285-8152-a8d2b7eede2c",
+            "1f453a30-ae95-4deb-836e-2fb251a891e4",
+            "59052139-2b43-44d2-850c-9fc2d1831da4",
+            "ac7b3b87-806e-40f6-96cd-ce5990744606",
+            "b156f1e5-b77f-4df1-8af4-ac75475371d9",
+            "bdbef741-1d82-4301-ab6f-6f9eae1a98a1"
+          ],
+          "position_summary": "Proposal B involves investing $120M in R&D to build an AI-native platform over 24 months."
+        },
+        {
+          "lens_id": "c1829216-f59c-4f89-8ce1-c2313b5195f2",
+          "claim_ids": [
+            "2c4129a4-84d6-4182-bb15-6fc890139765"
+          ],
+          "position_summary": "Proposal B involves investing $120M in R&D to build an AI-native platform over 24 months."
+        },
+        {
+          "lens_id": "5d323a15-6d2a-48d7-ad02-3f65a3c259f8",
+          "claim_ids": [
+            "354dbc8c-012c-4823-92ac-f2ccf698bc67"
+          ],
+          "position_summary": "Proposal B involves investing $120M in R&D to build an AI-native platform over 24 months."
+        }
+      ],
+      "theme_label": "Proposal B involves investing $120M in R&D to build an AI-native platform over 24 months."
+    }
+  ],
+  "orphan_claims": [
+    "969f6ff5-0d90-47eb-8a46-c77e4721b68c"
+  ]
+}

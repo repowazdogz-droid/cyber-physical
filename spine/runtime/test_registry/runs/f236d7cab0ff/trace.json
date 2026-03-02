@@ -1,0 +1,370 @@
+{
+  "run_id": "9c9e27e75552",
+  "timestamp": "2026-02-05T10:21:20.342408",
+  "nodes": {
+    "input_0000": {
+      "id": "input_0000",
+      "type": "input",
+      "content": {
+        "type": "problem",
+        "name": "Surface friction drops 50% - wet conditions",
+        "domain": "robotic_design"
+      },
+      "timestamp": "2026-02-05T10:21:20.336825",
+      "parents": [],
+      "metadata": {}
+    },
+    "input_0001": {
+      "id": "input_0001",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "dry_friction_coefficient: 0.6"
+      },
+      "timestamp": "2026-02-05T10:21:20.336827",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0002": {
+      "id": "input_0002",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "wet_friction_coefficient: 0.3"
+      },
+      "timestamp": "2026-02-05T10:21:20.336828",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0003": {
+      "id": "input_0003",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "required_friction: 0.4"
+      },
+      "timestamp": "2026-02-05T10:21:20.336829",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0004": {
+      "id": "input_0004",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "grip_force: 5.0N"
+      },
+      "timestamp": "2026-02-05T10:21:20.336830",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0005": {
+      "id": "input_0005",
+      "type": "input",
+      "content": {
+        "type": "constraint",
+        "value": "must_not_slip"
+      },
+      "timestamp": "2026-02-05T10:21:20.336831",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0006": {
+      "id": "input_0006",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "surface_wetness_variation: high"
+      },
+      "timestamp": "2026-02-05T10:21:20.336832",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0007": {
+      "id": "input_0007",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "friction_degradation_rate: unknown"
+      },
+      "timestamp": "2026-02-05T10:21:20.336833",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0008": {
+      "id": "input_0008",
+      "type": "input",
+      "content": {
+        "type": "uncertainty",
+        "value": "slip_detection: variable"
+      },
+      "timestamp": "2026-02-05T10:21:20.336834",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0009": {
+      "id": "input_0009",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "secure_grasping"
+      },
+      "timestamp": "2026-02-05T10:21:20.336835",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "input_0010": {
+      "id": "input_0010",
+      "type": "input",
+      "content": {
+        "type": "objective",
+        "value": "friction_management"
+      },
+      "timestamp": "2026-02-05T10:21:20.336836",
+      "parents": [
+        "input_0000"
+      ],
+      "metadata": {}
+    },
+    "inference_0011": {
+      "id": "inference_0011",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "dry_friction_coefficient: 0.6",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:21:20.342218",
+      "parents": [
+        "input_0001"
+      ],
+      "metadata": {}
+    },
+    "inference_0012": {
+      "id": "inference_0012",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "wet_friction_coefficient: 0.3",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:21:20.342220",
+      "parents": [
+        "input_0002"
+      ],
+      "metadata": {}
+    },
+    "inference_0013": {
+      "id": "inference_0013",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "required_friction: 0.4",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:21:20.342220",
+      "parents": [
+        "input_0003"
+      ],
+      "metadata": {}
+    },
+    "inference_0014": {
+      "id": "inference_0014",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "grip_force: 5.0N",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:21:20.342221",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {}
+    },
+    "inference_0015": {
+      "id": "inference_0015",
+      "type": "inference",
+      "content": {
+        "type": "constraint_check",
+        "constraint": "must_not_slip",
+        "checked": true,
+        "contract_matched": null,
+        "violation": null
+      },
+      "timestamp": "2026-02-05T10:21:20.342222",
+      "parents": [
+        "input_0005"
+      ],
+      "metadata": {}
+    },
+    "output_0016": {
+      "id": "output_0016",
+      "type": "output",
+      "content": {
+        "type": "failure_mode",
+        "mode": "slip_under_load",
+        "severity": "high",
+        "mitigation": "increase_friction_coefficient"
+      },
+      "timestamp": "2026-02-05T10:21:20.342250",
+      "parents": [
+        "input_0005"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "constraint: must_not_slip"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0017": {
+      "id": "output_0017",
+      "type": "output",
+      "content": {
+        "type": "failure_mode",
+        "mode": "excessive_force_damage",
+        "severity": "medium",
+        "mitigation": "implement_force_limiting_control"
+      },
+      "timestamp": "2026-02-05T10:21:20.342266",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "constraint: grip_force: 5.0N"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0018": {
+      "id": "output_0018",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "surface_wetness_variation: high",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:21:20.342282",
+      "parents": [
+        "input_0006"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: surface_wetness_variation: high"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0019": {
+      "id": "output_0019",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "friction_degradation_rate: unknown",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:21:20.342291",
+      "parents": [
+        "input_0007"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: friction_degradation_rate: unknown"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0020": {
+      "id": "output_0020",
+      "type": "output",
+      "content": {
+        "type": "unknown",
+        "item": "slip_detection: variable",
+        "impact": "medium",
+        "resolution": "investigation_required"
+      },
+      "timestamp": "2026-02-05T10:21:20.342297",
+      "parents": [
+        "input_0008"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "heuristic",
+          "provenance": [
+            "uncertainty: slip_detection: variable"
+          ],
+          "requires_validation": true
+        }
+      }
+    },
+    "output_0021": {
+      "id": "output_0021",
+      "type": "output",
+      "content": {
+        "type": "recommended_experiment",
+        "name": "force_limit_characterization"
+      },
+      "timestamp": "2026-02-05T10:21:20.342305",
+      "parents": [
+        "input_0004"
+      ],
+      "metadata": {
+        "epistemic": {
+          "confidence": 0.4,
+          "evidence_type": "rule_derived",
+          "provenance": [
+            "constraint: grip_force: 5.0N"
+          ],
+          "requires_validation": true
+        }
+      }
+    }
+  }
+}

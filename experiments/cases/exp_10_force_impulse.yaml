@@ -1,0 +1,23 @@
+problem:
+  name: "Force experiment: impulse force 5N for 10ms"
+  domain: "surgical_robotics"
+
+constraints:
+  - "applied_force: 5N"
+  - "duration: 10ms"
+  - "must_not_damage"
+
+uncertainties:
+  - "impulse_damage: unknown"
+
+objectives:
+  - "rapid_contact"
+
+design:
+  applied_force_n: 5.0
+  tissue_stiffness: 2.0
+  gripper_config: "rigid"
+  impulse_duration_ms: 10
+
+metadata:
+  experiment_type: "force"

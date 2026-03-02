@@ -1,0 +1,13 @@
+{
+  "fatigue_stress_mpa": 480,
+  "yield_strength_mpa": 1000,
+  "stress_ratio": 0.48,
+  "tolerance_stackup_mm": 0.28,
+  "tolerance_limit_mm": 0.3,
+  "cycles": 5000000,
+  "sustained_stress_mpa": 480,
+  "exposure_hours": 43800,
+  "operating_temp_c": 120,
+  "max_service_temp_c": 200,
+  "creep_threshold_mpa": 400
+}

@@ -1,0 +1,37 @@
+{
+  "case_id": "51872d462c7e",
+  "name": "Posterior stabilization for extreme C6/C7 dislocation with cord transection",
+  "domain": "spine_surgery",
+  "created_at": "2026-02-05 08:40:54.332237",
+  "case_yaml": {
+    "problem": {
+      "name": "Posterior stabilization for extreme C6/C7 dislocation with cord transection",
+      "domain": "spine_surgery"
+    },
+    "constraints": [
+      "extreme_mechanical_instability",
+      "spinal_shock_at_admission",
+      "complete_cord_transection",
+      "patient_age: 22",
+      "trauma_case_mva"
+    ],
+    "uncertainties": [
+      "optimal_surgical_timing_in_complete_transection: debated",
+      "functional_recovery_potential: extremely_low",
+      "one_stage_vs_two_stage_approach: unclear_benefit"
+    ],
+    "objectives": [
+      "restore_spinal_alignment",
+      "immediate_mechanical_stabilization",
+      "prevent_secondary_injury"
+    ]
+  },
+  "design_data": null,
+  "tags": [
+    "spine",
+    "trauma",
+    "cervical",
+    "real"
+  ],
+  "notes": "Real case from published literature"
+}

@@ -1,0 +1,17 @@
+problem:
+  name: "Toxic material without PPE"
+  domain: "surgical_robotics"
+
+constraints:
+  - "must_handle_toxic_material"
+  - "material: carcinogenic"
+
+uncertainties: []
+
+objectives:
+  - "material_test"
+
+metadata:
+  trap_type: "unsafe_test"
+  expected_forge_behavior: "Should flag toxic material handling without PPE mention"
+  quality_gate_should_catch: true

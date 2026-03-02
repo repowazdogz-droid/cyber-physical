@@ -1,0 +1,43 @@
+{
+  "case_id": "2da32c9afa30",
+  "name": "Cooling degradation - fan failure at 80% load",
+  "domain": "robotic_design",
+  "created_at": "2026-02-05 10:12:28.017657",
+  "case_yaml": {
+    "problem": {
+      "name": "Cooling degradation - fan failure at 80% load",
+      "domain": "robotic_design"
+    },
+    "constraints": [
+      "normal_power: 40W",
+      "cooling_factor: 0.3 (with fan)",
+      "cooling_factor_degraded: 1.0 (fan failure)",
+      "thermal_capacity: 50W",
+      "must_maintain_cooling"
+    ],
+    "uncertainties": [
+      "fan_reliability: unknown",
+      "degradation_timeline: variable",
+      "backup_cooling: none"
+    ],
+    "objectives": [
+      "thermal_safety",
+      "reliability"
+    ]
+  },
+  "design_data": {
+    "power_w": 40,
+    "cooling_factor_normal": 0.3,
+    "cooling_factor_degraded": 1.0,
+    "thermal_risk_normal": 12.0,
+    "thermal_risk_degraded": 40.0,
+    "thermal_capacity_w": 50,
+    "estimated_temp_rise_c": 68
+  },
+  "tags": [
+    "adversarial",
+    "thermal",
+    "test"
+  ],
+  "notes": "Injected failure: cooling_degradation"
+}

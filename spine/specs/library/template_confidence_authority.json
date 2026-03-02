@@ -1,0 +1,121 @@
+{
+  "version": "1.0.0",
+  "kernelId": "template_confidence_authority",
+  "adapterId": "spec:template_confidence_authority",
+  "name": "Confidence × Authority Template",
+  "description": "Domain-agnostic confidence × authority → outcome mapping",
+  "outcomes": [
+    {
+      "outcomeId": "HIGH_CONFIDENCE_HIGH_AUTHORITY",
+      "label": "High Confidence, High Authority",
+      "conditions": [
+        {
+          "signalKey": "confidence",
+          "operator": "gte",
+          "value": 80
+        },
+        {
+          "signalKey": "authority",
+          "operator": "gte",
+          "value": 80
+        }
+      ],
+      "confidence": "High",
+      "rationale": "High confidence and high authority - proceed with action"
+    },
+    {
+      "outcomeId": "HIGH_CONFIDENCE_LOW_AUTHORITY",
+      "label": "High Confidence, Low Authority",
+      "conditions": [
+        {
+          "signalKey": "confidence",
+          "operator": "gte",
+          "value": 80
+        },
+        {
+          "signalKey": "authority",
+          "operator": "lt",
+          "value": 80
+        }
+      ],
+      "confidence": "Medium",
+      "rationale": "High confidence but low authority - request approval"
+    },
+    {
+      "outcomeId": "LOW_CONFIDENCE_HIGH_AUTHORITY",
+      "label": "Low Confidence, High Authority",
+      "conditions": [
+        {
+          "signalKey": "confidence",
+          "operator": "lt",
+          "value": 80
+        },
+        {
+          "signalKey": "authority",
+          "operator": "gte",
+          "value": 80
+        }
+      ],
+      "confidence": "Medium",
+      "rationale": "Low confidence but high authority - proceed with caution"
+    },
+    {
+      "outcomeId": "LOW_CONFIDENCE_LOW_AUTHORITY",
+      "label": "Low Confidence, Low Authority",
+      "conditions": [
+        {
+          "signalKey": "confidence",
+          "operator": "lt",
+          "value": 80
+        },
+        {
+          "signalKey": "authority",
+          "operator": "lt",
+          "value": 80
+        }
+      ],
+      "confidence": "Low",
+      "rationale": "Low confidence and low authority - do not proceed"
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

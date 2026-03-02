@@ -1,0 +1,13 @@
+{
+  "expected_mass_kg": 1.0,
+  "min_mass_kg": 0.6,
+  "max_mass_kg": 1.4,
+  "variation_percent": 40,
+  "payload_capacity_kg": 1.5,
+  "utilization_at_max": 0.93,
+  "contact_force_n": 13.7,
+  "contact_area_mm2": 20.0,
+  "tissue_tolerance_mpa": 0.5,
+  "contact_duration_s": 1.5,
+  "pressure_limit_mpa": 1.0
+}

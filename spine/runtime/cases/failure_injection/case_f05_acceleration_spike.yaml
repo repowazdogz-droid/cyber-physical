@@ -1,0 +1,29 @@
+problem:
+  name: "Jerk exceeds safety limit"
+  domain: "robotic_design"
+
+constraints:
+  - "max_acceleration: 45mps2"
+  - "jerk_limit: 500mps3"
+  - "actual_jerk: 750mps3"
+  - "must_not_exceed_jerk_limits"
+  - "smooth_motion"
+
+uncertainties:
+  - "control_bandwidth: unknown"
+  - "vibration_response: untested"
+
+objectives:
+  - "fast_positioning"
+  - "patient_comfort"
+
+design:
+  max_acceleration_mps2: 45
+  jerk_limit_mps3: 500
+  actual_jerk_mps3: 750
+  violation_mps3: 250
+
+metadata:
+  injected_failure: "acceleration_spike"
+  expected_detection: "Acceleration limit violation"
+  decision_delta_target: 2

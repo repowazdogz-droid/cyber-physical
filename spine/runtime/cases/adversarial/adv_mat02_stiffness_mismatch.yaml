@@ -1,0 +1,30 @@
+problem:
+  name: "Stiffness mismatch between mating parts - 10x ratio"
+  domain: "robotic_design"
+
+constraints:
+  - "part1_stiffness: 1000 N/m"
+  - "part2_stiffness: 100 N/m"
+  - "stiffness_ratio: 10:1"
+  - "max_acceptable_ratio: 5:1"
+  - "must_match_stiffness"
+
+uncertainties:
+  - "load_distribution_impact: unknown"
+  - "stress_concentration: variable"
+  - "fatigue_life_reduction: unknown"
+
+objectives:
+  - "structural_compatibility"
+  - "load_distribution"
+
+design:
+  part1_stiffness_n_per_m: 1000
+  part2_stiffness_n_per_m: 100
+  stiffness_ratio: 10.0
+  max_ratio: 5.0
+
+metadata:
+  injected_failure: "stiffness_mismatch"
+  failure_category: "material"
+  expected_detection: "Material/stiffness issue may be detected"
