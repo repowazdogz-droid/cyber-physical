@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import UiCard from "../../learning/ui/UiCard";
@@ -283,7 +283,7 @@ async function verifyTrrClient(bundle: ProofBundle): Promise<ProofVerification> 
   }
 }
 
-export default function TreatyRuntimeDemoPage() {
+function TreatyRuntimeDemoPageContent() {
   const searchParams = useSearchParams();
   const [importedProof, setImportedProof] = useState<ProofBundle | null>(null);
   const [browserVerification, setBrowserVerification] = useState<ProofVerification | null>(null);
@@ -693,3 +693,10 @@ export default function TreatyRuntimeDemoPage() {
   );
 }
 
+export default function TreatyRuntimeDemoPage() {
+  return (
+    <Suspense fallback={<div style={{ padding: 24, color: "#374151" }}>Loading…</div>}>
+      <TreatyRuntimeDemoPageContent />
+    </Suspense>
+  );
+}
