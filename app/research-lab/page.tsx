@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { Suspense, useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { SPACING, TEXT_SIZES } from "../learning/ui/uiTokens";
@@ -278,7 +278,7 @@ async function verifyProofClient(bundle: ProofBundle): Promise<ProofVerification
   }
 }
 
-export default function ResearchLabPage() {
+function ResearchLabPageContent() {
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -1021,5 +1021,13 @@ export default function ResearchLabPage() {
         </p>
       </UiCard>
     </div>
+  );
+}
+
+export default function ResearchLabPage() {
+  return (
+    <Suspense fallback={<div style={{ padding: 24, color: "#374151" }}>Loading…</div>}>
+      <ResearchLabPageContent />
+    </Suspense>
   );
 }
