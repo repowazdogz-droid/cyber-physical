@@ -38,6 +38,7 @@ export default function MarketingFooter() {
         </div>
         <div>Built in Bristol. Open-source for humanity.</div>
         <div>Safety and human care first. In every protocol. In every decision.</div>
+        <a href="mailto:warrensmith8@ymail.com" style={{ color: "var(--text-secondary)", textDecoration: "underline" }}>warrensmith8@ymail.com</a>
       </div>
     </footer>
   );
